@@ -1,0 +1,519 @@
+// ==========================================================
+// CAT KIBI Versi 1.2.1 - Core Engine (Isolated CAT System)
+// ==========================================================
+
+// Variable Global
+let WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxXnrKu2pN2nURbgRpmjH6iidZEWHeJ1dN6oa2ktoQu-aFeWLw64siMlEb_l022oAc/exec"; 
+let questionsDataConfig = {};
+let questionsData = [];
+let validToken = "";
+let timerDurationMinutes = 60;
+let currentIndex = 0;
+let userAnswers = {}; 
+let userIdentitas = {};
+let timerInterval = null;
+let currentKodeUjian = "";
+
+// Variable Anti-Kecurangan & Submit Lock
+let isExamStarted = false;
+let isExamSubmitted = false;
+let warningCount = 0;
+const MAX_WARNINGS = 3;
+
+// ==========================================================
+// 1. PAGE 1: VERIFIKASI IDENTITAS, KODE UJIAN & TOKEN
+// ==========================================================
+document.getElementById("form-identitas").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  const kodeInput = document.getElementById("kode-ujian-input").value.trim().toUpperCase();
+  const inputToken = document.getElementById("token-input").value.trim();
+  const errorElement = document.getElementById("pesan-error-login");
+  const btnSubmit = document.getElementById("btn-lanjut-info");
+
+  if (!kodeInput) {
+    errorElement.textContent = "Silakan masukkan Kode Ujian!";
+    return;
+  }
+  if (!inputToken) {
+    errorElement.textContent = "Silakan masukkan Token Ujian!";
+    return;
+  }
+
+  errorElement.textContent = "";
+  btnSubmit.disabled = true;
+  btnSubmit.textContent = "Memeriksa Kode Ujian...";
+
+  const targetJsonFile = `${kodeInput}-Soal.json`;
+
+  fetch(targetJsonFile)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Kode Ujian '${kodeInput}' tidak ditemukan atau belum dipublikasikan!`);
+      }
+      return res.json();
+    })
+    .then(data => {
+      if (inputToken !== data.token) {
+        throw new Error("Token Ujian salah atau tidak berlaku untuk paket ini!");
+      }
+
+      questionsDataConfig = data;
+      currentKodeUjian = kodeInput;
+      validToken = data.token || "";
+      timerDurationMinutes = data.timer_menit || 60;
+      questionsData = data.questions || [];
+
+      userIdentitas = {
+        nama: document.getElementById("nama").value.trim(),
+        sekolah: document.getElementById("sekolah").value.trim(),
+        kelas: document.getElementById("kelas").value.trim(),
+        nisn: document.getElementById("nisn").value.trim(),
+        daerah: document.getElementById("daerah").value.trim(),
+        kode_ujian: currentKodeUjian
+      };
+
+      if (data.logo) {
+        const logoInfo = document.getElementById("logo-lembaga-info");
+        const logoCbt = document.getElementById("logo-lembaga-cbt");
+        if (logoInfo) logoInfo.src = data.logo;
+        if (logoCbt) logoCbt.src = data.logo;
+      }
+      if (data.lembaga) {
+        const dispLembagaInfo = document.getElementById("disp-lembaga-info");
+        const dispLembagaCbt = document.getElementById("disp-lembaga-cbt");
+        if (dispLembagaInfo) dispLembagaInfo.textContent = data.lembaga;
+        if (dispLembagaCbt) dispLembagaCbt.textContent = data.lembaga;
+      }
+      if (data.sub_lembaga) {
+        const dispSub = document.getElementById("disp-sub-lembaga");
+        const dispSubInfo = document.getElementById("disp-sub-lembaga-info");
+        const dispSubCbt = document.getElementById("disp-sub-lembaga-cbt");
+        if (dispSub) dispSub.textContent = data.sub_lembaga;
+        if (dispSubInfo) dispSubInfo.textContent = data.sub_lembaga;
+        if (dispSubCbt) dispSubCbt.textContent = data.sub_lembaga;
+      }
+
+      document.getElementById("disp-kode-ujian").textContent = currentKodeUjian;
+      document.getElementById("disp-durasi").textContent = timerDurationMinutes;
+      document.getElementById("disp-jumlah-soal").textContent = questionsData.length;
+
+      document.getElementById("page-login").classList.add("hidden");
+      document.getElementById("page-info").classList.remove("hidden");
+      window.scrollTo(0, 0);
+    })
+    .catch(err => {
+      console.error(err);
+      errorElement.textContent = err.message;
+    })
+    .finally(() => {
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = "Verifikasi & Lanjut ke Petunjuk >>";
+    });
+});
+
+// ==========================================================
+// 2. PAGE 2: CONTROLLER KETENTUAN & TOMBOL MULAI
+// ==========================================================
+function toggleMulaiButton() {
+  const isChecked = document.getElementById("check-setuju").checked;
+  const btnMulai = document.getElementById("btn-mulai-ujian");
+  
+  if (isChecked) {
+    btnMulai.disabled = false;
+    btnMulai.classList.remove("btn-start-disabled");
+  } else {
+    btnMulai.disabled = true;
+    btnMulai.classList.add("btn-start-disabled");
+  }
+}
+
+function kembaliKePage1() {
+  document.getElementById("page-info").classList.add("hidden");
+  document.getElementById("page-login").classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+function mulaiUjianPenuh() {
+  document.getElementById("page-info").classList.add("hidden");
+  document.getElementById("page-cbt").classList.remove("hidden");
+
+  document.getElementById("disp-nama").textContent = userIdentitas.nama.toUpperCase();
+  document.getElementById("disp-nisn").textContent = `${userIdentitas.nisn} (${userIdentitas.kelas})`;
+
+  initCBT();
+}
+
+// ==========================================================
+// 3. PAGE 3: INISIALISASI CAT, ANTI-CHEAT & TIMER
+// ==========================================================
+function initCBT() {
+  isExamStarted = true;
+  renderNumberGrid();
+  loadQuestion(currentIndex);
+  startTimer(timerDurationMinutes * 60);
+
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+  window.addEventListener("blur", handleWindowBlur);
+}
+
+function startTimer(totalSeconds) {
+  let timerSeconds = totalSeconds;
+  const timerDisplay = document.getElementById("timer");
+
+  timerInterval = setInterval(() => {
+    const hours = Math.floor(timerSeconds / 3600);
+    const minutes = Math.floor((timerSeconds % 3600) / 60);
+    const seconds = timerSeconds % 60;
+
+    const hh = String(hours).padStart(2, '0');
+    const mm = String(minutes).padStart(2, '0');
+    const ss = String(seconds).padStart(2, '0');
+
+    if (timerDisplay) {
+      timerDisplay.textContent = `${hh}:${mm}:${ss}`;
+    }
+
+    if (--timerSeconds < 0) {
+      clearInterval(timerInterval);
+      playVoiceWarning("Waktu ujian telah habis. Jawaban Anda otomatis dikirim.");
+      alert("⏱️ Waktu Ujian Telah Habis!\nJawaban Anda secara otomatis disimpan dan dikirim ke sistem.");
+      submitJawaban();
+    }
+  }, 1000);
+}
+
+function playVoiceWarning(text) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'id-ID';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    window.speechSynthesis.speak(utterance);
+  }
+}
+
+function handleVisibilityChange() {
+  if (isExamStarted && !isExamSubmitted && document.hidden) {
+    prosesPeringatanKecurangan();
+  }
+}
+
+function handleWindowBlur() {
+  if (isExamStarted && !isExamSubmitted) {
+    prosesPeringatanKecurangan();
+  }
+}
+
+function prosesPeringatanKecurangan() {
+  warningCount++;
+  
+  if (warningCount >= MAX_WARNINGS) {
+    const pesanTerakhir = "Batas toleransi habis! Ujian Anda otomatis diakhiri.";
+    playVoiceWarning(pesanTerakhir);
+    
+    alert(`⚠️ PERINGATAN KE-${warningCount} (BATAS MAKSIMAL)!\nAnda kedapatan meninggalkan halaman ujian. Ujian Anda otomatis diakhiri dan jawaban langsung dikirim.`);
+    submitJawaban();
+  } else {
+    const pesanTeguran = `Peringatan ke ${warningCount}. Dilarang membuka tab atau aplikasi lain saat ujian!`;
+    playVoiceWarning(pesanTeguran);
+
+    alert(`⚠️ PERINGATAN KECURANGAN (${warningCount}/${MAX_WARNINGS})!\nDilarang membuka tab, jendela, atau aplikasi lain selama ujian berlangsung! Jika mencapai ${MAX_WARNINGS} kali, ujian akan terhenti otomatis.`);
+  }
+}
+
+// ==========================================================
+// 4. RENDER SOAL & NAVIGASI 
+// ==========================================================
+function loadQuestion(index) {
+  const q = questionsData[index];
+  if (!q) return;
+
+  const displayNo = index + 1; 
+
+  document.getElementById("q-num").textContent = displayNo;
+  document.getElementById("q-text").innerHTML = q.Soal;
+
+  const imgContainer = document.getElementById("q-image-container");
+  const gambarVal = (q.Gambar && typeof q.Gambar === "string") ? q.Gambar.trim() : "";
+  
+  if (gambarVal !== "" && gambarVal !== "-" && gambarVal.toLowerCase() !== "none" && gambarVal.toLowerCase() !== "null") {
+    imgContainer.innerHTML = `<img src="${gambarVal}" class="img-soal" alt="Gambar Soal">`;
+  } else {
+    imgContainer.innerHTML = "";
+  }
+
+  const optionsBox = document.getElementById("options-box");
+  optionsBox.innerHTML = "";
+
+  const optionsKeys = ["A", "B", "C", "D", "E"];
+  optionsKeys.forEach(key => {
+    if (q[key] && String(q[key]).trim() !== "") {
+      const isSelected = userAnswers[displayNo] === key;
+      
+      const optionRow = document.createElement("div"); 
+      optionRow.className = `option-row ${isSelected ? 'selected' : ''}`;
+      
+      optionRow.innerHTML = `
+        <input type="radio" name="option_${displayNo}" value="${key}" ${isSelected ? 'checked' : ''} style="pointer-events: none;">
+        <span class="opt-key">${key}.</span>
+        <span class="opt-val">${q[key]}</span>
+      `;
+
+      optionRow.onclick = function() {
+        pilihJawaban(displayNo, key);
+      };
+
+      optionsBox.appendChild(optionRow);
+    }
+  });
+
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    MathJax.typesetPromise([
+      document.getElementById("q-text"),
+      document.getElementById("options-box")
+    ]).catch(err => console.error("MathJax error:", err));
+  }
+
+  const btnPrev = document.getElementById("btn-prev");
+  const btnNext = document.getElementById("btn-next");
+  if (btnPrev) btnPrev.disabled = (index === 0);
+  if (btnNext) btnNext.disabled = (index === questionsData.length - 1);
+
+  updateGridStatus();
+}
+
+function pilihJawaban(displayNo, key) {
+  userAnswers[displayNo] = key;
+  loadQuestion(currentIndex);
+}
+
+function navigasi(direction) {
+  const newIndex = currentIndex + direction;
+  if (newIndex >= 0 && newIndex < questionsData.length) {
+    currentIndex = newIndex;
+    loadQuestion(currentIndex);
+  }
+}
+
+function renderNumberGrid() {
+  const grid = document.getElementById("number-grid");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  questionsData.forEach((q, idx) => {
+    const circle = document.createElement("div");
+    circle.id = `circle-num-${idx}`;
+    circle.className = "circle-btn unanswered";
+    circle.textContent = idx + 1;
+
+    circle.onclick = () => {
+      currentIndex = idx;
+      loadQuestion(currentIndex);
+    };
+
+    grid.appendChild(circle);
+  });
+}
+
+function updateGridStatus() {
+  questionsData.forEach((q, idx) => {
+    const circle = document.getElementById(`circle-num-${idx}`);
+    if (!circle) return;
+
+    const displayNo = idx + 1;
+    circle.className = "circle-btn";
+
+    if (userAnswers[displayNo]) {
+      circle.classList.add("answered");
+    } else {
+      circle.classList.add("unanswered");
+    }
+
+    if (idx === currentIndex) {
+      circle.classList.add("active");
+    }
+  });
+}
+
+function konfirmasiSubmit() {
+  const total = questionsData.length;
+  const dijawab = Object.keys(userAnswers).length;
+
+  if (confirm(`Anda telah menjawab ${dijawab} dari ${total} soal.\nYakin ingin mengakhiri ujian CAT?`)) {
+    submitJawaban();
+  }
+}
+
+function konfirmasiKeluar() {
+  if (confirm("Apakah Anda yakin ingin keluar dari halaman ujian CAT? Seluruh progres ujian Anda akan terhenti.")) {
+    location.reload();
+  }
+}
+
+// ==========================================================
+// 5. SUBMIT JAWABAN & ENGINE KOREKSI CAT (BOBOT OPSI & KATEGORI)
+// ==========================================================
+function submitJawaban() {
+  if (isExamSubmitted) return;
+  isExamSubmitted = true;
+
+  clearInterval(timerInterval);
+  document.removeEventListener("visibilitychange", handleVisibilityChange);
+  window.removeEventListener("blur", handleWindowBlur);
+
+  let totalSkor = 0;
+  let jumlahBenar = 0;
+  let jumlahSalah = 0;
+  let jumlahKosong = 0;
+  let catBreakdown = {};
+
+  // CORE ENGINE KOREKSI CAT
+  questionsData.forEach((q, idx) => {
+    const displayNo = idx + 1;
+    const ans = userAnswers[displayNo];
+    const kunci = q.Kunci ? String(q.Kunci).trim().toUpperCase() : "";
+    const catCategory = q.CAT ? String(q.CAT).trim().toUpperCase() : "GENERAL";
+
+    if (!catBreakdown[catCategory]) {
+      catBreakdown[catCategory] = 0;
+    }
+
+    const hasBobot = q.Bobot && typeof q.Bobot === "object" && Object.keys(q.Bobot).length > 0;
+
+    if (hasBobot) {
+      if (!ans) {
+        jumlahKosong++;
+      } else if (q.Bobot[ans] !== undefined) {
+        const poinDapat = Number(q.Bobot[ans]);
+        totalSkor += poinDapat;
+        catBreakdown[catCategory] += poinDapat;
+
+        const maxBobot = Math.max(...Object.values(q.Bobot));
+        if (poinDapat === maxBobot) jumlahBenar++;
+        else jumlahSalah++;
+      }
+    } else {
+      if (!ans) {
+        jumlahKosong++;
+      } else if (ans === kunci) {
+        jumlahBenar++;
+        totalSkor += 5;
+        catBreakdown[catCategory] += 5;
+      } else {
+        jumlahSalah++;
+      }
+    }
+  });
+
+  const totalSoal = questionsData.length;
+  const skorAkhir = Number(totalSkor.toFixed(2));
+
+  const detailHasil = {
+    benar: jumlahBenar,
+    salah: jumlahSalah,
+    kosong: jumlahKosong,
+    totalSoal: totalSoal,
+    skor: skorAkhir,
+    catBreakdown: catBreakdown
+  };
+
+  document.getElementById("page-cbt").innerHTML = `
+    <div style="text-align:center; padding: 60px 20px; font-family: sans-serif;">
+      <h2 style="color: #4a3e56; margin-bottom: 10px;">Mengirimkan Jawaban...</h2>
+      <p style="color: #7d756d;">Mohon tunggu sebentar, jawaban Anda sedang disimpan dan diproses oleh sistem CAT.</p>
+    </div>
+  `;
+
+  const payload = {
+    kode_soal: currentKodeUjian,
+    sistem_ujian: "CAT",
+    mode_penilaian: "INTEGRATED_CAT",
+    identitas: userIdentitas,
+    jawaban: userAnswers,
+    total_dijawab: Object.keys(userAnswers).length,
+    total_soal: totalSoal,
+    skor_total: skorAkhir,
+    skor: skorAkhir,
+    benar: jumlahBenar,
+    salah: jumlahSalah,
+    kosong: jumlahKosong,
+    cat_twk: catBreakdown["TWK"] !== undefined ? catBreakdown["TWK"] : "-",
+    cat_tiu: catBreakdown["TIU"] !== undefined ? catBreakdown["TIU"] : "-",
+    cat_tkp: catBreakdown["TKP"] !== undefined ? catBreakdown["TKP"] : "-",
+    jumlah_benar: jumlahBenar,
+    jumlah_salah: jumlahSalah,
+    jumlah_kosong: jumlahKosong,
+    skor_akhir: skorAkhir,
+    breakdown_cat: catBreakdown
+  };
+
+  if (WEBHOOK_URL && WEBHOOK_URL.trim() !== "") {
+    fetch(WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(() => tampilkanLayarSelesai(detailHasil))
+    .catch(err => {
+      console.error("Error Webhook:", err);
+      tampilkanLayarSelesai(detailHasil);
+    });
+  } else {
+    tampilkanLayarSelesai(detailHasil);
+  }
+}
+
+// ==========================================================
+// 6. PANEL PENGUMUMAN SKOR AKHIR (KHUSUS CAT)
+// ==========================================================
+function tampilkanLayarSelesai(detail) {
+  let catRowsHTML = "";
+  for (const [kategori, skorKat] of Object.entries(detail.catBreakdown)) {
+    catRowsHTML += `
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; margin-bottom: 8px;">
+        <span style="font-weight: bold; color: #333; font-size: 15px;">Skor ${kategori}</span>
+        <span style="font-size: 18px; font-weight: bold; color: #1976d2;">${skorKat}</span>
+      </div>
+    `;
+  }
+
+  const htmlContent = `
+    <div style="text-align:center; padding: 30px 15px; font-family: sans-serif; max-width: 520px; margin: 0 auto;">
+      <h2 style="color: #2e7d32; margin-bottom: 5px;">✅ Ujian CAT Selesai!</h2>
+      <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Hasil Pengumuman Skor Resmi [Kode: <strong>${currentKodeUjian}</strong>]</p>
+      
+      <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h3 style="color: #4a3e56; margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; font-size: 16px;">📊 Akumulasi Skor Per Kategori</h3>
+        
+        <div style="margin-bottom: 20px;">
+          ${catRowsHTML}
+        </div>
+
+        <div style="background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 10px; padding: 15px; text-align: center; margin-bottom: 20px;">
+          <span style="font-size: 12px; color: #2e7d32; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">Total Skor Akumulasi</span>
+          <div style="font-size: 42px; font-weight: bold; color: #1b5e20; margin-top: 2px;">${detail.skor}</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 13px; text-align: center; background: #fafafa; padding: 10px; border-radius: 8px;">
+          <div>✔️ Benar: <strong style="color: #2e7d32;">${detail.benar}</strong></div>
+          <div>❌ Salah: <strong style="color: #c62828;">${detail.salah}</strong></div>
+          <div>⚪ Kosong: <strong style="color: #f57c00;">${detail.kosong}</strong></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("page-cbt").innerHTML = htmlContent;
+}
+
+function toggleNavigator() {
+  const sidebar = document.querySelector(".sidebar-nav");
+  if (sidebar) {
+    sidebar.classList.toggle("hidden");
+  }
+}
