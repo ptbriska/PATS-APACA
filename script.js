@@ -14,6 +14,10 @@ let userIdentitas = {};
 let timerInterval = null;
 let currentKodeUjian = "";
 
+// Variable Mode Ujian & Verifikasi Peserta
+let modeUjian = "LATIHAN"; // Default
+let daftarPesertaValid = [];
+
 // Variable Anti-Kecurangan & Submit Lock
 let isExamStarted = false;
 let isExamSubmitted = false;
@@ -21,16 +25,44 @@ let warningCount = 0;
 const MAX_WARNINGS = 3;
 
 // ==========================================================
+// HELPER: UTILS VERIFIKASI PESERTA
+// ==========================================================
+async function loadDaftarPeserta() {
+  try {
+    const response = await fetch("peserta.json");
+    if (response.ok) {
+      const data = await response.json();
+      // Simpan semua nama dalam format UPPERCASE agar matching akurat
+      daftarPesertaValid = data.map(nama => String(nama).trim().toUpperCase());
+    } else {
+      console.warn("File peserta.json tidak ditemukan.");
+    }
+  } catch (err) {
+    console.error("Gagal membaca peserta.json:", err);
+  }
+}
+
+// ==========================================================
 // 1. PAGE 1: VERIFIKASI IDENTITAS, KODE UJIAN & TOKEN
 // ==========================================================
-document.getElementById("form-identitas").addEventListener("submit", function(e) {
+document.getElementById("form-identitas").addEventListener("submit", async function(e) {
   e.preventDefault();
   
   const kodeInput = document.getElementById("kode-ujian-input").value.trim().toUpperCase();
   const inputToken = document.getElementById("token-input").value.trim();
+  const inputNamaRaw = document.getElementById("nama").value.trim();
+  const inputNama = inputNamaRaw.toUpperCase();
+  
+  // Format tampilan input nama di form menjadi UPPERCASE secara otomatis
+  document.getElementById("nama").value = inputNama;
+
   const errorElement = document.getElementById("pesan-error-login");
   const btnSubmit = document.getElementById("btn-lanjut-info");
 
+  if (!inputNama) {
+    errorElement.textContent = "Silakan masukkan Nama Lengkap Anda!";
+    return;
+  }
   if (!kodeInput) {
     errorElement.textContent = "Silakan masukkan Kode Ujian!";
     return;
@@ -46,70 +78,89 @@ document.getElementById("form-identitas").addEventListener("submit", function(e)
 
   const targetJsonFile = `${kodeInput}-Soal.json`;
 
-  fetch(targetJsonFile)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(`Kode Ujian '${kodeInput}' tidak ditemukan atau belum dipublikasikan!`);
-      }
-      return res.json();
-    })
-    .then(data => {
-      if (inputToken !== data.token) {
-        throw new Error("Token Ujian salah atau tidak berlaku untuk paket ini!");
-      }
+  try {
+    const res = await fetch(targetJsonFile);
+    if (!res.ok) {
+      throw new Error(`Kode Ujian '${kodeInput}' tidak ditemukan atau belum dipublikasikan!`);
+    }
+    
+    const data = await res.json();
 
-      questionsDataConfig = data;
-      currentKodeUjian = kodeInput;
-      validToken = data.token || "";
-      timerDurationMinutes = data.timer_menit || 60;
-      questionsData = data.questions || [];
+    if (inputToken !== data.token) {
+      throw new Error("Token Ujian salah atau tidak berlaku untuk paket ini!");
+    }
 
-      userIdentitas = {
-        nama: document.getElementById("nama").value.trim(),
-        sekolah: document.getElementById("sekolah").value.trim(),
-        kelas: document.getElementById("kelas").value.trim(),
-        nisn: document.getElementById("nisn").value.trim(),
-        daerah: document.getElementById("daerah").value.trim(),
-        kode_ujian: currentKodeUjian
-      };
+    // Tetapkan Config
+    questionsDataConfig = data;
+    currentKodeUjian = kodeInput;
+    validToken = data.token || "";
+    timerDurationMinutes = data.timer_menit || 60;
+    questionsData = data.questions || [];
+    modeUjian = (data.mode_ujian || "LATIHAN").toUpperCase();
 
-      if (data.logo) {
-        const logoInfo = document.getElementById("logo-lembaga-info");
-        const logoCbt = document.getElementById("logo-lembaga-cbt");
-        if (logoInfo) logoInfo.src = data.logo;
-        if (logoCbt) logoCbt.src = data.logo;
-      }
-      if (data.lembaga) {
-        const dispLembagaInfo = document.getElementById("disp-lembaga-info");
-        const dispLembagaCbt = document.getElementById("disp-lembaga-cbt");
-        if (dispLembagaInfo) dispLembagaInfo.textContent = data.lembaga;
-        if (dispLembagaCbt) dispLembagaCbt.textContent = data.lembaga;
-      }
-      if (data.sub_lembaga) {
-        const dispSub = document.getElementById("disp-sub-lembaga");
-        const dispSubInfo = document.getElementById("disp-sub-lembaga-info");
-        const dispSubCbt = document.getElementById("disp-sub-lembaga-cbt");
-        if (dispSub) dispSub.textContent = data.sub_lembaga;
-        if (dispSubInfo) dispSubInfo.textContent = data.sub_lembaga;
-        if (dispSubCbt) dispSubCbt.textContent = data.sub_lembaga;
+    // PERCABANGAN MODE UJIAN
+    if (modeUjian === "SIMULASI") {
+      // 1. Cek LocalStorage (Proteksi Sekali Submit)
+      const lockKey = `SUBMITTED_${currentKodeUjian}_${inputNama}`;
+      if (localStorage.getItem(lockKey) === "TRUE") {
+        throw new Error("AKSES DITOLAK: Anda sudah pernah menyelesaikan ujian CAT ini!");
       }
 
-      document.getElementById("disp-kode-ujian").textContent = currentKodeUjian;
-      document.getElementById("disp-durasi").textContent = timerDurationMinutes;
-      document.getElementById("disp-jumlah-soal").textContent = questionsData.length;
+      // 2. Load & Verifikasi Nama Peserta dari peserta.json
+      await loadDaftarPeserta();
+      if (daftarPesertaValid.length > 0 && !daftarPesertaValid.includes(inputNama)) {
+        throw new Error("NAMA TIDAK TERDAFTAR! Periksa kembali penulisan nama Anda sesuai pendaftaran.");
+      }
+    }
 
-      document.getElementById("page-login").classList.add("hidden");
-      document.getElementById("page-info").classList.remove("hidden");
-      window.scrollTo(0, 0);
-    })
-    .catch(err => {
-      console.error(err);
-      errorElement.textContent = err.message;
-    })
-    .finally(() => {
-      btnSubmit.disabled = false;
-      btnSubmit.textContent = "Verifikasi & Lanjut ke Petunjuk >>";
-    });
+    // Simpan Identitas Peserta
+    userIdentitas = {
+      nama: inputNama,
+      sekolah: document.getElementById("sekolah").value.trim(),
+      kelas: document.getElementById("kelas").value.trim(),
+      nisn: document.getElementById("nisn").value.trim(),
+      daerah: document.getElementById("daerah").value.trim(),
+      kode_ujian: currentKodeUjian,
+      mode_ujian: modeUjian
+    };
+
+    // Update Header Lembaga
+    if (data.logo) {
+      const logoInfo = document.getElementById("logo-lembaga-info");
+      const logoCbt = document.getElementById("logo-lembaga-cbt");
+      if (logoInfo) logoInfo.src = data.logo;
+      if (logoCbt) logoCbt.src = data.logo;
+    }
+    if (data.lembaga) {
+      const dispLembagaInfo = document.getElementById("disp-lembaga-info");
+      const dispLembagaCbt = document.getElementById("disp-lembaga-cbt");
+      if (dispLembagaInfo) dispLembagaInfo.textContent = data.lembaga;
+      if (dispLembagaCbt) dispLembagaCbt.textContent = data.lembaga;
+    }
+    if (data.sub_lembaga) {
+      const dispSub = document.getElementById("disp-sub-lembaga");
+      const dispSubInfo = document.getElementById("disp-sub-lembaga-info");
+      const dispSubCbt = document.getElementById("disp-sub-lembaga-cbt");
+      if (dispSub) dispSub.textContent = data.sub_lembaga;
+      if (dispSubInfo) dispSubInfo.textContent = data.sub_lembaga;
+      if (dispSubCbt) dispSubCbt.textContent = data.sub_lembaga;
+    }
+
+    document.getElementById("disp-kode-ujian").textContent = `${currentKodeUjian} (${modeUjian})`;
+    document.getElementById("disp-durasi").textContent = timerDurationMinutes;
+    document.getElementById("disp-jumlah-soal").textContent = questionsData.length;
+
+    document.getElementById("page-login").classList.add("hidden");
+    document.getElementById("page-info").classList.remove("hidden");
+    window.scrollTo(0, 0);
+
+  } catch (err) {
+    console.error(err);
+    errorElement.textContent = err.message;
+  } finally {
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = "Verifikasi & Lanjut ke Petunjuk >>";
+  }
 });
 
 // ==========================================================
@@ -138,7 +189,7 @@ function mulaiUjianPenuh() {
   document.getElementById("page-info").classList.add("hidden");
   document.getElementById("page-cbt").classList.remove("hidden");
 
-  document.getElementById("disp-nama").textContent = userIdentitas.nama.toUpperCase();
+  document.getElementById("disp-nama").textContent = userIdentitas.nama;
   document.getElementById("disp-nisn").textContent = `${userIdentitas.nisn} (${userIdentitas.kelas})`;
 
   initCBT();
@@ -363,6 +414,12 @@ function submitJawaban() {
   document.removeEventListener("visibilitychange", handleVisibilityChange);
   window.removeEventListener("blur", handleWindowBlur);
 
+  // Kunci browser jika mode SIMULASI
+  if (modeUjian === "SIMULASI") {
+    const lockKey = `SUBMITTED_${currentKodeUjian}_${userIdentitas.nama}`;
+    localStorage.setItem(lockKey, "TRUE");
+  }
+
   let totalSkor = 0;
   let jumlahBenar = 0;
   let jumlahSalah = 0;
@@ -429,6 +486,7 @@ function submitJawaban() {
   const payload = {
     kode_soal: currentKodeUjian,
     sistem_ujian: "CAT",
+    mode_ujian: modeUjian,
     mode_penilaian: "INTEGRATED_CAT",
     identitas: userIdentitas,
     jawaban: userAnswers,
