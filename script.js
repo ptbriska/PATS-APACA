@@ -1,6 +1,6 @@
 // ==========================================================
 // CAT KIBI Versi 1.3.0 - Core Engine (Isolated CAT System)
-// Fitur: Verifikasi Ketat (Kode Kegiatan + Nama Lengkap) & Otomasi Auto-Fill Data
+// Fitur: Verifikasi 2 Langkah (Cek Verifikasi -> Auto-Fill -> Lanjut)
 // ==========================================================
 
 // Variable Global
@@ -15,6 +15,10 @@ let userIdentitas = {};
 let timerInterval = null;
 let currentKodeUjian = "";
 
+// State Verifikasi Peserta
+let isVerified = false;
+let verifiedPesertaData = null;
+
 // Variable Mode Ujian & Verifikasi Peserta Versi 1.3.0
 let modeUjian = "LATIHAN"; // Default
 let daftarPesertaValid = [];
@@ -26,7 +30,7 @@ let warningCount = 0;
 const MAX_WARNINGS = 3;
 
 // ==========================================================
-// HELPER: UTILS VERIFIKASI PESERTA (VERSI 1.3.0 - STRICT FOR ALL MODES)
+// HELPER: UTILS VERIFIKASI PESERTA (VERSI 1.3.0 - UX REVISION)
 // ==========================================================
 async function loadDaftarPeserta() {
   try {
@@ -65,13 +69,10 @@ function autoFillIdentitas(dataPeserta) {
 }
 
 // ==========================================================
-// 1. PAGE 1: VERIFIKASI IDENTITAS, KODE UJIAN & TOKEN
+// 1. TAHAP 1: CEK VERIFIKASI PESERTA (BUTTON CLICK)
 // ==========================================================
-document.getElementById("form-identitas").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  
+async function cekVerifikasiPeserta() {
   const kodeInput = document.getElementById("kode-ujian-input").value.trim().toUpperCase();
-  const inputToken = document.getElementById("token-input").value.trim();
   const inputNamaRaw = document.getElementById("nama").value.trim();
   const inputNama = inputNamaRaw.toUpperCase();
   
@@ -79,29 +80,25 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
   document.getElementById("nama").value = inputNama;
 
   const errorElement = document.getElementById("pesan-error-login");
-  const btnSubmit = document.getElementById("btn-lanjut-info");
+  const btnLanjut = document.getElementById("btn-lanjut-info");
+  const btnCek = document.getElementById("btn-cek-verifikasi");
 
   if (!inputNama) {
-    errorElement.textContent = "Silakan masukkan Nama Lengkap Anda!";
+    errorElement.className = "text-danger mt-2 alert alert-danger";
+    errorElement.innerHTML = "Silakan masukkan Nama Lengkap Anda!";
     return;
   }
   if (!kodeInput) {
-    errorElement.textContent = "Silakan masukkan Kode Ujian / Kode Kegiatan!";
-    return;
-  }
-  if (!inputToken) {
-    errorElement.textContent = "Silakan masukkan Token Ujian!";
+    errorElement.className = "text-danger mt-2 alert alert-danger";
+    errorElement.innerHTML = "Silakan masukkan Kode Ujian / Kode Kegiatan!";
     return;
   }
 
-  errorElement.textContent = "";
-  btnSubmit.disabled = true;
-  btnSubmit.textContent = "Memeriksa & Memverifikasi Peserta...";
-
-  const targetJsonFile = `${kodeInput}-Soal.json`;
+  if (btnCek) btnCek.disabled = true;
+  errorElement.className = "text-info mt-2 alert alert-info";
+  errorElement.innerHTML = "Memeriksa database peserta.json...";
 
   try {
-    // 1. VERIFIKASI KETAT PESERTA.JSON (BERLAKU KETAT UNTUK SEMUA MODE - LATIHAN & SIMULASI)
     await loadDaftarPeserta();
 
     if (!daftarPesertaValid || daftarPesertaValid.length === 0) {
@@ -115,14 +112,95 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
       return kodeMatch && namaMatch;
     });
 
-    if (!pesertaMatch) {
-      throw new Error(`VERIFIKASI GAGAL: Kombinasi Nama '${inputNama}' dan Kode Kegiatan '${kodeInput}' tidak ditemukan dalam sistem!`);
+    if (pesertaMatch) {
+      isVerified = true;
+      verifiedPesertaData = pesertaMatch;
+
+      // Auto-fill field pendukung jika elemen ada di DOM
+      autoFillIdentitas(pesertaMatch);
+
+      // Notifikasi Sukses
+      errorElement.className = "text-success mt-2 alert alert-success";
+      errorElement.innerHTML = "<strong>Selamat Anda Terverifikasi</strong>";
+
+      // Tampilkan / Aktifkan tombol Lanjut ke Petunjuk
+      if (btnLanjut) {
+        btnLanjut.style.display = "inline-block";
+        btnLanjut.disabled = false;
+      }
+    } else {
+      isVerified = false;
+      verifiedPesertaData = null;
+
+      if (btnLanjut) btnLanjut.style.display = "none";
+
+      // Notifikasi Gagal + Simbol WA Link Admin
+      errorElement.className = "text-danger mt-2 alert alert-danger";
+      errorElement.innerHTML = `
+        Maaf, <strong>VERIFIKASI GAGAL</strong>: Kombinasi Nama '<b>${inputNama}</b>' dan Kode Kegiatan '<b>${kodeInput}</b>' tidak ditemukan dalam sistem!, 
+        Silahkan Hubungi Admin <a href="https://wa.me/6285711000363" target="_blank" style="color: #25D366; font-weight: bold; text-decoration: underline;">
+          <i class="fab fa-whatsapp"></i> wa.me/6285711000363
+        </a> untuk Pendaftaran
+      `;
     }
+  } catch (err) {
+    console.error(err);
+    isVerified = false;
+    verifiedPesertaData = null;
+    if (btnLanjut) btnLanjut.style.display = "none";
 
-    // Auto-fill field pendukung jika elemen ada di DOM
-    autoFillIdentitas(pesertaMatch);
+    errorElement.className = "text-danger mt-2 alert alert-danger";
+    errorElement.innerHTML = err.message;
+  } finally {
+    if (btnCek) btnCek.disabled = false;
+  }
+}
 
-    // 2. LOAD FILE SOAL
+// Event Listener tombol Cek Verifikasi jika menggunakan ID terpisah
+document.addEventListener("DOMContentLoaded", () => {
+  const btnCek = document.getElementById("btn-cek-verifikasi");
+  if (btnCek) {
+    btnCek.addEventListener("click", function(e) {
+      e.preventDefault();
+      cekVerifikasiPeserta();
+    });
+  }
+});
+
+// ==========================================================
+// 2. TAHAP 2: PROSES KELANJUTAN KE PETUNJUK (SUBMIT FORM)
+// ==========================================================
+document.getElementById("form-identitas").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  
+  const kodeInput = document.getElementById("kode-ujian-input").value.trim().toUpperCase();
+  const inputToken = document.getElementById("token-input").value.trim();
+  const inputNama = document.getElementById("nama").value.trim().toUpperCase();
+  
+  const errorElement = document.getElementById("pesan-error-login");
+  const btnSubmit = document.getElementById("btn-lanjut-info");
+
+  // Jika belum klik Cek Verifikasi atau status belum match
+  if (!isVerified || !verifiedPesertaData) {
+    await cekVerifikasiPeserta();
+    if (!isVerified) return;
+  }
+
+  if (!inputToken) {
+    errorElement.className = "text-danger mt-2 alert alert-danger";
+    errorElement.innerHTML = "Silakan masukkan Token Ujian!";
+    return;
+  }
+
+  btnSubmit.disabled = true;
+  btnSubmit.textContent = "Memuat Soal Ujian...";
+
+  const targetJsonFile = `${kodeInput}-Soal.json`;
+
+  try {
+    const pesertaMatch = verifiedPesertaData;
+
+    // LOAD FILE SOAL
     const res = await fetch(targetJsonFile);
     if (!res.ok) {
       throw new Error(`Kode Ujian '${kodeInput}' tidak ditemukan atau belum dipublikasikan!`);
@@ -142,7 +220,7 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
     questionsData = data.questions || [];
     modeUjian = (data.mode_ujian || "LATIHAN").toUpperCase();
 
-    // 3. PROTEKSI SEKALI SUBMIT (KHUSUS MODE SIMULASI)
+    // PROTEKSI SEKALI SUBMIT (KHUSUS MODE SIMULASI)
     if (modeUjian === "SIMULASI") {
       const lockKey = `SUBMITTED_${currentKodeUjian}_${inputNama}`;
       if (localStorage.getItem(lockKey) === "TRUE") {
@@ -170,7 +248,12 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
       mode_ujian: modeUjian
     };
 
-    // Update Header Lembaga
+    // Update Sambutan & Header Lembaga (UX v1.3 Revision)
+    const dispHeaderTitle = document.getElementById("disp-header-title");
+    const dispHeaderSub = document.getElementById("disp-header-sub");
+    if (dispHeaderTitle) dispHeaderTitle.textContent = "Selamat Datang di Sistem Tes Berbasis Komputer (CAT)";
+    if (dispHeaderSub) dispHeaderSub.textContent = "Briska Corporation";
+
     if (data.logo) {
       const logoInfo = document.getElementById("logo-lembaga-info");
       const logoCbt = document.getElementById("logo-lembaga-cbt");
@@ -202,15 +285,16 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
 
   } catch (err) {
     console.error(err);
+    errorElement.className = "text-danger mt-2 alert alert-danger";
     errorElement.textContent = err.message;
   } finally {
     btnSubmit.disabled = false;
-    btnSubmit.textContent = "Verifikasi & Lanjut ke Petunjuk >>";
+    btnSubmit.textContent = "Lanjut ke Petunjuk >>";
   }
 });
 
 // ==========================================================
-// 2. PAGE 2: CONTROLLER KETENTUAN & TOMBOL MULAI
+// 3. PAGE 2: CONTROLLER KETENTUAN & TOMBOL MULAI
 // ==========================================================
 function toggleMulaiButton() {
   const isChecked = document.getElementById("check-setuju").checked;
@@ -242,7 +326,7 @@ function mulaiUjianPenuh() {
 }
 
 // ==========================================================
-// 3. PAGE 3: INISIALISASI CAT, ANTI-CHEAT & TIMER
+// 4. PAGE 3: INISIALISASI CAT, ANTI-CHEAT & TIMER
 // ==========================================================
 function initCBT() {
   isExamStarted = true;
@@ -321,7 +405,7 @@ function prosesPeringatanKecurangan() {
 }
 
 // ==========================================================
-// 4. RENDER SOAL & NAVIGASI 
+// 5. RENDER SOAL & NAVIGASI 
 // ==========================================================
 function loadQuestion(index) {
   const q = questionsData[index];
@@ -450,7 +534,7 @@ function konfirmasiKeluar() {
 }
 
 // ==========================================================
-// 5. SUBMIT JAWABAN & ENGINE KOREKSI CAT (BOBOT OPSI & KATEGORI)
+// 6. SUBMIT JAWABAN & ENGINE KOREKSI CAT (BOBOT OPSI & KATEGORI)
 // ==========================================================
 function submitJawaban() {
   if (isExamSubmitted) return;
@@ -573,7 +657,7 @@ function submitJawaban() {
 }
 
 // ==========================================================
-// 6. PANEL PENGUMUMAN SKOR AKHIR (KHUSUS CAT)
+// 7. PANEL PENGUMUMAN SKOR AKHIR (KHUSUS CAT)
 // ==========================================================
 function tampilkanLayarSelesai(detail) {
   let catRowsHTML = "";
