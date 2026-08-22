@@ -22,11 +22,11 @@
   --color-answered: #0d47a1;   /* Biru Dongker / Navy Kedinasan (Sudah dijawab) */
   --color-active: #d4af37;     /* Emas (Sedang aktif) */
   
-  /* Status Hasil Ujian */
+  /* Status Hasil Ujian & Alert */
   --color-success: #2e7d32;
   --color-danger: #c62828;
   --color-warning: #f57c00;
-  --color-info: #0d47a1;
+  --color-info: #0288d1;
 
   --shadow-soft: 0 8px 25px rgba(155, 0, 0, 0.1);
   --shadow-glass: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -102,6 +102,10 @@ body {
   margin-bottom: 18px;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .form-group label {
   display: block;
   font-size: 0.88rem;
@@ -136,12 +140,21 @@ body {
   box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
 }
 
+/* Styling Khusus Input Auto-Fill (Readonly) */
+.form-group input[readonly] {
+  background-color: #e9ecef !important;
+  color: #495057;
+  cursor: not-allowed;
+  border-color: #dee2e6;
+}
+
 .form-row-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
+/* Tombol Utama (Gradasi Merah Kedinasan) */
 .btn-primary {
   width: 100%;
   padding: 14px;
@@ -164,6 +177,35 @@ body {
   transform: translateY(-2px);
 }
 
+/* Tombol Cek Verifikasi (Aksen Gold/Orange Taruna) */
+.btn-warning {
+  width: 100%;
+  padding: 12px 18px;
+  background: var(--grad-emas);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.25);
+}
+
+.btn-warning:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c49f2e, #8f6f1f);
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-warning:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .btn-secondary {
   padding: 12px 20px;
   background: var(--bg-panel);
@@ -183,12 +225,42 @@ body {
   border-color: var(--text-dark);
 }
 
+/* ==========================================
+   ALERT & STATUS MESSAGES (VERIFIKASI)
+   ========================================== */
 .error-msg {
-  color: var(--color-danger);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   text-align: center;
-  margin-top: 14px;
-  font-weight: 700;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.alert-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.alert-info {
+  background-color: #cff4fc;
+  color: #055160;
+  border: 1px solid #b6effb;
 }
 
 /* Footer Motivasi */
@@ -206,7 +278,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 
 /* ==========================================
    2. PAGE 2: INFORMASI KEGIATAN & TATA TERTIB
@@ -352,7 +423,6 @@ body {
   background: #adb5bd !important;
   box-shadow: none !important;
 }
-
 
 /* ==========================================
    3. PAGE 3: ARENA SOAL CBT
@@ -540,7 +610,6 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
   user-select: none;
@@ -580,10 +649,9 @@ body {
   word-break: break-word;
 }
 
-/* MathJax / KaTeX Styling */
+/* MathJax Styling */
 .q-text .mjx-chtml, .opt-val .mjx-chtml,
-.q-text .MathJax, .opt-val .MathJax,
-.q-text .katex, .opt-val .katex {
+.q-text .MathJax, .opt-val .MathJax {
   font-size: 105% !important;
   max-width: 100%;
   overflow-x: auto;
@@ -611,7 +679,7 @@ body {
 .circle-btn {
   width: 42px;
   height: 42px;
-  border-radius: 6px; /* Dibuat mengotak untuk kesan instansi/kaku */
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -643,7 +711,6 @@ body {
   transform: scale(1.08);
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
 }
-
 
 /* ==========================================
    4. FOOTER BOTTOM BAR
@@ -690,7 +757,6 @@ body {
   display: flex;
   gap: 12px;
 }
-
 
 /* ==========================================
    5. PAGE RESULT: PENGUMUMAN SKOR 
@@ -744,7 +810,6 @@ body {
   font-weight: 600;
 }
 
-/* Card Hasil Ujian Detail */
 .result-detail-box {
   background: var(--bg-main);
   border: 1px solid #ced4da;
@@ -767,7 +832,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Breakdown Kategori CAT (TWK/TIU/TKP) */
 .cat-breakdown-list {
   display: flex;
   flex-direction: column;
@@ -803,7 +867,6 @@ body {
   color: var(--text-dark);
 }
 
-/* Big Score Display Box */
 .score-badge-main {
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
   border: 2px solid var(--accent-gold);
@@ -831,7 +894,6 @@ body {
   text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
 }
 
-/* Stat Grid (Benar, Salah, Kosong) */
 .stat-summary-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -862,7 +924,6 @@ body {
   color: var(--text-dark);
 }
 
-
 /* ==========================================
    RESPONSIF MOBILE
    ========================================== */
@@ -886,7 +947,7 @@ body {
     border-top: 1px solid #dee2e6;
   }
   .circle-grid {
-    grid-template-columns: repeat(6, 1fr); /* 6 kolom di HP agar muat */
+    grid-template-columns: repeat(6, 1fr);
   }
   .result-card-container {
     padding: 25px 18px;
