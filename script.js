@@ -1,5 +1,6 @@
 // ==========================================================
-// CAT KIBI Versi 1.2.1 - Core Engine (Isolated CAT System)
+// CAT KIBI Versi 1.3.0 - Core Engine (Isolated CAT System)
+// Fitur: Verifikasi Ketat (Kode Kegiatan + Nama Lengkap) & Otomasi Auto-Fill Data
 // ==========================================================
 
 // Variable Global
@@ -14,7 +15,7 @@ let userIdentitas = {};
 let timerInterval = null;
 let currentKodeUjian = "";
 
-// Variable Mode Ujian & Verifikasi Peserta
+// Variable Mode Ujian & Verifikasi Peserta Versi 1.3.0
 let modeUjian = "LATIHAN"; // Default
 let daftarPesertaValid = [];
 
@@ -25,21 +26,42 @@ let warningCount = 0;
 const MAX_WARNINGS = 3;
 
 // ==========================================================
-// HELPER: UTILS VERIFIKASI PESERTA
+// HELPER: UTILS VERIFIKASI PESERTA (VERSI 1.3.0 - STRICT FOR ALL MODES)
 // ==========================================================
 async function loadDaftarPeserta() {
   try {
     const response = await fetch("peserta.json");
     if (response.ok) {
       const data = await response.json();
-      // Simpan semua nama dalam format UPPERCASE agar matching akurat
-      daftarPesertaValid = data.map(nama => String(nama).trim().toUpperCase());
+      if (Array.isArray(data)) {
+        daftarPesertaValid = data;
+      } else {
+        daftarPesertaValid = [];
+        console.warn("Format peserta.json bukan array.");
+      }
     } else {
+      daftarPesertaValid = [];
       console.warn("File peserta.json tidak ditemukan.");
     }
   } catch (err) {
+    daftarPesertaValid = [];
     console.error("Gagal membaca peserta.json:", err);
   }
+}
+
+// Auto-Fill Form Identitas berdasarkan data peserta terverifikasi
+function autoFillIdentitas(dataPeserta) {
+  const setInputValue = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.value = val || "";
+  };
+
+  setInputValue("sekolah", dataPeserta["Asal Instansi"]);
+  setInputValue("kelas", dataPeserta["Pekerjaan / Jurusan"]);
+  setInputValue("nisn", dataPeserta["NIK / NISN / NIM"]);
+  setInputValue("daerah", `${dataPeserta["Asal Kabupaten"] || ''}, ${dataPeserta["Asal Provinsi"] || ''}`.replace(/^,\s*|,\s*$/g, ''));
+  setInputValue("email", dataPeserta["Email (Terverifikasi)"]);
+  setInputValue("hp", dataPeserta["No HP / WA"]);
 }
 
 // ==========================================================
@@ -64,7 +86,7 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
     return;
   }
   if (!kodeInput) {
-    errorElement.textContent = "Silakan masukkan Kode Ujian!";
+    errorElement.textContent = "Silakan masukkan Kode Ujian / Kode Kegiatan!";
     return;
   }
   if (!inputToken) {
@@ -74,11 +96,33 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
 
   errorElement.textContent = "";
   btnSubmit.disabled = true;
-  btnSubmit.textContent = "Memeriksa Kode Ujian...";
+  btnSubmit.textContent = "Memeriksa & Memverifikasi Peserta...";
 
   const targetJsonFile = `${kodeInput}-Soal.json`;
 
   try {
+    // 1. VERIFIKASI KETAT PESERTA.JSON (BERLAKU KETAT UNTUK SEMUA MODE - LATIHAN & SIMULASI)
+    await loadDaftarPeserta();
+
+    if (!daftarPesertaValid || daftarPesertaValid.length === 0) {
+      throw new Error("Sistem tidak dapat memverifikasi peserta: Database peserta.json tidak ditemukan atau kosong!");
+    }
+
+    // Mencari match data: Kode Ujian === Kode Kegiatan DAN Nama Lengkap === Nama Input
+    const pesertaMatch = daftarPesertaValid.find(p => {
+      const kodeMatch = String(p["Kode Kegiatan"] || "").trim().toUpperCase() === kodeInput;
+      const namaMatch = String(p["Nama Lengkap"] || "").trim().toUpperCase() === inputNama;
+      return kodeMatch && namaMatch;
+    });
+
+    if (!pesertaMatch) {
+      throw new Error(`VERIFIKASI GAGAL: Kombinasi Nama '${inputNama}' dan Kode Kegiatan '${kodeInput}' tidak ditemukan dalam sistem!`);
+    }
+
+    // Auto-fill field pendukung jika elemen ada di DOM
+    autoFillIdentitas(pesertaMatch);
+
+    // 2. LOAD FILE SOAL
     const res = await fetch(targetJsonFile);
     if (!res.ok) {
       throw new Error(`Kode Ujian '${kodeInput}' tidak ditemukan atau belum dipublikasikan!`);
@@ -98,28 +142,30 @@ document.getElementById("form-identitas").addEventListener("submit", async funct
     questionsData = data.questions || [];
     modeUjian = (data.mode_ujian || "LATIHAN").toUpperCase();
 
-    // PERCABANGAN MODE UJIAN
+    // 3. PROTEKSI SEKALI SUBMIT (KHUSUS MODE SIMULASI)
     if (modeUjian === "SIMULASI") {
-      // 1. Cek LocalStorage (Proteksi Sekali Submit)
       const lockKey = `SUBMITTED_${currentKodeUjian}_${inputNama}`;
       if (localStorage.getItem(lockKey) === "TRUE") {
         throw new Error("AKSES DITOLAK: Anda sudah pernah menyelesaikan ujian CAT ini!");
       }
-
-      // 2. Load & Verifikasi Nama Peserta dari peserta.json
-      await loadDaftarPeserta();
-      if (daftarPesertaValid.length > 0 && !daftarPesertaValid.includes(inputNama)) {
-        throw new Error("NAMA TIDAK TERDAFTAR! Periksa kembali penulisan nama Anda sesuai pendaftaran.");
-      }
     }
 
-    // Simpan Identitas Peserta
+    // Simpan Identitas Peserta (Lengkap dengan data hasil verifikasi)
+    const getVal = id => {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : "";
+    };
+
     userIdentitas = {
-      nama: inputNama,
-      sekolah: document.getElementById("sekolah").value.trim(),
-      kelas: document.getElementById("kelas").value.trim(),
-      nisn: document.getElementById("nisn").value.trim(),
-      daerah: document.getElementById("daerah").value.trim(),
+      nama: pesertaMatch["Nama Lengkap"] || inputNama,
+      sekolah: getVal("sekolah") || pesertaMatch["Asal Instansi"] || "-",
+      kelas: getVal("kelas") || pesertaMatch["Pekerjaan / Jurusan"] || "-",
+      nisn: getVal("nisn") || pesertaMatch["NIK / NISN / NIM"] || "-",
+      daerah: getVal("daerah") || `${pesertaMatch["Asal Kabupaten"] || ''}, ${pesertaMatch["Asal Provinsi"] || ''}`.replace(/^,\s*|,\s*$/g, '') || "-",
+      email: pesertaMatch["Email (Terverifikasi)"] || "-",
+      no_hp: pesertaMatch["No HP / WA"] || "-",
+      skema_tarif: pesertaMatch["Skema Tarif"] || "-",
+      bidang_kategori: pesertaMatch["Bidang / Kategori"] || "-",
       kode_ujian: currentKodeUjian,
       mode_ujian: modeUjian
     };
