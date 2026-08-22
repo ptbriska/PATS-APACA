@@ -1,0 +1,898 @@
+/* ==========================================================================
+   TEMA: ABDI NEGARA & TARUNA (Merah Berani, Maroon, & Gold)
+   Kesan: Formal, Disiplin, Nasionalis, Elegan, dan Berwibawa
+   ========================================================================== */
+
+:root {
+  --bg-main: #f0f2f5; /* Abu-abu terang netral */
+  --bg-card: #ffffff;
+  --bg-panel: #f8f9fa;
+  --text-dark: #1a1a1a;
+  --text-muted: #5a6268;
+  
+  /* Warna Tema Kedinasan */
+  --brand-red: #c62828; /* Merah Tegas */
+  --brand-dark: #8e0000; /* Merah Maroon (Gelap) */
+  --accent-gold: #d4af37; /* Emas Taruna / Pangkat */
+  --grad-merah: linear-gradient(135deg, #d32f2f, #9b0000); /* Gradasi Merah Utama */
+  --grad-emas: linear-gradient(135deg, #d4af37, #aa8529);
+  
+  /* Status Warna Bulatan CBT */
+  --color-unanswered: #e0e0e0; /* Abu-abu (Belum dijawab) */
+  --color-answered: #0d47a1;   /* Biru Dongker / Navy Kedinasan (Sudah dijawab) */
+  --color-active: #d4af37;     /* Emas (Sedang aktif) */
+  
+  /* Status Hasil Ujian */
+  --color-success: #2e7d32;
+  --color-danger: #c62828;
+  --color-warning: #f57c00;
+  --color-info: #0d47a1;
+
+  --shadow-soft: 0 8px 25px rgba(155, 0, 0, 0.1);
+  --shadow-glass: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --border-radius: 8px; /* Lebih tegas dan mengotak (formal) */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================
+   1. CARD LAYOUT (PAGE 1 & PAGE 2)
+   ========================================== */
+.card {
+  max-width: 680px;
+  width: 92%;
+  margin: 35px auto;
+  background: #ffffff;
+  padding: 35px 40px;
+  border-radius: var(--border-radius);
+  border-top: 4px solid var(--brand-red); /* Garis tegas di atas card */
+  box-shadow: var(--shadow-soft);
+}
+
+/* Header Welcome Rata Tengah */
+.header-welcome {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header-welcome .logo-img {
+  max-height: 85px;
+  width: auto;
+  margin-bottom: 12px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.header-welcome h2 {
+  font-size: 1.5rem;
+  color: var(--brand-red);
+  margin-bottom: 6px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.header-welcome h3 {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Form Identitas & Grid 2-Kolom */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hint-label {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: none;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: var(--grad-merah);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #b71c1c, #7f0000);
+  box-shadow: 0 6px 15px rgba(155, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  padding: 12px 20px;
+  background: var(--bg-panel);
+  color: var(--text-dark);
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--text-dark);
+  color: #ffffff;
+  border-color: var(--text-dark);
+}
+
+.error-msg {
+  color: var(--color-danger);
+  font-size: 0.88rem;
+  text-align: center;
+  margin-top: 14px;
+  font-weight: 700;
+}
+
+/* Footer Motivasi */
+.footer-motto {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 2px solid #e9ecef;
+  text-align: center;
+}
+
+.footer-motto p {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--brand-red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* ==========================================
+   2. PAGE 2: INFORMASI KEGIATAN & TATA TERTIB
+   ========================================== */
+.info-kegiatan-box {
+  background-color: var(--bg-panel);
+  border: 1px solid #dee2e6;
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+}
+
+.info-kegiatan-box h4 {
+  font-size: 0.95rem;
+  color: var(--brand-red);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 800;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 6px;
+}
+
+.table-info {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-info td {
+  padding: 8px 0;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+}
+
+.table-info td:first-child {
+  font-weight: 700;
+  width: 38%;
+  color: var(--text-muted);
+}
+
+.badge-code {
+  background: var(--brand-red);
+  color: #ffffff;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.table-info tr:not(:last-child) td {
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* Box Rules / Tata Tertib Ujian */
+.rules-box {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 22px;
+}
+
+.rules-box h4 {
+  font-size: 0.95rem;
+  color: var(--brand-red);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.rules-content ol {
+  padding-left: 20px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.rules-content li {
+  margin-bottom: 10px;
+}
+
+.warning-rule {
+  background: #fff5f5;
+  border: 1px solid #ffc9c9;
+  border-left: 4px solid var(--color-danger);
+  padding: 12px 14px;
+  border-radius: 4px;
+  color: #c92a2a;
+  font-weight: 600;
+}
+
+.warning-rule ul {
+  padding-left: 18px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.warning-rule li {
+  margin-bottom: 4px;
+}
+
+/* Checkbox Persetujuan Custom */
+.agreement-box {
+  background: var(--bg-panel);
+  border: 1px solid #dee2e6;
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 22px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: var(--brand-red);
+  cursor: pointer;
+}
+
+.action-buttons-page2 {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.btn-start-disabled {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  background: #adb5bd !important;
+  box-shadow: none !important;
+}
+
+
+/* ==========================================
+   3. PAGE 3: ARENA SOAL CBT
+   ========================================== */
+.cbt-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-bar {
+  background: var(--grad-merah);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  border-bottom: 3px solid var(--accent-gold);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-img {
+  height: 42px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.title-box h2 {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.title-box small {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-gold);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.u-name {
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.u-id {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.btn-keluar {
+  color: #ffc9c9;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+.btn-keluar:hover {
+  color: #ffffff;
+}
+
+.cbt-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background: var(--bg-main);
+}
+
+/* Area Soal (Kiri) */
+.question-area {
+  flex: 1;
+  padding: 25px 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.q-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  text-transform: uppercase;
+}
+
+.timer-display {
+  background: #ffffff;
+  padding: 6px 18px;
+  border-radius: 4px;
+  border: 2px solid var(--color-danger);
+  font-weight: 800;
+  color: var(--color-danger);
+  box-shadow: var(--shadow-glass);
+  letter-spacing: 1px;
+}
+
+.question-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-glass);
+  border: 1px solid #e9ecef;
+  flex: 1;
+  position: relative;
+  z-index: 10;
+}
+
+.img-box img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da;
+}
+
+/* Teks Soal */
+.q-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+  font-weight: 500;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* Opsi Pilihan Ganda */
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 10;
+}
+
+.option-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 18px;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+  user-select: none;
+}
+
+.option-row:hover {
+  background: #f8f9fa;
+  border-color: var(--brand-red);
+}
+
+.option-row.selected {
+  background: #fff5f5;
+  border-color: var(--brand-red);
+  border-left: 4px solid var(--brand-red);
+  box-shadow: 0 2px 8px rgba(198, 40, 40, 0.1);
+}
+
+.option-row input[type="radio"] {
+  margin-right: 15px;
+  margin-top: 4px;
+  accent-color: var(--brand-red);
+  transform: scale(1.2);
+}
+
+.opt-key {
+  font-weight: 800;
+  margin-right: 8px;
+  color: var(--brand-dark);
+  line-height: 1.5;
+}
+
+.opt-val {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* MathJax / KaTeX Styling */
+.q-text .mjx-chtml, .opt-val .mjx-chtml,
+.q-text .MathJax, .opt-val .MathJax,
+.q-text .katex, .opt-val .katex {
+  font-size: 105% !important;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+
+/* Sidebar Navigasi Bulatan (Kanan) */
+.sidebar-nav {
+  width: 260px;
+  background: #ffffff;
+  border-left: 1px solid #dee2e6;
+  padding: 20px 15px;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.02);
+}
+
+.circle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 6px; /* Dibuat mengotak untuk kesan instansi/kaku */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background: var(--color-unanswered);
+  border: 1px solid #ced4da;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.circle-btn:hover {
+  filter: brightness(0.9);
+}
+
+.circle-btn.answered {
+  background: var(--color-answered); 
+  color: #ffffff;
+  border-color: #0b3c8a;
+}
+
+.circle-btn.active {
+  background: var(--color-active);
+  color: #ffffff;
+  border: 2px solid #8c7324;
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+}
+
+
+/* ==========================================
+   4. FOOTER BOTTOM BAR
+   ========================================== */
+.bottom-bar {
+  background: #ffffff;
+  border-top: 1px solid #dee2e6;
+  padding: 12px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.btn-footer {
+  padding: 10px 18px;
+  background: #e9ecef;
+  color: var(--text-dark);
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-footer:hover {
+  background: var(--text-dark);
+  color: #ffffff;
+}
+
+.btn-selesai {
+  background: var(--color-success);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-selesai:hover {
+  background: #1b5e20;
+}
+
+.bottom-center {
+  display: flex;
+  gap: 12px;
+}
+
+
+/* ==========================================
+   5. PAGE RESULT: PENGUMUMAN SKOR 
+   ========================================== */
+.result-card-container {
+  max-width: 580px;
+  width: 92%;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  border-top: 5px solid var(--accent-gold);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  padding: 35px 30px;
+  text-align: center;
+  animation: fadeInScale 0.4s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result-badge-icon {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 15px;
+  background: var(--grad-emas);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.result-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.result-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Card Hasil Ujian Detail */
+.result-detail-box {
+  background: var(--bg-main);
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.result-detail-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  border-bottom: 2px solid #ced4da;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+/* Breakdown Kategori CAT (TWK/TIU/TKP) */
+.cat-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cat-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-left: 4px solid var(--color-info);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.cat-item-row:nth-child(2) { border-left-color: var(--color-warning); }
+.cat-item-row:nth-child(3) { border-left-color: var(--color-danger); }
+
+.cat-item-label {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 0.92rem;
+  text-transform: uppercase;
+}
+
+.cat-item-score {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* Big Score Display Box */
+.score-badge-main {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 2px solid var(--accent-gold);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,1);
+}
+
+.score-badge-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--brand-red);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.score-badge-val {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.1;
+  margin-top: 5px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+/* Stat Grid (Benar, Salah, Kosong) */
+.stat-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  text-align: center;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  font-size: 0.85rem;
+}
+
+.stat-box-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-box-item span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stat-box-item strong {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+
+/* ==========================================
+   RESPONSIF MOBILE
+   ========================================== */
+@media (max-width: 768px) {
+  .card {
+    padding: 25px 20px;
+  }
+  .form-row-2col {
+    grid-template-columns: 1fr;
+  }
+  .action-buttons-page2 {
+    flex-direction: column;
+  }
+  .cbt-body {
+    flex-direction: column;
+  }
+  .sidebar-nav {
+    width: 100%;
+    height: 160px;
+    border-left: none;
+    border-top: 1px solid #dee2e6;
+  }
+  .circle-grid {
+    grid-template-columns: repeat(6, 1fr); /* 6 kolom di HP agar muat */
+  }
+  .result-card-container {
+    padding: 25px 18px;
+    margin: 20px auto;
+  }
+  .score-badge-val {
+    font-size: 2.5rem;
+  }
+}
