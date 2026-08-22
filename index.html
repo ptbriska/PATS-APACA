@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAT Online - Kelas Bisa Exam System v1.2</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Konfigurasi MathJax v3 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- PAGE 1: FORM LOGIN & IDENTITAS PESERTA -->
+  <!-- ========================================== -->
+  <div id="page-login" class="card">
+    <div class="header-welcome">
+      <img id="logo-lembaga" src="https://lh3.googleusercontent.com/d/1TYEl9QOZV3EU5p3peLGaaUZcjrOISSSz" alt="Logo" class="logo-img">
+      <h2>Selamat Datang di CAT Kelas Bisa</h2>
+      <h3 id="disp-lembaga">KELAS BISA by BRISKA CORP</h3>
+    </div>
+
+    <form id="form-identitas">
+      <div class="form-group">
+        <label>Nama Lengkap Peserta</label>
+        <input type="text" id="nama" required placeholder="Masukkan Nama Lengkap">
+      </div>
+      <div class="form-group">
+        <label>Asal Instansi / Sekolah / Kampus</label>
+        <input type="text" id="sekolah" required placeholder="Contoh: Universitas Hasanuddin / SMAN 1 Denpasar">
+      </div>
+      <div class="form-group">
+        <label>Bidang Kerja / Kelas / Jurusan Kuliah</label>
+        <input type="text" id="kelas" required placeholder="Contoh: XII MIPA 1 / Teknik Sipil / Staf HRD">
+      </div>
+      <div class="form-group">
+        <label>NIK / NISN / NIM / No. Peserta</label>
+        <input type="text" id="nisn" required placeholder="Masukkan NIK / NISN / NIM">
+      </div>
+      <div class="form-group">
+        <label>Asal Daerah (Kab/Kota - Provinsi)</label>
+        <input type="text" id="daerah" required placeholder="Contoh: Kab. Jeneponto - Sulawesi Selatan">
+      </div>
+
+      <div class="form-row-2col">
+        <div class="form-group">
+          <label>Kode Ujian <small class="hint-label">(Huruf/Angka/Kombinasi)</small></label>
+          <input type="text" id="kode-ujian-input" required placeholder="Contoh: CATCPNS01 / SKD2026">
+        </div>
+        <div class="form-group">
+          <label>Token Ujian</label>
+          <input type="text" id="token-input" required placeholder="Masukkan Token">
+        </div>
+      </div>
+
+      <button type="submit" id="btn-lanjut-info" class="btn-primary">Verifikasi & Lanjut ke Petunjuk &gt;&gt;</button>
+    </form>
+
+    <p id="pesan-error-login" class="error-msg"></p>
+
+    <div class="footer-motto">
+      <p>Selamat Mengerjakan Ujian, Utamakan Kejujuran & Integritas</p>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 2: INFORMASI KEGIATAN & TATA TERTIB -->
+  <!-- ========================================== -->
+  <div id="page-info" class="card hidden">
+    <div class="header-welcome">
+      <img id="logo-lembaga-info" src="" alt="Logo" class="logo-img">
+      <h2 id="disp-lembaga-info">NAMA LEMBAGA</h2>
+      <h3 id="disp-sub-lembaga-info">SUB KETERANGAN</h3>
+    </div>
+
+    <div class="info-kegiatan-box">
+      <h4>📋 Informasi Ujian CAT</h4>
+      <table class="table-info">
+        <tr>
+          <td>Kode Paket Ujian</td>
+          <td>: <strong id="disp-kode-ujian" class="badge-code">-</strong></td>
+        </tr>
+        <tr>
+          <td>Nama Kegiatan Ujian</td>
+          <td>: <span id="disp-sub-lembaga">-</span></td>
+        </tr>
+        <tr>
+          <td>Durasi Pengerjaan</td>
+          <td>: <span id="disp-durasi">-</span> Menit</td>
+        </tr>
+        <tr>
+          <td>Jumlah Soal</td>
+          <td>: <span id="disp-jumlah-soal">-</span> Soal</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="rules-box">
+      <h4>⚠️ Ketentuan & Tata Tertib Pelaksanaan CAT</h4>
+      <div class="rules-content">
+        <ol>
+          <li><strong>Koneksi Internet:</strong> Pastikan perangkat Anda terhubung dengan koneksi internet yang stabil selama ujian berlangsung.</li>
+          <li><strong>Pengerjaan Soal:</strong> Bacalah setiap soal dengan teliti. Anda bebas berpindah nomor soal menggunakan tombol navigasi atau panel navigator di sisi kanan.</li>
+          <li><strong>Waktu Ujian:</strong> Timer countdown akan berjalan secara otomatis begitu Anda menekan tombol <em>"Mulai Pengerjaan Ujian"</em>. Jawaban akan terisi otomatis jika waktu habis.</li>
+          <li class="warning-rule">
+            <strong>SISTEM KEAMANAN ANTI-KECURANGAN (PENTING):</strong>
+            <ul>
+              <li>Dilarang membuka tab baru, berpindah aplikasi, split screen, atau meminimalkan (<em>minimize</em>) jendela browser saat ujian aktif.</li>
+              <li>Sistem mencatat setiap aktivitas keluar dari layar ujian secara otomatis.</li>
+              <li>Jika terdeteksi <strong>3 KALI</strong> keluar dari layar ujian, sistem akan <strong>MENGUNCI UJIAN DAN MELAKUKAN SUBMIT OTOMATIS</strong> atas jawaban yang telah tersimpan.</li>
+            </ul>
+          </li>
+          <li><strong>Integritas:</strong> Dilarang keras bekerjasama, menggunakan alat bantu yang tidak diizinkan, atau diwakilkan oleh orang lain.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="agreement-box">
+      <label class="checkbox-container">
+        <input type="checkbox" id="check-setuju" onchange="toggleMulaiButton()">
+        <span class="checkmark"></span>
+        Saya telah membaca, memahami, dan bersedia tunduk pada seluruh ketentuan pelaksanaan ujian di atas.
+      </label>
+    </div>
+
+    <div class="action-buttons-page2">
+      <button type="button" class="btn-secondary" onclick="kembaliKePage1()">&lt;&lt; Kembali ke Identitas</button>
+      <button type="button" id="btn-mulai-ujian" class="btn-primary btn-start-disabled" disabled onclick="mulaiUjianPenuh()">🚀 Mulai Pengerjaan Ujian</button>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 3: ARENA SOAL CAT -->
+  <!-- ========================================== -->
+  <div id="page-cbt" class="cbt-layout hidden">
+
+    <header class="top-bar">
+      <div class="header-left">
+        <img id="logo-lembaga-cbt" src="" alt="Logo" class="logo-img">
+        <div class="title-box">
+          <h2 id="disp-lembaga-cbt">NAMA LEMBAGA</h2>
+          <small id="disp-sub-lembaga-cbt">SUB KETERANGAN</small>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="user-avatar">👤</div>
+        <div class="user-details">
+          <span id="disp-nama" class="u-name">-</span>
+          <span id="disp-nisn" class="u-id">-</span>
+          <a href="#" onclick="konfirmasiKeluar()" class="btn-keluar">KELUAR &gt;&gt;</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="cbt-body">
+      <main class="question-area">
+        <div class="sub-header">
+          <h3 class="q-title">SOAL NO : <span id="q-num">1</span></h3>
+          <div class="timer-display">
+            ⏰ <span id="timer">00:00:00</span>
+          </div>
+        </div>
+
+        <div class="question-content">
+          <div id="q-image-container" class="img-box"></div>
+          <div id="q-text" class="q-text">Memuat soal...</div>
+          <div id="options-box" class="options-group"></div>
+        </div>
+      </main>
+
+      <aside class="sidebar-nav">
+        <div id="number-grid" class="circle-grid"></div>
+      </aside>
+    </div>
+
+    <footer class="bottom-bar">
+      <div class="bottom-left">
+        <button id="btn-submit" class="btn-footer btn-selesai" onclick="konfirmasiSubmit()">🏁 SELESAI</button>
+      </div>
+      <div class="bottom-center">
+        <button id="btn-prev" class="btn-footer" onclick="navigasi(-1)">◀ Soal Sebelumnya</button>
+        <button id="btn-next" class="btn-footer" onclick="navigasi(1)">Soal Selanjutnya ▶</button>
+      </div>
+      <div class="bottom-right">
+        <button class="btn-footer" onclick="toggleNavigator()">🔭 Navigator</button>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PAGE 4: PENGUMUMAN SKOR & HASIL UJIAN CAT -->
+  <!-- ========================================== -->
+  <div id="page-result" class="result-card-container hidden">
+    <div class="result-badge-icon">🎉</div>
+    <h2 class="result-title">Ujian CAT Telah Selesai!</h2>
+    <p class="result-subtitle">Terima kasih telah menyelesaikan ujian dengan jujur dan disiplin.</p>
+
+    <div class="result-detail-box">
+      <h3 class="result-detail-title">📊 Rincian Hasil Ujian CAT</h3>
+      
+      <!-- Breakdown Kategori Nilai (TWK, TIU, TKP, dsb) -->
+      <div id="box-breakdown-cat" class="cat-breakdown-list">
+        <div class="cat-item-row">
+          <span class="cat-item-label">Tes Wawasan Kebangsaan (TWK)</span>
+          <span id="score-twk" class="cat-item-score">0</span>
+        </div>
+        <div class="cat-item-row">
+          <span class="cat-item-label">Tes Intelegensia Umum (TIU)</span>
+          <span id="score-tiu" class="cat-item-score">0</span>
+        </div>
+        <div class="cat-item-row">
+          <span class="cat-item-label">Tes Karakteristik Pribadi (TKP)</span>
+          <span id="score-tkp" class="cat-item-score">0</span>
+        </div>
+      </div>
+
+      <!-- Akumulasi Skor Total CAT -->
+      <div id="box-skor-utama" class="score-badge-main">
+        <div class="score-badge-label">TOTAL SKOR AKUMULASI</div>
+        <div id="disp-skor-total" class="score-badge-val">0</div>
+      </div>
+
+      <div class="stat-summary-grid">
+        <div class="stat-box-item">
+          <span>Jawaban Benar</span>
+          <strong id="stat-benar" style="color: var(--color-success);">0</strong>
+        </div>
+        <div class="stat-box-item">
+          <span>Jawaban Salah</span>
+          <strong id="stat-salah" style="color: var(--color-danger);">0</strong>
+        </div>
+        <div class="stat-box-item">
+          <span>Tidak Diisi</span>
+          <strong id="stat-kosong" style="color: var(--color-warning);">0</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons-page2">
+      <button type="button" class="btn-secondary" onclick="window.print()">🖨️ Cetak Hasil</button>
+      <button type="button" class="btn-primary" onclick="selesaiDanKeluar()">Selesai & Keluar</button>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
