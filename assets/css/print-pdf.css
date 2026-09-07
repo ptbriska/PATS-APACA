@@ -1,0 +1,149 @@
+/* ==========================================================================
+   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (print-pdf.css)
+   ========================================================================== */
+
+/* Structure Container Laporan */
+.report-paper {
+  background-color: #ffffff;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #111827;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+/* Kop Laporan / Header */
+.report-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px double #1e293b;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.report-header .instansi-info h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.report-header .instansi-info p {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.report-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.report-title h3 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: underline;
+}
+
+/* Tabel Biodata Peserta */
+.report-biodata {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+.report-biodata td {
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+.report-biodata td.label {
+  font-weight: 600;
+  width: 20%;
+  color: #334155;
+}
+
+/* Box Naratif Laporan Psikolog */
+.report-section {
+  margin-bottom: 24px;
+}
+
+.report-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #f1f5f9;
+  padding: 6px 10px;
+  border-left: 4px solid #2563eb;
+  margin-bottom: 12px;
+}
+
+.report-paragraph {
+  font-size: 0.925rem;
+  text-align: justify;
+  margin-bottom: 12px;
+}
+
+.report-list {
+  font-size: 0.925rem;
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.report-list li {
+  margin-bottom: 4px;
+}
+
+/* Footer & Tanda Tangan */
+.report-footer-sign {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sign-box {
+  text-align: center;
+  width: 220px;
+  font-size: 0.875rem;
+}
+
+.sign-space {
+  height: 60px;
+}
+
+/* ==========================================================================
+   STYLING MEDIA PRINT (Pengaturan saat di-Ctrl+P / Simpan PDF)
+   ========================================================================== */
+@media print {
+  /* Sembunyikan elemen Web UI yang tidak perlu di cetakan */
+  .portal-header,
+  .portal-footer,
+  .btn-primary,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .report-paper {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  /* Pengaturan Batas Halaman */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
