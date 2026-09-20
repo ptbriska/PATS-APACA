@@ -15,6 +15,7 @@
 </head>
 <body>
 
+  <!-- Top Navigation Bar (Hidden during Print/Export) -->
   <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
       <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Beranda Portal</a>
@@ -25,11 +26,13 @@
   <main class="container" style="padding: 40px 0;">
     <div id="report-paper" class="report-paper">
       
-      <!-- Kop Laporan Resmi -->
+      <!-- Kop Laporan Resmi APACA Consulting -->
       <div class="report-header">
+        <img id="kop-logo" src="../../logo.png" alt="Logo APACA" class="instansi-logo" onerror="this.src='../../assets/images/logo.png'">
         <div class="instansi-info">
-          <h2>APACA CONSULTING & PSYCHOMETRIC CENTER</h2>
-          <p>Layanan Asesmen Psikologi & Family Guidance | SIPP No: 2026-0819-PSI-01</p>
+          <h2 id="kop-instansi-nama">APACA CONSULTING & PSYCHOMETRIC CENTER</h2>
+          <div id="kop-instansi-sub" class="sub-title">Layanan Asesmen Psikologi & Family Guidance | SIPP No: 2026-0819-PSI-01</div>
+          <div id="kop-instansi-alamat" class="address">Jl. Racing Center, Perum. Mustika Mulia, Blok B5, No. 8, Panakkukang, Makassar, Sulawesi Selatan</div>
         </div>
       </div>
 
@@ -132,12 +135,23 @@
     </div>
   </main>
 
+  <script src="../../config.js"></script>
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/pdf-exporter.js"></script>
   <script src="scoring.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
-      // 1. Ambil data sesi peserta
+      // 1. Inisialisasi Kop Surat dari config.js jika tersedia
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        if (org.name) document.getElementById("kop-instansi-nama").innerText = org.name;
+        if (org.subTitle && org.sippNumber) {
+          document.getElementById("kop-instansi-sub").innerText = `${org.subTitle} | ${org.sippNumber}`;
+        }
+        if (org.address) document.getElementById("kop-instansi-alamat").innerText = org.address;
+      }
+
+      // 2. Ambil data sesi peserta
       const user = PATS_AUTH.getSession();
       if (user) {
         document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
@@ -154,14 +168,14 @@
         document.getElementById("r-daerah").innerText = daerahText;
       }
 
-      // 2. Ambil data jawaban & soal.json
+      // 3. Ambil data jawaban & soal.json
       const rawAnswers = sessionStorage.getItem("pats_answers_KK2");
       const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
 
       const res = await fetch("soal.json");
       const soalData = await res.json();
 
-      // 3. Hitung Skor Psikometri
+      // 4. Hitung Skor Psikometri
       const result = KK2_Scoring.evaluate(answers, soalData);
 
       if (result.isInvalid) {
@@ -169,12 +183,12 @@
         return;
       }
 
-      // 4. Kirim Rekap Otomatis ke Google Sheets via GAS Engine
+      // 5. Kirim Rekap Otomatis ke Google Sheets via GAS Engine
       if (user) {
         KK2_Scoring.sendRekapToGAS(answers, user, result);
       }
 
-      // 5. Render Tabulasi Skor ke UI
+      // 6. Render Tabulasi Skor ke UI
       document.getElementById("rs-otoritatif").innerText = result.rawScores["Otoritatif"];
       document.getElementById("ts-otoritatif").innerText = result.tScores["Otoritatif"];
       document.getElementById("kat-otoritatif").innerText = result.categories["Otoritatif"];
@@ -191,7 +205,7 @@
       document.getElementById("ts-pengabaian").innerText = result.tScores["Pengabaian"];
       document.getElementById("kat-pengabaian").innerText = result.categories["Pengabaian"];
 
-      // 6. Render Narasi & Rekomendasi
+      // 7. Render Narasi & Rekomendasi
       if (result.narrative) {
         document.getElementById("r-judul-dominan").innerText = result.narrative.judul || result.dominantCategory;
         document.getElementById("r-deskripsi-narasi").innerText = result.narrative.deskripsi || "Deskripsi tidak ditemukan.";
