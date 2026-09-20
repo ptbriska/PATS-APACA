@@ -31,7 +31,7 @@
         <img id="kop-logo" src="../../logo.png" alt="Logo APACA" class="instansi-logo" onerror="this.src='../../assets/images/logo.png'">
         <div class="instansi-info">
           <h2 id="kop-instansi-nama">APACA CONSULTING & PSYCHOMETRIC CENTER</h2>
-          <div id="kop-instansi-sub" class="sub-title">Layanan Asesmen Psikologi & Family Guidance | SIPP No: 2026-0819-PSI-01</div>
+          <div id="kop-instansi-sub" class="sub-title">Layanan Asesmen, Profiling, Sertifikasi & Konsultasi</div>
           <div id="kop-instansi-alamat" class="address">Jl. Racing Center, Perum. Mustika Mulia, Blok B5, No. 8, Panakkukang, Makassar, Sulawesi Selatan</div>
         </div>
       </div>
@@ -145,9 +145,7 @@
       if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
         const org = PATS_CONFIG.organization;
         if (org.name) document.getElementById("kop-instansi-nama").innerText = org.name;
-        if (org.subTitle && org.sippNumber) {
-          document.getElementById("kop-instansi-sub").innerText = `${org.subTitle} | ${org.sippNumber}`;
-        }
+        if (org.subTitle) document.getElementById("kop-instansi-sub").innerText = org.subTitle;
         if (org.address) document.getElementById("kop-instansi-alamat").innerText = org.address;
       }
 
