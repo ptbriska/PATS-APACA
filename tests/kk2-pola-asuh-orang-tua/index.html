@@ -5,48 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verifikasi Akses - KK2 Pola Asuh Orang Tua</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <style>
-    body { background-color: #0a0304; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; }
-    .card-login { background: rgba(25, 5, 8, 0.75); border: 1px solid rgba(255, 30, 67, 0.3); border-radius: 16px; padding: 32px; backdrop-filter: blur(12px); max-width: 480px; margin: 40px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .btn-submit { background: linear-gradient(135deg, #ff1e43, #660515); color: #fff; font-weight: 700; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; }
-    .btn-submit:hover { background: linear-gradient(135deg, #ff3d5e, #800014); }
-    .form-control { width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,30,67,0.3); border-radius: 6px; color: #fff; margin-top: 6px; margin-bottom: 16px; }
-  </style>
 </head>
 <body>
 
-  <header style="padding: 20px; border-bottom: 1px solid rgba(255,30,67,0.2); text-align: center;">
-    <h1 style="font-size: 1.5rem; color: #ff1e43;">PATS PORTAL APACA</h1>
-    <p style="font-size: 0.85rem; color: #d1a3a9;">Modul KK2: APACA Parenting Style Inventory (APSI)</p>
+  <header class="portal-header">
+    <div class="container header-container">
+      <div class="brand">
+        <h1>PATS PORTAL APACA</h1>
+        <p>Modul KK2: APACA Parenting Style Inventory (APSI)</p>
+      </div>
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: var(--secondary-color);">&larr; Kembali ke Portal</a>
+    </div>
   </header>
 
   <main class="container">
-    <div class="card-login">
-      <h3 style="margin-bottom: 8px; color: #fff;">Verifikasi Orang Tua / Pengasuh</h3>
-      <p style="font-size: 0.85rem; color: #d1a3a9; margin-bottom: 20px;">Masukkan Nama Lengkap, Kode Kegiatan, dan Token Ujian khusus modul ini.</p>
+    <div class="card-box">
+      <h3 style="margin-bottom: 6px; font-size: 1.25rem;">Verifikasi Orang Tua / Pengasuh</h3>
+      <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px;">Silakan masukkan data diri dan Token Ujian untuk memulai tes.</p>
       
       <form id="form-login">
-        <div>
-          <label style="font-size: 0.85rem; font-weight: 600;">Nama Lengkap Orang Tua</label>
+        <div class="form-group">
+          <label for="nama_lengkap">Nama Lengkap Orang Tua</label>
           <input type="text" id="nama_lengkap" class="form-control" placeholder="Contoh: Budi Santoso" required>
         </div>
 
-        <div>
-          <label style="font-size: 0.85rem; font-weight: 600;">Kode Kegiatan</label>
+        <div class="form-group">
+          <label for="kode_kegiatan">Kode Kegiatan</label>
           <input type="text" id="kode_kegiatan" class="form-control" placeholder="Contoh: PATS-2026-001" required>
         </div>
 
-        <div>
-          <label style="font-size: 0.85rem; font-weight: 600;">Token Ujian (CBT Key)</label>
+        <div class="form-group">
+          <label for="token_ujian">Token Ujian (CBT Key)</label>
           <input type="text" id="token_ujian" class="form-control" placeholder="Masukkan Token Ujian" required>
         </div>
 
-        <div id="login-error" style="color: #ef4444; font-size: 0.85rem; margin-bottom: 12px; display: none;"></div>
+        <div id="login-error" style="color: var(--danger-color); font-size: 0.875rem; margin-bottom: 14px; display: none;"></div>
 
-        <button type="submit" class="btn-submit">Mulai Asesmen Pengasuhan</button>
+        <button type="submit" class="btn-primary">Mulai Asesmen Pengasuhan</button>
       </form>
     </div>
   </main>
+
+  <footer class="portal-footer">
+    <div class="container">
+      <p>&copy; 2026 PATS Portal System by Briska Corporation Edu Tech. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="../../assets/js/auth.js"></script>
   <script>
