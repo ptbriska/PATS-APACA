@@ -32,8 +32,8 @@
         </div>
 
         <div class="form-group">
-          <label for="kode_akses">Kode Akses / Token Ujian</label>
-          <input type="text" id="kode_akses" class="form-control" placeholder="Contoh: PATS-2026-X89K atau Token VIP" required autocomplete="off">
+          <label for="kode_akses">Kode Akses / Token Ujian / Token Master</label>
+          <input type="text" id="kode_akses" class="form-control" placeholder="Contoh: PATS-2026-X89K atau Token VIP/Master" required autocomplete="off">
         </div>
 
         <div id="login-error" style="color: var(--danger-color); font-size: 0.875rem; margin-bottom: 14px; display: none; background-color: #fef2f2; padding: 10px; border-radius: var(--radius-sm); border: 1px solid #fecaca;"></div>
@@ -68,20 +68,23 @@
       btnSubmit.disabled = true;
       btnSubmit.innerText = "Memverifikasi Akses...";
 
-      // 1. Ambil Token Ujian VIP dari soal.json lokal (jika ada)
-      let tokenVipSoal = "";
+      // 1. Ambil test_info dari soal.json lokal (membawa token_ujian dan token_master)
+      let testInfo = {};
       try {
         const response = await fetch("soal.json");
         const soalData = await response.json();
         
-        // Membaca token_ujian dari struktur root atau test_info
-        tokenVipSoal = soalData.token_ujian || (soalData.test_info ? soalData.test_info.token_ujian : "");
+        // Mengambil objek test_info
+        testInfo = soalData.test_info || {
+          token_ujian: soalData.token_ujian || "",
+          token_master: soalData.token_master || ""
+        };
       } catch (err) {
-        console.warn("Gagal membaca token VIP dari file local soal.json:", err);
+        console.warn("Gagal membaca metadata dari file local soal.json:", err);
       }
 
-      // 2. Jalankan Verifikasi Double-Track (Hybrid)
-      const authResult = await PATS_AUTH.verifyParticipant(nama, kodeAtauToken, CURRENT_TEST_CODE, tokenVipSoal);
+      // 2. Jalankan Verifikasi Triple-Track (Hybrid)
+      const authResult = await PATS_AUTH.verifyParticipant(nama, kodeAtauToken, CURRENT_TEST_CODE, testInfo);
 
       if (authResult.success) {
         // Redirect langsung ke halaman pengerjaan CBT jika verifikasi sukses
