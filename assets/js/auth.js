@@ -35,23 +35,23 @@ const PATS_AUTH = {
       // =========================================================================
       if (tokenMaster && inputKode.toUpperCase() === tokenMaster.trim().toUpperCase()) {
         const masterUserData = {
-          nama_lengkap: inputNama + " [ADMIN/TESTER]",
+          nama_lengkap: inputNama,
           kode_akses: "MASTER-" + currentTestCode,
           jenis_kelamin: "-",
-          asal_daerah: "Internal Admin/Psikolog",
-          asal_instansi: "PATS Developer/Tester",
+          asal_daerah: "Umum",
+          asal_instansi: "Umum",
           modul_diizinkan: [currentTestCode],
           is_vip: true,
-          is_master: true // Marker akun master
+          is_master: true // Marker internal untuk bypass penguncian retake
         };
 
-        // Hapus flag status selesai khusus untuk akun master agar bisa re-take
+        // Hapus flag status selesai khusus untuk akun master agar bisa re-take kapan saja
         localStorage.removeItem(`pats_completed_${currentTestCode}`);
         sessionStorage.setItem(this.SESSION_KEY, JSON.stringify(masterUserData));
 
         return {
           success: true,
-          message: "Login Berhasil via Token Master! Akses pengerjaan tanpa batas (Testing Mode).",
+          message: "Login Berhasil via Token Master!",
           data: masterUserData
         };
       }
