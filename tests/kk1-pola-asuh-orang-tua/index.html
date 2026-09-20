@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Akses - KK2 Pola Asuh Orang Tua</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    body { background-color: #0a0304; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; }
+    .card-login { background: rgba(25, 5, 8, 0.75); border: 1px solid rgba(255, 30, 67, 0.3); border-radius: 16px; padding: 32px; backdrop-filter: blur(12px); max-width: 480px; margin: 40px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .btn-submit { background: linear-gradient(135deg, #ff1e43, #660515); color: #fff; font-weight: 700; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; }
+    .btn-submit:hover { background: linear-gradient(135deg, #ff3d5e, #800014); }
+    .form-control { width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,30,67,0.3); border-radius: 6px; color: #fff; margin-top: 6px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+  <header style="padding: 20px; border-bottom: 1px solid rgba(255,30,67,0.2); text-align: center;">
+    <h1 style="font-size: 1.5rem; color: #ff1e43;">PATS PORTAL APACA</h1>
+    <p style="font-size: 0.85rem; color: #d1a3a9;">Modul KK2: APACA Parenting Style Inventory (APSI)</p>
+  </header>
+
+  <main class="container">
+    <div class="card-login">
+      <h3 style="margin-bottom: 8px; color: #fff;">Verifikasi Orang Tua / Pengasuh</h3>
+      <p style="font-size: 0.85rem; color: #d1a3a9; margin-bottom: 20px;">Masukkan Nama Lengkap, Kode Kegiatan, dan Token Ujian khusus modul ini.</p>
+      
+      <form id="form-login">
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 600;">Nama Lengkap Orang Tua</label>
+          <input type="text" id="nama_lengkap" class="form-control" placeholder="Contoh: Budi Santoso" required>
+        </div>
+
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 600;">Kode Kegiatan</label>
+          <input type="text" id="kode_kegiatan" class="form-control" placeholder="Contoh: PATS-2026-001" required>
+        </div>
+
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 600;">Token Ujian (CBT Key)</label>
+          <input type="text" id="token_ujian" class="form-control" placeholder="Masukkan Token Ujian" required>
+        </div>
+
+        <div id="login-error" style="color: #ef4444; font-size: 0.85rem; margin-bottom: 12px; display: none;"></div>
+
+        <button type="submit" class="btn-submit">Mulai Asesmen Pengasuhan</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="../../assets/js/auth.js"></script>
+  <script>
+    document.getElementById("form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nama = document.getElementById("nama_lengkap").value;
+      const kode = document.getElementById("kode_kegiatan").value;
+      const token = document.getElementById("token_ujian").value.trim();
+      const errorDiv = document.getElementById("login-error");
+
+      errorDiv.style.display = "none";
+
+      const authResult = await PATS_AUTH.verifyParticipant(nama, kode);
+      if (!authResult.success) {
+        errorDiv.innerText = authResult.message;
+        errorDiv.style.display = "block";
+        return;
+      }
+
+      try {
+        const response = await fetch("soal.json");
+        const soalData = await response.json();
+
+        if (token !== soalData.test_info.token_ujian) {
+          errorDiv.innerText = "Token Ujian tidak valid untuk modul KK2.";
+          errorDiv.style.display = "block";
+          return;
+        }
+
+        window.location.href = "cbt.html";
+      } catch (err) {
+        errorDiv.innerText = "Gagal memproses verifikasi token.";
+        errorDiv.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
