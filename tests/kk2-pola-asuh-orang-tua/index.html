@@ -18,72 +18,80 @@
     </div>
   </header>
 
-  <main class="container">
-    <div class="card-box">
+  <main class="container portal-main">
+    <div class="test-card" style="max-width: 500px; margin: 40px auto; padding: 30px;">
       <h3 style="margin-bottom: 6px; font-size: 1.25rem;">Verifikasi Orang Tua / Pengasuh</h3>
-      <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px;">Silakan masukkan data diri dan Token Ujian untuk memulai tes.</p>
+      <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px;">
+        Silakan masukkan Nama Lengkap dan Kode Akses / Token Ujian Anda untuk memulai tes.
+      </p>
       
       <form id="form-login">
         <div class="form-group">
-          <label for="nama_lengkap">Nama Lengkap Orang Tua</label>
+          <label for="nama_lengkap">Nama Lengkap Orang Tua / Pengasuh</label>
           <input type="text" id="nama_lengkap" class="form-control" placeholder="Contoh: Budi Santoso" required>
         </div>
 
         <div class="form-group">
-          <label for="kode_kegiatan">Kode Kegiatan</label>
-          <input type="text" id="kode_kegiatan" class="form-control" placeholder="Contoh: PATS-2026-001" required>
+          <label for="kode_akses">Kode Akses / Token Ujian</label>
+          <input type="text" id="kode_akses" class="form-control" placeholder="Contoh: PATS-2026-X89K atau Token VIP" required autocomplete="off">
         </div>
 
-        <div class="form-group">
-          <label for="token_ujian">Token Ujian (CBT Key)</label>
-          <input type="text" id="token_ujian" class="form-control" placeholder="Masukkan Token Ujian" required>
-        </div>
+        <div id="login-error" style="color: var(--danger-color); font-size: 0.875rem; margin-bottom: 14px; display: none; background-color: #fef2f2; padding: 10px; border-radius: var(--radius-sm); border: 1px solid #fecaca;"></div>
 
-        <div id="login-error" style="color: var(--danger-color); font-size: 0.875rem; margin-bottom: 14px; display: none;"></div>
-
-        <button type="submit" class="btn-primary">Mulai Asesmen Pengasuhan</button>
+        <button type="submit" id="btn-submit" class="btn-primary">Mulai Asesmen Pengasuhan</button>
       </form>
     </div>
   </main>
 
   <footer class="portal-footer">
     <div class="container">
-      <p>&copy; 2026 PATS Portal System by Briska Corporation Edu Tech. All rights reserved.</p>
+      <p>&copy; 2026 PATS Portal System by APACA Consulting. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Include Auth Module -->
   <script src="../../assets/js/auth.js"></script>
+  
   <script>
+    const CURRENT_TEST_CODE = "KK2"; // Kode Modul untuk Pola Asuh Orang Tua
+
     document.getElementById("form-login").addEventListener("submit", async (e) => {
       e.preventDefault();
+      
       const nama = document.getElementById("nama_lengkap").value;
-      const kode = document.getElementById("kode_kegiatan").value;
-      const token = document.getElementById("token_ujian").value.trim();
+      const kodeAtauToken = document.getElementById("kode_akses").value;
       const errorDiv = document.getElementById("login-error");
+      const btnSubmit = document.getElementById("btn-submit");
 
+      // Reset Error Display & Status Tombol
       errorDiv.style.display = "none";
+      btnSubmit.disabled = true;
+      btnSubmit.innerText = "Memverifikasi Akses...";
 
-      const authResult = await PATS_AUTH.verifyParticipant(nama, kode);
-      if (!authResult.success) {
-        errorDiv.innerText = authResult.message;
-        errorDiv.style.display = "block";
-        return;
-      }
-
+      // 1. Ambil Token Ujian VIP dari soal.json lokal (jika ada)
+      let tokenVipSoal = "";
       try {
         const response = await fetch("soal.json");
         const soalData = await response.json();
-
-        if (token !== soalData.test_info.token_ujian) {
-          errorDiv.innerText = "Token Ujian tidak valid untuk modul KK2.";
-          errorDiv.style.display = "block";
-          return;
-        }
-
-        window.location.href = "cbt.html";
+        
+        // Membaca token_ujian dari struktur root atau test_info
+        tokenVipSoal = soalData.token_ujian || (soalData.test_info ? soalData.test_info.token_ujian : "");
       } catch (err) {
-        errorDiv.innerText = "Gagal memproses verifikasi token.";
+        console.warn("Gagal membaca token VIP dari file local soal.json:", err);
+      }
+
+      // 2. Jalankan Verifikasi Double-Track (Hybrid)
+      const authResult = await PATS_AUTH.verifyParticipant(nama, kodeAtauToken, CURRENT_TEST_CODE, tokenVipSoal);
+
+      if (authResult.success) {
+        // Redirect langsung ke halaman pengerjaan CBT jika verifikasi sukses
+        window.location.href = "cbt.html";
+      } else {
+        // Tampilkan pesan kesalahan dari sistem auth
+        errorDiv.innerText = authResult.message;
         errorDiv.style.display = "block";
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = "Mulai Asesmen Pengasuhan";
       }
     });
   </script>
