@@ -4,7 +4,8 @@
     "nama_resmi": "APACA Parenting Style Inventory (APSI)",
     "nama_singkat": "Pemetaan Pola Asuh Orang Tua",
     "token_ujian": "PATSPARENT2026",
-    "durasi_menit": 15,
+    "token_master": "PatsTestingKK2",
+    "durasi_menit": off,
     "psikolog_pj": "Dra. Fitriani Rahayu, M.Psi., Psikolog (No. SIPP: 2026-0819-PSI-01)"
   },
   "options": [
