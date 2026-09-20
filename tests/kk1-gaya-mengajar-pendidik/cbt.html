@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel CBT - PATS Portal KK1</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body style="background-color: var(--bg-color, #f8fafc); padding-bottom: 40px;">
+
+  <main class="container" style="margin-top: 20px;">
+    <!-- Element penampung render otomatis CBT Engine -->
+    <div id="cbt-app">Memuat Panel Ujian...</div>
+  </main>
+
+  <!-- Global Shared Modules -->
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/cbt-engine.js"></script>
+  
+  <script>
+    let cbtApp = null;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("soal.json");
+        const soalData = await response.json();
+
+        // Inisialisasi CBT Engine standar dari Assets Global untuk KK1
+        cbtApp = new CBTEngine({
+          testCode: "KK1",
+          testInfo: soalData.test_info,
+          questions: soalData.questions,
+          options: soalData.options,
+          onSubmit: (answers) => {
+            window.location.href = "result.html";
+          },
+          onExit: () => {
+            window.location.href = "index.html";
+          }
+        });
+
+        // Render tampilan CBT
+        cbtApp.renderApp("cbt-app");
+
+      } catch (err) {
+        console.error("Gagal memuat soal:", err);
+        alert("Terjadi kesalahan saat memuat modul ujian.");
+      }
+    });
+  </script>
+</body>
+</html>
