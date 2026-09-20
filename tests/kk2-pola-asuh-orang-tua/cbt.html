@@ -5,43 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel Asesmen - KK2 Pola Asuh Orang Tua</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <style>
-    body { background-color: #0a0304; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; }
-    .cbt-box { background: rgba(25, 5, 8, 0.8); border: 1px solid rgba(255, 30, 67, 0.3); border-radius: 16px; padding: 28px; backdrop-filter: blur(12px); max-width: 760px; margin: 30px auto; }
-    .opt-label { display: flex; align-items: center; padding: 12px 16px; border: 1px solid rgba(255,30,67,0.25); border-radius: 8px; cursor: pointer; margin-bottom: 10px; transition: all 0.2s; }
-    .opt-label:hover { border-color: #ff1e43; background: rgba(255,30,67,0.1); }
-  </style>
 </head>
 <body>
 
-  <header style="padding: 16px 24px; border-bottom: 1px solid rgba(255,30,67,0.2); display: flex; justify-content: space-between; align-items: center;">
-    <div>
-      <h3 id="participant-name" style="font-size: 1rem; color: #ff1e43;">-</h3>
-      <p id="participant-info" style="font-size: 0.8rem; color: #d1a3a9;">-</p>
-    </div>
-    <div style="text-align: right;">
-      <span style="font-size: 0.75rem; color: #d1a3a9;">Sisa Waktu:</span>
-      <div id="cbt-timer" style="font-size: 1.3rem; font-weight: 800; color: #ff1e43;">15:00</div>
+  <header class="portal-header">
+    <div class="container header-container">
+      <div>
+        <h3 id="participant-name" style="font-size: 1.1rem; color: var(--primary-color);">-</h3>
+        <p id="participant-info" style="font-size: 0.85rem; color: var(--text-secondary);">-</p>
+      </div>
+      <div style="text-align: right;">
+        <span style="font-size: 0.8rem; color: var(--text-secondary);">Sisa Waktu:</span>
+        <div id="cbt-timer" class="cbt-timer-badge">15:00</div>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <div class="cbt-box">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
-        <span id="question-number" style="font-weight: 700; color: #ff1e43;">Soal No. 1 dari 40</span>
+    <div class="cbt-panel">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+        <span id="question-number" style="font-weight: 700; color: var(--primary-color); font-size: 1rem;">Soal No. 1 dari 40</span>
       </div>
 
-      <div id="question-text" style="font-size: 1.1rem; margin-bottom: 24px; line-height: 1.6;">Memuat pertanyaan...</div>
+      <div id="question-text" style="font-size: 1.15rem; font-weight: 600; margin-bottom: 24px; color: var(--text-primary); line-height: 1.6;">Memuat pertanyaan...</div>
 
       <div id="options-container"></div>
 
-      <div style="display: flex; justify-content: space-between; margin-top: 30px;">
-        <button id="btn-prev" style="background: #475569; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">Sebelumnya</button>
-        <button id="btn-next" style="background: #2563eb; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">Selanjutnya</button>
-        <button id="btn-submit" style="background: #10b981; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; display: none;">Selesaikan Ujian</button>
+      <div style="display: flex; justify-content: space-between; margin-top: 32px; pt-3; border-top: 1px solid var(--border-color); padding-top: 20px;">
+        <button id="btn-prev" class="btn-primary btn-secondary" style="width: auto;">&larr; Sebelumnya</button>
+        <button id="btn-next" class="btn-primary" style="width: auto;">Selanjutnya &rarr;</button>
+        <button id="btn-submit" class="btn-primary btn-success" style="width: auto; display: none;">Selesaikan Ujian ✓</button>
       </div>
     </div>
   </main>
+
+  <footer class="portal-footer">
+    <div class="container">
+      <p>&copy; 2026 PATS Portal System by Briska Corporation Edu Tech. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/cbt-engine.js"></script>
@@ -77,8 +79,8 @@
         soalData.options.forEach(opt => {
           const isChecked = selectedValue === opt.value ? "checked" : "";
           optsHtml += `
-            <label class="opt-label">
-              <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} style="margin-right: 12px;" onchange="saveAnswer(${q.id}, ${opt.value})">
+            <label class="option-label">
+              <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} onchange="saveAnswer(${q.id}, ${opt.value})">
               <span>${opt.label}</span>
             </label>
           `;
