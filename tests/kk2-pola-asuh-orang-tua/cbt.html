@@ -3,120 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Asesmen - KK2 Pola Asuh Orang Tua</title>
+  <title>Panel CBT - PATS Portal</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
-<body>
+<body style="background-color: var(--bg-color, #f8fafc); padding-bottom: 40px;">
 
-  <header class="portal-header">
-    <div class="container header-container">
-      <div>
-        <h3 id="participant-name" style="font-size: 1.1rem; color: var(--primary-color);">-</h3>
-        <p id="participant-info" style="font-size: 0.85rem; color: var(--text-secondary);">-</p>
-      </div>
-      <div style="text-align: right;">
-        <span style="font-size: 0.8rem; color: var(--text-secondary);">Sisa Waktu:</span>
-        <div id="cbt-timer" class="cbt-timer-badge">15:00</div>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="cbt-panel">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
-        <span id="question-number" style="font-weight: 700; color: var(--primary-color); font-size: 1rem;">Soal No. 1 dari 40</span>
-      </div>
-
-      <div id="question-text" style="font-size: 1.15rem; font-weight: 600; margin-bottom: 24px; color: var(--text-primary); line-height: 1.6;">Memuat pertanyaan...</div>
-
-      <div id="options-container"></div>
-
-      <div style="display: flex; justify-content: space-between; margin-top: 32px; pt-3; border-top: 1px solid var(--border-color); padding-top: 20px;">
-        <button id="btn-prev" class="btn-primary btn-secondary" style="width: auto;">&larr; Sebelumnya</button>
-        <button id="btn-next" class="btn-primary" style="width: auto;">Selanjutnya &rarr;</button>
-        <button id="btn-submit" class="btn-primary btn-success" style="width: auto; display: none;">Selesaikan Ujian ✓</button>
-      </div>
-    </div>
+  <main class="container" style="margin-top: 20px;">
+    <!-- Element penampung render otomatis CBT Engine -->
+    <div id="cbt-app">Memuat Panel Ujian...</div>
   </main>
 
-  <footer class="portal-footer">
-    <div class="container">
-      <p>&copy; 2026 PATS Portal System by Briska Corporation Edu Tech. All rights reserved.</p>
-    </div>
-  </footer>
-
+  <!-- Global Shared Modules -->
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/cbt-engine.js"></script>
+  
   <script>
+    let cbtApp = null;
+
     document.addEventListener("DOMContentLoaded", async () => {
-      const user = PATS_AUTH.getSession();
-      if (!user) { window.location.href = "index.html"; return; }
+      try {
+        const response = await fetch("soal.json");
+        const soalData = await response.json();
 
-      document.getElementById("participant-name").innerText = user.nama_lengkap;
-      document.getElementById("participant-info").innerText = `${user.asal_instansi} | Kode: ${user.kode_kegiatan}`;
-
-      const res = await fetch("soal.json");
-      const soalData = await res.json();
-
-      const cbt = new CBTEngine({
-        testCode: "KK2",
-        timeLimitMinutes: soalData.test_info.durasi_menit,
-        questions: soalData.questions,
-        onTimeout: () => submitExam()
-      });
-
-      cbt.startTimer("cbt-timer");
-
-      function renderQuestion() {
-        const q = cbt.questions[cbt.currentIndex];
-        document.getElementById("question-number").innerText = `Soal No. ${cbt.currentIndex + 1} dari ${cbt.questions.length}`;
-        document.getElementById("question-text").innerText = q.pertanyaan;
-
-        const answers = cbt.getAnswers();
-        const selectedValue = answers[q.id];
-
-        let optsHtml = "";
-        soalData.options.forEach(opt => {
-          const isChecked = selectedValue === opt.value ? "checked" : "";
-          optsHtml += `
-            <label class="option-label">
-              <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} onchange="saveAnswer(${q.id}, ${opt.value})">
-              <span>${opt.label}</span>
-            </label>
-          `;
+        // Inisialisasi CBT Engine standar dari Assets Global
+        cbtApp = new CBTEngine({
+          testCode: "KK2",
+          testInfo: soalData.test_info,
+          questions: soalData.questions,
+          options: soalData.options,
+          onSubmit: (answers) => {
+            window.location.href = "result.html";
+          },
+          onExit: () => {
+            window.location.href = "index.html";
+          }
         });
-        document.getElementById("options-container").innerHTML = optsHtml;
 
-        document.getElementById("btn-prev").style.display = cbt.currentIndex === 0 ? "none" : "inline-block";
-        if (cbt.currentIndex === cbt.questions.length - 1) {
-          document.getElementById("btn-next").style.display = "none";
-          document.getElementById("btn-submit").style.display = "inline-block";
-        } else {
-          document.getElementById("btn-next").style.display = "inline-block";
-          document.getElementById("btn-submit").style.display = "none";
-        }
+        // Render tampilan CBT
+        cbtApp.renderApp("cbt-app");
+
+      } catch (err) {
+        console.error("Gagal memuat soal:", err);
+        alert("Terjadi kesalahan saat memuat modul ujian.");
       }
-
-      window.saveAnswer = (qId, val) => { cbt.saveAnswer(qId, val); };
-
-      document.getElementById("btn-prev").addEventListener("click", () => { if (cbt.prevQuestion()) renderQuestion(); });
-      document.getElementById("btn-next").addEventListener("click", () => { if (cbt.nextQuestion()) renderQuestion(); });
-      document.getElementById("btn-submit").addEventListener("click", () => {
-        if (Object.keys(cbt.getAnswers()).length < cbt.questions.length) {
-          alert("Harap jawab seluruh 40 pertanyaan sebelum mengumpulkan!");
-          return;
-        }
-        if (confirm("Apakah Anda yakin ingin menyelesaikan tes ini?")) { submitExam(); }
-      });
-
-      function submitExam() {
-        cbt.stopTimer();
-        sessionStorage.setItem("pats_answers_KK2", JSON.stringify(cbt.getAnswers()));
-        cbt.clearSessionData();
-        window.location.href = "result.html";
-      }
-
-      renderQuestion();
     });
   </script>
 </body>
