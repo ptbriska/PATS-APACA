@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KK1 Gaya Mengajar Guru</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; }
+    .insight-list { margin: 8px 0 16px 20px; padding-left: 0; }
+    .insight-list li { margin-bottom: 4px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar (Hidden during Print/Export) -->
+  <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Beranda Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KK1_Gaya_Mengajar_Guru.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi (Dinamis dari config.js) -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">-</h2>
+          <div id="kop-instansi-sub" class="sub-title">-</div>
+          <div id="kop-instansi-alamat" class="address">-</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan (Dinamis dari soal.json) -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN GAYA MENGAJAR GURU</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Pendidik / Guru</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Kegiatan</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Instansi/Sekolah</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Daerah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Asesmen</td>
+          <td>: <span id="r-instrumen">-</span></td>
+        </tr>
+      </table>
+
+      <!-- Tabel Skor Tipologi (Dinamis) -->
+      <div class="report-section">
+        <div class="report-section-title">I. TABULASI SKOR PROFIL GAYA MENGAJAR</div>
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th>Dimensi Gaya Mengajar</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Standard Score (T-Score)</th>
+              <th>Kategori Norma</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render dinamis via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Analisis Naratif Psikolog -->
+      <div class="report-section">
+        <div class="report-section-title">II. GAMBARAN DINAMIKA PEDAGOGIS DOMINAN</div>
+        <p class="report-paragraph">
+          Berdasarkan hasil pengolahan data psikometri, kecenderungan gaya mengajar utama yang diterapkan oleh pendidik adalah: <strong id="r-judul-dominan" style="color: #2563eb;">-</strong>.
+        </p>
+        <p id="r-deskripsi-narasi" class="report-paragraph">
+          Memuat analisis naratif psikolog...
+        </p>
+        <div id="r-detail-insight"></div>
+      </div>
+
+      <!-- Rekomendasi Pengembangan & Metode Ajar -->
+      <div class="report-section">
+        <div class="report-section-title">III. REKOMENDASI PENGEMBANGAN PEDAGOGIS & METODE AJAR</div>
+        <div id="r-rekomendasi-container">
+          <p id="r-rekomendasi" class="report-paragraph" style="font-weight: 500;">-</p>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab (Dinamis dari soal.json) -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">-</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">-</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Render Kop Laporan Resmi dari config.js
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "";
+        
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Ambil data sesi peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Ambil data jawaban & metadata soal.json KK1
+      const rawAnswers = sessionStorage.getItem("pats_answers_KK1");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      const res = await fetch("soal.json");
+      const soalData = await res.json();
+      const testInfo = soalData.test_info || {};
+
+      // 4. Render Metadata Ujian & Penanggung Jawab Dinamis dari soal.json
+      if (testInfo.nama_resmi) {
+        document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
+      }
+      document.getElementById("r-instrumen").innerText = `${testInfo.kode || 'KK1'} - ${testInfo.nama_resmi || 'APACA Teaching Style Inventory'}`;
+      document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+      document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '2026-0819-PSI-01'}`;
+
+      // 5. Hitung Skor Psikometri KK1
+      const result = KK1_Scoring.evaluate(answers, soalData);
+
+      if (result.isInvalid) {
+        alert(result.message);
+        return;
+      }
+
+      // 6. Kirim Rekap Otomatis ke Google Sheets via GAS Engine
+      if (user) {
+        KK1_Scoring.sendRekapToGAS(answers, user, result);
+      }
+
+      // 7. Render Tabulasi Skor Dinamis (5 Dimensi Gaya Mengajar)
+      const tbody = document.getElementById("score-table-body");
+      tbody.innerHTML = ""; // Bersihkan placeholder
+      
+      const categories = [
+        { key: "Pakar", label: "Pakar (Expert)" },
+        { key: "Otoritas Formal", label: "Otoritas Formal (Formal Authority)" },
+        { key: "Model Personal", label: "Model Personal (Personal Model)" },
+        { key: "Fasilitator", label: "Fasilitator (Facilitator)" },
+        { key: "Delegator", label: "Delegator" }
+      ];
+
+      categories.forEach(cat => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td style="text-align: left; font-weight: 600;">${cat.label}</td>
+          <td>${result.rawScores[cat.key] ?? '-'}</td>
+          <td>${result.tScores[cat.key] ?? '-'}</td>
+          <td>${result.categories[cat.key] ?? '-'}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      // 8. Render Narasi, Kelebihan, Potensi Risiko, & Rekomendasi
+      if (result.narrative) {
+        const nav = result.narrative;
+        document.getElementById("r-judul-dominan").innerText = nav.judul || result.dominantCategory;
+        document.getElementById("r-deskripsi-narasi").innerText = nav.deskripsi || "Deskripsi tidak ditemukan.";
+        
+        // Render Detail Insight (Kelebihan & Potensi Risiko jika tersedia)
+        const insightContainer = document.getElementById("r-detail-insight");
+        insightContainer.innerHTML = "";
+
+        if (Array.isArray(nav.kelebihan) && nav.kelebihan.length > 0) {
+          let htmlKelebihan = `<p style="font-weight: 600; margin-top: 12px; color: #166534;">Kekuatan & Kelebihan Utama:</p><ul class="insight-list">`;
+          nav.kelebihan.forEach(item => { htmlKelebihan += `<li>${item}</li>`; });
+          htmlKelebihan += `</ul>`;
+          insightContainer.innerHTML += htmlKelebihan;
+        }
+
+        if (Array.isArray(nav.potensi_risiko) && nav.potensi_risiko.length > 0) {
+          let htmlRisiko = `<p style="font-weight: 600; margin-top: 12px; color: #991b1b;">Area Kewaspadaan / Potensi Risiko:</p><ul class="insight-list">`;
+          nav.potensi_risiko.forEach(item => { htmlRisiko += `<li>${item}</li>`; });
+          htmlRisiko += `</ul>`;
+          insightContainer.innerHTML += htmlRisiko;
+        }
+
+        // Render Rekomendasi & Metode Ajar Disarankan
+        document.getElementById("r-rekomendasi").innerText = nav.rekomendasi || "Rekomendasi tidak ditemukan.";
+
+        if (Array.isArray(nav.metode_ajar_disarankan) && nav.metode_ajar_disarankan.length > 0) {
+          const rekomContainer = document.getElementById("r-rekomendasi-container");
+          let htmlMetode = `<p style="font-weight: 600; margin-top: 12px; color: #1e40af;">Rekomendasi Metode Pembelajaran Disarankan:</p><ul class="insight-list">`;
+          nav.metode_ajar_disarankan.forEach(metode => { htmlMetode += `<li><strong>${metode}</strong></li>`; });
+          htmlMetode += `</ul>`;
+          rekomContainer.innerHTML += htmlMetode;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
