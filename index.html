@@ -7,16 +7,15 @@
   
   <style>
     /* ==========================================================================
-       PATS APACA PORTAL - FUTURISTIC RED GLASSMORPHISM THEME
+       PATS APACA PORTAL - FUTURISTIC RED GLASSMORPHISM THEME (REVISION)
        ========================================================================== */
 
-    /* --- CSS Variables --- */
     :root {
       --bg-dark: #0a0304;
       --red-bright: #ff1e43;
       --red-glow: rgba(255, 30, 67, 0.4);
       --red-dark: #660515;
-      --glass-bg: rgba(25, 5, 8, 0.55);
+      --glass-bg: rgba(25, 5, 8, 0.6);
       --glass-border: rgba(255, 30, 67, 0.25);
       --glass-border-hover: rgba(255, 30, 67, 0.65);
       --text-bright: #ffffff;
@@ -24,7 +23,6 @@
       --font-main: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     }
 
-    /* --- Reset & Global --- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -43,7 +41,7 @@
       position: relative;
     }
 
-    /* --- Dynamic Ambient Canvas Background --- */
+    /* Animated Ambient Background */
     body::before {
       content: '';
       position: fixed;
@@ -77,7 +75,6 @@
       100% { transform: scale(1) rotate(0deg); }
     }
 
-    /* --- Container --- */
     .container {
       width: 100%;
       max-width: 1280px;
@@ -85,13 +82,13 @@
       padding: 0 24px;
     }
 
-    /* --- Header --- */
+    /* --- Header (Centered Title) --- */
     .portal-header {
-      background: rgba(15, 3, 5, 0.7);
+      background: rgba(15, 3, 5, 0.75);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--glass-border);
-      padding: 20px 0;
+      padding: 24px 0;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -99,14 +96,16 @@
 
     .header-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      text-align: center;
     }
 
     .brand h1 {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       background: linear-gradient(135deg, #ffffff 30%, var(--red-bright) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -115,20 +114,20 @@
     }
 
     .brand p {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      margin-top: 4px;
     }
 
-    /* --- Hero Section --- */
+    /* --- Hero Section & Welcoming Description --- */
     .hero-section {
-      padding: 60px 0 30px;
+      padding: 40px 0 20px;
       text-align: center;
-      position: relative;
     }
 
     .hero-section h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 800;
       margin-bottom: 12px;
       background: linear-gradient(180deg, #ffffff, #ff99a8);
@@ -137,33 +136,110 @@
       text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
 
-    .hero-section p {
+    .hero-section .welcoming-desc {
       color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 650px;
-      margin: 0 auto;
+      font-size: 1rem;
+      max-width: 800px;
+      margin: 0 auto 16px;
+      line-height: 1.7;
     }
 
-    /* --- Catalog Main Content --- */
+    .hero-section .welcoming-subdesc {
+      color: #ffb3be;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* --- Filter & Search Bar Section --- */
+    .filter-search-section {
+      margin: 30px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* Search Box */
+    .search-box {
+      width: 100%;
+      max-width: 550px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      background: rgba(25, 5, 8, 0.8);
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      outline: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .search-input:focus {
+      border-color: var(--red-bright);
+      box-shadow: 0 0 20px var(--red-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      background: rgba(25, 5, 8, 0.6);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: linear-gradient(135deg, var(--red-bright), var(--red-dark));
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 15px var(--red-glow);
+    }
+
+    /* --- Catalog & Grid Cards --- */
     .portal-main {
-      padding: 20px 0 80px;
+      padding: 10px 0 80px;
       flex-grow: 1;
     }
 
     .category-group {
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
 
     .category-title {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       color: var(--text-bright);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
       position: relative;
       padding-bottom: 8px;
+      display: inline-block;
     }
 
     .category-title::after {
@@ -183,7 +259,6 @@
       gap: 24px;
     }
 
-    /* --- Futuristic Glassmorphism Card --- */
     .test-card {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
@@ -199,7 +274,6 @@
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
-    /* Card Sweep Light Effect */
     .test-card::before {
       content: '';
       position: absolute;
@@ -207,12 +281,7 @@
       left: -150%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(
-        60deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.12) 50%,
-        transparent 70%
-      );
+      background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.12) 50%, transparent 70%);
       transition: transform 0.8s ease;
       transform: rotate(25deg);
       pointer-events: none;
@@ -225,8 +294,7 @@
     .test-card:hover {
       transform: translateY(-6px) scale(1.02);
       border-color: var(--glass-border-hover);
-      box-shadow: 0 12px 40px rgba(255, 30, 67, 0.25),
-                  0 0 15px rgba(255, 30, 67, 0.15) inset;
+      box-shadow: 0 12px 40px rgba(255, 30, 67, 0.25), 0 0 15px rgba(255, 30, 67, 0.15) inset;
     }
 
     .card-badge {
@@ -240,11 +308,10 @@
       padding: 4px 10px;
       border-radius: 20px;
       box-shadow: 0 0 10px var(--red-glow);
-      letter-spacing: 0.5px;
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 10px;
@@ -262,14 +329,10 @@
     .card-meta {
       font-size: 0.8rem;
       color: #ffb3be;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    /* --- Futuristic Button with Sweep Light --- */
     .btn-primary {
       display: inline-block;
       background: linear-gradient(135deg, var(--red-bright) 0%, var(--red-dark) 100%);
@@ -279,7 +342,7 @@
       padding: 12px 20px;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       border: 1px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
       width: 100%;
@@ -298,12 +361,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
       transition: left 0.6s ease;
     }
 
@@ -317,7 +375,13 @@
       transform: translateY(-2px);
     }
 
-    /* --- Footer --- */
+    .no-results {
+      text-align: center;
+      padding: 50px 0;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
     .portal-footer {
       background: rgba(10, 3, 4, 0.85);
       border-top: 1px solid var(--glass-border);
@@ -328,24 +392,20 @@
       backdrop-filter: blur(10px);
     }
 
-    /* --- Responsive Fixes --- */
     @media (max-width: 768px) {
-      .hero-section h2 {
-        font-size: 1.8rem;
-      }
-      .grid-cards {
-        grid-template-columns: 1fr;
-      }
+      .brand h1 { font-size: 1.7rem; }
+      .hero-section h2 { font-size: 1.6rem; }
+      .grid-cards { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header & Navbar Portal -->
+  <!-- Header Centered Title -->
   <header class="portal-header">
     <div class="container header-container">
       <div class="brand">
-        <h1 id="app-name">PATS Portal</h1>
+        <h1 id="app-name">PATS PORTAL</h1>
         <p id="app-fullname">Psikometrik & Aptitude Test System</p>
       </div>
     </div>
@@ -355,11 +415,35 @@
   <section class="hero-section">
     <div class="container">
       <h2>Selamat Datang di Portal PATS APACA</h2>
-      <p>Silakan pilih jenis modul tes yang ingin Anda ikuti dari daftar di bawah ini untuk memulai proses tes.</p>
+      <p class="welcoming-desc">
+        PATS Portal (Psikometrik & Aptitude Test System) merupakan ekosistem pemetaan psikologi dan potensi diri modern yang dirancang untuk mengukur kapasitas kognitif, inteligensi, karakteristik kepribadian, hingga kecenderungan minat dan bakat secara ilmiah, akurat, dan komprehensif.
+      </p>
+      <p class="welcoming-subdesc">
+        Gunakan fitur pencarian atau filter kategori di bawah ini untuk memilih modul tes yang akan Anda ikuti.
+      </p>
     </div>
   </section>
 
-  <!-- Main Content: Catalog 38 Tes -->
+  <!-- Section Search & Filter -->
+  <section class="container filter-search-section">
+    <!-- Input Search Bar -->
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input" placeholder="Cari nama tes, kode tes (misal: KA1, KS6, KU4)...">
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-btn active" data-category="ALL">Semua Modul</button>
+      <button class="filter-btn" data-category="Anak (Pra Sekolah-Sekolah Dasar)">Anak (Pra-SD)</button>
+      <button class="filter-btn" data-category="Siswa (SD-Mahasiswa)">Siswa & Mahasiswa</button>
+      <button class="filter-btn" data-category="Dewasa (Mahasiswa-Pekerja)">Dewasa & Pekerja</button>
+      <button class="filter-btn" data-category="Umum (Karakter & Kesehatan Mental)">Umum & Karakter</button>
+      <button class="filter-btn" data-category="Khusus (Parenting & Sekolah)">Khusus Parenting & Guru</button>
+    </div>
+  </section>
+
+  <!-- Main Content Catalog -->
   <main class="container portal-main">
     <div id="test-catalog" class="test-catalog">
       <!-- Cards tes akan di-render secara dinamis oleh JavaScript -->
@@ -376,58 +460,104 @@
   <!-- Load Configuration File -->
   <script src="config.js"></script>
 
-  <!-- Script Rendering Catalog Dynamic -->
+  <!-- Script Interaktif Filter, Search, & Dynamic Render -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Set Header App Title dari Config
       if (typeof PATS_CONFIG !== 'undefined') {
-        document.getElementById("app-name").innerText = PATS_CONFIG.appName || "PATS APACA";
+        document.getElementById("app-name").innerText = PATS_CONFIG.appName || "PATS PORTAL";
         document.getElementById("app-fullname").innerText = PATS_CONFIG.appFullName || "Psikometrik & Aptitude Test System";
       }
 
       const catalogContainer = document.getElementById("test-catalog");
-      const tests = PATS_CONFIG.tests;
+      const searchInput = document.getElementById("search-input");
+      const filterBtns = document.querySelectorAll(".filter-btn");
 
-      // Grouping Tes berdasarkan Kategori
-      const categories = {};
-      Object.keys(tests).forEach(key => {
-        const test = tests[key];
-        if (!categories[test.kategori]) {
-          categories[test.kategori] = [];
-        }
-        categories[test.kategori].push(test);
-      });
+      let currentCategory = "ALL";
+      let searchQuery = "";
 
-      // Render Section per Kategori
-      let htmlContent = "";
-      for (const [kategoriName, testList] of Object.entries(categories)) {
-        htmlContent += `
-          <section class="category-group">
-            <h3 class="category-title">${kategoriName}</h3>
-            <div class="grid-cards">
-        `;
+      // Render Catalog Function
+      function renderCatalog() {
+        if (typeof PATS_CONFIG === 'undefined' || !PATS_CONFIG.tests) return;
 
-        testList.forEach(test => {
-          htmlContent += `
-            <div class="test-card">
-              <div class="card-badge">${test.kode}</div>
-              <h4 class="card-title">${test.namaSingkat}</h4>
-              <p class="card-description">${test.namaResmi}</p>
-              <div class="card-meta">
-                <span>⏱️ ${test.durasiMenit} Menit</span>
-              </div>
-              <a href="tests/${test.folder}/index.html" class="btn-primary">Pilih Tes</a>
-            </div>
-          `;
+        const tests = PATS_CONFIG.tests;
+        const categories = {};
+
+        // Filter Data berdasarkan Search Query dan Active Category Tab
+        Object.keys(tests).forEach(key => {
+          const test = tests[key];
+          
+          const matchesCategory = currentCategory === "ALL" || test.kategori === currentCategory;
+          const matchesSearch = test.namaResmi.toLowerCase().includes(searchQuery) ||
+                                test.namaSingkat.toLowerCase().includes(searchQuery) ||
+                                test.kode.toLowerCase().includes(searchQuery);
+
+          if (matchesCategory && matchesSearch) {
+            if (!categories[test.kategori]) {
+              categories[test.kategori] = [];
+            }
+            categories[test.kategori].push(test);
+          }
         });
 
-        htmlContent += `
+        // Render HTML Output
+        if (Object.keys(categories).length === 0) {
+          catalogContainer.innerHTML = `
+            <div class="no-results">
+              <p>⚠️ Tidak ada modul tes yang cocok dengan pencarian atau filter Anda.</p>
             </div>
-          </section>
-        `;
+          `;
+          return;
+        }
+
+        let htmlContent = "";
+        for (const [kategoriName, testList] of Object.entries(categories)) {
+          htmlContent += `
+            <section class="category-group">
+              <h3 class="category-title">${kategoriName}</h3>
+              <div class="grid-cards">
+          `;
+
+          testList.forEach(test => {
+            htmlContent += `
+              <div class="test-card">
+                <div class="card-badge">${test.kode}</div>
+                <h4 class="card-title">${test.namaSingkat}</h4>
+                <p class="card-description">${test.namaResmi}</p>
+                <div class="card-meta">
+                  <span>⏱️ Durasi: ${test.durasiMenit} Menit</span>
+                </div>
+                <a href="tests/${test.folder}/index.html" class="btn-primary">Pilih Tes</a>
+              </div>
+            `;
+          });
+
+          htmlContent += `
+              </div>
+            </section>
+          `;
+        }
+
+        catalogContainer.innerHTML = htmlContent;
       }
 
-      catalogContainer.innerHTML = htmlContent;
+      // Event Listener Search Input
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderCatalog();
+      });
+
+      // Event Listener Filter Tabs
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentCategory = btn.getAttribute("data-category");
+          renderCatalog();
+        });
+      });
+
+      // Initial Render
+      renderCatalog();
     });
   </script>
 </body>
