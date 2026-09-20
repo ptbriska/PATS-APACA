@@ -233,12 +233,18 @@ class CBTEngine {
     });
     if (optsContainer) optsContainer.innerHTML = optsHtml;
 
-    // Update Status Tombol Prev/Next
+    // Update Status Tombol Prev/Next (Penggunaan innerHTML untuk merender entitas HTML)
     const btnPrev = document.getElementById("cbt-btn-prev");
     const btnNext = document.getElementById("cbt-btn-next");
 
-    if (btnPrev) btnPrev.style.visibility = this.currentIndex === 0 ? "hidden" : "visible";
-    if (btnNext) btnNext.innerText = this.currentIndex === this.questions.length - 1 ? "Selesai &rarr;" : "Selanjutnya &rarr;";
+    if (btnPrev) {
+      btnPrev.style.visibility = this.currentIndex === 0 ? "hidden" : "visible";
+      btnPrev.innerHTML = "← Sebelumnya";
+    }
+    
+    if (btnNext) {
+      btnNext.innerHTML = this.currentIndex === this.questions.length - 1 ? "Selesai →" : "Selanjutnya →";
+    }
 
     // Render Ulang Sidebar Grid Nomor Soal
     this.renderNavGrid();
