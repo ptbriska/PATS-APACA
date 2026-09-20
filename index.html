@@ -3,10 +3,341 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PATS Portal - Psikometrik & Aptitude Test System</title>
+  <title>PATS APACA - Psikometrik & Aptitude Test System</title>
   
-  <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ==========================================================================
+       PATS APACA PORTAL - FUTURISTIC RED GLASSMORPHISM THEME
+       ========================================================================== */
+
+    /* --- CSS Variables --- */
+    :root {
+      --bg-dark: #0a0304;
+      --red-bright: #ff1e43;
+      --red-glow: rgba(255, 30, 67, 0.4);
+      --red-dark: #660515;
+      --glass-bg: rgba(25, 5, 8, 0.55);
+      --glass-border: rgba(255, 30, 67, 0.25);
+      --glass-border-hover: rgba(255, 30, 67, 0.65);
+      --text-bright: #ffffff;
+      --text-muted: #d1a3a9;
+      --font-main: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    /* --- Reset & Global --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-dark);
+      color: var(--text-bright);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* --- Dynamic Ambient Canvas Background --- */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, #a8001e 0%, transparent 40%),
+                  radial-gradient(circle at 70% 70%, #4a000d 0%, transparent 45%),
+                  radial-gradient(circle at 50% 20%, #ff1e43 0%, transparent 25%);
+      opacity: 0.35;
+      z-index: -2;
+      animation: ambientPulse 12s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent 20%, var(--bg-dark) 90%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes ambientPulse {
+      0% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.08) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    /* --- Container --- */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* --- Header --- */
+    .portal-header {
+      background: rgba(15, 3, 5, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      background: linear-gradient(135deg, #ffffff 30%, var(--red-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px var(--red-glow);
+    }
+
+    .brand p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* --- Hero Section --- */
+    .hero-section {
+      padding: 60px 0 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-section h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, #ffffff, #ff99a8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-section p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* --- Catalog Main Content --- */
+    .portal-main {
+      padding: 20px 0 80px;
+      flex-grow: 1;
+    }
+
+    .category-group {
+      margin-bottom: 50px;
+    }
+
+    .category-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text-bright);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .category-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red-bright), transparent);
+      box-shadow: 0 0 8px var(--red-bright);
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* --- Futuristic Glassmorphism Card --- */
+    .test-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    /* Card Sweep Light Effect */
+    .test-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -150%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.12) 50%,
+        transparent 70%
+      );
+      transition: transform 0.8s ease;
+      transform: rotate(25deg);
+      pointer-events: none;
+    }
+
+    .test-card:hover::before {
+      transform: translate(100%, 100%) rotate(25deg);
+    }
+
+    .test-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--glass-border-hover);
+      box-shadow: 0 12px 40px rgba(255, 30, 67, 0.25),
+                  0 0 15px rgba(255, 30, 67, 0.15) inset;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(135deg, var(--red-bright), var(--red-dark));
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px var(--red-glow);
+      letter-spacing: 0.5px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+      padding-right: 50px;
+    }
+
+    .card-description {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: #ffb3be;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* --- Futuristic Button with Sweep Light --- */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--red-bright) 0%, var(--red-dark) 100%);
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--red-glow);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transition: left 0.6s ease;
+    }
+
+    .btn-primary:hover::after {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff3d5e 0%, #800014 100%);
+      box-shadow: 0 0 25px rgba(255, 30, 67, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* --- Footer --- */
+    .portal-footer {
+      background: rgba(10, 3, 4, 0.85);
+      border-top: 1px solid var(--glass-border);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+    }
+
+    /* --- Responsive Fixes --- */
+    @media (max-width: 768px) {
+      .hero-section h2 {
+        font-size: 1.8rem;
+      }
+      .grid-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -28,7 +359,7 @@
     </div>
   </section>
 
-  <!-- Main Content: Catalog 21 Tes -->
+  <!-- Main Content: Catalog 38 Tes -->
   <main class="container portal-main">
     <div id="test-catalog" class="test-catalog">
       <!-- Cards tes akan di-render secara dinamis oleh JavaScript -->
@@ -49,8 +380,10 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Set Header App Title dari Config
-      document.getElementById("app-name").innerText = PATS_CONFIG.appName;
-      document.getElementById("app-fullname").innerText = PATS_CONFIG.appFullName;
+      if (typeof PATS_CONFIG !== 'undefined') {
+        document.getElementById("app-name").innerText = PATS_CONFIG.appName || "PATS APACA";
+        document.getElementById("app-fullname").innerText = PATS_CONFIG.appFullName || "Psikometrik & Aptitude Test System";
+      }
 
       const catalogContainer = document.getElementById("test-catalog");
       const tests = PATS_CONFIG.tests;
