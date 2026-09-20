@@ -5,7 +5,7 @@
     "nama_singkat": "Pemetaan Pola Asuh Orang Tua",
     "token_ujian": "PATSPARENT2026",
     "token_master": "PatsTestingKK2",
-    "durasi_menit": off,
+    "durasi_menit": 0,
     "psikolog_pj": "Dra. Fitriani Rahayu, M.Psi., Psikolog (No. SIPP: 2026-0819-PSI-01)"
   },
   "options": [
