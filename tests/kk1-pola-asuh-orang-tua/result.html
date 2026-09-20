@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KK2 Pola Asuh Orang Tua</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569;">&larr; Kembali ke Beranda Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KK2_Pola_Asuh_Orang_Tua.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <div class="instansi-info">
+          <h2>APACA CONSULTING & PSYCHOMETRIC CENTER</h2>
+          <p>Layanan Asesmen Psikologi & Family Guidance | SIPP No: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+      <div class="report-title">
+        <h3>LAPORAN HASIL ASESMEN POLA ASUH ORANG TUA (APSI)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Orang Tua</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Kegiatan</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Instansi/Sekolah</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Daerah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Asesmen</td>
+          <td>: KK2 - APACA Parenting Style Inventory</td>
+        </tr>
+      </table>
+
+      <!-- Tabel Skor Tipologi -->
+      <div class="report-section">
+        <div class="report-section-title">I. TABULASI SKOR STABILITAS POLA ASUH</div>
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th>Tipologi Pola Asuh</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Standard Score (T-Score)</th>
+              <th>Kategori Norma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left; font-weight: 600;">Otoritatif (Demokratis)</td>
+              <td id="rs-otoritatif">-</td>
+              <td id="ts-otoritatif">-</td>
+              <td id="kat-otoritatif">-</td>
+            </tr>
+            <tr>
+              <td style="text-align: left; font-weight: 600;">Otoriter</td>
+              <td id="rs-otoriter">-</td>
+              <td id="ts-otoriter">-</td>
+              <td id="kat-otoriter">-</td>
+            </tr>
+            <tr>
+              <td style="text-align: left; font-weight: 600;">Permisif</td>
+              <td id="rs-permisif">-</td>
+              <td id="ts-permisif">-</td>
+              <td id="kat-permisif">-</td>
+            </tr>
+            <tr>
+              <td style="text-align: left; font-weight: 600;">Pengabaian (Apatis)</td>
+              <td id="rs-pengabaian">-</td>
+              <td id="ts-pengabaian">-</td>
+              <td id="kat-pengabaian">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Analisis Naratif Psikolog -->
+      <div class="report-section">
+        <div class="report-section-title">II. GAMBARAN DINAMIKA PENGASUHAN DOMINAN</div>
+        <p class="report-paragraph">
+          Berdasarkan hasil pengolahan data psikometri, kecenderungan gaya pengasuhan utama yang diterapkan oleh orang tua adalah: <strong id="r-judul-dominan" style="color: #2563eb;">-</strong>.
+        </p>
+        <p id="r-deskripsi-narasi" class="report-paragraph">
+          Memuat analisis naratif psikolog...
+        </p>
+      </div>
+
+      <!-- Rekomendasi Konseling -->
+      <div class="report-section">
+        <div class="report-section-title">III. REKOMENDASI TACTICAL PARENTING</div>
+        <p id="r-rekomendasi" class="report-paragraph" style="font-weight: 500;">
+          -
+        </p>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap;
+        document.getElementById("r-kode").innerText = user.kode_kegiatan;
+        document.getElementById("r-jk").innerText = user.jenis_kelamin;
+        document.getElementById("r-instansi").innerText = user.asal_instansi;
+        document.getElementById("r-daerah").innerText = `${user.asal_kabupaten}, ${user.asal_provinsi}`;
+      }
+
+      const rawAnswers = sessionStorage.getItem("pats_answers_KK2");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      const res = await fetch("soal.json");
+      const soalData = await res.json();
+
+      const result = KK2_Scoring.evaluate(answers, soalData);
+
+      if (result.isInvalid) {
+        alert(result.message);
+        return;
+      }
+
+      // Render Tabulasi Skor
+      document.getElementById("rs-otoritatif").innerText = result.rawScores["Otoritatif"];
+      document.getElementById("ts-otoritatif").innerText = result.tScores["Otoritatif"];
+      document.getElementById("kat-otoritatif").innerText = result.categories["Otoritatif"];
+
+      document.getElementById("rs-otoriter").innerText = result.rawScores["Otoriter"];
+      document.getElementById("ts-otoriter").innerText = result.tScores["Otoriter"];
+      document.getElementById("kat-otoriter").innerText = result.categories["Otoriter"];
+
+      document.getElementById("rs-permisif").innerText = result.rawScores["Permisif"];
+      document.getElementById("ts-permisif").innerText = result.tScores["Permisif"];
+      document.getElementById("kat-permisif").innerText = result.categories["Permisif"];
+
+      document.getElementById("rs-pengabaian").innerText = result.rawScores["Pengabaian"];
+      document.getElementById("ts-pengabaian").innerText = result.tScores["Pengabaian"];
+      document.getElementById("kat-pengabaian").innerText = result.categories["Pengabaian"];
+
+      // Render Narasi
+      document.getElementById("r-judul-dominan").innerText = result.narrative.judul;
+      document.getElementById("r-deskripsi-narasi").innerText = result.narrative.deskripsi;
+      document.getElementById("r-rekomendasi").innerText = result.narrative.rekomendasi;
+    });
+  </script>
+</body>
+</html>
