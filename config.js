@@ -1,9 +1,21 @@
+/* ==========================================================================
+   PATS PORTAL - CONFIGURATION & METADATA CENTER (config.js)
+   Pusat Konfigurasi System & Master Data 31 Modul Ujian PATS
+   ========================================================================== */
+
 const PATS_CONFIG = {
   appName: "PATS Portal",
   appFullName: "Psikometrik & Aptitude Test System",
-  organization: "Lembaga Layanan Psikometri & Asesmen",
-  logoUrl: "assets/images/logo.png",
   version: "2.0.0",
+
+  // Master Data Identitas Lembaga (Kop Surat Laporan Resmi)
+  organization: {
+    name: "APACA CONSULTING & PSYCHOMETRIC CENTER",
+    subTitle: "Layanan Asesmen Psikologi & Family Guidance",
+    sippNumber: "SIPP No: 2026-0819-PSI-01",
+    address: "Jl. Racing Center, Perum. Mustika Mulia, Blok B5, No. 8, Panakkukang, Makassar, Sulawesi Selatan",
+    logoUrl: "assets/images/logo.png"
+  },
 
   // Pengaturan CBT Default
   cbtDefaults: {
@@ -12,7 +24,7 @@ const PATS_CONFIG = {
     showTimer: true
   },
 
-  // Metadata Modul Tes PATS (Diperbarui berdasarkan dokumen terbaru)
+  // Metadata Modul Tes PATS (31 Modul Tes Terintegrasi)
   tests: {
     // ==========================================
     // 1. KATEGORI: Anak (Pra Sekolah - Sekolah Dasar)
