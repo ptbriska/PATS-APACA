@@ -17,7 +17,7 @@
 
   <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569;">&larr; Kembali ke Beranda Portal</a>
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Beranda Portal</a>
       <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KK2_Pola_Asuh_Orang_Tua.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
     </div>
   </div>
@@ -42,7 +42,7 @@
         <tr>
           <td class="label">Nama Orang Tua</td>
           <td>: <span id="r-nama">-</span></td>
-          <td class="label">Kode Kegiatan</td>
+          <td class="label">Kode Akses / Kegiatan</td>
           <td>: <span id="r-kode">-</span></td>
         </tr>
         <tr>
@@ -137,21 +137,31 @@
   <script src="scoring.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Ambil data sesi peserta
       const user = PATS_AUTH.getSession();
       if (user) {
-        document.getElementById("r-nama").innerText = user.nama_lengkap;
-        document.getElementById("r-kode").innerText = user.kode_kegiatan;
-        document.getElementById("r-jk").innerText = user.jenis_kelamin;
-        document.getElementById("r-instansi").innerText = user.asal_instansi;
-        document.getElementById("r-daerah").innerText = `${user.asal_kabupaten}, ${user.asal_provinsi}`;
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
       }
 
+      // 2. Ambil data jawaban & soal.json
       const rawAnswers = sessionStorage.getItem("pats_answers_KK2");
       const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
 
       const res = await fetch("soal.json");
       const soalData = await res.json();
 
+      // 3. Hitung Skor Psikometri
       const result = KK2_Scoring.evaluate(answers, soalData);
 
       if (result.isInvalid) {
@@ -159,7 +169,12 @@
         return;
       }
 
-      // Render Tabulasi Skor
+      // 4. Kirim Rekap Otomatis ke Google Sheets via GAS Engine
+      if (user) {
+        KK2_Scoring.sendRekapToGAS(answers, user, result);
+      }
+
+      // 5. Render Tabulasi Skor ke UI
       document.getElementById("rs-otoritatif").innerText = result.rawScores["Otoritatif"];
       document.getElementById("ts-otoritatif").innerText = result.tScores["Otoritatif"];
       document.getElementById("kat-otoritatif").innerText = result.categories["Otoritatif"];
@@ -176,10 +191,12 @@
       document.getElementById("ts-pengabaian").innerText = result.tScores["Pengabaian"];
       document.getElementById("kat-pengabaian").innerText = result.categories["Pengabaian"];
 
-      // Render Narasi
-      document.getElementById("r-judul-dominan").innerText = result.narrative.judul;
-      document.getElementById("r-deskripsi-narasi").innerText = result.narrative.deskripsi;
-      document.getElementById("r-rekomendasi").innerText = result.narrative.rekomendasi;
+      // 6. Render Narasi & Rekomendasi
+      if (result.narrative) {
+        document.getElementById("r-judul-dominan").innerText = result.narrative.judul || result.dominantCategory;
+        document.getElementById("r-deskripsi-narasi").innerText = result.narrative.deskripsi || "Deskripsi tidak ditemukan.";
+        document.getElementById("r-rekomendasi").innerText = result.narrative.rekomendasi || "Rekomendasi tidak ditemukan.";
+      }
     });
   </script>
 </body>
