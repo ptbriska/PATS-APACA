@@ -7,7 +7,7 @@
   
   <style>
     /* ==========================================================================
-       PATS APACA PORTAL - FUTURISTIC RED GLASSMORPHISM THEME (REVISION)
+       PATS APACA PORTAL - FUTURISTIC RED GLASSMORPHISM THEME (FIXED UI)
        ========================================================================== */
 
     :root {
@@ -15,7 +15,7 @@
       --red-bright: #ff1e43;
       --red-glow: rgba(255, 30, 67, 0.4);
       --red-dark: #660515;
-      --glass-bg: rgba(25, 5, 8, 0.6);
+      --glass-bg: rgba(25, 5, 8, 0.65);
       --glass-border: rgba(255, 30, 67, 0.25);
       --glass-border-hover: rgba(255, 30, 67, 0.65);
       --text-bright: #ffffff;
@@ -150,26 +150,30 @@
       font-weight: 600;
     }
 
-    /* --- Filter & Search Bar Section --- */
+    /* --- Filter & Search Bar Section (FIXED: CENTER ALIGNMENT) --- */
     .filter-search-section {
-      margin: 30px 0;
+      margin: 30px auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
     }
 
-    /* Search Box */
+    /* Search Box Container */
     .search-box {
       width: 100%;
       max-width: 550px;
       position: relative;
+      margin: 0 auto;
     }
 
     .search-input {
       width: 100%;
       padding: 14px 20px 14px 48px;
-      background: rgba(25, 5, 8, 0.8);
+      background: rgba(35, 10, 15, 0.95);
       border: 1px solid var(--glass-border);
       border-radius: 30px;
       color: #ffffff;
@@ -178,6 +182,12 @@
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+
+    .search-input::placeholder {
+      color: #ffb3be;
+      opacity: 0.85;
     }
 
     .search-input:focus {
@@ -191,19 +201,23 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 1.1rem;
-      color: var(--text-muted);
+      color: #ffb3be;
     }
 
-    /* Filter Tabs */
+    /* Filter Tabs Container */
     .filter-tabs {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       gap: 10px;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .filter-btn {
-      background: rgba(25, 5, 8, 0.6);
+      background: rgba(25, 5, 8, 0.7);
       border: 1px solid var(--glass-border);
       color: var(--text-muted);
       padding: 8px 18px;
@@ -222,9 +236,9 @@
       box-shadow: 0 0 15px var(--red-glow);
     }
 
-    /* --- Catalog & Grid Cards --- */
+    /* --- Catalog & Grid Cards (FIXED: PADDING & OVERFLOW) --- */
     .portal-main {
-      padding: 10px 0 80px;
+      padding: 10px 0 100px;
       flex-grow: 1;
     }
 
@@ -268,6 +282,8 @@
       padding: 24px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      min-height: 250px;
       position: relative;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -520,13 +536,17 @@
           testList.forEach(test => {
             htmlContent += `
               <div class="test-card">
-                <div class="card-badge">${test.kode}</div>
-                <h4 class="card-title">${test.namaSingkat}</h4>
-                <p class="card-description">${test.namaResmi}</p>
-                <div class="card-meta">
-                  <span>⏱️ Durasi: ${test.durasiMenit} Menit</span>
+                <div>
+                  <div class="card-badge">${test.kode}</div>
+                  <h4 class="card-title">${test.namaSingkat}</h4>
+                  <p class="card-description">${test.namaResmi}</p>
                 </div>
-                <a href="tests/${test.folder}/index.html" class="btn-primary">Pilih Tes</a>
+                <div>
+                  <div class="card-meta">
+                    <span>⏱️ Durasi: ${test.durasiMenit} Menit</span>
+                  </div>
+                  <a href="tests/${test.folder}/index.html" class="btn-primary">Pilih Tes</a>
+                </div>
               </div>
             `;
           });
