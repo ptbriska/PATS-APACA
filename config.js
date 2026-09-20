@@ -10,9 +10,8 @@ const PATS_CONFIG = {
 
   // Master Data Identitas Lembaga (Kop Surat Laporan Resmi)
   organization: {
-    name: "APACA CONSULTING & PSYCHOMETRIC CENTER",
-    subTitle: "Layanan Asesmen Psikologi & Family Guidance",
-    sippNumber: "SIPP No: 2026-0819-PSI-01",
+    name: "APACA CONSULTING & ASSESMENT CENTER",
+    subTitle: "Layanan Asesmen, Profiling, Sertifikasi & Konsultasi",
     address: "Jl. Racing Center, Perum. Mustika Mulia, Blok B5, No. 8, Panakkukang, Makassar, Sulawesi Selatan",
     logoUrl: "assets/images/logo.png"
   },
