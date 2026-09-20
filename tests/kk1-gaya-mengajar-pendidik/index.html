@@ -58,8 +58,8 @@
     document.getElementById("form-login").addEventListener("submit", async (e) => {
       e.preventDefault();
       
-      const nama = document.getElementById("nama_lengkap").value;
-      const kodeAtauToken = document.getElementById("kode_akses").value;
+      const nama = document.getElementById("nama_lengkap").value.trim();
+      const kodeAtauToken = document.getElementById("kode_akses").value.trim();
       const errorDiv = document.getElementById("login-error");
       const btnSubmit = document.getElementById("btn-submit");
 
@@ -68,19 +68,29 @@
       btnSubmit.disabled = true;
       btnSubmit.innerText = "Memverifikasi Akses...";
 
-      // 1. Ambil test_info dari soal.json lokal (membawa token_ujian dan token_master)
+      // 1. Ambil test_info dari soal.json lokal (dengan cache-busting & error handler)
       let testInfo = {};
       try {
-        const response = await fetch("soal.json");
-        const soalData = await response.json();
+        // Mencegah cache browser dengan timestamp
+        const response = await fetch("soal.json?v=" + Date.now());
         
-        // Mengambil objek test_info
-        testInfo = soalData.test_info || {
-          token_ujian: soalData.token_ujian || "",
-          token_master: soalData.token_master || ""
-        };
+        if (!response.ok) {
+          throw new Error(`Gagal memuat soal.json (Status: ${response.status})`);
+        }
+        
+        const soalData = await response.json();
+        testInfo = soalData.test_info || {};
+
+        // Penanganan jika struktur JSON ditaruh di root
+        if (!testInfo.token_master && soalData.token_master) {
+          testInfo.token_master = soalData.token_master;
+        }
+        if (!testInfo.token_ujian && soalData.token_ujian) {
+          testInfo.token_ujian = soalData.token_ujian;
+        }
+
       } catch (err) {
-        console.warn("Gagal membaca metadata dari file local soal.json:", err);
+        console.error("Sistem Auth Error:", err.message);
       }
 
       // 2. Jalankan Verifikasi Triple-Track (Hybrid)
