@@ -1,6 +1,7 @@
 /* ==========================================================================
    PATS PORTAL - CBT ENGINE CORE (assets/js/cbt-engine.js)
-   Engine Utama Panel Pengerjaan Ujian PATS (Support Multi-Format Options & Case Study)
+   Engine Utama Panel Pengerjaan Ujian PATS
+   (Support Single-Selection, Multi-Format Options, Case Study, & Forced-Choice Ipsative)
    ========================================================================== */
 
 class CBTEngine {
@@ -48,18 +49,28 @@ class CBTEngine {
 
   /**
    * Helper internal untuk mengecek apakah suatu nomor soal sudah dijawab secara valid
+   * Mendukung validasi Single-Choice maupun Forced-Choice (Most & Least harus terisi)
    */
   isQuestionAnswered(questionId) {
     const qKey = String(questionId);
-    return Object.prototype.hasOwnProperty.call(this.answers, qKey) && 
-           this.answers[qKey] !== null && 
-           this.answers[qKey] !== undefined && 
-           this.answers[qKey] !== "";
+    if (!Object.prototype.hasOwnProperty.call(this.answers, qKey)) return false;
+
+    const ans = this.answers[qKey];
+    if (ans === null || ans === undefined || ans === "") return false;
+
+    // Untuk tipe Forced-Choice: Kedua opsi (most dan least) Wajib Terisi
+    if (typeof ans === "object") {
+      return (
+        ans.most !== undefined && ans.most !== null && ans.most !== "" &&
+        ans.least !== undefined && ans.least !== null && ans.least !== ""
+      );
+    }
+
+    return true;
   }
 
   /**
    * Menginjeksi dan merender layout UI CBT secara terpadu di dalam container target
-   * @param {string} containerId - ID elemen HTML penampung (misal: 'cbt-app')
    */
   renderApp(containerId) {
     const container = document.getElementById(containerId);
@@ -70,7 +81,7 @@ class CBTEngine {
     const userInstansi = this.userSession ? (this.userSession.asal_instansi || "Umum") : "Umum";
 
     container.innerHTML = `
-      <!-- Header Nama Sistem (Rata Tengah) -->
+      <!-- Header Nama Sistem -->
       <div style="text-align: center; padding: 12px 20px; background-color: var(--surface-color, #ffffff); border-bottom: 1px solid var(--border-color, #e2e8f0); margin-bottom: 15px;">
         <h2 style="font-size: 1.15rem; font-weight: 800; color: var(--primary-color, #2563eb); margin: 0;">
           Psikometrik & Aptitude Test System (PATS) Apaca Consulting
@@ -90,17 +101,14 @@ class CBTEngine {
         </div>
       </div>
 
-      <!-- Main Panel CBT (Navigasi Kiri + Panel Soal Kanan) -->
+      <!-- Main Panel CBT -->
       <div style="display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: start;">
         
         <!-- Sidebar Navigasi Soal (Kiri) -->
         <div style="background: var(--surface-color, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-md, 10px); padding: 16px;">
           <h4 style="font-size: 0.9rem; margin-bottom: 12px; border-bottom: 1px solid var(--border-color, #e2e8f0); padding-bottom: 8px;">Navigasi Soal</h4>
-          <div id="cbt-nav-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-height: 320px; overflow-y: auto; padding-right: 4px;">
-            <!-- Buttons nomor soal di-generate otomatis -->
-          </div>
+          <div id="cbt-nav-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-height: 320px; overflow-y: auto; padding-right: 4px;"></div>
 
-          <!-- Tombol Aksi Tambahan di Sidebar -->
           <div style="margin-top: 20px; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 16px; display: flex; flex-direction: column; gap: 10px;">
             <button id="cbt-btn-submit" class="btn-primary" style="background-color: var(--success-color, #10b981); width: 100%;">
               Kirim Jawaban
@@ -118,14 +126,11 @@ class CBTEngine {
             <span id="cbt-question-status" style="font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: var(--text-secondary, #64748b);">Belum Dijawab</span>
           </div>
 
-          <!-- Menggunakan innerHTML agar mendukung teks bacaan/wacana panjang & formatting HTML -->
           <div id="cbt-question-text" style="font-size: 1.05rem; margin-bottom: 24px; line-height: 1.6; min-height: 60px;">
             Memuat pertanyaan...
           </div>
 
-          <div id="cbt-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px;">
-            <!-- Opsi Opsi Pertanyaan -->
-          </div>
+          <div id="cbt-options-container" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px;"></div>
 
           <!-- Footer Control Navigasi -->
           <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color, #e2e8f0); padding-top: 16px;">
@@ -137,25 +142,20 @@ class CBTEngine {
       </div>
     `;
 
-    // Event Listener Tombol Navigasi Utama
     document.getElementById("cbt-btn-prev").addEventListener("click", () => this.prevQuestion());
     document.getElementById("cbt-btn-next").addEventListener("click", () => this.nextQuestion());
     document.getElementById("cbt-btn-submit").addEventListener("click", () => this.confirmSubmit());
     document.getElementById("cbt-btn-exit").addEventListener("click", () => this.confirmExit());
 
-    // Inisialisasi Timer
     this.startTimer("cbt-timer-display");
-
-    // Render Pertanyaan Pertama
     this.renderCurrentQuestion();
   }
 
-  // --- LOGIC TIMER DINAMIS ---
+  // --- LOGIC TIMER ---
   startTimer(displayElementId) {
     const display = document.getElementById(displayElementId);
     const durationLimit = this.testInfo.durasi_menit;
 
-    // Cek apakah tes TIDAK MENGGUNAKAN BATAS WAKTU ("off", 0, null, undefined)
     if (durationLimit === "off" || durationLimit === 0 || !durationLimit) {
       if (display) {
         display.innerText = "Tanpa Batas Waktu";
@@ -165,7 +165,6 @@ class CBTEngine {
       return;
     }
 
-    // Menggunakan Sistem Countdown Timer
     const totalSeconds = parseInt(durationLimit, 10) * 60;
     let remainingTime = localStorage.getItem(this.timerKey);
 
@@ -198,12 +197,10 @@ class CBTEngine {
   }
 
   stopTimer() {
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-    }
+    if (this.timerInterval) clearInterval(this.timerInterval);
   }
 
-  // --- LOGIC RENDER SOAL & NAVIGASI ---
+  // --- LOGIC RENDER SOAL & OPTIONS ---
   renderCurrentQuestion() {
     if (this.questions.length === 0) return;
 
@@ -214,8 +211,6 @@ class CBTEngine {
     const optsContainer = document.getElementById("cbt-options-container");
 
     if (qNumberEl) qNumberEl.innerText = `Soal No. ${this.currentIndex + 1} dari ${this.questions.length}`;
-    
-    // Render teks pertanyaan menggunakan innerHTML (Support HTML Formatting)
     if (qTextEl) qTextEl.innerHTML = q.pertanyaan;
 
     const hasAnswered = this.isQuestionAnswered(q.id);
@@ -233,16 +228,38 @@ class CBTEngine {
       }
     }
 
-    // Penanganan opsi jawaban: Gunakan opsi spesifik soal (q.options) jika ada, atau opsi global (this.options)
     const availableOptions = (q.options && Array.isArray(q.options) && q.options.length > 0) ? q.options : this.options;
+    
+    // DETEKSI TIPE SOAL: Standard / Single Choice vs Forced-Choice Ipsative
+    const isForcedChoice = q.type === "forced_choice" || q.type === "ipsative";
 
-    // Render Pilihan Jawaban
+    if (isForcedChoice) {
+      this.renderForcedChoiceOptions(optsContainer, q, availableOptions, selectedVal);
+    } else {
+      this.renderStandardOptions(optsContainer, q, availableOptions, selectedVal, hasAnswered);
+    }
+
+    // Navigasi Prev/Next Status
+    const btnPrev = document.getElementById("cbt-btn-prev");
+    const btnNext = document.getElementById("cbt-btn-next");
+
+    if (btnPrev) {
+      btnPrev.style.visibility = this.currentIndex === 0 ? "hidden" : "visible";
+      btnPrev.innerHTML = "← Sebelumnya";
+    }
+    if (btnNext) {
+      btnNext.innerHTML = this.currentIndex === this.questions.length - 1 ? "Selesai →" : "Selanjutnya →";
+    }
+
+    this.renderNavGrid();
+  }
+
+  // --- RENDERER A: Standard / Single Choice Options ---
+  renderStandardOptions(container, q, options, selectedVal, hasAnswered) {
     let optsHtml = "";
-    availableOptions.forEach(opt => {
+    options.forEach(opt => {
       const isChecked = (hasAnswered && String(selectedVal) === String(opt.value)) ? "checked" : "";
       const bgActive = isChecked ? "background-color: #eff6ff; border-color: var(--primary-color, #2563eb);" : "";
-
-      // Safe parameter passing untuk string atau angka
       const safeValArg = typeof opt.value === 'string' ? `'${opt.value.replace(/'/g, "\\'")}'` : opt.value;
 
       optsHtml += `
@@ -252,23 +269,96 @@ class CBTEngine {
         </label>
       `;
     });
-    if (optsContainer) optsContainer.innerHTML = optsHtml;
+    if (container) container.innerHTML = optsHtml;
+  }
 
-    // Update Status Tombol Prev/Next
-    const btnPrev = document.getElementById("cbt-btn-prev");
-    const btnNext = document.getElementById("cbt-btn-next");
+  // --- RENDERER B: Forced-Choice Ipsative (Most vs Least) ---
+  renderForcedChoiceOptions(container, q, options, selectedVal) {
+    const currentMost = (selectedVal && typeof selectedVal === "object") ? selectedVal.most : null;
+    const currentLeast = (selectedVal && typeof selectedVal === "object") ? selectedVal.least : null;
 
-    if (btnPrev) {
-      btnPrev.style.visibility = this.currentIndex === 0 ? "hidden" : "visible";
-      btnPrev.innerHTML = "← Sebelumnya";
+    let tableHtml = `
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+              <th style="padding: 10px; text-align: left; color: #1e293b;">Pilihan Pernyataan</th>
+              <th style="padding: 10px; text-align: center; width: 130px; color: #10b981;">Paling Efektif<br><small style="font-weight: 400; color: #64748b;">(+2 Poin)</small></th>
+              <th style="padding: 10px; text-align: center; width: 130px; color: #ef4444;">Paling Tidak Efektif<br><small style="font-weight: 400; color: #64748b;">(-1 Poin)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+    `;
+
+    options.forEach(opt => {
+      const isMostChecked = String(currentMost) === String(opt.value) ? "checked" : "";
+      const isLeastChecked = String(currentLeast) === String(opt.value) ? "checked" : "";
+      const safeValArg = typeof opt.value === 'string' ? `'${opt.value.replace(/'/g, "\\'")}'` : opt.value;
+
+      tableHtml += `
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 12px 10px; color: #1e293b; font-weight: 500;">${opt.label}</td>
+          <td style="padding: 12px 10px; text-align: center; background-color: ${isMostChecked ? '#ecfdf5' : 'transparent'};">
+            <input type="radio" name="fc_most_${q.id}" value="${opt.value}" ${isMostChecked} 
+              style="accent-color: #10b981; transform: scale(1.25); cursor: pointer;" 
+              onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'most', ${safeValArg})">
+          </td>
+          <td style="padding: 12px 10px; text-align: center; background-color: ${isLeastChecked ? '#fef2f2' : 'transparent'};">
+            <input type="radio" name="fc_least_${q.id}" value="${opt.value}" ${isLeastChecked} 
+              style="accent-color: #ef4444; transform: scale(1.25); cursor: pointer;" 
+              onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'least', ${safeValArg})">
+          </td>
+        </tr>
+      `;
+    });
+
+    tableHtml += `
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size: 0.8rem; color: #64748b; margin-top: 10px; font-style: italic;">
+        *Catatan: Opsi yang tidak dipilih otomatis menjadi Pilihan Netral (0 Poin). Pernyataan yang sama tidak bisa dipilih sebagai Most dan Least sekaligus.
+      </div>
+    `;
+
+    if (container) container.innerHTML = tableHtml;
+  }
+
+  // --- LOGIC PENYIMPANAN JAWABAN ---
+  saveAnswer(questionId, value) {
+    this.answers[String(questionId)] = value;
+    localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
+    this.renderCurrentQuestion();
+  }
+
+  /**
+   * Khusus penanganan input Forced-Choice Most/Least dengan Guard Validation
+   */
+  saveForcedChoiceAnswer(questionId, targetType, value) {
+    const qKey = String(questionId);
+    let currentAns = this.answers[qKey];
+
+    if (!currentAns || typeof currentAns !== "object") {
+      currentAns = { most: null, least: null };
     }
-    
-    if (btnNext) {
-      btnNext.innerHTML = this.currentIndex === this.questions.length - 1 ? "Selesai →" : "Selanjutnya →";
+
+    if (targetType === "most") {
+      currentAns.most = value;
+      // Guard: Jika opsi yang sama sudah dipilih di least, batalkan least
+      if (String(currentAns.least) === String(value)) {
+        currentAns.least = null;
+      }
+    } else if (targetType === "least") {
+      currentAns.least = value;
+      // Guard: Jika opsi yang sama sudah dipilih di most, batalkan most
+      if (String(currentAns.most) === String(value)) {
+        currentAns.most = null;
+      }
     }
 
-    // Render Ulang Sidebar Grid Nomor Soal
-    this.renderNavGrid();
+    this.answers[qKey] = currentAns;
+    localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
+    this.renderCurrentQuestion();
   }
 
   renderNavGrid() {
@@ -294,12 +384,6 @@ class CBTEngine {
     });
 
     gridContainer.innerHTML = gridHtml;
-  }
-
-  saveAnswer(questionId, value) {
-    this.answers[String(questionId)] = value;
-    localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
-    this.renderCurrentQuestion();
   }
 
   jumpToQuestion(index) {
@@ -335,7 +419,7 @@ class CBTEngine {
 
     let confirmMsg = `Anda telah menjawab ${answeredCount} dari ${totalCount} soal. Apakah Anda yakin ingin mengirimkan jawaban?`;
     if (answeredCount < totalCount) {
-      confirmMsg = `Masih ada ${totalCount - answeredCount} soal yang belum dijawab. Yakin ingin langsung mengirimkan jawaban sekarang?`;
+      confirmMsg = `Masih ada ${totalCount - answeredCount} soal yang belum dijawab lengkap. Yakin ingin langsung mengirimkan jawaban sekarang?`;
     }
 
     if (confirm(confirmMsg)) {
@@ -353,20 +437,16 @@ class CBTEngine {
   submitExam() {
     this.stopTimer();
     
-    // Simpan data jawaban akhir ke SessionStorage untuk dibaca oleh result.html
     sessionStorage.setItem(`pats_answers_${this.testCode}`, JSON.stringify(this.answers));
 
-    // Tandai status selesai pada PATS_AUTH dengan menyertakan kode modul & nama
     if (typeof PATS_AUTH !== "undefined") {
       const currentUserName = this.userSession ? this.userSession.nama_lengkap : "";
       PATS_AUTH.markAsCompleted(this.testCode, currentUserName);
     }
 
-    // Clear data sementara di localStorage
     localStorage.removeItem(this.storageKey);
     localStorage.removeItem(this.timerKey);
 
-    // Jalankan callback penyerahan
     this.onSubmit(this.answers);
   }
 }
