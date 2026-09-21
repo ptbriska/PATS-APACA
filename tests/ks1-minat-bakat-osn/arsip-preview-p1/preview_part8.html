@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Part 8: Modul EKO (OSN Aptitude)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #f8fafc; color: #0f172a; padding: 30px 16px; }
+    .container { max-width: 820px; margin: 0 auto; }
+    .header-bar { background: linear-gradient(135deg, #0d9488 0%, #115e59 100%); color: #ffffff; padding: 24px 28px; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
+    .header-bar h1 { font-size: 1.35rem; color: #2dd4bf; margin-bottom: 6px; }
+    .header-bar p { font-size: 0.88rem; color: #99f6e4; line-height: 1.5; }
+    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .meta-tag { display: inline-block; background: #ccfbf1; color: #0f766e; border: 1px solid #99f6e4; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; text-transform: uppercase; }
+    .question-prompt { font-size: 0.98rem; font-weight: 600; line-height: 1.6; color: #1e293b; margin-bottom: 20px; text-align: justify; }
+    .stimulus-container { background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 18px; display: flex; justify-content: center; align-items: center; margin-bottom: 22px; }
+    .stimulus-container svg { max-width: 100%; height: auto; }
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .options-grid { grid-template-columns: 1fr; } }
+    .option-btn { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 500; cursor: default; }
+    .option-code { font-weight: 800; background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.82rem; flex-shrink: 0; }
+    .correct-answer { background: #dcfce7; color: #166534; font-size: 0.8rem; padding: 6px 12px; border-radius: 6px; font-weight: 700; margin-top: 14px; display: inline-block; border: 1px solid #bbf7d0; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <h1>🗺️ Quality Control — Preview Part 8: Modul EKO</h1>
+      <p>Modul Spasial-Ekologis & Relasi Wilayah (4 Soal). Murni menguji <b>karakter dan pola pikir geografer</b> (Zonasi Jarak/Transportasi, Sentralitas Aksesibilitas Jaringan, Difusi Keruangan Berhambatan, dan Analisis Kesesuaian Lahan) tanpa hafalan istilah Geografi.</p>
+    </div>
+    <div id="questions-wrapper"></div>
+  </div>
+
+  <script>
+    const dataPart8 = {
+      "questions": [
+        {
+          "id": 29,
+          "module_code": "EKO",
+          "prompt": "Sebuah Pusat Kota (Node C) menyuplai kebutuhan 3 jenis barang dengan karakteristik berbeda: Barang K1 (sangat berat & biaya angkut sangat mahal), Barang K2 (bobot sedang), dan Barang K3 (sangat ringan & biaya angkut murah). Untuk meminimalkan total biaya transportasi harian dalam ruang wilayah, bagaimanakah susunan zonasi lokasi produksi barang yang paling efisien dari titik pusat kota (Zona I: 0-5 km, Zona II: 5-15 km, Zona III: >15 km)?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 180' width='100%' height='180'><rect width='500' height='180' fill='#ffffff'/><g transform='translate(130,90)'><circle cx='0' cy='0' r='75' fill='#f1f5f9' stroke='#94a3b8' stroke-width='2' stroke-dasharray='4'/><circle cx='0' cy='0' r='50' fill='#e2e8f0' stroke='#64748b' stroke-width='2'/><circle cx='0' cy='0' r='25' fill='#cbd5e1' stroke='#475569' stroke-width='2'/><circle cx='0' cy='0' r='8' fill='#ef4444'/><text x='0' y='4' font-size='10' font-weight='bold' fill='#ffffff' text-anchor='middle'>C</text><text x='0' y='-12' font-size='9' font-weight='bold' fill='#475569' text-anchor='middle'>Zona I</text><text x='0' y='-35' font-size='9' font-weight='bold' fill='#475569' text-anchor='middle'>Zona II</text><text x='0' y='-60' font-size='9' font-weight='bold' fill='#475569' text-anchor='middle'>Zona III</text></g><g transform='translate(260,30)'><rect x='0' y='0' width='210' height='120' rx='8' fill='#f8fafc' stroke='#cbd5e1' stroke-width='1.5'/><text x='15' y='25' font-size='11' font-weight='bold' fill='#1e293b'>Profil Barang:</text><text x='15' y='48' font-size='10' fill='#334155'>• Barang K1: Biaya angkut Sangat Tinggi</text><text x='15' y='68' font-size='10' fill='#334155'>• Barang K2: Biaya angkut Sedang</text><text x='15' y='88' font-size='10' fill='#334155'>• Barang K3: Biaya angkut Rendah</text><text x='15' y='110' font-size='10' font-weight='bold' fill='#ef4444'>Tujuan: Minimasi Biaya Angkut</text></g></svg>",
+          "options": [
+            { "code": "A", "label": "K1 di Zona I, K2 di Zona II, K3 di Zona III" },
+            { "code": "B", "label": "K3 di Zona I, K2 di Zona II, K1 di Zona III" },
+            { "code": "C", "label": "K1 di Zona III, K2 di Zona I, K3 di Zona II" },
+            { "code": "D", "label": "Seluruh barang ditempatkan di Zona III agar pusat kota tidak padat" }
+          ],
+          "correct_answer": "A"
+        },
+        {
+          "id": 30,
+          "module_code": "EKO",
+          "prompt": "Peta jaringan di bawah memperlihatkan 5 titik wilayah pemukiman (V, W, X, Y, Z) yang dihubungkan oleh rute jalan. Panjang setiap ruas jalan antartitik terdekat adalah sama (1 km). Sebuah Pos Darurat Utama akan dibangun di salah satu titik agar rata-rata jarak jangkauan ke SELURUH wilayah lainnya merupakan yang PALING PENDEK. Di manakah lokasi titik paling strategis tersebut?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 160' width='100%' height='160'><rect width='480' height='160' fill='#ffffff'/><line x1='100' y1='80' x2='200' y2='80' stroke='#94a3b8' stroke-width='4'/><line x1='200' y1='80' x2='300' y2='80' stroke='#94a3b8' stroke-width='4'/><line x1='300' y1='80' x2='400' y2='80' stroke='#94a3b8' stroke-width='4'/><line x1='200' y1='80' x2='200' y2='20' stroke='#94a3b8' stroke-width='4'/><text x='150' y='75' font-size='10' font-weight='bold' fill='#64748b' text-anchor='middle'>1 km</text><text x='250' y='75' font-size='10' font-weight='bold' fill='#64748b' text-anchor='middle'>1 km</text><text x='350' y='75' font-size='10' font-weight='bold' fill='#64748b' text-anchor='middle'>1 km</text><text x='210' y='50' font-size='10' font-weight='bold' fill='#64748b'>1 km</text><circle cx='100' cy='80' r='20' fill='#3b82f6'/><text x='100' y='85' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='middle'>V</text><circle cx='200' cy='20' r='20' fill='#3b82f6'/><text x='200' y='25' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='middle'>W</text><circle cx='200' cy='80' r='22' fill='#ef4444'/><text x='200' y='85' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>X</text><circle cx='300' cy='80' r='20' fill='#3b82f6'/><text x='300' y='85' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='middle'>Y</text><circle cx='400' cy='80' r='20' fill='#3b82f6'/><text x='400' y='85' font-size='13' font-weight='bold' fill='#ffffff' text-anchor='middle'>Z</text></svg>",
+          "options": [
+            { "code": "A", "label": "Titik V" },
+            { "code": "B", "label": "Titik X" },
+            { "code": "C", "label": "Titik Y" },
+            { "code": "D", "label": "Titik Z" }
+          ],
+          "correct_answer": "B"
+        },
+        {
+          "id": 31,
+          "module_code": "EKO",
+          "prompt": "Sebuah fenomena 'P' menyebar secara gelombang radial dari Titik Pusat S ke wilayah sekitarnya dengan kecepatan merambat yang konstan di lahan datar. Namun, di sebelah timur terdapat sebuah 'Sungai Besar B' yang berfungsi sebagai hambatan spasial (menghambat kecepatan penyebaran menjadi setengahnya). Manakah pola garis jangkauan penyebaran (isokron) yang paling tepat menggambarkan kondisi tersebut pada waktu tertentu?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 160' width='100%' height='160'><rect width='450' height='160' fill='#ffffff'/><path d='M 280,0 Q 270,80 290,160' fill='none' stroke='#0284c7' stroke-width='12' opacity='0.4'/><text x='310' y='20' font-size='11' font-weight='bold' fill='#0284c7'>Hambatan Sungai B</text><circle cx='150' cy='80' r='8' fill='#ef4444'/><text x='150' y='105' font-size='12' font-weight='bold' fill='#1e293b' text-anchor='middle'>Pusat S</text><path d='M 150,10 A 70,70 0 0,1 270,80 Q 250,80 220,80 A 70,70 0 0,1 150,150 A 70,70 0 0,1 80,80 A 70,70 0 0,1 150,10 Z' fill='none' stroke='#2563eb' stroke-width='3' stroke-dasharray='4'/><text x='150' y='40' font-size='10' font-weight='bold' fill='#2563eb' text-anchor='middle'>Garis Jangkauan</text></svg>",
+          "options": [
+            { "code": "A", "label": "Garis jangkauan tetap berbentuk lingkaran sempurna tanpa terpengaruh sungai." },
+            { "code": "B", "label": "Garis jangkauan cembung menonjol lebih jauh ke arah timur menembus sungai." },
+            { "code": "C", "label": "Garis jangkauan lekuk tertahan di area timur (dibelakang sungai) karena laju melambat." },
+            { "code": "D", "label": "Penyebaran fenomena terhenti total tepat di tepi barat sungai dan tidak bisa menyeberang sama sekali." }
+          ],
+          "correct_answer": "C"
+        },
+        {
+          "id": 32,
+          "module_code": "EKO",
+          "prompt": "Sebuah analisis tata ruang menilai 4 alternatif zona lahan (L1, L2, L3, L4) berdasarkan dua variabel lingkungan: 'Kemiringan Lahan' (kelerengan) dan 'Jarak ke Sumber Air Bersih'. Kriteria kawasan pemukiman yang ideal dan aman adalah: lahan serendah mungkin tingkat kemiringannya (mencegah risiko longsor) dan sejarak mungkin dekat dengan sumber air. Berdasarkan data tabel, zona manakah yang paling direkomendasikan?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 160' width='100%' height='160'><rect width='480' height='160' fill='#ffffff'/><rect x='40' y='15' width='400' height='25' fill='#1e293b'/><text x='80' y='32' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='middle'>ZONA</text><text x='200' y='32' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='middle'>KEMIRINGAN LAHAN</text><text x='350' y='32' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='middle'>JARAK KE AIR</text><rect x='40' y='40' width='400' height='25' fill='#f8fafc' stroke='#e2e8f0'/><text x='80' y='57' font-size='12' font-weight='bold' fill='#0f172a' text-anchor='middle'>L1</text><text x='200' y='57' font-size='12' fill='#ef4444' text-anchor='middle'>Sangat Curam (35°)</text><text x='350' y='57' font-size='12' fill='#10b981' text-anchor='middle'>Sangat Dekat (0,2 km)</text><rect x='40' y='65' width='400' height='25' fill='#ffffff' stroke='#e2e8f0'/><text x='80' y='82' font-size='12' font-weight='bold' fill='#0f172a' text-anchor='middle'>L2</text><text x='200' y='82' font-size='12' fill='#10b981' font-weight='bold' text-anchor='middle'>Landai (4°)</text><text x='350' y='82' font-size='12' fill='#10b981' font-weight='bold' text-anchor='middle'>Dekat (0,5 km)</text><rect x='40' y='90' width='400' height='25' fill='#f8fafc' stroke='#e2e8f0'/><text x='80' y='107' font-size='12' font-weight='bold' fill='#0f172a' text-anchor='middle'>L3</text><text x='200' y='107' font-size='12' fill='#10b981' text-anchor='middle'>Datar / Landai (2°)</text><text x='350' y='107' font-size='12' fill='#ef4444' text-anchor='middle'>Sangat Jauh (12 km)</text><rect x='40' y='115' width='400' height='25' fill='#ffffff' stroke='#e2e8f0'/><text x='80' y='132' font-size='12' font-weight='bold' fill='#0f172a' text-anchor='middle'>L4</text><text x='200' y='132' font-size='12' fill='#ef4444' text-anchor='middle'>Curam (28°)</text><text x='350' y='132' font-size='12' fill='#ef4444' text-anchor='middle'>Jauh (8 km)</text></svg>",
+          "options": [
+            { "code": "A", "label": "Zona L1" },
+            { "code": "B", "label": "Zona L2" },
+            { "code": "C", "label": "Zona L3" },
+            { "code": "D", "label": "Zona L4" }
+          ],
+          "correct_answer": "B"
+        }
+      ]
+    };
+
+    // Render Soal ke HTML secara otomatis
+    document.addEventListener("DOMContentLoaded", () => {
+      const wrapper = document.getElementById("questions-wrapper");
+      if (!wrapper) return;
+
+      dataPart8.questions.forEach(q => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const optsHTML = q.options.map(opt => `<div class="option-btn"><span class="option-code">${opt.code}</span><span>${opt.label}</span></div>`).join("");
+        card.innerHTML = `
+          <span class="meta-tag">Soal ${q.id} — [${q.module_code}]</span>
+          <div class="question-prompt">${q.prompt}</div>
+          <div class="stimulus-container">${q.visual_stimulus}</div>
+          <div class="options-grid">${optsHTML}</div>
+          <div class="correct-answer">Kunci Jawaban: ${q.correct_answer}</div>
+        `;
+        wrapper.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
