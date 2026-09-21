@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ujian Pilar II - OTM Test</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; }
+    
+    .cbt-header {
+      background: #ffffff; border-bottom: 1px solid #e2e8f0;
+      padding: 16px 0; position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    
+    .test-info { display: flex; justify-content: space-between; align-items: center; }
+    .timer { font-size: 1.25rem; font-weight: 700; color: #dc2626; background: #fee2e2; padding: 6px 16px; border-radius: 8px; }
+
+    .question-card {
+      background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+      padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    
+    .q-number { font-size: 0.85rem; font-weight: 700; color: #6366f1; text-transform: uppercase; margin-bottom: 8px; display: block; }
+    .q-text { font-size: 1.05rem; font-weight: 600; color: #1e293b; margin-bottom: 20px; line-height: 1.5; }
+
+    .likert-group {
+      display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between;
+    }
+
+    .likert-option {
+      flex: 1; min-width: 120px; text-align: center;
+      position: relative;
+    }
+
+    .likert-option input[type="radio"] {
+      position: absolute; opacity: 0; cursor: pointer;
+    }
+
+    .likert-label {
+      display: block; padding: 12px; background: #f1f5f9;
+      border: 2px solid #cbd5e1; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 600; color: #475569;
+      cursor: pointer; transition: all 0.2s ease;
+    }
+
+    .likert-option input[type="radio"]:checked + .likert-label {
+      background: #e0e7ff; border-color: #4f46e5; color: #4f46e5;
+    }
+
+    .likert-option input[type="radio"]:hover + .likert-label {
+      background: #e2e8f0;
+    }
+
+    .progress-container {
+      background: #e2e8f0; border-radius: 8px; height: 10px; width: 100%; margin-top: 10px; overflow: hidden;
+    }
+    .progress-bar {
+      background: #4f46e5; height: 100%; width: 0%; transition: width 0.3s ease;
+    }
+
+    .btn-submit {
+      width: 100%; padding: 16px; font-size: 1.1rem; border-radius: 8px;
+      margin-top: 10px; margin-bottom: 40px;
+    }
+    .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <header class="cbt-header">
+    <div class="container test-info">
+      <div>
+        <h2 style="margin:0; font-size:1.2rem;">Pilar II: OSN Interest Test</h2>
+        <div style="font-size:0.85rem; color:#64748b;">Kuesioner Minat Subjektif & Learning Fit</div>
+      </div>
+      <div class="timer" id="timer-display">07:00</div>
+    </div>
+    <div class="container">
+      <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+      <div style="text-align:right; font-size:0.8rem; color:#64748b; margin-top:4px;" id="progress-text">0 / 30 Terjawab</div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 30px;">
+    <form id="form-pilar2">
+      <div id="questions-container">
+        <!-- Render Soal via JS -->
+      </div>
+      
+      <button type="submit" id="btn-submit" class="btn-primary btn-submit" disabled>Simpan & Lanjut ke Pilar III</button>
+    </form>
+  </main>
+
+  <script src="../../assets/js/auth.js"></script>
+  <script src="scoring2.js"></script>
+  <script>
+    let answers = {};
+    let totalQuestions = 30;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Verifikasi Sesi
+      const user = PATS_AUTH.getSession();
+      if (!user) {
+        window.location.href = "index.html";
+        return;
+      }
+
+      // 2. Load JSON Soal
+      try {
+        const response = await fetch("soal2.json");
+        const data = await response.json();
+        renderQuestions(data.questions, data.likert_scale);
+        startTimer(data.test_info.durasi_estimasi_menit * 60);
+      } catch (err) {
+        alert("Gagal memuat kuesioner. Periksa koneksi Anda.");
+      }
+    });
+
+    function renderQuestions(questions, scale) {
+      const container = document.getElementById("questions-container");
+      
+      questions.forEach((q) => {
+        const card = document.createElement("div");
+        card.className = "question-card";
+        
+        // Likert Options HTML
+        let optionsHtml = '';
+        scale.forEach(opt => {
+          optionsHtml += `
+            <div class="likert-option">
+              <input type="radio" name="q_${q.id}" id="q_${q.id}_opt_${opt.value}" value="${opt.value}" onchange="handleSelect(${q.id}, ${opt.value})">
+              <label class="likert-label" for="q_${q.id}_opt_${opt.value}">${opt.label}</label>
+            </div>
+          `;
+        });
+
+        card.innerHTML = `
+          <span class="q-number">Pernyataan ${q.id}</span>
+          <div class="q-text">${q.pernyataan}</div>
+          <div class="likert-group">
+            ${optionsHtml}
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+    }
+
+    function handleSelect(qId, val) {
+      answers[qId] = val;
+      
+      // Update Progress
+      const answeredCount = Object.keys(answers).length;
+      const progressPct = (answeredCount / totalQuestions) * 100;
+      
+      document.getElementById("progress-bar").style.width = `${progressPct}%`;
+      document.getElementById("progress-text").innerText = `${answeredCount} / ${totalQuestions} Terjawab`;
+
+      // Enable Submit if all answered
+      if (answeredCount === totalQuestions) {
+        document.getElementById("btn-submit").disabled = false;
+      }
+    }
+
+    function startTimer(duration) {
+      let timer = duration;
+      const display = document.getElementById("timer-display");
+      
+      const interval = setInterval(() => {
+        let minutes = parseInt(timer / 60, 10);
+        let seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        
+        display.textContent = minutes + ":" + seconds;
+        
+        if (--timer < 0) {
+          clearInterval(interval);
+          alert("Waktu estimasi habis! Sistem akan menyimpan jawaban Anda secara otomatis.");
+          submitPilar2();
+        }
+      }, 1000);
+    }
+
+    // Submit Action
+    document.getElementById("form-pilar2").addEventListener("submit", (e) => {
+      e.preventDefault();
+      submitPilar2();
+    });
+
+    function submitPilar2() {
+      // 1. Jalankan scoring
+      const evaluation = Pilar2_Scoring.evaluate(answers);
+      
+      // 2. Simpan ke sessionStorage
+      sessionStorage.setItem("pats_pilar2_results", JSON.stringify(evaluation));
+      
+      // 3. Arahkan ke Pilar III atau Transisi
+      alert("Kuesioner Pilar II berhasil disimpan!");
+      window.location.href = "cbt3.html"; // Asumsi langsung lanjut ke Pilar III
+    }
+  </script>
+</body>
+</html>
