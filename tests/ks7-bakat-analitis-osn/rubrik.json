@@ -2,43 +2,43 @@
   "kode_tes": "KS7",
   "nama_tes": "OSN Screen Test (OST) - Pre-Screening Kelayakan Mental & Karakter OSN",
   "informasi_metodologis": {
-    "tujuan": "Skrining awal mandiri dan hemat biaya untuk menguji Minimum Viable Persona (MVP) karakter petarung OSN sebelum melangkah ke tes diagnostik presisi tinggi (OTM Test)[cite: 11].",
-    "skala_parameter": "15 Parameter Karakter General (P01 - P15) diukur melalui 30 butir soal silang[cite: 11].",
-    "formula_indeks": "SOST = (Total Akumulasi Skor 15 Parameter / 75) * 100[cite: 11]"
+    "tujuan": "Skrining awal mandiri dan hemat biaya untuk menguji Minimum Viable Persona (MVP) karakter petarung OSN sebelum melangkah ke tes diagnostik presisi tinggi (OTM Test).",
+    "skala_parameter": "15 Parameter Karakter General (P01 - P15) diukur melalui 30 butir soal silang.",
+    "formula_indeks": "SOST = (Total Akumulasi Skor 15 Parameter / 75) * 100"
   },
   "pilar_karakter_osn": {
     "Pilar_1_Ketahanan_Emosional": {
       "nama_pilar": "Pilar Ketahanan Emosional & Mental (Emotio-Resilience)",
       "parameter_terkait": ["P01", "P02", "P12", "P15"],
-      "deskripsi": "Mengukur kapasitas mental siswa dalam mengelola stres, kebingungan materi, tekanan waktu, serta daya bangkit saat menghadapi soal sulit tanpa mengalami kelumpuhan emosional (panic attack)[cite: 11]."
+      "deskripsi": "Mengukur kapasitas mental siswa dalam mengelola stres, kebingungan materi, tekanan waktu, serta daya bangkit saat menghadapi soal sulit tanpa mengalami kelumpuhan emosional (panic attack)."
     },
     "Pilar_2_Inisiatif_Kedisiplinan": {
       "nama_pilar": "Pilar Inisiatif & Kedisiplinan Mandiri (Autonomous Drive)",
       "parameter_terkait": ["P04", "P05", "P06", "P11", "P14"],
-      "deskripsi": "Menilai dorongan internal untuk unggul secara kompetitif, kemandirian belajar tanpa disuruh, daya tahan membaca modul tebal, serta komitmen mengorbankan waktu luang demi latihan rutin[cite: 11]."
+      "deskripsi": "Menilai dorongan internal untuk unggul secara kompetitif, kemandirian belajar tanpa disuruh, daya tahan membaca modul tebal, serta komitmen mengorbankan waktu luang demi latihan rutin."
     },
     "Pilar_3_Kapasitas_Kognitif_Adaptasi": {
       "nama_pilar": "Pilar Kapasitas Kognitif & Adaptasi (Cognitive Agility)",
       "parameter_terkait": ["P03", "P07", "P08", "P09", "P10", "P13"],
-      "deskripsi": "Mengukur ketelitian prosedural, ketertarikan pada konsep abstrak dan fenomena nyata, kepekaan sebab-akibat, kecepatan menyerap materi baru, serta keterbukaan dibimbing pembina (coachability)[cite: 11]."
+      "deskripsi": "Mengukur ketelitian prosedural, ketertarikan pada konsep abstrak dan fenomena nyata, kepekaan sebab-akibat, kecepatan menyerap materi baru, serta keterbukaan dibimbing pembina (coachability)."
     }
   },
   "rubrik_parameter": {
-    "P01": { "kode": "P01", "nama": "Kesabaran Mendapat Tekanan", "deskripsi": "Ketahanan menghadapi kebingungan materi dan kebuntuan logika tanpa memicu frustrasi emosional[cite: 11]." },
-    "P02": { "kode": "P02", "nama": "Sikap Pantang Menyerah (Growth Mindset)", "deskripsi": "Keyakinan mendalam bahwa kapasitas nalar sains dapat terus ditingkatkan melalui gemblengan latihan[cite: 11]." },
-    "P03": { "kode": "P03", "nama": "Ketelitian (Procedural Rigor)", "deskripsi": "Kedisiplinan memeriksa langkah pengerjaan dan asumsi perhitungan hingga detail terkecil[cite: 11]." },
-    "P04": { "kode": "P04", "nama": "Suka Kompetitif (Competitive Drive)", "deskripsi": "Dorongan internal untuk menguji batas kemampuan diri dan unggul di atas standar rata-rata populasi[cite: 11]." },
-    "P05": { "kode": "P05", "nama": "Kemandirian Belajar (Autonomous)", "deskripsi": "Inisiatif pribadi mencari draf materi dan modul tingkat lanjut tanpa perlu dorongan eksternal[cite: 11]." },
-    "P06": { "kode": "P06", "nama": "Sanggup & Konsisten Latihan Rutin", "deskripsi": "Komitmen waktu yang tidak tergoyahkan dalam mengalokasikan jam belajar sains harian secara konsisten[cite: 11]." },
-    "P07": { "kode": "P07", "nama": "Suka Tantangan Abstrak", "deskripsi": "Gairah kognitif dalam memecahkan teka-teki logika dan konsep teoritis tanpa wujud fisik langsung[cite: 11]." },
-    "P08": { "kode": "P08", "nama": "Suka Eksplorasi Fenomena Nyata", "deskripsi": "Antusiasme mengamati, mempertanyakan, dan menganalisis gejala alam serta sosial berbasis sains[cite: 11]." },
-    "P09": { "kode": "P09", "nama": "Rasa Ingin Tahu Sebab-Akibat", "deskripsi": "Dorongan mengejar alasan mendalam (why & how) serta asal-usul penurunan rumus[cite: 11]." },
-    "P10": { "kode": "P10", "nama": "Kecepatan Belajar Materi Baru", "deskripsi": "Kelenturan sirkuit kognitif dalam menyerap dan mengadaptasi konsep asing yang sulit dalam waktu singkat[cite: 11]." },
-    "P11": { "kode": "P11", "nama": "Kemauan Membaca Modul Tebal", "deskripsi": "Daya tahan membaca literatur teknis, teks perguruan tinggi, dan modul tebal beratus halaman[cite: 11]." },
-    "P12": { "kode": "P12", "nama": "Kemauan Mencari Solusi Soal Sulit", "deskripsi": "Kegigihan bertahan pada 1 nomor soal rumit hingga berhari-hari sampai menemukan solusinya[cite: 11]." },
-    "P13": { "kode": "P13", "nama": "Kemampuan Dibimbing (Coachability)", "deskripsi": "Keterbukaan mental menerima kritik tajam, koreksi alur pengerjaan, dan arahan mentor[cite: 11]." },
-    "P14": { "kode": "P14", "nama": "Manajemen Waktu Belajar Extra", "deskripsi": "Kedisiplinan mengorbankan waktu hiburan dan bermain demi alokasi porsi latihan olimpiade[cite: 11]." },
-    "P15": { "kode": "P15", "nama": "Kontrol Diri (Panic Attack Management)", "deskripsi": "Kemampuan menjaga ketenangan emosi dan berpikir jernih di bawah ancaman batas waktu mepet[cite: 11]." }
+    "P01": { "kode": "P01", "nama": "Kesabaran Mendapat Tekanan", "deskripsi": "Ketahanan menghadapi kebingungan materi dan kebuntuan logika tanpa memicu frustrasi emosional." },
+    "P02": { "kode": "P02", "nama": "Sikap Pantang Menyerah (Growth Mindset)", "deskripsi": "Keyakinan mendalam bahwa kapasitas nalar sains dapat terus ditingkatkan melalui gemblengan latihan." },
+    "P03": { "kode": "P03", "nama": "Ketelitian (Procedural Rigor)", "deskripsi": "Kedisiplinan memeriksa langkah pengerjaan dan asumsi perhitungan hingga detail terkecil." },
+    "P04": { "kode": "P04", "nama": "Suka Kompetitif (Competitive Drive)", "deskripsi": "Dorongan internal untuk menguji batas kemampuan diri dan unggul di atas standar rata-rata populasi." },
+    "P05": { "kode": "P05", "nama": "Kemandirian Belajar (Autonomous)", "deskripsi": "Inisiatif pribadi mencari draf materi dan modul tingkat lanjut tanpa perlu dorongan eksternal." },
+    "P06": { "kode": "P06", "nama": "Sanggup & Konsisten Latihan Rutin", "deskripsi": "Komitmen waktu yang tidak tergoyahkan dalam mengalokasikan jam belajar sains harian secara konsisten." },
+    "P07": { "kode": "P07", "nama": "Suka Tantangan Abstrak", "deskripsi": "Gairah kognitif dalam memecahkan teka-teki logika dan konsep teoritis tanpa wujud fisik langsung." },
+    "P08": { "kode": "P08", "nama": "Suka Eksplorasi Fenomena Nyata", "deskripsi": "Antusiasme mengamati, mempertanyakan, dan menganalisis gejala alam serta sosial berbasis sains." },
+    "P09": { "kode": "P09", "nama": "Rasa Ingin Tahu Sebab-Akibat", "deskripsi": "Dorongan mengejar alasan mendalam (why & how) serta asal-usul penurunan rumus." },
+    "P10": { "kode": "P10", "nama": "Kecepatan Belajar Materi Baru", "deskripsi": "Kelenturan sirkuit kognitif dalam menyerap dan mengadaptasi konsep asing yang sulit dalam waktu singkat." },
+    "P11": { "kode": "P11", "nama": "Kemauan Membaca Modul Tebal", "deskripsi": "Daya tahan membaca literatur teknis, teks perguruan tinggi, dan modul tebal beratus halaman." },
+    "P12": { "kode": "P12", "nama": "Kemauan Mencari Solusi Soal Sulit", "deskripsi": "Kegigihan bertahan pada 1 nomor soal rumit hingga berhari-hari sampai menemukan solusinya." },
+    "P13": { "kode": "P13", "nama": "Kemampuan Dibimbing (Coachability)", "deskripsi": "Keterbukaan mental menerima kritik tajam, koreksi alur pengerjaan, dan arahan mentor." },
+    "P14": { "kode": "P14", "nama": "Manajemen Waktu Belajar Extra", "deskripsi": "Kedisiplinan mengorbankan waktu hiburan dan bermain demi alokasi porsi latihan olimpiade." },
+    "P15": { "kode": "P15", "nama": "Kontrol Diri (Panic Attack Management)", "deskripsi": "Kemampuan menjaga ketenangan emosi dan berpikir jernih di bawah ancaman batas waktu mepet." }
   },
   "norma_kategorisasi_global": [
     {
@@ -46,8 +46,8 @@
       "kategori_indeks": "SANGAT POTENSIAL (High OSN Fit)",
       "status_kelayakan": "RECOMMENDED FOR OTM",
       "badge_color": "emerald",
-      "deskripsi_profil": "Siswa memiliki DNA dan karakter Minimum Viable Persona (MVP) petarung OSN yang sangat pekat[cite: 11]. Memiliki daya tahan emosional tinggi, kemandirian belajar otonom, dan dahaga kompetitif yang siap ditempa dalam iklim persaingan olimpiade[cite: 11].",
-      "rekomendasi_sistem": "SANGAT DISARANKAN LANJUT OTM TEST! Siswa memiliki mentalitas pembawa medali[cite: 11]. Sangat layak mengambil tes diagnostik presisi tinggi (OTM Test) untuk menentukan 1 dari 10 bidang OSN yang paling cocok dengan bakat kognitifnya[cite: 11].",
+      "deskripsi_profil": "Siswa memiliki DNA dan karakter Minimum Viable Persona (MVP) petarung OSN yang sangat pekat. Memiliki daya tahan emosional tinggi, kemandirian belajar otonom, dan dahaga kompetitif yang siap ditempa dalam iklim persaingan olimpiade.",
+      "rekomendasi_sistem": "SANGAT DISARANKAN LANJUT OTM TEST! Siswa memiliki mentalitas pembawa medali[cite: 11]. Sangat layak mengambil tes diagnostik presisi tinggi (OTM Test) untuk menentukan 1 dari 10 bidang OSN yang paling cocok dengan bakat kognitifnya.",
       "action_type": "SHOW_OTM_CTA"
     },
     {
@@ -55,8 +55,8 @@
       "kategori_indeks": "CUKUP POTENSIAL (Conditional Fit)",
       "status_kelayakan": "OPTIONAL OTM",
       "badge_color": "amber",
-      "deskripsi_profil": "Siswa memiliki dasar karakter dan potensi yang lumayan, namun masih memiliki beberapa titik kerentanan (seperti kedisiplinan membaca modul tebal atau ketahanan saat buntu) yang membutuhkan pengawalan[cite: 11].",
-      "rekomendasi_sistem": "DISARANKAN LANJUT OTM TEST DENGAN CATATAN! Siswa memiliki modal dasar yang cukup, tetapi membutuhkan penjelas spesifik dari OTM Test untuk melihat bidang sains mana yang kognitifnya paling siap[cite: 11].",
+      "deskripsi_profil": "Siswa memiliki dasar karakter dan potensi yang lumayan, namun masih memiliki beberapa titik kerentanan (seperti kedisiplinan membaca modul tebal atau ketahanan saat buntu) yang membutuhkan pengawalan.",
+      "rekomendasi_sistem": "DISARANKAN LANJUT OTM TEST DENGAN CATATAN! Siswa memiliki modal dasar yang cukup, tetapi membutuhkan penjelas spesifik dari OTM Test untuk melihat bidang sains mana yang kognitifnya paling siap.",
       "action_type": "SHOW_OPTIONAL_CTA"
     },
     {
@@ -64,8 +64,8 @@
       "kategori_indeks": "KURANG POTENSIAL (Low OSN Fit)",
       "status_kelayakan": "NOT RECOMMENDED",
       "badge_color": "crimson",
-      "deskripsi_profil": "Profil karakter emosional, daya tahan membaca, dan ketahanan terhadap tekanan belajar saat ini belum selaras dengan beban pembinaan OSN yang sangat padat dan berat[cite: 11].",
-      "rekomendasi_sistem": "TIDAK DISARANKAN UNTUK OSN / OTM TEST! Karakter emosional dan daya tahan siswa belum sesuai untuk iklim persaingan OSN[cite: 11]. Disarankan mengarahkan siswa ke ekstrakurikuler non-kompetisi sains demi menghindarkan siswa dari stres berlebih dan menghemat biaya pendaftaran OTM/pembinaan[cite: 11].",
+      "deskripsi_profil": "Profil karakter emosional, daya tahan membaca, dan ketahanan terhadap tekanan belajar saat ini belum selaras dengan beban pembinaan OSN yang sangat padat dan berat.",
+      "rekomendasi_sistem": "TIDAK DISARANKAN UNTUK OSN / OTM TEST! Karakter emosional dan daya tahan siswa belum sesuai untuk iklim persaingan OSN. Disarankan mengarahkan siswa ke ekstrakurikuler non-kompetisi sains demi menghindarkan siswa dari stres berlebih dan menghemat biaya pendaftaran OTM/pembinaan[cite: 11].",
       "action_type": "SHOW_SAVE_BUDGET_NOTE"
     }
   ]
