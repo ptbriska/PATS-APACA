@@ -1,0 +1,458 @@
+{
+  "kode_tes": "KU6",
+  "nama_tes": "APACA Work Personality & Core Motivation Inventory (WPCM - Enneagram Model)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Work Personality & Core Motivation Inventory (WPCM-Enneagram) mengukur motivasi kerja inti, ketakutan mendasar di tempat kerja, mekanisme pertahanan emosional, serta arah perkembangan profesional berdasarkan model integrasi Enneagram kerja.",
+  "triad_centers": {
+    "Gut": {
+      "nama": "Gut / Instinctive Center (Pusat Insting & Otonomi)",
+      "tipe": [8, 9, 1],
+      "fokus": "Pengendalian batas diri, otonomi kerja, etika, serta respon terhadap konflik dan insting.",
+      "emosi_dominan": "Kemarahan / Reaksi Pembatasan (Anger / Resentment)"
+    },
+    "Heart": {
+      "nama": "Heart / Feeling Center (Pusat Perasaan & Citra Diri)",
+      "tipe": [2, 3, 4],
+      "fokus": "Pencapaian citra profesional, relasi interpersonal, dan apresiasi identitas karya.",
+      "emosi_dominan": "Kecemasan Citra / Rasa Malu (Shame / Image-Anxiety)"
+    },
+    "Head": {
+      "nama": "Head / Thinking Center (Pusat Pikiran & Keamanan)",
+      "tipe": [5, 6, 7],
+      "fokus": "Analisis data, antisipasi risiko krisis, kepastian panduan, dan eksplorasi peluang.",
+      "emosi_dominan": "Kecemasan Masa Depan / Rasa Takut (Fear / Anxiety)"
+    }
+  },
+  "tipe_detail": {
+    "1": {
+      "tipe_id": 1,
+      "julukan": "The Strict Quality Control / Quality Reformer",
+      "triad": "Gut / Instinctive Center",
+      "ringkasan_perilaku": "Individu yang sangat disiplin, memegang teguh integritas etika, berorientasi pada akurasi tinggi, dan senantiasa berusaha memperbaiki standar kualitas di lingkungannya.",
+      "core_desire": "Memastikan akurasi, etika kerja, perbaikan standar, dan kepatuhan moral tanpa kompromi.",
+      "core_fear": "Membuat kesalahan fatal, kecacatan hasil kerja, kecerobohan, serta pelanggaran etika.",
+      "kekuatan_utama": [
+        "Integritas & Etika Tinggi",
+        "Pengendali Kualitas (QC) Andal",
+        "Disiplin Prosedur Baku",
+        "Teliti & Sangat Akurat",
+        "Organisatoris yang Tertib"
+      ],
+      "kelemahan_utama": [
+        "Terlalu Kritis & Perfeksionis",
+        "Kaku terhadap Fleksibilitas",
+        "Mudah Frustrasi pada Kecerobohan",
+        "Memendam Amarah Tersembunyi"
+      ],
+      "gaya_komunikasi": "Jelas, terstruktur, korektif, berpatokan pada standar baku, dan mengutamakan fakta etis.",
+      "gaya_kepemimpinan": "Memimpin lewat keteladanan standar tinggi, menegakkan aturan yang adil, dan memastikan kepatuhan sistem.",
+      "lingkungan_ideal": "Lingkungan yang tertib, memiliki SOP jelas, mengagungkan kejujuran, dan menghargai kualitas tinggi.",
+      "pemicu_stres": "Prosedur yang acak-acakan, rekan kerja yang ceroboh, serta kompromi terhadap pelanggaran etika.",
+      "potensi_karir": [
+        "Quality Assurance Manager",
+        "Auditor Eksternal / Internal",
+        "Compliance Officer",
+        "Sistem Analis SOP",
+        "Kepala Editor / QC Specialist"
+      ],
+      "wings": {
+        "1w9": {
+          "nama": "1w9 - The Idealist Mediator",
+          "deskripsi": "Lebih tenang, teratur secara halus, cenderung menghindari konflik terbuka, dan memiliki perspektif idealis yang stabil."
+        },
+        "1w2": {
+          "nama": "1w2 - The Advocate Supporter",
+          "deskripsi": "Lebih komunikatif, aktif membantu orang lain mematuhi standar, serta vokal dalam menyuarakan perbaikan etika sosial."
+        }
+      },
+      "disintegration_target": 4,
+      "disintegration_desc": "Saat berada di bawah tekanan berat, menjadi murung, merasa beban kerja tidak adil, kritis secara sinis, dan menarik diri secara emosional (beralih ke sisi negatif Tipe 4).",
+      "integration_target": 7,
+      "integration_desc": "Saat berkembang dan sehat secara mental, menjadi lebih rileks, spontan, ceria, dan terbuka menerima ragam alternatif solusi (beralih ke sisi positif Tipe 7).",
+      "saran_pengembangan": "Belajarlah menerima bahwa ketidaksempurnaan kecil adalah bagian alami dari proses pertumbuhan, bukan kegagalan moral."
+    },
+    "2": {
+      "tipe_id": 2,
+      "julukan": "The Team Supporter / Team Helper",
+      "triad": "Heart / Feeling Center",
+      "ringkasan_perilaku": "Individu yang hangat, empati, peka terhadap kebutuhan sosial, dan mendedikasikan energinya untuk mendukung kenyamanan serta kesejahteraan rekan kerja.",
+      "core_desire": "Membantu sesama, mendukung keharmonisan tim, dan merasa dibutuhkan serta dihargai.",
+      "core_fear": "Dianggap tidak berguna, diabaikan oleh lingkungan, serta ditolak secara emosional.",
+      "kekuatan_utama": [
+        "Empati Interpersonal Tinggi",
+        "Penyokong Kesejahteraan Tim",
+        "Membangun Relasi Cepat",
+        "Suka Membantu Tanpa Ragu",
+        "Penghidup Kehangatan Kerja"
+      ],
+      "kelemahan_utama": [
+        "Sulit Menetapkan Batasan Diri",
+        "Mengabaikan Kebutuhan Pribadi",
+        "Rentan Terjebak 'People Pleasing'",
+        "Harapan Balasan Emosional Terselubung"
+      ],
+      "gaya_komunikasi": "Warm, ramah, meyakinkan, suportif, penuh perhatian emosional, dan personal.",
+      "gaya_kepemimpinan": "Memimpin secara mengayomi (Servant Leadership), berfokus pada motivasi kawan, dan membangun loyalitas relasi.",
+      "lingkungan_ideal": "Lingkungan kolaboratif, berbasis kekeluargaan, berfokus pada pelayanan manusia, dan kaya apresiasi.",
+      "pemicu_stres": "Lingkungan yang dingin/individualis, masukan keras yang impersonal, dan rasa tidak dihargai.",
+      "potensi_karir": [
+        "Human Resources Welfare",
+        "Client Relationship Manager",
+        "Corporate Counselor",
+        "Community Development Lead",
+        "Customer Success Specialist"
+      ],
+      "wings": {
+        "2w1": {
+          "nama": "2w1 - The Devoted Reformer",
+          "deskripsi": "Lebih terstruktur, memiliki prinsip etika bantuan yang kaku, serta sangat tertib dalam menjalankan aksi sosial."
+        },
+        "2w3": {
+          "nama": "2w3 - The Host / Charismatic Supporter",
+          "deskripsi": "Lebih ekstrovert, supel, berorientasi pada pencapaian sosial, dan mahir membangun jejaring kemitraan."
+        }
+      },
+      "disintegration_target": 8,
+      "disintegration_desc": "Saat tertekan berat, menjadi mendominasi, menuntut balasan secara agresif, konfrontatif, dan memaksakan kehendak (beralih ke sisi negatif Tipe 8).",
+      "integration_target": 4,
+      "integration_desc": "Saat berkembang sehat, menjadi lebih mandiri, menyadari batasan diri, serta mampu menikmati refleksi pribadi tanpa ketergantungan pujian (beralih ke sisi positif Tipe 4).",
+      "saran_pengembangan": "Prioritaskan perawatan diri sendiri sebelum membantu orang lain dan latihlah keberanian untuk berkata 'tidak'."
+    },
+    "3": {
+      "tipe_id": 3,
+      "julukan": "The Target Achiever / Performer",
+      "triad": "Heart / Feeling Center",
+      "ringkasan_perilaku": "Individu yang sangat dinamis, berorientasi hasil, efisien, kompetitif, dan memiliki dorongan kuat untuk diakui atas keberhasilan kinerjanya.",
+      "core_desire": "Mencapai target kinerja tinggi (KPI), efisiensi maksimal, reputasi profesional, dan pengakuan status.",
+      "core_fear": "Kegagalan eksekusi, ketidakberhasilan, kekalahan dalam persaingan, serta dipandang tidak kompeten.",
+      "kekuatan_utama": [
+        "Fokus Tinggi pada Target (KPI)",
+        "Eksekutor Efisien & Cepat",
+        "Presentasi & Personal Branding",
+        "Kompetitif & Penuh Ambisi",
+        "Adaptif terhadap Dinamika Pasar"
+      ],
+      "kelemahan_utama": [
+        "Rentan Workaholism",
+        "Mengabaikan Proses Demi Hasil",
+        "Cenderung Memendam Emosi Diri",
+        "Terlalu Fokus pada Citra Luar"
+      ],
+      "gaya_komunikasi": "Lugas, meyakinkan, fokus pada poin pencapaian, rasional, dan berorientasi solutif.",
+      "gaya_kepemimpinan": "Memimpin dengan menetapkan target ambisius, memacu efisiensi tim, dan memberikan contoh performa tinggi.",
+      "lingkungan_ideal": "Lingkungan yang kompetitif, berpatokan pada KPI jelas, berbasis performa (meritokrasi), dan kaya insentif.",
+      "pemicu_stres": "Birokrasi yang membuang waktu, kegagalan proyek publik, serta tiadanya indikator keberhasilan jelas.",
+      "potensi_karir": [
+        "Sales & Marketing Director",
+        "Business Development Executive",
+        "Investment Banker",
+        "Corporate Strategy Manager",
+        "Management Consultant"
+      ],
+      "wings": {
+        "3w2": {
+          "nama": "3w2 - The Charm Achiever",
+          "deskripsi": "Sangat karismatik, pandai bernegosiasi secara interpersonal, dan berorientasi pada panggung kepemimpinan umum."
+        },
+        "3w4": {
+          "nama": "3w4 - The Expert Professional",
+          "deskripsi": "Lebih serius, berfokus pada kualitas karya yang otentik, cenderung spesialis, dan menjaga standar tinggi."
+        }
+      },
+      "disintegration_target": 9,
+      "disintegration_desc": "Saat tertekan berat, menjadi pasif-agresif, kehilangan fokus target, menunda pengerjaan tugas, dan apatis (beralih ke sisi negatif Tipe 9).",
+      "integration_target": 6,
+      "integration_desc": "Saat berkembang sehat, menjadi sosok pembangun tim yang setia, kooperatif, serta mendedikasikan keberhasilannya bagi keutuhan kelompok (beralih ke sisi positif Tipe 6).",
+      "saran_pengembangan": "Hargailah nilai diri Anda berdasarkan proses dan integritas karakter, bukan hanya sekadar deretan piagam pencapaian."
+    },
+    "4": {
+      "tipe_id": 4,
+      "julukan": "The Creative Specialist / Individualist",
+      "triad": "Heart / Feeling Center",
+      "ringkasan_perilaku": "Individu yang otentik, kreatif, memiliki kedalaman emosional mendalam, dan selalu berusaha menghasilkan kontribusi unik yang membedakannya dari orang lain.",
+      "core_desire": "Autentisitas karya, ekspresi identitas diri yang khas, dan kontribusi yang bermakna mendalam.",
+      "core_fear": "Disamaratakan, kehilangan identitas personal, dan terpaksa menghasilkan karya seragam yang biasa saja.",
+      "kekuatan_utama": [
+        "Kreativitas & Orisinalitas Ide",
+        "Kedalaman Estetika & Karsa",
+        "Peka terhadap Keunikan Konsep",
+        "Introspektif & Jujur pada Emosi",
+        "Pencetus Solusi 'Out of the Box'"
+      ],
+      "kelemahan_utama": [
+        "Mood Sangat Mempengaruhi Kinerja",
+        "Cenderung Menarik Diri saat Kecewa",
+        "Kesusahan Menyesuaikan Rutinitas Baku",
+        "Sering Merasa Tidak Dipahami"
+      ],
+      "gaya_komunikasi": "Penuh nuansa emosional, ekspresif, mendalam, kiasan estetis, dan sangat personal.",
+      "gaya_kepemimpinan": "Memimpin dengan menginspirasi kebebasan berkreasi, menghargai keunikan tiap individu, dan mendorong batas desain.",
+      "lingkungan_ideal": "Lingkungan kreatif, kaya akan fleksibilitas berekspresi, menghargai desain/konsep, dan bebas dari monotoni.",
+      "pemicu_stres": "Tugas-tugas seragam yang kaku, penolakan atas identitas pribadi, dan lingkungan yang dangkal.",
+      "potensi_karir": [
+        "Creative Director",
+        "UI/UX Conceptor",
+        "Brand Identity Specialist",
+        "Penulis / Content Architect",
+        "R&D Design Lead"
+      ],
+      "wings": {
+        "4w3": {
+          "nama": "4w3 - The Elite Performer",
+          "deskripsi": "Lebih ambisius, memikirkan daya jual karya di pasar, serta pandai mempresentasikan keunikan gagasannya."
+        },
+        "4w5": {
+          "nama": "4w5 - The Boheman Analyst",
+          "deskripsi": "Lebih soliter, sangat mendalam secara intelektual, teoretis, dan menciptakan konsep abstrak yang rumit."
+        }
+      },
+      "disintegration_target": 2,
+      "disintegration_desc": "Saat tertekan berat, menjadi sangat tergantung pada validasi orang lain, merasa paling teraniaya, dan manipulative emosional (beralih ke sisi negatif Tipe 2).",
+      "integration_target": 1,
+      "integration_desc": "Saat berkembang sehat, menjadi sangat disiplin, terstruktur, objektif mengeksekusi ide, serta konsisten menyelesaikan karya (beralih ke sisi positif Tipe 1).",
+      "saran_pengembangan": "Imbangi pemikiran idealis Anda dengan ketaatan pada jadwal dan aksi disiplin harian."
+    },
+    "5": {
+      "tipe_id": 5,
+      "julukan": "The Data & Knowledge Expert / Investigator",
+      "triad": "Head / Thinking Center",
+      "ringkasan_perilaku": "Individu yang analitis, terobsesi pada penguasaan data, rasional, mandiri, dan sangat menjaga efisiensi energi mental dari gangguan luar.",
+      "core_desire": "Penguasaan keahlian teknis, pemrosesan data objektif, kecukupan wawasan, dan privasi kerja.",
+      "core_fear": "Keterbatasan data saat ditanya, kehabisan energi emosional, serta tuntutan interaksi yang terlalu invasif.",
+      "kekuatan_utama": [
+        "Pemikiran Analitis & Sistematis",
+        "Penguasaan Kepakaran Teknis",
+        "Objektif & Sangat Rasional",
+        "Mandiri Memecahkan Masalah",
+        "Tenang di Tengah Kekacauan"
+      ],
+      "kelemahan_utama": [
+        "Dingin secara Emosional",
+        "Cenderung Terlalu Menarik Diri",
+        "Terjebak dalam 'Analysis Paralysis'",
+        "Kurang Berbagi Informasi ke Tim"
+      ],
+      "gaya_komunikasi": "Faktual, hemat kata, konseptual, berbasis riset empiris, dan bebas dari muatan emosional.",
+      "gaya_kepemimpinan": "Memimpin berbasis keahlian teknis, memberikan ruang otonomi riset pada tim, dan fokus pada strategi data.",
+      "lingkungan_ideal": "Lingkungan kerja yang tenang, menyediakan ruang privasi, berfokus pada riset/data, dan tidak banyak gangguan sosial.",
+      "pemicu_stres": "Tuntutan respons cepat tanpa data, rapat sosial yang berlarut-larut, dan invasi pada ruang kerja pribadi.",
+      "potensi_karir": [
+        "Data Scientist / Chief Architect",
+        "Cyber Security Specialist",
+        "Riset & Pengembangan (R&D)",
+        "Financial Quantitative Analyst",
+        "Spesialis Sistem Kompleks"
+      ],
+      "wings": {
+        "5w4": {
+          "nama": "5w4 - The Iconoclastic Specialist",
+          "deskripsi": "Lebih imajinatif, menyukai teori abstrak yang tidak biasa, cenderung intuitif, dan menjaga independensi penuh."
+        },
+        "5w6": {
+          "nama": "5w6 - The Technical System Analyst",
+          "deskripsi": "Lebih praktis, berfokus pada keamanan sistem, sangat terstruktur, dan suka menguji reliabilitas data."
+        }
+      },
+      "disintegration_target": 7,
+      "disintegration_desc": "Saat tertekan berat, menjadi tidak fokus, impulsif mengambil keputusan tanpa kalkulasi, dan mencari pelarian dangkal (beralih ke sisi negatif Tipe 7).",
+      "integration_target": 8,
+      "integration_desc": "Saat berkembang sehat, menjadi sangat percaya diri, berani memimpin eksekusi langsung, dan membagikan ilmunya secara tegas (beralih ke sisi positif Tipe 8).",
+      "saran_pengembangan": "Keluarlah dari zona teori konseptual dan ujilah pemikiran Anda lewat tindakan eksekusi riil di lapangan."
+    },
+    "6": {
+      "tipe_id": 6,
+      "julukan": "The Risk & Compliance Analyst / Loyalist",
+      "triad": "Head / Thinking Center",
+      "ringkasan_perilaku": "Individu yang sangat setia, waspada terhadap risiko krisis, teliti menguji keandalan sistem, dan sangat menghargai kepastian panduan organisasi.",
+      "core_desire": "Keamanan posisi kerja, mitigasi risiko krisis, kejelasan petunjuk, dan loyalitas kelompok.",
+      "core_fear": "Ketidakpastian arah, ketiadaan panduan baku, ancaman krisis tak terduga, dan pengkhianatan.",
+      "kekuatan_utama": [
+        "Kewaspadaan & Mitigasi Risiko",
+        "Loyalitas Organisasi Tinggi",
+        "Pencegah Krisis Masa Depan",
+        "Cermat Menguji Keandalan Sistem",
+        "Pekerja Tim yang Sangat Andal"
+      ],
+      "kelemahan_utama": [
+        "Rentan Kecemasan Berlebih (Anxiety)",
+        "Curiga Berlebihan pada Perubahan",
+        "Lambat Mengambil Keputusan Mandiri",
+        "Terjebak pada Skenario Terburuk"
+      ],
+      "gaya_komunikasi": "Hati-hati, mempertanyakan asumsi, terstruktur, mencari kepastian, dan fokus pada prosedur proteksi.",
+      "gaya_kepemimpinan": "Memimpin dengan melindungi tim dari ancaman, memastikan patuh arahan pusat, dan membangun konsensus bersama.",
+      "lingkungan_ideal": "Lingkungan yang stabil, beraturan jelas, memiliki kepemimpinan yang dapat dipercaya, dan menjamin kepastian karier.",
+      "pemicu_stres": "Keputusan instan tanpa mitigasi risiko, instruksi dari pimpinan yang mencla-mencle, dan suasana serba instabil.",
+      "potensi_karir": [
+        "Risk Management Director",
+        "Occupational Safety Specialist (HSE)",
+        "Legal & Regulatory Analyst",
+        "Chief Operations Officer (COO)",
+        "Spesialis Mitigasi Bencana / Krisis"
+      ],
+      "wings": {
+        "6w5": {
+          "nama": "6w5 - The Defender Analyst",
+          "deskripsi": "Lebih independen, mengandalkan analisis teknis mendalam untuk mengurangi rasa cemas, dan sangat analitis."
+        },
+        "6w7": {
+          "nama": "6w7 - The Buddy Catalyst",
+          "deskripsi": "Lebih ekstrovert, ramah, mencoba mengatasi kecemasan lewat humor dan pergaulan dinamis dengan kawan tim."
+        }
+      },
+      "disintegration_target": 3,
+      "disintegration_desc": "Saat tertekan berat, menjadi berpura-pura tangguh secara kompetitif, defensif menutupi kesalahan, dan mengejar status luar (beralih ke sisi negatif Tipe 3).",
+      "integration_target": 9,
+      "integration_desc": "Saat berkembang sehat, menjadi sosok yang tenang, optimis, percaya pada alur kerja, serta memancarkan kedamaian internal (beralih ke sisi positif Tipe 9).",
+      "saran_pengembangan": "Percayalah pada intuisi dan kemampuan diri sendiri untuk mengatasi situasi yang belum terprediksi."
+    },
+    "7": {
+      "tipe_id": 7,
+      "julukan": "The Innovation Catalyst / Enthusiast",
+      "triad": "Head / Thinking Center",
+      "ringkasan_perilaku": "Individu yang energik, optimis, kaya akan ide inovatif, menyukai variasi tugas, dan selalu mencari peluang pertumbuhan baru di masa depan.",
+      "core_desire": "Variasi tantangan baru, kebebasan berekspresi, ide-ide inovatif, dan peluang masa depan yang cerah.",
+      "core_fear": "Terjebak dalam rutinitas membosankan, keterbatasan opsi, dan perasaan terkekang.",
+      "kekuatan_utama": [
+        "Inovasi & Multitalenta Cepat",
+        "Optimisme & Motivator Tim",
+        "Menemukan Peluang Bisnis Baru",
+        "Fleksibilitas & Adaptasi Tinggi",
+        "Pencetus Solusi Praktis-Kreatif"
+      ],
+      "kelemahan_utama": [
+        "Kurang Fokus / Mudah Terdistraksi",
+        "Sulit Menuntaskan Detail Panjang",
+        "Lari dari Masalah Teknis Rumit",
+        "Impulsif Memulai Proyek Baru"
+      ],
+      "gaya_komunikasi": "Energik, antusias, persuasif, bercerita visi masa depan, serba cepat, dan kaya inspirasi.",
+      "gaya_kepemimpinan": "Memimpin lewat visi inovatif, memberikan semangat kebebasan mencoba, dan mendorong terobosan baru.",
+      "lingkungan_ideal": "Lingkungan yang dinamis, kaya variasi proyek, tidak kaku, serta menghargai ide-ide terobosan.",
+      "pemicu_stres": "Tugas administratif berulang (repetitif), mikro-manajemen, dan keharusan duduk diam pada prosedur kaku.",
+      "potensi_karir": [
+        "Innovation Manager / Strategist",
+        "Venture Capitalist Analyst",
+        "Serial Entrepreneur",
+        "Chief Marketing Officer (CMO)",
+        "Event Lead Innovator"
+      ],
+      "wings": {
+        "7w6": {
+          "nama": "7w6 - The Collaborative Catalyst",
+          "deskripsi": "Lebih bertanggung jawab pada komitmen tim, hangat dalam relasi sosial, dan memperhatikan faktor keamanan."
+        },
+        "7w8": {
+          "nama": "7w8 - The Realist Challenger",
+          "deskripsi": "Sangat pragmatis, tegas, berani mengambil risiko besar, kompetitif, dan berorientasi eksekusi cepat."
+        }
+      },
+      "disintegration_target": 1,
+      "disintegration_desc": "Saat tertekan berat, menjadi sangat kaku, suka menyalahkan orang lain, kritis tanpa alasan jelas, dan perfeksionis sempit (beralih ke sisi negatif Tipe 1).",
+      "integration_target": 5,
+      "integration_desc": "Saat berkembang sehat, menjadi sangat fokus, mendalam pada satu prioritas, mampu mencerna data kompleks, dan tuntas berkarya (beralih ke sisi positif Tipe 5).",
+      "saran_pengembangan": "Disiplinkan diri Anda untuk menyelesaikan komitmen utama hingga tuntas sebelum berpindah ke peluang baru."
+    },
+    "8": {
+      "tipe_id": 8,
+      "julukan": "The Executive Leader / Challenger",
+      "triad": "Gut / Instinctive Center",
+      "ringkasan_perilaku": "Individu yang sangat tegas, dominan, berani mengambil risiko besar, berorientasi eksekusi langsung, dan berjiwa pelindung bagi kelompoknya.",
+      "core_desire": "Otonomi penuh, kendali atas keputusan, ketegasan eksekusi, dan perlindungan terhadap integritas tim.",
+      "core_fear": "Dikendalikan oleh pihak lain, diatur secara mikro (micromanaged), dimanipulasi, atau terlihat lemah.",
+      "kekuatan_utama": [
+        "Keberanian & Ketegasan Eksekusi",
+        "Pelindung Tim Andal saat Krisis",
+        "Pengambil Keputusan Cepat",
+        "Tahan Banting & Pantang Mungkir",
+        "Memegang Kendali Otonom"
+      ],
+      "kelemahan_utama": [
+        "Konfrontatif & Cenderung Otoritatif",
+        "Terkesan Mengintimidasi Orang Lain",
+        "Sulit Menunjukkan Sisi Lemah Diri",
+        "Kurang Sabar pada Kelambatan"
+      ],
+      "gaya_komunikasi": "Direct, to-the-point, tegas, bernada memimpin, vokal, dan tidak menyukai bahasa berbelit-belit.",
+      "gaya_kepemimpinan": "Memimpin dari depan (Directive Leadership), pasang badan memikul beban krisis, dan menuntut eksekusi cepat.",
+      "lingkungan_ideal": "Lingkungan yang memberikan wewenang penuh, dinamis, berorientasi hasil nyata, dan bebas dari politik terselubung.",
+      "pemicu_stres": "Diatur mikro oleh atasan yang tidak kompeten, ketidakberdayaan sistemik, dan kepemimpinan yang ragu-ragu.",
+      "potensi_karir": [
+        "Chief Executive Officer (CEO)",
+        "Crisis Management Director",
+        "Head of Field Operations",
+        "Litigation Advocate",
+        "Strategic Turnaround Lead"
+      ],
+      "wings": {
+        "8w7": {
+          "nama": "8w7 - The Nonconformist Leader",
+          "deskripsi": "Sangat ekspansif, berani mengambil risiko besar, penuh gairah inovasi, dan tidak menyukai keterbatasan aturan."
+        },
+        "8w9": {
+          "nama": "8w9 - The Quiet Bear",
+          "deskripsi": "Lebih tenang, terkesan santai namun sangat kokoh saat terdesak, serta menggunakan kekuatannya untuk stabilitas."
+        }
+      },
+      "disintegration_target": 5,
+      "disintegration_desc": "Saat tertekan berat, menjadi menarik diri secara emosional, curiga pada konspirasi lingkungan, dan mengisolasi diri secara dingin (beralih ke sisi negatif Tipe 5).",
+      "integration_target": 2,
+      "integration_desc": "Saat berkembang sehat, menjadi sangat empati, mengayomi, bersahabat, dan menggunakan kekuatannya untuk memberdayakan orang lain (beralih ke sisi positif Tipe 2).",
+      "saran_pengembangan": "Latihlah kelembutan dalam menyampaikan instruksi dan izinkan diri Anda mendengarkan masukan emosional tim."
+    },
+    "9": {
+      "tipe_id": 9,
+      "julukan": "The Organizational Mediator / Peacemaker",
+      "triad": "Gut / Instinctive Center",
+      "ringkasan_perilaku": "Individu yang sabar, tenang, mumpuni menjembatani perselisihan, menyukai keharmonisan, dan menciptakan stabilitas dalam kolaborasi kelompok.",
+      "core_desire": "Keharmonisan iklim kerja, stabilitas alur harian, dan penyelesaian konflik secara damai.",
+      "core_fear": "Konflik terbuka yang memecah persatuan, perselisihan keras, dan kehilangan keterikatan dengan kelompok.",
+      "kekuatan_utama": [
+        "Penengah Konflik (Mediator) Handal",
+        "Pendengar Sabar & Inklusif",
+        "Menciptakan Suasana Kerja Damai",
+        "Mampu Melihat Ragam Sudut Pandang",
+        "Stabil & Konsisten dalam Kolaborasi"
+      ],
+      "kelemahan_utama": [
+        "Kesusahan Menyatakan Ketidaksetujuan",
+        "Menunda Tugas (Procrastination)",
+        "Pasif-Agresif saat Terdesak",
+        "Mengabaikan Prioritas Diri Demi Harmoni"
+      ],
+      "gaya_komunikasi": "Tenang, inklusif, diplomatis, santun, tidak menekan, dan berusaha merangkul semua masukan.",
+      "gaya_kepemimpinan": "Memimpin lewat konsensus kelompok (Consensus Leadership), menciptakan kenyamanan, dan mendengarkan aspirasi.",
+      "lingkungan_ideal": "Lingkungan yang kondusif, kekeluargaan, minim ketegangan emosional, dan menghargai stabilitas ritme.",
+      "pemicu_stres": "Perselisihan terbuka antar-rekan, tekanan mengambil keputusan berpihak secara mendadak, dan suasana serba terburu-buru.",
+      "potensi_karir": [
+        "Corporate Mediator / Arbitrator",
+        "Organizational Ombudsman",
+        "Human Resources Generalist",
+        "Community Outreach Officer",
+        "Pendidik / Training Facilitator"
+      ],
+      "wings": {
+        "9w8": {
+          "nama": "9w8 - The Grounded Mediator",
+          "deskripsi": "Lebih tegas, memiliki batas diri yang lebih kuat, tangguh menghadapi tekanan, namun tetap menjaga kedamaian."
+        },
+        "9w1": {
+          "nama": "9w1 - The Orderly Peacemaker",
+          "deskripsi": "Lebih terstruktur, sangat memperhatikan moral dan kebaikan etis, serta menyukai ketertiban yang rapi."
+        }
+      },
+      "disintegration_target": 6,
+      "disintegration_desc": "Saat tertekan berat, menjadi sangat cemas, cemas berlebih pada skenario terburuk, pasif-agresif, dan terobsesi pada keamanan diri (beralih ke sisi negatif Tipe 6).",
+      "integration_target": 3,
+      "integration_desc": "Saat berkembang sehat, menjadi sangat proaktif, tegas menentukan arah, berorientasi hasil riil, dan produktif mengejar target (beralih ke sisi positif Tipe 3).",
+      "saran_pengembangan": "Suarakan pendapat dan posisi Anda secara asertif sejak awal, karena kontribusi Anda sangat berharga bagi tim."
+    }
+  },
+  "panduan_interpretasi": {
+    "catatan_penggunaan": "Profil WPCM-Enneagram menggambarkan motivasi kerja mendasar dan dinamika emosional individu. Hasil tes ini digunakan untuk pemetaan motivasi, manajemen stres, dan pengembangan kepemimpinan—bukan sebagai tes gugur atau vonis karakter kaku.",
+    "validitas_profil": "Perhatikan distribusi skor pada 3 Triad untuk melihat fokus pusat energi utama individu (Gut/Heart/Head), serta evaluasi panah Integration dan Disintegration untuk menyusun program bimbingan karier."
+  }
+}
