@@ -1,0 +1,211 @@
+{
+  "kode_tes": "KU1",
+  "nama_tes": "APACA Grit & Growth Mindset Inventory (AGMI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Grit & Growth Mindset Inventory (AGMI) mengukur determinasi jangka panjang (Grit) serta pola pikir kapasitas diri (Mindset) individu. Instrumen ini menghasilkan Dual Output yang memetakan sejauh mana seseorang memiliki ketahanan eksekusi dan keyakinan bahwa kemampuan diri dapat terus ditingkatkan melalui usaha dan strategi.",
+  "norma_kategorisasi_grit": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Exceptionally Gritty",
+      "label_status": "EXCEPTIONAL GRIT / SANGAT ULET",
+      "deskripsi_kondisi": "Individu memiliki stamina mental dan kesetiaan jangka panjang yang luar biasa pada visi utama. Tidak gampang goyah oleh kegagalan, kritik, atau godaan tren baru.",
+      "dampak_perilaku": "Sangat mandiri, mampu bertahan dalam proyek berdurasi bertahun-tahun, serta menganggap rintangan besar sebagai pijakan untuk melompat lebih tinggi.",
+      "tindakan_lanjutan": "Berikan tanggung jawab memimpin proyek rintisan jangka panjang, program riset kompleks, atau peran strategis tinggi."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "High Grit",
+      "label_status": "HIGH GRIT / TANGGUH & TEKUN",
+      "deskripsi_kondisi": "Individu memiliki ketekunan dan kedisiplinan kerja yang stabil. Mampu mempertahankan fokus pada tujuan utama meskipun motivasi emosional sedang menurun.",
+      "dampak_perilaku": "Konsisten menyelesaikan apa yang telah dimulai, tidak gampang menyerah saat menemui jalan buntu, dan berkinerja tinggi dalam rutinitas berat.",
+      "tindakan_lanjutan": "Pertahankan ekosistem kerja yang kondusif dan bantu mengasah strategi penetapan target bertahap."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Moderate Grit",
+      "label_status": "MODERATE GRIT / FLUKTUATIF",
+      "deskripsi_kondisi": "Individu bekerja keras jika situasi lingkungan mendukung, namun rentan mengalami penurunan daya juang jika hambatan terlalu besar atau kehilangan pendorong eksternal.",
+      "dampak_perilaku": "Semangat kerja cenderung bergantung pada suasana hati atau pujian langsung; terkadang tergoda mengalihkan fokus ke ide baru sebelum target lama tuntas.",
+      "tindakan_lanjutan": "Bantu memecah target jangka panjang menjadi milestone jangka pendek (quick wins) untuk menjaga konsistensi motivasi."
+    },
+    {
+      "rentang_skor_persen": "0% - 40%",
+      "t_score": "T < 45",
+      "kategori": "Low Grit",
+      "label_status": "LOW GRIT / RENTAN MENYERAH",
+      "deskripsi_kondisi": "Individu cepat merasa bosan, sering berganti tujuan saat antusiasme awal memudar, dan mudah menyerah begitu dihadapkan pada tekanan atau kegagalan pertama.",
+      "dampak_perilaku": "Proastinasi tinggi, sering meninggalkan proyek di tengah jalan, dan kesulitan mencapai penguasaan keahlian tingkat lanjut (mastery).",
+      "tindakan_lanjutan": "Diperlukan pendampingan akuntabilitas yang ketat, pelatihan manajemen diri, serta evaluasi kejelasan tujuan karier/studi."
+    }
+  ],
+  "norma_kategorisasi_mindset": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "skor_mentah": "66 - 80",
+      "tipologi": "Strong Growth Mindset",
+      "label_status": "STRONG GROWTH / PEMBELAJAR SEJATI",
+      "deskripsi_kondisi": "Individu meyakini secara mendalam bahwa kecerdasan dan bakat adalah otot yang bisa terus dilatih. Sangat proaktif mencari umpan balik dan tidak takut terlihat belum mengerti.",
+      "dampak_perilaku": "Merapatkan diri pada tantangan sulit, menganggap kritik sebagai bahan bakar perbaikan, serta terinspirasi oleh keberhasilan orang lain.",
+      "tindakan_lanjutan": "Fasilitasi dengan materi-materi pengembangan tingkat lanjut (enrichment) dan otonomi eksperimentasi."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "skor_mentah": "51 - 65",
+      "tipologi": "Leaning Growth",
+      "label_status": "LEANING GROWTH / TERBUKA BERTUMBUH",
+      "deskripsi_kondisi": "Individu secara umum terbuka pada pengembangan diri dan percaya usaha itu penting, namun terkadang masih meragukan kapasitasnya saat menemui kelemahan spesifik.",
+      "dampak_perilaku": "Berani mencoba hal baru di situasi normal, tetapi bisa bersikap agak ragu ketika menghadapi kegagalan di bidang yang dianggap bukan keahliannya.",
+      "tindakan_lanjutan": "Berikan reinforcement positif pada proses dan strategi yang digunakan, bukan hanya pada hasil akhir."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "skor_mentah": "36 - 50",
+      "tipologi": "Leaning Fixed",
+      "label_status": "LEANING FIXED / CENDERUNG DEFENTIF",
+      "deskripsi_kondisi": "Individu cenderung menganggap bakat lahiriah sebagai penentu utama kesuksesan. Mulai enggan mengambil risiko tantangan baru demi melindungi zona nyaman.",
+      "dampak_perilaku": "Agak sensitif terhadap kritik, merasa terancam jika orang lain lebih sukses, dan cenderung bertahan pada tugas-tugas yang sudah pasti dikuasai.",
+      "tindakan_lanjutan": "Edukasi konsep neuroplastisitas otak dan latih reframing kalimat 'Saya tidak bisa' menjadi 'Saya BELUM bisa'."
+    },
+    {
+      "rentang_skor_persen": "0% - 40%",
+      "skor_mentah": "20 - 35",
+      "tipologi": "Strong Fixed Mindset",
+      "label_status": "STRONG FIXED / POLA PIKIR KAKU",
+      "deskripsi_kondisi": "Individu meyakini kecerdasan dan bakat adalah bawaan lahir yang statis. Menganggap usaha keras sebagai bukti bahwa seseorang tidak berbakat.",
+      "dampak_perilaku": "Sangat defensif terhadap masukan, menyembunyikan kesalahan, menghindari tantangan, serta cepat frustrasi saat mengalami kegagalan.",
+      "tindakan_lanjutan": "Ganti iklim evaluasi; berikan rasa aman psikologis (psychological safety) dan apresiasi keberanian mencoba."
+    }
+  ],
+  "rubrik_dimensi_utama": {
+    "Consistency of Interest": {
+      "judul_dimensi": "Consistency of Interest (Konsistensi Minat - Skala Grit)",
+      "deskripsi": "Mengukur kemampuan menjaga kesetiaan pada tujuan utama jangka panjang tanpa gampang teralih oleh ide baru atau tren singkat.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Fokus Visi Kokoh",
+          "interpretasi": "Individu memiliki komitmen tinggi pada satu arah sasaran, tidak gampang bosan, dan tekun merawat minat utamanya berbulan-bulan hingga bertahun-tahun.",
+          "saran_pengembangan": "Pertahankan ketajaman fokus dan pastikan sasaran jangka panjang tetap relevan dengan dinamika lingkungan."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Minat Cenderung Terbagi",
+          "interpretasi": "Memiliki tujuan utama, namun terkadang antusiasmenya mudah goyah ketika melihat ide baru yang tampak lebih menarik di tengah jalan.",
+          "saran_pengembangan": "Buat kriteria seleksi ketat sebelum mengambil proyek baru agar fokus pada target utama tidak buyar."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Minat Mudah Berganti (Distracted)",
+          "interpretasi": "Sangat cepat berganti fokus dan minat; antusias di awal tetapi cepat kehilangan rasa peduli sebelum target tercapai.",
+          "saran_pengembangan": "Disiplinkan diri dengan membatasi jumlah target utama maksimal 1–2 sasaran dalam satu periode."
+        }
+      }
+    },
+    "Perseverance of Effort": {
+      "judul_dimensi": "Perseverance of Effort (Ketekunan Berusaha - Skala Grit)",
+      "deskripsi": "Mengukur resiliensi dan kerja keras dalam menghadapi hambatan, kegagalan, dan ketidakpastian tanpa memilih mundur.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Daya Juang & Resiliensi Tinggi",
+          "interpretasi": "Memiliki etos kerja keras luar biasa, pantang menyerah saat gagal, dan selalu menuntaskan kewajiban yang telah dimulai.",
+          "saran_pengembangan": "Jaga keseimbangan energi agar stamina kerja keras tidak memicu kelelahan fisik (burnout)."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Daya Juang Kondisional",
+          "interpretasi": "Tekun mengerjakan tugas jika ada dorongan atau tenggat waktu, namun bisa berkecil hati jika rintangan terasa terlalu bertumpuk.",
+          "saran_pengembangan": "Latih pemecahan masalah (problem solving) secara terstruktur saat menghadapi kebuntuan."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Mudah Menyerah di Bawah Tekanan",
+          "interpretasi": "Memiliki daya tahan kerja yang tipis; cenderung memilih berhenti atau mencari alasan saat pengerjaan tugas menjadi rumit.",
+          "saran_pengembangan": "Latih toleransi terhadap frustrasi melalui target-target kecil yang dinaikkan tingkat kesulitannya secara bertahap."
+        }
+      }
+    },
+    "Belief in Malleability": {
+      "judul_dimensi": "Belief in Malleability (Keyakinan Kapasitas - Skala Mindset)",
+      "deskripsi": "Mengukur keyakinan mendasar bahwa kecerdasan, bakat, dan karakter dapat dikembangkan melalui latihan, strategi, dan usaha.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Keyakinan Pertumbuhan Matang",
+          "interpretasi": "Sangat percaya bahwa bakat awal hanyalah titik start. Menganggap usaha dan latihan sebagai kunci utama penguasaan keahlian.",
+          "saran_pengembangan": "Terus eksplorasi domain-domain baru yang membutuhkan kurva belajar tinggi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Keyakinan Kapasitas Campuran",
+          "interpretasi": "Percaya kecerdasan bisa dilatih pada bidang tertentu (misal: keterampilan teknis), tetapi menganggap bidang lain (misal: seni/kepemimpinan) murni bakat lahir.",
+          "saran_pengembangan": "Bongkar asumsi kaku pada domain yang dianggap 'bukan bakat saya'."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Keyakinan Kapasitas Statis (Fixed)",
+          "interpretasi": "Menganggap bakat dan kecerdasan adalah takdir bawaan lahir yang tidak banyak bisa diubah oleh usaha.",
+          "saran_pengembangan": "Pelajari kisah-kisah tokoh sukses yang membangun keahliannya melalui ribuan jam latihan terstruktur (deliberate practice)."
+        }
+      }
+    },
+    "Response to Challenge": {
+      "judul_dimensi": "Response to Challenge & Feedback (Respons Tantangan & Umpan Balik - Skala Mindset)",
+      "deskripsi": "Mengukur keberanian merangkul tugas sulit, penerimaan terhadap kritik konstruktif, serta keterbukaan belajar dari orang lain.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Proaktif & Resentment-Free",
+          "interpretasi": "Antusias pada tantangan baru, menjadikan kritik sebagai sarana belajar, dan terinspirasi oleh keberhasilan orang lain.",
+          "saran_pengembangan": "Jadikan feedback sebagai rutinitas harian untuk mempercepat siklus perbaikan diri."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Toleransi Tantangan Sedang",
+          "interpretasi": "Menerima tantangan jika merasa memiliki persiapan cukup, namun masih agak cemas jika masukan yang diberikan disampaikan secara keras.",
+          "saran_pengembangan": "Bangun kebiasaan meminta umpan balik secara proaktif (seeking feedback) dari figur yang tepercaya."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Defensif & Menghindari Risiko",
+          "interpretasi": "Sangat takut terlihat salah, menghindari tugas sulit demi menjaga ego, dan menganggap kritik sebagai serangan personal.",
+          "saran_pengembangan": "Ubah cara pandang terhadap kesalahan: kesalahan adalah data untuk belajar, bukan penilaian harga diri."
+        }
+      }
+    }
+  },
+  "matriks_tipologi_kombinasi": [
+    {
+      "nama_pola": "The Resilient Master (Ketangguhan Eksekusi & Pembelajar Sejati)",
+      "kriteria": "Indeks Grit ≥ 65% DAN Mindset Profile ≥ 51 (Growth)",
+      "analisis_klinis": "Profil ideal seorang eksekutor dan pembelajar sejati. Memiliki kesetiaan sasaran jangka panjang yang dipadukan dengan dorongan untuk terus memperbaiki diri. Tidak takut gagal dan sanggup menanggung penderitaan proses demi penguasaan keahlian.",
+      "rekomendasi_perkembangan": "Sangat cocok untuk proyek rintisan (startup), beasiswa tinggi, kepemimpinan krisis, dan peran strategis berisiko tinggi."
+    },
+    {
+      "nama_pola": "The Fragile Perfectionist (Eksekutor Rentan Burnout)",
+      "kriteria": "Indeks Grit ≥ 65% DAN Mindset Profile ≤ 50 (Fixed)",
+      "analisis_klinis": "Bekerja sangat keras dan tekun, namun dorongannya didasari oleh ketakutan untuk terlihat gagal (Fixed Mindset). Sangat rentan mengalami kelelahan emosional (burnout) dan bersikap defensif ketika hasil kerja kerasnya dikritik.",
+      "rekomendasi_perkembangan": "Apresiasi usaha dan strateginya, bukan hanya hasilnya. Bantu ia memisahkan antara performa kerja dan harga dirinya sebagai manusia."
+    },
+    {
+      "nama_pola": "The Idle Idealist (Pemimpi Berpotensi tanpa Eksekusi)",
+      "kriteria": "Indeks Grit ≤ 60% DAN Mindset Profile ≥ 51 (Growth)",
+      "analisis_klinis": "Paham secara konsep bahwa kemampuan bisa bertumbuh dan sangat terbuka pada ide baru. Namun, ia tidak memiliki stamina ketekunan (Grit) untuk mewujudkannya secara konsisten. Mudah berganti ide sebelum ide lama tuntas.",
+      "rekomendasi_perkembangan": "Terapkan disiplin eksekusi: buat jadwal rutinitas kaku, batasi jumlah proyek aktif, dan dampingi hingga tuntas."
+    },
+    {
+      "nama_pola": "The Defensive Stagnator (Rentan Stagnasi & Menyerah)",
+      "kriteria": "Indeks Grit ≤ 60% DAN Mindset Profile ≤ 50 (Fixed)",
+      "analisis_klinis": "Memiliki kombinasi daya juang rendah dan pola pikir kaku. Cepat menyerah saat menghadapi tantangan dan cenderung menyalahkan faktor luar (bakat/lingkungan) saat mengalami kegagalan.",
+      "rekomendasi_perkembangan": "Beri rasa aman psikologis. Mulai dari tugas-tugas kecil yang menjamin rasa menang (micro-wins) untuk membangun kepercayaan diri."
+    }
+  ],
+  "panduan_pengembangan_dan_coaching": {
+    "untuk_individu": {
+      "fokus_grit": "Tetapkan 1 'Top Goal' jangka panjang dan berkomitmenlah tidak menggantinya selama minimal 6 bulan.",
+      "fokus_mindset": "Setiap kali mengalami kegagalan, tanyakan pada diri sendiri: 'Pelajaran apa yang bisa saya ambil untuk strategi berikutnya?'"
+    },
+    "untuk_atasan_pembimbing": {
+      "pujian_berbasis_proses": "Pujilah kerja keras, ketekunan, dan strategi yang digunakan bawahan/anak ('Kerja bagus pada risetmu!'), BUKAN memuji kecerdasannya ('Kamu memang genius!').",
+      "pembinaan_kritik": "Sampaikan kritik secara spesifik pada tindakan yang dapat diubah, bukan pada karakter kepribadiannya."
+    },
+    "untuk_organisasi_hr": {
+      "budaya_agile": "Ciptakan lingkungan kerja yang menoleransi eksperimen terukur (fail fast, learn faster) agar karyawan tidak takut berinovasi.",
+      "seleksi_talenta": "Gunakan skor AGMI untuk mengidentifikasi talenta berpotensi tinggi (HiPo) yang tahan banting dalam penugasan ekspansi."
+    }
+  }
+}
