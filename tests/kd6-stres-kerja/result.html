@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KD6 APACA Work Burnout & Stress Indication Test (WBSIT)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; color: #1e293b; font-weight: 700; }
+    
+    .badge-status {
+      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    .badge-optimal { background-color: #d1fae5; color: #065f46; }
+    .badge-stabil { background-color: #e0f2fe; color: #0369a1; }
+    .badge-peringatan { background-color: #fef3c7; color: #92400e; }
+    .badge-redflag { background-color: #fee2e2; color: #991b1b; animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .box-point {
+      background-color: #f8fafc;
+      border-left: 4px solid #2563eb;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      border-radius: 0 6px 6px 0;
+    }
+    
+    .box-point h4 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: #1e293b;
+    }
+
+    .box-red-flag-alert {
+      background-color: #fef2f2;
+      border: 2px solid #ef4444;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .box-red-flag-alert h4 {
+      color: #991b1b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .list-custom {
+      margin-left: 20px;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .list-custom li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background-color: #ffffff;
+    }
+
+    .dimensi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .dimensi-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar (Hidden during Print/Export) -->
+  <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Beranda Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KD6_WBSIT_Work_Burnout_Stress.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Psychological Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN KESEHATAN MENTAL KERJA (WBSIT)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Pekerja / Karyawan</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Perusahaan / Organisasi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KD6 - APACA Work Burnout & Stress Indication Test (WBSIT)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Indeks Stres Kerja Global -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN INDEKS STRES KERJA GLOBAL</div>
+        
+        <div style="display: flex; gap: 16px; align-items: center; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin: 16px 0;">
+          <div style="flex: 1; text-align: center; border-right: 1px solid #cbd5e1; padding-right: 16px;">
+            <div style="font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase;">Skor Indeks Stres Kerja</div>
+            <div id="r-global-index" style="font-size: 2.8rem; font-weight: 800; color: #1e293b; margin: 4px 0;">0%</div>
+            <div id="r-global-status-badge" class="badge-status badge-optimal">NORMAL</div>
+          </div>
+          <div style="flex: 2; padding-left: 8px;">
+            <h4 id="r-global-kategori" style="margin-bottom: 6px; color: #0f172a; font-size: 1.1rem;">-</h4>
+            <p id="r-global-deskripsi" style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin-bottom: 8px;">-</p>
+            <p style="font-size: 0.85rem; color: #64748b;"><strong>Dampak Organisasional:</strong> <span id="r-global-dampak">-</span></p>
+          </div>
+        </div>
+
+        <!-- Box Peringatan Red Flag (Hanya muncul jika Indeks > 75%) -->
+        <div id="box-red-flag" class="box-red-flag-alert" style="display: none;">
+          <h4>⚠️ PROTOKOL PERINGATAN DARURAT (RED FLAG TRIGGERED)</h4>
+          <p style="font-size: 0.9rem; color: #7f1d1d; line-height: 1.5;">
+            Hasil asesmen menunjukkan tingkat <strong>Work Burnout / Stres Berat (&gt;75%)</strong>[cite: 1]. Mengacu pada standar administrasi WBSIT KD6, karyawan berada dalam kondisi kelelahan psikologis ekstrem[cite: 1]. Tim HR / Konselor Perusahaan diwajibkan untuk menjadwalkan sesi <em>one-on-one counseling</em> dalam tenggat <strong>2×24 jam</strong>[cite: 1].
+          </p>
+        </div>
+      </div>
+
+      <!-- Section II: Tabulasi Profil & Analisis 4 Dimensi -->
+      <div class="report-section">
+        <div class="report-section-title">II. TABULASI PROFIL & EVALUASI DIMENSI STRES KERJA</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Stres Kerja</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Tingkat Risiko</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+
+        <!-- Container Kartu Detail Per Dimensi -->
+        <div id="dimension-cards-container" style="margin-top: 20px;">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section III: Rekomendasi Intervensi & Manajemen Stres -->
+      <div class="report-section">
+        <div class="report-section-title">III. REKOMENDASI INTERVENSI & MANAJEMEN KESEHATAN MENTAL</div>
+        
+        <div class="box-point" style="border-left-color: #2563eb;">
+          <h4 style="color: #1e40af;">Rekomendasi Pemulihan Individu (Personal Coping Strategy):</h4>
+          <p id="r-rekomendasi-personal" class="report-paragraph" style="margin-bottom: 0;">-</p>
+        </div>
+
+        <div class="box-point" style="border-left-color: #10b981;">
+          <h4 style="color: #065f46;">Langkah Pendampingan Organisasi & HRD (Organizational Support):</h4>
+          <ul id="r-list-intervensi-hr" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Render Kop Laporan Resmi dari config.js
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Psychological Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Ambil data sesi peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Ambil data jawaban, metadata soal.json, dan deskripsi rubrik.json KD6
+      const rawAnswers = sessionStorage.getItem("pats_answers_KD6");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+        const testInfo = soalData.test_info || {};
+
+        if (testInfo.nama_resmi) {
+          document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
+        }
+        document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+        document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '2026-0819-PSI-01'}`;
+
+        // 4. Hitung Skor Psikometri via KD6_Scoring
+        const result = KD6_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        // 5. Kirim Rekap Otomatis ke Google Sheets (Opsional)
+        if (user && typeof KD6_Scoring.sendRekapToGAS === "function") {
+          KD6_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 6. Render Ringkasan Skor Global & Red Flag
+        const globalIdx = result.globalIndex || 0;
+        document.getElementById("r-global-index").innerText = `${globalIdx}%`;
+        
+        const globalNorm = result.globalNorm || {};
+        document.getElementById("r-global-kategori").innerText = globalNorm.kategori || "-";
+        document.getElementById("r-global-deskripsi").innerText = globalNorm.deskripsi_kondisi || "-";
+        document.getElementById("r-global-dampak").innerText = globalNorm.implikasi_klinis_organisasi || "-";
+
+        const badgeElem = document.getElementById("r-global-status-badge");
+        badgeElem.innerText = globalNorm.label_status || "NORMAL";
+        badgeElem.className = "badge-status " + (
+          globalNorm.label_status === "RED FLAG" ? "badge-redflag" :
+          globalNorm.label_status === "PERINGATAN" ? "badge-peringatan" :
+          globalNorm.label_status === "STABIL" ? "badge-stabil" : "badge-optimal"
+        );
+
+        if (result.isRedFlag) {
+          document.getElementById("box-red-flag").style.display = "block";
+        }
+
+        // 7. Render Tabulasi Tabel Dimensi
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        if (result.dimensionRows && Array.isArray(result.dimensionRows)) {
+          result.dimensionRows.forEach(row => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td style="text-align: left; font-weight: 600; color: #1e293b;">${row.dimensi}</td>
+              <td>${row.rs} / 40</td>
+              <td><strong>${row.percentage}%</strong></td>
+              <td><span style="font-weight:600; color:${row.percentage >= 66 ? '#dc2626' : row.percentage >= 36 ? '#d97706' : '#16a34a'};">${row.level}</span></td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        // 8. Render Kartu Detail Per Dimensi
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        if (result.dimensionDetails && Array.isArray(result.dimensionDetails)) {
+          result.dimensionDetails.forEach(detail => {
+            const card = document.createElement("div");
+            card.className = "dimensi-card";
+            card.innerHTML = `
+              <div class="dimensi-header">
+                <div class="dimensi-title">${detail.judul_dimensi}</div>
+                <div style="font-weight:bold; font-size:0.85rem; color: #2563eb;">Skor Indeks: ${detail.percentage}% (${detail.level})</div>
+              </div>
+              <p style="font-size: 0.88rem; color: #475569; margin-bottom: 8px;">${detail.deskripsi_spesifik}</p>
+              <div style="font-size: 0.85rem; color: #334155; background: #f8fafc; padding: 8px 12px; border-radius: 4px;">
+                <strong>Saran Aksi:</strong> ${detail.rekomendasi_pengembangan}
+              </div>
+            `;
+            cardsContainer.appendChild(card);
+          });
+        }
+
+        // 9. Render Rekomendasi HR & Intervensi
+        document.getElementById("r-rekomendasi-personal").innerText = globalNorm.tindakan_lanjutan || "-";
+
+        const ulHR = document.getElementById("r-list-intervensi-hr");
+        ulHR.innerHTML = "";
+        const HRProcedures = (rubrikData.protokol_intervensi_klinis && rubrikData.protokol_intervensi_klinis.prosedur_penanganan) 
+          ? rubrikData.protokol_intervensi_klinis.prosedur_penanganan 
+          : ["Lakukan monitoring berkala tingkat stres kerja harian.", "Fasilitasi komunikasi terbuka antara atasan dan bawahan."];
+
+        HRProcedures.forEach(proc => {
+          const li = document.createElement("li");
+          li.innerText = proc;
+          ulHR.appendChild(li);
+        });
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan WBSIT:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan WBSIT.");
+      }
+    });
+  </script>
+</body>
+</html>
