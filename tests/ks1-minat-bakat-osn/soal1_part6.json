@@ -1,0 +1,67 @@
+{
+  "test_info": {
+    "kode_pilar": "KS1_PILAR1",
+    "nama_pilar": "Pilar I: OSN Aptitude Test",
+    "sub_modul": "ALG",
+    "nama_sub_modul": "Problem Decomposition & Algoritmik",
+    "durasi_detik": 420
+  },
+  "questions": [
+    {
+      "id": 21,
+      "module_code": "ALG",
+      "module_name": "Problem Decomposition & Algoritmik",
+      "prompt": "Perhatikan diagram alir (flowchart) di bawah ini. Algoritma menerima input nilai awal register X = 14 dan Y = 6. Proses perulangan (looping) akan terus berjalan hingga kondisi X sama dengan Y. Berapakah nilai variabel X yang akan dicetak di akhir eksekusi program?",
+      "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 200' width='100%' height='200'><rect width='480' height='200' fill='#ffffff'/><rect x='10' y='10' width='90' height='30' rx='15' fill='#1e293b'/><text x='55' y='30' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='middle'>Mulai (X=14, Y=6)</text><line x1='100' y1='25' x2='130' y2='25' stroke='#475569' stroke-width='2'/><polygon points='130,25 122,20 122,30' fill='#475569'/><polygon points='180,5 220,25 180,45 140,25' fill='#f8fafc' stroke='#2563eb' stroke-width='2'/><text x='180' y='29' font-size='10' font-weight='bold' fill='#1e293b' text-anchor='middle'>X == Y ?</text><line x1='220' y1='25' x2='380' y2='25' stroke='#10b981' stroke-width='2'/><polygon points='380,25 372,20 372,30' fill='#10b981'/><text x='240' y='18' font-size='10' font-weight='bold' fill='#10b981'>Ya</text><rect x='380' y='10' width='90' height='30' rx='15' fill='#10b981'/><text x='425' y='30' font-size='11' font-weight='bold' fill='#ffffff' text-anchor='middle'>Cetak X</text><line x1='180' y1='45' x2='180' y2='75' stroke='#ef4444' stroke-width='2'/><polygon points='180,75 175,67 185,67' fill='#ef4444'/><text x='188' y='60' font-size='10' font-weight='bold' fill='#ef4444'>Tidak</text><polygon points='180,75 220,95 180,115 140,95' fill='#f8fafc' stroke='#ef4444' stroke-width='2'/><text x='180' y='99' font-size='10' font-weight='bold' fill='#1e293b' text-anchor='middle'>X &gt; Y ?</text><line x1='220' y1='95' x2='270' y2='95' stroke='#475569' stroke-width='2'/><polygon points='270,95 262,90 262,100' fill='#475569'/><text x='230' y='88' font-size='9' font-weight='bold' fill='#475569'>Ya</text><rect x='270' y='80' width='90' height='30' rx='4' fill='#3b82f6'/><text x='315' y='100' font-size='10' font-weight='bold' fill='#ffffff' text-anchor='middle'>X = X - Y</text><line x1='140' y1='95' x2='90' y2='95' stroke='#475569' stroke-width='2'/><polygon points='90,95 98,90 98,100' fill='#475569'/><text x='120' y='88' font-size='9' font-weight='bold' fill='#475569'>Tidak</text><rect x='0' y='80' width='90' height='30' rx='4' fill='#3b82f6'/><text x='45' y='100' font-size='10' font-weight='bold' fill='#ffffff' text-anchor='middle'>Y = Y - X</text><path d='M 315,110 L 315,160 L 180,160 L 45,160 L 45,110' fill='none' stroke='#94a3b8' stroke-width='2' stroke-dasharray='4'/><line x1='180' y1='160' x2='180' y2='125' stroke='#94a3b8' stroke-width='2' stroke-dasharray='4'/><path d='M 180,160 L 180,180 L 120,180 L 120,25 L 130,25' fill='none' stroke='#94a3b8' stroke-width='2' stroke-dasharray='4'/></svg>",
+      "options": [
+        { "code": "A", "label": "2" },
+        { "code": "B", "label": "4" },
+        { "code": "C", "label": "6" },
+        { "code": "D", "label": "8" }
+      ],
+      "correct_answer": "A"
+    },
+    {
+      "id": 22,
+      "module_code": "ALG",
+      "module_name": "Problem Decomposition & Algoritmik",
+      "prompt": "Sebuah wadah tumpukan data menggunakan prinsip memori LIFO (Last-In, First-Out). Operasi 'Push(X)' memasukkan elemen X dari atas, sedangkan 'Pop()' mengambil dan mengeluarkan elemen paling atas. Jika urutan instruksi dijalankan seperti pada daftar berikut dari atas ke bawah, manakah urutan elemen yang keluar saat operasi Pop() dilakukan?",
+      "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 180' width='100%' height='180'><rect width='480' height='180' fill='#ffffff'/><g transform='translate(30,20)'><rect x='0' y='0' width='180' height='140' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2' rx='8'/><text x='15' y='22' font-size='11' font-weight='bold' fill='#2563eb'>Instruksi Program:</text><text x='15' y='40' font-size='10' font-family='monospace' fill='#334155'>1. Push(A)</text><text x='15' y='54' font-size='10' font-family='monospace' fill='#334155'>2. Push(B)</text><text x='15' y='68' font-size='10' font-family='monospace' fill='#334155'>3. Push(C)</text><text x='15' y='82' font-size='10' font-family='monospace' fill='#ef4444'>4. Pop()   --&gt; Keluar [1]</text><text x='15' y='96' font-size='10' font-family='monospace' fill='#334155'>5. Push(D)</text><text x='15' y='110' font-size='10' font-family='monospace' fill='#ef4444'>6. Pop()   --&gt; Keluar [2]</text><text x='15' y='124' font-size='10' font-family='monospace' fill='#ef4444'>7. Pop()   --&gt; Keluar [3]</text><text x='100' y='40' font-size='10' font-family='monospace' fill='#334155'>8. Push(E)</text><text x='100' y='54' font-size='10' font-family='monospace' fill='#ef4444'>9. Pop()   --&gt; Keluar [4]</text></g><g transform='translate(260,20)'><rect x='40' y='20' width='80' height='120' fill='none' stroke='#1e293b' stroke-width='4'/><line x1='40' y1='20' x2='120' y2='20' stroke='#ffffff' stroke-width='6'/><text x='80' y='12' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Struktur Stack</text><path d='M 80,0 L 80,18' stroke='#ef4444' stroke-width='3'/><polygon points='80,18 75,10 85,10' fill='#ef4444'/><text x='130' y='75' font-size='12' font-weight='bold' fill='#ef4444'>Hasil Out: ?</text></g></svg>",
+      "options": [
+        { "code": "A", "label": "C, D, B, E" },
+        { "code": "B", "label": "C, B, D, E" },
+        { "code": "C", "label": "A, B, C, D" },
+        { "code": "D", "label": "C, D, E, B" }
+      ],
+      "correct_answer": "A"
+    },
+    {
+      "id": 23,
+      "module_code": "ALG",
+      "module_name": "Problem Decomposition & Algoritmik",
+      "prompt": "Algoritma dekomposisi ruang Quadtree membagi gambar grid 4x4 menjadi 4 kuadran. Jika suatu kuadran berwarna seragam (seluruhnya Hitam atau seluruhnya Putih), kuadran tersebut TIDAK dibagi lagi. Jika warnanya bercampur, kuadran dibagi menjadi 4 sub-kuadran yang lebih kecil. Berapakah total jumlah blok area akhir (leaf node) yang terbentuk dari dekomposisi gambar di bawah?",
+      "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 160' width='100%' height='160'><rect width='450' height='160' fill='#ffffff'/><g transform='translate(30,10)'><text x='70' y='-2' font-size='11' font-weight='bold' fill='#475569' text-anchor='middle'>Grid Asal 4x4</text><rect x='0' y='10' width='140' height='140' fill='#ffffff' stroke='#1e293b' stroke-width='3'/><line x1='70' y1='10' x2='70' y2='150' stroke='#1e293b' stroke-width='3'/><line x1='0' y1='80' x2='140' y2='80' stroke='#1e293b' stroke-width='3'/><rect x='0' y='10' width='35' height='35' fill='#1e293b'/><rect x='35' y='10' width='35' height='35' fill='#ffffff'/><rect x='0' y='45' width='35' height='35' fill='#ffffff'/><rect x='35' y='45' width='35' height='35' fill='#1e293b'/><rect x='70' y='10' width='70' height='70' fill='#ffffff' stroke='#cbd5e1'/><rect x='0' y='80' width='70' height='70' fill='#1e293b'/><rect x='70' y='80' width='35' height='35' fill='#1e293b'/><rect x='105' y='80' width='35' height='35' fill='#ffffff'/><rect x='70' y='115' width='35' height='35' fill='#ffffff'/><rect x='105' y='115' width='35' height='35' fill='#1e293b'/></g><g transform='translate(210,10)'><text x='110' y='-2' font-size='11' font-weight='bold' fill='#2563eb' text-anchor='middle'>Struktur Pohon Dekomposisi</text><circle cx='110' cy='20' r='12' fill='#2563eb'/><text x='110' y='24' font-size='10' font-weight='bold' fill='#ffffff' text-anchor='middle'>Root</text><line x1='110' y1='32' x2='35' y2='65' stroke='#94a3b8' stroke-width='2'/><line x1='110' y1='32' x2='85' y2='65' stroke='#94a3b8' stroke-width='2'/><line x1='110' y1='32' x2='135' y2='65' stroke='#94a3b8' stroke-width='2'/><line x1='110' y1='32' x2='185' y2='65' stroke='#94a3b8' stroke-width='2'/><circle cx='35' cy='75' r='10' fill='#ef4444'/><text x='35' y='78' font-size='8' font-weight='bold' fill='#ffffff' text-anchor='middle'>NW</text><circle cx='85' cy='75' r='10' fill='#10b981'/><text x='85' y='78' font-size='8' font-weight='bold' fill='#ffffff' text-anchor='middle'>NE</text><circle cx='135' cy='75' r='10' fill='#10b981'/><text x='135' y='78' font-size='8' font-weight='bold' fill='#ffffff' text-anchor='middle'>SW</text><circle cx='185' cy='75' r='10' fill='#ef4444'/><text x='185' y='78' font-size='8' font-weight='bold' fill='#ffffff' text-anchor='middle'>SE</text><text x='110' y='125' font-size='11' font-weight='bold' fill='#ef4444' text-anchor='middle'>Merah = Pecah | Hijau = Utuh</text></g></svg>",
+      "options": [
+        { "code": "A", "label": "7 blok area" },
+        { "code": "B", "label": "8 blok area" },
+        { "code": "C", "label": "10 blok area" },
+        { "code": "D", "label": "12 blok area" }
+      ],
+      "correct_answer": "C"
+    },
+    {
+      "id": 24,
+      "module_code": "ALG",
+      "module_name": "Problem Decomposition & Algoritmik",
+      "prompt": "Diagram di bawah merepresentasikan Finite State Automata (Mesin Lingkaran Status). Mesin memulai pemrosesan dari status S0 (Start) dan membaca string input karakter demi karakter dari kiri ke kanan. Di status (State) manakah mesin akan berada tepat setelah selesai memproses seluruh karakter dari string input \"1 0 1 1 0\"?",
+      "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 450 160' width='100%' height='160'><rect width='450' height='160' fill='#ffffff'/><line x1='20' y1='80' x2='50' y2='80' stroke='#1e293b' stroke-width='3'/><polygon points='50,80 42,75 42,85' fill='#1e293b'/><circle cx='80' cy='80' r='24' fill='#f8fafc' stroke='#1e293b' stroke-width='3'/><text x='80' y='85' font-size='13' font-weight='bold' fill='#1e293b' text-anchor='middle'>S0</text><circle cx='220' cy='80' r='24' fill='#f8fafc' stroke='#1e293b' stroke-width='3'/><text x='220' y='85' font-size='13' font-weight='bold' fill='#1e293b' text-anchor='middle'>S1</text><circle cx='360' cy='80' r='24' fill='#f8fafc' stroke='#1e293b' stroke-width='3'/><circle cx='360' cy='80' r='19' fill='none' stroke='#1e293b' stroke-width='2'/><text x='360' y='85' font-size='13' font-weight='bold' fill='#1e293b' text-anchor='middle'>S2</text><path d='M 65,60 A 20,20 0 1,1 85,58' fill='none' stroke='#2563eb' stroke-width='2'/><polygon points='85,58 88,48 78,52' fill='#2563eb'/><text x='75' y='25' font-size='11' font-weight='bold' fill='#2563eb'>0</text><path d='M 100,68 Q 150,45 200,68' fill='none' stroke='#2563eb' stroke-width='2'/><polygon points='200,68 190,62 192,72' fill='#2563eb'/><text x='150' y='48' font-size='11' font-weight='bold' fill='#2563eb'>1</text><path d='M 240,68 Q 290,45 340,68' fill='none' stroke='#2563eb' stroke-width='2'/><polygon points='340,68 330,62 332,72' fill='#2563eb'/><text x='290' y='48' font-size='11' font-weight='bold' fill='#2563eb'>0</text><path d='M 205,98 A 20,20 0 1,0 225,102' fill='none' stroke='#2563eb' stroke-width='2'/><polygon points='205,98 196,102 205,108' fill='#2563eb'/><text x='215' y='145' font-size='11' font-weight='bold' fill='#2563eb'>1</text><path d='M 345,92 Q 212,145 80,92' fill='none' stroke='#2563eb' stroke-width='2'/><polygon points='80,92 90,92 86,102' fill='#2563eb'/><text x='210' y='128' font-size='11' font-weight='bold' fill='#2563eb'>0</text><path d='M 345,60 A 20,20 0 1,1 365,58' fill='none' stroke='#2563eb' stroke-width='2'/><polygon points='365,58 368,48 358,52' fill='#2563eb'/><text x='355' y='25' font-size='11' font-weight='bold' fill='#2563eb'>1</text><text x='225' y='155' font-size='11' font-weight='bold' fill='#ef4444' text-anchor='middle'>Input String: \"1 0 1 1 0\"</text></svg>",
+      "options": [
+        { "code": "A", "label": "Status S0" },
+        { "code": "B", "label": "Status S1" },
+        { "code": "C", "label": "Status S2" },
+        { "code": "D", "label": "Status Error / Hang" }
+      ],
+      "correct_answer": "A"
+    }
+  ]
+}
