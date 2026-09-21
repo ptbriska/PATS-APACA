@@ -1,0 +1,238 @@
+{
+  "kode_tes": "KU8",
+  "nama_tes": "APACA Leadership & Soft Skills Assessment (ALSA)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Leadership & Soft Skills Assessment (ALSA) mengukur kompetensi manajerial, kecerdasan taktis, dan keterampilan interpersonal (soft skills) partisipan menggunakan metode Situational Judgment Test (SJT) berbasis skenario krisis dan dilema organisasi.",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_t_score": "T ≥ 65",
+      "skor_mentah_total": "≥ 170",
+      "kategori": "Role Model (Sangat Tinggi)",
+      "indikasi_kesiapan": "Sangat siap mengemban posisi puncak kepemimpinan (Ketua Umum, Presiden BEM, Manager) dan mengeksekusi keputusan strategis tanpa pengawasan.",
+      "rekomendasi_manajerial": "Diprioritaskan untuk posisi puncak kepemimpinan; berikan wewenang otonom penuh dalam mengelola program kerja krisis dan supervisi lini kepengurusan."
+    },
+    {
+      "rentang_t_score": "55 ≤ T < 65",
+      "skor_mentah_total": "145 s/d 169",
+      "kategori": "Proficient (Tinggi)",
+      "indikasi_kesiapan": "Menunjukkan judgment taktis yang matang dan kapasitas manajerial yang baik; siap untuk posisi penyelia (Ketua Divisi / Supervisor).",
+      "rekomendasi_manajerial": "Layak ditempatkan sebagai Koordinator Divisi utama; berikan pembimbingan minimal pada isu-isu lintas sektor yang sangat kompleks."
+    },
+    {
+      "rentang_t_score": "45 ≤ T < 55",
+      "skor_mentah_total": "120 s/d 144",
+      "kategori": "Capable (Sedang)",
+      "indikasi_kesiapan": "Memenuhi standar dasar kerja sama dan operasional harian, namun masih membutuhkan pendampingan saat berhadapan dengan krisis besar.",
+      "rekomendasi_manajerial": "Direkomendasikan untuk posisi staf senior atau ketua proyek berskala kecil-menengah; perlu diperkuat lewat coaching kepemimpinan."
+    },
+    {
+      "rentang_t_score": "35 ≤ T < 45",
+      "skor_mentah_total": "95 s/d 119",
+      "kategori": "Developing (Rendah)",
+      "indikasi_kesiapan": "Cenderung mengalami kesulitan dalam memprioritaskan tugas, beradaptasi dengan tim, atau mengendalikan gesekan konflik.",
+      "rekomendasi_manajerial": "Belum direkomendasikan untuk memimpin divisi; butuh intervensi pelatihan dasar soft skills dan pendampingan mentor (buddy system)."
+    },
+    {
+      "rentang_t_score": "T < 35",
+      "skor_mentah_total": "< 95",
+      "kategori": "Needs Intervention (Sangat Rendah)",
+      "indikasi_kesiapan": "Tindakan yang diambil berisiko merugikan operasional dan merusak dinamika hubungan tim secara signifikan.",
+      "rekomendasi_manajerial": "Perlu intervensi evaluasi mendasar; hindari pemberian wewenang keputusan kritis sampai diberikan pelatihan intensif."
+    }
+  ],
+  "dimensi_utama": {
+    "Decision_Making": {
+      "kode": "DM",
+      "nama": "Pengambilan Keputusan (Decision Making)",
+      "fokus_pengukuran": "Kemampuan menganalisis masalah, mengurai data ambigu di bawah tekanan krisis, serta memilih solusi paling taktis, objektif, dan berisiko terukur.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_skor": "35 - 40",
+          "kategori": "Role Model",
+          "deskripsi_perilaku": "Sangat tajam menganalisis akar masalah di tengah krisis. Mampu memisahkan fakta objektif dari persepsi emosional, menimbang dampak jangka panjang, dan berani mengambil keputusan sulit secara cepat dan tepat.",
+          "saran_pengembangan": "Pertahankan objektivitas dan bagikan metode kerangka berpikir taktis ini kepada calon-calon pemimpin muda di lingkungan organisasi."
+        },
+        "Tinggi": {
+          "rentang_skor": "29 - 34",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Mampu membuat keputusan yang fungsional dan logis dalam sebagian besar situasi operasional. Cermat memperhitungkan risiko dan mampu menyusun langkah mitigasi masalah.",
+          "saran_pengembangan": "Tingkatkan keberanian mengambil risiko terukur pada situasi yang memiliki tingkat ketidakpastian tinggi tanpa data yang lengkap."
+        },
+        "Sedang": {
+          "rentang_skor": "23 - 28",
+          "kategori": "Capable",
+          "deskripsi_perilaku": "Cukup mampu mengambil keputusan pada situasi rutin yang memiliki aturan jelas, namun cenderung ragu-ragu atau membutuhkan waktu lama saat dihadapkan pada dilema krisis mendadak.",
+          "saran_pengembangan": "Latihlah simulasi studi kasus krisis (case analysis) dan minta umpan balik dari mentor mengenai kecekatan proses pengambilan keputusan."
+        },
+        "Rendah": {
+          "rentang_skor": "17 - 22",
+          "kategori": "Developing",
+          "deskripsi_perilaku": "Cenderung impulsif atau sebaliknya terlalu pasif saat harus mengambil keputusan. Rentan membiarkan masalah berlarut-larut atau melimpahkan tanggung jawab keputusan ke pihak lain.",
+          "saran_pengembangan": "Gunakan lembar analisis dampak risiko (Risk Impact Sheet) sebelum memutuskan masalah dan hindari mengambil keputusan saat emosi tidak stabil."
+        },
+        "Sangat_Rendah": {
+          "rentang_skor": "10 - 16",
+          "kategori": "Needs Intervention",
+          "deskripsi_perilaku": "Sering kali mengambil tindakan emosional yang memicu masalah baru atau menghindari penuh proses pembuatan keputusan yang merugikan operasional tim.",
+          "saran_pengembangan": "Wajib mendiskusikan setiap keputusan operasional dengan pimpinan langsung sebelum mengeksekusinya di lapangan."
+        }
+      }
+    },
+    "Time_Management": {
+      "kode": "TM",
+      "nama": "Manajemen Waktu & Skala Prioritas (Time Management)",
+      "fokus_pengukuran": "Keterampilan menentukan prioritas kerja (Eisenhower Matrix), mendelegasikan tugas secara efektif, serta mengelola tenggat waktu yang bentrok secara efisien.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_skor": "35 - 40",
+          "kategori": "Role Model",
+          "deskripsi_perilaku": "Sangat mahir mengelola alur kerja yang kompleks. Mampu membedakan tugas penting dan mendesak secara intuitif, mahir mendelegasikan porsi kerja, dan selalu menjaga ketepatan tenggat waktu tanpa mengorbankan kualitas.",
+          "saran_pengembangan": "Jadilah arsitek alur kerja (workflow architect) bagi tim untuk membantu menyusun sistem manajemen proyek yang efisien."
+        },
+        "Tinggi": {
+          "rentang_skor": "29 - 34",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Memiliki perencanaan jam kerja yang rapi dan terstruktur. Jarang terlewat dari tenggat waktu utama serta mampu mengatur ulang jadwal saat terjadi perubahan rencana.",
+          "saran_pengembangan": "Tingkatkan efisiensi rapat dan delegasi tugas rutin agar memiliki lebih banyak ruang untuk perencanaan strategis jangka panjang."
+        },
+        "Sedang": {
+          "rentang_skor": "23 - 28",
+          "kategori": "Capable",
+          "deskripsi_perilaku": "Mampu menyelesaikan tugas sesuai jadwal jika tidak ada gangguan berlebih. Namun, mudah kewalahan jika beberapa pekerjaan mendesak datang pada waktu yang bersamaan.",
+          "saran_pengembangan": "Biasakan menggunakan alat bantu manajemen waktu (seperti Trello, Gantt Chart, atau kalender digital) untuk memantau beban kerja secara visual."
+        },
+        "Rendah": {
+          "rentang_skor": "17 - 22",
+          "kategori": "Developing",
+          "deskripsi_perilaku": "Sering kali terjebak dalam kondisi penundaan tugas (procrastination) atau mengerjakan semua hal sendirian tanpa delegasi, sehingga rentan mengalami kelelahan (burnout).",
+          "saran_pengembangan": "Pelajari teknik pembagian tugas dan berlatihlah memercayakan pekerjaan operasional kecil kepada anggota tim."
+        },
+        "Sangat_Rendah": {
+          "rentang_skor": "10 - 16",
+          "kategori": "Needs Intervention",
+          "deskripsi_perilaku": "Manajemen waktu buruk, sering mengalami keterlambatan tenggat waktu yang merugikan divisi lain, serta tidak memiliki skala prioritas kerja yang jelas.",
+          "saran_pengembangan": "Perlu pendampingan harian untuk menetapkan target harian (daily checklist) yang diverifikasi oleh atasan langsung."
+        }
+      }
+    },
+    "Teamwork": {
+      "kode": "TW",
+      "nama": "Kerja Sama & Sinergi Tim (Teamwork)",
+      "fokus_pengukuran": "Kapasitas berkolaborasi, menyeimbangkan beban kerja, menunjukkan empati interpersonal, serta menekan ego sektoral demi tercapainya tujuan bersama.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_skor": "35 - 40",
+          "kategori": "Role Model",
+          "deskripsi_perilaku": "Sangat ulung dalam membangun sinergi lintas divisi. Mampu menciptakan iklim kerja yang inklusif, peka terhadap beban emosional rekan tim, dan selalu mendahulukan kepentingan kelompok di atas kepentingan pribadi.",
+          "saran_pengembangan": "Arahkan energi kolaborasi ini untuk membangun jejaring kemitraan eksternal yang lebih luas bagi organisasi."
+        },
+        "Tinggi": {
+          "rentang_skor": "29 - 34",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Pekerja tim yang kooperatif dan dapat diandalkan. Komunikasi interpersonalnya hangat, bersedia membantu rekan yang kesulitan, dan berkontribusi aktif dalam diskusi kelompok.",
+          "saran_pengembangan": "Dorong anggota tim yang lebih pasif untuk ikut bersuara agar kolaborasi kelompok menjadi lebih merata."
+        },
+        "Sedang": {
+          "rentang_skor": "23 - 28",
+          "kategori": "Capable",
+          "deskripsi_perilaku": "Dapat bekerja dalam tim dengan cukup baik, namun sesekali masih berfokus pada batas deskripsi kerja divisinya sendiri dan enggan terlibat pada tugas di luar tanggung jawabnya.",
+          "saran_pengembangan": "Ikuti kegiatan bantuan silang divisi (cross-functional project) untuk memperluas pemahaman dinamika antar-unit kerja."
+        },
+        "Rendah": {
+          "rentang_skor": "17 - 22",
+          "kategori": "Developing",
+          "deskripsi_perilaku": "Cenderung bekerja individualis, kurang peka terhadap kondisi emosional tim, atau sering kali memicu salah paham karena gaya komunikasi yang kaku.",
+          "saran_pengembangan": "Tingkatkan keterampilan mendengarkan aktif (active listening) dan luangkan waktu untuk kegiatan peningkatan ikatan tim (team bonding)."
+        },
+        "Sangat_Rendah": {
+          "rentang_skor": "10 - 16",
+          "kategori": "Needs Intervention",
+          "deskripsi_perilaku": "Sering bersikap egois, enggan berkolaborasi, atau menunjukkan perilaku yang merusak kekompakan kelompok (toxic team behavior).",
+          "saran_pengembangan": "Diperlukan konseling interpersonal untuk memperbaiki cara berkomunikasi dan penyesuaian etika berorganisasi."
+        }
+      }
+    },
+    "Situational_Leadership": {
+      "kode": "SL",
+      "nama": "Kepemimpinan Situasional (Situational Leadership)",
+      "fokus_pengukuran": "Keluwesan dalam menyesuaikan gaya kepemimpinan (Directing, Coaching, Supporting, Delegating) berbasis tingkat kematangan, kompetensi, dan motivasi bawahan.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_skor": "35 - 40",
+          "kategori": "Role Model",
+          "deskripsi_perilaku": "Sangat fleksibel dan tepat membaca tingkat kesiapan anggota. Mampu memberikan instruksi rinci bagi anggota baru, memotivasi anggota yang ragu, dan memberi otonomi penuh bagi pakar senior tanpa micromanagement.",
+          "saran_pengembangan": "Kembangkan program kaderisasi kepemimpinan formal (mentorship program) untuk mencetak calon-calon pengurus baru."
+        },
+        "Tinggi": {
+          "rentang_skor": "29 - 34",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Mampu membedakan kebutuhan pendekatan kepemimpinan secara umum. Tahu kapan harus mengawasi secara dekat dan kapan memberikan kepercayaan tugas kepada anggota.",
+          "saran_pengembangan": "Perdalam pemahaman membaca indikator motivasi terselubung anggota agar pendampingan menjadi lebih personal."
+        },
+        "Sedang": {
+          "rentang_skor": "23 - 28",
+          "kategori": "Capable",
+          "deskripsi_perilaku": "Cenderung mengandalkan satu atau dua gaya kepemimpinan bawaan saja (misalnya selalu mengarahkan), sehingga kurang efektif saat menghadapi anggota yang memiliki karakteristik berbeda.",
+          "saran_pengembangan": "Pelajari kerangka kepemimpinan situasional Hersey-Blanchard secara mendalam untuk memperkaya variasi pendekatan gaya memimpin."
+        },
+        "Rendah": {
+          "rentang_skor": "17 - 22",
+          "kategori": "Developing",
+          "deskripsi_perilaku": "Sering melakukan kesalahan pendekatan: mengatur terlalu mikro (micromanage) anggota yang sudah ahli, atau sebaliknya melepas penuh anggota baru yang belum memiliki keterampilan.",
+          "saran_pengembangan": "Sebelum memberikan tugas, lakukan pemetaan sederhana mengenai tingkat kompetensi dan motivasi anggota yang bersangkutan."
+        },
+        "Sangat_Rendah": {
+          "rentang_skor": "10 - 16",
+          "kategori": "Needs Intervention",
+          "deskripsi_perilaku": "Gagal menjalankan peran pimpinan; bersikap otoriter kaku atau benar-benar lepas tangan terhadap perkembangan anggota timnya.",
+          "saran_pengembangan": "Perlu pendampingan intensif dari pimpinan senior dalam merancang alur pendelegasian dan arahan kerja."
+        }
+      }
+    },
+    "Conflict_Resolution": {
+      "kode": "CR",
+      "nama": "Resolusi Konflik & Komunikasi Konstruktif (Conflict Resolution)",
+      "fokus_pengukuran": "Kemampuan mengelola perselisihan antarpribadi maupun antar-divisi secara tenang, obyektif, dan berorientasi pada penyelesaian menang-menang (win-win solution).",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_skor": "35 - 40",
+          "kategori": "Role Model",
+          "deskripsi_perilaku": "Mediator yang sangat tangguh. Mampu meredakan ketegangan tinggi, memisahkan konflik pribadi dari masalah profesional, dan memfasilitasi solusi win-win yang diterima dengan lapang dada oleh semua pihak.",
+          "saran_pengembangan": "Berperan sebagai mediator utama organisasi dalam menyelesaikan potensi gesekan strategis lintas pemangku kepentingan."
+        },
+        "Tinggi": {
+          "rentang_skor": "29 - 34",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Mampu menangani perbedaan pendapat secara kepala dingin. Tidak takut menghadapi perselisihan dan berusaha mencari titik tengah yang adil bagi pihak yang berlawanan.",
+          "saran_pengembangan": "Tingkatkan keterampilan negosiasi taktis untuk mengantisipasi konflik kepentingan yang melibatkan pihak luar/eksternal."
+        },
+        "Sedang": {
+          "rentang_skor": "23 - 28",
+          "kategori": "Capable",
+          "deskripsi_perilaku": "Mampu menyelesaikan konflik sederhana, namun cenderung merasa canggung atau berusaha menghindar jika perselisihan sudah melibatkan emosi yang intens atau pihak senior.",
+          "saran_pengembangan": "Latihlah teknik komunikasi asertif dan jangan menunda penyelesaian konflik kecil sebelum membesar."
+        },
+        "Rendah": {
+          "rentang_skor": "17 - 22",
+          "kategori": "Developing",
+          "deskripsi_perilaku": "Cenderung memilih cara paksakan kehendak (win-lose) atau menghindar penuh dari perselisihan (avoiding), yang justru memicu kekecewaan terselubung di dalam tim.",
+          "saran_pengembangan": "Pelajari model penanganan konflik Thomas-Kilmann untuk memahami kapan harus berkompromi, mengakomodasi, atau berkolaborasi."
+        },
+        "Sangat_Rendah": {
+          "rentang_skor": "10 - 16",
+          "kategori": "Needs Intervention",
+          "deskripsi_perilaku": "Respon terhadap konflik bersifat destruktif: memihak secara subjektif, menunjukkan emosi meledak-ledak, atau memperkeruh ketegangan tim.",
+          "saran_pengembangan": "Perlu pelatihan regulasi emosi diri dan hindari keterlibatan langsung sebagai pengambil keputusan dalam situasi konflik."
+        }
+      }
+    }
+  },
+  "panduan_interpretasi_manajerial": {
+    "penggunaan_sekolah_osis": "Gunakan skor ALSA untuk menyeleksi Pengurus Harian OSIS/MPK, menentukan Ketua Panitia kegiatan besar sekolah, serta menyusun rencana pembinaan kepemimpinan kesiswaan.",
+    "penggunaan_kampus_bem": "Gunakan skor sebagai rujukan objektif dalam Rekrutmen Terbuka (Oprec) pengurus BEM/HIMA/UKM, penentuan Komandan Lapangan/Project Officer, serta pemetaan kader potensial.",
+    "penggunaan_bisnis_corporate": "Gunakan skor sebagai indikator kesiapan manajerial kandidat Management Trainee (MT), pertimbangan promosi ke jenjang Supervisor/Manager, serta penyusunan modul pemetaan bakat (Talent Mapping)."
+  }
+}
