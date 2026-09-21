@@ -1,0 +1,174 @@
+{
+  "kode_tes": "KK2",
+  "nama_resmi": "APACA Parenting Style Inventory (APSI)",
+  "versi": "Versi 1.0 / 2026",
+  "psikolog_pj": "Tim Asesmen APACA",
+  "rubrik_deskripsi": {
+    "Otoritatif": {
+      "judul": "Pola Asuh Otoritatif / Demokratis (Authoritative)",
+      "deskripsi": "Pola asuh Otoritatif ditandai oleh keseimbangan ideal antara Tuntutan Tinggi (Demandingness) dan Responsivitas Tinggi (Responsiveness)[cite: 6]. Anda menetapkan standar perilaku dan batasan yang tegas, namun senantiasa mengimbanginya dengan kehangatan emosional, komunikasi dua arah, serta validasi terhadap perasaan anak[cite: 6]. Anda mengutamakan penalaran rasional dan diskusi ketimbang hukuman sepihak[cite: 6].",
+      "dimensi_utama": {
+        "tuntutan_kontrol": "Tinggi (Memiliki standar & batasan yang jelas)[cite: 6]",
+        "responsivitas_dukungan": "Tinggi (Penuh kehangatan & responsif emosional)[cite: 6]"
+      },
+      "kelebihan": [
+        "Membangun rasa percaya diri, kemandirian, dan ketahanan emosional (resiliensi) anak yang tinggi.",
+        "Menciptakan iklim komunikasi keluarga yang terbuka, jujur, dan minim konflik destruktif.",
+        "Mendorong anak memiliki motivasi belajar intrinsik serta kesadaran moral yang kuat."
+      ],
+      "potensi_risiko": [
+        "Orang tua berisiko mengalami kelelahan mental (parental burnout) jika terlalu lama bernegosiasi pada setiap aturan kecil.",
+        "Anak dapat menjadi terlalu kritis dan menuntut penjelasan rasional pada segala situasi.",
+        "Potensi timbulnya rasa bersalah pada orang tua ketika situasi darurat menuntut ketegasan sepihak tanpa sempat berdiskusi."
+      ],
+      "dampak_pada_anak": {
+        "perkembangan_emosional": "Anak memiliki regulasi emosi yang matang, harga diri (self-esteem) positif, serta mampu mengelola stres dengan baik.",
+        "prestasi_akademis": "Menunjukkan performa akademis yang konsisten tinggi berkat dorongan rasa ingin tahu dan disiplin diri internal.",
+        "keterampilan_sosial": "Sangat terampil bersosialisasi, memiliki empati tinggi, cakap bernegosiasi, dan mudah diterima dalam kelompok sebaya.",
+        "perilaku_jangka_panjang": "Cenderung tumbuh menjadi dewasa yang bertanggung jawab, memiliki jiwa kepemimpinan, serta mampu mengambil keputusan secara mandiri."
+      },
+      "sifat_orang_tua": {
+        "gaya_regulasi": "Konsisten, adil, rasional, dan memberikan alur konsekuensi yang dapat diprediksi oleh anak.",
+        "pendekatan_konflik": "Menggunakan pendekatan pemecahan masalah bersama (win-win problem solving) dan mendengarkan sudut pandang anak.",
+        "iklim_emosional": "Hangat, aman secara psikologis (*psychologically safe*), serta penuh penerimaan."
+      },
+      "gaya_komunikasi": "Dua arah, interaktif, penuh empati, menghargai pendapat anak, dan transparan mengenai alasan di balik penerapan aturan.",
+      "rekomendasi": "Pertahankan pola komunikasi terbuka dan terus sesuaikan derajat otonomi anak seiring bertambahnya usia dan kedewasaan pemikirannya.",
+      "strategi_intervensi": [
+        "Lakukan pertemuan keluarga berkala (*family meeting*) untuk mengevaluasi dan memperbarui aturan rumah bersama.",
+        "Berikan pujian yang berfokus pada usaha dan proses (*process-praise*) ketimbang sekadar hasil akhir.",
+        "Tetapkan batasan non-negosiasi khusus untuk isu keselamatan dan nilai moral inti."
+      ],
+      "interpretasi_t_score": {
+        "tinggi": "T >= 55: Mampu memadukan disiplin tegas dan kehangatan emosional secara efektif dalam pengasuhan harian[cite: 6].",
+        "sedang": "45 <= T < 55: Menerapkan pendekatan demokratis pada situasi tertentu, namun terkadang bergeser saat tegang[cite: 6].",
+        "rendah": "T < 45: Jarang menggunakan pendekatan penalaran dan kehangatan seimbang dalam mengarahkan anak[cite: 6]."
+      }
+    },
+
+    "Otoriter": {
+      "judul": "Pola Asuh Otoriter (Authoritarian)",
+      "deskripsi": "Pola asuh Otoriter ditandai oleh Tuntutan Tinggi (Demandingness) yang tidak diimbangi oleh Responsivitas (Responsiveness)[cite: 6]. Anda mengedepankan kepatuhan mutlak, kontrol yang ketat, aturan kaku, serta penerapan sanksi atau hukuman tanpa membuka ruang untuk diskusi dua arah[cite: 6]. Anda meyakini bahwa menghormati otoritas orang tua adalah kunci utama kedisiplinan anak[cite: 6].",
+      "dimensi_utama": {
+        "tuntutan_kontrol": "Sangat Tinggi (Aturan kaku & kontrol ketat)[cite: 6]",
+        "responsivitas_dukungan": "Rendah (Minim kehangatan & kepekaan emosional)[cite: 6]"
+      },
+      "kelebihan": [
+        "Menciptakan ketertiban harian dan kepatuhan anak terhadap petunjuk orang tua secara cepat.",
+        "Melatih anak untuk beroperasi secara patuh dalam lingkungan yang memiliki struktur dan hirarki kaku.",
+        "Menjauhkan anak dari risiko bahaya fisik langsung melalui pengawasan dan kontrol yang sangat ketat."
+      ],
+      "potensi_risiko": [
+        "Memicu rasa cemas, takut berbuat salah, dan rendahnya percaya diri pada anak.",
+        "Berisiko mendorong anak menjadi mahir berbohong demi menghindari hukuman keras.",
+        "Memicu ledakan pemberontakan ekstrem saat anak memasuki usia remaja dan mulai menuntut kebebasan."
+      ],
+      "dampak_pada_anak": {
+        "perkembangan_emosional": "Anak cenderung memiliki harga diri rendah, rentan mengalami kecemasan, serta memendam emosi kemarahan.",
+        "prestasi_akademis": "Dapat mencapai nilai baik karena takut sanksi, namun kurang memiliki kreativitas dan inisiatif mandiri.",
+        "keterampilan_sosial": "Cenderung pasif atau sebaliknya menunjukkan kecenderungan agresif saat berinteraksi dengan teman sebaya.",
+        "perilaku_jangka_panjang": "Kesulitan mengambil keputusan mandiri di masa dewasa dan sangat bergantung pada arahan otoritas luar."
+      },
+      "sifat_orang_tua": {
+        "gaya_regulasi": "Instruktif, dogmatis, menekankan sanksi/hukuman, dan minim toleransi terhadap kekeliruan.",
+        "pendekatan_konflik": "Menggunakan dorongan otoritas sepihak ('Lakukan karena Orang Tua yang Meminta') tanpa negosiasi.",
+        "iklim_emosional": "Tegang, dingin, sarat akan tekanan ekspektasi, dan kurang apresiasi."
+      },
+      "gaya_komunikasi": "Searah, dominan, bernada perintah atau teguran, serta jarang memvalidasi perasaan anak.",
+      "rekomendasi": "Mulai kurangi penggunaan sanksi fisik/verbal dan imbangi ketegasan aturan dengan mendengarkan serta memberikan kasih sayang tanpa syarat.",
+      "strategi_intervensi": [
+        "Luangkan waktu minimal 15 menit sehari untuk beraktivitas bersama anak tanpa memberikan kritik atau koreksi.",
+        "Gantikan frasa perintah sepihak dengan penjelasan mengenai alasan logis di balik suatu aturan.",
+        "Belajar memvalidasi emosi anak dengan kalimat seperti: 'Ibu paham kamu kesal, tapi aturan ini dibuat untuk keselamatanmu'."
+      ],
+      "interpretasi_t_score": {
+        "tinggi": "T >= 55: Sangat dominan mengontrol dan menuntut kepatuhan kaku; perlu menambah porsi kehangatan emosional[cite: 6].",
+        "sedang": "45 <= T < 55: Terkadang bersikap kaku dan otoriter saat berada di bawah tekanan atau kelelahan[cite: 6].",
+        "rendah": "T < 45: Jarang memaksakan kehendak sepihak dan tidak mengandalkan rasa takut dalam mengasuh[cite: 6]."
+      }
+    },
+
+    "Permisif": {
+      "judul": "Pola Asuh Permisif (Permissive / Indulgent)",
+      "deskripsi": "Pola asuh Permisif ditandai oleh Responsivitas Tinggi (Responsiveness) namun Tuntutan Rendah (Demandingness)[cite: 6]. Anda sangat hangat, penuh kasih sayang, dan responsif terhadap keinginan anak, namun enggan menetapkan batasan atau menegakkan aturan secara konsisten[cite: 6]. Anda cenderung memosisikan diri sebagai teman sebaya ketimbang figur otoritas[cite: 6].",
+      "dimensi_utama": {
+        "tuntutan_kontrol": "Rendah (Minim batasan, aturan, dan sanksi)[cite: 6]",
+        "responsivitas_dukungan": "Sangat Tinggi (Penuh kehangatan & serba menuruti)[cite: 6]"
+      },
+      "kelebihan": [
+        "Anak merasa sangat dicintai, diterima, dan memiliki ikatan emosional yang erat dengan orang tua.",
+        "Mendorong anak memiliki kebebasan berekspresi dan kreativitas tanpa rasa takut dituntut.",
+        "Menciptakan suasana rumah yang santai, terbuka, dan minim konflik ketegangan."
+      ],
+      "potensi_risiko": [
+        "Anak tumbuh menjadi pribadi yang kurang memiliki kedisiplinan diri dan daya juang (adversity quotient).",
+        "Anak kesulitan menerima penolakan atau batas sosial di luar rumah (sekolah/masyarakat).",
+        "Orang tua kehilangan wibawa kepemimpinan saat harus mengendalikan perilaku bahaya anak."
+      ],
+      "dampak_pada_anak": {
+        "perkembangan_emosional": "Cenderung memiliki kontrol diri (self-control) yang rendah, impulsif, dan mudah frustrasi jika keinginannya tertunda.",
+        "prestasi_akademis": "Rentan mengalami penurunan prestasi akibat kurangnya kebiasaan belajar yang terstruktur dan disiplin.",
+        "keterampilan_sosial": "Berisiko bersikap egosentris, menuntut perlakuan khusus dari teman, serta kurang menghargai batasan orang lain.",
+        "perilaku_jangka_panjang": "Rentan mengalami kesulitan mengelola keuangan, rutinitas kerja, dan komitmen masa depan secara mandiri."
+      },
+      "sifat_orang_tua": {
+        "gaya_regulasi": "Inkonsisten, serba memaklumi, menghindari konfrontasi, dan mudah goyah oleh tangisan anak.",
+        "pendekatan_konflik": "Cenderung mengalah dan menuruti tuntutan anak demi menghentikan konflik emosional dengan cepat.",
+        "iklim_emosional": "Sangat hangat, manja, tidak terstruktur, dan serba bebas."
+      },
+      "gaya_komunikasi": "Sangat ramah, kompromistis, memanjakan, namun ragu-ragu dalam menyampaikan instruksi tegas.",
+      "rekomendasi": "Pelajari cara menetapkan batasan yang sehat (*healthy boundaries*) dan tegakkan konsekuensi secara konsisten tanpa merasa bersalah.",
+      "strategi_intervensi": [
+        "Pahami bahwa menolak keinginan anak yang tidak sehat adalah bentuk kasih sayang yang hakiki.",
+        "Rancang jadwal rutinitas harian yang jelas (jam belajar, jam main gadget, jam tidur) dan patuhi bersama.",
+        "Terapkan teknik 'Konsekuensi Logis' ketika anak melanggar aturan, dan jangan mengambil alih tanggung jawabnya."
+      ],
+      "interpretasi_t_score": {
+        "tinggi": "T >= 55: Sangat memanjakan dan minim batasan; berisiko membuat anak sulit mengendalikan diri[cite: 6].",
+        "sedang": "45 <= T < 55: Cukup hangat dan terkadang memberi kebebasan berlebih pada situasi-situasi tertentu[cite: 6].",
+        "rendah": "T < 45: Mampu membatasi dan tidak mudah menyerah pada tuntutan atau rengetan anak[cite: 6]."
+      }
+    },
+
+    "Pengabaian": {
+      "judul": "Pola Asuh Pengabaian / Apatis (Neglectful / Uninvolved)",
+      "deskripsi": "Pola asuh Pengabaian ditandai oleh Tuntutan Rendah (Demandingness) sekaligus Responsivitas Rendah (Responsiveness)[cite: 6]. Anda cenderung tidak terlibat secara emosional maupun operasional dalam kehidupan anak, minim memberikan pengawasan, serta tidak menetapkan harapan atau aturan tumbuh kembang yang jelas[cite: 6].",
+      "dimensi_utama": {
+        "tuntutan_kontrol": "Sangat Rendah (Tidak ada aturan & pengawasan)[cite: 6]",
+        "responsivitas_dukungan": "Sangat Rendah (Acuh tak acuh & dingin emosional)[cite: 6]"
+      },
+      "kelebihan": [
+        "Mengabaikan paksaan pada anak sehingga anak terdorong belajar bertahan hidup mandiri lebih dini.",
+        "Memberikan ruang kebebasan mutlak tanpa tekanan ekspektasi orang tua."
+      ],
+      "potensi_risiko": [
+        "Anak merasa tidak dicintai, tidak berharga, dan ditolak oleh keluarga sendiri.",
+        "Sangat berisiko tinggi membuat anak terjerumus pada pergaulan bebas, penyalahgunaan zat, atau kenakalan remaja.",
+        "Merusak perkembangan emosional dan pembentukan karakter dasar anak secara signifikan."
+      ],
+      "dampak_pada_anak": {
+        "perkembangan_emosional": "Memiliki rasa hampa yang mendalam, kesepian ekstrem, kecemasan, dan kesulitan membina rasa percaya (*trust issue*).",
+        "prestasi_akademis": "Cenderung memiliki angka membolos yang tinggi dan risiko kegagalan akademis yang signifikan.",
+        "keterampilan_sosial": "Kesulitan membangun hubungan interpersonal yang sehat dan rentan menarik diri dari lingkungan.",
+        "perilaku_jangka_panjang": "Rentan mengalami gangguan kesehatan mental dan kesulitan beradaptasi dalam fungsi sosial masyarakat."
+      },
+      "sifat_orang_tua": {
+        "gaya_regulasi": "Tidak hadir (*absent*), acuh tak acuh, pasif, dan lepas tangan terhadap proses tumbuh kembang.",
+        "pendekatan_konflik": "Menghindar, membiarkan masalah berlarut-larut, atau menunjukkan kejengkolan saat terganggu.",
+        "iklim_emosional": "Dingin, terisolasi, hampa, dan minim interaksi bermakna."
+      },
+      "gaya_komunikasi": "Minimalis, pasif, jarak jauh, bernada acuh tak acuh, dan hanya terjadi untuk pemenuhan fisik mendasar.",
+      "rekomendasi": "Segera tingkatkan kehadiran emosional dan waktu berkualitas bersama anak. Jika kewalahan oleh beban pribadi/karir, pertimbangkan konseling parenting profesional.",
+      "strategi_intervensi": [
+        "Jadwalkan Waktu Khusus (*Special Quality Time*) minimal 20 menit sehari khusus untuk mengobrol dengan anak tanpa gangguan gadget.",
+        "Tunjukkan ketertarikan aktif pada rutinitas anak (tanyakan kegiatan sekolahnya, teman-temannya, dan perasaannya hari ini).",
+        "Evaluasi dan atur kembali prioritas hidup/karir Anda untuk memberikan porsi kehadiran yang layak bagi anak."
+      ],
+      "interpretasi_t_score": {
+        "tinggi": "T >= 55: Sangat minim keterlibatan dan kehadiran emosional; membutuhkan intervensi kesadaran pengasuhan segera[cite: 6].",
+        "sedang": "45 <= T < 55: Terkadang acuh atau terdistraksi oleh kesibukan pribadi sehingga mengabaikan kebutuhan anak[cite: 6].",
+        "rendah": "T < 45: Sangat peduli, terlibat aktif, dan tidak membiarkan anak tumbuh tanpa pendampingan[cite: 6]."
+      }
+    }
+  }
+}
