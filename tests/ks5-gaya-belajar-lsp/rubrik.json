@@ -1,0 +1,185 @@
+{
+  "kode_tes": "KS5",
+  "nama_tes": "Learning Style Preference Test (LSP) - Executive Profiler",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Ahli Psikometri APACA",
+    "sipp": "Lisensi Edu-Assessment 2026"
+  },
+  "informasi_kognitif": "Instrumen ini memetakan preferensi dan orkestrasi gaya belajar, bukan mengukur kapasitas intelektual (IQ). Pemetaan ini digunakan untuk mendesain strategi diferensiasi pembelajaran (differentiated instruction) yang paling selaras dengan arsitektur kognitif siswa.",
+  "rubrik_deskripsi": {
+    "Modalitas - Visual": {
+      "judul_dimensi": "Visual (Spasial & Grafis)",
+      "deskripsi_umum": "Anda memiliki arsitektur kognitif yang merespons sangat kuat terhadap stimulus visual. Anda memproses dan merekam informasi secara optimal melalui tata letak spasial, hierarki warna, dan representasi gambar dibandingkan sekadar mendengarkan kata-kata.",
+      "karakteristik_belajar": [
+        "Mampu memanggil kembali memori akademis berdasarkan 'tata letak' informasi di halaman buku (photographic memory trace).",
+        "Unggul dalam memahami pola rumit jika disajikan melalui infografis, diagram, atau peta konsep."
+      ],
+      "rekomendasi_strategi": "Gunakan teknik pemetaan pikiran (Mind Mapping) terstruktur. Terapkan sistem 'Color Coding' yang konsisten (misal: merah untuk definisi, biru untuk rumus) pada catatan Anda."
+    },
+    "Modalitas - Auditori": {
+      "judul_dimensi": "Auditori (Lisan & Akustik)",
+      "deskripsi_umum": "Kanal utama penyerapan informasi Anda berpusat pada frekuensi suara dan ritme lisan. Anda mengasimilasi materi pelajaran dengan sangat baik melalui diskusi interaktif, ceramah yang dinamis, dan penekanan intonasi.",
+      "karakteristik_belajar": [
+        "Memiliki retensi memori yang kuat terhadap penjelasan verbal dan diskusi lisan yang pernah didengar.",
+        "Sering kali mengulang informasi secara vokal (self-talk) untuk memvalidasi pemahaman di dalam memori jangka panjang."
+      ],
+      "rekomendasi_strategi": "Rekam penjelasan guru/dosen (dengan izin) dan dengarkan ulang sebagai pengganti membaca teks. Manfaatkan format audiobook atau podcast edukasi."
+    },
+    "Modalitas - Verbal / Textual": {
+      "judul_dimensi": "Verbal / Textual (Read & Write)",
+      "deskripsi_umum": "Anda adalah pemikir sintaksis yang sangat mengandalkan teks tertulis. Anda menemukan kenyamanan intelektual yang mendalam dalam merangkai kata, membaca literatur padat, dan menstrukturkan ulang ide ke dalam catatan komprehensif.",
+      "karakteristik_belajar": [
+        "Mampu bertahan membaca literatur panjang tanpa gambar, serta ahli dalam merangkum intisari teks.",
+        "Merasa 'belum belajar' jika belum memindahkan materi ke dalam format tulisan atau catatan tangan yang sistematis."
+      ],
+      "rekomendasi_strategi": "Biasakan menyusun ulang catatan kelas dengan bahasa Anda sendiri (paraphrasing). Buat glosarium atau daftar istilah khusus untuk setiap mata pelajaran berat."
+    },
+    "Modalitas - Kinestetik": {
+      "judul_dimensi": "Kinestetik (Eksperiensial & Somatik)",
+      "deskripsi_umum": "Sistem saraf Anda menuntut keterlibatan fisik untuk mengaktifkan fokus kognitif penuh. Pembelajaran bagi Anda adalah sebuah pengalaman nyata (experiential learning), bukan sekadar teori yang direnungkan.",
+      "karakteristik_belajar": [
+        "Pemahaman akademis mencapai puncaknya melalui simulasi, manipulasi objek nyata, dan metode trial-and-error.",
+        "Kerap membutuhkan mobilitas fisik ringan (seperti berjalan mondar-mandir atau mengetukkan jari) untuk menjaga konsentrasi pikiran."
+      ],
+      "rekomendasi_strategi": "Terapkan teknik 'Pomodoro' dengan jeda aktif (bergerak peregangan) setiap 25 menit. Konversikan materi teori menjadi proyek fisik atau studi kasus lapangan (role-play)."
+    },
+    "Pemrosesan - Concrete": {
+      "judul_dimensi": "Concrete (Praktis & Faktual)",
+      "deskripsi_umum": "Anda adalah pembelajar pragmatis yang mencari jangkar realitas dalam setiap teori. Kognisi Anda menuntut bukti empiris, fakta konkret, dan relevansi langsung dengan dunia nyata sebelum bersedia memproses sebuah konsep.",
+      "karakteristik_belajar": [
+        "Cenderung frustrasi terhadap teori abstrak yang tidak memiliki aplikasi nyata.",
+        "Sangat teliti dalam mengumpulkan data faktual dan unggul dalam penugasan yang menuntut observasi observasional empiris."
+      ],
+      "rekomendasi_strategi": "Saat berhadapan dengan teori abstrak (seperti filsafat atau aljabar tingkat lanjut), selalulah mencari atau meminta guru memberikan 'Use Case' atau contoh implementasinya di industri nyata."
+    },
+    "Pemrosesan - Intuitive": {
+      "judul_dimensi": "Intuitive (Holistik & Konseptual)",
+      "deskripsi_umum": "Kekuatan kognitif Anda terletak pada lompatan logika dan pengenalan pola (pattern recognition). Anda memahami materi secara insting dan intuitif tanpa harus melalui proses pembuktian data yang melelahkan.",
+      "karakteristik_belajar": [
+        "Cepat menangkap makna tersirat dan unggul dalam menghasilkan gagasan-gagasan orisinal yang di luar kebiasaan (out-of-the-box).",
+        "Sering bosan dengan rutinitas repetitif atau tugas prosedural yang kaku."
+      ],
+      "rekomendasi_strategi": "Bebaskan diri Anda untuk mengeksplorasi berbagai literatur secara non-linear. Percayai 'firasat' akademis Anda, namun latih diri untuk tetap mendokumentasikan langkah pembuktian agar dapat divalidasi secara ilmiah."
+    },
+    "Pemrosesan - Global": {
+      "judul_dimensi": "Global (Pemikir Makro / Big Picture)",
+      "deskripsi_umum": "Sebagai pemikir makro, Anda memerlukan kerangka konteks atau 'gambaran besar' sebelum dapat menyelami detail teknis. Memahami 'Mengapa' jauh lebih penting bagi Anda daripada menghafal 'Bagaimana'.",
+      "karakteristik_belajar": [
+        "Kesulitan memproses instruksi mikro yang bertahap jika tujuan akhirnya belum terdefinisikan secara jelas.",
+        "Unggul dalam menghubungkan teori-teori dari berbagai mata pelajaran (interdisipliner) menjadi satu benang merah."
+      ],
+      "rekomendasi_strategi": "Biasakan membaca daftar isi, sinopsis, atau bagian kesimpulan dari sebuah bab terlebih dahulu sebelum mulai membaca isi teknisnya secara berurutan."
+    },
+    "Pemrosesan - Reflective": {
+      "judul_dimensi": "Reflective (Analitis & Introspektif)",
+      "deskripsi_umum": "Anda memproses informasi secara internal dan mendalam. Ruang kognisi Anda bertindak sebagai laboratorium tertutup; Anda menganalisis setiap variabel secara hati-hati sebelum bersedia membagikan kesimpulan ke dunia luar.",
+      "karakteristik_belajar": [
+        "Cenderung diam saat sesi tanya jawab awal untuk mensimulasikan perdebatan secara internal (internal deliberation).",
+        "Menghasilkan karya akademis yang sangat matang, minim kesalahan ceroboh, dan berakar pada logika solid."
+      ],
+      "rekomendasi_strategi": "Mintalah materi presentasi sebelum kelas dimulai agar Anda memiliki waktu jeda untuk mencerna secara mandiri. Jangan ragu meminta waktu berpikir sebelum merespons pertanyaan spontan."
+    },
+    "Lingkungan - Quiet": {
+      "judul_dimensi": "Quiet (Sensitivitas Akustik Tinggi)",
+      "deskripsi_umum": "Ekosistem intelektual Anda menuntut keheningan absolut. Kognisi Anda beroperasi pada tingkat tertinggi saat terbebas dari polusi suara yang mendistraksi pemrosesan informasi.",
+      "karakteristik_belajar": [
+        "Percakapan kecil, musik berlirik, atau kebisingan lingkungan secara instan memotong alur logika (train of thought) Anda.",
+        "Kapasitas *deep work* hanya terpicu dalam ruangan yang tenang dan terisolasi."
+      ],
+      "rekomendasi_strategi": "Investasikan pada perangkat *Noise-Cancelling Headphones* atau penyumbat telinga (earplugs). Jadwalkan sesi belajar terberat Anda di larut malam atau dini hari."
+    },
+    "Lingkungan - Structured": {
+      "judul_dimensi": "Structured (Terencana & Sistematis)",
+      "deskripsi_umum": "Anda menemukan keamanan psikologis melalui parameter belajar yang terencana. Silabus yang rigid, rubrik penilaian yang jelas, dan tenggat waktu yang tegas merupakan katalisator produktivitas Anda.",
+      "karakteristik_belajar": [
+        "Sangat mahir mematuhi kalender akademik dan jarang mengalami keterlambatan pengumpulan tugas.",
+        "Mungkin mengalami kelumpuhan analisis (analysis paralysis) saat diberikan tugas bebas tanpa batas kriteria yang jelas."
+      ],
+      "rekomendasi_strategi": "Setiap kali menerima tugas 'open-ended', buatlah struktur buatan Anda sendiri (pseudo-rubric) atau minta batasan spesifik dari guru/dosen pembimbing."
+    },
+    "Lingkungan - Indoor": {
+      "judul_dimensi": "Indoor (Terkendali & Formal)",
+      "deskripsi_umum": "Anda adalah puritan akademis yang lebih menyukai seting ruang belajar formal dan tertutup (seperti kelas, perpustakaan, meja belajar khusus) dibandingkan belajar di alam terbuka yang sarat akan distraksi visual.",
+      "karakteristik_belajar": [
+        "Pencahayaan buatan, suhu ruangan yang stabil, dan sekat fisik dinding membantu memusatkan fokus pikiran Anda.",
+        "Kurang menyukai kegiatan belajar *outdoor* karena terlalu banyak variabel lingkungan yang tidak bisa dikontrol."
+      ],
+      "rekomendasi_strategi": "Optimalkan ergonomi di zona belajar indoor Anda (kursi yang nyaman, pencahayaan lampu meja yang pas) untuk memicu kondisi mental siap-belajar secara instan."
+    },
+    "Lingkungan - Stable": {
+      "judul_dimensi": "Stable (Konsistensi Rutinitas)",
+      "deskripsi_umum": "Anda sangat bergantung pada memori yang terikat pada konteks (context-dependent memory). Belajar di tempat, waktu, dan suasana yang sama setiap hari akan memaksimalkan efisiensi otak Anda.",
+      "karakteristik_belajar": [
+        "Memiliki ritual pra-belajar yang konsisten yang berfungsi sebagai saklar otomatis untuk mengaktifkan fokus.",
+        "Perubahan jadwal mendadak atau keharusan berpindah lokasi belajar secara konstan akan menurunkan performa akademik."
+      ],
+      "rekomendasi_strategi": "Pertahankan rutinitas 'Spot Belajar Utama' Anda. Hindari bereksperimen dengan metode atau lokasi baru tepat saat minggu ujian akhir sudah dekat."
+    },
+    "Interaksi - Mandiri": {
+      "judul_dimensi": "Mandiri / Solitary (Otonomi Intelektual)",
+      "deskripsi_umum": "Anda adalah pembelajar otonom yang menemukan pencerahan tertinggi saat berada dalam kesendirian. Interaksi dengan orang lain selama fase asimilasi informasi awal justru dianggap memperlambat ritme kognitif Anda.",
+      "karakteristik_belajar": [
+        "Sangat mandiri, memiliki inisiatif riset yang tinggi, dan memegang standar kontrol mutu pribadi atas hasil karya.",
+        "Cenderung merasa stres atau terbebani jika dipaksa mengerjakan tugas kelompok yang anggota timnya kurang kompeten."
+      ],
+      "rekomendasi_strategi": "Berikan porsi waktu isolasi (*solitude time*) yang cukup sebelum Anda bergabung dalam kerja kelompok, sehingga Anda bisa mengamankan penguasaan konsep dasar secara independen."
+    },
+    "Interaksi - Kelompok": {
+      "judul_dimensi": "Kelompok / Peer-Learning (Sosial & Kolaboratif)",
+      "deskripsi_umum": "Gaya kognitif Anda sangat sosial (socio-cognitive learning). Pertukaran ide yang dinamis, debat sehat, dan saling mengkalibrasi pemahaman dengan rekan sebaya adalah mesin penggerak pemahaman akademis Anda.",
+      "karakteristik_belajar": [
+        "Mendapatkan pencerahan (aha-moment) dari perspektif teman yang seringkali tidak tertulis di buku teks.",
+        "Menjadikan sesi belajar kelompok sebagai wadah afirmasi verbal untuk mengecek retensi memori."
+      ],
+      "rekomendasi_strategi": "Berperanlah sebagai 'tutor sebaya' (mengajarkan materi kepada teman), karena tindakan mempresentasikan ulang materi akan mengunci pemahaman Anda secara permanen."
+    },
+    "Interaksi - Guru / Mentor": {
+      "judul_dimensi": "Guru / Otoritas Eksternal (Mentorship Driven)",
+      "deskripsi_umum": "Anda sangat menghargai validasi, otoritas intelektual, dan panduan langsung dari figur mentor ahli. Keterarahan (guided learning) memberikan jaminan kualitas atas proses belajar Anda.",
+      "karakteristik_belajar": [
+        "Memiliki rasa hormat yang tinggi terhadap hierarki pengetahuan dan instruksi silabus resmi.",
+        "Sangat termotivasi oleh ekspektasi dan umpan balik langsung (feedback) dari guru/dosen yang kompeten."
+      ],
+      "rekomendasi_strategi": "Manfaatkan secara optimal jam konsultasi (office hours). Jangan ragu mempresentasikan kerangka draf tugas Anda kepada mentor untuk mendapatkan umpan balik awal sebelum dieksekusi penuh."
+    },
+    "Interaksi - Teknologi": {
+      "judul_dimensi": "Teknologi (Tech-Mediated Learning)",
+      "deskripsi_umum": "Anda adalah *digital native* yang memproses informasi secara eksponensial melalui perangkat digital. Batasan fisik literatur cetak tidak lagi relevan bagi gaya eksplorasi akademis Anda yang cepat.",
+      "karakteristik_belajar": [
+        "Memanfaatkan platform *e-learning*, simulasi multimedia, dan *cloud-collaboration* sebagai ruang kelas tanpa batas.",
+        "Kapasitas belajar melesat ketika didukung oleh aplikasi cerdas (seperti Notion, Anki, atau AI asisten)."
+      ],
+      "rekomendasi_strategi": "Gunakan teknologi pemrosesan catatan tingkat lanjut dan platform manajemen proyek (seperti Trello/Asana) untuk menstrukturkan riset multi-sumber Anda secara efisien."
+    }
+  },
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "76% - 100%",
+      "kategori": "Sangat Dominan (Strong Preference)",
+      "label_status": "PROFIL UTAMA",
+      "deskripsi_kondisi": "Moda dan gaya ini merupakan arteri utama (jalur primer) kognisi Anda dalam menyerap dan memproses informasi. Lingkungan atau metode yang memfasilitasi gaya ini akan melipatgandakan kecepatan belajar dan retensi memori Anda secara eksponensial.",
+      "implikasi_tindakan": "Wajib difasilitasi secara penuh sebagai metode belajar utama (primary learning strategy)."
+    },
+    {
+      "rentang_skor_persen": "51% - 75%",
+      "kategori": "Dominan (Moderate Preference)",
+      "label_status": "PENDUKUNG KUAT",
+      "deskripsi_kondisi": "Ini adalah zona preferensi sekunder Anda. Anda merasa cukup nyaman dan kompeten menggunakan gaya ini sebagai alternatif, dan sangat efektif apabila dikombinasikan secara silang (multimodal) dengan Profil Utama Anda.",
+      "implikasi_tindakan": "Gunakan sebagai metode penyokong ketika metode utama mengalami kebuntuan logis."
+    },
+    {
+      "rentang_skor_persen": "26% - 50%",
+      "kategori": "Rendah (Low Preference)",
+      "label_status": "TRANSISIONAL",
+      "deskripsi_kondisi": "Gaya ini tidak merangsang ketertarikan natural Anda. Menggunakan metode ini membutuhkan energi mental tambahan, sehingga kurang efisien jika dipaksakan sebagai satu-satunya cara asimilasi materi kompleks.",
+      "implikasi_tindakan": "Dapat digunakan sesekali sebagai latihan adaptasi kognitif, namun bukan untuk menghadapi tekanan ujian besar."
+    },
+    {
+      "rentang_skor_persen": "0% - 25%",
+      "kategori": "Sangat Rendah (Avoidance)",
+      "label_status": "ZONA FRIKSI",
+      "deskripsi_kondisi": "Ini merupakan zona friksi (ketidaknyamanan kognitif) Anda. Memaksakan proses belajar 100% menggunakan metode ini akan menyebabkan stres akademik, kehilangan motivasi secara cepat, dan miskonsepsi materi parah.",
+      "implikasi_tindakan": "Hindari metode ini sebagai penentu akhir kelulusan (high-stakes learning). Segera konversikan format informasi ke metode Profil Utama Anda."
+    }
+  ]
+}
