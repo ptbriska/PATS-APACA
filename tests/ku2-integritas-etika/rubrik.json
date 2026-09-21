@@ -1,0 +1,202 @@
+{
+  "kode_tes": "KU2",
+  "nama_tes": "APACA Work Integrity & Ethics Test (WIET)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Work Integrity & Ethics Test (WIET) mengukur komitmen moral, transparansi komunikasi, keandalan tanggung jawab, kepatuhan norma/SOP, serta potensi kecenderungan Perilaku Kerja Kontra-produktif (CWB) dalam situasi kerja profesional. Tes ini memberikan gambaran objektif mengenai karakter etika asli individu untuk refleksi diri maupun evaluasi kesesuaian peran rekrutmen.",
+  "kriteria_validitas": {
+    "lie_scale": {
+      "threshold_persen": 80,
+      "deskripsi": "Indeks Kebohongan (LSI) ≥ 80% mengindikasikan kecenderungan peserta untuk memberikan respons tidak realistis demi membangun pencitraan diri yang terlalu sempurna (Social Desirability / Faking Good)."
+    },
+    "consistency_check": {
+      "threshold_persen": 60,
+      "deskripsi": "Indeks Konsistensi (CCI) < 60% mengindikasikan pola pengisian yang tidak konsisten, acak (random clicking), atau kontradiktif pada pasangan skenario uji silang etika."
+    }
+  },
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "86% - 100%",
+      "skor_mentah": "35 - 40",
+      "status_validitas": "VALID",
+      "kategori": "Sangat Tinggi (High Integrity)",
+      "label_status": "HIGH INTEGRITY / SANGAT BERINTEGRITAS",
+      "deskripsi_kondisi": "Individu memiliki komitmen etika profesional yang sangat kokoh, kejujuran implisit yang tinggi, serta penolakan tegas terhadap kompromi moral, penyalahgunaan wewenang, dan pelanggaran aturan.",
+      "profil_karakter": "Sangat transparan, menepati janji komitmen tanpa perlu pengawasan ketat, taat pada regulasi perusahaan, dan menjadi teladan etika di lingkungan kerja.",
+      "rekomendasi_penempatan": "Sangat direkomendasikan untuk posisi krusial, berisiko tinggi (high-risk roles), pengelolaan anggaran besar, audit internal, maupun manajerial puncak."
+    },
+    {
+      "rentang_skor_persen": "71% - 85%",
+      "skor_mentah": "29 - 34",
+      "status_validitas": "VALID",
+      "kategori": "Tinggi (Reliable)",
+      "label_status": "RELIABLE / ETIS & TERPERCAYA",
+      "deskripsi_kondisi": "Individu menunjukkan prinsip etika kerja dan kepatuhan norma yang baik. Cenderung bertindak jujur dan bertanggung jawab pada situasi kerja operasional harian.",
+      "profil_karakter": "Konsisten menyelesaikan tugas, taat SOP standar, serta menghindari keterlibatan dalam tindakan kontra-produktif atau kecurangan.",
+      "rekomendasi_penempatan": "Layak dan direkomendasikan untuk posisi operasional, teknis, staf keuangan, dan pelayanan klien."
+    },
+    {
+      "rentang_skor_persen": "51% - 70%",
+      "skor_mentah": "21 - 28",
+      "status_validitas": "VALID",
+      "kategori": "Sedang (Moderate Risk)",
+      "label_status": "MODERATE RISK / RISIKO MODERAT",
+      "deskripsi_kondisi": "Individu memahami etika kerja, namun terkadang bersedia melakukan kompromi moral ringan atau mengambil jalan pintas (shortcut) saat dihadapkan pada tekanan target, tenggat waktu mendesak, atau ajakan kelompok.",
+      "profil_karakter": "Perilaku etisnya agak fleksibel bergantung pada iklim pengawasan lingkungan; rentan meminimalkan kesalahan kecil atau mengabaikan SOP yang dianggap tidak praktis.",
+      "rekomendasi_penempatan": "Memerlukan pengawasan berakala (supervisi) dan arahan kepatuhan yang jelas; kurang disarankan untuk posisi sensitif tanpa sistem kontrol ganda."
+    },
+    {
+      "rentang_skor_persen": "0% - 50%",
+      "skor_mentah": "0 - 20",
+      "status_validitas": "VALID",
+      "kategori": "Rendah (High Risk)",
+      "label_status": "HIGH RISK / RISIKO ETIKA TINGGI",
+      "deskripsi_kondisi": "Individu memiliki risiko tinggi terlibat dalam Perilaku Kerja Kontra-produktif (CWB), pelanggaran kerahasiaan, penyalahgunaan aset, manipulasi data, atau kelalaian tanggung jawab.",
+      "profil_karakter": "Cenderung membenarkan kompromi etika demi keuntungan pribadi atau kenyamanan jangka pendek; mengabaikan aturan jika dianggap menghambat.",
+      "rekomendasi_penempatan": "TIDAK DIREKOMENDASIKAN untuk posisi kerja yang membutuhkan kepercayaan finansial, akses data konfidensial, atau wewenang pengambilan keputusan."
+    },
+    {
+      "rentang_skor_persen": "Bervariasi",
+      "skor_mentah": "-",
+      "status_validitas": "INVALID",
+      "kategori": "Hasil Tidak Valid",
+      "label_status": "INVALID / UNRELIABLE RESPONSES",
+      "deskripsi_kondisi": "Hasil tes tidak dapat diinterpretasi secara sah karena terindikasi pencitraan diri berlebihan (Faking Good) atau ketidakkonsistenan jawaban dalam merespons skenario dilema etika.",
+      "profil_karakter": "Respons yang diberikan tidak mencerminkan dorongan etika asli dalam situasi kerja nyata.",
+      "rekomendasi_penempatan": "Diperlukan tes ulang (re-test) atau penggalian mendalam melalui wawancara berbasis perilaku (Behavioral Event Interview - BEI)."
+    }
+  ],
+  "rubrik_dimensi_utama": {
+    "Kejujuran": {
+      "judul_dimensi": "Kejujuran (Honesty & Transparency)",
+      "deskripsi": "Mengukur transparansi dalam komunikasi profesional, pengakuan atas kesalahan pribadi, penolakan manipulasi data, serta kejujuran dalam pelaporan fakta kerja.",
+      "analisis_tingkat_skor": {
+        "Tinggi (81% - 100%)": {
+          "kondisi": "Sangat Transparan & Jujur",
+          "interpretasi": "Anda adalah pribadi yang sangat menghargai kebenaran fakta. Anda berani melaporkan kesalahan diri, menolak manipulasi laporan demi estetika pencapaian, dan bersikap jujur meskipun berisiko tidak populer.",
+          "saran_pengembangan": "Pertahankan ketegasan transparansi ini dan jadikan standar integritas sebagai bagian dari budaya tim Anda."
+        },
+        "Sedang (51% - 80%)": {
+          "kondisi": "Kejujuran Situasional",
+          "interpretasi": "Anda bersikap jujur dalam kondisi normal, namun terkadang merasa ragu atau memilih menunda pengungkapan fakta jika khawatir kesalahan tersebut memicu sanksi atau merusak hubungan kerja.",
+          "saran_pengembangan": "Latih keberanian moral untuk mengkomunikasikan kekeliruan sejak dini sebelum masalah membesar."
+        },
+        "Rendah (0% - 50%)": {
+          "kondisi": "Cenderung Menutupi Fakta",
+          "interpretasi": "Anda memiliki kecenderungan untuk menyembunyikan kekeliruan, memodifikasi data demi mengamankan performa, atau melempar tanggung jawab saat berada dalam tekanan.",
+          "saran_pengembangan": "Sadarilah bahwa manipulasi fakta jangka pendek selalu membawa dampak kerusakan reputasi profesional jangka panjang."
+        }
+      }
+    },
+    "Keandalan": {
+      "judul_dimensi": "Keandalan (Reliability & Accountability)",
+      "deskripsi": "Mengukur komitmen terhadap janji tenggat waktu, konsistensi penyelesaian tugas tanpa pengawasan ketat, serta rasa tanggung jawab penuh atas hasil kerja.",
+      "analisis_tingkat_skor": {
+        "Tinggi (81% - 100%)": {
+          "kondisi": "Sangat Terpercaya & Konsisten",
+          "interpretasi": "Anda adalah sosok pekerja yang dapat diandalkan sepenuhnya. Anda memegang teguh komitmen, bersedia melakukan usaha ekstra demi memenuhi tenggat waktu, dan bertanggung jawab utuh atas amanah tugas.",
+          "saran_pengembangan": "Jaga keseimbangan beban kerja agar komitmen keandalan yang tinggi tidak memicu kelelahan fisik (overwork)."
+        },
+        "Sedang (51% - 80%)": {
+          "kondisi": "Keandalan Standar",
+          "interpretasi": "Anda menyelesaikan tugas dengan baik saat berada di bawah pengawasan terstruktur, namun konsistensi kerja dapat menurun jika instruksi kurang jelas atau dinamika lingkungan terganggu.",
+          "saran_pengembangan": "Tingkatkan proaktivitas mandiri dan inisiatif komunikasi saat menghadapi kendala teknis pekerjaan."
+        },
+        "Rendah (0% - 50%)": {
+          "kondisi": "Kurang Konsisten / Abaikan Komitmen",
+          "interpretasi": "Anda cenderung cepat menyerah saat menghadapi hambatan, sering mencari alasan atas keterlambatan, atau menurunkan kualitas kerja saat tidak diawasi langsung.",
+          "saran_pengembangan": "Disiplinkan manajemen waktu pribadi dan hormati janji kesepakatan target kerja."
+        }
+      }
+    },
+    "Kepatuhan Aturan": {
+      "judul_dimensi": "Kepatuhan Aturan (Rule & SOP Adherence)",
+      "deskripsi": "Mengukur kesetiaan terhadap Standar Operasional Prosedur (SOP), hukum yang berlaku, regulasi kerahasiaan, serta tata kelola etika perusahaan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (81% - 100%)": {
+          "kondisi": "Taat Regulasi & Prosedural",
+          "interpretasi": "Anda sangat disiplin mematuhi SOP dan regulasi formal. Anda menolak mengambil jalan pintas ilegal atau mengabaikan prosedur keamanan demi kecepatan semata.",
+          "saran_pengembangan": "Pertahankan kepatuhan ini dan bantu organisasi mengidentifikasi jika ada SOP kaku yang perlu diperbarui secara resmi."
+        },
+        "Sedang (51% - 80%)": {
+          "kondisi": "Kepatuhan Selektif",
+          "interpretasi": "Anda mematuhi aturan umum, namun terkadang bersedia mengompromikan prosedur operasional kecil jika dianggap menyulitkan atau jika ada desakan dari atasan/klien.",
+          "saran_pengembangan": "Pahami bahwa SOP dirancang untuk memitigasi risiko sistemis; hindari melakukan diskresi aturan tanpa izin komite kepatuhan."
+        },
+        "Rendah (0% - 50%)": {
+          "kondisi": "Cenderung Mengabaikan Aturan",
+          "interpretasi": "Anda sering menganggap aturan sebagai beban formalitas yang menghambat kerja; cenderung mengambil jalan pintas berisiko tinggi tanpa memikirkan konsekuensi hukum/organisasi.",
+          "saran_pengembangan": "Tingkatkan kesadaran akan risiko hukum dan tata kelola etika dalam setiap langkah keputusan operasional."
+        }
+      }
+    },
+    "Risiko Perilaku Kontra-produktif": {
+      "judul_dimensi": "Risiko Perilaku Kontra-produktif (CWB & Fraud Risk Mitigation)",
+      "deskripsi": "Mengukur benteng pertahanan moral dalam menolak gratifikasi, penyalahgunaan aset/fasilitas kantor, kecurangan insentif, serta konflik kepentingan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (81% - 100%)": {
+          "kondisi": "Resistensi CWB Sangat Kuat (Sangat Aman)",
+          "interpretasi": "Anda memiliki benteng moral yang kuat terhadap tindakan koruptif. Anda menolak tegas gratifikasi, menjaga aset kantor dengan bijak, dan menolak terlibat dalam praktik kecurangan.",
+          "saran_pengembangan": "Jadilah agen perubahan yang aktif mendukung saluran pelaporan etika (whistleblowing) di tempat kerja."
+        },
+        "Sedang (51% - 80%)": {
+          "kondisi": "Resistensi CWB Sedang (Perlu Kewaspadaan)",
+          "interpretasi": "Anda tidak berkeinginan melakukan kecurangan besar, namun bersikap kurang tegas terhadap penyalahgunaan fasilitas kecil atau kompromi etika yang terjadi di sekitar Anda.",
+          "saran_pengembangan": "Pertegas batasan etika pribadi terhadap gratifikasi terselubung dan konflik kepentingan."
+        },
+        "Rendah (0% - 50%)": {
+          "kondisi": "Risiko CWB Tinggi (Sangat Berisiko)",
+          "interpretasi": "Anda memiliki toleransi yang mengkhawatirkan terhadap kompromi etika, penyalahgunaan aset, atau tindakan yang merugikan perusahaan demi keuntungan pribadi/kelompok.",
+          "saran_pengembangan": "Diperlukan pembinaan etika intensif dan pemahaman konsekuensi hukum terkait kecurangan organisasi."
+        }
+      }
+    }
+  },
+  "matriks_tipologi_karakter_etika": [
+    {
+      "nama_pola": "The Ethical Stalwart (Batu Karang Integritas)",
+      "kriteria": "Indeks Integritas ≥ 86% DAN Seluruh Dimensi ≥ 80%",
+      "analisis_karakter": "Profil ideal karakter profesional yang utuh. Menunjukkan keselarasan sempurna antara transparansi kejujuran, keandalan eksekusi, kepatuhan hukum, serta resistensi total terhadap kecurangan.",
+      "rekomendasi_karir": "Sangat tepat diposisikan sebagai pimpinan tata kelola, pimpinan fungsi keuangan, audit internal, atau peran strategis pemegang kerahasiaan."
+    },
+    {
+      "nama_pola": "The Pragmatic Executor (Eksekutor Pragmatis)",
+      "kriteria": "Dimension Keandalan ≥ 80% NAMUN Kepatuhan Aturan ≤ 60%",
+      "analisis_karakter": "Individu berorientasi hasil yang sangat dapat diandalkan untuk menuntaskan target, namun rentan menerabas SOP atau norma organisasi jika prosedur dianggap memperlambat eksekusi.",
+      "rekomendasi_karir": "Perlu dipasangkan dengan kontrol kepatuhan yang ketat (checker/compliance) agar fokus pencapaiannya tidak memicu pelanggaran legal."
+    },
+    {
+      "nama_pola": "The Compliant Non-Reliable (Penurut tapi Tidak Andal)",
+      "kriteria": "Dimension Kepatuhan Aturan ≥ 80% NAMUN Keandalan ≤ 50%",
+      "analisis_karakter": "Sangat taat pada aturan dan perintah formal, tetapi memiliki ketahanan kerja yang lemah saat menghadapi masalah tak terduga sehingga sering gagal memenuhi janji tenggat waktu.",
+      "rekomendasi_karir": "Berikan pendampingan manajemen waktu dan alur penugasan yang sangat jelas tanpa dinamika krisis mendadak."
+    },
+    {
+      "nama_pola": "The High Ethical Vulnerability (Rentan Kompromi Moral)",
+      "kriteria": "Indeks Integritas ≤ 50% ATAU Risiko CWB ≤ 50%",
+      "analisis_karakter": "Menunjukkan kerentanan etika yang signifikan. Cenderung membenarkan tindakan kompromistis, manipulasi data, atau penggunaan aset perusahaan secara tidak sah.",
+      "rekomendasi_karir": "Sangat berisiko untuk posisi keuangan, pengadaan barang, atau pengelolaan aset. Memerlukan audit track-record mendalam."
+    }
+  ],
+  "protokol_flag_risiko": {
+    "kode_flag": "HIGH ETHICAL RISK FLAG",
+    "kriteria_pemicu": "Skor Dimensi 'Risiko Perilaku Kontra-produktif' ≤ 60% pada pelamar/karyawan posisi sensitif (Keuangan, Pengadaan, Audit, Management Trainee)",
+    "tindakan_wajib": "Tim HRD/Assessor wajib melakukan pengecekan rekam jejak (background check) mendalam, verifikasi referensi kerja terdahulu, serta wawancara etika berbasis situasi (Ethical Situational Interview)."
+  },
+  "panduan_pengembangan_dan_coaching": {
+    "untuk_individu": {
+      "refleksi_diri": "Gunakan hasil tes ini untuk mengenali titik rentan etika Anda. Ingatlah bahwa integritas diuji bukan saat situasi mudah, melainkan saat Anda menghadapi tekanan, kelelahan, atau peluang tanpa pengawasan.",
+      "langkah_konkret": "Buat komitmen pribadi untuk tidak pernah mengompromikan fakta data kecil, serta komunikasikan kendala kerja secara jujur sebelum tenggat waktu terlampaui."
+    },
+    "untuk_atasan_pembimbing": {
+      "supervisi_etis": "Berikan keteladanan nyata dalam kepatuhan SOP dan dukung bawahan yang berani melaporkan kekeliruan secara jujur tanpa takut dihukum secara destruktif.",
+      "pembinaan": "Sediakan ruang diskusi terbuka mengenai dilema etika pekerjaan harian dan tegaskan batasan penolakan gratifikasi."
+    },
+    "untuk_organisasi_hr": {
+      "sistem_mitigasi": "Bangun infrastruktur kepatuhan yang transparan, terapkan pemisahan tugas (segregation of duties) pada fungsi bernilai tinggi, dan sediakan saluran pelaporan pelanggaran (whistleblowing) yang aman.",
+      "budaya_organisasi": "Apresiasi karyawan yang menunjukkan keberanian moral dan integritas, bukan hanya mengagungkan pencapaian angka target finansial."
+    }
+  }
+}
