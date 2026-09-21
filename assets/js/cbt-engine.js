@@ -48,6 +48,22 @@ class CBTEngine {
   }
 
   /**
+   * Helper internal untuk mengekstrak nilai string murni dari opsi
+   */
+  _getCleanVal(v) {
+    if (v === null || v === undefined) return null;
+    if (typeof v === "object" && v.value !== undefined) return String(v.value);
+    return String(v);
+  }
+
+  /**
+   * Helper internal untuk sanitasi ID HTML agar aman dari karakter khusus
+   */
+  _sanitizeId(str) {
+    return String(str).replace(/[^a-zA-Z0-9_-]/g, "_");
+  }
+
+  /**
    * Helper internal untuk mengecek apakah suatu nomor soal sudah dijawab secara valid
    * Mendukung validasi Single-Choice maupun Forced-Choice (Most & Least harus terisi)
    */
@@ -60,9 +76,11 @@ class CBTEngine {
 
     // Untuk tipe Forced-Choice: Kedua opsi (most dan least) Wajib Terisi
     if (typeof ans === "object") {
+      const mVal = this._getCleanVal(ans.most);
+      const lVal = this._getCleanVal(ans.least);
       return (
-        ans.most !== undefined && ans.most !== null && ans.most !== "" &&
-        ans.least !== undefined && ans.least !== null && ans.least !== ""
+        mVal !== null && mVal !== "" &&
+        lVal !== null && lVal !== ""
       );
     }
 
@@ -216,22 +234,22 @@ class CBTEngine {
     const hasAnswered = this.isQuestionAnswered(q.id);
     const selectedVal = this.answers[String(q.id)];
 
+    const availableOptions = (q.options && Array.isArray(q.options) && q.options.length > 0) ? q.options : this.options;
+    
+    // DETEKSI TIPE SOAL: Standard / Single Choice vs Forced-Choice Ipsative
+    const isForcedChoice = q.type === "forced_choice" || q.type === "ipsative";
+
     if (qStatusEl) {
       if (hasAnswered) {
         qStatusEl.innerText = "Sudah Dijawab";
         qStatusEl.style.background = "#dcfce7";
         qStatusEl.style.color = "#15803d";
       } else {
-        qStatusEl.innerText = "Belum Dijawab";
+        qStatusEl.innerText = isForcedChoice ? "Belum Dijawab (Pilih Most & Least)" : "Belum Dijawab";
         qStatusEl.style.background = "#f1f5f9";
         qStatusEl.style.color = "#64748b";
       }
     }
-
-    const availableOptions = (q.options && Array.isArray(q.options) && q.options.length > 0) ? q.options : this.options;
-    
-    // DETEKSI TIPE SOAL: Standard / Single Choice vs Forced-Choice Ipsative
-    const isForcedChoice = q.type === "forced_choice" || q.type === "ipsative";
 
     if (isForcedChoice) {
       this.renderForcedChoiceOptions(optsContainer, q, availableOptions, selectedVal);
@@ -272,10 +290,10 @@ class CBTEngine {
     if (container) container.innerHTML = optsHtml;
   }
 
-  // --- RENDERER B: Forced-Choice Ipsative (Most vs Least) ---
+  // --- RENDERER B: Forced-Choice Ipsative (Most vs Least) - REVISI LENGKAP ---
   renderForcedChoiceOptions(container, q, options, selectedVal) {
-    const currentMost = (selectedVal && typeof selectedVal === "object") ? selectedVal.most : null;
-    const currentLeast = (selectedVal && typeof selectedVal === "object") ? selectedVal.least : null;
+    const currentMost = (selectedVal && typeof selectedVal === "object") ? this._getCleanVal(selectedVal.most) : null;
+    const currentLeast = (selectedVal && typeof selectedVal === "object") ? this._getCleanVal(selectedVal.least) : null;
 
     let tableHtml = `
       <div style="overflow-x: auto;">
@@ -291,20 +309,22 @@ class CBTEngine {
     `;
 
     options.forEach(opt => {
-      const isMostChecked = String(currentMost) === String(opt.value) ? "checked" : "";
-      const isLeastChecked = String(currentLeast) === String(opt.value) ? "checked" : "";
+      const optValStr = String(opt.value);
+      const isMostChecked = (currentMost === optValStr) ? "checked" : "";
+      const isLeastChecked = (currentLeast === optValStr) ? "checked" : "";
       const safeValArg = typeof opt.value === 'string' ? `'${opt.value.replace(/'/g, "\\'")}'` : opt.value;
+      const cleanOptId = this._sanitizeId(optValStr);
 
       tableHtml += `
         <tr style="border-bottom: 1px solid #e2e8f0;">
           <td style="padding: 12px 10px; color: #1e293b; font-weight: 500;">${opt.label}</td>
           <td style="padding: 12px 10px; text-align: center; background-color: ${isMostChecked ? '#ecfdf5' : 'transparent'};">
-            <input type="radio" id="fc_most_${q.id}_${opt.value}" name="fc_group_most_${q.id}" value="${opt.value}" ${isMostChecked} 
+            <input type="radio" id="fc_most_${q.id}_${cleanOptId}" name="fc_group_most_${q.id}" value="${optValStr}" ${isMostChecked} 
               style="accent-color: #10b981; transform: scale(1.25); cursor: pointer;" 
               onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'most', ${safeValArg})">
           </td>
           <td style="padding: 12px 10px; text-align: center; background-color: ${isLeastChecked ? '#fef2f2' : 'transparent'};">
-            <input type="radio" id="fc_least_${q.id}_${opt.value}" name="fc_group_least_${q.id}" value="${opt.value}" ${isLeastChecked} 
+            <input type="radio" id="fc_least_${q.id}_${cleanOptId}" name="fc_group_least_${q.id}" value="${optValStr}" ${isLeastChecked} 
               style="accent-color: #ef4444; transform: scale(1.25); cursor: pointer;" 
               onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'least', ${safeValArg})">
           </td>
@@ -342,20 +362,24 @@ class CBTEngine {
       currentAns = { most: null, least: null };
     }
 
+    const valStr = String(value);
+
     if (targetType === "most") {
-      currentAns.most = value;
-      // Guard: Jika opsi yang sama dipilih di least, uncheck radio least secara DOM
-      if (String(currentAns.least) === String(value)) {
+      currentAns.most = valStr;
+      // Guard: Jika opsi yang sama sudah dipilih di least, uncheck least secara DOM & data
+      if (this._getCleanVal(currentAns.least) === valStr) {
         currentAns.least = null;
-        const leastRadio = document.getElementById(`fc_least_${questionId}_${value}`);
+        const cleanOptId = this._sanitizeId(valStr);
+        const leastRadio = document.getElementById(`fc_least_${questionId}_${cleanOptId}`);
         if (leastRadio) leastRadio.checked = false;
       }
     } else if (targetType === "least") {
-      currentAns.least = value;
-      // Guard: Jika opsi yang sama dipilih di most, uncheck radio most secara DOM
-      if (String(currentAns.most) === String(value)) {
+      currentAns.least = valStr;
+      // Guard: Jika opsi yang sama sudah dipilih di most, uncheck most secara DOM & data
+      if (this._getCleanVal(currentAns.most) === valStr) {
         currentAns.most = null;
-        const mostRadio = document.getElementById(`fc_most_${questionId}_${value}`);
+        const cleanOptId = this._sanitizeId(valStr);
+        const mostRadio = document.getElementById(`fc_most_${questionId}_${cleanOptId}`);
         if (mostRadio) mostRadio.checked = false;
       }
     }
@@ -363,7 +387,7 @@ class CBTEngine {
     this.answers[qKey] = currentAns;
     localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
 
-    // Update status indikator & sidebar navigasi tanpa me-refresh seluruh form
+    // Update status indikator & sidebar navigasi
     const qStatusEl = document.getElementById("cbt-question-status");
     const hasAnswered = this.isQuestionAnswered(questionId);
     if (qStatusEl) {
