@@ -1,0 +1,197 @@
+{
+  "test_info": {
+    "kode_pilar": "KS1_PILAR2",
+    "nama_pilar": "Pilar II: OSN Interest Test (Learning Fit)",
+    "deskripsi": "Kuesioner Minat Subjektif dan Karakteristik Belajar Sains.",
+    "durasi_estimasi_menit": 7
+  },
+  "likert_scale": [
+    { "value": 1, "label": "Sangat Tidak Setuju (1)" },
+    { "value": 2, "label": "Tidak Setuju (2)" },
+    { "value": 3, "label": "Ragu-Ragu / Netral (3)" },
+    { "value": 4, "label": "Setuju (4)" },
+    { "value": 5, "label": "Sangat Setuju (5)" }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "modul": "MIN_MTK",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya lebih suka mencari tahu alasan mengapa suatu rumus matematika bisa terbentuk, daripada sekadar menghafal rumus cepat."
+    },
+    {
+      "id": 2,
+      "modul": "MIN_MTK",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya merasa nyaman berhadapan dengan soal matematika yang sama sekali tidak menyajikan angka, melainkan hanya memanipulasi simbol dan logika."
+    },
+    {
+      "id": 3,
+      "modul": "MIN_MTK",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya merasa tertantang dan betah untuk membuktikan secara bertahap mengapa suatu teorema matematika selalu bernilai benar."
+    },
+    {
+      "id": 4,
+      "modul": "MIN_FIS",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat tertarik memahami hukum-hukum alam yang tersembunyi di balik kejadian sehari-hari, seperti gerak jatuh benda atau aliran listrik."
+    },
+    {
+      "id": 5,
+      "modul": "MIN_FIS",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya senang dan merasa mudah jika diminta menerjemahkan fenomena alam nyata ke dalam bentuk grafik atau persamaan matematis."
+    },
+    {
+      "id": 6,
+      "modul": "MIN_FIS",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya merasa nyaman dan tidak cepat menyerah saat harus menyelesaikan hitungan fisika yang membutuhkan penurunan rumus yang panjang."
+    },
+    {
+      "id": 7,
+      "modul": "MIN_KIM",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat penasaran dengan interaksi zat pada skala mikro, seperti bagaimana atom atau elektron berpindah dan mengubah sifat suatu benda."
+    },
+    {
+      "id": 8,
+      "modul": "MIN_KIM",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya menyukai keteraturan pola pada tabel periodik dan menikmati logika alur dari sebuah perubahan reaksi kimia."
+    },
+    {
+      "id": 9,
+      "modul": "MIN_KIM",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya senang menghabiskan waktu mempelajari nama-nama senyawa, menghafal mekanisme reaksi, serta melakukan perhitungan zat yang sangat presisi."
+    },
+    {
+      "id": 10,
+      "modul": "MIN_BIO",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat antusias mempelajari keanekaragaman makhluk hidup, struktur sel, serta cara kerja organ dalam tubuh manusia atau tumbuhan."
+    },
+    {
+      "id": 11,
+      "modul": "MIN_BIO",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya merasa nyaman dan menikmati materi yang sangat kaya akan detail istilah ilmiah, pengelompokan spesies (taksonomi), dan siklus biokimia."
+    },
+    {
+      "id": 12,
+      "modul": "MIN_BIO",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya betah membaca buku atau teks biologi yang tebal, serta menganalisis data tabel dari hasil eksperimen laboratorium."
+    },
+    {
+      "id": 13,
+      "modul": "MIN_INF",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya selalu penasaran tentang bagaimana logika di balik program komputer, cara kerja perangkat lunak, atau pembuatan sebuah aplikasi bekerja."
+    },
+    {
+      "id": 14,
+      "modul": "MIN_INF",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya sangat senang menyusun instruksi pemecahan masalah secara terstruktur, rapi, dan efisien dari langkah pertama hingga selesai."
+    },
+    {
+      "id": 15,
+      "modul": "MIN_INF",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya tidak mudah frustrasi dan justru tertantang mencari letak kesalahan logika (debugging) jika instruksi yang saya buat tidak berjalan semestinya."
+    },
+    {
+      "id": 16,
+      "modul": "MIN_AST",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat takjub dan penasaran memikirkan fenomena luar angkasa, seperti lubang hitam (black hole), pergerakan galaksi, dan asal-usul alam semesta."
+    },
+    {
+      "id": 17,
+      "modul": "MIN_AST",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya sangat nyaman membayangkan ruang tiga dimensi (3D) dan sanggup mencerna konsep jarak antar-bintang atau waktu kosmik yang sangat raksasa."
+    },
+    {
+      "id": 18,
+      "modul": "MIN_AST",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya tidak keberatan dan justru senang memecahkan soal hitungan fisika-matematika rumit jika itu digunakan untuk menghitung lintasan planet."
+    },
+    {
+      "id": 19,
+      "modul": "MIN_EKO",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya menaruh perhatian dan antusiasme tinggi pada isu-isu inflasi, dinamika harga pasar, serta cara orang atau perusahaan mengambil keputusan bisnis."
+    },
+    {
+      "id": 20,
+      "modul": "MIN_EKO",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya menyukai proses analisis hubungan sebab-akibat antara sebuah kebijakan insentif dengan perubahan perilaku manusia di pasar."
+    },
+    {
+      "id": 21,
+      "modul": "MIN_EKO",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya betah duduk lama mengamati kurva penawaran-permintaan, tabel statistik keuangan, dan membaca naskah studi kasus masalah bisnis."
+    },
+    {
+      "id": 22,
+      "modul": "MIN_KBM",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat tertarik memahami dinamika dari dalam bumi, seperti gempa bumi, gunung berapi, patahan tektonik, dan pembentukan jenis batuan."
+    },
+    {
+      "id": 23,
+      "modul": "MIN_KBM",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya merasa senang ketika harus menggabungkan berbagai ilmu sains (fisika cuaca, kimia mineral, astronomi dasar) untuk menjelaskan fenomena bumi."
+    },
+    {
+      "id": 24,
+      "modul": "MIN_KBM",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya sanggup fokus meneliti gambar peta kontur tanah, jenis-jenis awan, atau data sampel batuan laboratorium secara mendetail."
+    },
+    {
+      "id": 25,
+      "modul": "MIN_GEO",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat peduli dan tertarik pada topik persebaran kepadatan penduduk, perencanaan tata ruang kota, serta isu-isu kerusakan lingkungan regional."
+    },
+    {
+      "id": 26,
+      "modul": "MIN_GEO",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya merasa pola pikir saya sangat cocok saat diminta menghubungkan kondisi geografis suatu wilayah (seperti iklim/tanah) dengan aktivitas ekonomi masyarakatnya."
+    },
+    {
+      "id": 27,
+      "modul": "MIN_GEO",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya tidak bosan ketika harus membaca dan menganalisis pola pada peta tematik, citra satelit, atau naskah studi kasus kewilayahan yang panjang."
+    },
+    {
+      "id": 28,
+      "modul": "MIN_AI",
+      "indikator": "Daya Tarik",
+      "pernyataan": "Saya sangat penasaran dengan teknologi masa depan dan bagaimana komputer bisa 'belajar' dari data untuk membuat prediksi yang cerdas."
+    },
+    {
+      "id": 29,
+      "modul": "MIN_AI",
+      "indikator": "Kenyamanan",
+      "pernyataan": "Saya sangat menyukai proses pengolahan sekumpulan data angka yang acak dan rumit agar berubah menjadi grafik visual yang mudah dipahami."
+    },
+    {
+      "id": 30,
+      "modul": "MIN_AI",
+      "indikator": "Ketahanan",
+      "pernyataan": "Saya memiliki kemauan keras untuk belajar matematika data, logika program komputer, serta meneliti studi kasus tren informasi digital terkini."
+    }
+  ]
+}
