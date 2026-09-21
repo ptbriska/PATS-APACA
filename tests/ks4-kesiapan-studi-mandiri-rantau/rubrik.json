@@ -1,0 +1,181 @@
+{
+  "kode_tes": "KS4",
+  "nama_tes": "APACA Overseas & Independent Study Readiness Inventory (AOISRI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "rubrik_deskripsi_dimensi": {
+    "Independence": {
+      "judul_dimensi": "Independence (Kemandirian Hidup Domestik & Finansial)",
+      "deskripsi_umum": "Dimensi ini mengukur kapasitas fungsional Anda dalam mengelola kebutuhan hidup harian secara otonom, meliputi penganggaran keuangan, manajemen urusan rumah tangga, kesehatan personal, serta keberanian mengambil keputusan tanpa ketergantungan pada orang tua.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Ketergantungan Domestik Tinggi (High Dependency)",
+          "deskripsi_spesifik": "Anda masih sangat bergantung pada dukungan eksternal (orang tua/pengasuh) untuk mengurus kebutuhan dasar harian, perencanaan keuangan, dan pemecahan masalah administrasi. Berada jauh dari sistem pendukung utama berisiko memicu disorientasi fungsi harian.",
+          "dampak_adaptasi": "Rentan mengalami kebingungan administrasi di bulan pertama (*settling-in period*), risiko krisis finansial sebelum akhir bulan, serta tingginya tingkat kecemasan saat dihadapkan pada masalah domestik darurat.",
+          "rekomendasi_pengembangan": "Wajib mengikuti simulasi hidup mandiri sebelum berangkat. Mulailah mengelola alokasi anggaran pribadi secara mandiri dan latih keterampilan dasar seperti memasak, mencuci, serta mengurus dokumen administrasi pribadi."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Kemandirian Fungsional Bersyarat",
+          "deskripsi_spesifik": "Anda memiliki pemahaman dasar dalam mengurus diri sendiri dan mengelola rutinitas harian. Namun, pada situasi yang membutuhkan keputusan finansial besar atau kendala teknis yang kompleks, Anda masih membutuhkan konfirmasi dan arahan dari orang tua.",
+          "dampak_adaptasi": "Mampu beradaptasi secara bertahap, namun mungkin mengalami sedikit hambatan stabilitas ritme hidup di awal kedatangan sebelum menemukan pola rutin yang konsisten.",
+          "rekomendasi_pengembangan": "Buatlah lembar pencatatan pengeluaran harian (*financial tracker*) dan susun petunjuk langkah demi langkah (*checklist*) penanganan situasi darurat kesehatan/administrasi di kota/negara tujuan."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Otonomi Diri & Kemandirian Optimal",
+          "deskripsi_spesifik": "Anda memiliki tingkat otonomi diri yang sangat matang. Anda cakap dalam mengontrol anggaran hidup, menyelesaikan masalah domestik, serta mengambil keputusan personal secara rasional dan mandiri di bawah situasi tertekan.",
+          "dampak_adaptasi": "Sangat cepat menyesuaikan diri dengan lingkungan tempat tinggal baru, efisien dalam mengelola waktu dan keuangan, serta tidak mudah goyah oleh perubahan fasilitas hidup.",
+          "rekomendasi_pengembangan": "Pertahankan kedisiplinan otonomi ini dan bagikan pengalaman manajemen diri Anda kepada sesama rekan perantau untuk membangun jejaring pendukung yang solid."
+        }
+      }
+    },
+    "Stress Resilience": {
+      "judul_dimensi": "Stress Resilience (Resiliensi Stres & Regulasi Homesickness)",
+      "deskripsi_umum": "Dimensi ini menilai ketangguhan mental Anda dalam menghadapi tekanan hidup di rantau, mengelola rindu rumah (*homesickness*), menangani isolasi sosial, serta daya bangkit dari kegagalan akademik atau penolakan lingkungan baru.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Kerentanan Stres Adaptif (High Vulnerability)",
+          "deskripsi_spesifik": "Anda cenderung rentan mengalami guncangan emosional saat berhadapan dengan perubahan lingkungan yang drastis. Perasaan rindu rumah (*homesickness*) yang intens berpotensi mengganggu kestabilan fungsi akademik dan kesehatan fisik Anda.",
+          "dampak_adaptasi": "Berisiko tinggi mengalami penarikan diri dari lingkungan sosial (*social withdrawal*), kemunduran performa belajar akibat kecemasan, serta kecenderungan menyerah (*atrisi*) di fase awal perantauan.",
+          "rekomendasi_pengembangan": "Disarankan melakukan pendampingan psikologis pra-keberangkatan. Pelajari teknik regulasi emosi (*mindfulness/grounding*) dan bangun komitmen komunikasi terjadwal yang sehat dengan keluarga di rumah."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Ketahanan Mental Moderat",
+          "deskripsi_spesifik": "Anda mampu mengendalikan tekanan stres standar dan perasaan rindu rumah pada tingkat wajar. Namun, akumulasi tugas akademik yang menumpuk bersamaan dengan krisis adaptasi sosial masih dapat menggoyahkan ketenangan pikiran Anda.",
+          "dampak_adaptasi": "Mengalami fluktuasi suasana hati (*mood swing*) di beberapa bulan pertama, tetapi memiliki daya pulih emosional yang memadai seiring berjalannya waktu dan terbentuknya teman sebaya.",
+          "rekomendasi_pengembangan": "Identifikasi aktivitas pemulihan energi psikologis (*coping mechanism*) yang positif, seperti olahraga atau bergabung dengan klub hobi di lingkungan perantauan."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Resiliensi Mental & Daya Tahan Tinggi",
+          "deskripsi_spesifik": "Anda memiliki kapasitas resiliensi psikologis yang luar biasa. Anda memandang tekanan sebagai tantangan tumbuh, memiliki kontrol emosi yang stabil saat krisis, dan mampu mengelola rasa kesepian secara konstruktif.",
+          "dampak_adaptasi": "Mampu bertahan dan bangkit dengan cepat dari *culture shock*, tetap tenang dalam situasi darurat, serta menjaga kestabilan performa di bawah tekanan tinggi.",
+          "rekomendasi_pengembangan": "Gunakan resiliensi ini untuk mengambil peran aktif dalam kegiatan kepemimpinan siswa atau kelompok studi lintas budaya di kampus/kota tujuan."
+        }
+      }
+    },
+    "Openness": {
+      "judul_dimensi": "Openness to Experience (Keterbukaan terhadap Pengalaman Baru)",
+      "deskripsi_umum": "Dimensi ini mengukur tingkat fleksibilitas kognitif, antusiasme eksplorasi budaya, toleransi terhadap ketidakpastian (ambiguitas), serta kesediaan mencoba gaya hidup, makanan, dan tradisi baru di daerah/negara tujuan.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Rigiditas Budaya & Exclusivity Trend",
+          "deskripsi_spesifik": "Anda cenderung merasa cemas dan enggan keluar dari zona nyaman budaya asal. Ada dorongan kuat untuk hanya bergaul dengan kelompok sesama daerah/negara dan menolak penyesuaian gaya hidup lokal.",
+          "dampak_adaptasi": "Rentan mengalami gegar budaya traumatis (*severe culture shock*), merasa terisolasi dari komunitas kampus luas, serta kehilangan peluang memperkaya wawasan internasional.",
+          "rekomendasi_pengembangan": "Latih rasa ingin tahu (*curiosity*) secara bertahap. Tantang diri Anda untuk mencoba hal-hal baru dalam skala kecil, seperti mencicipi makanan lokal atau menghadiri festival kebudayaan setempat."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Keterbukaan Selektif",
+          "deskripsi_spesifik": "Anda bersedia menerima perbedaan budaya dan beradaptasi dengan lingkungan baru selama hal tersebut tidak terlalu berbenturan dengan standar kenyamanan dan kebiasaan lama Anda.",
+          "dampak_adaptasi": "Mampu membaur dengan cukup baik di lingkungan perantauan, meskipun membutuhkan waktu jeda untuk benar-benar merasa nyaman berinteraksi di luar komunitas asal.",
+          "rekomendasi_pengembangan": "Tingkatkan partisipasi dalam kegiatan ekstra-kurikuler lintas budaya untuk memperluas perspektif dan toleransi sosial Anda."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Adaptabilitas Lintas Budaya Ekstrem",
+          "deskripsi_spesifik": "Anda memiliki fleksibilitas kognitif dan antusiasme eksplorasi budaya yang sangat tinggi. Anda menikmati keberagaman, terbuka terhadap nilai-nilai baru, serta adaptif terhadap perubahan kenyamanan hidup.",
+          "dampak_adaptasi": "Sangat cepat merasa betah di tempat baru, mudah membangun hubungan pertemanan inklusif, dan mampu memetik pelajaran berharga dari setiap pengalaman unik di perantauan.",
+          "rekomendasi_pengembangan": "Manfaatkan keterbukaan ini untuk menjadi duta budaya yang menjembatani hubungan antara komunitas perantau dengan masyarakat lokal."
+        }
+      }
+    },
+    "Cultural Intelligence": {
+      "judul_dimensi": "Cultural Intelligence / CQ (Kecerdasan Kultural)",
+      "deskripsi_umum": "Dimensi ini menilai kepekaan Anda dalam mengamati, menafsirkan, serta menyesuaikan gaya komunikasi verbal/non-verbal dan perilaku sosial agar selaras dengan norma, etika, dan kebiasaan masyarakat lokal.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Etnosentrisme & Kerentanan Miskomunikasi",
+          "deskripsi_spesifik": "Anda cenderung menilai perilaku masyarakat lain berdasarkan standar norma budaya asal Anda sendiri. Kurangnya kepekaan pada etika non-verbal dapat memicu salah paham atau ketegangan sosial.",
+          "dampak_adaptasi": "Berisiko melakukan pelanggaran norma lokal secara tidak sengaja, mengalami gesekan interaksional dengan warga lokal, serta merasa canggung dalam pergaulan multikultural.",
+          "rekomendasi_pengembangan": "Pelajari secara mendalam (*pre-departure research*) mengenai etika, tabu sosial, dan gaya komunikasi spesifik di negara/kota tujuan sebelum waktu keberangkatan."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Kesadaran Kultural Fungsional",
+          "deskripsi_spesifik": "Anda memahami pentingnya menghormati norma budaya lokal dan berusaha menyesuaikan perilaku. Namun, pada kondisi interaksi spontan yang rumit, Anda masih membutuhkan waktu untuk membaca situasi.",
+          "dampak_adaptasi": "Dapat menjalin hubungan kerja sama yang baik dengan rekan dari berbagai latar belakang, meskipun sesekali membutuhkan konfirmasi agar tidak terjadi miskonsepsi.",
+          "rekomendasi_pengembangan": "Perbanyak mendengarkan dan mengamati (*active observation*) tata cara berinteraksi warga lokal dalam kehidupan sehari-hari."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Kecerdasan Kultural Tinggi (High CQ)",
+          "deskripsi_spesifik": "Anda memiliki kepekaan antardiri (*interpersonal sensitivity*) yang luar biasa. Anda sangat mahir membaca nuansa budaya, fleksibel dalam berkomunikasi, dan dihormati dalam pergaulan multikultural.",
+          "dampak_adaptasi": "Mudah diterima di berbagai kalangan masyarakat lokal, efektif dalam menyelesaikan konflik perbedaaan norma, dan mampu bernegosiasi secara diplomatis.",
+          "rekomendasi_pengembangan": "Pertahankan kepekaan kultural ini dan manfaatkan dalam memperluas jaringan profesional internasional Anda."
+        }
+      }
+    },
+    "Academic Self-Regulation": {
+      "judul_dimensi": "Academic Self-Regulation (Regulasi Diri Akademik)",
+      "deskripsi_umum": "Dimensi ini mengukur kedisiplinan belajar mandiri, inisiatif pencarian referensi, manajemen waktu penugasan, serta kemampuan menghindari prokrastinasi tanpa adanya pengawasan langsung dari orang tua atau pengajar.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Risiko Prokrastinasi & Disorientasi Belajar",
+          "deskripsi_spesifik": "Anda sangat bergantung pada pengawasan dan dorongan eksternal untuk belajar. Hilangnya kontrol langsung dari orang tua/guru di perantauan berisiko memicu prokrastinasi dan kelalaian target akademik.",
+          "dampak_adaptasi": "Potensi penurunan prestasi akademik drastis, keterlambatan pengumpulan tugas riset, serta timbulnya kepanikan menjelang masa ujian.",
+          "rekomendasi_pengembangan": "Wajib menerapkan alat bantu manajemen waktu (*digital planner/Google Calendar*). Tetapkan rutinitas belajar mandiri minimal 2 jam setiap hari yang dipatuhi secara ketat."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Regulasi Akademik Terstruktur",
+          "deskripsi_spesifik": "Anda memiliki kesadaran akan tanggung jawab akademik dan mampu memenuhi tenggat waktu standar. Namun, Anda masih membutuhkan penyesuaian pada metode belajar mandiri yang menuntut inisiatif tinggi.",
+          "dampak_adaptasi": "Performa akademik tergolong stabil, namun mungkin memerlukan usaha ekstra saat dihadapkan pada tugas kelompok berbasis riset independen.",
+          "rekomendasi_pengembangan": "Bentuk kelompok belajar (*study group*) bersama teman sekelas untuk saling menjaga konsistensi dan akuntabilitas jam belajar."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Otonomi Akademik Superior",
+          "deskripsi_spesifik": "Anda adalah pembelajar mandiri yang sangat terorganisir (*self-directed learner*). Anda proaktif mencari referensi riset, disiplin mengelola target jangka panjang, dan mahir menentukan prioritas studi.",
+          "dampak_adaptasi": "Sangat siap menghadapi sistem pendidikan tinggi internasional/luar daerah yang menuntut kemandirian penuh, serta berpotensi meraih prestasi akademik unggul.",
+          "rekomendasi_pengembangan": "Manfaatkan regulasi diri yang kuat ini untuk mengambil proyek riset independen atau program pertukaran mahasiswa tingkat lanjut."
+        }
+      }
+    }
+  },
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "> 85%",
+      "kategori": "Sangat Siap (Optimal)",
+      "label_status": "OPTIMAL",
+      "deskripsi_kondisi": "Kandidat memiliki kesiapan psikologis, otonomi domestik, dan kapasitas adaptasi yang sangat matang. Diprediksi mampu merespons perbedaan budaya dan tantangan akademik secara mandiri dan sangat positif.",
+      "implikasi_pemberangkatan": "Sangat direkomendasikan untuk langsung diberangkatkan tanpa hambatan adaptasi yang berarti.",
+      "tindakan_lanjutan": "Pembekalan standar pra-keberangkatan dan orientasi jaringan alumni di kota/negara tujuan."
+    },
+    {
+      "rentang_skor_persen": "70% - 84%",
+      "kategori": "Siap (Taraf Aman)",
+      "label_status": "SIAP",
+      "deskripsi_kondisi": "Kandidat memiliki ketangguhan mental dan fleksibilitas yang cukup untuk survive dan sukses di rantau dengan penyesuaian ringan di minggu-minggu awal kedatangan.",
+      "implikasi_pemberangkatan": "Dapat diberangkatkan dengan aman.",
+      "tindakan_lanjutan": "Penyusunan rencana penyesuaian mandiri (*personal adaptation plan*) untuk mengatasi area kerentanan spesifik."
+    },
+    {
+      "rentang_skor_persen": "55% - 69%",
+      "kategori": "Cukup Siap (Beresiko Ringan)",
+      "label_status": "PERINGATAN",
+      "deskripsi_kondisi": "Kandidat mampu berangkat, namun memiliki beberapa area kerentanan (seperti risiko homesickness panjang atau ketidakmandirian finansial) yang membutuhkan perhatian khusus.",
+      "implikasi_pemberangkatan": "Dapat diberangkatkan dengan syarat wajib mengikuti program pendampingan spesifik.",
+      "tindakan_lanjutan": "Wajib mengikuti lokakarya literasi finansial dan sesi konseling pembekalan regulasi emosi pra-keberangkatan."
+    },
+    {
+      "rentang_skor_persen": "40% - 54%",
+      "kategori": "Kurang Siap",
+      "label_status": "RISIKO TINGGI",
+      "deskripsi_kondisi": "Kandidat menunjukkan tingkat ketergantungan domestik yang tinggi dan resiliensi stres yang terbatas. Berpotensi besar mengalami gegar budaya traumatis atau penurunan performa akademik drastis.",
+      "implikasi_pemberangkatan": "Penundaan pemberangkatan sangat disarankan hingga kandidat menyelesaikan program pembinaan kesiapan.",
+      "tindakan_lanjutan": "Intervensi pembinaan mandiri intensif selama 1-3 bulan sebelum penjadwalan ulang asesmen kesiapan."
+    },
+    {
+      "rentang_skor_persen": "< 40%",
+      "kategori": "Tidak Disarankan",
+      "label_status": "CRITICAL FLAG",
+      "deskripsi_kondisi": "Kandidat belum memiliki kapasitas mendasar untuk hidup mandiri di luar lingkungan keluarga. Risiko kegagalan adaptasi (atrisi) dan krisis mental profesional/akademik sangat tinggi.",
+      "implikasi_pemberangkatan": "Sangat tidak dianjurkan untuk diberangkatkan dalam waktu dekat.",
+      "tindakan_lanjutan": "Intervensi psikologis komprehensif dan evaluasi ulang keseluruhan rencana studi mandiri/luar negeri."
+    }
+  ],
+  "protokol_intervensi_pra_keberangkatan": {
+    "critical_flag_threshold": 54,
+    "prosedur_penanganan": [
+      "Pemberitahuan khusus pada laporan individu kandidat dan dasbor konselor/orang tua.",
+      "Penyusunan Cetak Biru Rutinitas (*Daily Schedule & Financial Blueprint*) yang disepakati bersama sebelum berangkat.",
+      "Sesi konsultasi pra-keberangkatan bersama Psikolog/Konselor Pendidikan untuk mengatasi kerentanan regulasi emosi dan homesickness.",
+      "Monitoring berkala pada 30 hari pertama kedatangan (*settling-in period*) oleh koordinator kampus/lembaga penjamin."
+    ]
+  }
+}
