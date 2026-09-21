@@ -7,14 +7,20 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
 
 const KK2_Scoring = {
   /**
-   * Menghitung Skor Mentah (RS), T-Score, Kategorisasi Norma, dan Narasi
+   * Menghitung Skor Mentah (RS), T-Score, Categorization, dan Data Akses Matriks untuk KK2
    * @param {object} answers - Objek jawaban { questionId: value }
-   * @param {object} soalData - Master data dari soal.json
+   * @param {object} soalData - Master data dari soal.json (KK2)
+   * @param {object} rubrikData - Data deskripsi dari rubrik.json (KK2)
    */
-  evaluate(answers, soalData) {
-    const rawScores = { "Otoritatif": 0, "Otoriter": 0, "Permisif": 0, "Pengabaian": 0 };
+  evaluate(answers, soalData, rubrikData) {
+    const rawScores = {
+      "Otoritatif": 0,
+      "Otoriter": 0,
+      "Permisif": 0,
+      "Pengabaian": 0
+    };
 
-    // 1. Invariance Response Check (Validitas Pengerjaan)
+    // 1. Invariance Response Check (Validitas Pengerjaan 40 item)
     const uniqueAnswers = new Set(Object.values(answers));
     if (Object.keys(answers).length >= 40 && uniqueAnswers.size === 1) {
       return { 
@@ -24,46 +30,70 @@ const KK2_Scoring = {
     }
 
     // 2. Kalkulasi Skor Mentah (RS) dengan Pembobotan Favorable & Unfavorable
-    soalData.questions.forEach(q => {
-      const ansVal = answers[q.id] || 1;
-      let finalItemScore = ansVal;
+    if (soalData && soalData.questions) {
+      soalData.questions.forEach(q => {
+        const ansVal = answers[q.id] || 1;
+        let finalItemScore = ansVal;
 
-      // Item Unfavorable: STS=4, TS=3, S=2, SS=1
-      if (q.type === "Unfavorable") {
-        finalItemScore = 5 - ansVal;
-      }
+        // Item Unfavorable: STS=4, TS=3, S=2, SS=1
+        if (q.type === "Unfavorable") {
+          finalItemScore = 5 - ansVal;
+        }
 
-      if (rawScores[q.kategori] !== undefined) {
-        rawScores[q.kategori] += finalItemScore;
-      }
-    });
+        if (rawScores[q.kategori] !== undefined) {
+          rawScores[q.kategori] += finalItemScore;
+        }
+      });
+    }
 
-    // 3. Konversi Skor Mentah (RS) ke T-Score (Mean=50, SD=10)
-    // Norma Statistik Baku APSI (Mean RS = 25, SD RS = 5)
+    // 3. Konversi Skor Mentah (RS) ke T-Score & Kategori Norma Psikometri
     const tScores = {};
     const categories = {};
+    const percentages = {};
+    const tableRows = [];
 
     for (const [kategori, rs] of Object.entries(rawScores)) {
+      // Formulasi T-Score Standar (Mean RS = 25, SD RS = 5)
       const meanRS = 25;
       const sdRS = 5;
       const tScore = Math.round(50 + 10 * ((rs - meanRS) / sdRS));
       tScores[kategori] = tScore;
 
-      // Categorization Matrix
+      // Persentase Dominansi (Rentang RS 10 - 40)
+      const pct = Math.round(((rs - 10) / 30) * 100);
+      percentages[kategori] = pct;
+
+      // Matriks Kategori Norma T-Score KK2
+      let katNorma = "Sangat Rendah";
       if (tScore >= 65) {
-        categories[kategori] = "Sangat Dominan";
+        katNorma = "Sangat Dominan";
       } else if (tScore >= 55) {
-        categories[kategori] = "Dominan";
+        katNorma = "Dominan";
       } else if (tScore >= 45) {
-        categories[kategori] = "Sedang";
+        katNorma = "Sedang";
       } else if (tScore >= 35) {
-        categories[kategori] = "Rendah";
-      } else {
-        categories[kategori] = "Sangat Rendah";
+        katNorma = "Rendah";
       }
+      categories[kategori] = katNorma;
+
+      // Format data untuk tabel di result.html
+      tableRows.push({
+        label: kategori,
+        categoryKey: kategori,
+        rs: rs,
+        ts: tScore,
+        percentage: pct,
+        category: katNorma
+      });
     }
 
-    // 4. Menentukan Pola Asuh Utama (Dominan)
+    // 4. Kalkulasi Sumbu Dimensi Matriks Baumrind (Demandingness vs Responsiveness)
+    // Tuntutan (Control) = Rata-rata T-Score (Otoritatif + Otoriter) / 2
+    // Responsivitas (Support) = Rata-rata T-Score (Otoritatif + Permisif) / 2
+    const demandingness = Math.round((tScores["Otoritatif"] + tScores["Otoriter"]) / 2);
+    const responsiveness = Math.round((tScores["Otoritatif"] + tScores["Permisif"]) / 2);
+
+    // 5. Menentukan Tipologi Pola Asuh Utama (Dominan)
     let dominantCategory = "Otoritatif";
     let maxT = -1;
 
@@ -74,39 +104,44 @@ const KK2_Scoring = {
       }
     }
 
-    const narrative = (soalData.rubrik_deskripsi && soalData.rubrik_deskripsi[dominantCategory]) 
-      ? soalData.rubrik_deskripsi[dominantCategory] 
+    // Ambil narasi deskripsi dari rubrikData (rubrik.json KK2)
+    const rubrikSource = (rubrikData && rubrikData.rubrik_deskripsi) 
+      ? rubrikData.rubrik_deskripsi 
       : {};
+
+    const narrative = rubrikSource[dominantCategory] || {};
 
     return {
       isInvalid: false,
       rawScores: rawScores,
       tScores: tScores,
+      percentages: percentages,
       categories: categories,
       dominantCategory: dominantCategory,
-      narrative: narrative
+      dominantKey: dominantCategory,
+      tableRows: tableRows,
+      narrative: narrative,
+      baumrindAxes: {
+        demandingness: demandingness,
+        responsiveness: responsiveness
+      }
     };
   },
 
   /**
    * Menyusun Payload dan Mengirimkan Hasil Rekap ke Google Sheets via GAS
-   * @param {object} answers - Objek jawaban peserta
-   * @param {object} userSession - Data sesi peserta dari sessionStorage
-   * @param {object} evaluationResult - Hasil kembalian dari method evaluate()
    */
   async sendRekapToGAS(answers, userSession, evaluationResult) {
     if (evaluationResult.isInvalid) return;
 
-    // Formatting string skor mentah & standard score sesuai skema
     const skorMentahStr = Object.entries(evaluationResult.rawScores)
       .map(([kat, val]) => `${kat}: ${val}`)
       .join(", ");
 
     const standardScoreStr = Object.entries(evaluationResult.tScores)
-      .map(([kat, val]) => `${kat}: ${val}`)
+      .map(([kat, val]) => `T-${kat}: ${val}`)
       .join(", ");
 
-    // Membuat format timestamp lokal (YYYY-MM-DD HH:mm:ss)
     const now = new Date();
     const formattedTimestamp = now.getFullYear() + "-" +
       String(now.getMonth() + 1).padStart(2, '0') + "-" +
@@ -115,7 +150,6 @@ const KK2_Scoring = {
       String(now.getMinutes()).padStart(2, '0') + ":" +
       String(now.getSeconds()).padStart(2, '0');
 
-    // Susun Payload Standar sesuai Schema Rekap (FORMAT_A)
     const payload = {
       timestamp: formattedTimestamp,
       kode_akses: userSession.kode_akses || "-",
@@ -140,7 +174,7 @@ const KK2_Scoring = {
       });
       console.log("Sistem Rekap: Data pengerjaan KK2 berhasil terkirim ke Spreadsheet.");
     } catch (error) {
-      console.error("Sistem Rekap Error:", error);
+      console.error("Sistem Rekap Error KK2:", error);
     }
   }
 };
