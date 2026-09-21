@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Akses - PATS Portal</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+  <header class="portal-header">
+    <div class="container header-container">
+      <div class="brand">
+        <h1 id="brand-app-name">PATS PORTAL</h1>
+        <p id="brand-test-name">Memuat Modul Ujian...</p>
+      </div>
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: var(--secondary-color);">&larr; Kembali ke Portal</a>
+    </div>
+  </header>
+
+  <main class="container portal-main">
+    <div class="test-card" style="max-width: 500px; margin: 40px auto; padding: 30px;">
+      <h3 id="form-title" style="margin-bottom: 6px; font-size: 1.25rem;">Verifikasi Peserta Ujian</h3>
+      <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 24px;">
+        Silakan masukkan Nama Lengkap dan Kode Akses / Token Ujian Anda untuk memulai tes.
+      </p>
+      
+      <form id="form-login">
+        <div class="form-group">
+          <label for="nama_lengkap">Nama Lengkap Peserta</label>
+          <input type="text" id="nama_lengkap" class="form-control" placeholder="Contoh: Budi Santoso" required>
+        </div>
+
+        <div class="form-group">
+          <label for="kode_akses">Kode Akses / Token Ujian / Token Master</label>
+          <input type="text" id="kode_akses" class="form-control" placeholder="Masukkan Token Ujian" required autocomplete="off">
+        </div>
+
+        <div id="login-error" style="color: var(--danger-color); font-size: 0.875rem; margin-bottom: 14px; display: none; background-color: #fef2f2; padding: 10px; border-radius: var(--radius-sm); border: 1px solid #fecaca;"></div>
+
+        <button type="submit" id="btn-submit" class="btn-primary">Mulai Asesmen</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="portal-footer">
+    <div class="container">
+      <p>&copy; 2026 PATS Portal System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/auth.js"></script>
+  
+  <script>
+    let currentTestCode = "";
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch("soal.json");
+        const soalData = await response.json();
+        const info = soalData.test_info || {};
+
+        currentTestCode = info.kode || "MODUL";
+        document.title = `Verifikasi Akses - ${info.kode || ''} ${info.nama_singkat || ''}`;
+        document.getElementById("brand-test-name").innerText = `Modul ${info.kode || ''}: ${info.nama_resmi || info.nama_singkat || ''}`;
+      } catch (err) {
+        console.warn("Gagal membaca metadata soal.json:", err);
+      }
+    });
+
+    document.getElementById("form-login").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const nama = document.getElementById("nama_lengkap").value;
+      const kodeAtauToken = document.getElementById("kode_akses").value;
+      const errorDiv = document.getElementById("login-error");
+      const btnSubmit = document.getElementById("btn-submit");
+
+      errorDiv.style.display = "none";
+      btnSubmit.disabled = true;
+      btnSubmit.innerText = "Memverifikasi Akses...";
+
+      let testInfo = {};
+      try {
+        const response = await fetch("soal.json");
+        const soalData = await response.json();
+        testInfo = soalData.test_info || {
+          token_ujian: soalData.token_ujian || "",
+          token_master: soalData.token_master || ""
+        };
+      } catch (err) {
+        console.warn("Gagal membaca metadata dari file local soal.json:", err);
+      }
+
+      const authResult = await PATS_AUTH.verifyParticipant(nama, kodeAtauToken, currentTestCode, testInfo);
+
+      if (authResult.success) {
+        window.location.href = "cbt.html";
+      } else {
+        errorDiv.innerText = authResult.message;
+        errorDiv.style.display = "block";
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = "Mulai Asesmen";
+      }
+    });
+  </script>
+</body>
+</html>
