@@ -1,0 +1,352 @@
+{
+  "test_info": {
+    "kode": "KU7",
+    "nama_resmi": "APACA Work Personality Trait Inventory — Big Five OCEAN Model (WPTI-OCEAN)",
+    "versi": "Work 1.0 / 2026",
+    "psikolog_pj": "Tim Asesmen APACA"
+  },
+  "rubrik_dimensi": {
+    "Openness": {
+      "kode": "O",
+      "nama_dimensi": "Openness to Experience",
+      "fokus_pengukuran": "Inovasi, Kreativitas, Rasa Ingin Tahu Intelektual, dan Adaptabilitas Kognitif",
+      "keunggulan_utama": [
+        "Inovatif dan kaya akan ide-ide terobosan baru",
+        "Kemampuan adaptasi yang tinggi terhadap perubahan strategi atau teknologi",
+        "Pola pikir fleksibel dan terbuka terhadap sudut pandang alternatif",
+        "Cakap dalam memecahkan masalah kompleks yang tidak memiliki SOP pasti"
+      ],
+      "potensi_kelemahan": [
+        "Cepat merasa bosan dengan tugas-tugas rutin yang bersifat repetitif",
+        "Terlalu berfokus pada konsep teoritis/abstrak sehingga mengabaikan eksekusi praktis",
+        "Cenderung mempertanyakan prosedur yang sudah ada tanpa alasan yang benar-benar mendesak"
+      ],
+      "sifat_sebagai_pekerja": {
+        "gaya_eksekusi": "Eksploratif, mandiri, menyukai proyek yang memberikan ruang eksperimen dan kreativitas.",
+        "orientasi_tugas": "Berorientasi pada inovasi dan efisiensi cara kerja baru ketimbang sekadar mempertahankan cara lama.",
+        "pemicu_motivasi": "Tantangan intelektual, kebebasan berkreasi, dan kesempatan mempelajari keterampilan baru."
+      },
+      "sifat_sebagai_atasan": {
+        "gaya_kepemimpinan": "Transformasional dan Visioner.",
+        "pendekatan_tim": "Mendorong bawahan untuk berpikir kritis, bereksperimen, dan tidak takut melakukan kesalahan dalam berinovasi.",
+        "potensi_risiko_pemimpin": "Dapat membuat tim kewalahan jika terlalu sering mengubah arah ide sebelum proyek sebelumnya tuntas."
+      },
+      "gaya_komunikasi": "Konseptual, persuasif, kaya akan imajinasi dan analogi, serta menyukai diskusi bertukar ide.",
+      "lingkungan_kerja_ideal": "Lingkungan yang dinamis, fleksibel, terdesentralisasi, serta menghargai kreativitas dan pembaruan.",
+      "potensi_karir": [
+        "Product Manager & Strategist",
+        "R&D Specialist / Innovation Lead",
+        "Data Scientist & AI Researcher",
+        "Creative Director & UI/UX Designer",
+        "Management Consultant"
+      ],
+      "strategi_pengembangan": "Melatih disiplin eksekusi agar ide-ide inovatif yang dimunculkan dapat terealisasikan hingga tuntas secara nyata.",
+      "kategori_t_score": {
+        "sangat_tinggi": {
+          "rentang": "T >= 65",
+          "kategori": "Sangat Tinggi",
+          "interpretasi": "Sangat eksploratif, visioner, dan inovatif; berisiko mudah jenuh jika tidak ada tantangan baru.",
+          "rekomendasi": "Arahkan pada peran riset strategis, pengembangan produk baru, atau reformasi sistem."
+        },
+        "tinggi": {
+          "rentang": "55 <= T < 65",
+          "kategori": "Tinggi",
+          "interpretasi": "Kreatif, terbuka pada perubahan, dan mudah beradaptasi dengan teknologi atau pendekatan baru.",
+          "rekomendasi": "Cocok untuk posisi yang membutuhkan pemecahan masalah kompleks dan perancangan strategi."
+        },
+        "sedang": {
+          "rentang": "45 <= T < 55",
+          "kategori": "Sedang (Rata-rata)",
+          "interpretasi": "Seimbang antara menerima pembaruan dan menjaga kepatuhan pada prosedur yang sudah berjalan.",
+          "rekomendasi": "Mampu bekerja dalam peran operasional umum maupun proyek inovasi ringan."
+        },
+        "rendah": {
+          "rentang": "35 <= T < 45",
+          "kategori": "Rendah",
+          "interpretasi": "Lebih nyaman dengan pendekatan konvensional dan praktis yang sudah teruji.",
+          "rekomendasi": "Tempatkan pada peran operasional yang memerlukan konsistensi dan stabilitas kerja harian."
+        },
+        "sangat_rendah": {
+          "rentang": "T < 35",
+          "kategori": "Sangat Rendah",
+          "interpretasi": "Sangat resisten terhadap perubahan, kaku, dan cenderung menolak ide-ide di luar kebiasaan.",
+          "rekomendasi": "Perlu pendampingan intensif jika terjadi pembaruan sistem atau prosedur kerja."
+        }
+      }
+    },
+
+    "Conscientiousness": {
+      "kode": "C",
+      "nama_dimensi": "Conscientiousness",
+      "fokus_pengukuran": "Keandalan, Kedisiplinan, Integritas Eksekusi, Keteraturan, dan Orientasi Target",
+      "keunggulan_utama": [
+        "Sangat terstruktur, teliti, dan berorientasi tinggi pada detail",
+        "Memiliki komitmen dan integritas kuat terhadap kesepakatan tenggat waktu",
+        "Dapat diandalkan untuk bekerja konsisten tanpa memerlukan pengawasan ketat",
+        "Prosedural dan selalu menjaga standar kualitas hasil kerja tetap tinggi"
+      ],
+      "potensi_kelemahan": [
+        "Cenderung perfeksionis yang dapat memperlambat pengambilan keputusan cepat",
+        "Kaku dan kurang fleksibel saat terjadi perubahan rencana yang mendadak",
+        "Berisiko mengalami kejenuhan akibat menetapkan standar tinggi yang berlebihan pada diri sendiri"
+      ],
+      "sifat_sebagai_pekerja": {
+        "gaya_eksekusi": "Sistematis, terencana, menggunakan skala prioritas, dan mematuhi SOP secara ketat.",
+        "orientasi_tugas": "Berorientasi pada penyelesaian target (task-completion) dengan akurasi dan kerapian tinggi.",
+        "pemicu_motivasi": "Kejelasan struktur kerja, indikator keberhasilan yang terukur, serta apresiasi atas pencapaian."
+      },
+      "sifat_sebagai_atasan": {
+        "gaya_kepemimpinan": "Otoritatif Berbasis Kinerja / Operasional Cermat.",
+        "pendekatan_tim": "Menetapkan ekspektasi dan KPI yang jelas, memantau *milestone* secara berkala, dan menegakkan disiplin.",
+        "potensi_risiko_pemimpin": "Berisiko melakukan *micromanagement* dan kurang toleran terhadap kesalahan kecil anggota tim."
+      },
+      "gaya_komunikasi": "Lugas, berbasis data/fakta, terstruktur, serta berfokus pada alur kerja dan tenggat waktu.",
+      "lingkungan_kerja_ideal": "Lingkungan kerja yang teratur, memiliki aturan baku yang jelas, berorientasi target, serta profesional.",
+      "potensi_karir": [
+        "Project Manager & Operations Lead",
+        "Quality Assurance & Quality Control",
+        "Auditor & Compliance Specialist",
+        "Software Engineer & Systems Architect",
+        "Financial Controller & Accountant"
+      ],
+      "strategi_pengembangan": "Melatih fleksibilitas kognitif agar lebih toleran terhadap ketidakpastian dan situasi darurat yang dinamis.",
+      "kategori_t_score": {
+        "sangat_tinggi": {
+          "rentang": "T >= 65",
+          "kategori": "Sangat Tinggi",
+          "interpretasi": "Sangat terorganisir, akurat, dan disiplin tinggi; berisiko perfeksionis kaku dan sulit delegasi.",
+          "rekomendasi": "Ideal untuk mengelola proyek berisiko tinggi, kendali mutu, audit, dan tata kelola organisasi."
+        },
+        "tinggi": {
+          "rentang": "55 <= T < 65",
+          "kategori": "Tinggi",
+          "interpretasi": "Sangat andal, tepat waktu, bekerja secara terstruktur, dan konsisten memenuhi target kerja.",
+          "rekomendasi": "Sangat sesuai untuk posisi manajemen operasional dan peran teknis berstandar tinggi."
+        },
+        "sedang": {
+          "rentang": "45 <= T < 55",
+          "kategori": "Sedang (Rata-rata)",
+          "interpretasi": "Cukup teratur dan bertanggung jawab, namun masih memiliki fleksibilitas untuk menyesuaikan alur kerja.",
+          "rekomendasi": "Cocok untuk sebagian besar posisi teknis dan koordinasi umum dalam tim."
+        },
+        "rendah": {
+          "rentang": "35 <= T < 45",
+          "kategori": "Rendah",
+          "interpretasi": "Cenderung impulsif, kurang cermat terhadap detail, dan membutuhkan pengawasan batas waktu.",
+          "rekomendasi": "Perlu bantuan alat bantu manajemen tugas dan pemantauan berkala dari atasan."
+        },
+        "sangat_rendah": {
+          "rentang": "T < 35",
+          "kategori": "Sangat Rendah",
+          "interpretasi": "Sangat tidak terstruktur, sering mengabaikan SOP, dan rentan melewatkan tenggat waktu penting.",
+          "rekomendasi": "Perlu pendampingan ketat serta restrukturisasi pola kerja mendasar."
+        }
+      }
+    },
+
+    "Extraversion": {
+      "kode": "E",
+      "nama_dimensi": "Extraversion",
+      "fokus_pengukuran": "Dinamika Sosial, Asertivitas, Antusiasme, dan Inisiatif Komunikasi",
+      "keunggulan_utama": [
+        "Sangat persuasif dan cakap dalam memengaruhi orang lain",
+        "Percaya diri tinggi dalam memimpin diskusi, rapat, atau presentasi publik",
+        "Proaktif membangun jejaring relasi (*networking*) baru",
+        "Membawa energi positif, antusiasme, dan dorongan semangat bagi tim"
+      ],
+      "potensi_kelemahan": [
+        "Cenderung mendominasi percakapan dan kurang memberi ruang mendengar bagi orang lain",
+        "Cepat merasa bosan jika harus bekerja sendirian dalam jangka waktu lama",
+        "Berisiko mengambil keputusan secara impulsif demi hasil yang cepat"
+      ],
+      "sifat_sebagai_pekerja": {
+        "gaya_eksekusi": "Kolaboratif, ekspresif, cepat bertindak, dan berfokus pada hubungan antarmanusia.",
+        "orientasi_tugas": "Berorientasi pada hasil melalui kerja sama kelompok, komunikasi langsung, dan negosiasi.",
+        "pemicu_motivasi": "Interaksi sosial yang intens, pengakuan publik, dan kesempatan memimpin pergerakan."
+      },
+      "sifat_sebagai_atasan": {
+        "gaya_kepemimpinan": "Kharismatik, Asertif, dan Inspiratif.",
+        "pendekatan_tim": "Memotivasi anggota tim secara terbuka, mendorong diskusi aktif, dan mewakili tim ke pihak eksternal.",
+        "potensi_risiko_pemimpin": "Dapat terkesan mengintimidasi atau menutupi masukan dari anggota tim yang lebih introvert."
+      },
+      "gaya_komunikasi": "Antusias, terbuka, ekspresif, bernada optimis, dan berorientasi pada tindakan langsung.",
+      "lingkungan_kerja_ideal": "Lingkungan kerja yang dinamis, kolaboratif, penuh ruang diskusi, dan melibatkan banyak pemangku kepentingan.",
+      "potensi_karir": [
+        "Sales & Business Development Lead",
+        "Corporate Communication & PR Manager",
+        "Account Executive & Relationship Manager",
+        "Executive Leader / Chief Executive",
+        "Public Speaker & Trainer"
+      ],
+      "strategi_pengembangan": "Melatih keterampilan mendengarkan secara aktif (*active listening*) dan memberikan ruang bagi ide rekan kerja.",
+      "kategori_t_score": {
+        "sangat_tinggi": {
+          "rentang": "T >= 65",
+          "kategori": "Sangat Tinggi",
+          "interpretasi": "Sangat dominan, persuasif, dan ekspresif; berisiko terlalu mengontrol atau mendominasi ruang sosial.",
+          "rekomendasi": "Sangat kuat untuk peran pimpinan eksekutif, juru bicara, atau negosiator tingkat tinggi."
+        },
+        "tinggi": {
+          "rentang": "55 <= T < 65",
+          "kategori": "Tinggi",
+          "interpretasi": "Komunikatif, aktif berinisiatif, percaya diri, dan efektif dalam membangun jejaring profesional.",
+          "rekomendasi": "Ideal untuk posisi pemasaran, hubungan masyarakat, serta kepemimpinan tim."
+        },
+        "sedang": {
+          "rentang": "45 <= T < 55",
+          "kategori": "Sedang (Rata-rata)",
+          "interpretasi": "Mampu bersosialisasi dengan baik sekaligus nyaman bekerja mandiri secara fokus.",
+          "rekomendasi": "Dapat ditempatkan pada berbagai peran ambigu yang membutuhkan perpaduan analisis dan komunikasi."
+        },
+        "rendah": {
+          "rentang": "35 <= T < 45",
+          "kategori": "Rendah",
+          "interpretasi": "Cenderung tenang, pemikir mandiri, lebih suka bekerja di balik layar daripada menjadi pusat perhatian.",
+          "rekomendasi": "Lebih cocok untuk peran spesialis teknis, analisis data, atau pekerjaan mandiri."
+        },
+        "sangat_rendah": {
+          "rentang": "T < 35",
+          "kategori": "Sangat Rendah",
+          "interpretasi": "Sangat tertutup, menarik diri dari dinamika kelompok, dan menghindari interaksi sosial yang intens.",
+          "rekomendasi": "Tempatkan pada peran individual contributor yang sangat terisolasi dari gangguan eksternal."
+        }
+      }
+    },
+
+    "Agreeableness": {
+      "kode": "A",
+      "nama_dimensi": "Agreeableness",
+      "fokus_pengukuran": "Kolaborasi, Empati Interpersonal, Kooperatif, Altruisme, dan Keharmonisan Tim",
+      "keunggulan_utama": [
+        "Sangat kooperatif dan mudah diajak bekerja sama dalam tim",
+        "Empati yang tinggi terhadap kebutuhan dan kondisi perasaan orang lain",
+        "Mampu meredakan ketegangan dan memfasilitasi resolusi konflik secara damai",
+        "Membangun suasana kerja yang harmonis dan penuh rasa saling percaya"
+      ],
+      "potensi_kelemahan": [
+        "Cenderung menghindari konflik sehingga sulit memberikan umpan balik kritis yang tegas",
+        "Sulit berkata 'tidak' terhadap permintaan tambahan yang dapat membebani diri sendiri",
+        "Berisiko mengorbankan standar kualitas demi menjaga perasaan orang lain"
+      ],
+      "sifat_sebagai_pekerja": {
+        "gaya_eksekusi": "Suportif, mengutamakan kebersamaan, taat pada norma kelompok, dan tidak egois.",
+        "orientasi_tugas": "Berorientasi pada pencapaian tim (team-first mindset) serta dukungan terhadap kolega.",
+        "pemicu_motivasi": "Hubungan kerja yang hangat, rasa saling menghargai, dan iklim kerja yang minim konflik."
+      },
+      "sifat_sebagai_atasan": {
+        "gaya_kepemimpinan": "Demokratis, Pengayom (*Servant Leadership*), dan Suportif.",
+        "pendekatan_tim": "Mendengarkan aspirasi bawahan, memperhatikan kesejahteraan tim, dan membangun *psychological safety*.",
+        "potensi_risiko_pemimpin": "Ragu-ragu dalam mengambil keputusan tidak populer atau memberikan sanksi tegas bagi pelanggaran."
+      },
+      "gaya_komunikasi": "Ramah, diplomatis, penuh empati, memotivasi, serta menghindari kata-kata konfrontatif.",
+      "lingkungan_kerja_ideal": "Lingkungan yang kekeluargaan, kolaboratif, tidak kompetitif secara destruktif, dan penuh empati.",
+      "potensi_karir": [
+        "Human Resources Generalist / Employee Relations",
+        "Customer Success & Hospitality Manager",
+        "Mediator & Conflict Resolution Specialist",
+        "Social Worker & Community Liaison",
+        "Team Facilitator & Coach"
+      ],
+      "strategi_pengembangan": "Melatih asertivitas untuk berani menyampaikan teguran tegas dan menetapkan batasan profesional secara jelas.",
+      "kategori_t_score": {
+        "sangat_tinggi": {
+          "rentang": "T >= 65",
+          "kategori": "Sangat Tinggi",
+          "interpretasi": "Sangat altruis, penuh empati, dan kooperatif; berisiko dimanfaatkan orang lain dan sulit bersikap tegas.",
+          "rekomendasi": "Sangat baik untuk peran keharmonisan karyawan, layanan pelanggan ekstrim, atau advokasi sosial."
+        },
+        "tinggi": {
+          "rentang": "55 <= T < 65",
+          "kategori": "Tinggi",
+          "interpretasi": "Ramah, bersahabat, terbiasa bekerja sama, dan menaruh perhatian besar pada hubungan baik.",
+          "rekomendasi": "Cocok untuk posisi pengelolaan SDM, konseling, dan dukungan layanan pengguna."
+        },
+        "sedang": {
+          "rentang": "45 <= T < 55",
+          "kategori": "Sedang (Rata-rata)",
+          "interpretasi": "Mampu bersikap ramah sekaligus tetap bersikap tegas dan objektif ketika dibutuhkan.",
+          "rekomendasi": "Seimbang untuk hampir seluruh peran koordinasi dan manajemen lini pertama."
+        },
+        "rendah": {
+          "rentang": "35 <= T < 45",
+          "kategori": "Rendah",
+          "interpretasi": "Kritis, skeptis, berfokus pada objektif mandiri, dan tidak ragu berkonflik demi prinsip.",
+          "rekomendasi": "Cocok untuk peran negosiasi keras, pembuktian hukum, atau audit kepatuhan kaku."
+        },
+        "sangat_rendah": {
+          "rentang": "T < 35",
+          "kategori": "Sangat Rendah",
+          "interpretasi": "Sangat konfrontatif, acuh terhadap perasaan orang lain, dan berisiko merusak iklim tim.",
+          "rekomendasi": "Perlu penanganan khusus terkait keterampilan interaksi sosial dan manajemen konflik."
+        }
+      }
+    },
+
+    "Neuroticism": {
+      "kode": "N",
+      "nama_dimensi": "Neuroticism / Emotional Stability",
+      "fokus_pengukuran": "Resiliensi Emosional, Toleransi Stres, Ketenangan di Bawah Tekanan, dan Kestabilan Suasana Hati",
+      "keunggulan_utama": [
+        "(Jika N Rendah / Stabilitas Tinggi): Sangat tenang dan berkepala dingin di tengah situasi krisis",
+        "(Jika N Rendah / Stabilitas Tinggi): Memiliki resiliensi tinggi dan cepat bangkit dari kegagalan",
+        "(Jika N Tinggi): Sangat peka terhadap potensi risiko dan kecacatan dalam skenario pekerjaan"
+      ],
+      "potensi_kelemahan": [
+        "(Jika N Tinggi): Mudah cemas, panik, dan kewalahan saat dihadapkan pada tenggat waktu mendadak",
+        "(Jika N Tinggi): Perubahan suasana hati yang cepat dapat memengaruhi konsistensi performa harian",
+        "(Jika N Tinggi): Cenderung menarik penilaian kritis secara personal sehingga mudah patah semangat"
+      ],
+      "sifat_sebagai_pekerja": {
+        "gaya_eksekusi": "Bergantung pada tingkat stabilitas emosi; individu dengan N rendah bekerja konsisten di bawah tekanan.",
+        "orientasi_tugas": "N rendah fokus pada pemecahan masalah (problem-solving); N tinggi cenderung fokus pada kecemasan akan kegagalan.",
+        "pemicu_motivasi": "Kepastian situasi kerja, lingkungan yang stabil, serta arahan yang jelas dari atasan."
+      },
+      "sifat_sebagai_atasan": {
+        "gaya_kepemimpinan": "Pengendali Krisis (jika N Rendah) atau Pemimpin Reaktif (jika N Tinggi).",
+        "pendekatan_tim": "Pemimpin dengan N rendah menjadi jangkar ketenangan bagi tim; pemimpin dengan N tinggi berisiko menularkan kepanikan.",
+        "potensi_risiko_pemimpin": "Jika N tinggi, keputusan dapat diambil secara emosional dan berubah-ubah akibat tekanan situasi."
+      },
+      "gaya_komunikasi": "(Jika N Rendah) Tenang, rasional, objektif; (Jika N Tinggi) Emosional, reaktif, dan cemas.",
+      "lingkungan_kerja_ideal": "Lingkungan kerja yang terprediksi, memiliki kejelasan struktur, minim konflik interpersonal, dan kondusif.",
+      "potensi_karir": [
+        "Crisis & Risk Management Lead (N Rendah)",
+        "Emergency & Rescue Response Manager (N Rendah)",
+        "Strategic Operations Manager (N Rendah)",
+        "Safety & Quality Control Inspector (N Tinggi/Peka Risiko)"
+      ],
+      "strategi_pengembangan": "Melatih regulasi emosi, manajemen stres, serta teknik reframing kognitif saat menghadapi ketidakpastian.",
+      "kategori_t_score": {
+        "sangat_tinggi": {
+          "rentang": "T >= 65",
+          "kategori": "Sangat Tinggi (Resiko Stres Tinggi)",
+          "interpretasi": "Sangat reaktif secara emosional, mudah cemas, rentan terganggu oleh kritik atau tekanan.",
+          "rekomendasi": "Tempatkan pada lingkungan yang aman, terprediksi, serta tawarkan program manajemen stres."
+        },
+        "tinggi": {
+          "rentang": "55 <= T < 65",
+          "kategori": "Tinggi",
+          "interpretasi": "Peka terhadap potensi masalah, namun rentan merasa tertekan jika banyak tuntutan mendadak.",
+          "rekomendasi": "Membutuhkan kejelasan instruksi kerja serta iklim kerja yang suportif secara emosional."
+        },
+        "sedang": {
+          "rentang": "45 <= T < 55",
+          "kategori": "Sedang (Rata-rata)",
+          "interpretasi": "Memiliki tingkat kecemasan wajar dan mampu mengelola stres harian secara mandiri.",
+          "rekomendasi": "Mampu beradaptasi pada sebagian besar beban kerja standar di organisasi."
+        },
+        "rendah": {
+          "rentang": "35 <= T < 45",
+          "kategori": "Rendah (Stabilitas Emosi Baik)",
+          "interpretasi": "Tenang, resilien, jarang merasa cemas berlebihan, dan stabil di bawah tekanan kerja.",
+          "rekomendasi": "Sangat baik untuk menangani tugas bertekanan tinggi atau proyek krisis."
+        },
+        "sangat_rendah": {
+          "rentang": "T < 35",
+          "kategori": "Sangat Rendah (Stabilitas Emosi Sangat Tinggi)",
+          "interpretasi": "Sangat stabil secara emosional, tidak mudah goyah oleh krisis, dan menjadi jangkar ketenangan tim.",
+          "rekomendasi": "Sangat ideal untuk kepemimpinan puncak, manajemen krisis, dan pengambilan keputusan darurat."
+        }
+      }
+    }
+  }
+}
