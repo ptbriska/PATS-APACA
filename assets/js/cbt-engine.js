@@ -283,8 +283,8 @@ class CBTEngine {
           <thead>
             <tr style="background-color: #f8fafc; border-bottom: 2px solid #e2e8f0;">
               <th style="padding: 10px; text-align: left; color: #1e293b;">Pilihan Pernyataan</th>
-              <th style="padding: 10px; text-align: center; width: 130px; color: #10b981;">Paling Efektif<br><small style="font-weight: 400; color: #64748b;">(+2 Poin)</small></th>
-              <th style="padding: 10px; text-align: center; width: 130px; color: #ef4444;">Paling Tidak Efektif<br><small style="font-weight: 400; color: #64748b;">(-1 Poin)</small></th>
+              <th style="padding: 10px; text-align: center; width: 140px; color: #10b981;">Paling Efektif<br><small style="font-weight: 400; color: #64748b;">(+2 Poin)</small></th>
+              <th style="padding: 10px; text-align: center; width: 140px; color: #ef4444;">Paling Tidak Efektif<br><small style="font-weight: 400; color: #64748b;">(-1 Poin)</small></th>
             </tr>
           </thead>
           <tbody>
@@ -299,12 +299,12 @@ class CBTEngine {
         <tr style="border-bottom: 1px solid #e2e8f0;">
           <td style="padding: 12px 10px; color: #1e293b; font-weight: 500;">${opt.label}</td>
           <td style="padding: 12px 10px; text-align: center; background-color: ${isMostChecked ? '#ecfdf5' : 'transparent'};">
-            <input type="radio" name="fc_most_${q.id}" value="${opt.value}" ${isMostChecked} 
+            <input type="radio" id="fc_most_${q.id}_${opt.value}" name="fc_group_most_${q.id}" value="${opt.value}" ${isMostChecked} 
               style="accent-color: #10b981; transform: scale(1.25); cursor: pointer;" 
               onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'most', ${safeValArg})">
           </td>
           <td style="padding: 12px 10px; text-align: center; background-color: ${isLeastChecked ? '#fef2f2' : 'transparent'};">
-            <input type="radio" name="fc_least_${q.id}" value="${opt.value}" ${isLeastChecked} 
+            <input type="radio" id="fc_least_${q.id}_${opt.value}" name="fc_group_least_${q.id}" value="${opt.value}" ${isLeastChecked} 
               style="accent-color: #ef4444; transform: scale(1.25); cursor: pointer;" 
               onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'least', ${safeValArg})">
           </td>
@@ -324,7 +324,7 @@ class CBTEngine {
     if (container) container.innerHTML = tableHtml;
   }
 
-  // --- LOGIC PENYIMPANAN JAWABAN ---
+  // --- LOGIC PENYIMPANAN JAWABAN STANDARD ---
   saveAnswer(questionId, value) {
     this.answers[String(questionId)] = value;
     localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
@@ -344,21 +344,41 @@ class CBTEngine {
 
     if (targetType === "most") {
       currentAns.most = value;
-      // Guard: Jika opsi yang sama sudah dipilih di least, batalkan least
+      // Guard: Jika opsi yang sama dipilih di least, uncheck radio least secara DOM
       if (String(currentAns.least) === String(value)) {
         currentAns.least = null;
+        const leastRadio = document.getElementById(`fc_least_${questionId}_${value}`);
+        if (leastRadio) leastRadio.checked = false;
       }
     } else if (targetType === "least") {
       currentAns.least = value;
-      // Guard: Jika opsi yang sama sudah dipilih di most, batalkan most
+      // Guard: Jika opsi yang sama dipilih di most, uncheck radio most secara DOM
       if (String(currentAns.most) === String(value)) {
         currentAns.most = null;
+        const mostRadio = document.getElementById(`fc_most_${questionId}_${value}`);
+        if (mostRadio) mostRadio.checked = false;
       }
     }
 
     this.answers[qKey] = currentAns;
     localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
-    this.renderCurrentQuestion();
+
+    // Update status indikator & sidebar navigasi tanpa me-refresh seluruh form
+    const qStatusEl = document.getElementById("cbt-question-status");
+    const hasAnswered = this.isQuestionAnswered(questionId);
+    if (qStatusEl) {
+      if (hasAnswered) {
+        qStatusEl.innerText = "Sudah Dijawab";
+        qStatusEl.style.background = "#dcfce7";
+        qStatusEl.style.color = "#15803d";
+      } else {
+        qStatusEl.innerText = "Belum Dijawab (Pilih Most & Least)";
+        qStatusEl.style.background = "#f1f5f9";
+        qStatusEl.style.color = "#64748b";
+      }
+    }
+
+    this.renderNavGrid();
   }
 
   renderNavGrid() {
