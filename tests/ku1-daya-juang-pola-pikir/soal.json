@@ -1,0 +1,261 @@
+{
+  "test_info": {
+    "kode": "KU1",
+    "nama_resmi": "APACA Grit & Growth Mindset Inventory (AGMI)",
+    "nama_singkat": "Grit & Growth Mindset Inventory",
+    "versi": "Versi 1.0 / 2026",
+    "token_ujian": "AGMI2026",
+    "token_master": "PatsTestingKU1",
+    "durasi_menit": 15,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "options": [
+    { "label": "Sangat Tidak Sesuai", "value": 1 },
+    { "label": "Tidak Sesuai", "value": 2 },
+    { "label": "Sesuai", "value": 3 },
+    { "label": "Sangat Sesuai", "value": 4 }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": true,
+      "pertanyaan": "Saya mempertahankan fokus pada tujuan utama hidup/karier saya meskipun membutuhkan waktu bertahun-tahun untuk mencapainya."
+    },
+    {
+      "id": 2,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": true,
+      "pertanyaan": "Kegagalan atau kekecewaan dalam pekerjaan/studi tidak pernah menghentikan langkah saya untuk terus berusaha."
+    },
+    {
+      "id": 3,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": true,
+      "pertanyaan": "Saya meyakini bahwa tingkat kecerdasan, bakat, dan keahlian seseorang dapat terus ditingkatkan melalui latihan dan kerja keras."
+    },
+    {
+      "id": 4,
+      "dimensi": "Response to Challenge",
+      "is_favorable": true,
+      "pertanyaan": "Saya sangat menyukai tugas-tugas yang sulit dan menantang karena memberikan kesempatan bagi saya untuk bertumbuh."
+    },
+    {
+      "id": 5,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": true,
+      "pertanyaan": "Minat dan ketertarikan saya terhadap proyek atau bidang yang saya tekuni relatif konsisten dan tidak gampang berganti."
+    },
+    {
+      "id": 6,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": true,
+      "pertanyaan": "Saya adalah seorang pekerja keras yang bersedia mencurahkan usaha ekstra demi menuntaskan tanggung jawab."
+    },
+    {
+      "id": 7,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": true,
+      "pertanyaan": "Kapasitas dan kemampuan berpikir otak manusia bekerja seperti otot yang akan semakin kuat jika terus dilatih."
+    },
+    {
+      "id": 8,
+      "dimensi": "Response to Challenge",
+      "is_favorable": true,
+      "pertanyaan": "Kritik pedas dan masukan atas kesalahan saya pandang sebagai bahan bakar berharga untuk perbaikan performa diri."
+    },
+    {
+      "id": 9,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": true,
+      "pertanyaan": "Saya tidak gampang teralih perhatiannya oleh ide-ide baru atau tren singkat yang muncul di tengah jalan."
+    },
+    {
+      "id": 10,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": true,
+      "pertanyaan": "Saya selalu menyelesaikan hingga tuntas setiap pekerjaan atau proyek yang telah saya mulai."
+    },
+    {
+      "id": 11,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": true,
+      "pertanyaan": "Seberapa pun terbatasnya bakat awal seseorang, ia selalu dapat mengembangkan kemampuannya secara signifikan jika mau belajar."
+    },
+    {
+      "id": 12,
+      "dimensi": "Response to Challenge",
+      "is_favorable": true,
+      "pertanyaan": "Keberhasilan dan pencapaian tinggi orang lain menginspirasi serta memicu semangat saya untuk belajar dari strategi mereka."
+    },
+    {
+      "id": 13,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": true,
+      "pertanyaan": "Komitmen saya pada target jangka panjang tetap sama kuatnya seperti saat saya pertama kali memulainya."
+    },
+    {
+      "id": 14,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": true,
+      "pertanyaan": "Hambatan dan jalan buntu yang besar justru memicu daya juang saya untuk mencari jalan keluar alternatif."
+    },
+    {
+      "id": 15,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": true,
+      "pertanyaan": "Saya percaya bahwa ketekunan dan strategi yang tepat jauh lebih menentukan kesuksesan dibanding sekadar bakat lahiriah."
+    },
+    {
+      "id": 16,
+      "dimensi": "Response to Challenge",
+      "is_favorable": true,
+      "pertanyaan": "Saya memandang kesalahan atau kegagalan sebagai petunjuk area yang perlu saya latih lagi, bukan bukti ketidakmampuan diri."
+    },
+    {
+      "id": 17,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": true,
+      "pertanyaan": "Saya tipe orang yang setia menuntaskan satu visi impian sebelum berpindah mengejar impian lainnya."
+    },
+    {
+      "id": 18,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": true,
+      "pertanyaan": "Ketekunan dan daya tahan kerja saya bertahan stabil meskipun situasi lingkungan sekitar sedang tidak mendukung."
+    },
+    {
+      "id": 19,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": true,
+      "pertanyaan": "Keterampilan yang paling rumit sekalipun dapat saya kuasai jika saya mencurahkan waktu dan ketekunan yang cukup."
+    },
+    {
+      "id": 20,
+      "dimensi": "Response to Challenge",
+      "is_favorable": true,
+      "pertanyaan": "Saya tidak takut terlihat belum mengerti di depan orang lain demi mendapatkan penjelasan dan ilmu baru."
+    },
+    {
+      "id": 21,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": false,
+      "pertanyaan": "Saya sering kali sangat bersemangat dengan ide baru di awal, namun cepat kehilangan minat beberapa minggu kemudian."
+    },
+    {
+      "id": 22,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": false,
+      "pertanyaan": "Saya cenderung cepat berkecil hati dan menyerah saat menghadapi rintangan yang terasa terlalu berat."
+    },
+    {
+      "id": 23,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": false,
+      "pertanyaan": "Tingkat kecerdasan dasar dan bakat seseorang adalah bawaan lahiriah statis yang tidak banyak bisa diubah."
+    },
+    {
+      "id": 24,
+      "dimensi": "Response to Challenge",
+      "is_favorable": false,
+      "pertanyaan": "Saya cenderung menghindari tugas-tugas rumit agar tidak terlihat kurang kompeten jika mengalami kegagalan."
+    },
+    {
+      "id": 25,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": false,
+      "pertanyaan": "Gagasan dan proyek baru sering memecah fokus saya dari target-target penting yang sedang saya kerjakan."
+    },
+    {
+      "id": 26,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": false,
+      "pertanyaan": "Ketika mengalami kegagalan pertama, saya sering meragukan kapasitas diri dan memilih untuk berhenti mencoba."
+    },
+    {
+      "id": 27,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": false,
+      "pertanyaan": "Bakat bawaan sejak lahir jauh lebih menentukan sukses tidaknya seseorang dibanding usaha mati-matian."
+    },
+    {
+      "id": 28,
+      "dimensi": "Response to Challenge",
+      "is_favorable": false,
+      "pertanyaan": "Mendapatkan kritik atas hasil kerja saya membuat saya merasa terancam dan cenderung bersikap defensif."
+    },
+    {
+      "id": 29,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": false,
+      "pertanyaan": "Minat dan kepedulian saya terhadap suatu bidang cenderung berubah-ubah dari bulan ke bulan."
+    },
+    {
+      "id": 30,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": false,
+      "pertanyaan": "Saya sulit mempertahankan ritme kerja keras jika tidak ada dorongan atau pujian langsung dari orang lain."
+    },
+    {
+      "id": 31,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": false,
+      "pertanyaan": "Jika seseorang memang tidak berbakat di bidang tertentu, usaha sekeras apa pun tidak akan mengubah hasil akhirnya."
+    },
+    {
+      "id": 32,
+      "dimensi": "Response to Challenge",
+      "is_favorable": false,
+      "pertanyaan": "Saya merasa iri dan terancam ketika melihat orang lain meraih kesuksesan di bidang yang sama."
+    },
+    {
+      "id": 33,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": false,
+      "pertanyaan": "Saya sering menetapkan target-target baru padahal target sebelumnya belum selesai saya tuntaskan."
+    },
+    {
+      "id": 34,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": false,
+      "pertanyaan": "Saya sering meninggalkan pekerjaan di tengah jalan jika proses pengerjaannya menjadi sangat rumit."
+    },
+    {
+      "id": 35,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": false,
+      "pertanyaan": "Kemampuan intelektual manusia sudah dipatok sejak lahir sehingga latihan hanya memberikan dampak kecil."
+    },
+    {
+      "id": 36,
+      "dimensi": "Response to Challenge",
+      "is_favorable": false,
+      "pertanyaan": "Saya lebih memilih bertahan pada tugas-tugas mudah yang sudah pasti saya kuasai daripada mencoba hal baru yang berisiko."
+    },
+    {
+      "id": 37,
+      "dimensi": "Consistency of Interest",
+      "is_favorable": false,
+      "pertanyaan": "Saya mudah merasa bosan jika harus menekuni satu bidang atau topik yang sama dalam kurun waktu lama."
+    },
+    {
+      "id": 38,
+      "dimensi": "Perseverance of Effort",
+      "is_favorable": false,
+      "pertanyaan": "Rasa lelah dan frustrasi dengan mudah membuat saya mengabaikan kewajiban dan tanggung jawab pekerjaan."
+    },
+    {
+      "id": 39,
+      "dimensi": "Belief in Malleability",
+      "is_favorable": false,
+      "pertanyaan": "Orang yang harus bekerja ekstra keras untuk memahami sesuatu menandakan ia kurang pintar di bidang tersebut."
+    },
+    {
+      "id": 40,
+      "dimensi": "Response to Challenge",
+      "is_favorable": false,
+      "pertanyaan": "Meminta bantuan atau bertanya saat tidak paham membuat harga diri saya merasa jatuh di depan orang lain."
+    }
+  ]
+}
