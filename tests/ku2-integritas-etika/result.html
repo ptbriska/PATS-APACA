@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KU2 APACA WIET</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean White Modern Futurism Styling (Optimized Static PDF Export) */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #0f766e; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-high-integrity { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+    .badge-reliable { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .badge-moderate-risk { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-high-risk { background: linear-gradient(135deg, #dc2626, #ef4444); }
+    .badge-invalid { background: linear-gradient(135deg, #475569, #64748b); }
+
+    /* DUAL HERO CARDS (INTEGRITY & VALIDITY) */
+    .dual-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 868px) {
+      .dual-hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px;
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(15, 118, 110, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-card.integrity { border-top: 6px solid #0f766e; background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%); }
+    .hero-card.validity { border-top: 6px solid #0284c7; background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%); }
+
+    .hero-score-num {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 10px 0;
+      font-family: monospace, sans-serif;
+    }
+
+    /* RISK FLAG BANNER */
+    .risk-flag-banner {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 6px solid #dc2626;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      color: #991b1b;
+      font-size: 0.88rem;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 868px) {
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+
+    .chart-box { 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(15, 118, 110, 0.05);
+    }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .combo-card {
+      background-color: #ffffff;
+      border: 1px solid #ccfbf1;
+      border-left: 6px solid #0f766e;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .guidance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 868px) {
+      .guidance-grid { grid-template-columns: 1fr; }
+    }
+
+    .guidance-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KU2_WIET_Integritas_Kerja.pdf')" class="btn-primary" style="width: auto; background-color: #0f766e;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN WORK INTEGRITY & ETHICS TEST (WIET)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Karyawan</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Perusahaan / Instansi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KU2 - APACA Work Integrity & Ethics Test (WIET)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Dual Hero Cards (Integrity & Validity Status) -->
+      <div class="report-section">
+        <div class="report-section-title">I. HASIL UTAMA INDEKS INTEGRITAS KERJA & STATUS VALIDITAS</div>
+        
+        <div class="dual-hero-grid">
+          <!-- Hero Card 1: Indeks Integritas Kerja Global -->
+          <div class="hero-card integrity">
+            <div>
+              <div style="font-size:0.82rem; color:#0f766e; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">INDEKS INTEGRITAS KERJA GLOBAL</div>
+              <div id="r-integrity-num" class="hero-score-num" style="color:#0f766e;">0%</div>
+              <div id="r-integrity-badge" class="badge-status badge-high-integrity">HIGH INTEGRITY</div>
+            </div>
+            <div style="margin-top: 14px;">
+              <p id="r-integrity-desc" style="font-size:0.85rem; color:#334155; line-height:1.5; margin:0;">-</p>
+            </div>
+          </div>
+
+          <!-- Hero Card 2: Status Validitas Respons -->
+          <div class="hero-card validity">
+            <div>
+              <div style="font-size:0.82rem; color:#0284c7; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">STATUS VALIDITAS RESPONS TES</div>
+              <div id="r-validity-status" style="font-size: 1.6rem; font-weight: 800; color: #0284c7; margin: 10px 0 6px 0;">VALID</div>
+              
+              <div style="font-size:0.85rem; color:#334155; line-height:1.6; background:#ffffff; padding:10px 12px; border-radius:6px; border:1px solid #e2e8f0; margin-top:8px;">
+                <div><strong>Indeks Kebohongan (LSI):</strong> <span id="r-lsi-val">0%</span> (Batas Valid: &lt;80%)</div>
+                <div><strong>Indeks Konsistensi (CCI):</strong> <span id="r-cci-val">100%</span> (Batas Valid: &ge;60%)</div>
+              </div>
+            </div>
+            <div style="margin-top: 10px;">
+              <p id="r-validity-desc" style="font-size:0.82rem; color:#475569; line-height:1.4; margin:0;">-</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- High Ethical Risk Flag Banner (Rendered via JS if active) -->
+        <div id="risk-flag-container"></div>
+      </div>
+
+      <!-- Section II: Visualisasi Dual Chart (Radar 4 Dimensi & Bar Chart Dimensi) -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI PROFIL PROPORSI 4 DIMENSI ETIKA KERJA</div>
+        
+        <div class="charts-grid">
+          <!-- Chart 1: Radar Chart 4 Dimensi -->
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Radar Keseimbangan Etika Kerja (%)</h5>
+            <canvas id="wietRadarChart" style="max-height:260px;"></canvas>
+          </div>
+
+          <!-- Chart 2: Bar Chart 4 Dimensi -->
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Breakdown Skor Per Dimensi (%)</h5>
+            <canvas id="wietBarChart" style="max-height:260px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Tabulasi & Breakdown 4 Dimensi Etika Kerja -->
+      <div class="report-section">
+        <div class="report-section-title">III. TABULASI & BREAKDOWN EVALUASI 4 DIMENSI ETIKA KERJA</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Utama WIET</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Tingkat Kepatuhan</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+
+        <div id="dimension-cards-container" style="margin-top: 20px;">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section IV: Analisis Tipologi Karakter Etika Kerja -->
+      <div class="report-section">
+        <div class="report-section-title">IV. ANALISIS TIPOLOGI KARAKTER ETIKA PROFESIONAL</div>
+        <div id="combo-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section V: Panduan Strategis Refleksi & Mitigasi Risiko -->
+      <div class="report-section">
+        <div class="report-section-title">V. PANDUAN STRATEGIS REFLEKSI & MITIGASI RISIKO ORGANISASI</div>
+        
+        <div class="guidance-grid">
+          <div class="guidance-card">
+            <h4 style="color:#0f766e; margin-top:0; margin-bottom:8px; font-size:0.95rem;">👤 Untuk Refleksi Individu</h4>
+            <div id="guidance-individu" style="font-size:0.85rem; color:#334155; line-height:1.5;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+
+          <div class="guidance-card">
+            <h4 style="color:#0284c7; margin-top:0; margin-bottom:8px; font-size:0.95rem;">👨‍💼 Untuk Atasan / Supervisor</h4>
+            <div id="guidance-atasan" style="font-size:0.85rem; color:#334155; line-height:1.5;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+
+          <div class="guidance-card">
+            <h4 style="color:#d97706; margin-top:0; margin-bottom:8px; font-size:0.95rem;">🏢 Untuk Organisasi & HRD</h4>
+            <div id="guidance-hr" style="font-size:0.85rem; color:#334155; line-height:1.5;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    // Register Chart.js DataLabels Plugin globally
+    Chart.register(ChartDataLabels);
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KU2
+      const rawAnswers = sessionStorage.getItem("pats_answers_KU2");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KU2
+        const result = KU2_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (user && typeof KU2_Scoring.sendRekapToGAS === "function") {
+          KU2_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Hero Card 1: Indeks Integritas Kerja
+        document.getElementById("r-integrity-num").innerText = `${result.integrityIndex}%`;
+        const intBadge = document.getElementById("r-integrity-badge");
+        intBadge.innerText = result.globalNorm.label_status || "HIGH INTEGRITY";
+        intBadge.className = "badge-status " + (
+          result.isInvalid ? "badge-invalid" :
+          result.integrityIndex >= 86 ? "badge-high-integrity" :
+          result.integrityIndex >= 71 ? "badge-reliable" :
+          result.integrityIndex >= 51 ? "badge-moderate-risk" : "badge-high-risk"
+        );
+        document.getElementById("r-integrity-desc").innerText = result.globalNorm.deskripsi_kondisi || "-";
+
+        // 6. Render Hero Card 2: Status Validitas Respons
+        const validStatusElem = document.getElementById("r-validity-status");
+        document.getElementById("r-lsi-val").innerText = `${result.lsiIndex}%`;
+        document.getElementById("r-cci-val").innerText = `${result.cciIndex}%`;
+
+        if (result.isInvalid) {
+          validStatusElem.innerText = "INVALID";
+          validStatusElem.style.color = "#dc2626";
+          document.getElementById("r-validity-desc").innerText = result.invalidMessage;
+        } else {
+          validStatusElem.innerText = "VALID";
+          validStatusElem.style.color = "#0f766e";
+          document.getElementById("r-validity-desc").innerText = "Pola pengisian memenuhi syarat konsistensi dan bebas dari indikasi pencitraan diri berlebihan (Social Desirability).";
+        }
+
+        // 7. Render High Ethical Risk Flag Banner (If Active)
+        const flagContainer = document.getElementById("risk-flag-container");
+        if (result.highEthicalRiskFlag && !result.isInvalid) {
+          flagContainer.innerHTML = `
+            <div class="risk-flag-banner">
+              <strong>🚨 HIGH ETHICAL RISK FLAG TERDETEKSI:</strong> Skor pada dimensi 'Risiko Perilaku Kontra-produktif' berada pada kriteria rentan (&le;60%). Diperlukan pemeriksaan rekam jejak (background check) serta wawancara etika mendalam jika peserta dipertimbangkan untuk posisi sensitif.
+            </div>
+          `;
+        }
+
+        // 8. Render Chart 1: Radar Chart 4 Dimensi (Static with Datalabels)
+        const dimLabels = result.dimensionRows.map(r => r.dimensi);
+        const dimValues = result.dimensionRows.map(r => r.percentage);
+
+        new Chart(document.getElementById('wietRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: ['Kejujuran', 'Keandalan', 'Kepatuhan', 'Resistensi CWB'],
+            datasets: [{
+              label: 'Indeks Dimensi (%)',
+              data: dimValues,
+              backgroundColor: 'rgba(15, 118, 110, 0.18)',
+              borderColor: '#0f766e',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#0f766e',
+              pointRadius: 5
+            }]
+          },
+          options: {
+            animation: false, // STATIC FOR PDF
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#cbd5e1' },
+                grid: { color: '#f1f5f9' },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { display: false }
+              }
+            },
+            plugins: {
+              legend: { display: false },
+              datalabels: {
+                backgroundColor: '#ffffff',
+                borderColor: '#cbd5e1',
+                borderWidth: 1,
+                borderRadius: 4,
+                color: '#0f766e',
+                font: { weight: 'bold', size: 10 },
+                formatter: (val) => `${val}%`
+              }
+            }
+          }
+        });
+
+        // 9. Render Chart 2: Bar Chart 4 Dimensi (Static with Datalabels)
+        new Chart(document.getElementById('wietBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Kejujuran', 'Keandalan', 'Kepatuhan', 'Resistensi CWB'],
+            datasets: [{
+              data: dimValues,
+              backgroundColor: ['#0f766e', '#0284c7', '#7c3aed', '#d97706'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            animation: false, // STATIC FOR PDF
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true, max: 100 }
+            },
+            plugins: {
+              legend: { display: false },
+              datalabels: {
+                anchor: 'end',
+                align: 'top',
+                color: '#0f172a',
+                font: { weight: 'bold', size: 11 },
+                formatter: (val) => `${val}%`
+              }
+            }
+          }
+        });
+
+        // 10. Render Tabulasi Tabel & Kartu Detail Dimensi
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        result.dimensionRows.forEach(row => {
+          // Table Row
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+            <td>${row.rs} / 10</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td><span style="font-weight:700; color:${row.percentage >= 81 ? '#0f766e' : row.percentage >= 51 ? '#d97706' : '#dc2626'};">${row.level}</span></td>
+          `;
+          tbody.appendChild(tr);
+
+          // Card Detail
+          const card = document.createElement("div");
+          card.className = "dimensi-card";
+          card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #f1f5f9; padding-bottom:8px; margin-bottom:10px;">
+              <div style="font-weight: 800; color: #0f172a; font-size: 1rem;">${row.judul_dimensi}</div>
+              <div style="font-weight:700; font-size:0.88rem; color: #0f766e;">Indeks: ${row.percentage}% (${row.kondisi})</div>
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; margin-bottom: 8px; line-height: 1.5;">${row.interpretasi}</p>
+            <div style="font-size: 0.85rem; color: #115e59; background: #f0fdf4; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #0f766e;">
+              <strong>Saran Refleksi & Aksi:</strong> ${row.saran_pengembangan}
+            </div>
+          `;
+          cardsContainer.appendChild(card);
+        });
+
+        // 11. Render Tipologi Karakter Etika
+        const comboContainer = document.getElementById("combo-container");
+        if (result.matchedTipologi) {
+          const t = result.matchedTipologi;
+          comboContainer.innerHTML = `
+            <div class="combo-card">
+              <h4 style="color: #0f766e; margin-top: 0; margin-bottom: 6px; font-size: 1.05rem;">🔍 TIPOLOGI KARAKTER ETIKA: ${t.nama_pola}</h4>
+              <p style="font-size: 0.88rem; color: #334155; margin-bottom: 10px; line-height: 1.6;">${t.analisis_karakter}</p>
+              <div style="font-size: 0.85rem; color: #115e59; background: #f0fdf4; padding: 10px 14px; border-radius: 6px; border: 1px solid #ccfbf1;">
+                <strong>Rekomendasi Penempatan:</strong> ${t.rekomendasi_karir}
+              </div>
+            </div>
+          `;
+        }
+
+        // 12. Render Panduan Coaching & Mitigasi
+        const guidance = rubrikData.panduan_pengembangan_dan_coaching || {};
+        
+        if (guidance.untuk_individu) {
+          document.getElementById("guidance-individu").innerHTML = `
+            <p><strong>Refleksi Diri:</strong> ${guidance.untuk_individu.refleksi_diri}</p>
+            <p><strong>Langkah Konkret:</strong> ${guidance.untuk_individu.langkah_konkret}</p>
+          `;
+        }
+
+        if (guidance.untuk_atasan_pembimbing) {
+          document.getElementById("guidance-atasan").innerHTML = `
+            <p><strong>Supervisi Etis:</strong> ${guidance.untuk_atasan_pembimbing.supervisi_etis}</p>
+            <p><strong>Pembinaan:</strong> ${guidance.untuk_atasan_pembimbing.pembinaan}</p>
+          `;
+        }
+
+        if (guidance.untuk_organisasi_hr) {
+          document.getElementById("guidance-hr").innerHTML = `
+            <p><strong>Sistem Mitigasi:</strong> ${guidance.untuk_organisasi_hr.sistem_mitigasi}</p>
+            <p><strong>Budaya Organisasi:</strong> ${guidance.untuk_organisasi_hr.budaya_organisasi}</p>
+          `;
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KU2:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan WIET.");
+      }
+    });
+  </script>
+</body>
+</html>
