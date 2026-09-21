@@ -1,5 +1,5 @@
 /**
- * scoring1.js - Engine Kalkulasi Skor & Gatekeeper Pilar I (OSN Aptitude Test)
+ * scoring1.js - Engine Kalkulasi Skor, IQ APACA OTM, & Gatekeeper Pilar I (OSN Aptitude Test)
  * Mengacu pada Pedoman Metode Operasional Pilar I
  */
 
@@ -37,7 +37,7 @@ const SCORING_PILAR1 = {
    */
   calculateModuleScore: function(moduleCode, userAnswers, answerKeys, timeSpentSeconds) {
     const config = this.modules_config[moduleCode];
-    if (!config) return 0;
+    if (!config) return null;
 
     let correctCount = 0;
     let answeredCount = 0;
@@ -114,5 +114,60 @@ const SCORING_PILAR1 = {
     }
 
     return results;
+  },
+
+  /**
+   * 3. Kalkulasi Skor IQ APACA OTM (Interval 0 - 160)
+   * Menjumlahkan/merata-ratakan skor dari 8 sub-modul Pilar 1 dan menormalisasi ke skala IQ.
+   * Formula: IQ = Math.round((RataRataSkor * 1.6))
+   */
+  calculateIQScore: function(moduleScoresMap) {
+    const moduleCodes = Object.keys(this.modules_config);
+    let totalScore = 0;
+    let count = 0;
+
+    moduleCodes.forEach(code => {
+      const scoreObj = moduleScoresMap[code];
+      const score = scoreObj ? scoreObj.final_score : 0;
+      totalScore += score;
+      count++;
+    });
+
+    // Rata-rata skor sub-modul (skala 0 - 100)
+    const avgScore = count > 0 ? totalScore / count : 0;
+
+    // Normalisasi dari rata-rata skala 100 ke skala IQ 160
+    const rawIQ = avgScore * 1.6;
+    const iqScore = Math.min(160, Math.max(0, Math.round(rawIQ)));
+
+    // Pengkategorian Kualitatif berdasarkan norma IQ APACA OTM
+    let category = "Batas Bawah";
+    if (iqScore >= 130) category = "Sangat Superior / Genius";
+    else if (iqScore >= 120) category = "Superior";
+    else if (iqScore >= 110) category = "Rata-Rata Tinggi";
+    else if (iqScore >= 90) category = "Rata-Rata";
+    else if (iqScore >= 80) category = "Rata-Rata Rendah";
+
+    return {
+      total_raw_pilar1: parseFloat(totalScore.toFixed(2)),
+      avg_module_score: parseFloat(avgScore.toFixed(2)),
+      iq_score: iqScore,
+      category: category
+    };
+  },
+
+  /**
+   * 4. Evaluasi Komprehensif Pilar I
+   * Memproses seluruh kalkulasi Pilar I sekaligus (Sub-modul, Gatekeeper Bidang, dan IQ APACA OTM).
+   */
+  evaluateAll: function(moduleScoresMap) {
+    const fieldScores = this.calculateFieldScores(moduleScoresMap);
+    const iqResult = this.calculateIQScore(moduleScoresMap);
+
+    return {
+      module_scores: moduleScoresMap,
+      field_scores: fieldScores,
+      iq_result: iqResult
+    };
   }
 };
