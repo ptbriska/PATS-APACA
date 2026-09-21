@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KU9 APACA WPCM (WDJT Model)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean White Luxury Modern Futurism */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* HERO WDJT PROFILE CARD */
+    .wdjt-hero-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      border-radius: 16px;
+      padding: 32px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 20px 0 28px 0;
+      box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.3);
+      border-left: 6px solid #4f46e5;
+    }
+
+    @media (max-width: 768px) {
+      .wdjt-hero-card { flex-direction: column; text-align: center; }
+    }
+
+    .wdjt-dci-display {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1;
+      font-family: monospace, sans-serif;
+      color: #818cf8;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* CHARTS CONTAINER GRID */
+    .chart-grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 900px) {
+      .chart-grid-two { grid-template-columns: 1fr; }
+    }
+
+    .chart-box-wdjt {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .info-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    /* SCORE TABULATION TABLE */
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #4f46e5; }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .pill-superior { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .pill-proficient { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+    .pill-moderate { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+    .pill-impaired { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KU9_WDJT_Decision_Profil.pdf')" class="btn-primary" style="width: auto; background-color: #4f46e5;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN WORK DECISION-MAKING & JUDGMENT TEST (WDJT)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Instansi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KU9 - APACA Work Decision-Making & Judgment Test (WDJT)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Hero WDJT Profile Card -->
+      <div class="report-section">
+        <div class="wdjt-hero-card">
+          <div style="flex: 1;">
+            <div style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#a5b4fc; margin-bottom:4px;">Decision Concordance Index (DCI)</div>
+            <h2 id="r-hero-title" style="margin: 0 0 8px 0; font-size: 1.5rem; color: #ffffff;">Tinggi (Proficient)</h2>
+            <p id="r-hero-desc" style="font-size: 0.88rem; line-height: 1.6; margin: 0; opacity: 0.9;">-</p>
+          </div>
+          <div style="text-align: center; min-width: 150px;">
+            <div id="r-hero-dci" class="wdjt-dci-display">82%</div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; opacity: 0.8;">Best Match Rate: <span id="r-hero-match">75%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Visualisasi Grafik Profil Kompetensi -->
+      <div class="report-section">
+        <div class="report-section-title">I. VISUALISASI PROFIL 4 DIMENSI JUDGMENT MANAJERIAL</div>
+        <div class="chart-grid-two">
+          <div class="chart-box-wdjt">
+            <h5 style="margin:0 0 12px 0; text-align:center; color:#4f46e5; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px;">Peta Radar Keselarasan Keputusan (DCI %)</h5>
+            <canvas id="wdjtRadarChart"></canvas>
+          </div>
+          <div class="chart-box-wdjt">
+            <h5 style="margin:0 0 12px 0; text-align:center; color:#0f172a; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px;">Grafik Capaian DCI per Dimensi</h5>
+            <canvas id="wdjtBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Tabulasi Skor 4 Dimensi Utama -->
+      <div class="report-section">
+        <div class="report-section-title">II. TABULASI SKOR 4 DIMENSI JUDGMENT TAKTIS</div>
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Kompetensi WDJT</th>
+              <th>Skor Mentah (CDS)</th>
+              <th>Decision Concordance Index (DCI %)</th>
+              <th>Kategori Kematangan</th>
+            </tr>
+          </thead>
+          <tbody id="wdjt-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section IV: Rincian Analisis Diagnostik per Dimensi -->
+      <div class="report-section">
+        <div class="report-section-title">III. ANALISIS DIAGNOSTIK & PERILAKU EXECUTION JUDGMENT</div>
+        
+        <div class="info-box" style="border-left: 5px solid #4f46e5;">
+          <h5 style="margin:0 0 6px 0; color:#4f46e5; font-size:0.95rem;">🎯 Kualitas Decision Making (Decision Quality)</h5>
+          <p id="r-desc-qdm" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#4338ca; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-qdm" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #0891b2;">
+          <h5 style="margin:0 0 6px 0; color:#0891b2; font-size:0.95rem;">🤝 Delegasi Efektif (Delegation & Empowerment)</h5>
+          <p id="r-desc-dele" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#0e7490; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-dele" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #059669;">
+          <h5 style="margin:0 0 6px 0; color:#059669; font-size:0.95rem;">⏱️ Skala Prioritas (Priority Setting & Resource Allocation)</h5>
+          <p id="r-desc-prio" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#047857; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-prio" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #dc2626;">
+          <h5 style="margin:0 0 6px 0; color:#dc2626; font-size:0.95rem;">⚡ Penanganan Krisis (Crisis Handling & Agility)</h5>
+          <p id="r-desc-cris" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#b91c1c; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-cris" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+      </div>
+
+      <!-- Section V: Panduan Aplikasi Rujukan Lembaga -->
+      <div class="report-section">
+        <div class="report-section-title">IV. REKOMENDASI PENGGUNAAN RUJUKAN MANAJERIAL</div>
+        <div class="info-box" style="background:#f8fafc; border-color:#cbd5e1;">
+          <h5 style="margin:0 0 8px 0; color:#0f172a; font-size:0.92rem;">📌 Petunjuk Rekomendasi Posisi Organisasi:</h5>
+          <p id="r-panduan-lembaga" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.6;">-</p>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KU9
+      const rawAnswers = sessionStorage.getItem("pats_answers_KU9");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KU9
+        const result = KU9_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KU9_Scoring.sendRekapToGAS === "function") {
+          KU9_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Hero WDJT Card
+        document.getElementById("r-hero-dci").innerText = `${result.globalDCI}%`;
+        document.getElementById("r-hero-match").innerText = `${result.matchRatePct}%`;
+        document.getElementById("r-hero-title").innerText = result.globalCategory;
+        document.getElementById("r-hero-desc").innerText = result.globalRec;
+
+        // 6. Render Chart.js (Radar & Bar Chart)
+        const dimLabels = ['Kualitas Decision Making', 'Delegasi Efektif', 'Skala Prioritas', 'Penanganan Krisis'];
+        const dimKeys = ['Kualitas_Decision_Making', 'Delegasi_Efektif', 'Skala_Prioritas', 'Penanganan_Krisis'];
+        const dciArr = dimKeys.map(k => result.dimDCI[k] || 0);
+
+        // Radar Chart
+        new Chart(document.getElementById('wdjtRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: dimLabels,
+            datasets: [{
+              label: 'Indeks DCI (%)',
+              data: dciArr,
+              backgroundColor: 'rgba(79, 70, 229, 0.2)',
+              borderColor: '#4f46e5',
+              borderWidth: 2,
+              pointBackgroundColor: '#4f46e5',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { r: { beginAtZero: true, min: 0, max: 100, ticks: { stepSize: 20 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // Bar Chart
+        new Chart(document.getElementById('wdjtBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: dimLabels,
+            datasets: [{
+              label: 'Indeks DCI (%)',
+              data: dciArr,
+              backgroundColor: ['#4f46e5', '#0891b2', '#059669', '#dc2626'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true, min: 0, max: 100, ticks: { stepSize: 20 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 7. Render Tabulasi Tabel 4 Dimensi
+        const tbody = document.getElementById("wdjt-table-body");
+        tbody.innerHTML = "";
+
+        dimKeys.forEach((key, idx) => {
+          const rs = result.dimRawScores[key];
+          const dciVal = result.dimDCI[key];
+          const det = result.dimDetails[key];
+
+          let badgeClass = "pill-moderate";
+          if (dciVal >= 86) badgeClass = "pill-superior";
+          else if (dciVal >= 71) badgeClass = "pill-proficient";
+          else if (dciVal >= 51) badgeClass = "pill-moderate";
+          else badgeClass = "pill-impaired";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${dimLabels[idx]}</td>
+            <td><strong>${rs.toFixed(2)}</strong></td>
+            <td><strong>${dciVal}%</strong></td>
+            <td><span class="tag-pill ${badgeClass}">${det.kategori || 'Moderate'}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // 8. Render Rincian Analisis Diagnostik per Dimensi
+        document.getElementById("r-desc-qdm").innerText = result.dimDetails.Kualitas_Decision_Making.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-qdm").innerText = result.dimDetails.Kualitas_Decision_Making.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-dele").innerText = result.dimDetails.Delegasi_Efektif.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-dele").innerText = result.dimDetails.Delegasi_Efektif.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-prio").innerText = result.dimDetails.Skala_Prioritas.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-prio").innerText = result.dimDetails.Skala_Prioritas.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-cris").innerText = result.dimDetails.Penanganan_Krisis.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-cris").innerText = result.dimDetails.Penanganan_Krisis.saran_pengembangan || "-";
+
+        // 9. Panduan Rujukan Lembaga
+        document.getElementById("r-panduan-lembaga").innerText = `${result.globalRec} Laporan WDJT ini menyajikan tacit knowledge manajerial yang dapat digunakan sebagai pertimbangan objektif untuk promosi jabatan, rekrutmen eksekutif, serta audit keputusan tim.`;
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KU9:", err);
+        alert("Terjadi kesalahan saat memuat berkas data pendukung laporan WDJT.");
+      }
+    });
+  </script>
+</body>
+</html>
