@@ -206,86 +206,98 @@
         document.getElementById("r-daerah").innerText = daerahText;
       }
 
-      // 3. Ambil data jawaban & metadata soal.json
+      // 3. Ambil data jawaban, metadata soal.json, dan deskripsi rubrik.json
       const rawAnswers = sessionStorage.getItem("pats_answers_KK1");
       const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
 
-      const res = await fetch("soal.json");
-      const soalData = await res.json();
-      const testInfo = soalData.test_info || {};
+      try {
+        // Fetch soal.json (untuk metadata) & rubrik.json (untuk deskripsi naratif)
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
 
-      if (testInfo.nama_resmi) {
-        document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
-      }
-      document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Bagus Primohadi";
-      document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '-'}`;
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+        const testInfo = soalData.test_info || {};
 
-      // 4. Hitung Skor Psikometri via KK1_Scoring
-      const result = KK1_Scoring.evaluate(answers, soalData);
+        if (testInfo.nama_resmi) {
+          document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
+        }
+        document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Bagus Primohadi";
+        document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '-'}`;
 
-      if (result.isInvalid) {
-        alert(result.message);
-        return;
-      }
+        // 4. Hitung Skor Psikometri via KK1_Scoring dengan meneruskan rubrikData
+        const result = KK1_Scoring.evaluate(answers, soalData, rubrikData);
 
-      // 5. Kirim Rekap Otomatis ke Google Sheets
-      if (user) {
-        KK1_Scoring.sendRekapToGAS(answers, user, result);
-      }
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
 
-      // 6. Render Tabulasi Skor
-      const tbody = document.getElementById("score-table-body");
-      tbody.innerHTML = "";
+        // 5. Kirim Rekap Otomatis ke Google Sheets (Opsional)
+        if (user && typeof KK1_Scoring.sendRekapToGAS === "function") {
+          KK1_Scoring.sendRekapToGAS(answers, user, result);
+        }
 
-      if (result.tableRows && Array.isArray(result.tableRows)) {
-        result.tableRows.forEach(row => {
-          const tr = document.createElement("tr");
-          const isDominant = row.categoryKey === result.dominantKey;
-          
-          tr.innerHTML = `
-            <td style="text-align: left; font-weight: 600;">${row.label}</td>
-            <td>${row.rs} / 40</td>
-            <td>${row.percentage}%</td>
-            <td>${row.category}</td>
-            <td>${isDominant ? '<span class="badge-dominan">DOMINAN</span>' : '-'}</td>
-          `;
-          tbody.appendChild(tr);
-        });
-      }
+        // 6. Render Tabulasi Skor
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
 
-      // 7. Render Narasi, Kelebihan, Risiko, & Metode
-      if (result.narrative) {
-        const narasi = result.narrative;
-        document.getElementById("r-judul-dominan").innerText = narasi.judul || result.dominantKey;
-        document.getElementById("r-deskripsi-narasi").innerText = narasi.deskripsi || "-";
-        document.getElementById("r-rekomendasi").innerText = narasi.rekomendasi || "-";
+        if (result.tableRows && Array.isArray(result.tableRows)) {
+          result.tableRows.forEach(row => {
+            const tr = document.createElement("tr");
+            const isDominant = row.categoryKey === result.dominantKey;
+            
+            tr.innerHTML = `
+              <td style="text-align: left; font-weight: 600;">${row.label}</td>
+              <td>${row.rs} / 40</td>
+              <td>${row.percentage}%</td>
+              <td>${row.category}</td>
+              <td>${isDominant ? '<span class="badge-dominan">DOMINAN</span>' : '-'}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
 
-        // Render Kelebihan
-        const ulKelebihan = document.getElementById("r-list-kelebihan");
-        ulKelebihan.innerHTML = "";
-        (narasi.kelebihan || []).forEach(item => {
-          const li = document.createElement("li");
-          li.innerText = item;
-          ulKelebihan.appendChild(li);
-        });
+        // 7. Render Narasi, Kelebihan, Risiko, & Metode
+        if (result.narrative) {
+          const narasi = result.narrative;
+          document.getElementById("r-judul-dominan").innerText = narasi.judul || result.dominantKey;
+          document.getElementById("r-deskripsi-narasi").innerText = narasi.deskripsi || "-";
+          document.getElementById("r-rekomendasi").innerText = narasi.rekomendasi || "-";
 
-        // Render Potensi Risiko
-        const ulRisiko = document.getElementById("r-list-risiko");
-        ulRisiko.innerHTML = "";
-        (narasi.potensi_risiko || []).forEach(item => {
-          const li = document.createElement("li");
-          li.innerText = item;
-          ulRisiko.appendChild(li);
-        });
+          // Render Kelebihan
+          const ulKelebihan = document.getElementById("r-list-kelebihan");
+          ulKelebihan.innerHTML = "";
+          (narasi.kelebihan || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulKelebihan.appendChild(li);
+          });
 
-        // Render Metode Ajar Disarankan
-        const ulMetode = document.getElementById("r-list-metode");
-        ulMetode.innerHTML = "";
-        (narasi.metode_ajar_disarankan || []).forEach(item => {
-          const li = document.createElement("li");
-          li.innerText = item;
-          ulMetode.appendChild(li);
-        });
+          // Render Potensi Risiko
+          const ulRisiko = document.getElementById("r-list-risiko");
+          ulRisiko.innerHTML = "";
+          (narasi.potensi_risiko || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulRisiko.appendChild(li);
+          });
+
+          // Render Metode Ajar Disarankan
+          const ulMetode = document.getElementById("r-list-metode");
+          ulMetode.innerHTML = "";
+          (narasi.metode_ajar_disarankan || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulMetode.appendChild(li);
+          });
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan.");
       }
     });
   </script>
