@@ -446,14 +446,22 @@
         const p3Data = JSON.parse(sessionStorage.getItem("pats_pilar3_results") || "{}");
         const allRanking = evaluation.all_fields_ranking || [];
 
-        // 4. Render Hero IQ APACA OTM (Perbaikan Bug 0)
+        // 4. Render Hero IQ APACA OTM (Perbaikan Bug 0 - Sinkronisasi scoring1.js)
         let estimasiIQ = 0;
-        if (p1Data && p1Data.estimasi_iq) estimasiIQ = p1Data.estimasi_iq;
-        else if (evaluation.iq_summary && evaluation.iq_summary.iq_score) estimasiIQ = evaluation.iq_summary.iq_score;
+        let iqCategoryLabel = "-";
         
-        document.getElementById("r-iq-score").innerText = estimasiIQ || "PROSES";
-        
-        let iqCategoryLabel = evaluation.iq_summary ? evaluation.iq_summary.category : "-";
+        // Coba ambil dari hasil evaluasi total dulu jika sudah dikonversi
+        if (evaluation.iq_summary && evaluation.iq_summary.iq_score) {
+            estimasiIQ = evaluation.iq_summary.iq_score;
+            iqCategoryLabel = evaluation.iq_summary.category;
+        } 
+        // Fallback: Ambil langsung dari object murni pilar 1 (iq_result)
+        else if (p1Data && p1Data.iq_result) {
+            estimasiIQ = p1Data.iq_result.iq_score;
+            iqCategoryLabel = p1Data.iq_result.category;
+        }
+
+        document.getElementById("r-iq-score").innerText = estimasiIQ > 0 ? estimasiIQ : "PROSES";
         document.getElementById("r-iq-category").innerText = iqCategoryLabel;
         
         const iqCategoryObj = (rubrikData.pilar1_kognitif?.norma_iq_apaca_otm?.kategori || []).find(k => k.label === iqCategoryLabel);
