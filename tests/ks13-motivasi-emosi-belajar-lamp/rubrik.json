@@ -1,0 +1,242 @@
+{
+  "kode_tes": "KS13",
+  "nama_tes": "APACA Learning Affective & Motivational Profile (LAMP)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Learning Affective & Motivational Profile (LAMP) mengukur dan memetakan daya dorong motivasi (intrinsik dan ekstrinsik), keyakinan efikasi diri, rasa ingin tahu, ketekunan (grit), regulasi emosi saat belajar, serta pola pikir (mindset) siswa. Tes ini melengkapi profil kognitif untuk memberikan gambaran ketahanan afektif pelajar secara utuh.",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Sangat Tangguh (Resilient)",
+      "label_status": "SANGAT TANGGUH",
+      "deskripsi_kondisi": "Memiliki daya dorong motivasi yang sangat matang, efikasi diri akademik yang tinggi, ketekunan luar biasa, serta kestabilan emosi yang sangat baik dalam menghadapi kesulitan belajar.",
+      "dampak_akademik": "Sangat mandiri, tahan banting menghadapi kegagalan, mampu memulihkan fokus dengan cepat pasca-nilai buruk, dan memiliki daya juang jangka panjang (grit).",
+      "tindakan_lanjutan": "Fasilitasi dengan target-target akademik yang lebih berani dan otonomi belajar yang lebih luas."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Tangguh (Motivated)",
+      "label_status": "TANGGUH",
+      "deskripsi_kondisi": "Memiliki motivasi dan ketekunan belajar yang stabil. Mampu mengelola hambatan emosional dan rasa cemas pada tingkat kesulitan materi yang standar.",
+      "dampak_akademik": "Performa belajar konsisten, relatif tenang saat ujian, dan mampu bangkit dari kegagalan kecil.",
+      "tindakan_lanjutan": "Jaga konsistensi iklim emosional yang kondusif dan bantu pertajam strategi regulasi emosi saat menghadapi ujian besar."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Moderat (Vulnerable)",
+      "label_status": "MODERAT & RENTAN",
+      "deskripsi_kondisi": "Cukup termotivasi untuk belajar, tetapi rentan mengalami penurunan daya tahan dan ketenangan emosional saat tekanan atau tingkat kesulitan materi meningkat.",
+      "dampak_akademik": "Semangat belajar cenderung fluktuatif; mudah merasa cemas jelang tes dan sering ragu pada kemampuan diri saat dihadapkan pada soal sulit.",
+      "tindakan_lanjutan": "Berikan pendampingan emosional yang konsisten, hindari kritik destruktif, dan latih reframing kegagalan."
+    },
+    {
+      "rentang_skor_persen": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Rendah (Fragile)",
+      "label_status": "FRAGILE / RENTAN DROPOUT",
+      "deskripsi_kondisi": "Efikasi diri rendah, sangat rentan cemas (test anxiety), dan berisiko tinggi untuk cepat menyerah saat menghadapi kebuntuan belajar.",
+      "dampak_akademik": "Penurunan prestasi akibat kebocoran energi emosional; sering menghindari tugas sulit dan mudah mengalami kejenuhan akademik (academic burnout).",
+      "tindakan_lanjutan": "Diperlukan intervensi pemulihan efikasi diri melalui pencapaian target-target kecil (micro-wins) dan pelatihan regulasi emosi."
+    },
+    {
+      "rentang_skor_persen": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Sangat Rendah (Demotivated)",
+      "label_status": "DEMOTIVASI BERAT",
+      "deskripsi_kondisi": "Mengalami demotivasi berat dan hambatan emosional tinggi. Terjebak dalam rasa tidak berdaya yang dipelajari (learned helplessness).",
+      "dampak_akademik": "Apatis terhadap proses belajar, sering membolos atau menunda tugas, dan menganggap usaha belajar sama sekali tidak ada gunanya.",
+      "tindakan_lanjutan": "Segera jadwalkan sesi konseling individual bersama Konselor Sekolah atau Psikolog untuk mengurai akar masalah afektif."
+    }
+  ],
+  "spektrum_motivasi_detail": {
+    "Intrinsic": {
+      "nama_tipe": "Intrinsic (Interest-Driven)",
+      "deskripsi": "Anak tergerak belajar murni karena rasa penasaran intelektual, kenikmatan menemukan hal baru, dan kepuasan batin saat memahami sebuah konsep.",
+      "interpretasi_pendorong": "Sangat mandiri dan tidak tergantung pada hadiah barang. Menikmati proses belajar sebagai sebuah petualangan pikiran.",
+      "panduan_orang_tua": "Beri ruang eksplorasi bebas tanpa terlalu banyak mendikte. Sediakan buku, akses informasi, dan fasilitas eksperimen mandiri.",
+      "panduan_guru": "Sajikan materi dalam bentuk teka-teki, misteri ilmiah, atau studi kasus yang memancing rasa penasaran alami."
+    },
+    "Identified": {
+      "nama_tipe": "Identified (Value-Driven)",
+      "deskripsi": "Anak tergerak belajar jika ia memahami secara jelas alasan logis, kegunaan, dan nilai nyata materi tersebut bagi cita-cita dan masa depannya.",
+      "interpretasi_pendorong": "Sangat rasional dan berorientasi tujuan jangka panjang. Tidak mampan oleh paksaan kaku tanpa penjelasan manfaat.",
+      "panduan_orang_tua": "Gunakan diskusi makna: ajak anak berdiskusi tentang bagaimana topik pelajaran ini terhubung dengan profesi impian masa depannya.",
+      "panduan_guru": "Jelaskan aplikasi praktis dan konteks dunia nyata dari suatu bab pelajaran sebelum masuk ke rumus atau definisi teoritis."
+    },
+    "Introjected": {
+      "nama_tipe": "Introjected (Ego-Driven)",
+      "deskripsi": "Anak tergerak belajar demi dorongan internal menjaga harga diri, merasa bangga pada kemampuan diri, serta menghindari rasa bersalah atau malu.",
+      "interpretasi_pendorong": "Memiliki standar internal yang tinggi, namun rentan tertekan oleh ekspektasi diri sendiri yang terlalu perfeksionis.",
+      "panduan_orang_tua": "Bantu anak memisahkan antara nilai akademik dan harga dirinya. Tekankan bahwa kasih sayang orang tua tidak tergantung pada angka nilai.",
+      "panduan_guru": "Apresiasi usaha dan proses belajar anak secara personal tanpa perlu membanding-bandingkannya secara terbuka di depan kelas."
+    },
+    "External": {
+      "nama_tipe": "External (Incentive-Driven)",
+      "deskripsi": "Anak tergerak belajar terutama jika ada imbalan fisik (hadiah/uang), fasilitas, angka nilai formal, atau batasan aturan dan ancaman hukuman.",
+      "interpretasi_pendorong": "Sangat transaksional. Motivasi cepat padam jika hadiah dihentikan atau jika pengawasan aturan mengendur.",
+      "panduan_orang_tua": "Hentikan kebiasaan menjanjikan uang/barang untuk nilai bagus. Geser secara bertahap ke pemahaman manfaat materi (Identified).",
+      "panduan_guru": "Gunakan batasan tenggat waktu (deadline) yang jelas dan sistem poin yang terstruktur untuk menjaga ritme kerjanya."
+    },
+    "Social": {
+      "nama_tipe": "Social (Relatedness-Driven)",
+      "deskripsi": "Anak tergerak belajar melalui koneksi emosional, rasa kebersamaan dengan teman, serta dukungan dan penerimaan dari figur penting (guru/orang tua).",
+      "interpretasi_pendorong": "Sangat peka pada iklim relasi. Semangat belajarnya melejit jika merasa disayangi dan diterima oleh lingkungan sekitarnya.",
+      "panduan_orang_tua": "Temani anak saat belajar tanpa memarahi. Kehadiran fisik dan kehangatan emosional orang tua memberikan rasa aman belajar.",
+      "panduan_guru": "Libatkan anak dalam kelompok belajar kecil (peer learning) yang suportif dan bangun komunikasi guru-murid yang ramah."
+    },
+    "Achievement": {
+      "nama_tipe": "Achievement (Challenge-Driven)",
+      "deskripsi": "Anak tergerak oleh target kompetisi, melampaui rekor pribadi, standar nilai tinggi, dan tantangan yang menguji batas kemampuannya.",
+      "interpretasi_pendorong": "Menyukai persaingan dan tantangan sulit. Merasa bosan jika materi pelajaran terlalu mudah atau tidak ada target jelas.",
+      "panduan_orang_tua": "Bantu anak menetapkan target-target pencapaian pribadi (personal best) yang menantang namun tetap realistis.",
+      "panduan_guru": "Berikan soal-soal pengayaan (enrichment tasks) bertipe tantangan atau libatkan anak dalam ajang kompetisi akademik."
+    }
+  },
+  "rubrik_dimensi_afektif": {
+    "Self-Efficacy": {
+      "judul_dimensi": "Self-Efficacy (Efikasi Diri Akademik)",
+      "deskripsi_umum": "Mengukur keyakinan subjektif siswa terhadap kemampuan dirinya dalam menguasai materi rumit, menghadapi kesulitan tugas, dan meraih sukses akademik.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Keyakinan Diri Kokoh",
+          "interpretasi": "Siswa sangat percaya pada kapasitas kognitifnya. Memandang tugas sulit sebagai tantangan yang harus ditaklukkan, bukan ancaman.",
+          "dampak_akademik": "Berani mengambil tugas-tugas rumit, tidak gampang cemas saat ujian, dan memiliki optimisme belajar yang kuat.",
+          "saran_pengembangan": "Salurkan efikasi diri ini untuk memimpin kelompok belajar atau mengambil proyek mandiri yang kompleks."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Keyakinan Diri Situasional",
+          "interpretasi": "Yakin pada materi yang sudah dikuasai, tetapi ragu dan cemas ketika dihadapkan pada topik bahasan baru atau tipe soal yang asing.",
+          "dampak_akademik": "Performa stabil di situasi normal, tetapi butuh dorongan ekstra saat menghadapi materi yang menantang.",
+          "saran_pengembangan": "Ingatkan siswa atas keberhasilan-keberhasilan masa lalu (mastery experiences) untuk memperkuat keyakinannya."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Efikasi Diri Rendah (Self-Doubt)",
+          "interpretasi": "Siswa merasa dirinya kurang berbakat atau tidak mampu menguasai pelajaran. Cepat berkecil hati sebelum bertarung.",
+          "dampak_akademik": "Sering menghindari tugas sulit, cepat menyerah saat menemui jalan buntu, dan bergantung pada jawaban teman.",
+          "saran_pengembangan": "Pecah tugas besar menjadi target-target kecil yang mudah dicapai agar siswa mengalami rasa menang (micro-wins)."
+        }
+      }
+    },
+    "Interest & Curiosity": {
+      "judul_dimensi": "Interest & Curiosity (Minat & Rasa Ingin Tahu)",
+      "deskripsi_umum": "Mengukur keterikatan emosional, dorongan penasaran intelektual proaktif, serta daya tarik perhatian terhadap topik-topik pelajaran.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Rasa Ingin Tahu Intelektual Tinggi",
+          "interpretasi": "Siswa memiliki dahaga intelektual yang besar. Secara mandiri mencari bacaan tambahan dan antusias dalam diskusi ilmiah.",
+          "dampak_akademik": "Pemahaman materi sangat mendalam karena diserap dengan kegembiraan alami tanpa paksaan.",
+          "saran_pengembangan": "Berikan rekomendasi buku, artikel, atau kanal edukasi tingkat lanjut sesuai domain minatnya."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Minat Situasional Modis",
+          "interpretasi": "Minat belajar sangat bergantung pada cara guru mengajar atau media pembelajaran yang digunakan.",
+          "dampak_akademik": "Sangat antusias jika kelas menggunakan media interaktif, tetapi pasif jika metode mengajar murni ceramah.",
+          "saran_pengembangan": "Bantu siswa menemukan sudut pandang unik yang menarik dari materi-materi pelajaran yang berkesan membosankan."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Apatisme Intelektual (Low Curiosity)",
+          "interpretasi": "Siswa menganggap materi pelajaran sebagai beban kaku yang tidak menarik sama sekali.",
+          "dampak_akademik": "Belajar sekadar gugur kewajiban; tidak ada rasa penasaran untuk mendalami materi di luar hafalan tes.",
+          "saran_pengembangan": "Hubungkan materi pelajaran dengan hobi, musik, game, atau fenomena populer yang diminati siswa sehari-hari."
+        }
+      }
+    },
+    "Persistence & Grit": {
+      "judul_dimensi": "Persistence & Grit (Ketekunan & Daya Tahan Belajar)",
+      "deskripsi_umum": "Mengukur daya tahan kognitif dan emosional dalam menjaga konsistensi usaha harian, kesediaan mencoba kembali, serta kesabaran menghadapi kesulitan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Grit & Daya Tahan Tinggi",
+          "interpretasi": "Memiliki stamina belajar harian yang luar biasa. Tidak gampang tergoda hiburan dan bersedia mengulang pengerjaan hingga tuntas.",
+          "dampak_akademik": "Prestasi belajar sangat konsisten dari waktu ke waktu karena ditopang oleh kedisiplinan dan daya juang tinggi.",
+          "saran_pengembangan": "Jaga kestabilan ritme belajar agar tidak mengalami kelelahan fisik (overwork)."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Ketekunan Fluktuatif",
+          "interpretasi": "Tekun di awal semester atau jelang ujian, tetapi ritme belajar harian mudah goyah oleh godaan lingkungan.",
+          "dampak_akademik": "Sering menerapkan sistem skat (belajar semalam suntuk) karena ketekunan harian yang kurang teratur.",
+          "saran_pengembangan": "Buat jadwal rutinitas belajar harian berskala kecil (misal 30 menit per hari) untuk membangun kebiasaan."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Mudah Menyerah (Low Persistence)",
+          "interpretasi": "Daya tahan belajar sangat tipis. Langsung berhenti berusaha begitu dihadapkan pada soal yang membutuhkan pengerjaan panjang.",
+          "dampak_akademik": "Tugas-tugas sering terbengkalai, menunda pengerjaan (prokrastinasi), dan nilai merosot saat materi makin rumit.",
+          "saran_pengembangan": "Latih teknik Pomodoro (25 menit belajar, 5 menit istirahat) untuk melatih otot ketekunan secara bertahap."
+        }
+      }
+    },
+    "Emotional Regulation": {
+      "judul_dimensi": "Emotional Regulation (Regulasi Emosi Belajar)",
+      "deskripsi_umum": "Mengukur kapasitas memantau, mengelola rasa cemas tes (test anxiety), meredam frustrasi, serta memulihkan kesegaran mental pasca-kegagalan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Regulasi Emosi Sangat Stabil",
+          "interpretasi": "Siswa mampu menguasai pikirannya saat dalam tekanan ujian. Cepat memulihkan emosi jika membuat kesalahan.",
+          "dampak_akademik": "Kinerja ujian mencerminkan kapasitas aslinya karena tidak terganggu oleh kecemasan berlebih.",
+          "saran_pengembangan": "Bagikan strategi pengelolaan emosi ini kepada rekan-rekan sekelas yang sering mengalami kecemasan tes."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Kerentanan Emosional Sedang",
+          "interpretasi": "Kadang merasa tegang berlebih sebelum tes atau merasa kepikiran beberapa hari setelah mendapat nilai kurang bagus.",
+          "dampak_akademik": "Kecerobohan kecil saat ujian sering terjadi akibat ketegangan emosi yang tidak sepenuhnya terkelola.",
+          "saran_pengembangan": "Latih teknik pernapasan dalam (deep breathing) dan penyusunan rencana persiapan ujian yang lebih terstruktur."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Kecemasan Tes Tinggi (Test Anxiety / Frustration)",
+          "interpretasi": "Sangat mudah panik dalam situasi ujian, mengalami kelelahan emosional, dan sering terpuruk lama pasca-nilai buruk.",
+          "dampak_akademik": "Sering mengalami 'blank' saat ujian meskipun malamnya sudah belajar keras akibat penumpukan rasa cemas.",
+          "saran_pengembangan": "Berikan pendampingan teknik relaksasi kognitif dan konsultasikan dengan konselor sekolah untuk meredakan kecemasan."
+        }
+      }
+    },
+    "Growth Mindset": {
+      "judul_dimensi": "Growth Mindset (Pola Pikir Kemampuan)",
+      "deskripsi_umum": "Mengukur kepercayaan siswa bahwa kecerdasan dan kemampuan berpikir dapat terus berkembang melalui usaha, latihan, dan strategi yang tepat.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Growth Mindset Matang",
+          "interpretasi": "Siswa meyakini bahwa bakat hanyalah titik awal. Menganggap usaha keras dan kritik sebagai sarana utama untuk tumbuh cerdas.",
+          "dampak_akademik": "Sangat terbuka pada masukan, menyukai tantangan baru, dan tidak takut terlihat salah dalam proses belajar.",
+          "saran_pengembangan": "Pertahankan pola pikir ini saat menghadapi materi-materi abstrak tingkat tinggi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Mindset Campuran",
+          "interpretasi": "Percaya kecerdasan bisa berkembang pada pelajaran tertentu (misal Bahasa), tetapi menganggap diri tidak berbakat pada pelajaran lain (misal Matematika).",
+          "dampak_akademik": "Usaha belajar tidak seimbang; cenderung menghindari pelajaran yang dianggap 'bukan bidangnya'.",
+          "saran_pengembangan": "Ubah kalimat 'Saya tidak bisa pelajaran ini' menjadi 'Saya BELUM bisa pelajaran ini, tapi bisa dilatih'."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Fixed Mindset Dominan",
+          "interpretasi": "Siswa menganggap kecerdasan adalah bawaan lahir yang tidak bisa diubah. Menganggap usaha keras sebagai bukti bahwa seseorang tidak pintar.",
+          "dampak_akademik": "Sangat takut dinilai bodoh, menghindari tantangan, dan cepat menyerah agar tidak terlihat gagal.",
+          "saran_pengembangan": "Bantu siswa memahami konsep neuroplastisitas otak: bahwa otak bekerja seperti otot yang makin kuat jika dilatih."
+        }
+      }
+    }
+  },
+  "analisis_kombinasi_afektif": [
+    {
+      "nama_pola": "High Curiosity with High Test Anxiety (Penasaran Tinggi tapi Cemas Ujian)",
+      "kriteria": "Interest & Curiosity ≥ 65% DAN Emotional Regulation ≤ 40%",
+      "analisis_klinis": "Siswa memiliki rasa ingin tahu dan kegemaran belajar yang sangat tinggi. Namun, potensinya terhalang oleh kecemasan tes yang parah. Siswa sangat menikmati belajar harian, tetapi mendadak 'blank' dan panik saat lembar ujian dibagikan.",
+      "rekomendasi_intervensi": "Lakukan latihan simulasi tes bertahap tanpa tekanan nilai, serta ajarkan teknik relaksasi fisik dan afirmasi positif sebelum tes."
+    },
+    {
+      "nama_pola": "High Growth Mindset with Low Self-Efficacy (Paham Konsep Tumbuh tapi Ragu Diri)",
+      "kriteria": "Growth Mindset ≥ 65% DAN Self-Efficacy ≤ 40%",
+      "analisis_klinis": "Siswa paham secara teori bahwa kecerdasan bisa dilatih. Namun, secara emosional ia masih menyimpan keraguan besar pada kemampuan dirinya sendiri saat ini akibat riwayat kegagalan masa lalu.",
+      "rekomendasi_intervensi": "Bantu siswa mencatat jejak kemajuan belajar sekecil apa pun (progress journal) untuk membuktikan pada dirinya bahwa kemampuannya benar-benar bertumbuh."
+    },
+    {
+      "nama_pola": "High Value-Driven with Low Grit (Paham Pentingnya Belajar tapi Cepat Menyerah)",
+      "kriteria": "Identified Motivation ≥ 65% DAN Persistence & Grit ≤ 40%",
+      "analisis_klinis": "Siswa sangat paham bahwa belajar itu penting bagi masa depannya. Namun, ia tidak memiliki stamina ketekunan harian untuk mewujudkannya dalam tindakan nyata. Terdapat jarak antara niat dan pelaksanaan.",
+      "rekomendasi_intervensi": "Bantu siswa menyusun jadwal rutinitas mikro yang sangat jelas (misal: tepat jam 19.00 membuka buku selama 20 menit) untuk membangun kebiasaan tanpa tergantung pada niat emosional."
+    }
+  ]
+}
