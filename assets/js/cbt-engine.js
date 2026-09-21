@@ -67,7 +67,7 @@ class CBTEngine {
       </div>
 
       <!-- Header Informasi Peserta & Timer -->
-      <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--surface-color, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-md, 10px); margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--surface-color, #ffffff); border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-md, 10px); margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
         <div>
           <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary, #64748b);">Pengguna / Tester:</div>
           <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary, #1e293b);">${userName} <span style="font-weight: 400; font-size: 0.85rem; color: var(--text-secondary, #64748b);">(${userInstansi})</span></div>
@@ -138,7 +138,7 @@ class CBTEngine {
     this.renderCurrentQuestion();
   }
 
-  // --- LOGIC TIMER DYNAMIS ---
+  // --- LOGIC TIMER DINAMIS ---
   startTimer(displayElementId) {
     const display = document.getElementById(displayElementId);
     const durationLimit = this.testInfo.durasi_menit;
@@ -150,7 +150,7 @@ class CBTEngine {
         display.style.color = "var(--success-color, #10b981)";
         display.style.fontSize = "0.95rem";
       }
-      return; // Tidak mengaktifkan setInterval
+      return;
     }
 
     // Menggunakan Sistem Countdown Timer
@@ -204,7 +204,7 @@ class CBTEngine {
     if (qNumberEl) qNumberEl.innerText = `Soal No. ${this.currentIndex + 1} dari ${this.questions.length}`;
     if (qTextEl) qTextEl.innerText = q.pertanyaan;
 
-    const selectedVal = this.answers[q.id];
+    const selectedVal = this.answers[String(q.id)];
 
     if (qStatusEl) {
       if (selectedVal !== undefined) {
@@ -218,22 +218,25 @@ class CBTEngine {
       }
     }
 
+    // Penanganan opsi jawaban: Gunakan opsi spesifik soal (q.options) jika ada, atau opsi global (this.options)
+    const availableOptions = (q.options && Array.isArray(q.options) && q.options.length > 0) ? q.options : this.options;
+
     // Render Pilihan Jawaban
     let optsHtml = "";
-    this.options.forEach(opt => {
-      const isChecked = selectedVal === opt.value ? "checked" : "";
-      const bgActive = selectedVal === opt.value ? "background-color: #eff6ff; border-color: var(--primary-color, #2563eb);" : "";
+    availableOptions.forEach(opt => {
+      const isChecked = String(selectedVal) === String(opt.value) ? "checked" : "";
+      const bgActive = String(selectedVal) === String(opt.value) ? "background-color: #eff6ff; border-color: var(--primary-color, #2563eb);" : "";
 
       optsHtml += `
         <label style="display: flex; align-items: center; padding: 12px 16px; border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-sm, 6px); cursor: pointer; transition: all 0.2s; ${bgActive}">
-          <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} style="margin-right: 12px; accent-color: var(--primary-color, #2563eb);" onchange="cbtApp.saveAnswer(${q.id}, ${opt.value})">
+          <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} style="margin-right: 12px; accent-color: var(--primary-color, #2563eb);" onchange="cbtApp.saveAnswer('${q.id}', ${typeof opt.value === 'string' ? `'${opt.value}'` : opt.value})">
           <span style="font-size: 0.95rem; color: var(--text-primary, #1e293b);">${opt.label}</span>
         </label>
       `;
     });
     if (optsContainer) optsContainer.innerHTML = optsHtml;
 
-    // Update Status Tombol Prev/Next (Penggunaan innerHTML untuk merender entitas HTML)
+    // Update Status Tombol Prev/Next
     const btnPrev = document.getElementById("cbt-btn-prev");
     const btnNext = document.getElementById("cbt-btn-next");
 
@@ -257,7 +260,7 @@ class CBTEngine {
     let gridHtml = "";
     this.questions.forEach((q, idx) => {
       const isCurrent = idx === this.currentIndex;
-      const isAnswered = this.answers[q.id] !== undefined;
+      const isAnswered = this.answers[String(q.id)] !== undefined;
 
       let style = "padding: 8px 0; font-size: 0.85rem; font-weight: 700; border-radius: 6px; cursor: pointer; text-align: center; border: 1px solid #e2e8f0;";
 
@@ -276,7 +279,7 @@ class CBTEngine {
   }
 
   saveAnswer(questionId, value) {
-    this.answers[questionId] = value;
+    this.answers[String(questionId)] = value;
     localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
     this.renderCurrentQuestion();
   }
@@ -331,12 +334,13 @@ class CBTEngine {
     // Simpan data jawaban akhir ke SessionStorage untuk dibaca oleh result.html
     sessionStorage.setItem(`pats_answers_${this.testCode}`, JSON.stringify(this.answers));
 
-    // Tandai status selesai pada PATS_AUTH
+    // Tandai status selesai pada PATS_AUTH dengan menyertakan kode modul & nama
     if (typeof PATS_AUTH !== "undefined") {
-      PATS_AUTH.markAsCompleted(this.testCode);
+      const currentUserName = this.userSession ? this.userSession.nama_lengkap : "";
+      PATS_AUTH.markAsCompleted(this.testCode, currentUserName);
     }
 
-    // Clear data sementara
+    // Clear data sementara di localStorage
     localStorage.removeItem(this.storageKey);
     localStorage.removeItem(this.timerKey);
 
