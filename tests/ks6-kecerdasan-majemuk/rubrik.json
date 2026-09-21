@@ -1,0 +1,146 @@
+{
+  "kode_tes": "KS6",
+  "nama_tes": "APACA Multiple Intelligence Inventory (AMII)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_kognitif": "Instrumen AMII memetakan 8 potensi biopsikologis untuk memproses informasi dalam menyelesaikan masalah atau menciptakan produk bernilai[cite: 10]. Tes ini tidak menghasilkan skor tunggal IQ (g-factor), melainkan memetakan profil kecerdasan yang berinteraksi satu sama lain[cite: 10].",
+  "rubrik_deskripsi_dimensi": {
+    "Linguistik": {
+      "judul_dimensi": "Kecerdasan Linguistik (Verbal-Linguistic)",
+      "deskripsi_umum": "Kapasitas superior dalam kepekaan terhadap makna, ritme, dan suara dari kata-kata (bahasa lisan maupun tulisan)[cite: 10]. Anda memiliki ketajaman retorika, kemudahan menyerap bahasa baru, dan kemampuan memanipulasi struktur sintaksis untuk mencapai tujuan persuasif maupun artistik[cite: 10].",
+      "karakteristik_belajar": [
+        "Sangat mahir merangkum ide kompleks menjadi narasi yang runtut dan elegan[cite: 10].",
+        "Menyerap informasi paling efisien melalui membaca, menulis esai, berdebat, dan mendengarkan ceramah akademis."
+      ],
+      "rekomendasi_pengembangan": "Salurkan bakat ini melalui penulisan jurnal, publikasi artikel, atau bergabung dengan klub debat. Eksplorasi literatur asing untuk merangsang kelenturan sirkuit linguistik di otak Anda."
+    },
+    "Logika-Matematika": {
+      "judul_dimensi": "Kecerdasan Logika-Matematika (Logical-Mathematical)",
+      "deskripsi_umum": "Kekuatan analitis tingkat tinggi dalam menganalisis masalah secara logis, mengenali pola kausalitas (sebab-akibat), dan menyelidiki isu secara deduktif-ilmiah[cite: 10]. Anda melihat dunia melalui lensa probabilitas, angka, dan struktur rasional.",
+      "karakteristik_belajar": [
+        "Akurat dalam penalaran kuantitatif serta pengerjaan tugas yang tersistem dengan parameter yang jelas[cite: 10].",
+        "Menemukan kepuasan intelektual dalam eksperimen sains, bahasa pemrograman, dan pemecahan teka-teki logika."
+      ],
+      "rekomendasi_pengembangan": "Asah ketajaman logika dengan mempelajari *data science*, algoritma komputasi, atau teori permainan (*game theory*). Biasakan membuat pemodelan statistik sebelum mengambil keputusan besar."
+    },
+    "Visual-Spasial": {
+      "judul_dimensi": "Kecerdasan Visual-Spasial (Spatial-Visual)",
+      "deskripsi_umum": "Potensi luar biasa dalam mengenali, memanipulasi, dan merepresentasikan pola ruang luas maupun area terbatas secara mental[cite: 10]. Anda adalah pemikir visual yang mengekstraksi informasi melalui imajinasi spasial, warna, dan geometri[cite: 10].",
+      "karakteristik_belajar": [
+        "Memiliki orientasi arah yang sangat baik dan apresiasi mendalam terhadap estetika seni visual serta pemetaan tata letak[cite: 10].",
+        "Lebih mudah menyerap materi jika disajikan dalam bentuk infografis, sketsa cetak biru (*blueprint*), atau model 3D."
+      ],
+      "rekomendasi_pengembangan": "Gunakan teknik *mind-mapping* visual saat belajar. Terlibatlah dalam aktivitas desain grafis, fotografi, atau rekayasa arsitektural untuk menyalurkan imajinasi spasial Anda."
+    },
+    "Musikal": {
+      "judul_dimensi": "Kecerdasan Musikal (Musical-Rhythmic)",
+      "deskripsi_umum": "Sensitivitas akustik yang mendalam terhadap nada, ritme, timbre, dan pola harmoni suara[cite: 10]. Anda memiliki keterampilan apresiasi, komposisi, serta memori *auditory* yang sangat kuat terhadap aransemen nada[cite: 10].",
+      "karakteristik_belajar": [
+        "Kepekaan tinggi pada nada/ritme dan kemampuan mengingat melodi secara presisi[cite: 10].",
+        "Sering kali memanfaatkan ritme atau ketukan suara sebagai perangkat mnemonik (jembatan keledai) untuk menghafal materi."
+      ],
+      "rekomendasi_pengembangan": "Gunakan musik latar (*instrumental/binaural beats*) untuk mengatur gelombang otak saat belajar. Pelajari instrumen musik baru untuk menstimulasi keseimbangan hemisfer otak kanan dan kiri."
+    },
+    "Kinestetik": {
+      "judul_dimensi": "Kecerdasan Kinestetik (Bodily-Kinesthetic)",
+      "deskripsi_umum": "Potensi superior dalam menggunakan seluruh atau sebagian anggota tubuh untuk menyelesaikan masalah, menciptakan produk, atau mengekspresikan ide[cite: 10]. Tubuh Anda adalah medium instrumen kognitif utama.",
+      "karakteristik_belajar": [
+        "Memiliki kontrol motorik halus dan kasar yang luar biasa, serta koordinasi fisik yang sangat responsif[cite: 10].",
+        "Belajar paling optimal melalui eksperimen *hands-on*, *role-play*, simulasi laboratorium, atau aktivitas mobilitas tinggi."
+      ],
+      "rekomendasi_pengembangan": "Konversikan materi belajar abstrak menjadi proyek fisik yang bisa diraba. Salurkan energi melalui olahraga, teater, seni kriya, atau teknik mekanis yang membutuhkan kejelian tangan."
+    },
+    "Interpersonal": {
+      "judul_dimensi": "Kecerdasan Interpersonal (Social-Interpersonal)",
+      "deskripsi_umum": "Kemampuan tingkat tinggi dalam memahami niat, motivasi, serta keinginan orang lain[cite: 10]. Anda memiliki radar empati yang peka untuk membaca dinamika sosial, memimpin kelompok, dan bekerja sama secara efektif[cite: 10].",
+      "karakteristik_belajar": [
+        "Sangat jeli membaca emosi orang lain, memiliki bakat kepemimpinan, dan ahli dalam kerja kelompok kolaboratif[cite: 10].",
+        "Belajar paling cepat melalui diskusi sebaya, debat, dan mengajar kembali materi kepada teman (*peer-tutoring*)."
+      ],
+      "rekomendasi_pengembangan": "Ambil peran kepemimpinan dalam organisasi atau komunitas. Latih teknik negosiasi lanjutan dan resolusi konflik untuk memaksimalkan kapabilitas diplomasi Anda."
+    },
+    "Intrapersonal": {
+      "judul_dimensi": "Kecerdasan Intrapersonal (Introspective-Intrapersonal)",
+      "deskripsi_umum": "Kapasitas eksistensial untuk memahami diri sendiri, menyelami emosi terdalam, dan mengelola model kerja diri yang sangat presisi dan efektif[cite: 10]. Anda memiliki otonomi, kemandirian batin, dan kesadaran arah hidup yang matang[cite: 10].",
+      "karakteristik_belajar": [
+        "Sangat kuat dalam refleksi diri, pemahaman emosi pribadi, dan penetapan kesadaran tujuan hidup[cite: 10].",
+        "Bekerja dan belajar secara maksimal ketika diberikan ruang isolasi (*solitude*) dan kebebasan mengejar minat independen."
+      ],
+      "rekomendasi_pengembangan": "Lakukan jurnalisme reflektif secara rutin. Rancang peta jalan (*roadmap*) karir secara mandiri berdasarkan nilai filosofis yang Anda yakini, bukan sekadar mengikuti tren sosial."
+    },
+    "Naturalis": {
+      "judul_dimensi": "Kecerdasan Naturalis (Naturalistic)",
+      "deskripsi_umum": "Keahlian observasional tingkat tinggi dalam mengenali, mengategorikan, dan membedakan spesies flora, fauna, serta fenomena ekologi di alam bebas[cite: 10]. Anda memiliki naluri purba yang terkoneksi dengan ritme biosfer.",
+      "karakteristik_belajar": [
+        "Sangat peka dalam mengidentifikasi pola alam, memiliki kepedulian lingkungan yang kuat, dan ahli dalam taksonomi mahluk hidup[cite: 10].",
+        "Membutuhkan koneksi dengan alam (seperti belajar di area taman atau melihat lanskap alam) untuk menyegarkan kapasitas kognitif."
+      ],
+      "rekomendasi_pengembangan": "Eksplorasi ilmu lingkungan, biologi konservasi, atau botani. Terapkan prinsip kategorisasi naturalis Anda untuk mengurai data-data kompleks dalam sistem organisasi yang terstruktur."
+    }
+  },
+  "norma_kategorisasi_global": [
+    {
+      "rentang_t_score": "T ≥ 65",
+      "percentile": ">93%",
+      "kategori": "Sangat Tinggi",
+      "label_status": "DOMINANT CORE STRENGTH",
+      "deskripsi_kondisi": "Potensi kecerdasan ini berada pada persentil superior dan berfungsi sebagai fondasi keahlian utama Anda[cite: 10]. Arsitektur kognitif Anda secara alamiah memprioritaskan ranah ini untuk memecahkan masalah kompleks."
+    },
+    {
+      "rentang_t_score": "55 ≤ T < 65",
+      "percentile": "69% - 93%",
+      "kategori": "Tinggi",
+      "label_status": "SECONDARY STRENGTH",
+      "deskripsi_kondisi": "Potensi ini berkembang sangat baik dan berperan sebagai penyokong kuat bagi keahlian utama Anda[cite: 10]. Mudah dimobilisasi kapan pun situasi menuntut adaptasi."
+    },
+    {
+      "rentang_t_score": "45 ≤ T < 55",
+      "percentile": "31% - 68%",
+      "kategori": "Sedang",
+      "label_status": "MODERATE ABILITY",
+      "deskripsi_kondisi": "Berada dalam taraf rata-rata populasi standar[cite: 10]. Potensi ini cukup fungsional untuk kehidupan sehari-hari, namun memerlukan usaha sadar untuk digunakan dalam tugas-tugas tingkat lanjut."
+    },
+    {
+      "rentang_t_score": "35 ≤ T < 45",
+      "percentile": "7% - 30%",
+      "kategori": "Rendah",
+      "label_status": "KURANG BERKEMBANG",
+      "deskripsi_kondisi": "Ranah kecerdasan ini kurang berkembang dan kurang diminati oleh kognisi Anda[cite: 10]. Membutuhkan stimulan ekstra dan lingkungan pendukung agar tidak menjadi penghambat[cite: 10]."
+    },
+    {
+      "rentang_t_score": "T < 35",
+      "percentile": "< 7%",
+      "kategori": "Sangat Rendah",
+      "label_status": "DORMANT / UNDERDEVELOPED",
+      "deskripsi_kondisi": "Potensi ini berada pada taraf terbatas atau tertidur (dormant)[cite: 10]. Sangat tidak disarankan untuk memilih jalur karir utama yang bertumpu murni pada ranah kecerdasan ini."
+    }
+  ],
+  "pedoman_rekomendasi_karir": [
+    {
+      "kombinasi_dominan": "Linguistik + Interpersonal",
+      "rekomendasi_program_studi": "Hukum, Ilmu Komunikasi, Hubungan Internasional, Psikologi[cite: 10]",
+      "rekomendasi_profesi": "Pengacara, Jurnalis, Public Relations (Humas), Diplomat, Negosiator[cite: 10]",
+      "analisis_potensi": "Perpaduan elegan antara kefasihan merangkai kata dan kepekaan membaca motif sosial. Kombinasi ini melahirkan komunikator ulung yang mampu mempersuasi massa, memenangkan perdebatan hukum, serta menjembatani konflik antarnegara dengan diplomasi."
+    },
+    {
+      "kombinasi_dominan": "Logika + Visual-Spasial",
+      "rekomendasi_program_studi": "Teknik Sipil, Arsitektur, Data Science, Teknik Informatika[cite: 10]",
+      "rekomendasi_profesi": "Arsitek, Software Engineer, Data Analyst, Ahli Perencanaan Kota[cite: 10]",
+      "analisis_potensi": "Sinergi antara ketajaman matematis dan imajinasi spasial-geometris. Profil ini adalah tulang punggung inovasi teknologi dan rekayasa struktur, mampu menerjemahkan algoritma abstrak menjadi arsitektur visual dan perangkat lunak revolusioner."
+    },
+    {
+      "kombinasi_dominan": "Kinestetik + Interpersonal",
+      "rekomendasi_program_studi": "Pendidikan Jasmani, Fisioterapi, Manajemen Pariwisata, Seni Pertunjukan[cite: 10]",
+      "rekomendasi_profesi": "Pelatih Olahraga, Fisioterapis, Event Organizer, Aktor/Sutradara[cite: 10]",
+      "analisis_potensi": "Kekuatan motorik fisik yang digerakkan oleh karisma sosial. Individu dengan kombinasi ini memiliki energi eksekusi lapangan yang tak tertandingi, mahir mengorkestrasi pergerakan tim dalam lingkungan dinamis, serta memberikan dampak terapeutik secara langsung."
+    },
+    {
+      "kombinasi_dominan": "Naturalis + Logika",
+      "rekomendasi_program_studi": "Biologi, Kedokteran Hewan, Pertanian, Ilmu Lingkungan, Kehutanan[cite: 10]",
+      "rekomendasi_profesi": "Peneliti Biologi, Dokter Hewan, Konservasionis, Ilmuwan Ekologi[cite: 10]",
+      "analisis_potensi": "Penyatuan naluri taksonomi ekosistem dengan pisau analisis deduktif sains. Individu ini merupakan pakar pemecah kode genetika alam, pelestari biosfer, serta garda depan dalam merumuskan solusi krisis lingkungan hidup berbasis data empiris."
+    }
+  ]
+}
