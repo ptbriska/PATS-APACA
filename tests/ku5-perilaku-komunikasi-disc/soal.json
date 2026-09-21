@@ -1,0 +1,231 @@
+{
+  "test_info": {
+    "kode": "KU5",
+    "nama_resmi": "APACA General Behavior Preference Indicator (GBPI - DISC)",
+    "nama_singkat": "General DISC Behavior Indicator",
+    "versi": "Versi General 1.0 / 2026",
+    "token_ujian": "DISC2026",
+    "token_master": "PatsTestingKU5",
+    "durasi_menit": 15,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "options": [
+        { "code": "A", "dimension": "D", "label": "Tegas dan cepat bertindak saat dihadapkan pada masalah mendesak." },
+        { "code": "B", "dimension": "I", "label": "Antusias dan mudah membuat orang lain bersemangat dalam kelompok." },
+        { "code": "C", "dimension": "S", "label": "Sabar dan berusaha menjaga ketenangan suasana dalam interaksi." },
+        { "code": "D", "dimension": "C", "label": "Teliti dan berhati-hati memastikan segalanya sesuai aturan." }
+      ]
+    },
+    {
+      "id": 2,
+      "options": [
+        { "code": "A", "dimension": "I", "label": "Ramah dan cepat akrab saat berada di lingkungan baru." },
+        { "code": "B", "dimension": "C", "label": "Menyukai kejelasan aturan dan petunjuk langkah yang rapi." },
+        { "code": "C", "dimension": "D", "label": "Suka bersaing dan bertekad untuk mencapai hasil terbaik." },
+        { "code": "D", "dimension": "S", "label": "Tenang dan menyukai kegiatan harian yang teratur." }
+      ]
+    },
+    {
+      "id": 3,
+      "options": [
+        { "code": "A", "dimension": "S", "label": "Konsisten, setia, dan dapat diandalkan oleh teman-teman." },
+        { "code": "B", "dimension": "D", "label": "Berani mengutarakan pendapat walau berbeda dari orang banyak." },
+        { "code": "C", "dimension": "C", "label": "Hati-hati dan selalu mempertimbangkan risiko sebelum melangkah." },
+        { "code": "D", "dimension": "I", "label": "Penuh energi dan pandai menghidupkan suasana kumpul." }
+      ]
+    },
+    {
+      "id": 4,
+      "options": [
+        { "code": "A", "dimension": "C", "label": "Analitis dan mengutamakan fakta serta kebenaran nyata." },
+        { "code": "B", "dimension": "S", "label": "Menghindari perselisihan dan menjaga keharmonisan hubungan." },
+        { "code": "C", "dimension": "I", "label": "Persuasif dan pandai meyakinkan orang lain." },
+        { "code": "D", "dimension": "D", "label": "Pantang menyerah saat dihadapkan pada hambatan berat." }
+      ]
+    },
+    {
+      "id": 5,
+      "options": [
+        { "code": "A", "dimension": "D", "label": "Langsung pada tujuan utama tanpa suka berbelit-belit." },
+        { "code": "B", "dimension": "I", "label": "Optimis dan selalu melihat sisi positif dari setiap situasi." },
+        { "code": "C", "dimension": "S", "label": "Sabar menghadapi proses yang membutuhkan waktu lama." },
+        { "code": "D", "dimension": "C", "label": "Disiplin mengikuti panduan dan tata tertib yang berlaku." }
+      ]
+    },
+    {
+      "id": 6,
+      "options": [
+        { "code": "A", "dimension": "I", "label": "Komunikatif dan ekspresif dalam menyampaikan ide." },
+        { "code": "B", "dimension": "S", "label": "Suka membantu di balik layar secara tulus." },
+        { "code": "C", "dimension": "C", "label": "Kritis dalam melihat kekeliruan atau ketidaksesuaian." },
+        { "code": "D", "dimension": "D", "label": "Menyukai tantangan baru yang menguji kemampuan diri." }
+      ]
+    },
+    {
+      "id": 7,
+      "options": [
+        { "code": "A", "dimension": "S", "label": "Menjaga kedamaian dan kenyamanan orang-orang sekitar." },
+        { "code": "B", "dimension": "C", "label": "Teliti dalam merencanakan kegiatan agar berjalan sempurna." },
+        { "code": "C", "dimension": "D", "label": "Tegas mengambil alih kendali saat situasi mendesak." },
+        { "code": "D", "dimension": "I", "label": "Mudah memaafkan dan membawa keceriaan dalam pergaulan." }
+      ]
+    },
+    {
+      "id": 8,
+      "options": [
+        { "code": "A", "dimension": "C", "label": "Sistematis dan mengandalkan pemikiran yang logis." },
+        { "code": "B", "dimension": "D", "label": "Mandiri dan tidak mudah terpengaruh oleh pendapat orang lain." },
+        { "code": "C", "dimension": "I", "label": "Supel dan memiliki banyak teman dari berbagai kalangan." },
+        { "code": "D", "dimension": "S", "label": "Setia kawan dan mampu menyimpan rahasia dengan baik." }
+      ]
+    },
+    {
+      "id": 9,
+      "options": [
+        { "code": "A", "dimension": "D", "label": "Percaya diri dan berani mengambil risiko demi hasil nyata." },
+        { "code": "B", "dimension": "I", "label": "Suka dipuji dan diapresiasi atas ide-ide kreatif." },
+        { "code": "C", "dimension": "S", "label": "Menyukai stabilitas dan suasana yang dapat diprediksi." },
+        { "code": "D", "dimension": "C", "label": "Memperhatikan kerapian dan keakuratan detail." }
+      ]
+    },
+    {
+      "id": 10,
+      "options": [
+        { "code": "A", "dimension": "I", "label": "Penuh gagasan baru yang menarik untuk dicoba bersama." },
+        { "code": "B", "dimension": "C", "label": "Mengikuti standar kualitas tinggi tanpa kompromi." },
+        { "code": "C", "dimension": "S", "label": "Rendah hati dan mengutamakan kepentingan bersama." },
+        { "code": "D", "dimension": "D", "label": "Berfokus pada target akhir dan enggan membuang waktu." }
+      ]
+    },
+    {
+      "id": 11,
+      "options": [
+        { "code": "A", "dimension": "S", "label": "Menjadi penengah yang adil saat terjadi perbedaan pendapat." },
+        { "code": "B", "dimension": "D", "label": "Berani menentang kondisi yang dianggap tidak efektif." },
+        { "code": "C", "dimension": "I", "label": "Menghibur dan pandai mencairkan suasana canggung." },
+        { "code": "D", "dimension": "C", "label": "Berpatokan pada norma dan acuan yang jelas." }
+      ]
+    },
+    {
+      "id": 12,
+      "options": [
+        { "code": "A", "dimension": "C", "label": "Mengumpulkan informasi lengkap sebelum memutuskan hal penting." },
+        { "code": "B", "dimension": "S", "label": "Tekun menyelesaikan kewajiban rutin hingga tuntas." },
+        { "code": "C", "dimension": "D", "label": "Mengendalikan arah kegiatan agar sesuai rencana." },
+        { "code": "D", "dimension": "I", "label": "Suka memotivasi orang lain untuk meraih impian mereka." }
+      ]
+    },
+    {
+      "id": 13,
+      "options": [
+        { "code": "A", "dimension": "D", "label": "Berpikiran praktis dan berorientasi pada pencapaian." },
+        { "code": "B", "dimension": "I", "label": "Menyenangkan, fleksibel, dan tidak menyukai suasana kaku." },
+        { "code": "C", "dimension": "S", "label": "Memiliki emosi yang stabil dan tidak gampang panik." },
+        { "code": "D", "dimension": "C", "label": "Cermat memilah mana hal yang benar dan salah." }
+      ]
+    },
+    {
+      "id": 14,
+      "options": [
+        { "code": "A", "dimension": "I", "label": "Pandai bernegosiasi dan meluluhkan hati orang lain." },
+        { "code": "B", "dimension": "C", "label": "Berhati-hati agar tidak membuat keputusan yang ceroboh." },
+        { "code": "C", "dimension": "D", "label": "Suka memimpin dan memberikan arahan kepada tim." },
+        { "code": "D", "dimension": "S", "label": "Setia mendampingi dalam suka maupun duka." }
+      ]
+    },
+    {
+      "id": 15,
+      "options": [
+        { "code": "A", "dimension": "S", "label": "Menghargai rutinitas harian yang sudah terbukti nyaman." },
+        { "code": "B", "dimension": "D", "label": "Menyukai tantangan yang menuntut keberanian." },
+        { "code": "C", "dimension": "I", "label": "Terbuka menceritakan perasaan dan pengalaman." },
+        { "code": "D", "dimension": "C", "label": "Mengutamakan ketepatan dan kepatuhan pada prosedur." }
+      ]
+    },
+    {
+      "id": 16,
+      "options": [
+        { "code": "A", "dimension": "C", "label": "Mengurus sesuatu dengan rapi dan terorganisasi." },
+        { "code": "B", "dimension": "I", "label": "Cepat beradaptasi dan menyukai pengalaman baru." },
+        { "code": "C", "dimension": "S", "label": "Bersedia mengalah demi keharmonisan bersama." },
+        { "code": "D", "dimension": "D", "label": "Bekerja dan bertindak dengan cepat serta efisien." }
+      ]
+    },
+    {
+      "id": 17,
+      "options": [
+        { "code": "A", "dimension": "D", "label": "Berani mengambil keputusan sulit tanpa ragu-ragu." },
+        { "code": "B", "dimension": "S", "label": "Merupakan sosok kawan yang hangat dan penuh perhatian." },
+        { "code": "C", "dimension": "I", "label": "Mudah menarik perhatian dan menjadi pusat interaksi." },
+        { "code": "D", "dimension": "C", "label": "Meneliti setiap rincian agar hasilnya tidak cacat." }
+      ]
+    },
+    {
+      "id": 18,
+      "options": [
+        { "code": "A", "dimension": "I", "label": "Menunjukkan semangat tinggi dalam setiap aktivitas." },
+        { "code": "B", "dimension": "C", "label": "Memastikan segala sesuatu transparan dan sesuai fakta." },
+        { "code": "C", "dimension": "D", "label": "Pantang mengeluh saat dihadapkan pada kesulitan." },
+        { "code": "D", "dimension": "S", "label": "Sabar dan menikmati alur kegiatan yang tenang." }
+      ]
+    },
+    {
+      "id": 19,
+      "options": [
+        { "code": "A", "dimension": "S", "label": "Menyukai kesederhanaan dan kepastian alur harian." },
+        { "code": "B", "dimension": "D", "label": "Penuh inisiatif dan suka memelopori ide baru." },
+        { "code": "C", "dimension": "I", "label": "Pandai merangkul dan membuat orang merasa dihargai." },
+        { "code": "D", "dimension": "C", "label": "Menjaga standar tinggi pada diri sendiri dan lingkungan." }
+      ]
+    },
+    {
+      "id": 20,
+      "options": [
+        { "code": "A", "dimension": "C", "label": "Objektif, tenang, dan berlandaskan pemikiran rasional." },
+        { "code": "B", "dimension": "I", "label": "Spontan, gembira, dan membawa energi positif." },
+        { "code": "C", "dimension": "D", "label": "Fokus mencari solusi cepat atas setiap masalah." },
+        { "code": "D", "dimension": "S", "label": "Suka memelihara kebiasaan positif secara konsisten." }
+      ]
+    },
+    {
+      "id": 21,
+      "options": [
+        { "code": "A", "dimension": "D", "label": "Berani menyampaikan kritik bila ada hal yang keliru." },
+        { "code": "B", "dimension": "S", "label": "Menjadi penyokong yang setia dan sabar dalam kelompok." },
+        { "code": "C", "dimension": "I", "label": "Suka berbagi cerita dan menginspirasi teman-teman." },
+        { "code": "D", "dimension": "C", "label": "Berpegang teguh pada bukti nyata dan kebenaran." }
+      ]
+    },
+    {
+      "id": 22,
+      "options": [
+        { "code": "A", "dimension": "I", "label": "Mudah memaafkan dan tidak suka menyimpan perasaan dendam." },
+        { "code": "B", "dimension": "C", "label": "Perfeksionis dalam mengerjakan tugas atau aktivitas." },
+        { "code": "C", "dimension": "S", "label": "Santun, tenang, dan tidak suka menonjolkan diri." },
+        { "code": "D", "dimension": "D", "label": "Suka mengendalikan alur kegiatan agar efisien." }
+      ]
+    },
+    {
+      "id": 23,
+      "options": [
+        { "code": "A", "dimension": "S", "label": "Pendengar yang empatik dan selalu siap membantu." },
+        { "code": "B", "dimension": "D", "label": "Berorientasi pada pencapaian target dengan cepat." },
+        { "code": "C", "dimension": "C", "label": "Memiliki rasa ingin tahu tinggi pada mekanisme dan aturan." },
+        { "code": "D", "dimension": "I", "label": "Suka menikmati momen kebersamaan yang ramai." }
+      ]
+    },
+    {
+      "id": 24,
+      "options": [
+        { "code": "A", "dimension": "C", "label": "Menghindari kekeliruan dengan perencanaan yang matang." },
+        { "code": "B", "dimension": "I", "label": "Memiliki daya pikat sosial dan antusiasme tinggi." },
+        { "code": "C", "dimension": "D", "label": "Berani melangkah duluan tanpa menunggu dorongan orang lain." },
+        { "code": "D", "dimension": "S", "label": "Menyukai kedamaian dan suasana yang bebas dari perselisihan." }
+      ]
+    }
+  ]
+}
