@@ -1,0 +1,197 @@
+{
+  "kode_tes": "KS9",
+  "nama_tes": "APACA Learning Approach / Method Test (LAM)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "informasi_umum": "Instrumen LAM memetakan pendekatan makro pembelajaran siswa yang mencakup sumber kendali, metodologi kognitif, preferensi struktur, dan orientasi motivasi. Hasil tes ini bukan pengukur IQ, melainkan panduan ekosistem belajar yang paling optimal untuk memaksimalkan potensi anak.",
+  
+  "rubrik_dimensi": {
+    "Sumber_Pembelajaran": {
+      "deskripsi": "Mengukur tingkat independensi dan orientasi interaksi anak dalam memandu proses belajarnya.",
+      "sub_dimensi": {
+        "Teacher-directed": {
+          "deskripsi_profil": "Anak sangat bergantung pada instruksi penuh dan penjelasan langsung dari guru atau figur otoritas.",
+          "insight_untuk_orangtua": "Jangan paksa anak untuk belajar murni otodidak. Mereka butuh Anda duduk di sampingnya sebagai 'guru' untuk membedah materi di awal waktu belajar.",
+          "rekomendasi_sekolah": "Berikan paparan materi (lecturing) yang jelas sebelum memberikan tugas mandiri. Siswa ini rentan cemas jika dilepas tanpa instruksi awal."
+        },
+        "Self-directed": {
+          "deskripsi_profil": "Anak memiliki inisiatif tinggi untuk menentukan arah, materi, dan kecepatan belajarnya sendiri tanpa perlu disuruh.",
+          "insight_untuk_orangtua": "Fasilitasi anak dengan buku, internet, atau akses perpustakaan. Kurangi kontrol berlebih (micromanaging) pada jadwal belajarnya karena mereka sudah mandiri.",
+          "rekomendasi_sekolah": "Berikan ruang otonomi. Siswa tipe ini sangat cocok untuk program pengayaan (enrichment) atau proyek riset mandiri."
+        },
+        "Peer learning": {
+          "deskripsi_profil": "Anak menyerap informasi paling cepat ketika berinteraksi, berdiskusi, atau saling mengajari dengan teman sebayanya.",
+          "insight_untuk_orangtua": "Izinkan anak untuk sering melakukan kerja kelompok atau video call dengan temannya saat belajar. Bagi mereka, berdiskusi dengan teman adalah proses kognitif, bukan sekadar main-main.",
+          "rekomendasi_sekolah": "Gunakan metode tutor sebaya di kelas. Jadikan siswa ini sebagai penggerak kelompok diskusi kecil."
+        },
+        "Collaborative learning": {
+          "deskripsi_profil": "Anak sangat produktif dan termotivasi ketika bekerja dalam format tim untuk menyelesaikan sebuah tugas bersama.",
+          "insight_untuk_orangtua": "Latih anak keterampilan komunikasi asertif agar mereka tidak mendominasi atau malah pasif saat kerja kelompok.",
+          "rekomendasi_sekolah": "Sering berikan tugas kolaboratif yang menuntut pembagian peran yang jelas dalam tim."
+        },
+        "Mentored learning": {
+          "deskripsi_profil": "Anak membutuhkan pendampingan personal secara berkala (one-on-one) dari ahli, guru, atau tutor.",
+          "insight_untuk_orangtua": "Menyewa jasa guru les privat atau mentor khusus akan jauh lebih efektif bagi anak ini dibandingkan mendaftarkannya ke bimbingan belajar kelas besar.",
+          "rekomendasi_sekolah": "Berikan sesi konsultasi atau umpan balik individual (feedback session) secara berkala."
+        }
+      }
+    },
+    
+    "Aktivitas_Utama": {
+      "deskripsi": "Mengukur jenis aktivitas proses belajar-mengajar yang paling efektif memicu pemahaman kognitif siswa.",
+      "sub_dimensi": {
+        "Lecture-based": {
+          "deskripsi_profil": "Pemahaman anak maksimal saat mendengarkan ceramah terstruktur dan penjelasan lisan formal.",
+          "insight_untuk_orangtua": "Sediakan lingkungan rumah yang tenang. Anak ini auditori dan visual; mereka sangat pandai mencatat dan menyimak penjelasan.",
+          "rekomendasi_sekolah": "Metode konvensional dengan presentasi PowerPoint yang sistematis sangat efektif untuk siswa ini."
+        },
+        "Discussion-based": {
+          "deskripsi_profil": "Anak sangat terpancing untuk berpikir saat dihadapkan pada pertukaran gagasan, tanya-jawab, atau debat.",
+          "insight_untuk_orangtua": "Sering-seringlah ajak anak berdiskusi atau berdebat ringan tentang isu berita saat makan malam untuk melatih daya kritisnya.",
+          "rekomendasi_sekolah": "Gunakan metode socratic (tanya-jawab kritis) di kelas. Jangan paksa mereka hanya diam mendengarkan."
+        },
+        "Problem-Based Learning": {
+          "deskripsi_profil": "Rasa ingin tahu anak bangkit ketika ditantang untuk memecahkan sebuah masalah dunia nyata yang rumit.",
+          "insight_untuk_orangtua": "Jangan langsung berikan jawaban saat anak bertanya. Tantang mereka dengan: 'Menurut kamu, bagaimana cara kita menyelesaikan masalah ini?'",
+          "rekomendasi_sekolah": "Berikan studi kelayakan atau studi masalah nyata sebagai pemicu (trigger) sebelum mengajarkan teorinya."
+        },
+        "Project-Based Learning": {
+          "deskripsi_profil": "Anak paling menikmati belajar jika berujung pada pembuatan produk nyata (maket, video, laporan akhir).",
+          "insight_untuk_orangtua": "Sediakan alat peraga, bahan prakarya, atau perangkat digital di rumah. Biarkan mereka sibuk 'menciptakan' sesuatu.",
+          "rekomendasi_sekolah": "Evaluasi siswa ini melalui portofolio atau pameran karya (exhibition), bukan sekadar ujian pilihan ganda."
+        },
+        "Inquiry-Based Learning": {
+          "deskripsi_profil": "Anak menyukai investigasi mandiri dan proses mencari tahu jawaban atas rentetan pertanyaan kritis yang mengganjal.",
+          "insight_untuk_orangtua": "Fasilitasi sifat 'kepo' anak. Ajak mereka ke museum, perpustakaan, atau dorong mereka melakukan eksperimen sains kecil di rumah.",
+          "rekomendasi_sekolah": "Gunakan penugasan berbasis riset literatur mini atau observasi lapangan."
+        },
+        "Discovery Learning": {
+          "deskripsi_profil": "Anak benci diberi tahu jawaban akhir (spoiler). Mereka lebih suka menemukan pola atau rumus tersebut dengan usahanya sendiri.",
+          "insight_untuk_orangtua": "Biarkan anak melakukan 'trial and error'. Jangan memarahi jika mereka melakukan kesalahan saat mencoba hal baru.",
+          "rekomendasi_sekolah": "Sediakan fasilitas laboratorium eksplorasi dan kurangi pemberian rumus instan."
+        },
+        "Case-Based Learning": {
+          "deskripsi_profil": "Anak lebih mudah mencerna pelajaran jika dikaitkan dengan profil tokoh nyata, sejarah, atau kasus bisnis riil.",
+          "insight_untuk_orangtua": "Belikan anak buku biografi tokoh, sejarah, atau dokumenter nyata sebagai bahan pelengkap belajarnya.",
+          "rekomendasi_sekolah": "Gunakan contoh kasus perusahaan atau kronologi sejarah nyata sebagai medium pengantar teori."
+        },
+        "Experiential Learning": {
+          "deskripsi_profil": "Anak adalah pemelajar taktil/kinestetik. Mereka harus mengalami, menyentuh, atau mempraktikkan langsung agar paham.",
+          "insight_untuk_orangtua": "Anak ini akan kesulitan belajar jika hanya dikurung di kamar. Sering ajak mereka ke alam, workshop keterampilan, atau aktivitas fisik.",
+          "rekomendasi_sekolah": "Siswa ini sangat membutuhkan kegiatan praktikum, field trip, atau observasi alam."
+        },
+        "Simulation-Based": {
+          "deskripsi_profil": "Anak belajar paling optimal melalui gladi resik, bermain peran (role-play), atau simulasi lingkungan.",
+          "insight_untuk_orangtua": "Jika anak akan menghadapi ujian lisan atau presentasi, bantu mereka melakukan gladi resik (mock-up) di rumah.",
+          "rekomendasi_sekolah": "Gunakan software simulator atau permainan peran (drama sejarah) dalam kelas."
+        },
+        "Game-Based Learning": {
+          "deskripsi_profil": "Anak termotivasi oleh elemen kompetisi, perolehan poin, lencana, dan ritme permainan interaktif.",
+          "insight_untuk_orangtua": "Gunakan aplikasi belajar berformat permainan. Berikan reward kecil jika anak berhasil menuntaskan target belajarnya.",
+          "rekomendasi_sekolah": "Integrasikan kuis interaktif seperti Kahoot! atau Quizizz sebagai format ulangan harian."
+        }
+      }
+    },
+    
+    "Struktur_Pembelajaran": {
+      "deskripsi": "Mengukur kebutuhan anak terhadap kepastian, fleksibilitas, dan kebebasan alur belajar.",
+      "sub_dimensi": {
+        "Structured learning": {
+          "deskripsi_profil": "Anak membutuhkan silabus yang sangat kaku, jadwal terencana, dan pedoman yang baku tanpa kejutan.",
+          "insight_untuk_orangtua": "Bantu anak membuat papan jadwal harian (daily planner) yang detail. Perubahan mendadak bisa membuat mereka stres.",
+          "rekomendasi_sekolah": "Berikan pedoman tugas dan rubrik penilaian sedetail mungkin di awal kelas."
+        },
+        "Guided learning": {
+          "deskripsi_profil": "Anak menyukai kebebasan dalam batas aman. Mereka butuh panduan umum, tapi dengan ruang bereksperimen.",
+          "insight_untuk_orangtua": "Berikan aturan utama yang jelas (misal: jam belajar wajib), namun bebaskan anak mengatur urutan mata pelajarannya.",
+          "rekomendasi_sekolah": "Terapkan sistem checkpoint mingguan, tapi biarkan siswa menentukan metode kerjanya."
+        },
+        "Semi-structured": {
+          "deskripsi_profil": "Anak tidak suka dikekang aturan mendetail. Mereka butuh kerangka kerja longgar yang bisa dinegosiasikan.",
+          "insight_untuk_orangtua": "Hindari sikap otoriter. Ajak anak berdiskusi untuk menentukan jam belajarnya sendiri.",
+          "rekomendasi_sekolah": "Berikan batas waktu pengumpulan tugas yang agak fleksibel atau opsi penugasan ganda."
+        },
+        "Open-ended learning": {
+          "deskripsi_profil": "Anak membutuhkan kebebasan berkreasi 100%. Mereka ingin mengatur format, topik, dan pendekatan tugasnya sendiri.",
+          "insight_untuk_orangtua": "Dukung sifat kreatif anak yang 'out of the box'. Jangan membatasi imajinasi mereka dengan aturan konvensional.",
+          "rekomendasi_sekolah": "Siswa ini sangat brilian jika diberikan tugas proyek akhir yang dibebaskan medianya (video, esai, podcast, karya seni)."
+        }
+      }
+    },
+    
+    "Orientasi_Pembelajaran": {
+      "deskripsi": "Mengukur fokus utama atau motivasi psikologis yang ingin dicapai siswa dari proses belajar.",
+      "sub_dimensi": {
+        "Knowledge-oriented": {
+          "deskripsi_profil": "Anak berfokus menyerap wawasan teoritis, konsep ilmu, dan sejarah sebanyak-banyaknya.",
+          "insight_untuk_orangtua": "Fasilitasi dengan ensiklopedia, langganan artikel sains, atau buku-buku berbobot.",
+          "rekomendasi_sekolah": "Arahkan siswa untuk mengikuti olimpiade sains atau program karya tulis ilmiah."
+        },
+        "Skill-oriented": {
+          "deskripsi_profil": "Anak hanya peduli pada penguasaan keterampilan (hard-skill) teknis yang bisa langsung digunakan untuk masa depan.",
+          "insight_untuk_orangtua": "Dukung anak mengambil kursus vokasi, coding, bahasa asing, atau desain grafis.",
+          "rekomendasi_sekolah": "Perbanyak sesi praktikum laboratorium atau magang vokasional."
+        },
+        "Problem-oriented": {
+          "deskripsi_profil": "Anak berorientasi pada penyelesaian masalah. Mereka ingin ilmu yang mereka pelajari bisa langsung mengatasi isu nyata.",
+          "insight_untuk_orangtua": "Ajak anak memecahkan masalah domestik rumah (misal: memperbaiki keran, merencanakan liburan) agar insting problem-solving nya terlatih.",
+          "rekomendasi_sekolah": "Tantang siswa dengan proyek pengabdian masyarakat atau penyelesaian isu lingkungan sekolah."
+        },
+        "Mastery-oriented": {
+          "deskripsi_profil": "Anak perfeksionis secara kognitif. Ia ingin menguasai suatu materi secara mendalam hingga ke akar-akarnya.",
+          "insight_untuk_orangtua": "Jangan memaksa anak terburu-buru berpindah bab materi jika ia merasa belum paham sepenuhnya. Sabar dan hargai ketekunannya.",
+          "rekomendasi_sekolah": "Siswa ini unggul dalam pemahaman esai mendalam. Hindari mengejar deadline silabus yang terlalu cepat."
+        },
+        "Performance-oriented": {
+          "deskripsi_profil": "Motivasi terbesar anak adalah mengejar nilai A, rangking, prestasi, atau pengakuan eksternal (extrinsic motivation).",
+          "insight_untuk_orangtua": "Anak ini sangat kompetitif. Namun, awasi level stresnya karena mereka rentan depresi jika mengalami kegagalan akademik ringan.",
+          "rekomendasi_sekolah": "Berikan reward yang jelas atas prestasinya, namun bimbing mereka agar tidak memandang remeh proses belajar."
+        },
+        "Exploration-oriented": {
+          "deskripsi_profil": "Anak didorong oleh rasa penasaran tanpa batas. Ia suka mempelajari hal baru meski tidak ditugaskan atau diujikan.",
+          "insight_untuk_orangtua": "Hargai minat anak yang suka melompat-lompat antar hobi. Berikan mereka ruang untuk memuaskan rasa ingin tahunya.",
+          "rekomendasi_sekolah": "Jangan menghukum siswa jika ia membaca materi di luar kurikulum; salurkan ketertarikannya pada klub ekstrakurikuler."
+        }
+      }
+    }
+  },
+
+  "norma_kategori": [
+    {
+      "rentang_skor": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Sangat Dominan",
+      "interpretasi": "Pendekatan ini merupakan gaya belajar bawaan anak. Anak akan berkinerja dan menyerap materi secara paling maksimal apabila difasilitasi dengan metode ini."
+    },
+    {
+      "rentang_skor": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Dominan",
+      "interpretasi": "Anak merasa sangat nyaman dan menunjukkan efektivitas tinggi jika dihadapkan pada metode atau lingkungan pembelajaran ini."
+    },
+    {
+      "rentang_skor": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Moderat / Adaptif",
+      "interpretasi": "Anak cukup netral. Mereka dapat beradaptasi dan mengikuti metode ini dengan baik tanpa mengalami hambatan kognitif yang berarti."
+    },
+    {
+      "rentang_skor": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Rendah",
+      "interpretasi": "Pendekatan ini kurang disukai oleh anak. Jika dipaksakan, anak membutuhkan usaha ekstra secara mental untuk dapat beradaptasi."
+    },
+    {
+      "rentang_skor": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Sangat Rendah",
+      "interpretasi": "Lingkungan belajar ini sangat tidak cocok untuk anak. Anak rentan mengalami frustrasi, kehilangan motivasi, dan hasil yang kontra-produktif jika belajar menggunakan metode ini."
+    }
+  ],
+  "protokol_aplikasi": {
+    "program_riset_mandiri": "Rekomendasi cut-off: Sub-skor Self-Directed ≥ 70%.",
+    "kelas_eksperimental_terbuka": "Rekomendasi cut-off: Sub-skor Semi-Structured atau Open-Ended ≥ 65%."
+  }
+}
