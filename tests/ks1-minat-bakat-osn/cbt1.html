@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Pilar I — OSN Aptitude Test</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    :root {
+      --primary-blue: #1e3a8a;
+      --accent-blue: #2563eb;
+      --bg-slate: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg-slate); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Header Navigasi CBT */
+    .cbt-header { background: #ffffff; border-bottom: 2px solid var(--accent-blue); padding: 14px 28px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .header-title h2 { font-size: 1.1rem; color: var(--primary-blue); font-weight: 800; }
+    .header-title p { font-size: 0.8rem; color: #64748b; margin-top: 2px; }
+    .timer-badge { background: #f0f9ff; border: 1.5px solid #bae6fd; color: #0369a1; padding: 8px 18px; border-radius: 20px; font-weight: 800; font-family: monospace; font-size: 1.1rem; }
+    .timer-badge.warning { background: #fef2f2; border-color: #fecaca; color: #dc2626; animation: pulse 1s infinite; }
+
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+    /* Layout Main */
+    .cbt-container { max-width: 1200px; margin: 24px auto; padding: 0 16px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; flex: 1; width: 100%; }
+    @media (max-width: 900px) { .cbt-container { grid-template-columns: 1fr; } }
+
+    .question-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
+    .module-badge { display: inline-block; background: #eff6ff; color: var(--accent-blue); border: 1px solid #bfdbfe; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; text-transform: uppercase; }
+    .q-prompt { font-size: 0.98rem; font-weight: 600; line-height: 1.6; margin-bottom: 20px; text-align: justify; }
+    .stimulus-box { background: #ffffff; border: 1.5px dashed var(--border-color); border-radius: 10px; padding: 16px; display: flex; justify-content: center; align-items: center; margin-bottom: 24px; min-height: 160px; }
+    .stimulus-box svg { max-width: 100%; height: auto; }
+
+    /* Options Grid */
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    @media (max-width: 600px) { .options-grid { grid-template-columns: 1fr; } }
+    .opt-card { border: 2px solid var(--border-color); border-radius: 10px; padding: 14px 18px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 12px; background: #ffffff; user-select: none; }
+    .opt-card:hover { border-color: #93c5fd; background: #f0f9ff; }
+    .opt-card.selected { border-color: var(--accent-blue); background: #eff6ff; box-shadow: 0 2px 8px rgba(37,99,235,0.15); }
+    .opt-code { width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; color: #475569; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+    .opt-card.selected .opt-code { background: var(--accent-blue); color: #ffffff; }
+
+    /* Nav Side Panel */
+    .nav-panel { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 22px; height: fit-content; }
+    .nav-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+    .nav-btn { aspect-ratio: 1; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+    .nav-btn.complete { background: var(--accent-blue); color: #ffffff; border-color: var(--accent-blue); }
+    .nav-btn.active { outline: 2px solid #000000; outline-offset: 2px; }
+
+    .btn-action { padding: 12px 24px; border-radius: 10px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; font-size: 0.9rem; }
+    .btn-next { background: var(--accent-blue); color: #ffffff; }
+    .btn-next:hover { background: #1d4ed8; }
+    .btn-prev { background: #e2e8f0; color: #334155; }
+    .btn-prev:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-submit-mod { background: #10b981; color: #ffffff; width: 100%; margin-top: 18px; }
+    .btn-submit-mod:hover { background: #059669; }
+
+    /* Modal Lock Notice */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; visibility: hidden; opacity: 0; transition: all 0.3s; }
+    .modal-overlay.show { visibility: visible; opacity: 1; }
+    .modal-box { background: #ffffff; border-radius: 16px; padding: 32px; max-width: 480px; width: 90%; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+
+  <header class="cbt-header">
+    <div class="header-title">
+      <h2 id="module-title-text">Pilar I: OSN Aptitude Test</h2>
+      <p id="module-progress-text">Sub-Modul 1 dari 8 (Strict Lock System)</p>
+    </div>
+    <div class="timer-badge" id="timer-display">05:00</div>
+  </header>
+
+  <main class="cbt-container">
+    <section class="question-card">
+      <div>
+        <span class="module-badge" id="mod-code-badge">NUM</span>
+        <span style="font-size: 0.85rem; color: #64748b; font-weight: 700; float: right;" id="q-num-text">Soal 1 dari 4</span>
+        <div class="q-prompt" id="q-prompt-text">Memuat soal...</div>
+        <div class="stimulus-box" id="q-stimulus-box"></div>
+        <div class="options-grid" id="q-options-container"></div>
+      </div>
+      <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 16px;">
+        <button class="btn-action btn-prev" id="btn-prev" onclick="navQ(-1)">&larr; Sebelumnya</button>
+        <button class="btn-action btn-next" id="btn-next" onclick="navQ(1)">Selanjutnya &rarr;</button>
+      </div>
+    </section>
+
+    <aside class="nav-panel">
+      <h4 style="font-size: 0.95rem; color: var(--text-main);">Navigasi Soal Modul</h4>
+      <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Selesai diisi: <strong id="answered-count">0</strong> / 4</p>
+      <div class="nav-grid" id="nav-grid"></div>
+      <button class="btn-action btn-submit-mod" onclick="confirmFinishModule()">Kunci & Lanjut Sub-Modul &rarr;</button>
+    </aside>
+  </main>
+
+  <div class="modal-overlay" id="lock-modal">
+    <div class="modal-box">
+      <h3 style="color: var(--primary-blue); margin-bottom: 12px;" id="modal-title">Sub-Modul Selesai!</h3>
+      <p style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin-bottom: 24px;" id="modal-desc">
+        Sub-modul ini akan dikunci. Anda tidak dapat kembali mengubah jawaban di modul ini. Siap melanjutkan?
+      </p>
+      <button class="btn-action btn-next" style="width: 100%;" onclick="proceedToNextModule()">Lanjutkan ke Sub-Modul Berikutnya</button>
+    </div>
+  </div>
+
+  <script src="../../assets/js/auth.js"></script>
+  <script src="scoring1.js"></script>
+  <script>
+    // Urutan 8 Sub-Modul Pilar I
+    const MODULE_SEQUENCE = ["NUM", "LOG", "PAT", "SPA", "DAT", "ALG", "SAI", "EKO"];
+    let currentModuleIndex = 0;
+    
+    let currentQuestions = [];
+    let currentQIndex = 0;
+    
+    let userAnswers = {}; // Format: { qId: "A" }
+    let answerKeys = {}; // Format: { qId: "C" }
+    let moduleScoresMap = {}; // Penyimpanan kalkulasi tiap sub-modul
+    
+    let timeRemaining = 0;
+    let timerInterval = null;
+    let moduleStartTime = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadModule(0);
+    });
+
+    // 1. Memuat Berkas JSON Sub-Modul (soal1_part1.json s/d soal1_part8.json)
+    async function loadModule(modIdx) {
+      if (modIdx >= MODULE_SEQUENCE.length) {
+        finishAllPilar1();
+        return;
+      }
+
+      currentModuleIndex = modIdx;
+      const modCode = MODULE_SEQUENCE[modIdx];
+      const partNum = modIdx + 1;
+      const jsonFile = `soal1_part${partNum}.json`;
+
+      try {
+        const res = await fetch(jsonFile);
+        const data = await res.json();
+        
+        currentQuestions = data.questions || [];
+        userAnswers = {};
+        answerKeys = {};
+
+        currentQuestions.forEach(q => {
+          answerKeys[q.id] = q.correct_answer;
+        });
+
+        // Setup Timer Spesifik Sub-Modul
+        const config = SCORING_PILAR1.modules_config[modCode];
+        timeRemaining = (data.test_info && data.test_info.durasi_detik) ? data.test_info.durasi_detik : config.t_max;
+        moduleStartTime = Date.now();
+
+        // Update Tampilan Header
+        document.getElementById("mod-code-badge").innerText = modCode;
+        document.getElementById("module-title-text").innerText = `Sub-Modul: ${config.name}`;
+        document.getElementById("module-progress-text").innerText = `Sub-Modul ${modIdx + 1} dari 8 (Strict Lock System)`;
+
+        renderNavGrid();
+        renderQuestion(0);
+        startTimer();
+
+      } catch (err) {
+        console.error(`Gagal memuat ${jsonFile}:`, err);
+        alert(`Gagal memuat berkas soal sub-modul ${modCode}. Pastikan berkas ${jsonFile} tersedia.`);
+      }
+    }
+
+    // 2. Render Soal & Pilihan Jawaban
+    function renderQuestion(idx) {
+      currentQIndex = idx;
+      const q = currentQuestions[idx];
+      if (!q) return;
+
+      document.getElementById("q-num-text").innerText = `Soal ${idx + 1} dari ${currentQuestions.length}`;
+      document.getElementById("q-prompt-text").innerText = q.prompt;
+      
+      const stimBox = document.getElementById("q-stimulus-box");
+      if (q.visual_stimulus) {
+        stimBox.style.display = "flex";
+        stimBox.innerHTML = q.visual_stimulus;
+      } else {
+        stimBox.style.display = "none";
+      }
+
+      const container = document.getElementById("q-options-container");
+      container.innerHTML = "";
+
+      const currentChosen = userAnswers[q.id];
+
+      q.options.forEach(opt => {
+        const isSelected = currentChosen === opt.code;
+        const card = document.createElement("div");
+        card.className = `opt-card ${isSelected ? 'selected' : ''}`;
+        card.onclick = () => selectOption(q.id, opt.code);
+
+        card.innerHTML = `
+          <div class="opt-code">${opt.code}</div>
+          <div style="font-size: 0.9rem; font-weight: 500;">${opt.label}</div>
+        `;
+        container.appendChild(card);
+      });
+
+      document.getElementById("btn-prev").disabled = idx === 0;
+      updateNavGridUI();
+    }
+
+    function selectOption(qId, code) {
+      userAnswers[qId] = code;
+      renderQuestion(currentQIndex);
+      updateNavGridUI();
+    }
+
+    function navQ(dir) {
+      const target = currentQIndex + dir;
+      if (target >= 0 && target < currentQuestions.length) {
+        renderQuestion(target);
+      }
+    }
+
+    // 3. Render Panel Navigasi Samping
+    function renderNavGrid() {
+      const grid = document.getElementById("nav-grid");
+      grid.innerHTML = "";
+      currentQuestions.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.id = `nav-btn-${idx}`;
+        btn.className = "nav-btn";
+        btn.innerText = idx + 1;
+        btn.onclick = () => renderQuestion(idx);
+        grid.appendChild(btn);
+      });
+      updateNavGridUI();
+    }
+
+    function updateNavGridUI() {
+      let complete = 0;
+      currentQuestions.forEach((q, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        if (btn) {
+          const isFilled = userAnswers[q.id] !== undefined;
+          if (isFilled) complete++;
+          btn.className = `nav-btn ${isFilled ? 'complete' : ''} ${idx === currentQIndex ? 'active' : ''}`;
+        }
+      });
+      document.getElementById("answered-count").innerText = complete;
+    }
+
+    // 4. Timer Management
+    function startTimer() {
+      clearInterval(timerInterval);
+      updateTimerDisplay();
+
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+        updateTimerDisplay();
+
+        if (timeRemaining <= 60) {
+          document.getElementById("timer-display").classList.add("warning");
+        } else {
+          document.getElementById("timer-display").classList.remove("warning");
+        }
+
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          alert("Waktu pengerjaan sub-modul ini telah habis! Sistem akan mengunci dan beralih otomatis.");
+          autoSubmitModule();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(timeRemaining / 60);
+      const s = timeRemaining % 60;
+      document.getElementById("timer-display").innerText = 
+        `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+
+    // 5. Penguncian Sub-Modul & Kalkulasi Scoring
+    function confirmFinishModule() {
+      const count = Object.keys(userAnswers).length;
+      if (count < currentQuestions.length) {
+        if (!confirm(`Anda baru menjawab ${count} dari ${currentQuestions.length} soal. Yakin ingin mengunci sub-modul ini sekarang?`)) {
+          return;
+        }
+      }
+      autoSubmitModule();
+    }
+
+    function autoSubmitModule() {
+      clearInterval(timerInterval);
+      const modCode = MODULE_SEQUENCE[currentModuleIndex];
+      const timeSpentSec = Math.round((Date.now() - moduleStartTime) / 1000);
+
+      // Kalkulasi Skor Sub-Modul via scoring1.js
+      const result = SCORING_PILAR1.calculateModuleScore(modCode, userAnswers, answerKeys, timeSpentSec);
+      moduleScoresMap[modCode] = result;
+
+      // Tampilkan Modal Konfirmasi Penguncian
+      document.getElementById("modal-title").innerText = `Sub-Modul ${modCode} Dikunci`;
+      document.getElementById("modal-desc").innerText = `Skor Akurasi & Efisiensi Waktu berhasil direkam. Anda akan beralih ke sub-modul berikutnya. Sisa waktu tidak dapat diakumulasikan.`;
+      document.getElementById("lock-modal").classList.add("show");
+    }
+
+    function proceedToNextModule() {
+      document.getElementById("lock-modal").classList.remove("show");
+      loadModule(currentModuleIndex + 1);
+    }
+
+    // 6. Akhir Pengujian Seluruh Pilar I
+    function finishAllPilar1() {
+      // Hitung Skor Terbobot 10 Bidang & Evaluasi Status Gatekeeper
+      const fieldScores = SCORING_PILAR1.calculateFieldScores(moduleScoresMap);
+
+      const finalPilar1Data = {
+        test_code: "KS1_PILAR1",
+        timestamp: new Date().toISOString(),
+        module_scores: moduleScoresMap,
+        field_scores: fieldScores
+      };
+
+      // Simpan hasil akhir ke Session Storage
+      sessionStorage.setItem("pats_pilar1_results", JSON.stringify(finalPilar1Data));
+      
+      // Redirect ke halaman hasil
+      window.location.href = "result1.html";
+    }
+  </script>
+</body>
+</html>
