@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KU3 APACA ADLIT-Y</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean White Modern Futurism Styling (Optimized Static PDF Export) */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #4f46e5; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-ild-sangat { background: linear-gradient(135deg, #059669, #10b981); }
+    .badge-ild-cukup { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .badge-ild-low { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-ild-rentan { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+    .badge-irad-rendah { background: linear-gradient(135deg, #059669, #10b981); }
+    .badge-irad-sedang { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-irad-tinggi { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+    /* DUAL HERO CARDS (ILD & IRAD) */
+    .dual-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 868px) {
+      .dual-hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px;
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-card.ild { border-top: 6px solid #4f46e5; background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
+    .hero-card.irad { border-top: 6px solid #ea580c; background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%); }
+
+    .hero-score-num {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 10px 0;
+      font-family: monospace, sans-serif;
+    }
+
+    /* 2D MATRIX GRID (4 ZONES) */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .matrix-grid { grid-template-columns: 1fr; }
+    }
+
+    .zone-box {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      background: #ffffff;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .zone-box.active {
+      border-width: 3px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .zone-box.zone-a { border-color: #fca5a5; }
+    .zone-box.zone-a.active { border-color: #dc2626; background: #fef2f2; }
+
+    .zone-box.zone-b { border-color: #fed7aa; }
+    .zone-box.zone-b.active { border-color: #ea580c; background: #fff7ed; }
+
+    .zone-box.zone-c { border-color: #bae6fd; }
+    .zone-box.zone-c.active { border-color: #0284c7; background: #f0f9ff; }
+
+    .zone-box.zone-d { border-color: #86efac; }
+    .zone-box.zone-d.active { border-color: #16a34a; background: #f0fdf4; }
+
+    .active-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #0f172a;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 868px) {
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+
+    .chart-box { 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.05);
+    }
+
+    .guidance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .guidance-grid { grid-template-columns: 1fr; }
+    }
+
+    .guidance-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KU3_ADLIT_Literasi_Digital.pdf')" class="btn-primary" style="width: auto; background-color: #4f46e5;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN YOUTH DIGITAL BEHAVIOR & LITERACY INVENTORY (ADLIT-Y)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KU3 - APACA Youth Digital Behavior & Literacy Inventory (ADLIT-Y)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Dual Hero Cards (ILD & IRAD) -->
+      <div class="report-section">
+        <div class="report-section-title">I. HASIL UTAMA INDEKS LITERASI DIGITAL & RISIKO ADIKSI SCREEN-TIME</div>
+        
+        <div class="dual-hero-grid">
+          <!-- Hero Card 1: Indeks Literasi Digital (ILD) -->
+          <div class="hero-card ild">
+            <div>
+              <div style="font-size:0.82rem; color:#4f46e5; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">INDEKS LITERASI DIGITAL (ILD)</div>
+              <div id="r-ild-num" class="hero-score-num" style="color:#4f46e5;">0%</div>
+              <div id="r-ild-badge" class="badge-status badge-ild-cukup">CUKUP CERDAS DIGITAL</div>
+            </div>
+            <div style="margin-top: 14px;">
+              <p id="r-ild-desc" style="font-size:0.85rem; color:#334155; line-height:1.5; margin:0;">-</p>
+            </div>
+          </div>
+
+          <!-- Hero Card 2: Indeks Risiko Adiksi Digital (IRAD) -->
+          <div class="hero-card irad">
+            <div>
+              <div style="font-size:0.82rem; color:#ea580c; font-weight:800; text-transform:uppercase; letter-spacing:0.5px;">INDEKS RISIKO ADIKSI DIGITAL (IRAD)</div>
+              <div id="r-irad-num" class="hero-score-num" style="color:#ea580c;">15 / 60</div>
+              <div id="r-irad-badge" class="badge-status badge-irad-rendah">RISIKO RENDAH</div>
+            </div>
+            <div style="margin-top: 14px;">
+              <p id="r-irad-desc" style="font-size:0.85rem; color:#334155; line-height:1.5; margin:0;">-</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Pemetaan Matriks 2D 4-Zona -->
+      <div class="report-section">
+        <div class="report-section-title">II. MATRIKS PROFIL KECERDASAN & RISIKO DIGITAL (DUAL-SCORE 2D)</div>
+        
+        <div class="matrix-grid">
+          <!-- Zone A -->
+          <div id="box-zone-a" class="zone-box zone-a">
+            <h4 style="margin:0 0 6px 0; color:#dc2626; font-size:0.95rem;">🔴 ZONE A: BAHAYA</h4>
+            <div style="font-size:0.8rem; font-weight:700; color:#991b1b; margin-bottom:8px;">Literasi Rendah (≤60%) & Adiksi Tinggi (≥40)</div>
+            <p style="font-size:0.82rem; color:#334155; margin:0; line-height:1.4;">Kecanduan berat tanpa pemahaman etika & privasi. Sangat berisiko terkena kejahatan siber.</p>
+          </div>
+
+          <!-- Zone B -->
+          <div id="box-zone-b" class="zone-box zone-b">
+            <h4 style="margin:0 0 6px 0; color:#ea580c; font-size:0.95rem;">🟠 ZONE B: KERENTANAN</h4>
+            <div style="font-size:0.8rem; font-weight:700; color:#c2410c; margin-bottom:8px;">Literasi Tinggi (≥61%) & Adiksi Tinggi (≥40)</div>
+            <p style="font-size:0.82rem; color:#334155; margin:0; line-height:1.4;">Paham etika berinternet, namun kontrol durasi layar lemah. Berisiko pada akademis & tidur.</p>
+          </div>
+
+          <!-- Zone C -->
+          <div id="box-zone-c" class="zone-box zone-c">
+            <h4 style="margin:0 0 6px 0; color:#0284c7; font-size:0.95rem;">🔵 ZONE C: POLOS</h4>
+            <div style="font-size:0.8rem; font-weight:700; color:#0369a1; margin-bottom:8px;">Literasi Rendah (≤60%) & Adiksi Rendah (≤39)</div>
+            <p style="font-size:0.82rem; color:#334155; margin:0; line-height:1.4;">Tidak kecanduan gawai, tetapi polos dan belum paham bahaya privasi serta hoaks.</p>
+          </div>
+
+          <!-- Zone D -->
+          <div id="box-zone-d" class="zone-box zone-d">
+            <h4 style="margin:0 0 6px 0; color:#16a34a; font-size:0.95rem;">🟢 ZONE D: AMAN</h4>
+            <div style="font-size:0.8rem; font-weight:700; color:#15803d; margin-bottom:8px;">Literasi Tinggi (≥61%) & Adiksi Rendah (≤39)</div>
+            <p style="font-size:0.82rem; color:#334155; margin:0; line-height:1.4;">Profil Warga Digital Sejati. Cerdas etika dan bijak mengontrol penggunaan gawai.</p>
+          </div>
+        </div>
+
+        <!-- Detail Diagnostik Zona Aktif -->
+        <div id="active-zone-detail" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:18px; margin-top:14px;">
+          <!-- Inserted via JS -->
+        </div>
+      </div>
+
+      <!-- Section III: Visualisasi Dual Chart (Radar 4 Dimensi & Bar Chart) -->
+      <div class="report-section">
+        <div class="report-section-title">III. VISUALISASI PROFIL 4 DIMENSI BEHAVIOR DIGITAL</div>
+        
+        <div class="charts-grid">
+          <!-- Chart 1: Radar Chart 4 Dimensi -->
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Radar Keseimbangan Dimensi (%)</h5>
+            <canvas id="adlitRadarChart" style="max-height:260px;"></canvas>
+          </div>
+
+          <!-- Chart 2: Bar Chart 4 Dimensi -->
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Breakdown Indeks Dimensi (%)</h5>
+            <canvas id="adlitBarChart" style="max-height:260px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section IV: Tabulasi & Breakdown 4 Dimensi -->
+      <div class="report-section">
+        <div class="report-section-title">IV. TABULASI & BREAKDOWN EVALUASI 4 DIMENSI UTAMA</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Utama ADLIT-Y</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Evaluasi Profil</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section V: Panduan Edukasi Orang Tua & Sekolah -->
+      <div class="report-section">
+        <div class="report-section-title">V. PANDUAN STRATEGIS EDUKASI UNTUK ORANG TUA & SEKOLAH</div>
+        
+        <div class="guidance-grid">
+          <div class="guidance-card">
+            <h4 style="color:#4f46e5; margin-top:0; margin-bottom:10px; font-size:0.95rem;">🏡 Panduan untuk Orang Tua</h4>
+            <div id="guidance-ortu" style="font-size:0.85rem; color:#334155; line-height:1.6;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+
+          <div class="guidance-card">
+            <h4 style="color:#0891b2; margin-top:0; margin-bottom:10px; font-size:0.95rem;">🏫 Panduan untuk Sekolah & Guru BK</h4>
+            <div id="guidance-sekolah" style="font-size:0.85rem; color:#334155; line-height:1.6;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    // Register Chart.js DataLabels Plugin globally
+    Chart.register(ChartDataLabels);
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KU3
+      const rawAnswers = sessionStorage.getItem("pats_answers_KU3");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KU3
+        const result = KU3_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (user && typeof KU3_Scoring.sendRekapToGAS === "function") {
+          KU3_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Hero Card 1: Indeks Literasi Digital (ILD)
+        document.getElementById("r-ild-num").innerText = `${result.ildScore}%`;
+        const ildBadge = document.getElementById("r-ild-badge");
+        ildBadge.innerText = result.matchedILDNorm.label_status || "CUKUP CERDAS DIGITAL";
+        ildBadge.className = "badge-status " + (
+          result.ildScore >= 81 ? "badge-ild-sangat" :
+          result.ildScore >= 61 ? "badge-ild-cukup" :
+          result.ildScore >= 41 ? "badge-ild-low" : "badge-ild-rentan"
+        );
+        document.getElementById("r-ild-desc").innerText = result.matchedILDNorm.deskripsi || "-";
+
+        // 6. Render Hero Card 2: Indeks Risiko Adiksi Digital (IRAD)
+        document.getElementById("r-irad-num").innerText = `${result.iradScore} / 60`;
+        const iradBadge = document.getElementById("r-irad-badge");
+        iradBadge.innerText = result.matchedIRADNorm.label_status || "RISIKO RENDAH";
+        iradBadge.className = "badge-status " + (
+          result.iradScore >= 40 ? "badge-irad-tinggi" :
+          result.iradScore >= 27 ? "badge-irad-sedang" : "badge-irad-rendah"
+        );
+        document.getElementById("r-irad-desc").innerText = result.matchedIRADNorm.deskripsi || "-";
+
+        // 7. Render Matriks 2D 4-Zona (Highlight Active Zone)
+        const activeKey = result.activeZoneKey.toLowerCase().replace('_', '-');
+        const activeBox = document.getElementById(`box-${activeKey}`);
+        if (activeBox) {
+          activeBox.classList.add("active");
+          const badge = document.createElement("div");
+          badge.className = "active-badge";
+          badge.innerText = "PROFIL ANDA";
+          activeBox.appendChild(badge);
+        }
+
+        const activeZoneInfo = result.activeZone;
+        document.getElementById("active-zone-detail").innerHTML = `
+          <h4 style="margin:0 0 6px 0; color:#0f172a; font-size:1rem;">📌 ANALISIS PROFIL ZONA: ${activeZoneInfo.nama_zona}</h4>
+          <p style="font-size:0.88rem; color:#334155; margin-bottom:8px; line-height:1.5;">${activeZoneInfo.deskripsi_klinis}</p>
+          <div style="font-size:0.85rem; color:#991b1b; background:#fef2f2; padding:8px 12px; border-radius:6px; border:1px solid #fecaca; margin-bottom:8px;">
+            <strong>Risiko Utama:</strong> ${activeZoneInfo.risiko_utama}
+          </div>
+          <div style="font-size:0.85rem; color:#1e40af; background:#eff6ff; padding:8px 12px; border-radius:6px; border:1px solid #bfdbfe;">
+            <strong>Rekomendasi Penanganan:</strong> ${activeZoneInfo.rekomendasi_penanganan}
+          </div>
+        `;
+
+        // 8. Render Chart 1: Radar Chart 4 Dimensi
+        const dimLabels = ['Etika Digital', 'Berpikir Kritis', 'Keamanan Digital', 'Screen-Time'];
+        const dimValues = result.dimensionRows.map(r => r.percentage);
+
+        new Chart(document.getElementById('adlitRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: dimLabels,
+            datasets: [{
+              label: 'Indeks Dimensi (%)',
+              data: dimValues,
+              backgroundColor: 'rgba(79, 70, 229, 0.18)',
+              borderColor: '#4f46e5',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#4f46e5',
+              pointRadius: 5
+            }]
+          },
+          options: {
+            animation: false, // STATIC FOR PDF
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#cbd5e1' },
+                grid: { color: '#f1f5f9' },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { display: false }
+              }
+            },
+            plugins: {
+              legend: { display: false },
+              datalabels: {
+                backgroundColor: '#ffffff',
+                borderColor: '#cbd5e1',
+                borderWidth: 1,
+                borderRadius: 4,
+                color: '#4f46e5',
+                font: { weight: 'bold', size: 10 },
+                formatter: (val) => `${val}%`
+              }
+            }
+          }
+        });
+
+        // 9. Render Chart 2: Bar Chart 4 Dimensi
+        new Chart(document.getElementById('adlitBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: dimLabels,
+            datasets: [{
+              data: dimValues,
+              backgroundColor: ['#4f46e5', '#0891b2', '#059669', '#ea580c'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            animation: false, // STATIC FOR PDF
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true, max: 100 }
+            },
+            plugins: {
+              legend: { display: false },
+              datalabels: {
+                anchor: 'end',
+                align: 'top',
+                color: '#0f172a',
+                font: { weight: 'bold', size: 11 },
+                formatter: (val) => `${val}%`
+              }
+            }
+          }
+        });
+
+        // 10. Render Tabulasi Tabel Dimensi
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        result.dimensionRows.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.judul}</td>
+            <td>${row.rs} / ${row.maxRs}</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td style="text-align:left; font-size:0.82rem; color:#334155;">${row.deskripsi}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // 11. Render Panduan Edukasi Orang Tua & Sekolah
+        const guidance = rubrikData.panduan_edukasi || {};
+
+        if (guidance.orang_tua) {
+          document.getElementById("guidance-ortu").innerHTML = `
+            <p style="margin-top:0; margin-bottom:8px;"><strong>Manajemen Adiksi Screen-Time:</strong> ${guidance.orang_tua.penanganan_adiksi}</p>
+            <p style="margin-bottom:0;"><strong>Pendampingan Literasi:</strong> ${guidance.orang_tua.penanganan_literasi}</p>
+          `;
+        }
+
+        if (guidance.sekolah) {
+          document.getElementById("guidance-sekolah").innerHTML = `
+            <p style="margin-top:0; margin-bottom:8px;"><strong>Pemantauan Sekolah / BK:</strong> ${guidance.sekolah.penanganan_adiksi}</p>
+            <p style="margin-bottom:0;"><strong>Integrasi Kurikulum:</strong> ${guidance.sekolah.penanganan_literasi}</p>
+          `;
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KU3:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan ADLIT-Y.");
+      }
+    });
+  </script>
+</body>
+</html>
