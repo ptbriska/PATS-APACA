@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Panel - KU9 Work Decision-Making & Judgment Test (WDJT)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    :root {
+      --primary-indigo: #4f46e5;
+      --primary-indigo-hover: #4338ca;
+      --best-green: #059669;
+      --best-green-bg: #ecfdf5;
+      --worst-red: #dc2626;
+      --worst-red-bg: #fef2f2;
+      --bg-slate: #f8fafc;
+      --text-dark: #0f172a;
+      --border-color: #cbd5e1;
+    }
+
+    body {
+      background-color: var(--bg-slate);
+      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Navigasi CBT */
+    .cbt-header {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--primary-indigo);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.06);
+    }
+
+    .cbt-header-content {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cbt-timer-badge {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      font-family: monospace, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .cbt-timer-badge.warning {
+      background: #fef2f2;
+      color: #dc2626;
+      border-color: #fecaca;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+
+    /* Layout Main CBT */
+    .cbt-container {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      flex: 1;
+    }
+
+    @media (max-width: 960px) {
+      .cbt-container { grid-template-columns: 1fr; }
+    }
+
+    /* Kartu Soal SJT WDJT */
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .dimension-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #e0e7ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+
+    /* Skenario Paragraph Box */
+    .scenario-box {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-left: 5px solid var(--primary-indigo);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      font-size: 0.98rem;
+      color: #0f172a;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .instruction-mini {
+      background: #f0fdf4;
+      border-left: 4px solid var(--best-green);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 0.86rem;
+      color: #166534;
+      line-height: 1.5;
+    }
+
+    /* Opsi Best-Worst Grid */
+    .wdjt-block-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .wdjt-option-row {
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .wdjt-option-row:hover {
+      border-color: #cbd5e1;
+      background: #fafafa;
+    }
+
+    .wdjt-option-text {
+      font-size: 0.94rem;
+      color: #334155;
+      font-weight: 500;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* Dual Chip Button (BEST vs WORST) */
+    .chip-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-width: fit-content;
+    }
+
+    .chip-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: #64748b;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .chip-btn.best-btn:hover {
+      border-color: var(--best-green);
+      color: var(--best-green);
+      background: var(--best-green-bg);
+    }
+
+    .chip-btn.best-btn.active {
+      background: var(--best-green);
+      color: #ffffff;
+      border-color: var(--best-green);
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+    }
+
+    .chip-btn.worst-btn:hover {
+      border-color: var(--worst-red);
+      color: var(--worst-red);
+      background: var(--worst-red-bg);
+    }
+
+    .chip-btn.worst-btn.active {
+      background: var(--worst-red);
+      color: #ffffff;
+      border-color: var(--worst-red);
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+    }
+
+    /* Panel Navigasi Samping */
+    .nav-panel {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      height: fit-content;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-top: 14px;
+    }
+
+    .nav-btn {
+      aspect-ratio: 1;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-btn.partial {
+      background: #fef3c7;
+      color: #d97706;
+      border-color: #fcd34d;
+    }
+
+    .nav-btn.complete {
+      background: var(--primary-indigo);
+      color: #ffffff;
+      border-color: var(--primary-indigo);
+    }
+
+    .nav-btn.active {
+      outline: 2.5px solid #0891b2;
+      outline-offset: 2px;
+      font-weight: 900;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--primary-indigo);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .btn-action {
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-next { background: var(--primary-indigo); color: #ffffff; }
+    .btn-next:hover { background: var(--primary-indigo-hover); }
+    .btn-prev { background: #e2e8f0; color: #334155; }
+    .btn-prev:hover { background: #cbd5e1; }
+    .btn-submit { background: #059669; color: #ffffff; width: 100%; margin-top: 18px; }
+    .btn-submit:hover { background: #047857; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="cbt-header">
+    <div class="cbt-header-content">
+      <div>
+        <h4 style="margin: 0; color: var(--primary-indigo); font-size: 1.1rem;">APACA WDJT - Work Decision Test (KU9)</h4>
+        <div style="font-size: 0.8rem; color: #64748b;" id="user-info-text">Peserta: -</div>
+      </div>
+      <div class="cbt-timer-badge" id="timer-badge">
+        <span>⏱️</span>
+        <span id="timer-display">30:00</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main CBT Layout -->
+  <main class="cbt-container">
+    <!-- Panel Soal SJT WDJT -->
+    <section class="question-card">
+      <div>
+        <div class="question-meta">
+          <span class="dimension-badge" id="dim-badge">Kualitas Decision Making</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;" id="q-number-text">Skenario 1 dari 20</span>
+        </div>
+
+        <div class="instruction-mini">
+          📌 <strong>Petunjuk Pengisian:</strong> Bacalah skenario situasi kasus, lalu tentukan 1 opsi tindakan <strong>TERBAIK (+ BEST)</strong> dan 1 opsi tindakan <strong>TERBURUK (- WORST)</strong>.
+        </div>
+
+        <!-- Skenario Kasus -->
+        <div class="scenario-box" id="scenario-text">
+          Memuat skenario kasus...
+        </div>
+
+        <!-- Opsi Best-Worst -->
+        <div class="wdjt-block-grid" id="wdjt-options-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid #f1f5f9;">
+        <button class="btn-action btn-prev" id="btn-prev" onclick="navigateQuestion(-1)">&larr; Sebelumnya</button>
+        <button class="btn-action btn-next" id="btn-next" onclick="navigateQuestion(1)">Selanjutnya &rarr;</button>
+      </div>
+    </section>
+
+    <!-- Navigasi Panel Kanan -->
+    <aside class="nav-panel">
+      <h5 style="margin: 0 0 6px 0; color: #0f172a; font-size: 0.95rem;">Navigasi Skenario</h5>
+      <div style="font-size: 0.78rem; color: #64748b;">Terisi Lengkap: <strong id="answered-count">0</strong> / <span id="total-count">20</span></div>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="nav-grid" id="nav-grid">
+        <!-- Render 20 buttons via JS -->
+      </div>
+
+      <button class="btn-action btn-submit" onclick="confirmSubmit()">Selesaikan Ujian</button>
+    </aside>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script>
+    let questionsData = [];
+    let currentIndex = 0;
+    let answers = {}; // Structure: { 1: { best: "A", worst: "C" }, ... }
+    let timerSeconds = 30 * 60; // Default 30 Menit
+    let timerInterval = null;
+
+    const dimColorMap = {
+      "Kualitas Decision Making": { bg: "#e0e7ff", color: "#4338ca", border: "#c7d2fe", accent: "#4f46e5" },
+      "Delegasi Efektif": { bg: "#cffafe", color: "#0e7490", border: "#a5f3fc", accent: "#0891b2" },
+      "Skala Prioritas": { bg: "#dcfce7", color: "#15803d", border: "#bbf7d0", accent: "#059669" },
+      "Penanganan Krisis": { bg: "#ffe4e6", color: "#be123c", border: "#fecdd3", accent: "#dc2626" }
+    };
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Verifikasi Sesi User
+      if (typeof PATS_AUTH !== "undefined") {
+        const user = PATS_AUTH.getSession();
+        if (user) {
+          document.getElementById("user-info-text").innerText = `Peserta: ${user.nama_lengkap || 'Siswa'} (${user.kode_akses || 'KU9'})`;
+        }
+      }
+
+      // 2. Muat Berkas Soal KU9
+      try {
+        const res = await fetch("soal.json");
+        const testData = await res.json();
+        questionsData = testData.questions || [];
+
+        if (testData.test_info && testData.test_info.durasi_menit) {
+          timerSeconds = testData.test_info.durasi_menit * 60;
+        }
+
+        document.getElementById("total-count").innerText = questionsData.length;
+
+        // Restore Progress dari SessionStorage jika tersedia
+        const saved = sessionStorage.getItem("pats_answers_KU9");
+        if (saved) {
+          answers = JSON.parse(saved);
+        }
+
+        renderNavGrid();
+        renderQuestion(currentIndex);
+        startTimer();
+
+      } catch (err) {
+        console.error("Gagal memuat soal KU9:", err);
+        alert("Terjadi kesalahan saat memuat berkas soal WDJT.");
+      }
+    });
+
+    // RENDERER UTAMA SKENARIO BEST-WORST WDJT KU9
+    function renderQuestion(index) {
+      if (index < 0 || index >= questionsData.length) return;
+      currentIndex = index;
+
+      const q = questionsData[index];
+      document.getElementById("q-number-text").innerText = `Skenario ${index + 1} dari ${questionsData.length}`;
+
+      // Set Dimensi Badge & Style Warna
+      const dimBadge = document.getElementById("dim-badge");
+      const dimKey = q.dimension || "Kualitas Decision Making";
+      const styleObj = dimColorMap[dimKey] || dimColorMap["Kualitas Decision Making"];
+
+      dimBadge.innerText = dimKey;
+      dimBadge.style.backgroundColor = styleObj.bg;
+      dimBadge.style.color = styleObj.color;
+      dimBadge.style.borderColor = styleObj.border;
+
+      // Render Text Skenario
+      const scenarioElem = document.getElementById("scenario-text");
+      scenarioElem.innerText = q.scenario || "-";
+      scenarioElem.style.borderLeftColor = styleObj.accent;
+
+      // Render 4 Opsi Pilihan + Dual Chip (Best vs Worst)
+      const container = document.getElementById("wdjt-options-container");
+      container.innerHTML = "";
+
+      const currentAns = answers[q.id] || { best: null, worst: null };
+
+      if (q.options) {
+        q.options.forEach(opt => {
+          const isBest = currentAns.best === opt.code;
+          const isWorst = currentAns.worst === opt.code;
+
+          const row = document.createElement("div");
+          row.className = "wdjt-option-row";
+
+          row.innerHTML = `
+            <div class="wdjt-option-text"><strong>[${opt.code}]</strong> ${opt.label}</div>
+            <div class="chip-group">
+              <button class="chip-btn best-btn ${isBest ? 'active' : ''}" 
+                      onclick="selectChoice(${q.id}, '${opt.code}', 'best')">
+                ${isBest ? '✓ BEST (+)' : '+ BEST'}
+              </button>
+              <button class="chip-btn worst-btn ${isWorst ? 'active' : ''}" 
+                      onclick="selectChoice(${q.id}, '${opt.code}', 'worst')">
+                ${isWorst ? '✓ WORST (-)' : '- WORST'}
+              </button>
+            </div>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      // Navigasi Prev/Next State
+      document.getElementById("btn-prev").disabled = index === 0;
+      document.getElementById("btn-next").innerText = index === questionsData.length - 1 ? "Selesai" : "Selanjutnya \u2192";
+
+      updateNavHighlight();
+    }
+
+    // SIMPAN PILIHAN (DENGAN PROTEKSI MULTI-SELECT BARIS)
+    function selectChoice(questionId, optionCode, choiceType) {
+      if (!answers[questionId]) {
+        answers[questionId] = { best: null, worst: null };
+      }
+
+      const qState = answers[questionId];
+
+      if (choiceType === 'best') {
+        if (qState.best === optionCode) {
+          qState.best = null; // Toggle off jika diklik ulang
+        } else {
+          qState.best = optionCode;
+          if (qState.worst === optionCode) {
+            qState.worst = null; // Reset Worst jika dipasang di baris yang sama
+          }
+        }
+      } else if (choiceType === 'worst') {
+        if (qState.worst === optionCode) {
+          qState.worst = null; // Toggle off jika diklik ulang
+        } else {
+          qState.worst = optionCode;
+          if (qState.best === optionCode) {
+            qState.best = null; // Reset Best jika dipasang di baris yang sama
+          }
+        }
+      }
+
+      sessionStorage.setItem("pats_answers_KU9", JSON.stringify(answers));
+
+      renderQuestion(currentIndex);
+      updateProgress();
+    }
+
+    // NAVIGASI INDEX SOAL
+    function navigateQuestion(direction) {
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < questionsData.length) {
+        renderQuestion(newIndex);
+      } else if (newIndex >= questionsData.length) {
+        confirmSubmit();
+      }
+    }
+
+    // RENDER PANEL NAVIGASI
+    function renderNavGrid() {
+      const grid = document.getElementById("nav-grid");
+      grid.innerHTML = "";
+
+      questionsData.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.id = `nav-btn-${idx}`;
+        btn.innerText = idx + 1;
+        btn.onclick = () => renderQuestion(idx);
+        grid.appendChild(btn);
+      });
+
+      updateProgress();
+    }
+
+    function updateNavHighlight() {
+      questionsData.forEach((q, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        if (btn) {
+          const ans = answers[q.id];
+          const isComplete = ans && ans.best && ans.worst;
+          const isPartial = ans && (ans.best || ans.worst) && !isComplete;
+
+          btn.className = `nav-btn ${isComplete ? 'complete' : isPartial ? 'partial' : ''} ${idx === currentIndex ? 'active' : ''}`;
+        }
+      });
+    }
+
+    function updateProgress() {
+      let completeCount = 0;
+      questionsData.forEach(q => {
+        const ans = answers[q.id];
+        if (ans && ans.best && ans.worst) {
+          completeCount++;
+        }
+      });
+
+      document.getElementById("answered-count").innerText = completeCount;
+      const total = questionsData.length;
+      const pct = Math.round((completeCount / total) * 100);
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    // TIMER COUNTDOWN WITH WARNING
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+
+        if (timerSeconds <= 300) { // Alert pada 5 menit terakhir
+          document.getElementById("timer-badge").classList.add("warning");
+        }
+
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert("Waktu pengerjaan tes WDJT telah habis. Hasil pengerjaan Anda akan dikumpulkan otomatis.");
+          submitTest();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      document.getElementById("timer-display").innerText = 
+        `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // KONFIRMASI PENGUMPULAN
+    function confirmSubmit() {
+      let completeCount = 0;
+      questionsData.forEach(q => {
+        const ans = answers[q.id];
+        if (ans && ans.best && ans.worst) {
+          completeCount++;
+        }
+      });
+
+      const total = questionsData.length;
+
+      if (completeCount < total) {
+        if (!confirm(`Anda baru melengkapi ${completeCount} dari ${total} skenario. Yakin ingin mengumpulkan sekarang?`)) {
+          return;
+        }
+      } else {
+        if (!confirm("Seluruh 20 skenario telah dilengkapi aksi BEST dan WORST. Yakin ingin mengumpulkan pengerjaan KU9 (WDJT)?")) {
+          return;
+        }
+      }
+
+      submitTest();
+    }
+
+    function submitTest() {
+      clearInterval(timerInterval);
+      sessionStorage.setItem("pats_answers_KU9", JSON.stringify(answers));
+      window.location.href = "result.html";
+    }
+  </script>
+</body>
+</html>
