@@ -1,0 +1,205 @@
+{
+  "kode_tes": "KU9",
+  "nama_tes": "APACA Work Decision-Making & Judgment Test (WDJT)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Work Decision-Making & Judgment Test (WDJT) mengukur kematangan judgment taktis, ketepatan penalaran situasional (Managerial Tacit Knowledge), serta efektivitas eksekusi tindakan manajerial menggunakan metode Situational Judgment Test (SJT) format Best-Worst Response.",
+  "metode_penilaian": {
+    "sistem": "Concordance Distance Scoring (CDS)",
+    "deskripsi": "Peserta memilih 1 tindakan TERBAIK (Best) dan 1 tindakan TERBURUK (Worst) dari 4 opsi per skenario. Skor dihitung berdasarkan selisih bobot konsensus panel ahli (expert consensus weight) antara opsi Best dan Worst yang dipilih.",
+    "formula_skenario": "S_i = W_Best(O_terpilih) - W_Worst(O_terpilih)",
+    "formula_dci": "DCI (%) = ((RS_total - RS_min) / (RS_max - RS_min)) * 100"
+  },
+  "norma_kategorisasi_dci": [
+    {
+      "rentang_dci": "86% – 100%",
+      "kategori": "Sangat Tinggi (Superior Judgment)",
+      "indikasi_kesiapan": "Penalaran taktis dan strategis sangat matang. Sangat selaras dengan praktik manajerial ideal dan konsensus ahli.",
+      "rekomendasi_manajerial": "SANGAT DIREKOMENDASIKAN (Highly Recommended) untuk posisi Manajer Senior, Direktur, atau Pemimpin Krisis Utama. Memiliki tingkat risiko keputusan salah yang sangat rendah."
+    },
+    {
+      "rentang_dci": "71% – 85%",
+      "kategori": "Tinggi (Proficient)",
+      "indikasi_kesiapan": "Memiliki judgment kerja yang baik dan efektif. Mampu mengambil keputusan yang solutif pada sebagian besar situasi dilematis.",
+      "rekomendasi_manajerial": "DIREKOMENDASIKAN (Recommended) untuk promosi jabatan Manajer/Supervisor. Mampu mengelola tim dan proyek operasional dengan risiko terukur."
+    },
+    {
+      "rentang_dci": "51% – 70%",
+      "kategori": "Sedang (Moderate / Developing)",
+      "indikasi_kesiapan": "Pengambilan keputusan cukup memadai pada situasi rutin, namun sesekali kurang tepat dalam situasi krisis atau dilema yang kompleks.",
+      "rekomendasi_manajerial": "DIREKOMENDASIKAN DENGAN CATATAN (Considered with Development). Perlu pendampingan mentor pada keputusan strategis berisiko tinggi."
+    },
+    {
+      "rentang_dci": "36% – 50%",
+      "kategori": "Rendah (Impaired Judgment)",
+      "indikasi_kesiapan": "Cenderung mengambil keputusan sub-optimal, kurang memperhitungkan implikasi jangka panjang, atau salah menilai aksi terbaik/terburuk.",
+      "rekomendasi_manajerial": "BELUM DIREKOMENDASIKAN untuk posisi pimpinan tim. Membutuhkan pelatihan intensif mengenai Executive Function & Practical Judgment."
+    },
+    {
+      "rentang_dci": "0% – 35%",
+      "kategori": "Sangat Rendah (High Risk)",
+      "indikasi_kesiapan": "Berisiko tinggi membuat keputusan destruktif, impulsif, atau keliru dalam mengelola sumber daya, tim, dan krisis organisasi.",
+      "rekomendasi_manajerial": "TIDAK DIREKOMENDASIKAN (Not Recommended). Keputusan yang diambil berpotensi menimbulkan kerugian operasional dan hukum bagi organisasi."
+    }
+  ],
+  "dimensi_utama": {
+    "Kualitas_Decision_Making": {
+      "kode": "QDM",
+      "nama": "Kualitas Decision Making (Decision Quality)",
+      "sebaran_item": [1, 5, 9, 13, 17],
+      "fokus_pengukuran": "Mengukur kemampuan mengidentifikasi inti masalah, mempertimbangkan implikasi jangka panjang, mengevaluasi risiko secara analitis berbasis data, serta menjaga objektivitas dan integritas etika bisnis.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_dci": "86% – 100%",
+          "kategori": "Superior Judgment",
+          "deskripsi_perilaku": "Sangat tajam membedakan fakta objektif dari persepsi emosional. Keputusan yang diambil senantiasa memperhitungkan dampak sistemik jangka panjang, mitigasi risiko, dan integritas etika tanpa kompromi.",
+          "saran_pengembangan": "Pertahankan kualitas penalaran analitis ini dan libatkan diri dalam merancang peta kebijakan strategis organisasi."
+        },
+        "Tinggi": {
+          "rentang_dci": "71% – 85%",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Mampu membuat keputusan bisnis yang rasional dan objektif. Mampu mengevaluasi opsi tindakan berdasar analisis data yang memadai.",
+          "saran_pengembangan": "Tingkatkan ketajaman analisis risiko pada situasi dilematis yang minim ketersediaan data historis."
+        },
+        "Sedang": {
+          "rentang_dci": "51% – 70%",
+          "kategori": "Moderate",
+          "deskripsi_perilaku": "Keputusan yang diambil cukup fungsional pada situasi standar, namun sesekali terpengaruh oleh pertimbangan sentimental atau bias jangka pendek.",
+          "saran_pengembangan": "Gunakan kerangka analisis risko (Risk Assessment Matrix) secara tertulis sebelum menetapkan keputusan operasional penting."
+        },
+        "Rendah": {
+          "rentang_dci": "36% – 50%",
+          "kategori": "Impaired Judgment",
+          "deskripsi_perilaku": "Sering kali terjebak pada pemecahan masalah dangkal (pembungkusan gejala luar) tanpa menyelesaikan akar masalah yang mendasar.",
+          "saran_pengembangan": "Wajib berkonsultasi dengan atasan/tim ahli sebelum membuat keputusan yang berdampak pada anggaran dan reputasi."
+        },
+        "Sangat_Rendah": {
+          "rentang_dci": "0% – 35%",
+          "kategori": "High Risk",
+          "deskripsi_perilaku": "Mengambil keputusan secara impulsif, mengabaikan etika operasional, atau mengutamakan kepentingan pribadi di atas integritas lembaga.",
+          "saran_pengembangan": "Perlu intervensi pembenahan etika profesi dan evaluasi menyeluruh terhadap proses pemikiran strategis."
+        }
+      }
+    },
+    "Delegasi_Efektif": {
+      "kode": "DELE",
+      "nama": "Delegasi Efektif (Delegation & Empowerment)",
+      "sebaran_item": [2, 6, 10, 14, 18],
+      "fokus_pengukuran": "Mengukur kemampuan membagi wewenang dan tanggung jawab secara tepat berbasis kapasitas tim, memberikan kejelasan arahan, serta menghindari micromanagement atau pelepasan tanggung jawab (abdication).",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_dci": "86% – 100%",
+          "kategori": "Superior Judgment",
+          "deskripsi_perilaku": "Sangat mahir memberdayakan bawahan. Mampu menetapkan batas wewenang otonom yang pas, memberikan supervisi terukur (milestone review), dan menciptakan kepercayaan tinggi tanpa micromanagement.",
+          "saran_pengembangan": "Jadilah mentor pendelegasian bagi eksekutif muda untuk membangun budaya pemberdayaan (empowerment culture) di seluruh divisi."
+        },
+        "Tinggi": {
+          "rentang_dci": "71% – 85%",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Mampu mendelegasikan tugas sesuai dengan kompetensi anggota tim. Pembagian kerja terstruktur dan pemantauan berjalan secara teratur.",
+          "saran_pengembangan": "Berikan lebih banyak porsi tanggung jawab strategis kepada anggota tim yang berkinerja unggul."
+        },
+        "Sedang": {
+          "rentang_dci": "51% – 70%",
+          "kategori": "Moderate",
+          "deskripsi_perilaku": "Cenderung berhati-hati dalam mendelegasikan tugas; terkadang masih memeriksa detail kecil secara berlebihan (micromanage) saat merasa kurang yakin.",
+          "saran_pengembangan": "Susun Standar Operasional Prosedur (SOP) dan kriteria hasil akhir (deliverables) yang jelas agar lebih percaya melepas pendelegasian."
+        },
+        "Rendah": {
+          "rentang_dci": "36% – 50%",
+          "kategori": "Impaired Judgment",
+          "deskripsi_perilaku": "Mengalami kesulitan mendelegasikan tugas: cenderung memborong semua pekerjaan sendiri hingga kelelahan atau sebaliknya melepaskan penuh tanpa kontrol (abdication).",
+          "saran_pengembangan": "Latihlah teknik pendelegasian bertahap dan buat jam konsultasi rutin untuk memeriksa perkembangan tim."
+        },
+        "Sangat_Rendah": {
+          "rentang_dci": "0% – 35%",
+          "kategori": "High Risk",
+          "deskripsi_perilaku": "Gagal mengelola wewenang: sering menyalahkan staf atas kegagalan tugas yang diawasi atau menghambat pertumbuhan potensi bawahan secara drastis.",
+          "saran_pengembangan": "Diperlukan pembinaan kepemimpinan delegatif dan restrukturisasi cara berinteraksi dengan bawahan."
+        }
+      }
+    },
+    "Skala_Prioritas": {
+      "kode": "PRIO",
+      "nama": "Skala Prioritas (Priority Setting & Resource Allocation)",
+      "sebaran_item": [3, 7, 11, 15, 19],
+      "fokus_pengukuran": "Mengukur kemampuan memilah tugas berdasar urgensi dan dampak (Eisenhower Matrix), mengelola keterbatasan sumber daya/waktu, serta mempertahankan fokus pada target utama di tengah distraksi operasional.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_dci": "86% – 100%",
+          "kategori": "Superior Judgment",
+          "deskripsi_perilaku": "Sangat ahli mengelola beban kerja kritis yang bentrok. Mampu merealokasi sumber daya secara fleksibel dan efisien tanpa kehilangan fokus pada target strategis utama organisasi.",
+          "saran_pengembangan": "Pertahankan ketangkasan alokasi sumber daya ini saat menghadapi ekspansi proyek berskala nasional/internasional."
+        },
+        "Tinggi": {
+          "rentang_dci": "71% – 85%",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Memiliki skala prioritas yang jelas. Mampu membedakan mana tugas penting-mendesak dan menyusun jadwal alokasi tim dengan teratur.",
+          "saran_pengembangan": "Tingkatkan ketahanan tim dalam mengantisipasi lonjakan permintaan ad-hoc yang mendadak."
+        },
+        "Sedang": {
+          "rentang_dci": "51% – 70%",
+          "kategori": "Moderate",
+          "deskripsi_perilaku": "Cukup mampu mengurutkan pekerjaan rutin, namun mudah terdistraksi atau kewalahan saat beberapa tugas mendesak datang dari berbagai arah secara bersamaan.",
+          "saran_pengembangan": "Gunakan instrumen pemetaan prioritas (seperti Eisenhower Matrix) untuk memilah porsi pengerjaan tugas secara visual."
+        },
+        "Rendah": {
+          "rentang_dci": "36% – 50%",
+          "kategori": "Impaired Judgment",
+          "deskripsi_perilaku": "Sering kali keliru menetapkan prioritas: mendahulukan tugas-tugas sepele yang mudah dan mengabaikan proyek strategis ber-dampak besar yang tenggat waktunya mendekat.",
+          "saran_pengembangan": "Tetapkan maksimal 3 fokus prioritas utama harian (Daily Top 3 Priorities) yang dikonfirmasi oleh atasan."
+        },
+        "Sangat_Rendah": {
+          "rentang_dci": "0% – 35%",
+          "kategori": "High Risk",
+          "deskripsi_perilaku": "Manajemen prioritas buruk: menyebabkan berbagai kegagalan tenggat waktu penting dan pemborosan sumber daya operasional organisasi.",
+          "saran_pengembangan": "Perlu pendampingan ketat dalam penyusunan perencanaan kerja harian dan alokasi anggaran."
+        }
+      }
+    },
+    "Penanganan_Krisis": {
+      "kode": "CRIS",
+      "nama": "Penanganan Krisis (Crisis Handling & Agility)",
+      "fokus_pengukuran": "Mengukur kemampuan menjaga ketenangan di bawah tekanan, mengambil tindakan taktis yang cepat dan tepat saat terjadi kontinjensi/darurat, serta memitigasi dampak kerugian reputasi dan operasional.",
+      "kategori_skor": {
+        "Sangat_Tinggi": {
+          "rentang_dci": "86% – 100%",
+          "kategori": "Superior Judgment",
+          "deskripsi_perilaku": "Sangat tenang, tangkas, dan tegas saat menghadapi kondisi krisis darurat. Mampu mengisolasi dampak kerugian, mengomunikasikan langkah taktis secara jernih, dan memulihkan operasional secara cepat.",
+          "saran_pengembangan": "Pimpin Tim Manajemen Risiko Krisis (Crisis Management Task Force) untuk menyusun rencana penanganan kontinjensi organisasi."
+        },
+        "Tinggi": {
+          "rentang_dci": "71% – 85%",
+          "kategori": "Proficient",
+          "deskripsi_perilaku": "Tanggap dan teratur menghadapi situasi darurat. Mampu mengeksekusi protokol tanggap krisis dengan stabil dan meminimalisir kepanikan tim.",
+          "saran_pengembangan": "Lakukan simulasi uji krisis secara berkala untuk mempercepat waktu respons tindakan."
+        },
+        "Sedang": {
+          "rentang_dci": "51% – 70%",
+          "kategori": "Moderate",
+          "deskripsi_perilaku": "Cukup tenang menghadapi gangguan kecil, namun mulai menunjukkan kecemasan dan membutuhkan arahan saat krisis berdampak besar pada publik.",
+          "saran_pengembangan": "Pelajari protokol komunikasi krisis (Crisis PR & Operational Protocol) untuk memperkuat kesiapan mental."
+        },
+        "Rendah": {
+          "rentang_dci": "36% – 50%",
+          "kategori": "Impaired Judgment",
+          "deskripsi_perilaku": "Mudah panik di bawah tekanan krisis: cenderung mengambil tindakan reaktif yang gegabah atau menutupi kenyataan masalah yang justru memperburuk situasi.",
+          "saran_pengembangan": "Latihlah kontrol regulasi emosi diri di bawah tekanan dan ikuti panduan komando krisis baku."
+        },
+        "Sangat_Rendah": {
+          "rentang_dci": "0% – 35%",
+          "kategori": "High Risk",
+          "deskripsi_perilaku": "Respon krisis sangat buruk: bersikap emosional, melarikan diri dari tanggung jawab, atau mengeluarkan reaksi yang memicu kerusakan fatal bagi organisasi.",
+          "saran_pengembangan": "Dilarang memegang kendali penanganan krisis sebelum lulus pelatihan manajemen krisis mendasar."
+        }
+      }
+    }
+  },
+  "panduan_interpretasi_manajerial": {
+    "promosi_jabatan": "Peserta yang diproyeksikan untuk posisi Manajer/Direktur disyaratkan memiliki nilai DCI Global ≥ 75% serta tidak memiliki skor dimensi tunggal ≤ 50%.",
+    "rekrutmen_eksekutif": "Skor DCI yang tinggi mencerminkan tacit knowledge manajerial yang solid, yaitu kemampuan mengeksekusi tindakan yang tepat secara intuitif tanpa perlu diawasi.",
+    "audit_keputusan_tim": "Data dimensi yang rendah dapat dimanfaatkan oleh tim HRD/Management untuk melakukan post-mortem analysis pada proyek-proyek yang mengalami kegagalan eksekusi."
+  }
+}
