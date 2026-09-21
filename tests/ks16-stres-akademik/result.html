@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KS16 APACA AASBI</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean White Modern Futurism Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #e11d48; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-normal { background: linear-gradient(135deg, #059669, #10b981); }
+    .badge-mild { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .badge-moderate { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-severe { background: linear-gradient(135deg, #dc2626, #f43f5e); }
+
+    /* RED FLAG CRISIS BANNER */
+    .red-flag-banner {
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+      border: 2px solid #f43f5e;
+      border-left: 8px solid #dc2626;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      display: none; /* Controlled via JS */
+      animation: pulseBorder 2s infinite;
+    }
+
+    @keyframes pulseBorder {
+      0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+    }
+
+    .global-score-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #fff1f2 100%);
+      border: 1px solid #fecdd3;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .global-score-number {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #e11d48;
+      line-height: 1;
+      margin: 6px 0;
+      font-family: monospace, sans-serif;
+    }
+
+    .chart-box { 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.05);
+      margin: 20px 0;
+    }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .guidance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 868px) {
+      .guidance-grid { grid-template-columns: 1fr; }
+    }
+
+    .guidance-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS16_AASBI_Stres_Burnout_Akademik.pdf')" class="btn-primary" style="width: auto; background-color: #e11d48;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN ACADEMIC STRESS & BURNOUT INVENTORY (AASBI)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS16 - APACA Academic Stress & Burnout Inventory (AASBI)</span></td>
+        </tr>
+      </table>
+
+      <!-- RED FLAG CRISIS ALERT BANNER -->
+      <div id="red-flag-banner" class="red-flag-banner">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div style="font-size:2.8rem;">🚨</div>
+          <div>
+            <h3 style="margin:0; color:#9f1239; font-size:1.15rem;">RED FLAG: PROTOKOL TINDAK LANJUT KRISIS KRUSIAL DIBUTUHKAN</h3>
+            <p style="margin:6px 0 0 0; font-size:0.88rem; color:#881337; line-height:1.5;">
+              Siswa menunjukkan Indeks Stres Akademik pada kategori <strong>STRES BERAT (SEVERE BURNOUT)</strong>. Diperlukan pendampingan dan konseling tatap muka oleh Konselor Sekolah/Guru BK dalam waktu maksimal <strong>2×24 jam</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section I: Ringkasan Indeks Stres Akademik Global -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN INDEKS STRES AKADEMIK GLOBAL</div>
+        
+        <div class="global-score-card">
+          <div style="flex: 1; text-align: center; border-right: 2px solid #fecdd3; padding-right: 20px;">
+            <div style="font-size: 0.82rem; color: #e11d48; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Indeks Stres Global</div>
+            <div id="r-overall-index" class="global-score-number">0%</div>
+            <div id="r-overall-badge" class="badge-status badge-mild">NORMAL</div>
+          </div>
+          <div style="flex: 2; padding-left: 8px;">
+            <h4 id="r-global-kategori" style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 1.15rem;">-</h4>
+            <p id="r-global-deskripsi" style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin-bottom: 8px;">-</p>
+            <p style="font-size: 0.85rem; color: #475569; margin: 0;"><strong>Dampak Akademik:</strong> <span id="r-global-dampak">-</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Visualisasi Profil Dimensi Stres & Burnout -->
+      <div class="report-section">
+        <div class="report-section-title">II. PROFIL ELEVASI 4 DIMENSI STRES AKADEMIK</div>
+        
+        <div class="chart-box">
+          <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Perbandingan Tingkat Elevasi Stres per Dimensi (%)</h5>
+          <canvas id="aasbiBarChart" style="max-height: 320px;"></canvas>
+        </div>
+      </div>
+
+      <!-- Section III: Tabulasi & Breakdown 4 Dimensi Utama -->
+      <div class="report-section">
+        <div class="report-section-title">III. BREAKDOWN EVALUASI DIMENSI PENDUKUNG</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Stres & Burnout</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Tingkat Elevasi</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+
+        <div id="dimension-cards-container" style="margin-top: 20px;">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section IV: Panduan Aksional untuk Siswa, Orang Tua, dan Sekolah -->
+      <div class="report-section">
+        <div class="report-section-title">IV. PANDUAN REKOMENDASI INTERVENSI & KOPING SEHAT</div>
+        
+        <div class="guidance-grid">
+          <div class="guidance-card">
+            <h4 style="color:#0284c7; margin-top:0; margin-bottom:8px; font-size:0.95rem;">🙋‍♂️ Untuk Siswa</h4>
+            <div id="guidance-siswa" style="font-size:0.85rem; color:#334155; line-height:1.5;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+
+          <div class="guidance-card">
+            <h4 style="color:#059669; margin-top:0; margin-bottom:8px; font-size:0.95rem;">👨‍👩‍👧 Untuk Orang Tua</h4>
+            <div id="guidance-ortu" style="font-size:0.85rem; color:#334155; line-height:1.5;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+
+          <div class="guidance-card">
+            <h4 style="color:#e11d48; margin-top:0; margin-bottom:8px; font-size:0.95rem;">🏫 Untuk Konselor / Sekolah</h4>
+            <div id="guidance-sekolah" style="font-size:0.85rem; color:#334155; line-height:1.5;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KS16
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS16");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KS16
+        const result = KS16_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS16_Scoring.sendRekapToGAS === "function") {
+          KS16_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Ringkasan Global & Red Flag
+        const idx = result.globalStressIndex || 0;
+        document.getElementById("r-overall-index").innerText = `${idx}%`;
+
+        const norm = result.globalNorm || {};
+        document.getElementById("r-global-kategori").innerText = norm.kategori || "-";
+        document.getElementById("r-global-deskripsi").innerText = norm.deskripsi_kondisi || "-";
+        document.getElementById("r-global-dampak").innerText = norm.dampak_akademik || "-";
+
+        const badgeElem = document.getElementById("r-overall-badge");
+        badgeElem.innerText = norm.label_status || "NORMAL";
+        badgeElem.className = "badge-status " + (
+          idx > 75 ? "badge-severe" :
+          idx > 50 ? "badge-moderate" :
+          idx > 25 ? "badge-mild" : "badge-normal"
+        );
+
+        if (result.isRedFlag) {
+          document.getElementById("red-flag-banner").style.display = "block";
+        }
+
+        // 6. Render Bar Chart 4 Dimensi
+        const dimLabels = Object.keys(result.dimensionScores);
+        const dimValues = Object.values(result.dimensionScores);
+        const dimColors = dimValues.map(v => v >= 76 ? '#dc2626' : v >= 51 ? '#f59e0b' : v >= 26 ? '#0284c7' : '#10b981');
+
+        new Chart(document.getElementById('aasbiBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['Kecemasan Akademik', 'Kelelahan Emosional', 'Kejenuhan (Cynicism)', 'Sumber Tekanan'],
+            datasets: [{
+              data: dimValues,
+              backgroundColor: dimColors,
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true, max: 100 }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 7. Render Tabulasi & Detail Kartu Dimensi
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        result.dimensionRows.forEach(row => {
+          // Table Row
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+            <td>${row.rs} / 40</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td><span style="font-weight:700; color:${row.percentage >= 61 ? '#dc2626' : row.percentage >= 41 ? '#d97706' : '#059669'};">${row.level}</span></td>
+          `;
+          tbody.appendChild(tr);
+
+          // Card Detail
+          const card = document.createElement("div");
+          card.className = "dimensi-card";
+          card.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #f1f5f9; padding-bottom:8px; margin-bottom:10px;">
+              <div style="font-weight: 800; color: #0f172a; font-size: 1rem;">${row.judul_dimensi}</div>
+              <div style="font-weight:700; font-size:0.88rem; color: #e11d48;">Indeks: ${row.percentage}% (${row.kondisi})</div>
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; margin-bottom: 8px; line-height: 1.5;">${row.interpretasi}</p>
+            <div style="font-size: 0.85rem; color: #9f1239; background: #fff1f2; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #e11d48;">
+              <strong>Saran Pengembangan:</strong> ${row.saran_pengembangan}
+            </div>
+          `;
+          cardsContainer.appendChild(card);
+        });
+
+        // 8. Render Panduan Intervensi Koping
+        const koping = rubrikData.panduan_intervensi_dan_koping || {};
+        
+        if (koping.untuk_siswa) {
+          document.getElementById("guidance-siswa").innerHTML = `
+            <p><strong>Efisiensi Studi:</strong> ${koping.untuk_siswa.efisiensi_studi}</p>
+            <p><strong>Kebersihan Mental:</strong> ${koping.untuk_siswa.kebersihan_mental}</p>
+            <p><strong>Reframing Kognitif:</strong> ${koping.untuk_siswa.reframing_kognitif}</p>
+          `;
+        }
+
+        if (koping.untuk_orang_tua) {
+          document.getElementById("guidance-ortu").innerHTML = `
+            <p><strong>Dukungan Emosional:</strong> ${koping.untuk_orang_tua.dukungan_emosional}</p>
+            <p><strong>Komunikasi Terbuka:</strong> ${koping.untuk_orang_tua.komunikasi_terbuka}</p>
+            <p><strong>Ruang Pemulihan:</strong> ${koping.untuk_orang_tua.ruang_pemulihan}</p>
+          `;
+        }
+
+        if (koping.untuk_sekolah_dan_guru) {
+          document.getElementById("guidance-sekolah").innerHTML = `
+            <p><strong>Penyesuaian Beban:</strong> ${koping.untuk_sekolah_dan_guru.penyesuaian_beban}</p>
+            <p><strong>Iklim Inklusi:</strong> ${koping.untuk_sekolah_dan_guru.iklim_inklusi}</p>
+            <p><strong>Akses Konseling:</strong> ${koping.untuk_sekolah_dan_guru.akses_konseling}</p>
+          `;
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS16:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan AASBI.");
+      }
+    });
+  </script>
+</body>
+</html>
