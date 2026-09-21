@@ -3,47 +3,576 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel CBT - PATS Portal</title>
+  <title>CBT Panel - KU8 Leadership & Soft Skills Assessment (ALSA)</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
-<body style="background-color: var(--bg-color, #f8fafc); padding-bottom: 40px;">
+  <style>
+    :root {
+      --primary-cyan: #0284c7;
+      --primary-cyan-hover: #0369a1;
+      --bg-slate: #f8fafc;
+      --text-dark: #0f172a;
+      --border-color: #cbd5e1;
+      --accent-dm: #0284c7;
+      --accent-tm: #16a34a;
+      --accent-tw: #7c3aed;
+      --accent-sl: #ea580c;
+      --accent-cr: #dc2626;
+    }
 
-  <main class="container" style="margin-top: 20px;">
-    <div id="cbt-app">Memuat Panel Ujian...</div>
+    body {
+      background-color: var(--bg-slate);
+      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Navigasi CBT Canggih */
+    .cbt-header {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--primary-cyan);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.06);
+    }
+
+    .cbt-header-content {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cbt-timer-badge {
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      font-family: monospace, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .cbt-timer-badge.warning {
+      background: #fef2f2;
+      color: #dc2626;
+      border-color: #fecaca;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+
+    /* Layout Main CBT */
+    .cbt-container {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+      flex: 1;
+    }
+
+    @media (max-width: 960px) {
+      .cbt-container { grid-template-columns: 1fr; }
+    }
+
+    /* Kartu Soal SJT */
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .dimension-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    /* Skenario Paragraph Box */
+    .scenario-box {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-left: 5px solid var(--primary-cyan);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+      font-size: 1rem;
+      color: #0f172a;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    .instruction-mini {
+      font-size: 0.82rem;
+      color: #64748b;
+      margin-bottom: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Opsi Tindakan SJT */
+    .sjt-options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .sjt-option-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 22px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .sjt-option-card:hover {
+      border-color: #7dd3fc;
+      background: #f0f9ff;
+      transform: translateY(-1px);
+    }
+
+    .sjt-option-card.selected {
+      border-color: var(--primary-cyan);
+      background: #f0f9ff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15);
+    }
+
+    .opt-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      margin-top: 2px;
+    }
+
+    .sjt-option-card.selected .opt-badge {
+      background: var(--primary-cyan);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+    }
+
+    .opt-label-text {
+      font-size: 0.94rem;
+      color: #334155;
+      font-weight: 500;
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    /* Panel Navigasi Samping */
+    .nav-panel {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      height: fit-content;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      max-height: 390px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-top: 14px;
+    }
+
+    .nav-btn {
+      aspect-ratio: 1;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-btn.complete {
+      background: var(--primary-cyan);
+      color: #ffffff;
+      border-color: var(--primary-cyan);
+    }
+
+    .nav-btn.active {
+      outline: 2.5px solid #0284c7;
+      outline-offset: 2px;
+      font-weight: 900;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--primary-cyan);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .btn-action {
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-next { background: var(--primary-cyan); color: #ffffff; }
+    .btn-next:hover { background: var(--primary-cyan-hover); }
+    .btn-prev { background: #e2e8f0; color: #334155; }
+    .btn-prev:hover { background: #cbd5e1; }
+    .btn-submit { background: #16a34a; color: #ffffff; width: 100%; margin-top: 18px; }
+    .btn-submit:hover { background: #15803d; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="cbt-header">
+    <div class="cbt-header-content">
+      <div>
+        <h4 style="margin: 0; color: var(--primary-cyan); font-size: 1.1rem;">APACA ALSA - Leadership Test (KU8)</h4>
+        <div style="font-size: 0.8rem; color: #64748b;" id="user-info-text">Peserta: -</div>
+      </div>
+      <div class="cbt-timer-badge" id="timer-badge">
+        <span>⏱️</span>
+        <span id="timer-display">45:00</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main CBT Layout -->
+  <main class="cbt-container">
+    <!-- Panel Soal SJT -->
+    <section class="question-card">
+      <div>
+        <div class="question-meta">
+          <span class="dimension-badge" id="dim-badge">Decision Making</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;" id="q-number-text">Skenario 1 dari 50</span>
+        </div>
+
+        <div class="instruction-mini">
+          📌 <strong>Petunjuk:</strong> Bacalah skenario situasi kasus di bawah ini, lalu pilihlah 1 (satu) tindakan yang paling efektif.
+        </div>
+
+        <!-- Skenario Kasus -->
+        <div class="scenario-box" id="scenario-text">
+          Memuat skenario...
+        </div>
+
+        <!-- Opsi Tindakan (A, B, C, D) -->
+        <div class="sjt-options-grid" id="sjt-options-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid #f1f5f9;">
+        <button class="btn-action btn-prev" id="btn-prev" onclick="navigateQuestion(-1)">&larr; Sebelumnya</button>
+        <button class="btn-action btn-next" id="btn-next" onclick="navigateQuestion(1)">Selanjutnya &rarr;</button>
+      </div>
+    </section>
+
+    <!-- Navigasi Panel Kanan -->
+    <aside class="nav-panel">
+      <h5 style="margin: 0 0 6px 0; color: #0f172a; font-size: 0.95rem;">Navigasi Skenario</h5>
+      <div style="font-size: 0.78rem; color: #64748b;">Terisi Lengkap: <strong id="answered-count">0</strong> / <span id="total-count">50</span></div>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="nav-grid" id="nav-grid">
+        <!-- Render 50 buttons via JS -->
+      </div>
+
+      <button class="btn-action btn-submit" onclick="confirmSubmit()">Selesaikan Ujian</button>
+    </aside>
   </main>
 
+  <script src="../../config.js"></script>
   <script src="../../assets/js/auth.js"></script>
-  <script src="../../assets/js/cbt-engine.js"></script>
-  
   <script>
-    let cbtApp = null;
+    let questionsData = [];
+    let currentIndex = 0;
+    let answers = {}; // Structure: { 1: "A", 2: "C", ..., 50: "B" }
+    let timerSeconds = 45 * 60; // Default 45 Menit
+    let timerInterval = null;
+
+    const dimNameMap = {
+      "Decision Making": "Decision Making (Pengambilan Keputusan)",
+      "Time Management": "Time Management (Manajemen Waktu)",
+      "Teamwork": "Teamwork (Kerja Sama Tim)",
+      "Situational Leadership": "Situational Leadership (Kepemimpinan)",
+      "Conflict Resolution": "Conflict Resolution (Resolusi Konflik)"
+    };
+
+    const dimColorMap = {
+      "Decision Making": { bg: "#e0f2fe", color: "#0369a1", border: "#bae6fd", accent: "#0284c7" },
+      "Time Management": { bg: "#dcfce7", color: "#15803d", border: "#bbf7d0", accent: "#16a34a" },
+      "Teamwork": { bg: "#f3e8ff", color: "#6d28d9", border: "#e9d5ff", accent: "#7c3aed" },
+      "Situational Leadership": { bg: "#ffedd5", color: "#c2410c", border: "#fed7aa", accent: "#ea580c" },
+      "Conflict Resolution": { bg: "#fee2e2", color: "#b91c1c", border: "#fecaca", accent: "#dc2626" }
+    };
 
     document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Verifikasi Sesi User
+      if (typeof PATS_AUTH !== "undefined") {
+        const user = PATS_AUTH.getSession();
+        if (user) {
+          document.getElementById("user-info-text").innerText = `Peserta: ${user.nama_lengkap || 'Siswa'} (${user.kode_akses || 'KU8'})`;
+        }
+      }
+
+      // 2. Muat Berkas Soal KU8
       try {
-        const response = await fetch("soal.json");
-        const soalData = await response.json();
-        const testCode = (soalData.test_info && soalData.test_info.kode) ? soalData.test_info.kode : "TEST";
+        const res = await fetch("soal.json");
+        const testData = await res.json();
+        questionsData = testData.questions || [];
 
-        cbtApp = new CBTEngine({
-          testCode: testCode,
-          testInfo: soalData.test_info,
-          questions: soalData.questions,
-          options: soalData.options,
-          onSubmit: (answers) => {
-            window.location.href = "result.html";
-          },
-          onExit: () => {
-            window.location.href = "index.html";
-          }
-        });
+        if (testData.test_info && testData.test_info.durasi_menit) {
+          timerSeconds = testData.test_info.durasi_menit * 60;
+        }
 
-        cbtApp.renderApp("cbt-app");
+        document.getElementById("total-count").innerText = questionsData.length;
+
+        // Restore Progress dari SessionStorage jika tersedia
+        const saved = sessionStorage.getItem("pats_answers_KU8");
+        if (saved) {
+          answers = JSON.parse(saved);
+        }
+
+        renderNavGrid();
+        renderQuestion(currentIndex);
+        startTimer();
 
       } catch (err) {
-        console.error("Gagal memuat soal:", err);
-        alert("Terjadi kesalahan saat memuat modul ujian.");
+        console.error("Gagal memuat soal KU8:", err);
+        alert("Terjadi kesalahan saat memuat berkas soal ALSA.");
       }
     });
+
+    // RENDERER UTAMA SKENARIO SJT KU8
+    function renderQuestion(index) {
+      if (index < 0 || index >= questionsData.length) return;
+      currentIndex = index;
+
+      const q = questionsData[index];
+      document.getElementById("q-number-text").innerText = `Skenario ${index + 1} dari ${questionsData.length}`;
+
+      // Set Dimensi Badge & Style Warna
+      const dimBadge = document.getElementById("dim-badge");
+      const dimKey = q.dimension || "Decision Making";
+      const styleObj = dimColorMap[dimKey] || dimColorMap["Decision Making"];
+
+      dimBadge.innerText = dimNameMap[dimKey] || dimKey;
+      dimBadge.style.backgroundColor = styleObj.bg;
+      dimBadge.style.color = styleObj.color;
+      dimBadge.style.borderColor = styleObj.border;
+
+      // Render Text Skenario
+      const scenarioElem = document.getElementById("scenario-text");
+      scenarioElem.innerText = q.scenario || "-";
+      scenarioElem.style.borderLeftColor = styleObj.accent;
+
+      // Render 4 Opsi Tindakan
+      const container = document.getElementById("sjt-options-container");
+      container.innerHTML = "";
+
+      const currentChosen = answers[q.id];
+
+      if (q.options) {
+        q.options.forEach(opt => {
+          const isSelected = currentChosen === opt.code;
+          const card = document.createElement("div");
+          card.className = `sjt-option-card ${isSelected ? 'selected' : ''}`;
+          card.onclick = () => selectOption(q.id, opt.code);
+
+          card.innerHTML = `
+            <div class="opt-badge">${opt.code}</div>
+            <div class="opt-label-text">${opt.label}</div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      // Navigasi Prev/Next State
+      document.getElementById("btn-prev").disabled = index === 0;
+      document.getElementById("btn-next").innerText = index === questionsData.length - 1 ? "Selesai" : "Selanjutnya \u2192";
+
+      updateNavHighlight();
+    }
+
+    // SIMPAN PILIHAN JAWABAN
+    function selectOption(questionId, optionCode) {
+      answers[questionId] = optionCode;
+      sessionStorage.setItem("pats_answers_KU8", JSON.stringify(answers));
+
+      renderQuestion(currentIndex);
+      updateProgress();
+    }
+
+    // NAVIGASI INDEX SOAL
+    function navigateQuestion(direction) {
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < questionsData.length) {
+        renderQuestion(newIndex);
+      } else if (newIndex >= questionsData.length) {
+        confirmSubmit();
+      }
+    }
+
+    // RENDER PANEL NAVIGASI
+    function renderNavGrid() {
+      const grid = document.getElementById("nav-grid");
+      grid.innerHTML = "";
+
+      questionsData.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.id = `nav-btn-${idx}`;
+        btn.innerText = idx + 1;
+        btn.onclick = () => renderQuestion(idx);
+        grid.appendChild(btn);
+      });
+
+      updateProgress();
+    }
+
+    function updateNavHighlight() {
+      questionsData.forEach((q, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        if (btn) {
+          const isComplete = !!answers[q.id];
+          btn.className = `nav-btn ${isComplete ? 'complete' : ''} ${idx === currentIndex ? 'active' : ''}`;
+        }
+      });
+    }
+
+    function updateProgress() {
+      const completeCount = Object.keys(answers).length;
+      document.getElementById("answered-count").innerText = completeCount;
+      const total = questionsData.length;
+      const pct = Math.round((completeCount / total) * 100);
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    // TIMER COUNTDOWN DENGAN WARN ALERT
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+
+        if (timerSeconds <= 300) { // Warning di 5 menit terakhir
+          document.getElementById("timer-badge").classList.add("warning");
+        }
+
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert("Waktu pengerjaan tes ALSA telah habis. Hasil pengerjaan Anda akan dikumpulkan otomatis.");
+          submitTest();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      document.getElementById("timer-display").innerText = 
+        `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // KONFIRMASI PENGUMPULAN
+    function confirmSubmit() {
+      const completeCount = Object.keys(answers).length;
+      const total = questionsData.length;
+
+      if (completeCount < total) {
+        if (!confirm(`Anda baru menjawab ${completeCount} dari ${total} skenario. Yakin ingin mengumpulkan sekarang?`)) {
+          return;
+        }
+      } else {
+        if (!confirm("Seluruh 50 skenario kasus telah dijawab. Yakin ingin mengumpulkan pengerjaan KU8 (ALSA)?")) {
+          return;
+        }
+      }
+
+      submitTest();
+    }
+
+    function submitTest() {
+      clearInterval(timerInterval);
+      sessionStorage.setItem("pats_answers_KU8", JSON.stringify(answers));
+      window.location.href = "result.html";
+    }
   </script>
 </body>
 </html>
