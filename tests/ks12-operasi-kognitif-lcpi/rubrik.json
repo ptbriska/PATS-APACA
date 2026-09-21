@@ -1,0 +1,313 @@
+{
+  "kode_tes": "KS12",
+  "nama_tes": "APACA Learning Cognitive Process Inventory (LCPI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "informasi_umum": "APACA Learning Cognitive Process Inventory (LCPI) memetakan operasi mental dan arsitektur kognitif internal otak siswa saat menyerap, memproses, menyimpan, dan menerapkan informasi akademik. Instrumen ini tidak mengukur teknik luar belajar (apa yang dilakukan), melainkan dinamika sistem berpikir internal individu saat berinteraksi dengan materi pelajaran.",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Sangat Otomatis (Advanced)",
+      "label_status": "OTOMATIS & EFISIEN",
+      "deskripsi_kondisi": "Operasi mental kognitif berjalan sangat otomatis, cepat, dan mendalam. Anda memiliki efisiensi pemrosesan memori dan kelincahan penalaran yang luar biasa dalam menyerap materi rumit.",
+      "dampak_akademik": "Daya tangkap materi sangat cepat, pemahaman konseptual kuat, dan mampu menyelesaikan persoalan tingkat tinggi (HOTS) dengan beban mental yang minimal.",
+      "tindakan_lanjutan": "Berikan tantangan akademik berbasis riset, kompetensi, atau pemecahan masalah nyata untuk mengoptimalkan potensi kreativitas dan transfer kognitif."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Efisien (Proficient)",
+      "label_status": "MAHIR",
+      "deskripsi_kondisi": "Proses kognitif internal berjalan lancar pada sebagian besar mata pelajaran. Sistem berpikir Anda mampu mengolah data kompleks dengan kecepatan dan ketepatan yang tergolong baik.",
+      "dampak_akademik": "Prestasi akademik tergolong stabil, mampu mengikuti alur pengajaran abstrak, namun memerlukan sedikit waktu tambahan pada materi yang memerlukan manipulasi variabel memori masif.",
+      "tindakan_lanjutan": "Pertajam kemampuan kritis dan elaborasi analogi saat berhadapan dengan konsep-konsep lintas bidang studi."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Moderat (Developing)",
+      "label_status": "BERKEMBANG",
+      "deskripsi_kondisi": "Cukup mampu memproses materi pelajaran standar. Namun, operasi kognitif cenderung mengalami perlambatan atau penurunan akurasi saat dihadapkan pada materi yang terlalu padat atau abstrak.",
+      "dampak_akademik": "Hasil belajar sangat bergantung pada pola penyajian materi dari guru; mudah lelah jika informasi disampaikan sekaligus tanpa pemecahan bertahap.",
+      "tindakan_lanjutan": "Gunakan teknik pemecahan materi (chunking) dan alat bantu representasi visual (diagram/skema) untuk mempermudah penyandian memori."
+    },
+    {
+      "rentang_skor_persen": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Terbatas (Constrained)",
+      "label_status": "HAMBATAN KOGNITIF",
+      "deskripsi_kondisi": "Mengalami hambatan fungsional pada rantai pemrosesan kognitif. Otak sering mengalami ketiadaan ruang memori kerja (Working Memory Overload) atau kesulitan memadukan fakta baru dengan konsep lama.",
+      "dampak_akademik": "Sering merasa 'kehabisan kapasitas berpikir' di pertengahan penjelasan, cepat bingung pada soal rumit, dan nilai akademik cenderung fluktuatif.",
+      "tindakan_lanjutan": "Diperlukan penyesuaian beban kognitif (Cognitive Load Management) serta bantuan media catatan eksternal untuk meredakan ketegangan memori."
+    },
+    {
+      "rentang_skor_persen": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Sangat Terbatas (Impaired)",
+      "label_status": "SANGAT TERBATAS",
+      "deskripsi_kondisi": "Menunjukkan hambatan pemrosesan kognitif yang serius. Sistem berpikir sangat cepat kewalahan saat menerima arus informasi pelajaran harian.",
+      "dampak_akademik": "Risiko tinggi mengalami hambatan belajar berat, frustrasi akademik, dan ketertinggalan pemahaman konsep dasar.",
+      "tindakan_lanjutan": "Diperlukan intervensi remedial khusus individual dengan penyederhanaan beban materi menjadi unit-unit mikro."
+    }
+  ],
+  "rubrik_dimensi": {
+    "Attention": {
+      "judul_dimensi": "Attention (Atensi & Kendali Fokus Mental)",
+      "deskripsi_umum": "Mengukur kapasitas otak dalam mengarahkan, mempertahankan (sustained), memfilter pengganggu (selective), dan memindahkan fokus mental (switching) antar stimulus pelajaran.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Atensi Tajam & Resisten Distraksi",
+          "operasi_mental": "Sistem atensi eksekutif mampu menyaring stimulus tidak relevan dan mempertahankan saluran pemrosesan materi dalam durasi panjang.",
+          "dampak_akademik": "Konsentrasi belajar stabil, tidak mudah buyar oleh suara bising, dan mampu berpindah antartugas secara mulus.",
+          "mitigasi_kognitif": "Pertahankan stamina atensi dengan menyelingi sesi belajar intensif menggunakan jeda waktu singkat."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Atensi Kondisional",
+          "operasi_mental": "Daya tahan atensi berjalan baik pada materi yang disukai, namun cepat mengendur saat materi dirasa membosankan atau terlalu rumit.",
+          "dampak_akademik": "Kadang melewatkan instruksi penting di tengah-tengah penjelasan panjang dari guru.",
+          "mitigasi_kognitif": "Gunakan teknik penanda aktif (active highlighting) atau mencatat poin kata kunci saat mendengarkan penjelasan."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Kelelahan & Kebocoran Atensi",
+          "operasi_mental": "Saluran pemrosesan informasi sangat mudah terinterupsi oleh pikiran internal (melamun) maupun stimulus eksternal.",
+          "dampak_akademik": "Pemahaman materi terputus-putus dan harus mengulang bacaan berulang kali dari awal.",
+          "mitigasi_kognitif": "Batasi durasi membaca maksimal 15-20 menit per sesi (metode mikro) dan minimalkan distraksi visual meja belajar."
+        }
+      }
+    },
+    "Encoding": {
+      "judul_dimensi": "Encoding (Penyandian & Representation Skills)",
+      "deskripsi_umum": "Mengukur proses penerjemahan informasi eksternal menjadi bentuk representasi mental (skema visual, simbolis, atau spasial) di dalam memori.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Penyandian Visual & Skematik Tingkat Tinggi",
+          "operasi_mental": "Otak secara otomatis mengubah teks/rumus abstrak menjadi peta konsep visual, gambaran ruang, atau perumpamaan fisik yang kaya.",
+          "dampak_akademik": "Daya ingat materi bertahan dalam jangka panjang dan sangat mudah memanggil kembali memori saat ujian.",
+          "mitigasi_kognitif": "Gunakan teknik Mind Mapping dan diagram alur untuk mempercepat penyandian konsep-konsep baru."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Penyandian Teks Pasif",
+          "operasi_mental": "Menyimpan informasi cenderung dalam bentuk hafalan kata demi kata (verbal text) tanpa banyak membentuk gambaran mental.",
+          "dampak_akademik": "Ingatan mudah goyah jika redaksi soal ujian diubah dari teks asli buku.",
+          "mitigasi_kognitif": "Latih diri menggambarkan atau merepresentasikan konsep verbal ke dalam bentuk simbol atau sketsa sederhana."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Defisit Penyandian (Encoding Lag)",
+          "operasi_mental": "Kesulitan menghubungkan fakta baru ke dalam kerangka ingatan, sehingga informasi hanya mentah hinggap di memori sesaat.",
+          "dampak_akademik": "Materi pelajaran 'numpang lewat' dan cepat lupa dalam hitungan jam pasca-belajar.",
+          "mitigasi_kognitif": "Gunakan teknik penyandian ganda (Dual Coding): gabungkan teks penjelasan dengan gambar atau simulasi objek nyata."
+        }
+      }
+    },
+    "Working Memory": {
+      "judul_dimensi": "Working Memory (Memori Kerja Mental)",
+      "deskripsi_umum": "Mengukur kapasitas memori jangka pendek berkapasitas terbatas dalam menahan, memanipulasi, dan mengolah beberapa variabel mental secara bersamaan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Kapasitas Memori Kerja Luas",
+          "operasi_mental": "Ruang olah mental mampu menampung banyak data, angka, dan rumus sekaligus tanpa kehilangan jejak langkah awal.",
+          "dampak_akademik": "Sangat mahir dalam perhitungan matematika rumit, logika bertingkat, dan pengerjaan soal hitungan beruntun.",
+          "mitigasi_kognitif": "Manfaatkan kapasitas luas ini untuk mempelajari algoritma pemecahan masalah tingkat tinggi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Kapasitas Memori Kerja Moderat",
+          "operasi_mental": "Mampu menahan 3-4 variabel mental sekaligus, namun mulai cemas dan lupa langkah jika variabel ditambah.",
+          "dampak_akademik": "Kadang membuat kesalahan ceroboh di pertengahan hitungan rumit akibat kelelahan memori kerja.",
+          "mitigasi_kognitif": "Selalu tuliskan langkah perantara (intermediate steps) di kertas corat-coret untuk menghemat ruang memori kerja."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Working Memory Overload (Kelebihan Beban)",
+          "operasi_mental": "Ruang olah mental sangat cepat penuh. Jika informasi datang bertubi-tubi, data lama langsung terhapus.",
+          "dampak_akademik": "Sering bingung di tengah-tengah pengerjaan soal panjang dan merasa pusing saat membaca instruksi kompleks.",
+          "mitigasi_kognitif": "Gunakan bantuan alat eksternal (rumus ringkas di samping kertas, papan corat-coret) untuk meringankan beban otak."
+        }
+      }
+    },
+    "Comprehension": {
+      "judul_dimensi": "Comprehension (Pemahaman Konseptual Inti)",
+      "deskripsi_umum": "Mengukur operasi kognitif dalam membongkar makna, menangkap struktur hierarki informasi, dan menguraikan hubungan sebab-akibat materi.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Pemahaman Konseptual Mendalam",
+          "operasi_mental": "Otak mampu membedakan dengan tegas mana prinsip utama dan mana detail penjelas, serta paham alasan di balik teori.",
+          "dampak_akademik": "Tidak sekadar menghafal, tetapi benar-benar 'mengerti' mekanisme di balik mata pelajaran.",
+          "mitigasi_kognitif": "Kembangkan pemahaman ini dengan mengajarkan kembali materi tersebut kepada teman (Teknik Feynman)."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Pemahaman Parsial (Permukaan)",
+          "operasi_mental": "Menangkap garis besar materi, namun kerap luput pada hubungan sebab-akibat atau dinamika antarvariabel.",
+          "dampak_akademik": "Lancar pada soal hafalan langsung, namun mulai kesulitan pada soal analisis sebab-akibat.",
+          "mitigasi_kognitif": "Buat pertanyaan 'Mengapa hal ini bisa terjadi?' pada setiap hukum atau teori yang dipelajari."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Gagal Menangkap Struktur Konsep",
+          "operasi_mental": "Informasi diserap sebagai potongan fakta acak yang terpisah tanpa ada ikatan struktur bangunan konsep.",
+          "dampak_akademik": "Materi terasa sangat abstrak, asing, dan membingungkan secara menyeluruh.",
+          "mitigasi_kognitif": "Minta guru memberikan contoh nyata sebelum membahas definisi atau rumus matematisnya."
+        }
+      }
+    },
+    "Elaboration": {
+      "judul_dimensi": "Elaboration (Elaborasi & Pengayaan Skema)",
+      "deskripsi_umum": "Mengukur kemampuan memperkaya struktur kognitif melalui pengaitan materi baru dengan skema lama, pembuatan analogi, dan contoh kontekstual.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Elaborator Aktif & Kaya Analogi",
+          "operasi_mental": "Secara otomatis mencari perumpamaan nyata, membayangkan skenario aplikasi, dan mengaitkan materi dengan pengalaman hidup.",
+          "dampak_akademik": "Pengetahuan menjadi sangat hidup, personal, dan melekat erat di dalam ingatan jangka panjang.",
+          "mitigasi_kognitif": "Pertahankan kebiasaan membuat analogi pribadi untuk memahami konsep-konsep tingkat tinggi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Elaborasi Terbatas",
+          "operasi_mental": "Hanya mengandalkan contoh yang ada di buku teks tanpa berinisiatif mencari contoh perumpamaan sendiri.",
+          "dampak_akademik": "Pemahaman materi terbatas pada contoh resmi sekolah; canggung jika diberikan contoh kasus baru.",
+          "mitigasi_kognitif": "Tantang diri sendiri untuk membuat minimal 1 contoh aplikasi baru di luar contoh buku teks."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Isolasi Pengetahuan (Tanpa Elaborasi)",
+          "operasi_mental": "Materi pelajaran disimpan terisolasi dari dunia nyata dan tidak terhubung dengan wawasan lama yang dimiliki.",
+          "dampak_akademik": "Menganggap pelajaran sebagai kumpulan dogma kaku yang tidak ada gunanya bagi kehidupan nyata.",
+          "mitigasi_kognitif": "Diskusikan relevansi materi pelajaran dengan hobi, peristiwa sehari-hari, atau fenomena populer."
+        }
+      }
+    },
+    "Reasoning": {
+      "judul_dimensi": "Reasoning (Penalaran Logis & Kausalitas)",
+      "deskripsi_umum": "Mengukur operasi kognitif dalam menarik kesimpulan rasional melalui alur deduktif, induktif, kausal, dan analisis skenario.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Penalaran Logis Runtut & Presisi",
+          "operasi_mental": "Sistem berpikir sangat lincah dalam menarik kesimpulan ilmiah, menemukan pola data acak, dan mendeteksi korelasi.",
+          "dampak_akademik": "Sangat unggul dalam pembuktian soal, logika sains, analisis grafik, dan pemecahan masalah bertahap.",
+          "mitigasi_kognitif": "Gunakan kemampuan penalaran ini untuk melatih soal-soal Olimpiade atau Sains tingkat lanjut."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Penalaran Linier Sederhana",
+          "operasi_mental": "Lancar pada rantai logika sebab-akibat 1 tingkat, namun mulai bingung pada alur logika bercabang.",
+          "dampak_akademik": "Sering terjebak pada kesimpulan yang terburu-buru sebelum memeriksa seluruh data pendukung.",
+          "mitigasi_kognitif": "Gunakan diagram pohon logika (Logic Tree) untuk memetakan sebab-akibat bercabang secara visual."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Penalaran Tidak Runtut / Lompatan Logika",
+          "operasi_mental": "Sering melakukan lompatan kesimpulan yang tidak berdasar atau mengabaikan premis-premis penting.",
+          "dampak_akademik": "Sering keliru menyimpulkan maksud soal dan langkah pengerjaan sering tidak konsisten.",
+          "mitigasi_kognitif": "Latih langkah-langkah logika verbal dasar: 'Jika A maka B, karena B maka C, maka A menghasilkan C'."
+        }
+      }
+    },
+    "Critical Thinking": {
+      "judul_dimensi": "Critical Thinking (Berpikir Kritis & Evaluasi)",
+      "deskripsi_umum": "Mengukur kapasitas evaluasi objektif terhadap kebenaran informasi, pengujian bukti, pemilahan fakta vs opini, dan deteksi bias/asumsi.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Pemikir Kritis Skeptis & Analitis",
+          "operasi_mental": "Secara otomatis mempertanyakan kesahihan data, menguji argumen dari dua sisi, dan tidak gampang percaya klaim.",
+          "dampak_akademik": "Sangat tajam dalam penulisan esai, debat ilmiah, membedakan fakta vs hoax, dan analisis literatur.",
+          "mitigasi_kognitif": "Gunakan pemikiran kritis untuk mengevaluasi sudut pandang ilmiah alternatif."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Kritis Terbatas (Menerima Otoritas)",
+          "operasi_mental": "Mampu berpikir kritis jika diminta, namun cenderung menerima begitu saja apa pun yang tertulis di buku teks.",
+          "dampak_akademik": "Kurang peka terhadap adanya celah kelemahan atau bias dalam suatu argumen tulisan.",
+          "mitigasi_kognitif": "Biasakan bertanya: 'Apa bukti objektif di balik pernyataan ini?' saat membaca buku."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Pasif & Menerima Informasi Mentah",
+          "operasi_mental": "Menyerap seluruh informasi tanpa proses filter evaluasi; sulit membedakan mana opini dan mana fakta nyata.",
+          "dampak_akademik": "Sangat rentan terkecoh oleh soal-soal jebakan yang menggunakan asumsi palsu.",
+          "mitigasi_kognitif": "Latih pemilahan dasar dengan membuat tabel 2 kolom: Kolom Data/Fakta vs Kolom Opini/Asumsi."
+        }
+      }
+    },
+    "Transfer": {
+      "judul_dimensi": "Transfer (Transfer Pengetahuan Lintas Konteks)",
+      "deskripsi_umum": "Mengukur kemampuan mengaplikasikan konsep kognitif yang telah dipelajari ke luar konteks asal, situasi baru, dan persoalan yang belum pernah diajarkan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Kelincahan Transfer Pengetahuan",
+          "operasi_mental": "Mampu mengenali pola struktural yang sama di bawah permukaan kasus yang tampak berbeda total.",
+          "dampak_akademik": "Sangat adaptif menghadapi tipe soal uji coba yang asing, aplikasi rumus ke kasus nyata, dan soal studi kasus rumit.",
+          "mitigasi_kognitif": "Pertahankan agilitas transfer dengan rajin melatih variasi soal dari berbagai sumber tak standar."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Transfer Kontekstual Dekat",
+          "operasi_mental": "Mampu menerapkan konsep pada variasi soal yang mirip, tetapi ragu jika kasus diubah menjadi bentuk yang sama sekali baru.",
+          "dampak_akademik": "Kinerja bagus pada soal latihan standar, namun nilai merosot jika format soal ujian dimodifikasi total.",
+          "mitigasi_kognitif": "Fokus pada struktur prinsip utama ketimbang menghafal bentuk spesifik contoh soal."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Keterikatan Konteks Kaku (Low Transfer)",
+          "operasi_mental": "Pemahaman terkunci rapat pada contoh soal pertama yang diajarkan; bingung total jika variabel angka/nama diubah.",
+          "dampak_akademik": "Sangat tergantung pada contoh persis dari guru; kesulitan mempraktikkan ilmu ke dunia nyata.",
+          "mitigasi_kognitif": "Latih diri menyelesaikan 3 variasi soal berbeda untuk 1 konsep rumus yang sama."
+        }
+      }
+    },
+    "Creativity": {
+      "judul_dimensi": "Creativity (Kreativitas Kognitif & Solusi Orisinal)",
+      "deskripsi_umum": "Mengukur kemampuan generasi pemikiran baru (divergent thinking), penciptaan alur alternatif, pengombinasian ide, dan pemecahan masalah orisinal.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Kreativitas Divergen & Solutif",
+          "operasi_mental": "Pikiran sangat kaya akan pemikiran orisinal, mampu memadukan ide acak, dan menemukan jalan pintas penyelesaian masalah yang cerdik.",
+          "dampak_akademik": "Sangat menonjol dalam proyek inovasi, esai kreatif, pembuatan karya seni/desain, dan metode pemecahan masalah unik.",
+          "mitigasi_kognitif": "Salurkan ide-ide orisinal ke dalam proyek riset mandiri atau karya akademik nyata."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Kreativitas Terarah",
+          "operasi_mental": "Mampu memikirkan 1-2 cara alternatif jika cara utama macet, namun masih berada di dalam koridor standar.",
+          "dampak_akademik": "Cukup fleksibel mencari jawaban lain saat menghadapi soal buntu.",
+          "mitigasi_kognitif": "Latih sesi Brainstorming: Tuliskan minimal 5 ide cara penyelesaian masalah tanpa menilai salah/benarnya dulu."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Pemikiran Linier (Kaku Konvensional)",
+          "operasi_mental": "Hanya mengenal 1 cara kaku dalam menyelesaikan masalah; langsung menyerah jika cara tunggal tersebut gagal.",
+          "dampak_akademik": "Mudah buntu saat menghadapi tantangan akademik terbuka yang tidak ada petunjuk tunggalnya.",
+          "mitigasi_kognitif": "Amati cara teman lain dalam menyelesaikan soal yang sama untuk membuka wawasan alternatif."
+        }
+      }
+    }
+  },
+  "analisis_cognitive_bottleneck": [
+    {
+      "nama_pola": "Working Memory Overload (Kemacetan Memori Kerja)",
+      "kriteria_skor": "Comprehension / Reasoning ≥ 65% DAN Working Memory ≤ 40%",
+      "analisis_klinis": "Siswa memiliki penalaran dan daya paham konseptual yang sangat cerdas. Namun, sistem berpikirnya mengalami kemacetan parah karena kapasitas memori kerja mentalnya terbatas. Siswa paham konsepnya, tetapi sering salah hitung atau lupa langkah karena otaknya kelebihan beban data.",
+      "rekomendasi_instruksional": "Wajib gunakan alat bantu ingatan eksternal! Tuliskan langkah perantara di kertas corat-coret, buat daftar rumus ringkas di samping meja, dan pecah soal panjang menjadi 3 sub-soal kecil."
+    },
+    {
+      "nama_pola": "Encoding Deficit with High Attention (Atensi Tinggi Tanpa Penyandian)",
+      "kriteria_skor": "Attention ≥ 65% DAN Encoding ≤ 40%",
+      "analisis_klinis": "Siswa sangat tekun dan mampu duduk fokus mendengarkan pelajaran dalam waktu lama. Namun, informasi yang didengar tidak berhasil diterjemahkan otak menjadi gambaran mental atau skema memori. Siswa fokus 'mendengar', tetapi otaknya tidak 'menyimpan'.",
+      "rekomendasi_instruksional": "Ubah gaya belajar menjadi visual dan kinestetik! Gunakan teknik Dual Coding—tiap kali membaca paragraf, siswa wajib menggambar simbol atau peta konsep sederhana di marjin buku."
+    },
+    {
+      "nama_pola": "Low Transfer Agility (Pemahaman Kaku Tanpa Transfer)",
+      "kriteria_skor": "Comprehension ≥ 65% DAN Transfer ≤ 40%",
+      "analisis_klinis": "Siswa sangat menguasai materi ketika dijelaskan oleh guru atau saat membaca buku pelajaran. Namun, pemahamannya terkunci kaku pada konteks asal. Saat tipe soal ujian diubah sedikit atau dijadikan studi kasus, otaknya bingung total.",
+      "rekomendasi_instruksional": "Berikan latihan variasi lintas konteks! Melatih soal-soal ujian dengan berbagai bentuk format redaksi dan hubungkan konsep pelajaran dengan kasus di dunia nyata."
+    },
+    {
+      "nama_pola": "Critical Thinking Disconnect (Penalaran Tanpa Filter Kritis)",
+      "kriteria_skor": "Reasoning ≥ 65% DAN Critical Thinking ≤ 40%",
+      "analisis_klinis": "Siswa lincah menyusun rantai logika dan menarik kesimpulan. Namun, ia tidak memiliki filter kritis untuk menguji kebenaran fakta awal (premis). Jika premis awalnya salah/jebakan, seluruh penalaran bawahnya menjadi salah total.",
+      "rekomendasi_instruksional": "Latih pengujian bukti awal! Sebelum mulai bernalar atau menghitung, latih siswa menguji pertanyaan: 'Apakah data di dalam soal ini sudah pasti benar dan valid?'."
+    }
+  ],
+  "rekomendasi_manajemen_beban_kognitif": {
+    "prinsip_dasar": "Mengatur Cognitive Load (Beban Kognitif) agar informasi dapat masuk ke memori jangka panjang tanpa membuat Working Memory pingsan/overload.",
+    "panduan_siswa": [
+      "Penyajian Bertahap (Chunking): Jangan mempelajari 1 bab tebal sekaligus. Pecah materi menjadi 3-4 potongan unit mikro.",
+      "Dual Coding: Gabungkan penjelasan kata-kata dengan gambaran visual atau diagram alur di dalam catatan.",
+      "Penggunaan External Memory: Kurangi beban ingatan di kepala dengan rajin menuliskan poin-poin rumus di lembar kertas buram."
+    ],
+    "panduan_guru_ortu": [
+      "Hindari pengulangan instruksi lisan yang terlalu panjang sekaligus.",
+      "Sajikan materi dengan urutan: Contoh Konkret -> Gambaran Visual -> Rumus / Definisi Abstrak.",
+      "Berikan jeda istirahat kognitif (brain break) selama 3-5 menit setelah 25 menit sesi pemrosesan intensif."
+    ]
+  }
+}
