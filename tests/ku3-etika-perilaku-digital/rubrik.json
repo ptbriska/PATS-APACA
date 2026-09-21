@@ -1,0 +1,131 @@
+{
+  "kode_tes": "KU3",
+  "nama_tes": "APACA Youth Digital Behavior & Literacy Inventory (ADLIT-Y)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "informasi_umum": "APACA Youth Digital Behavior & Literacy Inventory (ADLIT-Y) mengukur kecakapan literasi digital sekaligus mendeteksi dini risiko kecanduan gawai pada anak dan remaja. Instrumen ini mengintegrasikan Kerangka Kerja Literasi Digital (Digital Citizenship) dan kriteria adiksi layar untuk memetakan perilaku berinternet siswa secara obyektif.",
+  "norma_ild": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "kategori": "Sangat Cerdas Digital",
+      "label_status": "SANGAT CERDAS DIGITAL",
+      "deskripsi": "Anak memiliki pemahaman etika siber yang sangat matang, kritis dalam memilah berita bohong (hoaks), serta disiplin dalam menjaga privasi dan keamanan data pribadi.",
+      "dampak": "Sangat aman dan bijak berinternet, mampu memanfaatkan gawai secara produktif untuk belajar, serta terhindar dari kejahatan siber.",
+      "tindakan_lanjutan": "Dapat dijadikan role model atau Duta Etika Digital bagi teman-teman sebayanya di sekolah."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "kategori": "Cukup Cerdas",
+      "label_status": "CUKUP CERDAS DIGITAL",
+      "deskripsi": "Anak memahami norma dasar etika berinternet dan keamanan privasi, namun sesekali masih dapat terkecoh oleh berita bohong atau kurang waspada pada tautan asing.",
+      "dampak": "Cukup aman dalam penggunaan harian, namun tetap membutuhkan pengawasan berkala saat mengeksplorasi platform digital baru.",
+      "tindakan_lanjutan": "Berikan penguatan pada pemahaman verifikasi informasi dan literasi anti-hoaks."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "kategori": "Literasi Low-Moderate",
+      "label_status": "LITERASI LOW-MODERATE",
+      "deskripsi": "Kesadaran anak terhadap etika berinternet dan perlindungan privasi masih terbatas. Anak rentan secara tidak sengaja membagikan data pribadi atau terbawa emosi di media sosial.",
+      "dampak": "Rentan menjadi korban perundungan siber (cyberbullying) atau tanpa sadar melakukan pelanggaran etika di dunia maya.",
+      "tindakan_lanjutan": "Wajib diikutsertakan dalam pelatihan etika siber dan keamanan data pribadi dasar."
+    },
+    {
+      "rentang_skor_persen": "0% - 40%",
+      "kategori": "Rentan Digital",
+      "label_status": "RENTAN DIGITAL / RISIKO TINGGI",
+      "deskripsi": "Anak tidak memahami etika berinternet, sangat ceroboh dalam menjaga data diri, mudah mempercayai berita bohong, dan asal mengeklik tautan berbahaya.",
+      "dampak": "Sangat berisiko tinggi terkena penipuan online, kebocoran akun pribadi, perundungan siber, dan paparan konten tidak pantas.",
+      "tindakan_lanjutan": "Memerlukan pendampingan dan pembatasan akses internet secara ketat oleh orang tua dan sekolah."
+    }
+  ],
+  "norma_irad": [
+    {
+      "rentang_skor_mentah": "15 - 26",
+      "kategori": "Risiko Rendah (Normal)",
+      "label_status": "RISIKO RENDAH / TERKONTROL",
+      "deskripsi": "Penggunaan gawai sangat terkontrol dengan baik dan tidak mengganggu jadwal tidur, kewajiban belajar, maupun hubungan sosial keluarga.",
+      "dampak": "Kesehatan fisik, emosi, dan pola belajar anak terjaga dengan stabil.",
+      "tindakan_lanjutan": "Pertahankan kebiasaan penggunaan gawai yang sehat ini."
+    },
+    {
+      "rentang_skor_mentah": "27 - 39",
+      "kategori": "Risiko Sedang (Waspada)",
+      "label_status": "RISIKO SEDANG / WASPADA",
+      "deskripsi": "Anak mulai menunjukkan keterikatan berlebih pada gawai, sering lupa waktu, dan kadang merasa cemas atau jengkel saat durasi penggunaan dibatasi.",
+      "dampak": "Jam belajar dan jadwal tidur mulai terganggu secara berkala; berpotensi menurunkan konsentrasi di sekolah.",
+      "tindakan_lanjutan": "Terapkan kesepakatan pembatasan durasi gawai (Screen-Time Boundary) secara konsisten di rumah."
+    },
+    {
+      "rentang_skor_mentah": "40 - 60",
+      "kategori": "Risiko Tinggi (Adiksi)",
+      "label_status": "RISIKO TINGGI / ADIKSI SCREEN-TIME",
+      "deskripsi": "Anak mengalami kecanduan gawai berat. Menunjukkan dorongan kompulsif, marah berlebihan saat gawai diambil, gangguan tidur parah, serta pengabaian tugas sekolah.",
+      "dampak": "Performa akademik menurun drastis, emosi tidak stabil, isolasi sosial dari keluarga, dan potensi gangguan emosional.",
+      "tindakan_lanjutan": "Diperlukan intervensi segera: detoks gawai harian, pembuatan zona bebas gawai, dan konseling bimbingan dengan Psikolog/Guru BK."
+    }
+  ],
+  "matriks_zona_profil": {
+    "Zone_A": {
+      "kode_zona": "Zone A",
+      "nama_zona": "ZONE A: BAHAYA (Literasi Rendah & Adiksi Tinggi)",
+      "kriteria": "ILD ≤ 60% DAN IRAD ≥ 40",
+      "deskripsi_klinis": "Anak mengalami adiksi berat sekaligus tidak memiliki pemahaman etika dan privasi digital. Kondisi ini sangat berbahaya karena anak menghabiskan banyak waktu di internet tanpa benteng perlindungan diri.",
+      "risiko_utama": "Sangat rentan menjadi korban penipuan online, kejahatan siber, perundungan berat, atau terpengaruh perilaku destruktif di internet.",
+      "rekomendasi_penanganan": "Detoks gawai ketat dari orang tua, penerapan zona bebas gawai di rumah, serta pendampingan edukasi etika dasar oleh Guru BK."
+    },
+    "Zone_B": {
+      "kode_zona": "Zone B",
+      "nama_zona": "ZONE B: KERENTANAN (Literasi Tinggi & Adiksi Tinggi)",
+      "kriteria": "ILD ≥ 61% DAN IRAD ≥ 40",
+      "deskripsi_klinis": "Anak sangat paham aturan dan etika berinternet, namun memiliki kontrol diri yang lemah terhadap durasi penggunaan gawai (screen-time).",
+      "risiko_utama": "Penurunan prestasi akademik, kelelahan fisik, dan gangguan pola tidur akibat waktu habis di depan layar.",
+      "rekomendasi_penanganan": "Fokus pada regulasi diri dan manajemen waktu: atur jadwal otomatis mati gawai dan alihkan ke aktivitas fisik atau olahraga."
+    },
+    "Zone_C": {
+      "kode_zona": "Zone C",
+      "nama_zona": "ZONE C: POLOS (Literasi Rendah & Adiksi Rendah)",
+      "kriteria": "ILD ≤ 60% DAN IRAD ≤ 39",
+      "deskripsi_klinis": "Anak tidak kecanduan gawai, tetapi sangat polos dan belum memahami bahaya atau etika di dunia digital.",
+      "risiko_utama": "Berisiko tinggi terbawa arus atau dimanfaatkan oleh pihak tidak bertanggung jawab saat mulai aktif berinternet.",
+      "rekomendasi_penanganan": "Diberikan pembekalan materi literasi digital, edukasi anti-hoaks, dan pelatihan keamanan privasi akun sejak dini."
+    },
+    "Zone_D": {
+      "kode_zona": "Zone D",
+      "nama_zona": "ZONE D: AMAN (Literasi Tinggi & Adiksi Rendah)",
+      "kriteria": "ILD ≥ 61% DAN IRAD ≤ 39",
+      "deskripsi_klinis": "Profil ideal Warga Digital Sejati (Digital Citizen). Anak memiliki pemahaman literasi yang cerdas serta kontrol penggunaan gawai yang sangat seimbang.",
+      "risiko_utama": "Risiko minimal.",
+      "rekomendasi_penanganan": "Pertahankan pola pendampingan yang ada dan fasilitasi pengembangan bakat digital yang positif."
+    }
+  },
+  "rubrik_dimensi": {
+    "Etika & Etiket Digital": {
+      "judul": "Etika & Etiket Digital",
+      "deskripsi": "Mengukur kesantunan berbahasa saat berkomentar/bermain game online, sikap anti-cyberbullying, serta kebiasaan meminta izin sebelum berbagi konten karya orang lain."
+    },
+    "Berpikir Kritis Informasi": {
+      "judul": "Berpikir Kritis Informasi",
+      "deskripsi": "Mengukur kemampuan menganalisis kebenaran informasi, mengenali berita bohong (hoaks), dan ketelitian memeriksa sumber sebelum menyebarkan kabar."
+    },
+    "Keamanan & Privasi": {
+      "judul": "Keamanan & Privasi Digital",
+      "deskripsi": "Mengukur kesadaran menjaga data pribadi (password, alamat, foto), pengelolaan privat akun, serta kewaspadaan pada interaksi dengan orang asing di internet."
+    },
+    "Screening Adiksi Screen-Time": {
+      "judul": "Screening Adiksi Screen-Time",
+      "deskripsi": "Mengukur indikator dorongan kompulsif memegang gawai, emosi saat gawai diambil, hilangnya kontrol waktu, serta hambatan pada jam tidur dan belajar."
+    }
+  },
+  "panduan_edukasi": {
+    "orang_tua": {
+      "penanganan_adiksi": "Buat kesepakatan tertulis batas waktu gawai (maksimal 2 jam sehari di luar sekolah). Tetapkan 'No-Device Zone' di kamar tidur dan meja makan. Berikan sanksi konsisten jika melanggar.",
+      "penanganan_literasi": "Dampingi anak saat mengeksplorasi internet. Diskusikan contoh kasus bahaya membagikan lokasi atau foto pribadi secara publik."
+    },
+    "sekolah": {
+      "penanganan_adiksi": "Guru BK memberikan pemantauan harian pada siswa Zone A & B. Libatkan siswa dalam kegiatan ekstrakurikuler fisik/olahraga kelompok.",
+      "penanganan_literasi": "Integrasikan kurikulum Literasi Digital (Edukasi Anti-Hoaks, Anti-Cyberbullying, dan Privasi Data) pada sesi jam BK atau TIK."
+    }
+  }
+}
