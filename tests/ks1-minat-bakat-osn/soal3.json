@@ -1,0 +1,77 @@
+{
+  "test_info": {
+    "kode_pilar": "KS1_PILAR3",
+    "nama_pilar": "Pilar III: Science Persona Fit Test",
+    "deskripsi": "Pengukuran Resiliensi, Pressure Tolerance, dan Science Comfort berbasis Evaluasi Preview PDF Soal OSN Asli.",
+    "durasi_estimasi_menit": 15
+  },
+  "likert_scale": [
+    { "value": 1, "label": "1 - Sangat Tidak Setuju" },
+    { "value": 2, "label": "2 - Tidak Setuju" },
+    { "value": 3, "label": "3 - Ragu-ragu / Netral" },
+    { "value": 4, "label": "4 - Setuju" },
+    { "value": 5, "label": "5 - Sangat Setuju" }
+  ],
+  "bidang_list": [
+    { "code": "MTK", "nama": "Matematika", "pdf_file": "matematika.pdf" },
+    { "code": "FIS", "nama": "Fisika", "pdf_file": "fisika.pdf" },
+    { "code": "KIM", "nama": "Kimia", "pdf_file": "kimia.pdf" },
+    { "code": "BIO", "nama": "Biologi", "pdf_file": "biologi.pdf" },
+    { "code": "INF", "nama": "Informatika", "pdf_file": "informatika.pdf" },
+    { "code": "AST", "nama": "Astronomi", "pdf_file": "astronomi.pdf" },
+    { "code": "EKO", "nama": "Ekonomi", "pdf_file": "ekonomi.pdf" },
+    { "code": "KBM", "nama": "Kebumian", "pdf_file": "kebumian.pdf" },
+    { "code": "GEO", "nama": "Geografi", "pdf_file": "geografi.pdf" },
+    { "code": "AI", "nama": "AI & Data Science", "pdf_file": "ai.pdf" }
+  ],
+  "resilience_questions": [
+    {
+      "id": 1,
+      "code": "C1",
+      "indicator": "Pressure Tolerance",
+      "prompt": "Melihat kompleksitas dan tingkat kesulitan soal Level 3 (Sulit) pada dokumen PDF di samping, saya tidak merasa panik berlebih (panic attack) atau berniat menghindari bidang ini."
+    },
+    {
+      "id": 2,
+      "code": "C2",
+      "indicator": "Grit & Growth Mindset",
+      "prompt": "Setelah membaca langkah-langkah pembahasan soal pada PDF di samping, saya tidak merasa minder dan justru tertantang untuk memahaminya jika alur berpikir saya sebelumnya keliru."
+    },
+    {
+      "id": 3,
+      "code": "C3",
+      "indicator": "Stamina & Consistency",
+      "prompt": "Saya siap dan berkomitmen mengalokasikan waktu rutin untuk melatih penyelesaian soal-soal dengan tipe dan kerumitan seperti pada sampel PDF bidang ini."
+    },
+    {
+      "id": 4,
+      "code": "C4",
+      "indicator": "Modul Endurance",
+      "prompt": "Saya bersedia dan tahan membaca literasi atau modul teori tebal untuk dapat menguasai konsep dasar di balik soal-soal yang ada pada PDF tersebut."
+    },
+    {
+      "id": 5,
+      "code": "C5",
+      "indicator": "Autonomous Learning",
+      "prompt": "Saat menjumpai tipe soal rumit seperti pada sampel PDF di samping, saya terbiasa mencoba membedah dan mencoret-coret mencari solusi sendiri terlebih dahulu sebelum bertanya."
+    },
+    {
+      "id": 6,
+      "code": "C6",
+      "indicator": "Coachability",
+      "prompt": "Saya sangat terbuka untuk dibimbing secara intensif oleh pembina jika alur pengerjaan saya berbeda dengan pembahasan logika yang dicantumkan pada PDF tersebut."
+    },
+    {
+      "id": 7,
+      "code": "C7",
+      "indicator": "Competitive Drive",
+      "prompt": "Tingkat kesulitan tinggi dari sampel soal OSN pada PDF di samping justru memicu semangat kompetitif saya untuk bisa menaklukkan bidang ini."
+    },
+    {
+      "id": 8,
+      "code": "C8",
+      "indicator": "Procedural Rigor",
+      "prompt": "Saya menikmati kerapian dan ketelitian proses menurunkan rumus / menganalisis logika langkah demi langkah sebagaimana ditampilkan pada bagian pembahasan PDF."
+    }
+  ]
+}
