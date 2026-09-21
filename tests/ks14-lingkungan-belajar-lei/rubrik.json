@@ -1,0 +1,221 @@
+{
+  "kode_tes": "KS14",
+  "nama_tes": "APACA Learning Environment Inventory (LEI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "informasi_umum": "APACA Learning Environment Inventory (LEI) memetakan preferensi dan sensitivitas ekosistem belajar siswa pada 5 dimensi utama: Fisik, Sosial, Digital, Waktu (Temporal), dan Struktur. Hasil tes ini memberikan arahan presisi bagi Orang Tua dan Sekolah untuk merancang lingkungan belajar yang minim distraksi, meningkatkan daya tahan kognitif, serta mencegah kelelahan emosional (mental fatigue).",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Sangat Krusial (Essential)",
+      "label_status": "SANGAT KRUSIAL / ENABLER UTAMA",
+      "deskripsi_kondisi": "Kondisi/fasilitas ini merupakan syarat utama dan pemicu mutlak agar siswa dapat mencapai pemrosesan kognitif puncak dan konsentrasi maksimal.",
+      "dampak_akademik": "Jika kondisi ini terpenuhi, daya serap materi dan efisiensi waktu belajar siswa meningkat pesat. Sebaliknya, hilangnya kondisi ini akan langsung memicu drop performa.",
+      "tindakan_lanjutan": "Wajib disediakan dan diprioritaskan utama dalam penataan ruang belajar rumah maupun strategi pengajaran di sekolah."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Mendukung (Preferred)",
+      "label_status": "MENDUKUNG / PREFERENSI TINGGI",
+      "deskripsi_kondisi": "Lingkungan ini sangat nyaman, mempermudah konsentrasi, dan mempercepat pemahaman materi pelajaran secara signifikan.",
+      "dampak_akademik": "Membuat proses belajar terasa menyenangkan, menjaga stamina berpikir lebih tahan lama, dan meredakan ketegangan mental.",
+      "tindakan_lanjutan": "Diintegrasikan sebagai kondisi ideal pendukung aktivitas belajar harian."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Netral (Adaptable)",
+      "label_status": "NETRAL / ADAPTIF",
+      "deskripsi_kondisi": "Siswa memiliki fleksibilitas kognitif yang tinggi dan dapat beradaptasi dengan baik tanpa terganggu oleh ada atau tidaknya kondisi lingkungan ini.",
+      "dampak_akademik": "Performa belajar relatif stabil dan konsisten pada berbagai variasi situasi eksternal.",
+      "tindakan_lanjutan": "Tidak memerlukan intervensi khusus; berikan kebebasan wajar sesuai situasi ketersediaan sarana."
+    },
+    {
+      "rentang_skor_persen": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Kurang Sesuai (Inconvenient)",
+      "label_status": "KURANG SESUAI / GESEKAN EMOSIONAL",
+      "deskripsi_kondisi": "Kondisi lingkungan ini menimbulkan gesekan kognitif ringan; siswa membutuhkan usaha emosional ekstra untuk mempertahankan fokus.",
+      "dampak_akademik": "Siswa cepat merasa lelah, fokus mudah teralih, dan membutuhkan waktu lebih lama untuk memahami materi yang sama.",
+      "tindakan_lanjutan": "Minimalkan paparan kondisi ini dan latih strategi penyesuaian diri bertahap."
+    },
+    {
+      "rentang_skor_persen": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Distraksi Berat (Inhibitory)",
+      "label_status": "DISTRAKSI BERAT / PENGHAMBAT KOGNITIF",
+      "deskripsi_kondisi": "Kondisi lingkungan ini menjadi faktor penghambat utama (major distractor) yang merusak pemrosesan informasi dan memicu stres akademis.",
+      "dampak_akademik": "Membuat siswa cepat cemas, kehilangan daya ingat (blank), frustrasi, dan berisiko tinggi mengalami kelelahan mental (burnout).",
+      "tindakan_lanjutan": "Eliminasi total atau hindari kondisi ini dari rutinitas belajar utama siswa."
+    }
+  ],
+  "rubrik_dimensi_utama": {
+    "Physical Environment": {
+      "judul_dimensi": "Physical Environment (Lingkungan Fisik & Spasial)",
+      "deskripsi": "Memetakan sensitivitas pencahayaan, akustik/suara, suhu udara, ergonomi posisi tubuh, serta kebutuhan ruang pribadi privat.",
+      "sub_dimensi": {
+        "Cahaya": {
+          "indikator": "Pencahayaan Terang/Alami vs Temaram",
+          "panduan_orang_tua": "Jika skor tinggi: Sediakan lampu belajar LED terang atau posisikan meja belajar dekat jendela. Jika skor rendah: Hindari silau lampu langsung, gunakan pencahayaan warm/temaram yang tenang.",
+          "panduan_sekolah": "Pastikan pencahayaan ruang kelas merata dan tidak membuat bayangan gelap pada area meja siswa."
+        },
+        "Suara": {
+          "indikator": "Keheningan Total / Musik vs Latar Bising",
+          "panduan_orang_tua": "Jika skor tinggi: Ciptakan zona hening total di rumah saat jam belajar, atau fasilitasi headphone noise-cancelling dengan musik instrumen. Jika rendah: Biarkan siswa belajar di area ruang keluarga yang hidup.",
+          "panduan_sekolah": "Posisikan siswa bersensitivitas suara tinggi di area kelas yang jauh dari koridor rame atau pintu keluar."
+        },
+        "Temperatur": {
+          "indikator": "Suhu Dingin/Sejuk vs Suhu Hangat",
+          "panduan_orang_tua": "Jaga ventilasi udara atau pendingin ruangan (AC/kipas) di kamar belajar agar tetap sejuk untuk mencegah kantuk kognitif.",
+          "panduan_sekolah": "Sediakan pertukaran udara segar yang cukup di dalam kelas agar daya tahan konsentrasi siswa tidak cepat merosot."
+        },
+        "Posisi Tubuh": {
+          "indikator": "Ergonomi Duduk Tegak vs Lesehan/Rebahan/Bergerak",
+          "panduan_orang_tua": "Fasilitasi kursi meja belajar ergonomis jika butuh duduk tegak. Jika fleksibel/kinestetik: Biarkan siswa belajar lesehan atau menggunakan standing desk.",
+          "panduan_sekolah": "Berikan fleksibilitas pergantian posisi tubuh sesekali saat sesi latihan soal panjang."
+        },
+        "Ruang Pribadi": {
+          "indikator": "Area Privat Terisolasi vs Area Publik/Terbuka",
+          "panduan_orang_tua": "Sediakan kamar pribadi khusus tanpa gangguan anggota keluarga lain untuk menjaga fokus mandirinya.",
+          "panduan_sekolah": "Fasilitasi sekat belajar pribadi atau area sudut perpustakaan yang tenang."
+        }
+      }
+    },
+    "Social Environment": {
+      "judul_dimensi": "Social Environment (Dinamika Sosial & Interaksi)",
+      "deskripsi": "Memetakan moda interaksi belajar paling efektif: Soliter (Sendiri), Pair (Berpasangan), Kelompok Kecil, Kelas Masif, atau Bimbingan Mentor.",
+      "sub_dimensi": {
+        "Sendiri": {
+          "indikator": "Pembelajaran Soliter Mandiri",
+          "panduan_orang_tua": "Beri otonomi penuh saat siswa mengolah bab baru, hindari terlalu sering menengok atau menginterupsi.",
+          "panduan_sekolah": "Berikan waktu khusus untuk pengerjaan tugas mandiri tanpa paksaan diskusi kelompok."
+        },
+        "Berpasangan": {
+          "indikator": "Diskusi 1-on-1 Peer Learning",
+          "panduan_orang_tua": "Izinkan siswa mengundang 1 orang teman sebaya yang suportif untuk belajar bersama di rumah.",
+          "panduan_sekolah": "Gunakan metode study-buddy (pasangan belajar) untuk sesi kaji ulang materi sulit."
+        },
+        "Kelompok Kecil": {
+          "indikator": "Tim Interaktif (3–5 Orang)",
+          "panduan_orang_tua": "Dukung partisipasi siswa dalam kelompok belajar kecil berbasis proyek.",
+          "panduan_sekolah": "Bentuk kelompok diskusi kecil beranggotakan maksimal 4 orang dengan pembagian peran yang spesifik."
+        },
+        "Kelompok Besar": {
+          "indikator": "Suasana Kelas Masif / Auditorium",
+          "panduan_orang_tua": "Bantu siswa menyesuaikan diri jika ia cemas berada di tengah keramaian iklim belajar masif.",
+          "panduan_sekolah": "Gunakan teknik pemanggilan nama interaktif agar siswa tetap terikat perhatiannya saat mengajar di kelas besar."
+        },
+        "Mentor": {
+          "indikator": "Bimbingan Intensif Pengajar / Privat Tutor",
+          "panduan_orang_tua": "Pertimbangkan menghadirkan guru privat atau pendampingan belajar langsung yang ramah dan konsisten.",
+          "panduan_sekolah": "Sediakan sesi konsultasi personal (office hours) di luar jam pelajaran kelas."
+        }
+      }
+    },
+    "Digital Environment": {
+      "judul_dimensi": "Digital Environment (Media & Teknologi Belajar)",
+      "deskripsi": "Mengukur efektivitas penggunaan media audiovisual, kuis interaktif, tutor AI, catatan digital/LMS, serta software simulasi.",
+      "sub_dimensi": {
+        "Video & Audio": {
+          "indikator": "Pembelajaran Audiovisual Interaktif",
+          "panduan_orang_tua": "Fasilitasi akses ke platform edukasi berbasis video visual berkualitas.",
+          "panduan_sekolah": "Gunakan tayangan animasi atau video dokumenter singkat sebagai pemicu pemahaman sebelum materi teori."
+        },
+        "Interactive Apps & AI": {
+          "indikator": "Penggunaan Kuis Digital & Tutor Generative AI",
+          "panduan_orang_tua": "Dampingi penggunaan alat bantu AI dan kuis digital agar digunakan secara etis sebagai mitra berpikir mandiri.",
+          "panduan_sekolah": "Integrasikan aplikasi kuis berbasis umpan balik instan (seperti Kahoot/Quizizz) dalam asesmen formatif."
+        },
+        "LMS & Digital Notes": {
+          "indikator": "Pengorganisasian Platform Digital & Catatan Elektronik",
+          "panduan_orang_tua": "Bantu siswa merapikan struktur direktori folder tugas digital di perangkat komputernya.",
+          "panduan_sekolah": "Pastikan batas tenggat tugas dan instruksi di platform LMS sekolah tersusun rapi dan transparan."
+        },
+        "Simulations": {
+          "indikator": "Software Pemodelan & Simulasi Virtual",
+          "panduan_orang_tua": "Sediakan akses ke perangkat lunak simulasi praktikum digital sesuai bidang minatnya.",
+          "panduan_sekolah": "Manfaatkan laboratorium virtual untuk memperjelas konsep-konsep sains atau matematika yang abstrak."
+        }
+      }
+    },
+    "Temporal Environment": {
+      "judul_dimensi": "Temporal Environment (Ritme Waktu & Durasi Sesi)",
+      "deskripsi": "Memetakan irama sirkadian biologis (Pagi vs Malam) dan pola distribusi durasi belajar (Short Sprint vs Maraton).",
+      "sub_dimensi": {
+        "Pagi vs. Siang/Sore": {
+          "indikator": "Puncak Kognitif Pagi Hari",
+          "panduan_orang_tua": "Arahkan siswa untuk menyelesaikan materi paling rumit (Matematika/Sains) di pagi atau sebelum siang hari.",
+          "panduan_sekolah": "Jadwalkan mata pelajaran berat berdosis penalaran tinggi pada jam-jam pertama persekolahan."
+        },
+        "Malam Hari": {
+          "indikator": "Puncak Kognitif Malam Hari (Night Owl)",
+          "panduan_orang_tua": "Berikan toleransi dan suasana tenang jika siswa lebih produktif dan fokus membaca konsep tebal pada malam hari.",
+          "panduan_sekolah": "Hindari memberikan tenggat waktu penyerahan tugas pada malam hari yang dapat mengganggu waktu istirahat."
+        },
+        "Short vs. Long Sessions": {
+          "indikator": "Short Sprint (Interval) vs Long Marathon",
+          "panduan_orang_tua": "Jika skor Short tinggi: Latih teknik Pomodoro (25 menit belajar, 5 menit istirahat). Jika Long tinggi: Biarkan siswa berfokus maraton tanpa interupsi.",
+          "panduan_sekolah": "Diselingi dengan brain break (istirahat jeda otak singkat) di pertengahan jam pelajaran panjang."
+        }
+      }
+    },
+    "Structure": {
+      "judul_dimensi": "Structure (Struktur & Pengaturan Alur Belajar)",
+      "deskripsi": "Memetakan tingkat kebutuhan rutinitas tetap, fleksibilitas alur, dorongan tenggat waktu (deadline-driven), dan ritme mandiri (self-paced).",
+      "sub_dimensi": {
+        "Rutinitas Tetap": {
+          "indikator": "Jadwal Belajar Teratur & Konsisten",
+          "panduan_orang_tua": "Buat papan jadwal rutinitas harian yang jelas dan dipasang di area meja belajar rumah.",
+          "panduan_sekolah": "Berikan kepastian struktur silabus pembelajaran dan aturan penilaian sejak awal semester."
+        },
+        "Jadwal Fleksibel": {
+          "indikator": "Kebebasan Mengatur Waktu Harian",
+          "panduan_orang_tua": "Beri kesempatan siswa menentukan sendiri jam belajarnya asalkan target harian tercapai.",
+          "panduan_sekolah": "Sediakan rentang waktu penyerahan tugas yang adaptif."
+        },
+        "Deadline-driven": {
+          "indikator": "Lonjakan Fokus pada Batas Tenggat Waktu",
+          "panduan_orang_tua": "Bantu siswa membuat tenggat waktu buatan (milestone) agar tidak menumpuk semua beban di akhir.",
+          "panduan_sekolah": "Berikan batas waktu tegas dengan pengingat bertahap."
+        },
+        "Self-paced": {
+          "indikator": "Kecepatan Belajar Berbasis Pemahaman Diri",
+          "panduan_orang_tua": "Izinkan siswa mengulang bacaan bab tertentu sampai benar-benar paham tanpa terburu-buru.",
+          "panduan_sekolah": "Fasilitasi modul mandiri berkadar pengayaan atau remediasi sesuai kecepatan masing-masing siswa."
+        }
+      }
+    }
+  },
+  "matriks_kondisi_ekstrem_dan_kombinasi": [
+    {
+      "nama_pola": "Quiet Solitary Digital Learner (Pembelajar Digital Mandiri & Hening)",
+      "kriteria": "Physical Sound ≤ 40% DAN Social Solitary ≥ 70% DAN Digital Score ≥ 65%",
+      "analisis_klinis": "Siswa berkembang sangat pesat dalam ekosistem mandiri, hening, dan ditopang gawai digital. Kehadiran keramaian kelompok fisik dan metode ceramah konvensional justru memicu kebocoran fokus dan kejenuhan.",
+      "rekomendasi_orang_tua": "Sediakan kamar pribadi berfasilitas gawai belajar yang terisolasi dari kebisingan rumah.",
+      "rekomendasi_sekolah": "Berikan ruang untuk penyelesaian tugas mandiri berbasis platform digital (LMS) tanpa memaksa diskusi kelompok masif."
+    },
+    {
+      "nama_pola": "Collaborative Interactive Learner (Pembelajar Sosial Interaktif)",
+      "kriteria": "Social Pair/Group ≥ 70% DAN Physical Quiet ≤ 40%",
+      "analisis_klinis": "Siswa membutuhkan ruang interaksi sosial, diskusi, dan pertukaran gagasan untuk memproses materi. Belajar sendirian di tempat hening total justru membuat pikirkannya pasif dan mengantuk.",
+      "rekomendasi_orang_tua": "Izinkan anak belajar kelompok bersama teman sebaya atau berdiskusi aktif dengan orang tua.",
+      "rekomendasi_sekolah": "Libatkan siswa sebagai pemimpin diskusi kelompok kecil atau metode tutor sebaya (peer tutoring)."
+    },
+    {
+      "nama_pola": "Deadline-Driven Night-Owl (Tipe Puncak Tekanan Larut Malam)",
+      "kriteria": "Temporal Night ≥ 70% DAN Structure Deadline ≥ 70%",
+      "analisis_klinis": "Siswa mencapai performa analisis puncak pada malam hari dan sangat terpacu saat mendekati tenggat waktu. Namun, pola ini berisiko memicu kecemasan dan kurang tidur jika tidak dikelola.",
+      "rekomendasi_orang_tua": "Bantu siswa memecah tenggat waktu besar menjadi sub-target kecil di sore hari untuk menjaga pola tidur sehat.",
+      "rekomendasi_sekolah": "Hindari memberikan tugas mendadak berkategori berat yang harus dikumpulkan keesokan pagi."
+    }
+  ],
+  "remote_learning_readiness_cutoff": {
+    "persyaratan": "Untuk efektivitas Program Pembelajaran Jarak Jauh (PJJ) / Online Learning Mandiri",
+    "threshold_min": "Digital Environment Index ≥ 65% DAN Self-Paced Structure Index ≥ 65%",
+    "interpretasi_kelulusan": "Siswa memiliki kesiapan teknologi dan regulasi alur mandiri yang sangat memadai untuk mengikuti kelas PJJ tanpa risiko penurunan prestasi."
+  }
+}
