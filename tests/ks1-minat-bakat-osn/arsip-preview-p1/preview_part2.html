@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Part 2: Modul LOG (OSN Aptitude)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #f8fafc; color: #0f172a; padding: 30px 16px; }
+    .container { max-width: 820px; margin: 0 auto; }
+    .header-bar { background: linear-gradient(135deg, #4c1d95 0%, #312e81 100%); color: #ffffff; padding: 24px 28px; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
+    .header-bar h1 { font-size: 1.35rem; color: #a78bfa; margin-bottom: 6px; }
+    .header-bar p { font-size: 0.88rem; color: #c4b5fd; line-height: 1.5; }
+    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .meta-tag { display: inline-block; background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; text-transform: uppercase; }
+    .question-prompt { font-size: 0.98rem; font-weight: 600; line-height: 1.6; color: #1e293b; margin-bottom: 20px; text-align: justify; }
+    .stimulus-container { background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 18px; display: flex; justify-content: center; align-items: center; margin-bottom: 22px; }
+    .stimulus-container svg { max-width: 100%; height: auto; }
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .options-grid { grid-template-columns: 1fr; } }
+    .option-btn { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 500; cursor: default; }
+    .option-code { font-weight: 800; background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.82rem; }
+    .correct-answer { background: #dcfce7; color: #166534; font-size: 0.8rem; padding: 6px 12px; border-radius: 6px; font-weight: 700; margin-top: 14px; display: inline-block; border: 1px solid #bbf7d0; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <h1>🧩 Quality Control — Preview Part 2: Modul LOG</h1>
+      <p>Modul Logika Formal & Penalaran Deduktif (4 Soal). Memeriksa ketajaman nalar percabangan, penalaran algoritmik visual, penelusuran (tracing), dan deduksi pola tertutup.</p>
+    </div>
+    <div id="questions-wrapper"></div>
+  </div>
+
+  <script>
+    const dataPart2 = {
+      "questions": [
+        {
+          "id": 5,
+          "module_code": "LOG",
+          "prompt": "Sebuah sistem pengamanan kargo luar angkasa menerapkan tiga aturan ketat untuk semua kontainer: (1) Jika kontainer berbentuk SEGITIGA, maka ia WAJIB berwarna Gelap. (2) Jika kontainer memiliki pola GARIS-GARIS, maka ia WAJIB memiliki simbol Titik di tengahnya. (3) Tidak ada kontainer berwarna Gelap yang memiliki simbol Titik di tengahnya. Berdasarkan aturan tersebut, kontainer manakah yang PALING VALID (tidak melanggar satupun aturan) dan diizinkan masuk?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 160' width='100%' height='160'><rect width='500' height='160' fill='#ffffff'/><defs><pattern id='stripes' patternUnits='userSpaceOnUse' width='8' height='8' patternTransform='rotate(45)'><line x1='0' y1='0' x2='0' y2='8' stroke='#64748b' stroke-width='2'/></pattern></defs><rect x='30' y='30' width='90' height='100' rx='8' fill='#f1f5f9' stroke='#cbd5e1' stroke-width='2'/><polygon points='75,45 45,110 105,110' fill='#ffffff' stroke='#1e293b' stroke-width='3'/><text x='75' y='145' font-size='12' font-weight='bold' fill='#475569' text-anchor='middle'>Kontainer 1</text><rect x='150' y='30' width='90' height='100' rx='8' fill='#f1f5f9' stroke='#cbd5e1' stroke-width='2'/><rect x='165' y='50' width='60' height='60' fill='url(#stripes)' stroke='#1e293b' stroke-width='3'/><text x='195' y='145' font-size='12' font-weight='bold' fill='#475569' text-anchor='middle'>Kontainer 2</text><rect x='270' y='30' width='90' height='100' rx='8' fill='#f1f5f9' stroke='#cbd5e1' stroke-width='2'/><polygon points='315,45 285,110 345,110' fill='url(#stripes)' stroke='#1e293b' stroke-width='3'/><polygon points='315,45 285,110 345,110' fill='#1e293b' fill-opacity='0.8'/><circle cx='315' cy='85' r='6' fill='#ffffff'/><text x='315' y='145' font-size='12' font-weight='bold' fill='#475569' text-anchor='middle'>Kontainer 3</text><rect x='390' y='30' width='90' height='100' rx='8' fill='#f1f5f9' stroke='#cbd5e1' stroke-width='2'/><polygon points='420,45 450,45 465,75 450,105 420,105 405,75' fill='url(#stripes)' stroke='#1e293b' stroke-width='3'/><circle cx='435' cy='75' r='6' fill='#1e293b'/><text x='435' y='145' font-size='12' font-weight='bold' fill='#475569' text-anchor='middle'>Kontainer 4</text></svg>",
+          "options": [
+            { "code": "A", "label": "Kontainer 1" }, { "code": "B", "label": "Kontainer 2" }, { "code": "C", "label": "Kontainer 3" }, { "code": "D", "label": "Kontainer 4" }
+          ],
+          "correct_answer": "D"
+        },
+        {
+          "id": 6,
+          "module_code": "LOG",
+          "prompt": "Robot penjelajah diprogram dengan logika pergerakan (looping) berikut: [1] Coba maju 1 petak ke arah ia menghadap. [2] Jika petak di depannya terhalang batu (X) atau batas dinding (ujung grid), robot akan berputar 90 derajat searah jarum jam di posisinya, lalu kembali ke langkah [1]. Diketahui posisi awal robot berada di koordinat (A, 1) dan menghadap ke arah KANAN. Di koordinat berapakah robot akan berada tepat setelah ia berhasil melakukan aksi 'MAJU' yang ke-6 kalinya?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 280' width='100%' height='280'><rect width='320' height='280' fill='#ffffff'/><g transform='translate(60, 40)'><line x1='0' y1='0' x2='200' y2='0' stroke='#cbd5e1' stroke-width='2'/><line x1='0' y1='50' x2='200' y2='50' stroke='#cbd5e1' stroke-width='2'/><line x1='0' y1='100' x2='200' y2='100' stroke='#cbd5e1' stroke-width='2'/><line x1='0' y1='150' x2='200' y2='150' stroke='#cbd5e1' stroke-width='2'/><line x1='0' y1='200' x2='200' y2='200' stroke='#cbd5e1' stroke-width='2'/><line x1='0' y1='0' x2='0' y2='200' stroke='#cbd5e1' stroke-width='2'/><line x1='50' y1='0' x2='50' y2='200' stroke='#cbd5e1' stroke-width='2'/><line x1='100' y1='0' x2='100' y2='200' stroke='#cbd5e1' stroke-width='2'/><line x1='150' y1='0' x2='150' y2='200' stroke='#cbd5e1' stroke-width='2'/><line x1='200' y1='0' x2='200' y2='200' stroke='#cbd5e1' stroke-width='2'/><text x='25' y='-15' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>A</text><text x='75' y='-15' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>B</text><text x='125' y='-15' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>C</text><text x='175' y='-15' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>D</text><text x='-20' y='30' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>1</text><text x='-20' y='80' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>2</text><text x='-20' y='130' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>3</text><text x='-20' y='180' font-size='14' font-weight='bold' fill='#475569' text-anchor='middle'>4</text><circle cx='125' cy='25' r='18' fill='#94a3b8'/><text x='125' y='30' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>X</text><circle cx='75' cy='125' r='18' fill='#94a3b8'/><text x='75' y='130' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>X</text><polygon points='15,15 35,25 15,35' fill='#ef4444'/></g></svg>",
+          "options": [
+            { "code": "A", "label": "Titik (B, 1)" }, { "code": "B", "label": "Titik (A, 2)" }, { "code": "C", "label": "Titik (B, 2)" }, { "code": "D", "label": "Titik (C, 2)" }
+          ],
+          "correct_answer": "C"
+        },
+        {
+          "id": 7,
+          "module_code": "LOG",
+          "prompt": "Diagram di bawah menunjukkan fungsi dua mesin pemroses visual abstrak. Mesin [A] bertugas mengubah warna (Hitam↔Putih) sekaligus memutar objek 180 derajat. Mesin [B] bertugas menggandakan objek secara horizontal. Jika sebuah input objek 'Panah Terang Menghadap Kiri' diproses dengan urutan masuk ke Mesin [B] terlebih dahulu, lalu seluruh hasilnya dimasukkan ke Mesin [A], manakah hasil akhir (Output) yang benar?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 180' width='100%' height='180'><rect width='500' height='180' fill='#ffffff'/><rect x='160' y='10' width='35' height='35' rx='4' fill='#3b82f6'/><text x='177.5' y='33' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>A</text><rect x='160' y='60' width='35' height='35' rx='4' fill='#10b981'/><text x='177.5' y='83' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>B</text><text x='20' y='32' font-size='10' font-weight='bold' fill='#64748b'>Contoh 1:</text><polygon points='90,15 90,23 70,23 70,33 90,33 90,41 110,28' fill='#1e293b'/><line x1='120' y1='28' x2='150' y2='28' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><line x1='205' y1='28' x2='235' y2='28' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><polygon points='265,41 265,33 285,33 285,23 265,23 265,15 245,28' fill='#ffffff' stroke='#1e293b' stroke-width='2'/><text x='20' y='82' font-size='10' font-weight='bold' fill='#64748b'>Contoh 2:</text><polygon points='80,65 100,77.5 80,90' fill='#1e293b'/><line x1='120' y1='77.5' x2='150' y2='77.5' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><line x1='205' y1='77.5' x2='235' y2='77.5' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><polygon points='245,65 265,77.5 245,90' fill='#1e293b'/><polygon points='275,65 295,77.5 275,90' fill='#1e293b'/><line x1='10' y1='115' x2='490' y2='115' stroke='#e2e8f0' stroke-width='2'/><text x='20' y='145' font-size='12' font-weight='bold' fill='#ef4444'>SOAL:</text><polygon points='110,130 110,138 130,138 130,148 110,148 110,156 90,143' fill='#ffffff' stroke='#1e293b' stroke-width='2'/><line x1='150' y1='143' x2='180' y2='143' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><rect x='190' y='125' width='35' height='35' rx='4' fill='#10b981'/><text x='207.5' y='148' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>B</text><line x1='235' y1='143' x2='265' y2='143' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><rect x='275' y='125' width='35' height='35' rx='4' fill='#3b82f6'/><text x='292.5' y='148' font-size='14' font-weight='bold' fill='#ffffff' text-anchor='middle'>A</text><line x1='320' y1='143' x2='350' y2='143' stroke='#94a3b8' stroke-width='2' stroke-dasharray='3'/><text x='370' y='148' font-size='24' font-weight='bold' fill='#ef4444' text-anchor='middle'>?</text></svg>",
+          "options": [
+            { "code": "A", "label": "Dua buah Panah Terang menghadap Kanan" }, { "code": "B", "label": "Dua buah Panah Gelap menghadap Kiri" }, { "code": "C", "label": "Dua buah Panah Gelap menghadap Kanan" }, { "code": "D", "label": "Satu buah Panah Gelap menghadap Kanan" }
+          ],
+          "correct_answer": "C"
+        },
+        {
+          "id": 8,
+          "module_code": "LOG",
+          "prompt": "Perhatikan matriks 3x3 di bawah ini. Terdapat pola logika terstruktur yang mengikat kombinasi 'Bentuk Luar', 'Bentuk Dalam', dan 'Jumlah Titik' secara konsisten pada setiap baris maupun kolomnya. Berdasarkan keteraturan logika matriks tersebut, karakteristik elemen manakah yang paling tepat untuk mengisi kotak bertanda tanya (?) di sudut kanan bawah?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320' width='100%' height='280'><rect width='320' height='320' fill='#ffffff'/><g transform='translate(10, 10)'><rect x='0' y='0' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><rect x='15' y='15' width='60' height='60' fill='none' stroke='#1e293b' stroke-width='3'/><polygon points='45,25 25,65 65,65' fill='#cbd5e1'/><circle cx='45' cy='50' r='3' fill='#1e293b'/><rect x='100' y='0' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><circle cx='145' cy='45' r='30' fill='none' stroke='#1e293b' stroke-width='3'/><rect x='125' y='25' width='40' height='40' fill='#cbd5e1'/><circle cx='135' cy='45' r='3' fill='#1e293b'/><circle cx='155' cy='45' r='3' fill='#1e293b'/><rect x='200' y='0' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><polygon points='245,15 210,75 280,75' fill='none' stroke='#1e293b' stroke-width='3'/><circle cx='245' cy='52' r='18' fill='#cbd5e1'/><circle cx='245' cy='42' r='3' fill='#1e293b'/><circle cx='235' cy='58' r='3' fill='#1e293b'/><circle cx='255' cy='58' r='3' fill='#1e293b'/><rect x='0' y='100' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><circle cx='45' cy='145' r='30' fill='none' stroke='#1e293b' stroke-width='3'/><circle cx='45' cy='145' r='18' fill='#cbd5e1'/><circle cx='45' cy='135' r='3' fill='#1e293b'/><circle cx='35' cy='151' r='3' fill='#1e293b'/><circle cx='55' cy='151' r='3' fill='#1e293b'/><rect x='100' y='100' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><polygon points='145,115 110,175 180,175' fill='none' stroke='#1e293b' stroke-width='3'/><polygon points='145,135 125,165 165,165' fill='#cbd5e1'/><circle cx='145' cy='155' r='3' fill='#1e293b'/><rect x='200' y='100' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><rect x='215' y='115' width='60' height='60' fill='none' stroke='#1e293b' stroke-width='3'/><rect x='225' y='125' width='40' height='40' fill='#cbd5e1'/><circle cx='235' cy='145' r='3' fill='#1e293b'/><circle cx='255' cy='145' r='3' fill='#1e293b'/><rect x='0' y='200' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><polygon points='45,215 10,275 80,275' fill='none' stroke='#1e293b' stroke-width='3'/><rect x='25' y='235' width='40' height='40' fill='#cbd5e1'/><circle cx='35' cy='255' r='3' fill='#1e293b'/><circle cx='55' cy='255' r='3' fill='#1e293b'/><rect x='100' y='200' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><rect x='115' y='215' width='60' height='60' fill='none' stroke='#1e293b' stroke-width='3'/><circle cx='145' cy='245' r='18' fill='#cbd5e1'/><circle cx='145' cy='235' r='3' fill='#1e293b'/><circle cx='135' cy='251' r='3' fill='#1e293b'/><circle cx='155' cy='251' r='3' fill='#1e293b'/><rect x='200' y='200' width='90' height='90' fill='#fef2f2' stroke='#ef4444' stroke-width='2' stroke-dasharray='5'/><text x='245' y='255' font-size='32' font-weight='bold' fill='#ef4444' text-anchor='middle'>?</text></g></svg>",
+          "options": [
+            { "code": "A", "label": "Lingkaran luar, Persegi dalam, 1 titik" }, { "code": "B", "label": "Lingkaran luar, Segitiga dalam, 1 titik" }, { "code": "C", "label": "Segitiga luar, Lingkaran dalam, 2 titik" }, { "code": "D", "label": "Persegi luar, Segitiga dalam, 3 titik" }
+          ],
+          "correct_answer": "B"
+        }
+      ]
+    };
+
+    const wrapper = document.getElementById("questions-wrapper");
+    dataPart2.questions.forEach(q => {
+      const card = document.createElement("div");
+      card.className = "card";
+      const optsHTML = q.options.map(opt => `<div class="option-btn"><span class="option-code">${opt.code}</span><span>${opt.label}</span></div>`).join("");
+      card.innerHTML = `
+        <span class="meta-tag">Soal ${q.id} — [${q.module_code}]</span>
+        <div class="question-prompt">${q.prompt}</div>
+        <div class="stimulus-container">${q.visual_stimulus}</div>
+        <div class="options-grid">${optsHTML}</div>
+        <div class="correct-answer">Kunci Jawaban: ${q.correct_answer}</div>
+      `;
+      wrapper.appendChild(card);
+    });
+  </script>
+</body>
+</html>
