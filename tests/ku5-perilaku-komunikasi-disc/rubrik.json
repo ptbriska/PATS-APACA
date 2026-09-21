@@ -1,0 +1,237 @@
+{
+  "kode_tes": "KU5",
+  "nama_tes": "APACA General Behavior Preference Indicator (GBPI - DISC)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA General Behavior Preference Indicator (GBPI-DISC) mengukur gaya perilaku kerja dan interaksi harian individu berdasarkan teori Marston (1928). Instrumen ini memetakan gaya respons terhadap Tantangan (Dominance), Hubungan Sosial (Influence), Ritme & Kecepatan (Steadiness), serta Aturan & Standar (Compliance).",
+  "penjelasan_grafik": {
+    "grafik_1_most": {
+      "nama": "Grafik 1: Public Self (Mask / Most)",
+      "fungsi": "Menggambarkan gambaran perilaku yang ditunjukkan individu ke lingkungan luar sebagai bentuk adaptasi terhadap tuntutan sosial, peran kerja, atau harapan orang sekitar."
+    },
+    "grafik_2_least": {
+      "nama": "Grafik 2: Core Self (Stress / Least)",
+      "fungsi": "Menggambarkan perilaku alami, instingtif, dan pola respons sejatinya ketika berada di bawah tekanan, stres berat, atau dalam kondisi tanpa kewaspadaan emosional."
+    },
+    "grafik_3_change": {
+      "nama": "Grafik 3: Mirror Self (Summary / Difference)",
+      "fungsi": "Merupakan hasil gabungan integratif (Selisih Most - Least) yang mencerminkan persepsi diri individu secara komprehensif dalam situasi normal sehari-hari."
+    }
+  },
+  "norma_kategorisasi_segmen": [
+    {
+      "rentang_skor_selisih": "≥ +7",
+      "segmen": "Segmen 6 - 7 (Sangat Tinggi)",
+      "kategori": "Sangat Dominan",
+      "deskripsi": "Karakteristik dimensi ini sangat menonjol, menjadi gaya perilaku utama yang terlihat jelas oleh orang lain."
+    },
+    {
+      "rentang_skor_selisih": "+2 s/d +6",
+      "segmen": "Segmen 4 - 5 (Tinggi)",
+      "kategori": "Cenderung Diatas Rata-Rata",
+      "deskripsi": "Individu nyaman dan sering menggunakan gaya perilaku ini dalam sebagian besar situasi harian."
+    },
+    {
+      "rentang_skor_selisih": "-1 s/d +1",
+      "segmen": "Segmen 3 (Garis Tengah / Midline)",
+      "kategori": "Fleksibel / Seimbang",
+      "deskripsi": "Individu berada di titik netral dan dapat menyesuaikan perilakunya sesuai dengan tuntutan situasi."
+    },
+    {
+      "rentang_skor_selisih": "-6 s/d -2",
+      "segmen": "Segmen 1 - 2 (Rendah)",
+      "kategori": "Cenderung Dibawah Rata-Rata",
+      "deskripsi": "Individu jarang menampilkan karakter dimensi ini kecuali jika benar-benar terdesak oleh keadaan."
+    },
+    {
+      "rentang_skor_selisih": "≤ -7",
+      "segmen": "Segmen 0 (Sangat Rendah)",
+      "kategori": "Sangat Rendah",
+      "deskripsi": "Individu cenderung menampilkan perilaku yang bertolak belakang dengan gaya bawaan dimensi ini."
+    }
+  ],
+  "dimensi_utama": {
+    "D": {
+      "nama": "Dominance (D) - Respon Terhadap Tantangan",
+      "fokus": "Pengambilan keputusan, ketegasan, orientasi hasil, dan keberanian menghadapi persaingan.",
+      "skor_tinggi": "Tegas, cepat, mandiri, fokus hasil, berani ambil risiko, dan langsung pada tujuan.",
+      "skor_rendah": "Koperatif, bertenggang rasa, hati-hati, menghindari konflik, dan lebih suka mendukung."
+    },
+    "I": {
+      "nama": "Influence (I) - Respon Terhadap Orang Lain",
+      "fokus": "Keterampilan persuasi, komunikasi, antusiasme, optimisme, dan jejaring sosial.",
+      "skor_tinggi": "Persuasif, antusias, mudah bergaul, hangat, komunikatif, dan penuh energi sosial.",
+      "skor_rendah": "Faktual, terstruktur, pendiam, mengandalkan data dibanding persuasi, serta menjaga jarak."
+    },
+    "S": {
+      "nama": "Steadiness (S) - Respon Terhadap Ritme & Perubahan",
+      "fokus": "Kesabaran, konsistensi, empati, loyalitas, dan penciptaan suasana harmonis.",
+      "skor_tinggi": "Sabar, konsisten, pendengar baik, setia kawan, tenang, dan menyukai keharmonisan.",
+      "skor_rendah": "Dinamis, cepat bosan, menyukai variasi, cepat bertindak, dan impulsif terhadap perubahan."
+    },
+    "C": {
+      "nama": "Compliance (C) - Respon Terhadap Aturan & Standar",
+      "fokus": "Ketelitian, akurasi, pemikiran analitis, kerapian, dan kepatuhan pada tata tertib.",
+      "skor_tinggi": "Analitis, teliti, taat aturan, hati-hati, objektif, dan menjaga standar kualitas tinggi.",
+      "skor_rendah": "Bebas, fleksibel, berfokus gambaran besar, menyukai eksperimen, dan mengabaikan detail kaku."
+    }
+  },
+  "pola_kombinasi_disc": {
+    "High_D": {
+      "kode_pola": "High D",
+      "nama_pola": "The Driver / Eksekutor Tegas",
+      "ringkasan_perilaku": "Individu yang sangat mandiri, berorientasi penuh pada pencapaian target, cepat bertindak, dan tidak ragu mengambil kendali saat dihadapkan pada hambatan atau krisis.",
+      "kekuatan_utama": ["Pengambil Keputusan Cepat", "Tegas & Berani", "Penyelesai Masalah Produktif", "Tahan Banting", "Orientasi Hasil Tinggi"],
+      "kelemahan_utama": ["Cenderung Kurang Sabar", "Terkesan Menekan Orang Lain", "Sulit Menjadi Pendengar Baik", "Mengabaikan Detail Kecil"],
+      "gaya_komunikasi": "Direct, ringkas, berfokus pada hasil akhir, lugas, dan tidak menyukai obrolan yang berbelit-belit.",
+      "gaya_relasi": "Menghargai kemandirian dan kesetaraan, bertindak sebagai pelindung/pemimpin yang diandalkan.",
+      "gaya_belajar_kerja": "Belajar paling cepat lewat tantangan pemecahan masalah nyata yang berdampak instan.",
+      "lingkungan_ideal": "Lingkungan serba cepat, kompetitif, memberikan wewenang penuh, dan berfokus pada hasil.",
+      "pemicu_motivasi": "Otonomi ruang gerak, pencapaian target tinggi, serta kesempatan memimpin.",
+      "pemicu_stres": "Birokrasi yang lambat, rutinitas membosankan, dan mikro-manajemen dari orang lain.",
+      "potensi_karir": ["General Manager", "Crisis Manager", "Entrepreneur", "Sales Director", "Konsultan Manajemen"],
+      "saran_pengembangan": "Latihlah kesabaran untuk mendengarkan pandangan orang lain dan berikan apresiasi atas proses kerja tim."
+    },
+    "High_I": {
+      "kode_pola": "High I",
+      "nama_pola": "The Communicator / Inspirator Sosial",
+      "ringkasan_perilaku": "Individu yang ramah, antusias, komunikatif, dan sangat pandai membangun hubungan. Mampu menginspirasi dan menghidupkan suasana di kelompok mana pun ia berada.",
+      "kekuatan_utama": ["Kemampuan Persuasi Handal", "Ramah & Supel", "Penyelaras Suasana (Ice Breaker)", "Optimis & Kreatif", "Membangun Jejaring Cepat"],
+      "kelemahan_utama": ["Impulsif dalam Bertindak", "Kurang Disiplin pada Detail Data", "Rentang Konsentrasi Mudah Dialihkan", "Suka Menunda Pembukuan/Administrasi"],
+      "gaya_komunikasi": "Ekspresif, penuh semangat, menggunakan cerita visual yang hidup, dan berfokus pada hubungan interaksi.",
+      "gaya_relasi": "Sangat perhatian, membawa kegembiraan, hangat, dan selalu mengutamakan penerimaan sosial.",
+      "gaya_belajar_kerja": "Belajar paling efektif dalam kelompok diskusi interaktif, aktivitas visual, dan simulasi sosial.",
+      "lingkungan_ideal": "Lingkungan dinamis, kaya akan interaksi manusia, demokratis, dan memberikan pengakuan publik.",
+      "pemicu_motivasi": "Apresiasi sosial, popularitas, kesempatan berinteraksi, dan kebebasan berekspresi.",
+      "pemicu_stres": "Isolasi sosial, lingkungan kerja kaku di belakang meja, dan penolakan dari lingkungan sekitar.",
+      "potensi_karir": ["Public Relations (PR)", "Event Organizer", "Brand Ambassador", "Customer Relations Manager", "Motivator / Trainer"],
+      "saran_pengembangan": "Disiplinkan diri dalam mencatat detail penting dan fokus menuntaskan komitmen awal sebelum mengumbar janji baru."
+    },
+    "High_S": {
+      "kode_pola": "High S",
+      "nama_pola": "The Relater / Penjaga Harmoni",
+      "ringkasan_perilaku": "Individu yang sabar, tenang, konsisten, dan sangat dapat diandalkan. Menjadi pilar stabilitas dalam kelompok yang selalu siap mendengarkan dan mendukung sesama secara tulus.",
+      "kekuatan_utama": ["Pendengar yang Sangat Empatik", "Loyalitas & Konsistensi Tinggi", "Pencipta Kedamaian Kelompok", "Sabar & Tekun", "Kerja Sama Tim Apik"],
+      "kelemahan_utama": ["Resisten terhadap Perubahan Mendadak", "Kesusahan Berkata 'Tidak'", "Memendam Emosi/Konflik", "Lambat Mengambil Keputusan Darurat"],
+      "gaya_komunikasi": "Santun, tenang, hangat, penuh perhatian emosional, dan mendengarkan secara aktif.",
+      "gaya_relasi": "Setia kawan, jujur, membangun ikatan jangka panjang, dan menciptakan kenyamanan emosional.",
+      "gaya_belajar_kerja": "Belajar dengan ritme yang teratur, metode bertahap yang konsisten, dan bimbingan yang ramah.",
+      "lingkungan_ideal": "Lingkungan yang stabil, minim perselisihan, kolaboratif, dan memiliki kejelasan alur harian.",
+      "pemicu_motivasi": "Rasa aman, keharmonisan kelompok, kejelasan peran, dan suasana kekeluargaan.",
+      "pemicu_stres": "Perubahan mendadak yang tidak terencana, perselisihan terbuka, dan tuntutan serba terburu-buru.",
+      "potensi_karir": ["Counselor / HR Welfare", "Customer Support Specialist", "Pendidik / Teacher", "Pekerja Sosial", "Administrator Layanan"],
+      "saran_pengembangan": "Latihlah ketegasan untuk menyampaikan ketidaksetujuan secara terbuka dan belajar beradaptasi cepat dengan perubahan."
+    },
+    "High_C": {
+      "kode_pola": "High C",
+      "nama_pola": "The Analyst / Pengawas Kualitas",
+      "ringkasan_perilaku": "Individu yang analitis, teliti, taat aturan, dan mengutamakan keakuratan data. Selalu memastikan segala sesuatu dikerjakan sesuai standar tinggi tanpa cacat.",
+      "kekuatan_utama": ["Akurasi & Ketelitian Tinggi", "Pemikiran Logis & Analitis", "Disiplin pada Prosedur/Standar", "Perencanaan Matang", "Pengendali Kualitas (QC)"],
+      "kelemahan_utama": ["Terlalu Perfeksionis", "Terjebak 'Analysis Paralysis'", "Kaku pada Perubahan Aturan", "Cenderung Terlalu Kritis"],
+      "gaya_komunikasi": "Faktual, tertata, berbasis data, objektif, dan tidak menyukai bahasa spekulatif tanpa bukti.",
+      "gaya_relasi": "Menghargai kejujuran dan ketertiban, menjaga privasi pribadi, serta menunjukkan kepedulian lewat ketepatan janji.",
+      "gaya_belajar_kerja": "Belajar paling efektif lewat membaca modul terstruktur, riset mandiri, dan analisis data mendalam.",
+      "lingkungan_ideal": "Lingkungan yang tenang, teratur, menghargai fakta objektif, dan memiliki standar kualitas jelas.",
+      "pemicu_motivasi": "Kepastian data, pujian atas ketelitian, standar kerja tinggi, dan ruang untuk analisis mandiri.",
+      "pemicu_stres": "Hasil kerja yang berantakan, tekanan bertindak tanpa data jelas, serta suasana serba tidak pasti.",
+      "potensi_karir": ["Data Analyst", "Quality Assurance (QA)", "Akuntan / Auditor", "Sistem Analis TIK", "Spesialis Kepatuhan (Compliance)"],
+      "saran_pengembangan": "Turunkan standar perfeksionisme berlebih dalam situasi darurat dan belajar menerima bahwa kesalahan kecil adalah bagian dari proses."
+    },
+    "DI_ID": {
+      "kode_pola": "DI / ID",
+      "nama_pola": "The Persuasive Conductor / Penggerak Karismatik",
+      "ringkasan_perilaku": "Kombinasi antara keberanian mengejar target (D) dan keluwesan komunikasi persuasif (I). Mampu menggerakkan orang banyak untuk mencapai target besar dengan antusiasme tinggi.",
+      "kekuatan_utama": ["Kepemimpinan Karismatik", "Persuasif & Tegas", "Pencipta Peluang Baru", "Pengambil Inisiatif Cepat", "Membangun Energi Tim"],
+      "kelemahan_utama": ["Kurang Teliti pada Rincian Prosedur", "Cenderung Mendominasi Percakapan", "Cepat Bosan jika Tidak Ada Tantangan Baru"],
+      "gaya_komunikasi": "Energik, antusias, berorientasi hasil, serta mahir mempengaruhi pendapat orang lain.",
+      "gaya_relasi": "Mendorong orang sekitar untuk bertumbuh pesat dan membawa dinamika hubungan yang seru.",
+      "gaya_belajar_kerja": "Suka belajar lewat proyek tantangan kelompok yang memberikan ruang memimpin.",
+      "lingkungan_ideal": "Lingkungan dinamis, penuh target besar, fleksibel, dan memberikan panggung apresiasi.",
+      "pemicu_motivasi": "Tantangan baru, pengakuan atas pencapaian, dan wewenang untuk memimpin gerakan.",
+      "pemicu_stres": "Rutinitas kaku tanpa ruang inovasi dan tidak adanya pengakuan atas usaha kerjanya.",
+      "potensi_karir": ["Business Development Lead", "Campaign Director", "Sales Executive Manager", "Startup Founder"],
+      "saran_pengembangan": "Imbangi antusiasme besar dengan ketelitian mengawal detail eksekusi hingga tuntas."
+    },
+    "DS_SD": {
+      "kode_pola": "DS / SD",
+      "nama_pola": "The Determined Achiever / Eksekutor Tekun",
+      "ringkasan_perilaku": "Perpaduan unik antara ketegasan hasil (D) dan ketekunan konsisten (S). Mampu mengejar target tinggi secara tenang, stabil, dan pantang menyerah hingga tuntas.",
+      "kekuatan_utama": ["Stamina Kerja Tinggi", "Pantang Menyerah", "Konsisten Mengejar Target", "Tenang dalam Krisis", "Dapat Diandalkan Penuh"],
+      "kelemahan_utama": ["Bisa Sangat Keras Kepala", "Memendam Frustrasi Sendiri", "Cenderung Lambat Membuka Diri"],
+      "gaya_komunikasi": "Lugas namun tenang, fokus pada aksi nyata ketimbang janji lisan.",
+      "gaya_relasi": "Setia, menjadi pelindung yang sangat kuat bagi keluarga atau tim yang dipimpinnya.",
+      "gaya_belajar_kerja": "Belajar paling efektif lewat target terukur yang dikerjakan secara bertahap dan konsisten.",
+      "lingkungan_ideal": "Lingkungan yang menghargai ketekunan, memiliki target jelas, dan minim interupsi gosip.",
+      "pemicu_motivasi": "Pencapaian target jangka panjang dan kemajuan nyata yang dapat diukur.",
+      "pemicu_stres": "Perubahan arah target yang terlalu sering dan ketidakefisienan tim kerja.",
+      "potensi_karir": ["Project Manager", "Operations Specialist", "Kepala Cabang / Branch Lead", "Spesialis Manufaktur"],
+      "saran_pengembangan": "Belajarlah lebih fleksibel menerima sudut pandang baru dan jangan terlalu membeban emosi diri."
+    },
+    "DC_CD": {
+      "kode_pola": "DC / CD",
+      "nama_pola": "The Precise Strategist / Konseptor Kritis",
+      "ringkasan_perilaku": "Kombinasi antara dorongan hasil cepat (D) dan kecermatan analisis tinggi (C). Berfokus menciptakan strategi bernilai tinggi yang efisien, akurat, dan minim risiko.",
+      "kekuatan_utama": ["Pemikiran Strategis Tajam", "Akurat & Efisien", "Standar Kualitas Sangat Tinggi", "Objektif dalam Krisis"],
+      "kelemahan_utama": ["Terlalu Kritis pada Kesalahan Tim", "Keras dalam Menuntut Hasil", "Dingin dalam Komunikasi Emosional"],
+      "gaya_komunikasi": "To the point, analitis, berbasis data dan argumen logis yang sulit dibantah.",
+      "gaya_relasi": "Menghargai profesionalisme dan komitmen, menunjukkan kepedulian lewat perbaikan sistem.",
+      "gaya_belajar_kerja": "Belajar paling cepat lewat studi kasus kompleks, analisis data, dan riset strategi.",
+      "lingkungan_ideal": "Lingkungan profesional, berfokus pada inovasi logis, tanpa ketidaktelitian operasional.",
+      "pemicu_motivasi": "Masalah rumit yang membutuhkan solusi efisien dan standar keunggulan tinggi.",
+      "pemicu_stres": "Hasil kerja tim yang ceroboh dan argumen emosional tanpa landasan fakta.",
+      "potensi_karir": ["Corporate Strategist", "Chief Risk Officer", "System Architect", "Konsultan Efisiensi Bisnis"],
+      "saran_pengembangan": "Latihlah kelembutan dalam menyampaikan koreksi agar tidak membuat orang lain merasa diintimidasi."
+    },
+    "IS_SI": {
+      "kode_pola": "IS / SI",
+      "nama_pola": "The Harmonious Connector / Pengayom Ramah",
+      "ringkasan_perilaku": "Perpaduan antara kehangatan sosial (I) dan kesabaran empati (S). Menjadi sosok perekat hubungan yang disukai banyak orang karena kebaikan, keterbukaan, dan kesetiaannya.",
+      "kekuatan_utama": ["Empati Sosial Luar Biasa", "Pendengar & Penasihat Baik", "Menciptakan Suasana Nyaman", "Inklusif & Suka Membantu"],
+      "kelemahan_utama": ["Sangat Takut Menyakiti Orang", "Menghindari Konflik walau Penting", "Kesusahan Membuat Keputusan Tegas"],
+      "gaya_komunikasi": "Ramah, penuh kehangatan, inklusif, dan selalu memastikan orang lain merasa dihargai.",
+      "gaya_relasi": "Sangat setia, penuh kasih sayang, dan mendedikasikan waktu untuk kebahagiaan pasangan/teman.",
+      "gaya_belajar_kerja": "Belajar paling maksimal dalam iklim suportif, bebas dari tekanan persaingan ketat.",
+      "lingkungan_ideal": "Lingkungan kekeluargaan, kolaboratif, saling menghargai, dan minim ketegangan emosional.",
+      "pemicu_motivasi": "Keharmonisan relasi, kesempatan membantu sesama, dan lingkungan yang hangat.",
+      "pemicu_stres": "Suasana kompetisi saling menjatuhkan dan kritik keras secara terbuka.",
+      "potensi_karir": ["Human Resources (HR) Officer", "Konselor / Therapist", "Community Manager", "Guru / Pendidik"],
+      "saran_pengembangan": "Belajarlah bersikap asertif dan berani mengambil keputusan tegas demi kebaikan jangka panjang."
+    },
+    "IC_CI": {
+      "kode_pola": "IC / CI",
+      "nama_pola": "The Persuasive Analyst / Pengulas Cerdas",
+      "ringkasan_perilaku": "Kombinasi antara keterampilan komunikasi luas (I) dan ketelitian data (C). Mampu menyajikan analisis data rumit menjadi presentasi yang menarik dan mudah dipahami orang awam.",
+      "kekuatan_utama": ["Penyaji Data yang Komunikatif", "Detail namun Tetap Supel", "Kreatif dalam Penyusunan Informasi", "Objektif namun Ramah"],
+      "kelemahan_utama": ["Sering Ragu Antara Kecepatan vs Kerapian", "Rentan Terlalu Banyak Berpikir sebelum Bertindak"],
+      "gaya_komunikasi": "Menarik, terstruktur, berbasis data namun disampaikan dengan gaya bahasa yang populer.",
+      "gaya_relasi": "Menyenangkan untuk diajak diskusi intelektual, dapat diandalkan dalam memberi saran yang akurat.",
+      "gaya_belajar_kerja": "Belajar paling efektif lewat kombinasi data grafis, diskusi interaktif, dan penulisan ulasan.",
+      "lingkungan_ideal": "Lingkungan yang mengapresiasi kerapian data dan memberikan panggung untuk presentasi.",
+      "pemicu_motivasi": "Kesesuaian data yang diapresiasi publik dan kesempatan berbagi wawasan berkualitas.",
+      "pemicu_stres": "Harus mempresentasikan materi tanpa persiapan data yang cukup.",
+      "potensi_karir": ["Market Research Analyst", "Technical Public Relations", "Content Strategist Data-driven", "Jurnalis Investigasi"],
+      "saran_pengembangan": "Tetapkan batas waktu riset agar tidak terlalu lama menunda peluncuran karya."
+    },
+    "SC_CS": {
+      "kode_pola": "SC / CS",
+      "nama_pola": "The Careful Specialist / Pendukung Teliti",
+      "ringkasan_perilaku": "Perpaduan antara kesabaran tinggi (S) dan ketelitian mendalam (C). Sangat tekun mengerjakan tugas-tugas terstruktur yang membutuhkan konsentrasi tinggi dan kerapian tanpa cela.",
+      "kekuatan_utama": ["Sangat Teliti & Rapih", "Sabar Mengurus Detail", "Setia & Konsisten", "Disiplin Prosedur Tinggi"],
+      "kelemahan_utama": ["Sangat Takut Membuat Kesalahan", "Lambat Bertindak jika Tanpa Petunjuk", "Resisten terhadap Risiko Baru"],
+      "gaya_komunikasi": "Tenang, terstruktur, sopan, faktual, dan tidak menyukai kejutan mendadak.",
+      "gaya_relasi": "Sangat stabil, dapat dipercaya 100%, dan menjaga komitmen hubungan dengan rapi.",
+      "gaya_belajar_kerja": "Belajar paling baik lewat panduan langkah demi langkah (SOP) yang jelas dan teratur.",
+      "lingkungan_ideal": "Lingkungan yang tenang, terstruktur, memiliki kepastian aturan, dan bebas dari kekacauan.",
+      "pemicu_motivasi": "Kepastian alur kerja, petunjuk yang jelas, dan pengakuan atas kerapian kinerjanya.",
+      "pemicu_stres": "Instruksi yang membingungkan, perubahan aturan mendadak, dan tenggat waktu yang sangat terburu-buru.",
+      "potensi_karir": ["Quality Control Specialist", "Research Assistant", "Arsiparis / Librarian", "Financial Auditor", "Sistem Administrator"],
+      "saran_pengembangan": "Latihlah keberanian untuk mengambil risiko terukur dan melangkah keluar dari zona nyaman."
+    }
+  },
+  "panduan_interpretasi": {
+    "catatan_penggunaan": "Profil DISC menggambarkan gaya perilaku yang tampak dan dapat berkembang seiring waktu serta tuntutan peran. Digunakan untuk pemetaan tim, perbaikan komunikasi, dan pengembangan potensi diri—bukan sebagai tes gugur atau vonis karakter kaku.",
+    "validitas_profil": "Perhatikan grafik Least (Core Self) untuk melihat pola asli saat berada di bawah stres, dan bandingkan dengan Most (Public Self) untuk melihat sejauh mana individu melakukan adaptasi peran dalam kehidupan sehari-hari."
+  }
+}
