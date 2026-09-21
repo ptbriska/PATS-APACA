@@ -1,1 +1,477 @@
-s
+{
+  "test_info": {
+    "kode": "KS15",
+    "nama_resmi": "APACA Learning Resource Preference Test (LRP)",
+    "nama_singkat": "Learning Resource Preference Test",
+    "versi": "Versi Edu 1.0 / 2026",
+    "token_ujian": "LRP2026",
+    "token_master": "PatsTestingKS15",
+    "durasi_menit": 25,
+    "psikolog_pj": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "SIPP": "2026-0819-PSI-01"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 1:</b> Ketika Anda dihadapkan pada topik bab baru yang sangat rumit, abstrak, dan belum pernah dipelajari sebelumnya, manakah media yang PALING EFEKTIF (+2) dan PALING TIDAK EFEKTIF (-1) bagi Anda?",
+      "options": [
+        { "code": "A", "resource": "Video", "label": "A. Menonton video tutorial berdurasi 15 menit dengan animasi alur visual dinamis." },
+        { "code": "B", "resource": "Textbook", "label": "B. Membaca penjelasan bab lengkap pada buku teks terstruktur beserta catatan teorinya." },
+        { "code": "C", "resource": "AI", "label": "C. Berdiskusi dan bertanya jawab secara interaktif dengan asisten Generative AI." },
+        { "code": "D", "resource": "Peer", "label": "D. Berdiskusi dan meminta penjelasan langsung dari teman sebaya yang sudah paham." }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 2:</b> Saat Anda harus mempersiapkan diri menghadapi ujian penting dalam tenggat waktu mendesak (3 hari lagi), kombinasi latihan manakah yang paling membantu Anda?",
+      "options": [
+        { "code": "A", "resource": "Practice Questions", "label": "A. Mengerjakan bank soal latihan dan kuis simulasi ujian secara berulang-ulang." },
+        { "code": "B", "resource": "Flashcards", "label": "B. Mengulas kartu memori kilat (flashcards) untuk menghafal definisi dan istilah kunci." },
+        { "code": "C", "resource": "Real-World Examples", "label": "C. Menganalisis contoh studi kasus nyata dan penerapan praktis dari teori tersebut." },
+        { "code": "D", "resource": "Diagram", "label": "D. Mempelajari bagan alur statis, peta konsep, dan infografis rangkuman materi." }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 3:</b> Anda kesulitan memahami mekanisme alur kerja suatu sistem atau proses sebab-akibat yang kompleks. Metode apa yang paling efektif bagi pemahaman Anda?",
+      "options": [
+        { "code": "A", "resource": "Simulation", "label": "A. Menguji coba langsung variabel pada piranti lunak simulasi atau lab virtual." },
+        { "code": "B", "resource": "Diagram", "label": "B. Mengamati bagan alur skematik statis yang memetakan rantai hubungan konsep." },
+        { "code": "C", "resource": "Lecture", "label": "C. Mendengarkan paparan penjelasan lisan dari pengajar di depan kelas." },
+        { "code": "D", "resource": "Tutor", "label": "D. Meminta bimbingan instruksional personal satu-lawan-satu (1-on-1) dari tutor ahli." }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 4:</b> Ketika Anda harus mengingat ratusan istilah teknis, rumus, atau definisi asing dalam waktu singkat, sarana mana yang Anda andalkan?",
+      "options": [
+        { "code": "A", "resource": "Flashcards", "label": "A. Memakai aplikasi kartu memori kilat digital berbasis perulangan berkala." },
+        { "code": "B", "resource": "Podcast", "label": "B. Mendengarkan rekaman narasi audio istilah tersebut secara berulang-ulang." },
+        { "code": "C", "resource": "Internet", "label": "C. Mencari referensi dan glosarium istilah secara mandiri dari berbagai situs web." },
+        { "code": "D", "resource": "Physical Experiment", "label": "D. Melakukan manipulasi objek atau eksperimen fisik langsung untuk mengaitkan ingatan." }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 5:</b> Saat Anda mengalami kebuntuan total saat mengerjakan tugas mandiri di rumah dan tidak ada orang di sekitar Anda, bantuan apa yang pertama Anda cari?",
+      "options": [
+        { "code": "A", "resource": "AI", "label": "A. Menanyakan potongan masalah ke tutor AI untuk mendapatkan petunjuk penyelesaian." },
+        { "code": "B", "resource": "Internet", "label": "B. Menelusuri artikel forum, pembahasan soal, atau blog pengetahuan di internet." },
+        { "code": "C", "resource": "Video", "label": "C. Mencari video tutorial pembahasan langkah-demi-langkah di platform YouTube." },
+        { "code": "D", "resource": "Textbook", "label": "D. Membuka kembali indeks dan bab contoh soal yang ada di dalam buku teks utama." }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 6:</b> Anda ingin menguji apakah teori yang telah Anda pelajari di kelas benar-benar berlaku pada kondisi nyata. Sumber mana yang paling memuaskan Anda?",
+      "options": [
+        { "code": "A", "resource": "Physical Experiment", "label": "A. Melakukan praktikum laboratorium fisik dan eksperimen alat secara nyata." },
+        { "code": "B", "resource": "Real-World Examples", "label": "B. Membedah dokumentasi studi kasus industri atau contoh aplikasi di lapangan." },
+        { "code": "C", "resource": "Simulation", "label": "C. Menjalankan model simulasi komputer berparameter variabel." },
+        { "code": "D", "resource": "Lecture", "label": "D. Mendengarkan pengalaman dan penyampaian kasus dari dosen/pengajar." }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 7:</b> Anda sedang berada dalam perjalanan panjang atau ruang tunggu dan ingin tetap mengulas materi pelajaran tanpa membawa buku tebal. Pilihan terbaik Anda?",
+      "options": [
+        { "code": "A", "resource": "Podcast", "label": "A. Mendengarkan podcast rekaman narasi edukasi tanpa harus melihat layar." },
+        { "code": "B", "resource": "Flashcards", "label": "B. Mengakses kuis kartu kilat digital di ponsel pintar secara mandiri." },
+        { "code": "C", "resource": "Video", "label": "C. Menonton rekaman materi video singkat yang tersimpan di gawai." },
+        { "code": "D", "resource": "AI", "label": "D. Melakukan sesi tanya jawab cepat berbasis teks dengan agen AI." }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 8:</b> Anda ingin mengukur sejauh mana kelemahan konsep yang masih belum Anda kuasai sebelum hari ujian tiba. Cara mana yang paling efektif?",
+      "options": [
+        { "code": "A", "resource": "Practice Questions", "label": "A. Mengerjakan set soal ujian tahun-tahun sebelumnya dan mengevaluasi skornya." },
+        { "code": "B", "resource": "Peer", "label": "B. Saling memberikan pertanyaan uji coba dengan teman kelompok belajar." },
+        { "code": "C", "resource": "Tutor", "label": "C. Meminta tutor pribadi menguji pemahaman Anda melalui tes lisan singkat." },
+        { "code": "D", "resource": "Diagram", "label": "D. Menggambar ulang peta konsep dari memori dan mencocokkan dengan grafik asli." }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 9:</b> Materi pelajaran yang Anda hadapi penuh dengan data angka, rumus struktur, dan definisi formal yang padat. Media apa yang paling mudah diserap?",
+      "options": [
+        { "code": "A", "resource": "Textbook", "label": "A. Modul cetak atau buku teks terstruktur yang menyajikan definisi secara rapi." },
+        { "code": "B", "resource": "Diagram", "label": "B. Infografis dan matriks tabel yang mengelompokkan data secara visual." },
+        { "code": "C", "resource": "Lecture", "label": "C. Sesi ceramah tatap muka dengan pengajar yang menjelaskan satu per satu." },
+        { "code": "D", "resource": "Simulation", "label": "D. Software simulasi yang memungkinkan manipulasi angka secara langsung." }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 10:</b> Ketika Anda ingin mendalami suatu topik secara menyeluruh melebihi standar silabus sekolah, dari mana Anda memulai eksplorasi?",
+      "options": [
+        { "code": "A", "resource": "Internet", "label": "A. Melakukan pencarian bebas di internet, membaca artikel ilmiah dan forum." },
+        { "code": "B", "resource": "AI", "label": "B. Menggunakan AI untuk membuatkan silabus pendalaman materi secara kustom." },
+        { "code": "C", "resource": "Real-World Examples", "label": "C. Mencari buku jurnal yang mengulas penerapan kasus nyata topik tersebut." },
+        { "code": "D", "resource": "Tutor", "label": "D. Berkonsultasi dan berdiskusi mendalam dengan guru/tutor pembimbing." }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 11:</b> Saat belajar dalam kelompok, aktivitas mana yang paling memberikan nilai tambah nyata bagi pemahaman pribadi Anda?",
+      "options": [
+        { "code": "A", "resource": "Peer", "label": "A. Diskusi sejajar dan debat argumen penyelesaian masalah antar sesama teman." },
+        { "code": "B", "resource": "Practice Questions", "label": "B. Mengandalkan sesi pengerjaan latihan soal bersama dan membandingkan jawaban." },
+        { "code": "C", "resource": "Physical Experiment", "label": "C. Melakukan peragaan atau demonstrasi praktikum kelompok secara fisik." },
+        { "code": "D", "resource": "Podcast", "label": "D. Mendengarkan bersama rekaman materi pembahasan dari pakar." }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 12:</b> Anda diminta membuat kesimpulan ringkas atas materi satu semester dalam waktu 2 jam. Sumber mana yang jadi rujukan utama Anda?",
+      "options": [
+        { "code": "A", "resource": "Diagram", "label": "A. Peta pikiran (mind map) dan bagan intisari yang sudah terekam statis." },
+        { "code": "B", "resource": "Flashcards", "label": "B. Tumpukan kartu memori berisi poin-poin inti pelajaran." },
+        { "code": "C", "resource": "Textbook", "label": "C. Rangkuman di bab akhir buku teks dan catatan perkuliahan." },
+        { "code": "D", "resource": "Video", "label": "D. Video rangkuman materi ringkas bertempo cepat di internet." }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 13:</b> Karakter instruktur atau cara mengajar seperti apa yang paling membantu Anda menyerap pelajaran sulit?",
+      "options": [
+        { "code": "A", "resource": "Lecture", "label": "A. Dosen/Guru yang memberikan ceramah lisan terstruktur dengan analogi verbal." },
+        { "code": "B", "resource": "Tutor", "label": "B. Tutor privat yang membimbing langkah-demi-langkah sesuai kecepatan Anda." },
+        { "code": "C", "resource": "Real-World Examples", "label": "C. Pengajar praktisi yang selalu membawa contoh kasus dunia nyata ke kelas." },
+        { "code": "D", "resource": "AI", "label": "D. Mengganti instruktur manusia dengan interaksi prompt AI yang adaptif." }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 14:</b> Ketika Anda mengantuk saat membaca materi yang tebal, metode mana yang paling cepat mengembalikan energi fokus Anda?",
+      "options": [
+        { "code": "A", "resource": "Physical Experiment", "label": "A. Bangkit dan melakukan eksperimen praktis/praktek alat secara langsung." },
+        { "code": "B", "resource": "Simulation", "label": "B. Mengoperasikan gim simulasi edukatif yang membutuhkan respon cepat." },
+        { "code": "C", "resource": "Practice Questions", "label": "C. Mengerjakan kuis latihan soal interaktif berbatas waktu." },
+        { "code": "D", "resource": "Peer", "label": "D. Mengajak teman berdiskusi dan saling melempar pertanyaan." }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 15:</b> Anda ingin merancang jadwal belajar mandiri harian yang paling tidak menimbulkan kelelahan otak. Kombinasi media mana yang dipilih?",
+      "options": [
+        { "code": "A", "resource": "Podcast", "label": "A. Sambil mendengarkan podcast edukasi saat bersantai." },
+        { "code": "B", "resource": "Internet", "label": "B. Menelusuri artikel-artikel menarik secara santai di internet." },
+        { "code": "C", "resource": "Video", "label": "C. Menonton tayangan video materi dengan visualisasi berwarna." },
+        { "code": "D", "resource": "Textbook", "label": "D. Membaca tenang buku modul cetak lembar demi lembar." }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 16:</b> Jika Anda menghadapi ujian berbasis hafalan rumus kaku yang tidak membutuhkan penalaran opini, media apa yang paling terjamin?",
+      "options": [
+        { "code": "A", "resource": "Flashcards", "label": "A. Meng drill hafalan menggunakan kartu kilat (flashcards) hingga presisi." },
+        { "code": "B", "resource": "Practice Questions", "label": "B. Mengulang pengerjaan soal hitungan dengan rumus tersebut puluhan kali." },
+        { "code": "C", "resource": "Textbook", "label": "C. Membaca berulang kali kotak rumus yang ada di dalam buku teks." },
+        { "code": "D", "resource": "Tutor", "label": "D. Meminta tutor mendengarkan dan mengoreksi hafalan rumus Anda." }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 17:</b> Bagaimana cara Anda paling cepat memahami logika penalaran sebuah teori filosofis atau sosial yang rumit?",
+      "options": [
+        { "code": "A", "resource": "Real-World Examples", "label": "A. Membaca contoh fenomena sosial nyata yang terjadi di masyarakat." },
+        { "code": "B", "resource": "Lecture", "label": "B. Mendengarkan ceramah dan penjabaran naratif dari guru di kelas." },
+        { "code": "C", "resource": "Peer", "label": "C. Melakukan perdebatan dan diskusi tukar pikiran bersama teman." },
+        { "code": "D", "resource": "AI", "label": "D. Meminta AI menganalisis dan membandingkan dua sudut pandang teori." }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 18:</b> Saat belajar mata pelajaran Sains (Fisika/Kimia/Biologi), sarana mana yang paling membuat Anda bersemangat?",
+      "options": [
+        { "code": "A", "resource": "Physical Experiment", "label": "A. Mengamati reasi nyata atau mengukur alat di laboratorium fisik." },
+        { "code": "B", "resource": "Simulation", "label": "B. Simulasi laboratorium virtual 3D di komputer." },
+        { "code": "C", "resource": "Diagram", "label": "C. Diagram anatomi statis dan bagan proses reaksi yang rinci." },
+        { "code": "D", "resource": "Video", "label": "D. Video dokumenter eksperimen sains dengan efek visual menarik." }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 19:</b> Jika Anda ragu apakah pemahaman Anda pada suatu bab sudah benar atau masih keliru (miskonsepsi), cara klarifikasi mana yang paling Anda percayai?",
+      "options": [
+        { "code": "A", "resource": "Tutor", "label": "A. Bertanya langsung kepada tutor/guru untuk mendapatkan jawaban pasti." },
+        { "code": "B", "resource": "AI", "label": "B. Mengonfirmasi poin pemahaman Anda melalui prompt klarifikasi ke AI." },
+        { "code": "C", "resource": "Internet", "label": "C. Membandingkan beberapa sumber artikel dan jurnal terpercaya di internet." },
+        { "code": "D", "resource": "Practice Questions", "label": "D. Menguji diri lewat latihan soal yang memiliki kunci pembahasan rinci." }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 20:</b> Gaya penyampaian informasi seperti apa yang paling lama bertahan di dalam ingatan jangka panjang Anda?",
+      "options": [
+        { "code": "A", "resource": "Video", "label": "A. Penjelasan berformat video yang menggabungkan audio, teks, dan animasi." },
+        { "code": "B", "resource": "Podcast", "label": "B. Cerita atau narasi audio murni yang didengar dengan penuh konsentrasi." },
+        { "code": "C", "resource": "Textbook", "label": "C. Teks bacaan mendalam yang Anda baca dan beri garis bawah sendiri." },
+        { "code": "D", "resource": "Real-World Examples", "label": "D. Cerita contoh kasus nyata yang berkesan dan relevan dengan pengalaman." }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 21:</b> Anda harus menguasai sebuah software komputer atau bahasa pemrograman baru. Pendekatan mana yang Anda pilih?",
+      "options": [
+        { "code": "A", "resource": "Simulation", "label": "A. Langsung mencoba coding/praktik pada lingkungan simulasi/compiler." },
+        { "code": "B", "resource": "Internet", "label": "B. Membaca dokumentasi resmi dan tutorial gratis yang ada di internet." },
+        { "code": "C", "resource": "AI", "label": "C. Meminta AI membuatkan contoh potongan kode beserta penjelasannya." },
+        { "code": "D", "resource": "Peer", "label": "D. Belajar bersama teman (pair programming) dan memecahkan bug bersama." }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 22:</b> Ketika Anda merasa bosan dengan metode mengajar guru di sekolah yang monoton, sumber alternatif mana yang Anda jadikan penyelamat?",
+      "options": [
+        { "code": "A", "resource": "Video", "label": "A. Mencari video pembelajaran dari kreator edukasi favorit di internet." },
+        { "code": "B", "resource": "AI", "label": "B. Meminta AI menjelaskan ulang materi tersebut dengan gaya bahasa santai." },
+        { "code": "C", "resource": "Flashcards", "label": "C. Belajar mandiri menggunakan kartu memori interaktif." },
+        { "code": "D", "resource": "Podcast", "label": "D. Mendengarkan obrolan podcast edukasi yang relevan." }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 23:</b> Sarana mana yang paling membantu Anda menghubungkan antara konsep teori makro dengan detail operasi mikro?",
+      "options": [
+        { "code": "A", "resource": "Diagram", "label": "A. Bagan peta konsep hirarki yang memperlihatkan tingkatan struktur." },
+        { "code": "B", "resource": "Textbook", "label": "B. Bab buku teks yang mengurai dari tinjauan umum hingga sub-bab rincian." },
+        { "code": "C", "resource": "Lecture", "label": "C. Penjelasan ceramah guru yang menguraikan kerangka pikir di papan tulis." },
+        { "code": "D", "resource": "Real-World Examples", "label": "D. Menganalisis studi kasus proyek nyata dari awal hingga hasil akhir." }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 24:</b> Anda ingin melatih kecepatan berpikir dan ketelitian dalam memecahkan masalah. Aktivitas mana yang paling tajam melatihnya?",
+      "options": [
+        { "code": "A", "resource": "Practice Questions", "label": "A. Latihan soal tipe HOTS (High Order Thinking Skills) berbatas waktu." },
+        { "code": "B", "resource": "Physical Experiment", "label": "B. Melakukan uji coba alat langsung dengan pengukuran variabel presisi." },
+        { "code": "C", "resource": "Simulation", "label": "C. Menyelesaikan skenario tantangan pada simulasi digital." },
+        { "code": "D", "resource": "Tutor", "label": "D. Melakukan sesi tanya jawab cepat dan kritis bersama tutor pribadi." }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 25:</b> Manakah lingkungan sumber belajar berbasis manusia yang paling membuat Anda merasa nyaman dan tidak tertekan?",
+      "options": [
+        { "code": "A", "resource": "Peer", "label": "A. Belajar bersama teman akrab di cafe atau perpustakaan." },
+        { "code": "B", "resource": "Tutor", "label": "B. Bimbingan privat dengan guru les yang suportif dan sabar." },
+        { "code": "C", "resource": "Lecture", "label": "C. Menjadi pendengar pasif dalam kelas ceramah yang tenang." },
+        { "code": "D", "resource": "Internet", "label": "D. Mengganti manusia dengan forum diskusi anonim di internet." }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 26:</b> Saat membaca buku teks yang penuh dengan paragraf panjang, elemen apa yang paling pertama dicari oleh mata Anda?",
+      "options": [
+        { "code": "A", "resource": "Diagram", "label": "A. Gambar, grafik, atau bagan infografis di samping paragraf." },
+        { "code": "B", "resource": "Real-World Examples", "label": "B. Boks contoh kasus nyata atau aplikasi praktis di dunia nyata." },
+        { "code": "C", "resource": "Flashcards", "label": "C. Rangkuman istilah tebal (bolded key terms) untuk dicatat." },
+        { "code": "D", "resource": "Practice Questions", "label": "D. Soal-soal latihan di akhir bab buku teks tersebut." }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 27:</b> Anda lebih menyukai jenis umpan balik (feedback) hasil belajar yang seperti apa?",
+      "options": [
+        { "code": "A", "resource": "AI", "label": "A. Umpan balik korektif instan dari AI beserta penjelasan letak kesalahan." },
+        { "code": "B", "resource": "Practice Questions", "label": "B. Skor angka dan kunci jawaban otomatis dari kuis digital." },
+        { "code": "C", "resource": "Tutor", "label": "C. Evaluasi dan catatan kualitatif mendalam dari seorang tutor ahli." },
+        { "code": "D", "resource": "Physical Experiment", "label": "D. Hasil konfirmasi fisik (misal: alat berfungsi atau eksperimen berhasil)." }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 28:</b> Media berbasis suara (audio) manakah yang memberikan dampak paling optimal bagi proses belajar Anda?",
+      "options": [
+        { "code": "A", "resource": "Lecture", "label": "A. Penjelasan ceramah guru/dosen secara tatap muka langsung." },
+        { "code": "B", "resource": "Podcast", "label": "B. Rekaman podcast edukasi yang disusun secara sistematis." },
+        { "code": "C", "resource": "Video", "label": "C. Audio dari video tutorial yang disertai visual gambar." },
+        { "code": "D", "resource": "Peer", "label": "D. Obrolan dan penjelasan lisan dari teman sebaya saat belajar kelompok." }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 29:</b> Jika Anda diminta memilih 1 sumber daya digital utama sebagai pusat repositori belajar Anda, mana yang dipilih?",
+      "options": [
+        { "code": "A", "resource": "Internet", "label": "A. Mesin pencari dan situs basis pengetahuan terbuka di internet." },
+        { "code": "B", "resource": "AI", "label": "B. Platform AI Generatif terpadu untuk segala pertanyaan." },
+        { "code": "C", "resource": "Simulation", "label": "C. Portal aplikasi simulasi interaktif." },
+        { "code": "D", "resource": "Textbook", "label": "D. Perpustakaan digital berisi e-book dan modul resmi." }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 30:</b> Bagaimana Anda memastikan bahwa persiapan ujian Anda sudah mencakup seluruh indikator kurikulum?",
+      "options": [
+        { "code": "A", "resource": "Textbook", "label": "A. Memastikan seluruh bab dalam buku teks wajib telah dibaca habis." },
+        { "code": "B", "resource": "Practice Questions", "label": "B. Menuntaskan seluruh variasi bank soal latihan kisi-kisi ujian." },
+        { "code": "C", "resource": "Diagram", "label": "C. Memeriksa keberadaan peta konsep komprehensif seluruh materi." },
+        { "code": "D", "resource": "Tutor", "label": "D. Meminta tutor meninjau dan memastikan kesiapan indikator Anda." }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 31:</b> Ketika mempelajari materi pelajaran Sejarah atau Peristiwa penting, sarana mana yang membuat cerita terasa hidup?",
+      "options": [
+        { "code": "A", "resource": "Video", "label": "A. Video dokumenter dengan reka ulang adegan dan grafis peta." },
+        { "code": "B", "resource": "Real-World Examples", "label": "B. Membaca naskah contoh studi kasus dan peninggalan artefak nyata." },
+        { "code": "C", "resource": "Podcast", "label": "C. Mendengarkan narasi alur sejarah berformat audio podcast story-telling." },
+        { "code": "D", "resource": "Lecture", "label": "D. Mendengarkan cerita sejarah yang dibawakan oleh guru di kelas." }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 32:</b> Metode mana yang paling efektif mencegah Anda mengalami kejenuhan (academic burnout) saat masa minggu ujian?",
+      "options": [
+        { "code": "A", "resource": "Peer", "label": "A. Belajar berseling selingan obrolan bersama teman kelompok." },
+        { "code": "B", "resource": "Flashcards", "label": "B. Belajar santai dengan gim kartu memori kilat." },
+        { "code": "C", "resource": "Podcast", "label": "C. Belajar sambil berjalan santai mendengarkan podcast." },
+        { "code": "D", "resource": "Simulation", "label": "D. Mengubah sesi belajar menjadi permainan simulasi digital." }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 33:</b> Jika Anda diminta mengajar atau menjelaskan balik materi kepada orang lain, alat bantu mana yang paling ingin Anda gunakan?",
+      "options": [
+        { "code": "A", "resource": "Diagram", "label": "A. Menggambar bagan alur dan peta konsep di papan tulis." },
+        { "code": "B", "resource": "Real-World Examples", "label": "B. Menceritakan contoh kasus nyata yang mudah dipahami." },
+        { "code": "C", "resource": "Physical Experiment", "label": "C. Memperagakan eksperimen alat atau benda fisik secara langsung." },
+        { "code": "D", "resource": "Practice Questions", "label": "D. Memberikan lembar soal latihan dan membimbing penyelesaiannya." }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 34:</b> Anda tipikal pembelajar yang membutuhkan kontrol penuh terhadap kecepatan (pace) penyerapan informasi. Sumber mana yang paling cocok?",
+      "options": [
+        { "code": "A", "resource": "Textbook", "label": "A. Buku teks cetak (bisa dibaca ulang dan diatur kecepatannya sendiri)." },
+        { "code": "B", "resource": "AI", "label": "B. Chatbot AI (bisa diminta menjelaskan ulang dengan berbagai tingkat kesulitan)." },
+        { "code": "C", "resource": "Internet", "label": "C. Penelusuran mandiri artikel internet sesuai kedalaman minat." },
+        { "code": "D", "resource": "Flashcards", "label": "D. Deck kartu kilat mandiri." }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 35:</b> Ketika Anda menghadapi materi berkarakteristik 'Praktikum & Aplikasi', sumber mana yang memberikan dampak belajar paling rendah?",
+      "options": [
+        { "code": "A", "resource": "Lecture", "label": "A. Sesi ceramah teori pasif tanpa praktik." },
+        { "code": "B", "resource": "Podcast", "label": "B. Rekaman audio saja tanpa visual atau peragaan." },
+        { "code": "C", "resource": "Textbook", "label": "C. Buku teks yang hanya berisi narasi tulisan." },
+        { "code": "D", "resource": "Flashcards", "label": "D. Hafalan kartu istilah tanpa pemahaman aplikasi." }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 36:</b> Menurut Anda, kombinasi dua media mana yang paling sempurna untuk menguasai satu bab mata pelajaran dari nol hingga mahir?",
+      "options": [
+        { "code": "A", "resource": "Video", "label": "A. Video penjelasan konsep + Practice Questions latihan soal." },
+        { "code": "B", "resource": "Textbook", "label": "B. Buku teks bab lengkap + Tutor bimbingan privat." },
+        { "code": "C", "resource": "AI", "label": "C. Interaksi Generative AI + Simulation laboratorium virtual." },
+        { "code": "D", "resource": "Diagram", "label": "D. Diagram peta konsep + Real-World Examples studi kasus nyata." }
+      ]
+    },
+    {
+      "id": 37,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 37:</b> Jika sekolah Anda memberikan anggaran untuk memilih 1 fasilitas belajar baru, mana yang paling Anda harapkan tersedia?",
+      "options": [
+        { "code": "A", "resource": "Simulation", "label": "A. Lisensi software simulasi & laboratorium komputer canggih." },
+        { "code": "B", "resource": "Physical Experiment", "label": "B. Peralatan laboratorium praktikum fisik yang lengkap." },
+        { "code": "C", "resource": "Tutor", "label": "C. Layanan konsultasi bimbingan tutor privat sekolah." },
+        { "code": "D", "resource": "AI", "label": "D. Akses akun premium platform AI Tutor Edukasi." }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 38:</b> Apa pemicu utama yang membuat Anda merasa bahwa sebuah media belajar sangat membosankan dan tidak efektif?",
+      "options": [
+        { "code": "A", "resource": "Lecture", "label": "A. Terlalu banyak mendengarkan ceramah lisan satu arah." },
+        { "code": "B", "resource": "Textbook", "label": "B. Terlalu banyak membaca deretan teks panjang tanpa visual." },
+        { "code": "C", "resource": "Practice Questions", "label": "C. Terlalu banyak dijejali lembar latihan soal tanpa penjelasan teori." },
+        { "code": "D", "resource": "Podcast", "label": "D. Suara narasi audio yang monoton tanpa ada ilustrasi." }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 39:</b> Saat mempelajari materi Etika, Hukum, atau Studi Kasus Bisnis, media mana yang memberikan pemahaman paling tajam?",
+      "options": [
+        { "code": "A", "resource": "Real-World Examples", "label": "A. Analisis dokumen studi kasus nyata dari perusahaan/pengadilan." },
+        { "code": "B", "resource": "Peer", "label": "B. Sesi roleplay dan debat kasus bersama teman sekelas." },
+        { "code": "C", "resource": "Internet", "label": "C. Membaca berita dan ulasan analisis pakar di internet." },
+        { "code": "D", "resource": "Lecture", "label": "D. Mendengarkan pengulasan kasus dari dosen/guru di kelas." }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 40:</b> Ketika Anda dihadapkan pada ujian pilihan ganda dengan waktu pengerjaan sangat terbatas, strategi persiapan mana yang paling menjamin skor tinggi?",
+      "options": [
+        { "code": "A", "resource": "Practice Questions", "label": "A. Melatih kecepatan memecahkan bank soal tipe serupa." },
+        { "code": "B", "resource": "Flashcards", "label": "B. Memastikan seluruh kosa kata istilah ujian terhafal di luar kepala." },
+        { "code": "C", "resource": "Diagram", "label": "C. Menguasai alur pola hubungan antar variabel lewat peta konsep." },
+        { "code": "D", "resource": "AI", "label": "D. Meminta AI memprediksi dan membahas soal-soal yang kemungkinan keluar." }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 41:</b> Menurut Anda, manakah dari sumber belajar berikut yang paling membutuhkan kemandirian dan kedisiplinan tinggi dari diri siswa?",
+      "options": [
+        { "code": "A", "resource": "Textbook", "label": "A. Membaca dan menelaah buku teks modul tebal secara mandiri." },
+        { "code": "B", "resource": "Internet", "label": "B. Melakukan riset mandiri memilah informasi tepercaya di internet." },
+        { "code": "C", "resource": "Podcast", "label": "C. Tekun mendengarkan seri podcast pembelajaran hingga tuntas." },
+        { "code": "D", "resource": "Flashcards", "label": "D. Konsisten mengulas set kartu kilat memori setiap hari." }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "forced_choice",
+      "pertanyaan": "<b>Skenario 42:</b> Di antara 4 kelompok media belajar berikut, manakah kelompok yang jika dihilangkan dari hidup Anda akan membuat Anda PALING BINGUNG saat belajar?",
+      "options": [
+        { "code": "A", "resource": "Video", "label": "A. Kelompok Audiovisual & Media Gerak (Video, Tutorial)." },
+        { "code": "B", "resource": "AI", "label": "B. Kelompok Teknologi Digital & Interaktif (AI, Simulasi, Internet)." },
+        { "code": "C", "resource": "Practice Questions", "label": "C. Kelompok Latihan Praktis & Studi Kasus (Soal, Contoh Nyata, Eksperimen)." },
+        { "code": "D", "resource": "Tutor", "label": "D. Kelompok Bimbingan Manusia & Diskusi (Tutor, Teman, Pengajar)." }
+      ]
+    }
+  ]
+}
