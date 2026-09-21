@@ -64,17 +64,20 @@
       btnSubmit.disabled = true;
       btnSubmit.innerText = "Memverifikasi Akses...";
 
-      let testInfo = {};
-      try {
-        const response = await fetch("soal1_part1.json");
-        const soalData = await response.json();
-        testInfo = soalData.test_info || {};
-      } catch (err) {
-        console.warn("Gagal membaca metadata awal:", err);
-      }
+      // --- HARDCODE METADATA GLOBAL OTM DI SINI ---
+      const testInfo = {
+        kode: "KS1",
+        nama_resmi: "OSN Talent Mapping (OTM) Test",
+        nama_singkat: "OTM Test (3 Pilar)",
+        versi: "Versi OTM 2.1 / 2026",
+        token_ujian: "OTM2026",
+        token_master: "PatsTestingKS1",
+        psikolog_pj: "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+        SIPP: "2026-0819-PSI-01"
+      };
 
-      // Verifikasi sesi peserta
-      const authResult = await PATS_AUTH.verifyParticipant(nama, kodeAtauToken, "KS1_PILAR1", testInfo);
+      // Verifikasi sesi peserta menggunakan metadata hardcoded
+      const authResult = await PATS_AUTH.verifyParticipant(nama, kodeAtauToken, "KS1", testInfo);
 
       if (authResult.success) {
         // Redirect ke CBT Pilar I
