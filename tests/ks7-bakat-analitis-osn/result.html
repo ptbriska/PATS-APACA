@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olympiad Readiness Dashboard - KS7 OSN Screen Test (OST)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --navy-dark: #090d16;
+      --navy-card: #111827;
+      --gold-osn: #f59e0b;
+      --emerald-rec: #10b981;
+      --amber-opt: #f59e0b;
+      --crimson-not: #ef4444;
+      --cyan-glow: #06b6d4;
+    }
+
+    body {
+      background-color: #030712;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #f3f4f6;
+    }
+
+    .report-paper {
+      background: #0f172a;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      padding: 40px;
+      max-width: 950px;
+      margin: 0 auto;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+    }
+
+    /* Decision Badge Banner Top */
+    .decision-banner {
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin: 20px 0 30px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid;
+    }
+
+    .decision-emerald {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.1));
+      border-color: var(--emerald-rec);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+
+    .decision-amber {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1));
+      border-color: var(--amber-opt);
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+    }
+
+    .decision-crimson {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(185, 28, 28, 0.1));
+      border-color: var(--crimson-not);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+    }
+
+    .decision-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    .decision-status {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .status-emerald { color: var(--emerald-rec); text-shadow: 0 0 10px rgba(16,185,129,0.4); }
+    .status-amber { color: var(--amber-opt); text-shadow: 0 0 10px rgba(245,158,11,0.4); }
+    .status-crimson { color: var(--crimson-not); text-shadow: 0 0 10px rgba(239,68,68,0.4); }
+
+    .decision-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    /* Score Dial Section */
+    .score-dial-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      background: var(--navy-card);
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .dial-wrapper {
+      position: relative;
+      width: 220px;
+      height: 120px;
+      margin: 0 auto;
+    }
+
+    .dial-score-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .dial-score-number {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    /* Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .pillar-card {
+      background: var(--navy-card);
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 18px;
+      border-top: 4px solid var(--cyan-glow);
+    }
+
+    .pillar-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pillar-score {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .pillar-bar-bg {
+      background: #1e293b;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .pillar-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan-glow), var(--emerald-rec));
+      border-radius: 4px;
+    }
+
+    /* Smart CTA Box */
+    .cta-box {
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .cta-emerald {
+      background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.15));
+      border: 1px solid var(--emerald-rec);
+    }
+
+    .cta-crimson {
+      background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(15,23,42,0.8));
+      border: 1px solid #334155;
+    }
+
+    .btn-otm {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--emerald-rec), var(--cyan-glow));
+      color: #030712;
+      font-weight: 800;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      margin-top: 14px;
+      box-shadow: 0 4px 15px rgba(16,185,129,0.4);
+      transition: all 0.2s;
+    }
+
+    .btn-otm:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.6);
+    }
+
+    .report-biodata-dark td {
+      color: #cbd5e1;
+      padding: 6px 8px;
+    }
+
+    .report-biodata-dark .label {
+      color: #94a3b8;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="no-print" style="background-color: #030712; border-bottom: 1px solid #1e293b; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #1e293b; color: #f3f4f6; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS7_OST_Skrining_OSN.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Hasil Skrining</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header" style="border-bottom: 1px solid #1e293b; padding-bottom: 16px;">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama" style="color: #ffffff;">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title" style="color: #94a3b8;">Olympiad Talent Mapping & Screening Center</div>
+          <div id="kop-instansi-alamat" class="address" style="color: #64748b;">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Tes -->
+      <div style="text-align: center; margin: 20px 0 10px;">
+        <h3 style="letter-spacing: 1.5px; color: #ffffff; font-size: 1.4rem; font-weight: 800;">HASIL SKRINING KELAYAKAN MENTAL & KARAKTER OSN</h3>
+        <span style="font-size: 0.85rem; color: var(--gold-osn); font-weight: 700; letter-spacing: 1px;">OSN SCREEN TEST (OST) - KS7</span>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata-dark" style="width: 100%; margin-bottom: 20px; font-size: 0.9rem;">
+        <tr>
+          <td class="label" style="width: 18%;">Nama Peserta</td>
+          <td style="width: 32%;">: <strong id="r-nama" style="color: #ffffff;">-</strong></td>
+          <td class="label" style="width: 18%;">Kode Akses</td>
+          <td style="width: 32%;">: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Asal Sekolah</td>
+          <td>: <span id="r-instansi">-</span></td>
+          <td class="label">Instrumen</td>
+          <td>: <span>KS7 - OSN Screen Test (OST)</span></td>
+        </tr>
+      </table>
+
+      <!-- Decision Banner Utama -->
+      <div id="decision-banner" class="decision-banner decision-emerald">
+        <div class="decision-title">SYSTEM EVALUATION & DECISION STATUS</div>
+        <div id="r-decision-status" class="decision-status status-emerald">RECOMMENDED FOR OTM</div>
+        <div id="r-decision-kategori" class="decision-subtitle">SANGAT POTENSIAL (High OSN Fit)</div>
+      </div>
+
+      <!-- Section I: Dial Gauge & Ringkasan Indeks -->
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; border-left: 4px solid var(--gold-osn); padding-left: 10px; text-transform: uppercase;">
+          I. INDEKS POTENSI OSN GLOBAL (S_OST)
+        </div>
+
+        <div class="score-dial-grid">
+          <div style="flex: 1; min-width: 200px; text-align: center;">
+            <div class="dial-wrapper">
+              <canvas id="gaugeSOST"></canvas>
+              <div class="dial-score-overlay">
+                <div id="r-sost-value" class="dial-score-number">0.0</div>
+                <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 600;">Skala 0 - 100</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="flex: 2; min-width: 280px; border-left: 1px solid #1e293b; padding-left: 20px;">
+            <p id="r-decision-desc" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 12px;">-</p>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid #1e293b; padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #94a3b8;">
+              <strong style="color: #ffffff;">Rekomendasi Sistem:</strong> <span id="r-decision-rekomendasi">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Breakdown 3 Pilar Karakter Pembawa Medali -->
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; border-left: 4px solid var(--cyan-glow); padding-left: 10px; text-transform: uppercase;">
+          II. EVALUASI 3 PILAR KARAKTER PEMBAWA MEDALI
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card" style="border-top-color: #10b981;">
+            <div class="pillar-title">Pilar 1: Ketahanan Emosional</div>
+            <div id="r-pilar1-score" class="pillar-score">0.0%</div>
+            <div class="pillar-bar-bg"><div id="r-pilar1-bar" class="pillar-bar-fill" style="width: 0%;"></div></div>
+            <p style="font-size: 0.78rem; color: #94a3b8; margin: 0;">Resiliensi stres, panic attack management, & pantang menyerah.</p>
+          </div>
+
+          <div class="pillar-card" style="border-top-color: #f59e0b;">
+            <div class="pillar-title">Pilar 2: Inisiatif & Kedisiplinan</div>
+            <div id="r-pilar2-score" class="pillar-score">0.0%</div>
+            <div class="pillar-bar-bg"><div id="r-pilar2-bar" class="pillar-bar-fill" style="width: 0%; background: linear-gradient(90deg, #f59e0b, #d97706);"></div></div>
+            <p style="font-size: 0.78rem; color: #94a3b8; margin: 0;">Kemandirian belajar, latihan rutin, & daya tahan membaca modul.</p>
+          </div>
+
+          <div class="pillar-card" style="border-top-color: #06b6d4;">
+            <div class="pillar-title">Pilar 3: Kapasitas Kognitif & Adaptasi</div>
+            <div id="r-pilar3-score" class="pillar-score">0.0%</div>
+            <div class="pillar-bar-bg"><div id="r-pilar3-bar" class="pillar-bar-fill" style="width: 0%; background: linear-gradient(90deg, #06b6d4, #3b82f6);"></div></div>
+            <p style="font-size: 0.78rem; color: #94a3b8; margin: 0;">Ketelitian, eksplorasi fenomena, sebab-akibat, & coachability.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Spiderweb / Radar Chart 15 Parameter -->
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 0.95rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; border-left: 4px solid #3b82f6; padding-left: 10px; text-transform: uppercase;">
+          III. PEMETAAN RADAR 15 PARAMETER KARAKTER (P01 - P15)
+        </div>
+
+        <div style="background: var(--navy-card); border: 1px solid #1e293b; border-radius: 12px; padding: 20px;">
+          <div style="position: relative; height: 350px; width: 100%;">
+            <canvas id="radar15Chart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smart CTA Box Dynamic -->
+      <div id="smart-cta-container">
+        <!-- Render via JS -->
+      </div>
+
+      <!-- Sign Off -->
+      <div style="margin-top: 40px; display: flex; justify-content: flex-end; border-top: 1px solid #1e293b; padding-top: 20px;">
+        <div style="text-align: center;">
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 50px;">Tim Pengembang Alat Tes & Tim Ahli Psikometri,</p>
+          <p style="font-weight: 700; color: #ffffff; text-decoration: underline; margin-bottom: 2px;">APACA Consulting</p>
+          <p style="font-size: 0.75rem; color: #64748b;">Validasi Asesmen Skrining OST 2026</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Render Kop
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Olympiad Talent Mapping & Screening Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Ambil Sesi Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+      }
+
+      // 3. Fetch Data & Calculate
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS7");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Scoring
+        const result = KS7_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS7_Scoring.sendRekapToGAS === "function") {
+          KS7_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Decision Banner
+        const norm = result.matchedNorm;
+        const bannerElem = document.getElementById("decision-banner");
+        const statusElem = document.getElementById("r-decision-status");
+        
+        statusElem.innerText = norm.status_kelayakan;
+        document.getElementById("r-decision-kategori").innerText = norm.kategori_indeks;
+        document.getElementById("r-decision-desc").innerText = norm.deskripsi_profil;
+        document.getElementById("r-decision-rekomendasi").innerText = norm.rekomendasi_sistem;
+
+        if (norm.action_type === "SHOW_OTM_CTA") {
+          bannerElem.className = "decision-banner decision-emerald";
+          statusElem.className = "decision-status status-emerald";
+        } else if (norm.action_type === "SHOW_OPTIONAL_CTA") {
+          bannerElem.className = "decision-banner decision-amber";
+          statusElem.className = "decision-status status-amber";
+        } else {
+          bannerElem.className = "decision-banner decision-crimson";
+          statusElem.className = "decision-status status-crimson";
+        }
+
+        // 6. Render Dial SOST Score
+        const sostVal = result.sostIndex;
+        document.getElementById("r-sost-value").innerText = sostVal.toFixed(1);
+        initGaugeChart(sostVal);
+
+        // 7. Render Pillars Score
+        const pillars = result.pillarScores;
+        document.getElementById("r-pilar1-score").innerText = `${pillars.pilar1.toFixed(1)}%`;
+        document.getElementById("r-pilar1-bar").style.width = `${pillars.pilar1}%`;
+
+        document.getElementById("r-pilar2-score").innerText = `${pillars.pilar2.toFixed(1)}%`;
+        document.getElementById("r-pilar2-bar").style.width = `${pillars.pilar2}%`;
+
+        document.getElementById("r-pilar3-score").innerText = `${pillars.pilar3.toFixed(1)}%`;
+        document.getElementById("r-pilar3-bar").style.width = `${pillars.pilar3}%`;
+
+        // 8. Render Radar Chart 15 Parameter
+        const pLabels = Object.keys(result.parameterScores);
+        const pValues = Object.values(result.parameterScores);
+        initRadarChart(pLabels, pValues);
+
+        // 9. Render Smart CTA Box
+        const ctaContainer = document.getElementById("smart-cta-container");
+        if (norm.action_type === "SHOW_OTM_CTA" || norm.action_type === "SHOW_OPTIONAL_CTA") {
+          ctaContainer.innerHTML = `
+            <div class="cta-box cta-emerald">
+              <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 6px;">🚀 TAHAP SELANJUTNYA: DIAGNOSTIK PRESISI OTM TEST</h4>
+              <p style="font-size: 0.88rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 12px; line-height: 1.5;">
+                Karakter mentalmu sudah memenuhi syarat petarung OSN! Ambil OTM Test sekarang untuk menemukan 1 dari 10 bidang kompetisi sains yang paling presisi dengan bakat kognitif murnimu.
+              </p>
+              <a href="#" onclick="alert('Mengarahkan ke Pendaftaran OTM Test...'); return false;" class="btn-otm">Daftar OTM Test Sekarang &rarr;</a>
+            </div>
+          `;
+        } else {
+          ctaContainer.innerHTML = `
+            <div class="cta-box cta-crimson">
+              <h4 style="color: #f87171; font-size: 1.1rem; margin-bottom: 6px;">🛡️ PERLINDUNGAN EMOSIONAL & EFISIENSI ANGGARAN</h4>
+              <p style="font-size: 0.88rem; color: #cbd5e1; max-width: 700px; margin: 0 auto; line-height: 1.5;">
+                Sistem menyarankan untuk <strong>TIDAK melanjutkan ke pendaftaran OTM Test</strong> berbayar saat ini. Langkah ini menghemat biaya pendaftaran dan menghindarkan siswa dari tekanan psikologis berlebih. Fokuskan energi pada kegiatan ekstrakurikuler sains eksploratif.
+              </p>
+            </div>
+          `;
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat laporan KS7:", err);
+        alert("Terjadi kesalahan saat memuat data laporan OST KS7.");
+      }
+    });
+
+    // Chart.js Semi-Doughnut Dial Gauge
+    function initGaugeChart(scoreValue) {
+      const ctx = document.getElementById('gaugeSOST').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [scoreValue, 100 - scoreValue],
+            backgroundColor: [
+              scoreValue >= 75 ? '#10b981' : scoreValue >= 55 ? '#f59e0b' : '#ef4444',
+              '#1e293b'
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          rotation: -90,
+          circumference: 180,
+          cutout: '75%',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { tooltip: { enabled: false } }
+        }
+      });
+    }
+
+    // Chart.js Radar Chart 15 Parameter
+    function initRadarChart(labels, values) {
+      const ctx = document.getElementById('radar15Chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Skor Parameter (1.0 - 4.0)',
+            data: values,
+            backgroundColor: 'rgba(6, 182, 212, 0.2)',
+            borderColor: 'rgba(6, 182, 212, 1)',
+            pointBackgroundColor: '#f59e0b',
+            pointRadius: 4,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              min: 1.0,
+              max: 4.0,
+              ticks: { stepSize: 1, display: false },
+              grid: { color: '#1e293b' },
+              angleLines: { color: '#334155' },
+              pointLabels: { color: '#cbd5e1', font: { size: 10 } }
+            }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
