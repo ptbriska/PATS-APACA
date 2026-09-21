@@ -1,0 +1,287 @@
+{
+  "kode_tes": "KU4",
+  "nama_tes": "APACA Personality Preference Indicator (PPI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Personality Preference Indicator (PPI) mengukur preferensi psikologis alami individu dalam memproses informasi, membuat keputusan, memfokuskan energi, serta mengorganisasi alur kehidupan sehari-hari berdasarkan teori tipe kepribadian Carl Jung dan Myers-Briggs.",
+  "pci_kategorisasi": [
+    {
+      "rentang_pci": "76% - 100%",
+      "kategori": "Very Clear",
+      "label": "Preferensi Sangat Jelas",
+      "deskripsi": "Individu memiliki kecenderungan preferensi yang sangat kuat, konsisten, dan berakar mendalam pada kutub dimensi ini di berbagai situasi."
+    },
+    {
+      "rentang_pci": "51% - 75%",
+      "kategori": "Clear",
+      "label": "Preferensi Jelas",
+      "deskripsi": "Individu secara dominan menunjukkan pola perilaku sesuai dengan kutub dimensi ini dalam sebagian besar kondisi kehidupan sehari-hari."
+    },
+    {
+      "rentang_pci": "26% - 50%",
+      "kategori": "Moderate",
+      "label": "Preferensi Moderat",
+      "deskripsi": "Individu cukup fleksibel dalam menerapkan preferensi ini, namun tetap memiliki kecenderungan alami ke salah satu kutub saat membuat keputusan."
+    },
+    {
+      "rentang_pci": "0% - 25%",
+      "kategori": "Slight",
+      "label": "Preferensi Tipis (Adaptif)",
+      "deskripsi": "Individu berada di titik seimbang dan mudah menyesuaikan gaya perilakunya tergantung pada tuntutan lingkungan sekitar."
+    }
+  ],
+  "dikotomi_info": {
+    "E_vs_I": {
+      "nama": "Orientasi Energi (Extraversion vs. Introversion)",
+      "E": "Mengarahkan energi ke luar, menyukai interaksi sosial dinamis, dan terdorong oleh tindakan nyata.",
+      "I": "Mengarahkan energi ke dalam, fokus pada refleksi ide, pemikiran internal, dan ruang pribadi yang tenang."
+    },
+    "S_vs_N": {
+      "nama": "Pemrosesan Informasi (Sensing vs. Intuition)",
+      "S": "Berfokus pada fakta nyata, pengalaman praktis, data riil, dan hal-hal konkret saat ini.",
+      "N": "Berfokus pada gambaran besar (big picture), pola hubungan, potensi masa depan, dan gagasan inovatif."
+    },
+    "T_vs_F": {
+      "nama": "Pengambilan Keputusan (Thinking vs. Feeling)",
+      "T": "Membuat keputusan berdasarkan logika objektif, analisis sebab-akibat, dan prinsip keadilan rasional.",
+      "F": "Membuat keputusan berdasarkan nilai-nilai kemanusiaan, empati, keharmonisan relasi, dan dampak emosional."
+    },
+    "J_vs_P": {
+      "nama": "Gaya Hidup & Alur Kerja (Judging vs. Perceiving)",
+      "J": "Menyukai ketertiban, perencanaan terstruktur, jadwal teratur, dan kepastian penyelesaian target.",
+      "P": "Menyukai fleksibilitas, adaptabilitas tinggi, kesenangan spontan, dan keterbukaan pada berbagai opsi."
+    }
+  },
+  "tipe_kepribadian": {
+    "ISTJ": {
+      "kode": "ISTJ",
+      "julukan": "The Inspector / Penjaga Seta",
+      "kluster": "Sentinel",
+      "ringkasan_karakter": "Pribadi yang sangat bertanggung jawab, teliti, realistis, dan taat pada prinsip ketertiban. ISTJ selalu menghormati fakta konkret, menghargai tradisi, dan berpegang teguh pada komitmen yang telah dibuat.",
+      "kekuatan_utama": ["Teliti & Akurat", "Sangat Mandiri", "Pegang Teguh Janji", "Terstruktur & Sistematis", "Tenang saat Krisis"],
+      "kelemahan_utama": ["Cenderung Kaku pada Aturan", "Sulit Memahami Emosi Orang Lain", "Resisten terhadap Perubahan Mendadak", "Suka Menyalahkan Diri jika Gagal"],
+      "gaya_komunikasi": "Lugas, faktual, langsung pada poin utama, dan tidak menyukai obrolan gosip atau basa-basi abstrak.",
+      "gaya_relasi": "Setia, dapat diandalkan, menunjukkan kasih sayang lewat tindakan nyata dan komitmen ketimbang kata-kata manis.",
+      "gaya_belajar_kerja": "Belajar secara berurutan lewat panduan langkah demi langkah yang jelas dan contoh nyata.",
+      "lingkungan_ideal": "Lingkungan yang tenang, teratur, memiliki prosedur operasional baku, dan menghargai kepastian.",
+      "potensi_karir": ["Akuntan / Auditor", "Analis Keuangan", "Manajer Operasional", "Hakim / Ahli Hukum", "Administrator Sistem"],
+      "saran_pengembangan": "Cobalah untuk lebih terbuka pada metode baru yang tidak biasa dan latih keluwesan emosional saat menghadapi ketidakpastian."
+    },
+    "ISFJ": {
+      "kode": "ISFJ",
+      "julukan": "The Protector / Pelindung Hangat",
+      "kluster": "Sentinel",
+      "ringkasan_karakter": "Pribadi yang penuh perhatian, hangat, setia, dan berdedikasi tinggi menjaga keharmonisan di sekitarnya. ISFJ memiliki ingatan luar biasa terhadap detail kebutuhan orang lain dan selalu siap membantu di balik layar.",
+      "kekuatan_utama": ["Empati Praktis Tinggi", "Sangat Setia & Tekun", "Penyabar & Pendengar Baik", "Detail-Oriented", "Dapat Diandalkan"],
+      "kelemahan_utama": ["Memendam Perasaan Sendiri", "Cenderung Menghindari Konflik", "Kesusahan Berkata 'Tidak'", "Terlalu Beban Memikirkan Orang Lain"],
+      "gaya_komunikasi": "Ramah, santun, suportif, dan senantiasa menjaga keharmonisan perasaan orang yang diajak bicara.",
+      "gaya_relasi": "Sangat protektif, berdedikasi penuh untuk kebahagiaan pasangan/keluarga, dan menciptakan kenyamanan rumah.",
+      "gaya_belajar_kerja": "Belajar paling efektif ketika materi memiliki manfaat langsung bagi kehidupan dan membantu orang lain.",
+      "lingkungan_ideal": "Lingkungan kolaboratif yang hangat, saling menghargai, bebas dari kompetisi saling menjatuhkan.",
+      "potensi_karir": ["Tenaga Kesehatan / Perawat", "HR / Talent Welfare", "Pendidik / Guru", "Pekerja Sosial", "Customer Success Specialist"],
+      "saran_pengembangan": "Belajarlah mengekspresikan kebutuhan pribadimu secara asertif dan jangan ragu menolak tuntutan berlebih demi kesehatan mentalmu."
+    },
+    "INFJ": {
+      "kode": "INFJ",
+      "julukan": "The Advocate / Konselor Visioner",
+      "kluster": "Diplomat",
+      "ringkasan_karakter": "Pribadi visioner yang intuitif, idealis, dan memiliki kedalaman empati mendalam. INFJ bertekad menciptakan perubahan bermakna bagi dunia serta memiliki ketajaman memahami motivasi terselubung manusia.",
+      "kekuatan_utama": ["Intuisi Kemanusiaan Tajam", "Berprinsip & Berintegritas", "Penyusun Visi Masa Depan", "Pikirannya Mendalam", "Kreatif & Inspiratif"],
+      "kelemahan_utama": ["Rentan Perfeksionis Ekstrem", "Mudah Mengalami Burnout Emosional", "Sangat Tertutup tentang Diri Sendiri", "Sensitif terhadap Kritik"],
+      "gaya_komunikasi": "Inspiratif, penuh simbol dan kiasan bermakna, fokus pada topik gagasan hidup yang mendalam.",
+      "gaya_relasi": "Mencari koneksi jiwa yang otentik dan mendalam, sangat suportif pada pertumbuhan pribadi pasangan.",
+      "gaya_belajar_kerja": "Menyerap materi dengan menghubungkan konsep-konsep abstrak pada dampak kemanusiaan jangka panjang.",
+      "lingkungan_ideal": "Lingkungan yang tenang, memfasilitasi kreativitas independen, dan berorientasi pada misi sosial/kemanusiaan.",
+      "potensi_karir": ["Psikolog / Konselor", "Penulis / Editor", "Organizational Developer", "Manajer LSM / CSR", "Peneliti Sosial"],
+      "saran_pengembangan": "Seimbangkan idealisme tinggi dengan realitas praktis di lapangan, serta luapkan emosimu secara berkala agar tidak mengendap menjadi beban."
+    },
+    "INTJ": {
+      "kode": "INTJ",
+      "julukan": "The Mastermind / Arsitek Strategis",
+      "kluster": "Analyst",
+      "ringkasan_karakter": "Pemikir konseptual yang sangat analitis, independen, dan berorientasi pada strategi jangka panjang. INTJ memiliki standar kompetensi tinggi dan haus akan efisiensi serta pemecahan masalah kompleks.",
+      "kekuatan_utama": ["Pikiran Strategis & Analitis", "Sangat Mandiri", "Objektif & Rasional", "Haus Pengetahuan", "Kemampuan Perencanaan Makro"],
+      "kelemahan_utama": ["Terlalu Kritis & Sinis", "Abaikan Sisi Emosional Relasi", "Cenderung Mengabaikan Prosedur Kecil", "Kurang Sabar pada Ketidakefisienan"],
+      "gaya_komunikasi": "Langsung ke inti (direct), teoritis, berbasis fakta logis, dan menyukai diskusi konsep yang tajam.",
+      "gaya_relasi": "Menghargai kemandirian dan kesetaraan intelektual pasangan, menunjukkan dukungan lewat ide dan solusi strategis.",
+      "gaya_belajar_kerja": "Suka belajar secara mandiri lewat analisis teori, sintesis pola data, dan pengujian konsep.",
+      "lingkungan_ideal": "Lingkungan kerja/belajar yang profesional, berfokus pada inovasi cerdas, tanpa birokrasi berbelit.",
+      "potensi_karir": ["Konsultan Strategi Bisnis", "System Architect / Software Engineer", "Data Scientist", "R&D Specialist", "Ekonom / Analis Investasi"],
+      "saran_pengembangan": "Hargai keanekaragaman emosi manusia dan berlatilahlah menyampaikan kritik secara halus agar tidak terkesan mengintimidasi."
+    },
+    "ISTP": {
+      "kode": "ISTP",
+      "julukan": "The Crafter / Ahli Solusi Teknis",
+      "kluster": "Explorer",
+      "ringkasan_karakter": "Pengamat yang tenang, pragmatis, dan sangat adaptif. ISTP ahli dalam membedah bagaimana suatu sistem atau mekanisme bekerja secara konkret serta selalu siap mengambil tindakan dalam krisis.",
+      "kekuatan_utama": ["Tenang di Bawah Tekanan", "Ahli Pemecahan Masalah Praktis", "Adaptif & Otodidak", "Realistis & Efisien", "Logika Pengamatan Tajam"],
+      "kelemahan_utama": ["Cepat Cemas dengan Aturan Kaku", "Sulit Menyatakan Perasaan", "Cenderung Mengambil Risiko Tanpa Perhitungan", "Suka Menutup Diri"],
+      "gaya_komunikasi": "Singkat, hemat kata, fokus pada cara kerja teknis dan langkah eksekusi yang praktis.",
+      "gaya_relasi": "Memberikan ruang bebas bagi pasangan, menunjukkan kepedulian lewat perbaikan masalah nyata harian.",
+      "gaya_belajar_kerja": "Belajar paling cepat melalui praktik langsung (hands-on experience) dan eksperimen coba-ralat.",
+      "lingkungan_ideal": "Lingkungan yang memberikan kebebasan bergerak, tanpa микро-manajemen, dan penuh tantangan praktis.",
+      "potensi_karir": ["Insinyur / Engineer", "Risk Analyst", "Pilot / Mekanik Profesional", "Analis Forensik Digital", "Spesialis Operasional TIK"],
+      "saran_pengembangan": "Cobalah membuat perencanaan jangka panjang dan latih komunikasi emosional agar tidak terkesan acuh tak acuh."
+    },
+    "ISFP": {
+      "kode": "ISFP",
+      "julukan": "The Artist / Seniman Harmonis",
+      "kluster": "Explorer",
+      "ringkasan_karakter": "Pribadi yang artistik, hangat, fleksibel, dan sangat peka terhadap keindahan. ISFP menikmati momen saat ini dengan hati terbuka dan mengekspresikan nilai-nilai internalnya lewat tindakan nyata.",
+      "kekuatan_utama": ["Sensitivitas Estetika Tinggi", "Adaptif & Toleran", "Kehangatan Emosional", "Setia pada Nilai Diri", "Kreatif & Otentik"],
+      "kelemahan_utama": ["Sensitif terhadap Penolakan", "Kesulitan Membuat Rencana Jangka Panjang", "Rentang Konsentrasi Mudah Dialihkan", "Suka Menunda Konflik"],
+      "gaya_komunikasi": "Lembut, santai, megarahkan obrolan pada hal-hal personal yang menyenangkan tanpa pemaksaan.",
+      "gaya_relasi": "Setia, menghormati privasi pasangan, serta suka memberikan kejutan-kejutan manis dan pengalaman estetis.",
+      "gaya_belajar_kerja": "Belajar lewat keterlibatan sensorik langsung, visualisasi menarik, dan kebebasan mengekspresikan karya.",
+      "lingkungan_ideal": "Lingkungan yang fleksibel, mengapresiasi ekspresi estetis, serta jauh dari suasana tegang kompetitif.",
+      "potensi_karir": ["Desainer Grafis / UI-UX", "Arsitek / Interior Designer", "Fotografer / Videografer", "Spesialis Konservasi Lingkungan", "Praktisi Seni Kreatif"],
+      "saran_pengembangan": "Latihlah ketegasan dalam menghadapi konflik dan bangun struktur perencanaan jadwal agar target hidupmu tercapai."
+    },
+    "INFP": {
+      "kode": "INFP",
+      "julukan": "The Idealist / Pemimpi Otentik",
+      "kluster": "Diplomat",
+      "ringkasan_karakter": "Pribadi yang idealis, puitis, dan dipandu oleh nilai-nilai moral yang sangat kuat. INFP selalu mencari makna mendalam dalam kehidupan dan berdedikasi membantu sesama menemukan potensi sejati mereka.",
+      "kekuatan_utama": ["Nilai Integritas Moral Tinggi", "Sangat Empatis & Inklusif", "Kreativitas Penulisan/Gagasan", "Berpikiran Terbuka", "Dedikasi Otentik"],
+      "kelemahan_utama": ["Terlalu Mengidealkan Realitas", "Mudah Terpukul oleh Kritik", "Sering Prokrastinasi / Menunda Tugas", "Sulit Mengelola Detail Administrasi"],
+      "gaya_komunikasi": "Penuh kehangatan, reflektif, menyukai obrolan mendalam mengenai makna hidup, imajinasi, dan empati.",
+      "gaya_relasi": "Mencari belahan jiwa (soulmate), sangat romantis, suportif, dan menghargai keunikan jati diri pasangan.",
+      "gaya_belajar_kerja": "Belajar paling efektif ketika materi menyentuh imajinasi dan selaras dengan prinsip moral pribadinya.",
+      "lingkungan_ideal": "Lingkungan kerja fleksibel, suportif, tanpa batasan aturan kaku, yang berfokus pada pengembangan manusia.",
+      "potensi_karir": ["Penulis Buku / Skenario", "Content Creator / Copywriter", "Psikolog Anak / Remaja", "Aktivis Kemanusiaan", "Konsultan Pengembang Talenta"],
+      "saran_pengembangan": "Disiplinkan diri untuk mengeksekusi ide-ide indahmatmu menjadi aksi nyata dan jangan mengambil setiap kritik secara personal."
+    },
+    "INTP": {
+      "kode": "INTP",
+      "julukan": "The Thinker / Konseptor Inovatif",
+      "kluster": "Analyst",
+      "ringkasan_karakter": "Pemikir konseptual yang cerdas, sangat ingin tahu, dan selalu mencari pola kebenaran di balik segala fenomena. INTP unggul dalam menganalisis teori dan merancang kerangka pikir baru.",
+      "kekuatan_utama": ["Analisis Logika Murni", "Inovatif & Kreatif", "Pikiran Sangat Terbuka", "Penyelesai Masalah Rumit", "Objektif & Jujur"],
+      "kelemahan_utama": ["Sering Terjebak 'Paralysis by Analysis'", "Cenderung Mengabaikan NormaSosial", "Kurang Peka pada Emosi", "Cepat Bosan setelah Tahap Konsep Selesai"],
+      "gaya_komunikasi": "Presisi dalam pemilihan kata, teoritis, menyukai debat ide abstrak, namun bisa terkesan memutar.",
+      "gaya_relasi": "Jujur, memberikan kebebasan penuh pada pasangan, menyukai diskusi intelektual yang menantang pikiran.",
+      "gaya_belajar_kerja": "Belajar dengan membedah teori hingga ke akar-akarnya dan menyusun ulang logika sistem tersebut secara mandiri.",
+      "lingkungan_ideal": "Lingkungan akademis/riset yang tenang, mandiri, dan memberikan ruang eksplorasi ide tanpa batas.",
+      "potensi_karir": ["Data Scientist / AI Researcher", "System / Network Analyst", "Fisikawan / Peneliti Murni", "Dosen / Akademisi", "Financial Quant Analyst"],
+      "saran_pengembangan": "Dorong dirimu untuk memprioritaskan tindakan eksekusi akhir ketimbang terus-menerus menyempurnakan teori di dalam kepala."
+    },
+    "ESTP": {
+      "kode": "ESTP",
+      "julukan": "The Entrepreneur / Eksekutor Dinamis",
+      "kluster": "Explorer",
+      "ringkasan_karakter": "Pribadi yang energik, spontan, dan berorientasi pada tindakan cepat. ESTP menikmati kehidupan yang penuh tantangan, pandai memanfaatkan peluang di depan mata, serta mahir bernegosiasi.",
+      "kekuatan_utama": ["Berani Mengambil Risiko Terukur", "Cepat Bertindak di Masa Krisis", "Komunikator Persuasif", "Pengamatan Lapangan Cermat", "Sangat Praktis"],
+      "kelemahan_utama": ["Mudah Bosan pada Teori Abstrak", "Impulsif dalam Keputusan", "Sering Mengabaikan Aturan Panjang", "Kurang Peka Perasaan Long-term"],
+      "gaya_komunikasi": "Lugas, penuh humor, energik, berfokus pada fakta tindakan nyata dan hasil instan.",
+      "gaya_relasi": "Menyenangkan, membawa energi petualangan baru, spontan memberi kejutan aktif bagi pasangan.",
+      "gaya_belajar_kerja": "Belajar paling cepat lewat simulasi aksi nyata, permainan tantangan, dan interaksi sosial langsung.",
+      "lingkungan_ideal": "Lingkungan yang serba cepat, kompetitif, dinamis, dan berorientasi pada pencapaian target langsung.",
+      "potensi_karir": ["Sales & Business Development", "Manajer Krisis / Emergency Response", "Broker / Trader Saham", "Event Organizer", "Negotiator Bisnis"],
+      "saran_pengembangan": "Latihlah kesabaran untuk memikirkan dampak jangka panjang dari tindakan impulsifmu sebelum melangkah."
+    },
+    "ESFP": {
+      "kode": "ESFP",
+      "julukan": "The Entertainer / Pembangun Suasana",
+      "kluster": "Explorer",
+      "ringkasan_karakter": "Pribadi yang ramah, antusias, penuh kegembiraan, dan spontan. ESFP adalah pusat keceriaan di lingkungan sosial yang pandai membuat orang lain merasa nyaman dan menikmati momen saat ini.",
+      "kekuatan_utama": ["Antusiasme Tinggi & Menular", "Keterampilan Interpersonal Apik", "Sangat Praktis & Adaptif", "Suka Membantu Orang Lain", "Spontan & Menyenangkan"],
+      "kelemahan_utama": ["Mudah Terdistraksi dari Tugas", "Kesusahan Menghadapi Kritik", "Menghindari Perencanaan Masa Depan", "Impulsif dalam Pengeluaran"],
+      "gaya_komunikasi": "Ekspresif, hangat, bercerita dengan gaya visual yang hidup, dan selalu membawa tawa.",
+      "gaya_relasi": "Sangat perhatian, penuh kasih sayang terbuka, membawa keceriaan dan kehangatan harian dalam hubungan.",
+      "gaya_belajar_kerja": "Belajar paling efektif dalam kelompok interaktif, aktivitas fisik, dan media pembelajaran visual.",
+      "lingkungan_ideal": "Lingkungan yang ramai, kolaboratif, menyenangkan, serta memberikan ruang sosial yang bebas.",
+      "potensi_karir": ["Public Relations (PR)", "Talent & Event Specialist", "Customer Experience Lead", "Host / Presenter Media", "Praktisi Pariwisata / Hospitality"],
+      "saran_pengembangan": "Belajarlah fokus pada kewajiban jangka panjang dan rutin menyisihkan waktu untuk perencanaan masa depan."
+    },
+    "ENFP": {
+      "kode": "ENFP",
+      "julukan": "The Campaigner / Visioner Inspiratif",
+      "kluster": "Diplomat",
+      "ringkasan_karakter": "Pribadi yang kreatif, penuh semangat, dan berjiwa bebas. ENFP selalu melihat potensi tanpa batas dalam diri manusia dan lingkungan sekitarnya, serta pandai menginspirasi orang lain.",
+      "kekuatan_utama": ["Penuh Gagasan Inovatif", "Sangat Pandai Berkomunikasi", "Empati Sosio-Emosional Tinggi", "Fleksibel & Cerdas", "Mampu Menginspirasi Orang"],
+      "kelemahan_utama": ["Sulit Menuntaskan Detail Tugas", "Terlalu Banyak Ide hingga Kewalahan", "Sangat Sensitif pada Penolakan", "Cepat Merasa Terkekang"],
+      "gaya_komunikasi": "Antusias, hangat, Penuh gagasan kreatif, terbiasa menghubungkan berbagai topik inspiratif secara cepat.",
+      "gaya_relasi": "Penuh kejutan romantis, mendorong pasangan mencapai potensi terbaik, serta membutuhkan koneksi emosional mendalam.",
+      "gaya_belajar_kerja": "Belajar paling bergairah lewat curah pendapat (brainstorming), diskusi terbuka, dan eksplorasi konsep baru.",
+      "lingkungan_ideal": "Lingkungan kerja/belajar yang kreatif, demokratis, fleksibel, dan kaya akan ruang gagasan baru.",
+      "potensi_karir": ["Marketing Strategist", "Innovation / Product Manager", "Pelatih Kepemimpinan (Executive Coach)", "Kreator Konten / Creative Director", "HR Talent Developer"],
+      "saran_pengembangan": "Fokuslah menuntaskan satu proyek prioritas hingga tuntas sebelum berpindah mengejar ide menarik yang baru."
+    },
+    "ENTP": {
+      "kode": "ENTP",
+      "julukan": "The Debater / Inovator Penguji Konsep",
+      "kluster": "Analyst",
+      "ringkasan_karakter": "Pribadi yang cerdas, cepat berpikir, dan tidak ragu menantang status quo. ENTP menikmati debat intelektual, pandai menemukan celah logika, dan menciptakan terobosan gagasan baru.",
+      "kekuatan_utama": ["Pemikir Cepat & Cerdas", "Sangat Inovatif & Inisiator", "Pandai Berargumen Logis", "Pencari Peluang Baru", "Berani Beda (Out-of-the-box)"],
+      "kelemahan_utama": ["Suka Memperdebatkan Hal Kecil", "Cepat Bosan pada Eksekusi Rutin", "Terkesan Tidak Peka Perasaan", "Kurang Disiplin pada Struktur"],
+      "gaya_komunikasi": "Cepat, tajam, penuh humor satir, menyukai adu argumen intelektual untuk menguji kualitas sebuah gagasan.",
+      "gaya_relasi": "Menantang pasangan untuk berpikir lebih maju, membawa dinamika diskusi yang seru dan tidak monoton.",
+      "gaya_belajar_kerja": "Belajar paling bergairah melalui perdebatan gagasan, pemecahan teka-teki logika, dan analisis strategi.",
+      "lingkungan_ideal": "Lingkungan yang kompetitif secara intelektual, menghargai inovasi radikal, dan bebas dari aturan kaku.",
+      "potensi_karir": ["Venture Capitalist / Investor", "Konsultan Manajemen", "Entrepreneur / Startup Founder", "Pengacara / Advokat", "Product Strategist"],
+      "saran_pengembangan": "Kembangkan empati saat berdiskusi dan latih ketekunan untuk menyelesaikan detail operasional ide-idemu."
+    },
+    "ESTJ": {
+      "kode": "ESTJ",
+      "julukan": "The Executive / Administrator Tegas",
+      "kluster": "Sentinel",
+      "ringkasan_karakter": "Pengorganisasi alami yang tegas, efisien, dan berorientasi pada hasil nyata. ESTJ unggul dalam mengelola proyek, menegakkan aturan, serta memastikan seluruh anggota tim bekerja teratur.",
+      "kekuatan_utama": ["Kepemimpinan Tegas & Jelas", "Sangat Terstruktur & Disiplin", "Efisien dalam Mengelola Sumber Daya", "Setia & Bertanggung Jawab", "Hasil Kerja Terukur"],
+      "kelemahan_utama": ["Cenderung Otoriter / Kaku", "Kesusahan Beradaptasi pada Perubahan", "Kurang Peka pada Perasaan Orang", "Menilai Orang Lain Terlalu Cepat"],
+      "gaya_komunikasi": "Lugas, instruktif, terstruktur, berbasis data kinerja faktual, dan menuntut kepastian.",
+      "gaya_relasi": "Dapat diandalkan sebagai pelindung dan penyedia utama, konsisten, serta menghargai keteraturan keluarga.",
+      "gaya_belajar_kerja": "Belajar paling efektif lewat kerangka sistem terencana, contoh nyata keberhasilan, dan target terukur.",
+      "lingkungan_ideal": "Lingkungan hirarkis yang jelas, profesional, berfokus pada kedisiplinan dan pencapaian efisiensi target.",
+      "potensi_karir": ["General Manager / Operations Director", "Project Manager", "Kepala Sekolah / Rektor", "Manajer Keuangan", "Perwira / Manajer Logistik"],
+      "saran_pengembangan": "Dengarkan masukan dari orang lain dengan rendah hati dan luangkan waktu memahami emosi anggota timmu."
+    },
+    "ESFJ": {
+      "kode": "ESFJ",
+      "julukan": "The Provider / Pengayom Komunitas",
+      "kluster": "Sentinel",
+      "ringkasan_karakter": "Pribadi yang ramah, kolaboratif, dan sangat peduli pada kesejahteraan lingkungan sosialnya. ESFJ menyukai keteraturan, pandai membangun hubungan dekat, serta berdedikasi melayani sesama.",
+      "kekuatan_utama": ["Membangun Keharmonisan Komunitas", "Sangat Perhatian & Suportif", "Teratur & Pandai Mengatur Acara", "Setia & Bertanggung Jawab", "Komunikator Sosial Baik"],
+      "kelemahan_utama": ["Sangat Rentan terhadap Kritik", "Terlalu Cemas tentang Pandangan Orang", "Kesusahan Menerima Perubahan Aturan", "Sering Mengorbankan Diri Sendiri"],
+      "gaya_komunikasi": "Hangat, inklusif, fokus pada nilai kebersamaan, dan rajin menanyakan kabar emosional orang lain.",
+      "gaya_relasi": "Sangat perhatian, mengingat setiap detail momen spesial, serta mendedikasikan waktu penuh untuk keluarga.",
+      "gaya_belajar_kerja": "Belajar paling bergairah melalui kerja kelompok interaktif, panduan praktis, dan dukungan positif pengajar.",
+      "lingkungan_ideal": "Lingkungan yang hangat, kolaboratif, menjunjung tinggi kekeluargaan, serta saling menghargai.",
+      "potensi_karir": ["HR Manager / Employee Relations", "Office Manager", "Koordinator Komunitas / Event", "Pendidik / Guru SD-SMP", "Manajer Layanan Pelanggan"],
+      "saran_pengembangan": "Jangan mendasarkan harga dirimu pada penilaian orang lain dan belajarlah menerima kritik sebagai sarana tumbuh."
+    },
+    "ENFJ": {
+      "kode": "ENFJ",
+      "julukan": "The Protagonist / Pemimpin Karismatik",
+      "kluster": "Diplomat",
+      "ringkasan_karakter": "Pemimpin karismatik yang penuh empati dan mampu menginspirasi orang lain untuk mencapai potensi tertinggi mereka. ENFJ pandai menyatukan kelompok dan dipandu oleh visi kemanusiaan yang kuat.",
+      "kekuatan_utama": ["Karismatik & Menginspirasi", "Empati Sosio-Emosional Luar Biasa", "Kemampuan Komunikasi Massa", "Pengorganisasi Orang yang Baik", "Visi Kemanusiaan Tinggi"],
+      "kelemahan_utama": ["Terlalu Mengabaikan Kebutuhan Diri", "Sangat Terpukul jika Gagal Membantu", "Cenderung Terlalu Mengatur (Idealistis)", "Sensitif terhadap Konflik"],
+      "gaya_komunikasi": "Inspiratif, persuasif, Penuh dorongan positif, dan mahir membangun antusiasme pendengarnya.",
+      "gaya_relasi": "Sangat berkomitmen, terbuka, memberikan dukungan emosional tanpa batas pada pertumbuhan pasangan.",
+      "gaya_belajar_kerja": "Belajar paling maksimal lewat diskusi kelompok yang berfokus pada ide-ide pengembangan potensi manusia.",
+      "lingkungan_ideal": "Lingkungan organisasi yang berorientasi pada nilai kemanusiaan, kolaboratif, dan mendukung kepemimpinan inklusif.",
+      "potensi_karir": ["Talent Development Manager", "Executive Coach / Motivator", "Direktur Organisasi Nirlaba / LSM", "Konselor Pernikahan / Keluarga", "Manajer Pelatihan (L&D)"],
+      "saran_pengembangan": "Tetapkan batas emosional yang sehat dan luangkan waktu khusus untuk merawat dirimu sendiri (self-care)."
+    },
+    "ENTJ": {
+      "kode": "ENTJ",
+      "julukan": "The Commander / Pemimpin Strategis",
+      "kluster": "Analyst",
+      "ringkasan_karakter": "Pemimpin alami yang berani, berpengetahuan luas, dan berkemauan keras. ENTJ ahli dalam melihat ketidakefisienan, merancang strategi makro, dan menggerakkan seluruh tim mencapai target besar.",
+      "kekuatan_utama": ["Kepemimpinan Strategis Kuat", "Sangat Efisien & Berfokus Target", "Percaya Diri & Tegas", "Pemikir Konseptual Makro", "Pengambil Keputusan Cepat"],
+      "kelemahan_utama": ["Dominan & Terkesan Tidak Peka", "Kurang Sabar pada Proses Lambat", "Sering Mengabaikan Perasaan Orang", "Cenderung Terlalu Kritis"],
+      "gaya_komunikasi": "Tegas, penuh percaya diri, berfokus pada visi bisnis/strategi jangka panjang, dan menuntut keunggulan.",
+      "gaya_relasi": "Mendorong pasangan untuk sukses bersama, jujur, menghargai percakapan cerdas, dan dapat diandalkan.",
+      "gaya_belajar_kerja": "Belajar lewat analisis kasus bisnis strategis, konsep kepemimpinan, dan tantangan pemecahan masalah makro.",
+      "lingkungan_ideal": "Lingkungan berkinerja tinggi (high-performance), berfokus pada pertumbuhan bisnis cepat, dan profesional.",
+      "potensi_karir": ["C-Level Executive (CEO/COO)", "Management Consultant", "Corporate Strategist", "Investment Banker", "Direktur Program Eksekutif"],
+      "saran_pengembangan": "Latihlah kecerdasan emosional (EQ), dengarkan aspirasi anggota tim dengan sabar, dan apresiasi usaha kecil proses."
+    }
+  },
+  "panduan_interpretasi": {
+    "potensi_blind_spot": "Setiap tipe memiliki kelemahan alami (blind spot) yang muncul apabila preferensi dominannya digunakan secara berlebihan tanpa diimbangi oleh fungsi pendukungnya.",
+    "saran_penggunaan": "Instrumen ini digunakan untuk pemetaan gaya kerja, pengembangan potensi diri, perbaikan dinamika tim, dan bimbingan karir—bukan sebagai tes gugur seleksi atau alat vonis kemampuan."
+  }
+}
