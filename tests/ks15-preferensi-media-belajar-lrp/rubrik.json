@@ -1,0 +1,205 @@
+{
+  "kode_tes": "KS15",
+  "nama_tes": "APACA Learning Resource Preference Test (LRP)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Learning Resource Preference Test (LRP) memetakan efektivitas relatif dan preferensi individu terhadap 14 artefak media belajar eksternal yang terbagi dalam 4 kategori utama. Berbeda dari modalitas sensori kognitif generik, LRP memberikan panduan konkret mengenai kombinasi media (Resource Stack) yang paling memicu akselerasi pemahaman dan mencegah kejenuhan kognitif (mental fatigue).",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Primary Resource (Utama)",
+      "label_status": "PRIMARY RESOURCE / PEMICU UTAMA",
+      "deskripsi_kondisi": "Media/sumber ini merupakan sarana pilihan pertama yang paling efektif memicu pemahaman cepat, pemrosesan logika mendalam, dan retensi ingatan jangka panjang siswa.",
+      "dampak_akademik": "Penggunaan media ini sebagai pintu masuk belajar akan melipatgandakan efisiensi waktu belajar, menjaga stamina fokus, dan meningkatkan rasa percaya diri akademik.",
+      "tindakan_lanjutan": "Jadikan sebagai media utama dalam menyusun rangkaian modul belajar harian dan persiapan ujian."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Secondary Resource (Pendukung)",
+      "label_status": "SECONDARY RESOURCE / PENDUKUNG",
+      "deskripsi_kondisi": "Media/sumber yang sangat berguna sebagai pendukung, penyelarasa, atau sarana klarifikasi saat siswa mengalami hambatan pemahaman pada media utama.",
+      "dampak_akademik": "Memperkuat retensi konsep dan memberikan sudut pandang pelengkap yang memperjelas detail materi.",
+      "tindakan_lanjutan": "Gunakan sebagai media konfirmasi atau latihan tahap kedua setelah konsep dasar dipelajari."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Tertiary Resource (Netral)",
+      "label_status": "TERTIARY RESOURCE / NETRAL",
+      "deskripsi_kondisi": "Siswa dapat memanfaatkan media ini sesekali, namun tidak memiliki dorongan emosional atau akselerasi kognitif yang menonjol saat menggunakannya.",
+      "dampak_akademik": "Pemrosesan informasi berjalan standar; tidak memicu kejenuhan tetapi juga tidak memberikan lompatan pemahaman yang signifikan.",
+      "tindakan_lanjutan": "Dapat digunakan sebagai variasi agar suasana belajar tidak monoton."
+    },
+    {
+      "rentang_skor_persen": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Low Preference (Jarang)",
+      "label_status": "LOW PREFERENCE / EFFORT TINGGI",
+      "deskripsi_kondisi": "Siswa cenderung kurang menyukai dan merasa kurang efisien saat belajar menggunakan media ini. Membutuhkan energi emosional dan konsentrasi ekstra.",
+      "dampak_akademik": "Proses belajar menjadi lambat, siswa cepat merasa lelah, dan berpotensi memicu perilaku menunda-nunda (prokrastinasi).",
+      "tindakan_lanjutan": "Hindari menggunakan media ini sebagai sumber tunggal dalam mempelajari materi baru yang rumit."
+    },
+    {
+      "rentang_skor_persen": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Avoided Resource (Dihindari)",
+      "label_status": "AVOIDED RESOURCE / INHIBITOR",
+      "deskripsi_kondisi": "Media/sumber yang dipersepsikan sangat membingungkan, membosankan, atau memicu kelelahan kognitif berat (cognitive overload) bagi siswa.",
+      "dampak_akademik": "Memaksa siswa belajar hanya menggunakan media ini akan merusak motivasi belajar, memicu frustrasi, dan menurunkan performa ujian secara drastis.",
+      "tindakan_lanjutan": "Eliminasi atau konversi format materi ke dalam media Primary/Secondary yang disukai siswa."
+    }
+  ],
+  "kategori_sumber_belajar": {
+    "Textual & Static Visual": {
+      "judul": "Textual & Static Visual Resources (Media Teks & Visual Statis)",
+      "deskripsi": "Berfokus pada pemrosesan tulisan terstruktur, peta konsep statis, dan kartu memori untuk penguasaan struktur teoritis dasar."
+    },
+    "Audio & Dynamic Multimedia": {
+      "judul": "Audio & Dynamic Multimedia Resources (Media Audiovisual & Audio Dinamis)",
+      "deskripsi": "Berfokus pada penyampaian naratif lisan, animasi visual gerak, dan penjelasan berformat audio untuk pemrosesan alur dinamis."
+    },
+    "Digital, Interactive & Generative": {
+      "judul": "Digital, Interactive & Generative Resources (Sumber Digital, Interaktif & AI)",
+      "deskripsi": "Berfokus pada interaksi teknologi modern, tutor cerdas berbasis AI, ekosistem web terbuka, dan laboratorium simulasi virtual."
+    },
+    "Human, Experiential & Applied": {
+      "judul": "Human, Experiential & Applied Resources (Sumber Manusia & Praktik Langsung)",
+      "deskripsi": "Berfokus pada pembuktian praktis lewat latihan soal, analisis kasus dunia nyata, interaksi sosial teman/tutor, dan eksperimen fisik."
+    }
+  ],
+  "detail_artefak_media": {
+    "Textbook": {
+      "nama_resmi": "Textbook / Modul Teks Terstruktur",
+      "kategori": "Textual & Static Visual",
+      "deskripsi_kognitif": "Pemrosesan linier berbasis pembacaan narasi tebal, struktur bab sistematis, dan pendalaman bacaan mandiri.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Sediakan buku teks fisik yang berkualitas atau e-book berstruktur rapi dengan stabilo penanda. Jika Low/Avoided: Jangan paksa anak membaca bab tebal; ganti dengan ringkasan poin inti.",
+      "panduan_sekolah": "Fasilitasi modul bacaan yang memiliki struktur daftar isi, glosarium, dan poin rangkuman yang jelas di setiap akhir bab."
+    },
+    "Diagram": {
+      "nama_resmi": "Diagram / Peta Konsep & Infografis",
+      "kategori": "Textual & Static Visual",
+      "deskripsi_kognitif": "Pemrosesan spasial visual statis untuk memetakan hirarki, rantai sebab-akibat, dan matriks perbandingan antar konsep.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Belikan papan tulis kecil atau aplikasi mind-mapping agar anak dapat menggambar bagan alur belajarnya. Jika Low/Avoided: Bantu terjemahkan bagan rumit menjadi narasi langkah demi langkah.",
+      "panduan_sekolah": "Gunakan slide presentasi yang kaya akan peta konsep, diagram skematik, dan infografis berwarna."
+    },
+    "Flashcards": {
+      "nama_resmi": "Flashcards / Kartu Memori Kilat",
+      "kategori": "Textual & Static Visual",
+      "deskripsi_kognitif": "Sistem perulangan berkala (spaced repetition) untuk mengunci retensi istilah kunci, kosa kata asing, dan rumus kaku.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Fasilitasi aplikasi kartu kilat digital (seperti Anki/Quizlet) atau kartu kertas fisik untuk latihan harian. Jika Low/Avoided: Gunakan metode latihan soal berulang sebagai pengganti hafalan kaku.",
+      "panduan_sekolah": "Berikan daftar kata kunci (key terms) yang siap dikonversi siswa menjadi kartu memori persiapan ujian."
+    },
+    "Video": {
+      "nama_resmi": "Video / Animasi & Tutorial Audiovisual",
+      "kategori": "Audio & Dynamic Multimedia",
+      "deskripsi_kognitif": "Penggabungan stimulasi ganda (visual gerak & narasi audio) untuk menggambarkan alur proses yang dinamis dan abstrak.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Berikan akses ke kanal video edukasi tepercaya dan izinkan anak belajar via konten YouTube berkualitas. Jika Low/Avoided: Anak lebih nyaman dengan teks tenang tanpa gangguan rekaman suara.",
+      "panduan_sekolah": "Sajikan video animasi singkat (3–5 menit) sebagai pemicu ketertarikan sebelum mengurai materi teori di kelas."
+    },
+    "Lecture": {
+      "nama_resmi": "Lecture / Paparan Ceramah Pengajar",
+      "kategori": "Audio & Dynamic Multimedia",
+      "deskripsi_kognitif": "Penyerapan auditori lisan langsung dari figur otoritas (guru/dosen) yang menyampaikan alur penjelasan secara sistematis.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Pastikan anak duduk di baris depan kelas atau rutin mendengarkan rekaman penjelasan guru. Jika Low/Avoided: Berikan kebebasan anak membaca mandiri daripada mendengarkan penjelasan lisan panjang.",
+      "panduan_sekolah": "Gunakan variasi intonasi suara, artikulasi jelas, dan diselingi pertanyaan retoris saat menyampaikan ceramah."
+    },
+    "Podcast": {
+      "nama_resmi": "Podcast / Narasi Audio Murni",
+      "kategori": "Audio & Dynamic Multimedia",
+      "deskripsi_kognitif": "Pemrosesan auditori independen tanpa beban visual, memungkinkan penyerapan informasi saat melakukan aktivitas fleksibel.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Sediakan earphone yang nyaman dan audiobook/podcast pelajaran untuk didengarkan saat perjalanan. Jika Low/Avoided: Hindari memberikan instruksi atau materi yang hanya berformat rekaman suara.",
+      "panduan_sekolah": "Sediakan rekaman audio intisari pelajaran yang dapat diunduh siswa untuk diulas kembali di rumah."
+    },
+    "AI": {
+      "nama_resmi": "AI / Generative AI & Tutor Cerdas",
+      "kategori": "Digital, Interactive & Generative",
+      "deskripsi_kognitif": "Interaksi dialogis adaptif, eksplorasi pertanyaan tanpa batas, dan umpan balik kustom sesuai kecepatan berpikir pribadi.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Fasilitasi akses ke gawai dan platform AI edukasi, serta bimbing anak membuat prompt tanya jawab yang kritis. Jika Low/Avoided: Dampingi belajar dengan interaksi manusia langsung (tutor/orang tua).",
+      "panduan_sekolah": "Ajarkan etika penggunaan AI sebagai mitra berpikir (thinking partner), san bukan alat penyalin jawaban instan."
+    },
+    "Internet": {
+      "nama_resmi": "Internet / Penelusuran Web & Forum Terbuka",
+      "kategori": "Digital, Interactive & Generative",
+      "deskripsi_kognitif": "Eksplorasi informasi non-linier, pencarian artikel multi-sumber, dan validasi mandiri dari basis data pengetahuan terbuka.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Pastikan koneksi internet stabil dan pasang pelindung situs untuk mendukung riset mandirinya. Jika Low/Avoided: Sediakan buku atau modul terstruktur agar anak tidak tersesat oleh banjir informasi.",
+      "panduan_sekolah": "Berikan tugas proyek berbasis riset mandiri yang melatih kemampuan memilah situs web terpercaya."
+    },
+    "Simulation": {
+      "nama_resmi": "Simulation / Virtual Lab & Gim Edukasi",
+      "kategori": "Digital, Interactive & Generative",
+      "deskripsi_kognitif": "Uji coba parameter variabel secara digital dalam ruang aman untuk memahami dampak sebab-akibat sistem rumit.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Dukun penggunaan software simulasi digital (seperti PhET Interactive) atau gim strategi edukatif. Jika Low/Avoided: Beralih ke contoh kasus nyata atau eksperimen alat fisik.",
+      "panduan_sekolah": "Integrasikan laboratorium virtual sebelum mengajak siswa masuk ke laboratorium fisik yang kompleks."
+    },
+    "Practice Questions": {
+      "nama_resmi": "Practice Questions / Bank Soal & Kuis",
+      "kategori": "Human, Experiential & Applied",
+      "deskripsi_kognitif": "Uji coba performa aktif (active recall) dan evaluasi pemahaman secara langsung lewat tantangan soal.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Sediakan buku bank soal berkunci jawaban rinci atau cetak kuis latihan berkala di rumah. Jika Low/Avoided: Bangun pemahaman konsep dasar terlebih dahulu sebelum menjejalkan latihan soal.",
+      "panduan_sekolah": "Gunakan kuis formatif singkat di awal/akhir kelas untuk menguji pemahaman instan siswa."
+    },
+    "Real-World Examples": {
+      "nama_resmi": "Real-World Examples / Studi Kasus Konkret",
+      "kategori": "Human, Experiential & Applied",
+      "deskripsi_kognitif": "Pengaitkan konsep teori abstrak dengan peristiwa nyata, konteks aplikasi industri, dan pengalaman hidup sehari-hari.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Diskusikan berita terkini, fenomena alam, atau operasional bisnis saat mengobrol di meja makan. Jika Low/Avoided: Fokus pada logika teori dan rumus formal terlebih dahulu.",
+      "panduan_sekolah": "Mulailah setiap topik bab baru dengan menceritakan studi kasus nyata yang relevan dengan kehidupan siswa."
+    },
+    "Tutor": {
+      "nama_resmi": "Tutor / Bimbingan Personal 1-on-1",
+      "kategori": "Human, Experiential & Applied",
+      "deskripsi_kognitif": "Pendampingan instruksional terfokus, koreksi kesalahan secara personal, dan adanya rasa aman emosional dari figur ahli.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Pertimbangkan menghadirkan guru les privat 1-on-1 yang komunikatif dan sabar. Jika Low/Avoided: Biarkan anak belajar mandiri; gunakan tutor hanya saat anak benar-benar buntu.",
+      "panduan_sekolah": "Sediakan waktu konsultasi khusus (office hours) untuk siswa yang membutuhkan bimbingan personal."
+    },
+    "Peer": {
+      "nama_resmi": "Peer / Belajar Bersama Teman Sebaya",
+      "kategori": "Human, Experiential & Applied",
+      "deskripsi_kognitif": "Diskusi egalitarian, perdebatan argumen sejajar, dan pengujian pemahaman lewat metode saling mengajari (peer teaching).",
+      "panduan_orang_tua": "Jika RPI Tinggi: Izinkan anak membentuk kelompok belajar bersama teman-teman yang memiliki komitmen belajar tinggi. Jika Low/Avoided: Beri ruang tenang agar anak bisa fokus belajar sendirian tanpa terdistraksi teman.",
+      "panduan_sekolah": "Bentuk metode belajar study-buddy atau kelompok kecil berbasis diskusi pemecahan masalah."
+    },
+    "Physical Experiment": {
+      "nama_resmi": "Physical Experiment / Praktikum & Manipulasi Objek",
+      "kategori": "Human, Experiential & Applied",
+      "deskripsi_kognitif": "Kinestetik-taktil lewat manipulasi benda fisik, alat laboratorium nyata, dan peragaan mekanis secara langsung.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Sediakan kit eksperimen sains, alat peraga fisik, atau ajak anak melakukan aktivitas praktek tangan di rumah. Jika Low/Avoided: Gunakan media visual/simulasi digital sebagai pengganti praktikum rumit.",
+      "panduan_sekolah": "Perbanyak Sesi praktikum laboratorium fisik dan demonstrasi alat nyata di dalam kelas."
+    }
+  },
+  "pola_kombinasi_resource_stack": [
+    {
+      "nama_pola": "Tech & Applied Interactive Learner (Pembelajar Digital & Latihan Praktis)",
+      "kriteria": "AI ≥ 75% ATAU Simulation ≥ 75% DAN Practice Questions ≥ 75% DAN Textbook ≤ 35%",
+      "analisis_klinis": "Siswa belajar secara sangat dinamis melalui akselerasi teknologi (AI/Simulasi) yang dipadukan langsung dengan tantangan Latihan Soal. Memaksa siswa ini membaca buku teks tebal secara pasif akan mematikan daya kritis dan memicu kejenuhan hebat.",
+      "rekomendasi_stack": "Gunakan AI/Video sebagai pembuka konsep (10 menit) ➔ Lanjutkan dengan pengerjaan Practice Questions berbasis kuis digital (20 menit) ➔ Diskusi klarifikasi bagian salah via AI Tutor."
+    },
+    {
+      "nama_pola": "Classical Textual & Theoretical Scholar (Pembelajar Teks & Teori Klasik)",
+      "kategori": "Textbook ≥ 75% DAN Diagram ≥ 75% DAN Lecture ≥ 65% DAN AI ≤ 35%",
+      "analisis_klinis": "Siswa memiliki ketahanan kognitif yang sangat tinggi terhadap media tenang berstruktur rapi (buku modul, peta konsep, dan ceramah guru). Penggunaan gawai digital berlebih justru berisiko memecah konsentrasi belajarnya.",
+      "rekomendasi_stack": "Membaca bab modul cetak & stabilo poin inti (25 menit) ➔ Menggambar Diagram/Peta Konsep buatan sendiri (15 menit) ➔ Menuntaskan latihan soal pilihan di buku."
+    },
+    {
+      "nama_pola": "Kinesthetic Experiential Practitioner (Pembelajar Praktikum & Aplikasi Nyata)",
+      "kriteria": "Physical Experiment ≥ 75% DAN Real-World Examples ≥ 75% DAN Podcast ≤ 35%",
+      "analisis_klinis": "Siswa menyerap materi secara optimal ketika teori diwujudkan dalam contoh nyata dan peragaan benda fisik. Media audio murni tanpa bentuk nyata sangat sukar dicerna oleh pikirannya.",
+      "rekomendasi_stack": "Pelajari Studi Kasus nyata/Aplikasi Industri (15 menit) ➔ Lakukan Praktikum Fisik/Simulasi alat nyata (20 menit) ➔ Evaluasi pemahaman bersama Tutor."
+    },
+    {
+      "nama_pola": "Social Collaborative Guided Learner (Pembelajar Sosio-Relasional)",
+      "kriteria": "Peer ≥ 75% DAN Tutor ≥ 75% DAN Internet ≤ 35%",
+      "analisis_klinis": "Siswa membutuhkan iklim relasi manusia (diskusi teman & bimbingan tutor) untuk membangun pemahaman dan rasa aman emosional. Belajar terisolasi secara mandiri di internet membuat semangatnya cepat padam.",
+      "rekomendasi_stack": "Sesi diskusi konsep dasar bersama Tutor/Guru (15 menit) ➔ Sesi belajar kelompok & saling mengajari bersama Peer (30 menit) ➔ Kuis uji coba bersama."
+    }
+  ],
+  "resource_stack_strategy_builder": {
+    "tahap_1_opener": "Pemicu Pemahaman Awal (Gunakan Top 1 Primary Resource untuk membuka bab baru).",
+    "tahap_2_deep_dive": "Pendalaman & Analisis (Gunakan Top 2/3 Primary/Secondary Resource untuk membedah detail materi).",
+    "tahap_3_consolidation": "Kunci Retensi & Uji Persiapan (Gunakan Practice Questions atau Flashcards untuk mengunci ingatan jelang ujian)."
+  }
+}
