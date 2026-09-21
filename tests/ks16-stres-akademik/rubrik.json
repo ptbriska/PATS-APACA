@@ -1,0 +1,164 @@
+{
+  "kode_tes": "KS16",
+  "nama_tes": "APACA Academic Stress & Burnout Inventory (AASBI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Academic Stress & Burnout Inventory (AASBI) mengukur tingkat keletihan emosional, kecemasan evaluasi, cynicism (sikap apatis), dan persepsi beban tekanan akademik pada peserta didik. Hasil instrumen ini berfungsi sebagai alat skrining (screening tool) awal untuk mencegah kelelahan mental ekstrem, penarikan diri, psikosomatis, dan risiko putus sekolah (dropout).",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "0% - 25%",
+      "t_score": "T < 40",
+      "kategori": "Normal (Resiliensi Tinggi)",
+      "label_status": "NORMAL / RESILIENSI TINGGI",
+      "is_red_flag": false,
+      "deskripsi_kondisi": "Siswa memiliki stamina mental yang sangat sehat dan mampu memandang beban tugas maupun ujian sebagai tantangan positif (eustress) yang mendewasakan.",
+      "dampak_akademik": "Fokus belajar stabil, fungsi kognitif bekerja optimal, memiliki kestabilan emosi saat ujian, dan menikmati kehidupan sosial di sekolah/kampus.",
+      "tindakan_lanjutan": "Pertahankan rutinitas koping sehat dan berikan kebebasan eksplorasi akademik secara mandiri."
+    },
+    {
+      "rentang_skor_persen": "26% - 50%",
+      "t_score": "40 ≤ T < 50",
+      "kategori": "Stres Ringan (Mild)",
+      "label_status": "STRES RINGAN / ADAPTIF",
+      "is_red_flag": false,
+      "deskripsi_kondisi": "Siswa merasakan keletihan berkala pada momen-momen tertentu (seperti pekan ujian atau tenggat tugas bersamaan), namun masih memiliki mekanisme koping yang efektif untuk memulihkan diri.",
+      "dampak_akademik": "Performa belajar relatif stabil. Terkadang muncul rasa cemas atau lelah fisik ringan, namun tidak mengganggu fungsi harian secara dominan.",
+      "tindakan_lanjutan": "Edukasi pentingnya manajemen waktu, kebersihan tidur (sleep hygiene), dan jeda istirahat berkala."
+    },
+    {
+      "rentang_skor_persen": "51% - 75%",
+      "t_score": "50 ≤ T < 60",
+      "kategori": "Stres Sedang (Moderate)",
+      "label_status": "STRES SEDANG / KERENTANAN MENTAL",
+      "is_red_flag": false,
+      "deskripsi_kondisi": "Siswa mengalami penumpukan beban emosional dan fisik secara berkelanjutan. Motivasi belajar mulai menurun, disertai rasa cemas yang mengganggu konsentrasi harian.",
+      "dampak_akademik": "Siswa mulai sering menunda tugas (prokrastinasi), merasa panik saat ujian, sering mengeluh sakit fisik tanpa penyebab medis jelas (psikosomatis), dan mengalami penurunan nilai.",
+      "tindakan_lanjutan": "Diperlukan pendampingan oleh Konselor Sekolah/Guru BK untuk restrukturisasi beban belajar dan latihan teknik relaksasi."
+    },
+    {
+      "rentang_skor_persen": "76% - 100%",
+      "t_score": "T ≥ 60",
+      "kategori": "Stres Berat (Severe Burnout)",
+      "label_status": "STRES BERAT / SEVERE BURNOUT",
+      "is_red_flag": true,
+      "deskripsi_kondisi": "Siswa berada pada tahap kelelahan emosional ekstrem, merasa tidak berdaya (learned helplessness), kehilangan makna studi, dan menarik diri secara total dari lingkungan sosial akademis.",
+      "dampak_akademik": "Berisiko tinggi mengalami 'blank' saat ujian, membolos, penurunan prestasi drastis, hingga muncul ketakutan hebat (school refusal) dan risiko dropout.",
+      "tindakan_lanjutan": "WAJIB AKTIVASI PROTOKOL RED FLAG: Konseling tatap muka dalam waktu maksimal 2×24 jam dan rujukan ke Profesional Kesehatan Mental (Psikolog Klinis/Psikiater)."
+    }
+  ],
+  "rubrik_dimensi_utama": {
+    "Academic Anxiety": {
+      "judul_dimensi": "Academic Anxiety (Kecemasan Akademik)",
+      "deskripsi": "Mengukur reaksi kognitif dan somatik (fisik) terhadap evaluasi belajar, kepanikan ujian, serta rasa cemas akan masa depan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Kecemasan Evaluasi Ekstrem",
+          "interpretasi": "Siswa sering mengalami panik mendadak, jantung berdebar, atau pikiran 'blank' di ruang ujian akibat ketakutan berlebih akan kegagalan.",
+          "saran_pengembangan": "Latih teknik pernapasan dalam (deep breathing), desensitisasi sistematis, dan pemetaan ulang ekspektasi diri."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Kecemasan Situasional",
+          "interpretasi": "Merasa tegang dan gelisah sebelum ujian besar, namun ketegangan mereda begitu ujian mulai berjalan.",
+          "saran_pengembangan": "Persiapkan strategi penyusunan ringkasan materi lebih awal untuk membangun rasa aman."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Ketenangan Evaluasi Baik",
+          "interpretasi": "Siswa mampu mengontrol emosi dan mempertahankan kejernihan berpikir saat diuji.",
+          "saran_pengembangan": "Pertahankan kepercayaan diri dan bagikan strategi ketenangan ini kepada rekan sekelas."
+        }
+      }
+    },
+    "Emotional Exhaustion": {
+      "judul_dimensi": "Emotional Exhaustion (Kelelahan Emosional)",
+      "deskripsi": "Mengukur tingkat terkurasnya energi psikologis dan stamina fisik akibat tuntutan rutinitas akademik yang padat.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Keletihan Emosional Berat",
+          "interpretasi": "Siswa bangun tidur dalam kondisi tidak bertenaga, sering pusing/mual saat hendak sekolah, dan merasa habis daya kognitif.",
+          "saran_pengembangan": "Jadwalkan jeda istirahat total (digital detox), perbaiki pola tidur, dan batasi aktivitas kurikuler berlebih."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Keletihan Fluktuatif",
+          "interpretasi": "Lelah pada akhir pekan atau akhir semester, namun dapat pulih setelah istirahat singkat.",
+          "saran_pengembangan": "Seimbangkan porsi antara waktu belajar mandiri, olahraga, dan hobi pribadi."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Stamina Emosional Prima",
+          "interpretasi": "Memiliki ketahanan fisik dan psikologis yang tinggi dalam menjalani rutinitas harian.",
+          "saran_pengembangan": "Jaga konsistensi ritme tidur dan kebiasaan hidup sehat."
+        }
+      }
+    },
+    "Burnout (Cynicism)": {
+      "judul_dimensi": "Burnout / Cynicism (Kejenuhan & Sikap Apatis)",
+      "deskripsi": "Mengukur hilangnya makna belajar, hilangnya minat pada studi, penarikan diri dari lingkungan, serta menurunnya keyakinan diri.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Depersonalisasi & Apatis Total",
+          "interpretasi": "Siswa menganggap sekolah sekadar formalitas menyiksa, merasa usahanya sia-sia, dan sengaja mengisolasi diri dari teman/guru.",
+          "saran_pengembangan": "Diperlukan intervensi pemulihan makna (meaning-making) dan validasi emosional tanpa menghakimi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Kejenuhan Ringan (Academic Fatigue)",
+          "interpretasi": "Mulai merasa bosan dengan rutinitas kelas yang monoton, namun masih memiliki keinginan untuk lulus dengan baik.",
+          "saran_pengembangan": "Ubah variasi metode belajar (misal: gunakan media interaktif atau belajar bersama teman)."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Keterikatan Akademik Tinggi (Engaged)",
+          "interpretasi": "Memiliki kebanggaan belajar, melihat manfaat studi bagi masa depan, dan aktif berinteraksi.",
+          "saran_pengembangan": "Fasilitasi dengan target-target tantangan baru yang menginspirasi."
+        }
+      }
+    },
+    "Pressure Source": {
+      "judul_dimensi": "Pressure Source (Sumber Tekanan Eksternal)",
+      "deskripsi": "Mengukur besarnya persepsi tekanan dari ekspektasi orang tua, persaingan kaku teman sebaya, serta tuntutan beasiswa/sekolah.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Tekanan Lingkungan Sangat Tinggi",
+          "interpretasi": "Siswa merasa terbebani oleh ketakutan mengecewakan orang tua atau takut tersingkir dari persaingan kelas yang kaku.",
+          "saran_pengembangan": "Lakukan mediasi antara pihak sekolah, konselor, dan orang tua untuk menyelaraskan ekspektasi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Tekanan Lingkungan Moderat",
+          "interpretasi": "Merasakan dorongan persaingan kelas sebagai motivasi, tetapi sesekali merasa cemas jika nilainya di bawah target.",
+          "saran_pengembangan": "Fokus pada pencapaian target pribadi (personal progress) dibanding membandingkan diri dengan orang lain."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Dukungan Lingkungan Kondusif",
+          "interpretasi": "Mendapat dukungan emosional yang hangat dari keluarga dan sekolah tanpa paksaan target kaku.",
+          "saran_pengembangan": "Pertahankan iklim komunikasi yang terbuka dan saling mendukung."
+        }
+      }
+    }
+  },
+  "protokol_red_flag_krisis": {
+    "kriteria_pemicu": "Indeks Stres Akademik Global > 75% (Stres Berat / Severe Burnout)",
+    "peringatan_sistem": "⚠️ WARNING: INDIKASI SEVERE ACADEMIC BURNOUT DETECTED",
+    "prosedur_darurat_2x24_jam": [
+      "1. Pendampingan Awal: Konselor Sekolah / Guru BK wajib menjadwalkan sesi tatap muka secara pribadi dengan siswa dalam rentang 2×24 jam.",
+      "2. Kerahasiaan & Keamanan: Ciptakan ruang aman tanpa penghakiman. Hindari memberi teguran terkait penurunan nilai.",
+      "3. Evaluasi Kebutuhan Rujukan: Jika ditemukan gejala depresif berat atau gangguan psikosomatis kronis, segera fasilitasi rujukan ke Psikolog Klinis / Psikiater.",
+      "4. Edukasi Orang Tua: Lakukan dialog emosional bersama orang tua untuk mengistirahatkan sementara beban target akademik anak."
+    ]
+  },
+  "panduan_intervensi_dan_koping": {
+    "untuk_siswa": {
+      "efisiensi_studi": "Gunakan teknik Pomodoro (25 menit belajar, 5 menit istirahat total) untuk mencegah penumpukan kelelahan.",
+      "kebersihan_mental": "Hentikan aktivitas belajar minimal 1 jam sebelum tidur agar pikiran rileks dan kualitas tidur terjaga.",
+      "reframing_kognitif": "Pisahkan antara 'harga diri Anda sebagai manusia' dengan 'angka nilai di atas kertas'."
+    },
+    "untuk_orang_tua": {
+      "dukungan_emosional": "Berikan penerimaan tanpa syarat (unconditional support). Hindari membandingkan capaian anak dengan saudara atau teman.",
+      "komunikasi_terbuka": "Ganti pertanyaan 'Berapa nilaimu?' menjadi 'Bagaimana perasaanmu di sekolah hari ini?'",
+      "ruang_pemulihan": "Beri anak waktu untuk beristirahat tanpa dibebani les tambahan saat weekend jika ia menunjukkan tanda kelelahan."
+    },
+    "untuk_sekolah_dan_guru": {
+      "penyesuaian_beban": "Berikan koordinasi antar guru mata pelajaran agar jadwal pengumpulan tugas tidak menumpuk di hari yang sama.",
+      "iklim_inklusi": "Apresiasi proses usaha dan perkembangan siswa, bukan hanya hasil akhir angka nilai.",
+      "akses_konseling": "Sediakan akses mudah dan aman bagi siswa yang membutuhkan sesi curhat tanpa stikmatisasi negatif."
+    }
+  }
+}
