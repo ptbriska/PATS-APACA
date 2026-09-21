@@ -192,26 +192,72 @@
         "label": "Rendah (Low Fit)",
         "deskripsi": "Memiliki resistensi atau tidak menemukan daya tarik pada alur berpikir bidang ini."
       }
-    ],
-    "klaster_profil_diagnostik": {
-      "Genuine Interest": {
-        "label": "Genuine Fit",
-        "syarat": "Minat Murni >= 65.0 dan Minat Terbobot >= 65.0 (Sama-sama Tinggi)",
-        "diagnostik": "Antusiasme pada bidang utama sejalan dengan kenyamanan alat berpikir pada ilmu irisannya.",
-        "tindakan_konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
-      },
-      "Visual / Surface Fan": {
-        "label": "False Interest (Terdistorsi Rendah)",
-        "syarat": "Minat Murni >= 75.0 tetapi Minat Terbobot < 65.0 (Anjlok karena Irisan Hitungan)",
-        "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi fisika/matematika pendukungnya.",
-        "tindakan_konseling": "Guru pembina harus memberikan gambaran soal hitungan asli sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
-      },
-      "Cross-Disciplinary Synergy": {
-        "label": "Terangkat Irisan Keilmuan",
-        "syarat": "Minat Murni < 65.0 tetapi Minat Terbobot > Minat Murni (Naik akibat Irisan)",
-        "diagnostik": "Minat murni bidang di level sedang, namun terangkat signifikan oleh tingginya antusiasme pada cabang ilmu irisannya.",
-        "tindakan_konseling": "Siswa bisa diarahkan ke bidang ini dengan fokus keunggulan pada cabang ilmu irisan pendukungnya yang bernilai tinggi."
-      }
+    ]
+  },
+  "klaster_diagnostik": {
+    "Genuine Interest": {
+      "diagnostik": "Antusiasme pada bidang utama sejalan dengan kenyamanan alat berpikir pada ilmu irisannya. (Minat Murni & Terbobot Sama-sama Tinggi)",
+      "konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
+    },
+    "Surface Fan": {
+      "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi pendukungnya (Nilai Murni Tinggi, tapi Anjlok saat Dibobotkan dengan Irisan).",
+      "konseling": "Guru pembina harus memberikan gambaran soal hitungan asli (komputasi/fisika/dsb) sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
+    },
+    "Cross-Disciplinary Synergy": {
+      "diagnostik": "Minat murni bidang utama di level sedang, namun terangkat signifikan oleh tingginya antusiasme siswa pada cabang ilmu irisannya.",
+      "konseling": "Siswa dapat diarahkan untuk mendalami bidang ini dengan titik ungkit (leverage) pada cabang ilmu pendukung yang sangat ia kuasai."
+    }
+  },
+  "bidang_osn": {
+    "Matematika": {
+      "nama_bidang": "Matematika",
+      "implikasi_akademis": "Kesiapan optimal dalam memecahkan soal kombinatorika, aljabar, teori bilangan, dan geometri.",
+      "implikasi_motivasi": "Kenyamanan tinggi untuk berlama-lama melakukan pembuktian rumus secara abstrak dan teoretis."
+    },
+    "Fisika": {
+      "nama_bidang": "Fisika",
+      "implikasi_akademis": "Kapasitas kuat dalam memformulasikan fenomena gerak, mekanika, dan termodinamika ke dalam persamaan matematis.",
+      "implikasi_motivasi": "Rasa ingin tahu besar terhadap bagaimana alam semesta bekerja melalui bahasa kalkulus dan hukum pasti."
+    },
+    "Kimia": {
+      "nama_bidang": "Kimia",
+      "implikasi_akademis": "Kemampuan baik dalam memahami ikatan zat, stoikiometri analitik, dan kinetika reaksi dalam skala mikro.",
+      "implikasi_motivasi": "Ketertarikan eksplorasi eksperimental dan rasa penasaran terhadap struktur penyusun benda dari sudut pandang partikel."
+    },
+    "Biologi": {
+      "nama_bidang": "Biologi",
+      "implikasi_akademis": "Daya hafal konseptual tinggi, dipadukan dengan pemahaman sistem kompleks dari anatomi, taksonomi, hingga genetika.",
+      "implikasi_motivasi": "Antusiasme mendalam mengenai evolusi, ekosistem, kehidupan mikroskopis, serta siklus metabolisme makhluk hidup."
+    },
+    "Informatika": {
+      "nama_bidang": "Informatika",
+      "implikasi_akademis": "Kecepatan adaptasi sangat tinggi dalam logika pemrograman, penyusunan algoritma komputasi, dan penyelesaian bug.",
+      "implikasi_motivasi": "Sangat menyukai tantangan puzzle prosedural, penulisan baris kode, dan efisiensi cara kerja komputer."
+    },
+    "Astronomi": {
+      "nama_bidang": "Astronomi",
+      "implikasi_akademis": "Ketajaman perhitungan mekanika benda langit (hukum Kepler/Newton) dan pemahaman konsep ruang-waktu.",
+      "implikasi_motivasi": "Ketertarikan besar pada pengamatan benda langit, skala kosmik, dan fenomena fisika di luar atmosfer bumi."
+    },
+    "Kebumian": {
+      "nama_bidang": "Kebumian",
+      "implikasi_akademis": "Mampu mengurai lapisan geologi bumi, dinamika atmosfer, samudra, serta siklus batuan dan bencana alam.",
+      "implikasi_motivasi": "Rasa ingin tahu terhadap sejarah pembentukan planet, formasi mineral, dan fenomena meteorologi/klimatologi."
+    },
+    "Ekonomi": {
+      "nama_bidang": "Ekonomi",
+      "implikasi_akademis": "Luwes menganalisis kurva makro/mikroekonomi, kebijakan fiskal moneter, serta hitungan dasar akuntansi.",
+      "implikasi_motivasi": "Suka mengamati perilaku pasar, analisis keuntungan/kerugian, dan dinamika keuangan masyarakat global."
+    },
+    "Geografi": {
+      "nama_bidang": "Geografi",
+      "implikasi_akademis": "Peka terhadap analisis spasial (keruangan), sebaran populasi, tata kota, serta interpretasi peta topografi dan cuaca.",
+      "implikasi_motivasi": "Tertarik pada relasi antara manusia dengan lingkungannya, serta bagaimana letak geografis memengaruhi kebudayaan dan pembangunan."
+    },
+    "AI & Data Science": {
+      "nama_bidang": "AI & Data Science",
+      "implikasi_akademis": "Logika tajam dalam mengolah dataset, mengenali pola statistik, serta pemahaman probabilitas algoritma machine learning.",
+      "implikasi_motivasi": "Ambisi untuk melatih model kecerdasan buatan, visualisasi data kompleks, dan teknologi prediksi masa depan."
     }
   },
   "pilar3_resiliensi": {
