@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Asesmen - KS8 Work Critical Thinking & Analytical Logic Test (WCTL)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Formal White Corporate Executive Theme */
+    body {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .report-paper {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      border-radius: 8px;
+      padding: 40px;
+    }
+
+    .executive-banner {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+      border: 1px solid #cbd5e1;
+      border-left: 6px solid #0f172a;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .score-dial-box {
+      flex: 0 0 160px;
+      text-align: center;
+      border-right: 1px solid #cbd5e1;
+      padding-right: 20px;
+    }
+
+    .score-dial-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .badge-executive {
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .badge-elite { background-color: #059669; color: #ffffff; }
+    .badge-managerial { background-color: #0284c7; color: #ffffff; }
+    .badge-operational { background-color: #d97706; color: #ffffff; }
+    .badge-risk { background-color: #dc2626; color: #ffffff; }
+
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    .score-table th {
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .score-table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+      text-align: center;
+    }
+
+    .score-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .chart-container {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .box-cutoff {
+      display: flex;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .cutoff-card {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 14px;
+      background-color: #ffffff;
+    }
+
+    .cutoff-card.pass { border-top: 4px solid #10b981; }
+    .cutoff-card.fail { border-top: 4px solid #ef4444; }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background-color: #f8fafc;
+    }
+
+    .dimensi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .dimensi-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar (Hidden during Print/Export) -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS8_WCTL_Critical_Thinking.pdf')" class="btn-primary" style="width: auto; background-color: #059669;">Cetak / Unduh PDF Laporan</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Executive Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN PENALARAN KRITIS & LOGIKA ANALITIS (WCTL)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Kandidat</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Perusahaan / Organisasi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS8 - APACA Work Critical Thinking & Analytical Logic Test (WCTL)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Executive Decision & CTI Overview -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN EKSEKUTIF & CRITICAL THINKING INDEX (CTI)</div>
+        
+        <div class="executive-banner">
+          <div class="score-dial-box">
+            <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Skor CTI Utama</div>
+            <div id="r-cti-score" class="score-dial-number">0%</div>
+            <div style="font-size: 0.8rem; color: #475569; margin-top: 4px;">T-Score: <strong id="r-t-score">50</strong></div>
+          </div>
+          <div style="flex: 1;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 id="r-kategori-kognitif" style="color: #0f172a; font-size: 1.15rem; font-weight: 700;">-</h4>
+              <div id="r-status-badge" class="badge-executive badge-operational">OPERATIONAL FIT</div>
+            </div>
+            <p id="r-deskripsi-profil" style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin-bottom: 8px;">-</p>
+            <p style="font-size: 0.85rem; color: #0f172a;"><strong>Rekomendasi Rekrutmen:</strong> <span id="r-rekomendasi-rekrutmen">-</span></p>
+          </div>
+        </div>
+
+        <!-- Matrix Cut-Off Kelayakan Jabatan -->
+        <div class="box-cutoff">
+          <div id="card-cutoff-managerial" class="cutoff-card">
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">AMBANG BATAS MANAJERIAL STRATEGIS</div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin: 4px 0;">Minimum CTI ≥ 72%</div>
+            <div id="status-cutoff-managerial" style="font-size: 0.85rem; font-weight: 700; color: #dc2626;">✕ Tidak Memenuhi Ambang Batas</div>
+          </div>
+          <div id="card-cutoff-operational" class="cutoff-card">
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">AMBANG BATAS STAF OPERASIONAL</div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin: 4px 0;">Minimum CTI ≥ 56%</div>
+            <div id="status-cutoff-operational" style="font-size: 0.85rem; font-weight: 700; color: #059669;">✓ Memenuhi Ambang Batas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Pemetaan Visual & Tabulasi 5 Sub-Kompetensi -->
+      <div class="report-section">
+        <div class="report-section-title">II. PROFIL RADAR & TABULASI SUB-KOMPETENSI PENALARAN</div>
+        
+        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 280px;">
+            <div class="chart-container">
+              <canvas id="wctlRadarChart"></canvas>
+            </div>
+          </div>
+          <div style="flex: 1.2; min-width: 300px;">
+            <table class="score-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Sub-Kompetensi Penalaran</th>
+                  <th>Benar</th>
+                  <th>Akurasi (%)</th>
+                  <th>Kategori</th>
+                </tr>
+              </thead>
+              <tbody id="score-table-body">
+                <!-- Render via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Analisis Mendalam & Panduan HR -->
+      <div class="report-section">
+        <div class="report-section-title">III. ANALISIS MENDALAM SUB-KOMPETENSI & REKOMENDASI DEVELOPMENT</div>
+        <div id="dimension-cards-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Executive Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Ambil Jawaban & Evaluasi KS8
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS8");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+        const testInfo = soalData.test_info || {};
+
+        if (testInfo.nama_resmi) {
+          document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
+        }
+        document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+        document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '2026-0819-PSI-01'}`;
+
+        const result = KS8_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert("Data pengerjaan tidak valid.");
+          return;
+        }
+
+        if (user && typeof KS8_Scoring.sendRekapToGAS === "function") {
+          KS8_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 4. Render Executive Overview
+        document.getElementById("r-cti-score").innerText = `${result.cti}%`;
+        document.getElementById("r-t-score").innerText = result.tScore;
+        
+        const norm = result.globalNorm;
+        document.getElementById("r-kategori-kognitif").innerText = norm.kategori_kognitif || "-";
+        document.getElementById("r-deskripsi-profil").innerText = norm.deskripsi_profil || "-";
+        document.getElementById("r-rekomendasi-rekrutmen").innerText = norm.rekomendasi_rekrutmen || "-";
+
+        const badgeElem = document.getElementById("r-status-badge");
+        badgeElem.innerText = norm.label_status || "OPERATIONAL FIT";
+        if (result.cti >= 86) badgeElem.className = "badge-executive badge-elite";
+        else if (result.cti >= 72) badgeElem.className = "badge-executive badge-managerial";
+        else if (result.cti >= 56) badgeElem.className = "badge-executive badge-operational";
+        else badgeElem.className = "badge-executive badge-risk";
+
+        // Render Cut-Off Status
+        const cardManagerial = document.getElementById("card-cutoff-managerial");
+        const statusManagerial = document.getElementById("status-cutoff-managerial");
+        if (result.isManagerialFit) {
+          cardManagerial.className = "cutoff-card pass";
+          statusManagerial.style.color = "#059669";
+          statusManagerial.innerText = "✓ Memenuhi Ambang Batas Manajerial";
+        } else {
+          cardManagerial.className = "cutoff-card fail";
+          statusManagerial.style.color = "#dc2626";
+          statusManagerial.innerText = "✕ Tidak Memenuhi Ambang Batas Manajerial";
+        }
+
+        const cardOperational = document.getElementById("card-cutoff-operational");
+        const statusOperational = document.getElementById("status-cutoff-operational");
+        if (result.isOperationalFit) {
+          cardOperational.className = "cutoff-card pass";
+          statusOperational.style.color = "#059669";
+          statusOperational.innerText = "✓ Memenuhi Ambang Batas Operasional";
+        } else {
+          cardOperational.className = "cutoff-card fail";
+          statusOperational.style.color = "#dc2626";
+          statusOperational.innerText = "✕ Tidak Memenuhi Ambang Batas Operasional";
+        }
+
+        // 5. Render Tabulasi Tabel
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        const radarLabels = [];
+        const radarData = [];
+
+        if (result.dimensionRows && Array.isArray(result.dimensionRows)) {
+          result.dimensionRows.forEach(row => {
+            radarLabels.push(row.dimensi);
+            radarData.push(row.accuracy);
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+              <td>${row.rs} / 10</td>
+              <td><strong>${row.accuracy}%</strong></td>
+              <td><span style="font-weight:600; color:${row.accuracy >= 70 ? '#059669' : row.accuracy >= 55 ? '#0284c7' : '#dc2626'};">${row.level}</span></td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        // 6. Render Radar Chart (Chart.js)
+        const ctx = document.getElementById('wctlRadarChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: radarLabels,
+            datasets: [{
+              label: 'Akurasi Penalaran (%)',
+              data: radarData,
+              backgroundColor: 'rgba(2, 132, 199, 0.2)',
+              borderColor: '#0284c7',
+              borderWidth: 2,
+              pointBackgroundColor: '#0f172a',
+              pointBorderColor: '#ffffff',
+              pointHoverBackgroundColor: '#ffffff',
+              pointHoverBorderColor: '#0f172a'
+            }]
+          },
+          options: {
+            scales: {
+              r: {
+                angleLines: { color: '#e2e8f0' },
+                grid: { color: '#cbd5e1' },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { stepSize: 20, display: false }
+              }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+
+        // 7. Render Kartu Detail Per Dimensi
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        if (result.dimensionDetails && Array.isArray(result.dimensionDetails)) {
+          result.dimensionDetails.forEach(detail => {
+            const card = document.createElement("div");
+            card.className = "dimensi-card";
+            card.innerHTML = `
+              <div class="dimensi-header">
+                <div class="dimensi-title">${detail.judul_dimensi}</div>
+                <div style="font-weight:bold; font-size:0.85rem; color: #0284c7;">Akurasi: ${detail.accuracy}% (${detail.level})</div>
+              </div>
+              <p style="font-size: 0.88rem; color: #334155; margin-bottom: 6px;"><strong>Dampak Profesional:</strong> ${detail.dampak_profesional}</p>
+              <div style="font-size: 0.85rem; color: #0f172a; background: #ffffff; padding: 10px 12px; border-radius: 4px; border: 1px solid #e2e8f0;">
+                <strong>Panduan Pengembangan HR:</strong> ${detail.rekomendasi_pengembangan}
+              </div>
+            `;
+            cardsContainer.appendChild(card);
+          });
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS8 WCTL:", err);
+        alert("Terjadi kesalahan saat memuat data laporan.");
+      }
+    });
+  </script>
+</body>
+</html>
