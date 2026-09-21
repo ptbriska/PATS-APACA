@@ -6,9 +6,9 @@
     "versi": "Versi Edu 1.0 / 2026",
     "token_ujian": "LRP2026",
     "token_master": "PatsTestingKS15",
-    "durasi_menit": 25,
-    "psikolog_pj": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
-    "SIPP": "2026-0819-PSI-01"
+    "durasi_menit": 0,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
   },
   "questions": [
     {
