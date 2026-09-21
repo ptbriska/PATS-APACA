@@ -1,0 +1,235 @@
+{
+  "test_info": {
+    "kode": "KU9",
+    "nama_resmi": "APACA Work Decision-Making & Judgment Test (WDJT)",
+    "nama_singkat": "Work Decision Making Judgment Test",
+    "versi": "Versi Work 1.0 / 2026",
+    "token_ujian": "WDJT2026",
+    "token_master": "PatsTestingKU9",
+    "durasi_menit": 30,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "dimension": "Kualitas Decision Making",
+      "scenario": "Dua hari sebelum peluncuran sistem digital utama, tim teknis menemukan celah keamanan minor yang berisiko rendah namun berpotensi memicu kendala akses bagi 5% pengguna. Sementara itu, investor menuntut sistem tetap diluncurkan tepat waktu sesuai jadwal promosi nasional.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menunda peluncuran selama 48 jam untuk merilis perbaikan kritis, sembari mengirimkan komunikasi transparan mengenai peningkatan keandalan kepada investor dan publik." },
+        { "code": "B", "weight": 0.80, "label": "Meluncurkan sistem sesuai jadwal tetapi membatasi fitur yang berisiko bagi grup pengguna baru, sembari tim menyelesaikan perbaikan di latar belakang." },
+        { "code": "C", "weight": -1.00, "label": "Meluncurkan sistem sesuai jadwal tanpa memberitahu pengguna, lalu pura-pura tidak tahu saat timbul keluhan teknis di kemudian hari." },
+        { "code": "D", "weight": -2.00, "label": "Membatalkan peluncuran produk secara permanen dan mengembalikan seluruh anggaran investasi awal." }
+      ]
+    },
+    {
+      "id": 2,
+      "dimension": "Delegasi Efektif",
+      "scenario": "Seorang anggota tim senior yang sangat kompeten baru saja dipindahkan ke divisi Anda. Meskipun kinerjanya luar biasa, ia sering kali mengeksekusi proyek strategis tanpa melapor atau menyelaraskan langkah dengan jalur kepemimpinan Anda.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Memberikan kejelasan batas wewenang otonom pada proyek strategisnya, sembari menetapkan titik pemantauan (milestone review) mingguan yang disepakati bersama." },
+        { "code": "B", "weight": 0.80, "label": "Mengambil alih seluruh tugas detail senior tersebut agar ia selalu berkonsultasi dan meminta izin setiap jam." },
+        { "code": "C", "weight": -1.20, "label": "Mengabaikan sikap senior tersebut dan membiarkannya berjalan sendiri tanpa ada penyelarasan dengan target tim." },
+        { "code": "D", "weight": -2.00, "label": "Menegur dan mempermalukan anggota senior tersebut di depan rapat pleno divisi." }
+      ]
+    },
+    {
+      "id": 3,
+      "dimension": "Skala Prioritas",
+      "scenario": "Hari penutupan penyusunan laporan keuangan audit tahunan yang berkonsekuensi hukum bertepatan dengan krisis komplain dari klien terbesar organisasi yang mengancam akan memutus kontrak kerja sama secara seketika.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menangani krisis komplain klien utama secara langsung, sembari mendelegasikan pengompilasian draf laporan keuangan kepada tim akuntansi senior dengan verifikasi akhir terukur." },
+        { "code": "B", "weight": 0.80, "label": "Fokus menyelesaikan laporan keuangan hingga tuntas dan meminta klien besar menunggu jawaban hingga esok hari." },
+        { "code": "C", "weight": -1.00, "label": "Menunda kedua tugas tersebut dan menjadwalkan ulang penyelesaian di minggu depan." },
+        { "code": "D", "weight": -2.00, "label": "Mengabaikan komplain klien dan menyerahkan draf mentah laporan keuangan tanpa pengecekan." }
+      ]
+    },
+    {
+      "id": 4,
+      "dimension": "Penanganan Krisis",
+      "scenario": "Terjadi peretasan (data breach) pada sistem basis data pelanggan organisasi yang mengakibatkan isu sensitif merebak cepat di media sosial dan memicu kepanikan publik.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Mengisolasi server terpengaruh, mengaktifkan tim protokol tanggap krisis IT, menerbitkan pernyataan resmi transparan berisi langkah mitigasi, dan membuka posko bantuan." },
+        { "code": "B", "weight": 0.50, "label": "Membantah isu peretasan di media sosial sembari mencoba memperbaiki celah keamanan secara diam-diam." },
+        { "code": "C", "weight": -1.20, "label": "Menyalahkan penyedia server eksternal secara emosional di depan media massa." },
+        { "code": "D", "weight": -2.00, "label": "Menutup seluruh sistem operasional perusahaan secara permanen tanpa mengabarkan pelanggan." }
+      ]
+    },
+    {
+      "id": 5,
+      "dimension": "Kualitas Decision Making",
+      "scenario": "Penyedia vendor utama menawarkan potongan harga biaya operasional sebesar 30%, namun dari penelusuran rekam jejak, vendor tersebut diduga kuat sering melakukan pelanggaran standar keselamatan kerja.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Melakukan uji kepatuhan (due diligence) formal terhadap standar audit vendor dan memprioritaskan penyedia jasa yang memenuhi kriteria etika operasional." },
+        { "code": "B", "weight": 0.50, "label": "Menerima tawaran vendor tersebut untuk jangka pendek demi menekan anggaran, lalu menggantinya tahun depan." },
+        { "code": "C", "weight": -1.20, "label": "Menutup mata dari isu keselamatan kerja demi mendapatkan insentif penghematan biaya operasional." },
+        { "code": "D", "weight": -2.00, "label": "Langsung memutus hubungan kerja sama tanpa melakukan klarifikasi atas kebenaran rumor tersebut." }
+      ]
+    },
+    {
+      "id": 6,
+      "dimension": "Delegasi Efektif",
+      "scenario": "Proyek besar sedang berjalan dan anggota tim junior yang diberi tanggung jawab penting terlihat sangat cemas, tidak percaya diri, serta mengalami penurunan kecepatan kerja.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menghadirkan pendampingan teknis (coaching), memberikan umpan balik konstruktif, dan memperjelas tahapan kecil tanpa mengambil alih tanggung jawab tugasnya." },
+        { "code": "B", "weight": 0.50, "label": "Mengambil alih seluruh porsi tugas junior tersebut dan memintanya memperhatikan Anda bekerja dari samping." },
+        { "code": "C", "weight": -1.00, "label": "Melepaskan tanggung jawab penuh pada junior tersebut dan mengancam memberikan sanksi jika proyek gagal." },
+        { "code": "D", "weight": -2.00, "label": "Memindahkan tanggung jawab proyek secara mendadak ke anggota lain di depan forum tanpa konfirmasi." }
+      ]
+    },
+    {
+      "id": 7,
+      "dimension": "Skala Prioritas",
+      "scenario": "Anggaran operasional divisi dipotong sebesar 20% di pertengahan kuartal akibat kebijakan penghematan lembaga, sementara seluruh indikator kinerja utama (KPI) dituntut tetap tercapai.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menganalisis efisiensi biaya, menghentikan program yang ber-impact rendah, dan merealokasi sumber daya ke program ber-ROI tertinggi." },
+        { "code": "B", "weight": 0.50, "label": "Memotong anggaran di seluruh sub-unit secara merata tanpa mempertimbangkan skala urgensi dan dampak program." },
+        { "code": "C", "weight": -1.20, "label": "Memaksa tim bekerja lembur tanpa kompensasi demi menutup kekurangan alokasi dana." },
+        { "code": "D", "weight": -2.00, "label": "Menghentikan seluruh kegiatan organisasi hingga anggaran dipulihkan seperti semula." }
+      ]
+    },
+    {
+      "id": 8,
+      "dimension": "Penanganan Krisis",
+      "scenario": "Atap fasilitas panggung utama kegiatan roboh akibat cuaca ekstrem satu jam sebelum acara puncak pembukaan acara internasional dimulai di lokasi luar ruangan (outdoor).",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menangkan panitia, memindahkan sesi pembukaan ke ruang auditorium cadangan (indoor), meresetting susunan acara, dan mengarahkan aliran alur peserta." },
+        { "code": "B", "weight": 0.80, "label": "Tetap menggunakan panggung utama yang rusak dengan melakukan perbaikan seadanya di bawah guyuran hujan." },
+        { "code": "C", "weight": -1.00, "label": "Membatalkan seluruh rangkaian acara internasional dan memulangkan peserta." },
+        { "code": "D", "weight": -2.00, "label": "Menyalahkan tim perlengkapan secara emosional atas ketidakmampuan menahan badai." }
+      ]
+    },
+    {
+      "id": 9,
+      "dimension": "Kualitas Decision Making",
+      "scenario": "Hasil riset analisis data terbaru menunjukkan strategi produk lama organisasi mulai kedaluwarsa di pasar, sementara jajaran direksi senior enggan melakukan perubahan karena alasan histori sentimental.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menyusun laporan komparatif risiko keuangan jangka panjang dan mempresentasikan skenario pilot project pembaruan produk secara bertahap." },
+        { "code": "B", "weight": 1.00, "label": "Mengikuti kemauan direksi senior dan membiarkan produk lama berjalan hingga tingkat penjualan benar-benar anjlok." },
+        { "code": "C", "weight": -1.00, "label": "Mengubah spesifikasi produk lama secara diam-diam tanpa persetujuan resmi direksi." },
+        { "code": "D", "weight": -2.00, "label": "Membocorkan kegagalan strategi direksi kepada pihak media eksternal agar pimpinan tertekan." }
+      ]
+    },
+    {
+      "id": 10,
+      "dimension": "Delegasi Efektif",
+      "scenario": "Sebagai Manajer, Anda selalu bekerja hingga larut malam karena merasa harus memeriksa dan mengedit kembali setiap detail draf laporan yang dibuat oleh staf tim Anda.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menyusun templat standar operasional baku (SOP), menyelenggarakan sesi pelatihan kualitas, dan melatih staf melakukan verifikasi mandiri." },
+        { "code": "B", "weight": 0.80, "label": "Meneruskan kebiasaan mengedit dokumen tim sendirian demi mempertahankan kesempurnaan produk akhir." },
+        { "code": "C", "weight": -1.00, "label": "Langsung menyetujui dokumen mentah tanpa diperiksa agar dapat pulang tepat waktu." },
+        { "code": "D", "weight": -2.00, "label": "Mencela kemampuan kognitif staf secara terbuka di grup percakapan karena menganggap mereka incompetently." }
+      ]
+    },
+    {
+      "id": 11,
+      "dimension": "Skala Prioritas",
+      "scenario": "Divisi Anda dibanjiri permintaan tugas-tugas ad-hoc mendadak dari berbagai pimpinan lintas unit yang mengancam penyelesaian proyek utama organisasi.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Membangun matriks skala prioritas (Eisenhower Matrix), menerapkan alur pintu masuk tugas via Manajer, dan bernegosiasi terkait kapasitas operasional tim." },
+        { "code": "B", "weight": 0.80, "label": "Menerima seluruh tugas ad-hoc dan menginstruksikan tim mengerjakan mana saja yang dianggap paling cepat selesai." },
+        { "code": "C", "weight": -1.00, "label": "Menolak keras semua tugas ad-hoc tanpa memberikan penjelasan teknis yang rasional." },
+        { "code": "D", "weight": -2.00, "label": "Membiarkan tim bekerja tanpa arah hingga proyek utama dan tugas ad-hoc terbengkalai bersamaan." }
+      ]
+    },
+    {
+      "id": 12,
+      "dimension": "Penanganan Krisis",
+      "scenario": "Terjadi perselisihan sengit dan bentrok fisik antara dua Koordinator Divisi di area operasional saat kegiatan puncak sedang berlangsung.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Melerai dan memisahkan kedua pihak ke ruang tertutup, menunjuk pengganti tugas sementara di lapangan, dan menyelesaikan konflik pasca-acara secara obyektif." },
+        { "code": "B", "weight": 0.50, "label": "Membiarkan mereka berdebat di lokasi agar perselisihan selesai secara terbuka di depan tim." },
+        { "code": "C", "weight": -1.20, "label": "Menghentikan seluruh acara yang sedang berlangsung untuk mengadili kedua koordinator saat itu juga." },
+        { "code": "D", "weight": -2.00, "label": "Mengumumkan pemberhentian kedua koordinator tersebut di grup umum tanpa proses klarifikasi." }
+      ]
+    },
+    {
+      "id": 13,
+      "dimension": "Kualitas Decision Making",
+      "scenario": "Ditemukan celah efisiensi anggaran sebesar 15% pada sistem operasional lama, namun penerapannya akan berdampak pada pengurangan skema insentif bonus jangka pendek bagi tim.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Membahas perubahan sistem secara transparan bersama tim, serta merancang skema bonus baru yang berbasis pada capaian efisiensi sistemik." },
+        { "code": "B", "weight": 0.80, "label": "Menerapkan perbaikan sistem secara sepihak dan memotong bonus insentif tanpa penjelasan mendasar." },
+        { "code": "C", "weight": -1.20, "label": "Menyembunyikan temuan efisiensi agar insentif bonus tim tetap utuh dalam jangka pendek." },
+        { "code": "D", "weight": -2.00, "label": "Mengalihkan dana efisiensi tersebut untuk kepentingan pribadi sebelum dilaporkan ke manajemen." }
+      ]
+    },
+    {
+      "id": 14,
+      "dimension": "Delegasi Efektif",
+      "scenario": "Seorang Ketua Divisi mengajukan keberatan karena merasa tidak dipercaya pimpinan akibat seluruh keputusan anggaran operasional kecil wajib mendapatkan persetujuan tertulis Manajer.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Menetapkan batasan nilai anggaran mandiri (threshold) yang boleh diputuskan Ketua Divisi, beserta mekanisme pelaporan pertanggungjawaban berkala." },
+        { "code": "B", "weight": 0.50, "label": "Membebaskan Ketua Divisi menggunakan anggaran tanpa limit dan tanpa kewajiban laporan pertanggungjawaban." },
+        { "code": "C", "weight": -1.20, "label": "Menolak memberikan wewenang anggaran dan menegaskan bahwa semua persetujuan tetap di tangan Manajer." },
+        { "code": "D", "weight": -2.00, "label": "Mengabaikan keluhan Ketua Divisi dan memintanya fokus pada pekerjaan fisik saja." }
+      ]
+    },
+    {
+      "id": 15,
+      "dimension": "Skala Prioritas",
+      "scenario": "Hari penutupan pendaftaran program beasiswa bergengsi bertepatan dengan jadwal rapat evaluasi tahunan wajib bersama jajaran pimpinan daerah.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Membagi penugasan tim untuk mengawal kelancaran teknis pendaftaran beasiswa, sementara Anda menghadiri rapat pimpinan dengan draf laporan yang matang." },
+        { "code": "B", "weight": 0.50, "label": "Membatalkan rapat dengan pimpinan daerah secara mendadak demi fokus mengurus pendaftaran beasiswa." },
+        { "code": "C", "weight": -1.20, "label": "Menutup pendaftaran beasiswa lebih awal demi menghadiri rapat pimpinan daerah." },
+        { "code": "D", "weight": -2.00, "label": "Meninggalkan kedua agenda tersebut karena merasa beban jadwal tidak masuk akal." }
+      ]
+    },
+    {
+      "id": 16,
+      "dimension": "Penanganan Krisis",
+      "scenario": "Pasokan bahan baku utama terhenti total akibat aksi pemogokan kerja di pabrik vendor tunggal pada hari pertama jadwal produksi massal.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Mengaktifkan vendor cadangan (backup supplier), bernegosiasi penyesuaian biaya, dan mengatur ulang alur jadwal Rilis secara terukur." },
+        { "code": "B", "weight": 0.80, "label": "Memaksa vendor tunggal bekerja kembali di bawah ancaman tuntutan hukum saat itu juga." },
+        { "code": "C", "weight": -1.00, "label": "Menggunakan bahan baku seadanya yang berkualitas buruk tanpa melalui standar pengujian." },
+        { "code": "D", "weight": -2.00, "label": "Menghentikan seluruh operasi divisi produksi dan merumahkan staf." }
+      ]
+    },
+    {
+      "id": 17,
+      "dimension": "Kualitas Decision Making",
+      "scenario": "Dua tim riset internal menyajikan dua hasil analisis strategi bisnis yang saling bertentangan secara tajam akibat perbedaan penggunaan variabel asumsi dasar.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Mengumpulkan kedua tim untuk membedah kesahihan asumsi, menyelaraskan variabel riset, dan melakukan uji validasi sampel pihak ketiga." },
+        { "code": "B", "weight": 0.50, "label": "Memilih rekomendasi strategi yang hasilnya paling sesuai dengan selera pandangan pribadi Anda." },
+        { "code": "C", "weight": -1.00, "label": "Membuang kedua hasil analisis dan mengambil keputusan bisnis berdasarkan firasat semata." },
+        { "code": "D", "weight": -2.00, "label": "Menunda seluruh keputusan operasional hingga satu tahun mendatang." }
+      ]
+    },
+    {
+      "id": 18,
+      "dimension": "Delegasi Efektif",
+      "scenario": "Dua anggota tim berprestasi tinggi memperebutkan posisi pimpinan eksekutor dalam satu proyek khusus yang hanya membutuhkan satu penanggung jawab utama.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Membagi proyek menjadi dua sub-komponen utama berdasar spesialisasi, atau menunjuk satu penanggung jawab utama dan satu pendamping strategis." },
+        { "code": "B", "weight": 0.80, "label": "Memilih salah satu anggota berdasar tingkat kedekatan pribadi dan membiarkan anggota lainnya kecewa." },
+        { "code": "C", "weight": -1.00, "label": "Mengambil alih posisi pimpinan proyek sendirian dan menjadikan kedua anggota tersebut sebagai pembantu teknis." },
+        { "code": "D", "weight": -2.00, "label": "Membatalkan proyek khusus tersebut agar tidak memicu gesekan sosial di dalam tim." }
+      ]
+    },
+    {
+      "id": 19,
+      "dimension": "Skala Prioritas",
+      "scenario": "Terjadi lonjakan volume permintaan layanan pelanggan sebesar 300% di saat kapasitas sarana dan jumlah staf operasional sangat terbatas.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Mengatur antrean layanan berbasis urutan waktu, mengomunikasikan batas estimasi secara transparan, serta mengalokasikan tenaga bantuan sementara." },
+        { "code": "B", "weight": 0.80, "label": "Menerima seluruh pesanan layanan tanpa mengabarkan adanya potensi penundaan waktu." },
+        { "code": "C", "weight": -1.00, "label": "Menutup pendaftaran layanan baru secara total hingga kapasitas kembali normal." },
+        { "code": "D", "weight": -2.00, "label": "Menurunkan kualitas standar layanan secara drastis demi menyelesaikan permintaan tiga kali lebih cepat." }
+      ]
+    },
+    {
+      "id": 20,
+      "dimension": "Penanganan Krisis",
+      "scenario": "Ditemukan dugaan penyalahgunaan wewenang dan pelanggaran etika berat yang dilakukan oleh salah satu pejabat tinggi organisasi di tengah jalannya proyek strategis.",
+      "options": [
+        { "code": "A", "weight": 2.00, "label": "Mengamankan bukti transaksi, mengaktifkan komite etik, menangguhkan posisi pejabat sementara waktu, dan memastikan operasional proyek tetap stabil." },
+        { "code": "B", "weight": 0.50, "label": "Menutupi kasus pelanggaran tersebut hingga proyek selesai agar tidak merusak reputasi organisasi." },
+        { "code": "C", "weight": -1.20, "label": "Menyebarkan tuduhan di media sosial sebelum adanya verifikasi bukti resmi dari komite." },
+        { "code": "D", "weight": -2.00, "label": "Membubarkan seluruh kepengurusan organisasi dan membatalkan proyek." }
+      ]
+    }
+  ]
+}
