@@ -1,1 +1,370 @@
-r
+{
+  "test_info": {
+    "kode": "KS8",
+    "nama_resmi": "APACA Work Critical Thinking & Analytical Logic Test (WCTL)",
+    "nama_singkat": "Work Critical Thinking Test",
+    "versi": "Versi Work 1.0 / 2026",
+    "token_ujian": "WCTL2026",
+    "token_master": "PatsTestingKS8",
+    "durasi_menit": 40,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "options": [
+    { "label": "Benar (Valid / Sesuai Fakta)", "value": 1 },
+    { "label": "Salah (Keliru / Bertentangan)", "value": 2 },
+    { "label": "Tidak Dapat Disimpulkan (Informasi Tidak Cukup)", "value": 3 }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "kategori": "Inference",
+      "narasi": "[KASUS 1: EKSPANSI B2B SAAS] PT InovaTech melaporkan pertumbuhan pendapatan sebesar 12% pada Q3 2025, namun marjin laba bersih turun 8%. CFO mengaitkan penurunan laba ini dengan lonjakan Biaya Akuisisi Pelanggan (CAC) yang naik 25% akibat perang harga dengan kompetitor baru, serta investasi besar pada infrastruktur cloud. CEO mengusulkan pemotongan anggaran R&D sebesar 15% untuk Q4 demi menstabilkan laba jangka pendek, berargumen bahwa produk saat ini sudah cukup kompetitif di pasar.",
+      "pertanyaan": "Penurunan marjin laba bersih PT InovaTech semata-mata disebabkan oleh penurunan daya beli klien B2B akibat resesi ekonomi.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 2,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 1: EKSPANSI B2B SAAS] PT InovaTech melaporkan pertumbuhan pendapatan sebesar 12% pada Q3 2025, namun marjin laba bersih turun 8%. CFO mengaitkan penurunan laba ini dengan lonjakan Biaya Akuisisi Pelanggan (CAC) yang naik 25% akibat perang harga dengan kompetitor baru, serta investasi besar pada infrastruktur cloud. CEO mengusulkan pemotongan anggaran R&D sebesar 15% untuk Q4 demi menstabilkan laba jangka pendek, berargumen bahwa produk saat ini sudah cukup kompetitif di pasar.",
+      "pertanyaan": "CEO membuat anggapan bahwa pemotongan anggaran R&D di Q4 tidak akan memicu keusangan teknologi (technological obsolescence) secara instan yang merusak daya saing produk saat ini.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 3,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 1: EKSPANSI B2B SAAS] PT InovaTech melaporkan pertumbuhan pendapatan sebesar 12% pada Q3 2025, namun marjin laba bersih turun 8%. CFO mengaitkan penurunan laba ini dengan lonjakan Biaya Akuisisi Pelanggan (CAC) yang naik 25% akibat perang harga dengan kompetitor baru, serta investasi besar pada infrastruktur cloud. CEO mengusulkan pemotongan anggaran R&D sebesar 15% untuk Q4 demi menstabilkan laba jangka pendek, berargumen bahwa produk saat ini sudah cukup kompetitif di pasar.",
+      "pertanyaan": "Jika CAC naik lebih tinggi secara proporsional dibandingkan pertumbuhan pendapatan kotor, maka profitabilitas operasional dari setiap penambahan pelanggan baru mengalami penurunan.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 4,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 1: EKSPANSI B2B SAAS] PT InovaTech melaporkan pertumbuhan pendapatan sebesar 12% pada Q3 2025, namun marjin laba bersih turun 8%. CFO mengaitkan penurunan laba ini dengan lonjakan Biaya Akuisisi Pelanggan (CAC) yang naik 25% akibat perang harga dengan kompetitor baru, serta investasi besar pada infrastruktur cloud. CEO mengusulkan pemotongan anggaran R&D sebesar 15% untuk Q4 demi menstabilkan laba jangka pendek, berargumen bahwa produk saat ini sudah cukup kompetitif di pasar.",
+      "pertanyaan": "Infrastruktur cloud yang baru dibangun belum memberikan dampak efisiensi sama sekali terhadap operasional PT InovaTech di Q3 2025.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 5,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 1: EKSPANSI B2B SAAS] PT InovaTech melaporkan pertumbuhan pendapatan sebesar 12% pada Q3 2025, namun marjin laba bersih turun 8%. CFO mengaitkan penurunan laba ini dengan lonjakan Biaya Akuisisi Pelanggan (CAC) yang naik 25% akibat perang harga dengan kompetitor baru, serta investasi besar pada infrastruktur cloud. CEO mengusulkan pemotongan anggaran R&D sebesar 15% untuk Q4 demi menstabilkan laba jangka pendek, berargumen bahwa produk saat ini sudah cukup kompetitif di pasar.",
+      "pertanyaan": "Argumen CEO untuk memotong anggaran R&D merupakan argumen yang kuat karena didasarkan pada data evaluasi jangka panjang mengenai hilangnya ancaman kompetitor.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 6,
+      "kategori": "Inference",
+      "narasi": "[KASUS 2: KEBIJAKAN KERJA HIBRIDA] Bank FinGlobal menerapkan kebijakan kerja hibrida (3 hari di kantor, 2 hari WFH) pasca-pandemi. Laporan internal menunjukkan produktivitas Divisi IT meningkat 15%, sementara Divisi Sales mengalami penurunan penutupan kesepakatan (deal closure) sebesar 10%. Secara global, tingkat pergantian karyawan (turnover rate) turun 5%. VP of Sales mendesak agar divisinya dikembalikan ke sistem 100% WFO karena meyakini interaksi tatap muka dengan klien adalah satu-satunya kunci keberhasilan penjualan.",
+      "pertanyaan": "Penurunan turnover rate sebesar 5% terjadi secara merata dan proporsional di seluruh divisi, termasuk Divisi Sales dan Divisi IT.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 7,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 2: KEBIJAKAN KERJA HIBRIDA] Bank FinGlobal menerapkan kebijakan kerja hibrida (3 hari di kantor, 2 hari WFH) pasca-pandemi. Laporan internal menunjukkan produktivitas Divisi IT meningkat 15%, sementara Divisi Sales mengalami penurunan penutupan kesepakatan (deal closure) sebesar 10%. Secara global, tingkat pergantian karyawan (turnover rate) turun 5%. VP of Sales mendesak agar divisinya dikembalikan ke sistem 100% WFO karena meyakini interaksi tatap muka dengan klien adalah satu-satunya kunci keberhasilan penjualan.",
+      "pertanyaan": "VP of Sales berasumsi bahwa penurunan 10% pada penutupan kesepakatan murni diakibatkan oleh kurangnya interaksi fisik akibat sistem hibrida, bukan karena faktor eksternal pasar.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 8,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 2: KEBIJAKAN KERJA HIBRIDA] Bank FinGlobal menerapkan kebijakan kerja hibrida (3 hari di kantor, 2 hari WFH) pasca-pandemi. Laporan internal menunjukkan produktivitas Divisi IT meningkat 15%, sementara Divisi Sales mengalami penurunan penutupan kesepakatan (deal closure) sebesar 10%. Secara global, tingkat pergantian karyawan (turnover rate) turun 5%. VP of Sales mendesak agar divisinya dikembalikan ke sistem 100% WFO karena meyakini interaksi tatap muka dengan klien adalah satu-satunya kunci keberhasilan penjualan.",
+      "pertanyaan": "Kebijakan kerja hibrida di FinGlobal memberikan dampak produktivitas operasional yang bersifat asimetris (tidak seragam) antar departemen teknis dan departemen komersial.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 9,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 2: KEBIJAKAN KERJA HIBRIDA] Bank FinGlobal menerapkan kebijakan kerja hibrida (3 hari di kantor, 2 hari WFH) pasca-pandemi. Laporan internal menunjukkan produktivitas Divisi IT meningkat 15%, sementara Divisi Sales mengalami penurunan penutupan kesepakatan (deal closure) sebesar 10%. Secara global, tingkat pergantian karyawan (turnover rate) turun 5%. VP of Sales mendesak agar divisinya dikembalikan ke sistem 100% WFO karena meyakini interaksi tatap muka dengan klien adalah satu-satunya kunci keberhasilan penjualan.",
+      "pertanyaan": "Penurunan turnover karyawan secara global membuktikan bahwa seluruh karyawan di Divisi Sales juga merasa lebih bahagia dan tidak stres dengan sistem hibrida.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 10,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 2: KEBIJAKAN KERJA HIBRIDA] Bank FinGlobal menerapkan kebijakan kerja hibrida (3 hari di kantor, 2 hari WFH) pasca-pandemi. Laporan internal menunjukkan produktivitas Divisi IT meningkat 15%, sementara Divisi Sales mengalami penurunan penutupan kesepakatan (deal closure) sebesar 10%. Secara global, tingkat pergantian karyawan (turnover rate) turun 5%. VP of Sales mendesak agar divisinya dikembalikan ke sistem 100% WFO karena meyakini interaksi tatap muka dengan klien adalah satu-satunya kunci keberhasilan penjualan.",
+      "pertanyaan": "Desakan VP of Sales untuk kembali ke 100% WFO merupakan argumen berbasis emosi, karena teks tidak menyebutkan adanya uji komparatif empiris yang membuktikan interaksi fisik sebagai \"satu-satunya kunci\".",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 11,
+      "kategori": "Inference",
+      "narasi": "[KASUS 3: AKUISISI MEGA-MERGER] MegaCorp mengumumkan akuisisi atas LogisTech, sebuah startup logistik dengan pangsa pasar 5% namun memiliki algoritma rute AI yang dipatenkan. Harga akuisisi mencapai valuasi 20x dari pendapatan tahunan LogisTech. Pasar saham merespons negatif dengan turunnya saham MegaCorp sebesar 4% pada hari pengumuman. Dewan Direksi MegaCorp membenarkan harga premium tersebut dengan dalih bahwa algoritma AI LogisTech dapat menghemat biaya bahan bakar armada MegaCorp sebesar 12% per tahun secara global.",
+      "pertanyaan": "Penurunan harga saham MegaCorp sebesar 4% terjadi karena mayoritas investor institusi meragukan keefektifan algoritma AI milik LogisTech.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 12,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 3: AKUISISI MEGA-MERGER] MegaCorp mengumumkan akuisisi atas LogisTech, sebuah startup logistik dengan pangsa pasar 5% namun memiliki algoritma rute AI yang dipatenkan. Harga akuisisi mencapai valuasi 20x dari pendapatan tahunan LogisTech. Pasar saham merespons negatif dengan turunnya saham MegaCorp sebesar 4% pada hari pengumuman. Dewan Direksi MegaCorp membenarkan harga premium tersebut dengan dalih bahwa algoritma AI LogisTech dapat menghemat biaya bahan bakar armada MegaCorp sebesar 12% per tahun secara global.",
+      "pertanyaan": "Dewan Direksi mengasumsikan bahwa penghematan bahan bakar 12% secara global akan memberikan nilai finansial yang melampaui biaya premi akuisisi yang mahal dalam jangka panjang.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 13,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 3: AKUISISI MEGA-MERGER] MegaCorp mengumumkan akuisisi atas LogisTech, sebuah startup logistik dengan pangsa pasar 5% namun memiliki algoritma rute AI yang dipatenkan. Harga akuisisi mencapai valuasi 20x dari pendapatan tahunan LogisTech. Pasar saham merespons negatif dengan turunnya saham MegaCorp sebesar 4% pada hari pengumuman. Dewan Direksi MegaCorp membenarkan harga premium tersebut dengan dalih bahwa algoritma AI LogisTech dapat menghemat biaya bahan bakar armada MegaCorp sebesar 12% per tahun secara global.",
+      "pertanyaan": "Motif utama MegaCorp dalam melakukan akuisisi ini bukanlah untuk mengambil alih basis pelanggan (pangsa pasar 5%) LogisTech, melainkan untuk menguasai kekayaan intelektual (IP) algoritmanya.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 14,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 3: AKUISISI MEGA-MERGER] MegaCorp mengumumkan akuisisi atas LogisTech, sebuah startup logistik dengan pangsa pasar 5% namun memiliki algoritma rute AI yang dipatenkan. Harga akuisisi mencapai valuasi 20x dari pendapatan tahunan LogisTech. Pasar saham merespons negatif dengan turunnya saham MegaCorp sebesar 4% pada hari pengumuman. Dewan Direksi MegaCorp membenarkan harga premium tersebut dengan dalih bahwa algoritma AI LogisTech dapat menghemat biaya bahan bakar armada MegaCorp sebesar 12% per tahun secara global.",
+      "pertanyaan": "Pasar saham selalu merespons negatif setiap ada transaksi akuisisi yang valuasinya mencapai 20x lipat di atas pendapatan tahunan.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 15,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 3: AKUISISI MEGA-MERGER] MegaCorp mengumumkan akuisisi atas LogisTech, sebuah startup logistik dengan pangsa pasar 5% namun memiliki algoritma rute AI yang dipatenkan. Harga akuisisi mencapai valuasi 20x dari pendapatan tahunan LogisTech. Pasar saham merespons negatif dengan turunnya saham MegaCorp sebesar 4% pada hari pengumuman. Dewan Direksi MegaCorp membenarkan harga premium tersebut dengan dalih bahwa algoritma AI LogisTech dapat menghemat biaya bahan bakar armada MegaCorp sebesar 12% per tahun secara global.",
+      "pertanyaan": "Dalih Dewan Direksi untuk membenarkan harga akuisisi merupakan argumen rasional jika total nominal dari 12% penghematan bahan bakar global secara signifikan melampaui biaya akuisisi.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 16,
+      "kategori": "Inference",
+      "narasi": "[KASUS 4: IMPLEMENTASI AI & LAYOFF] Firma hukum LegaLuxe mengadopsi perangkat lunak Generative AI untuk melakukan tinjauan kontrak dasar (due diligence). Dalam enam bulan, waktu penyelesaian kontrak klien meningkat kecepatannya sebesar 40%. Namun, jumlah kesalahan faktual dalam draf kontrak naik sebesar 2%. Manajemen kemudian memberhentikan (layoff) 30% staf paralegal junior dan mengalihkan sisa anggarannya untuk menyewa konsultan jaminan mutu (Quality Assurance).",
+      "pertanyaan": "Kenaikan jumlah kesalahan faktual sebesar 2% menyebabkan Firma LegaLuxe kehilangan sejumlah klien korporat besarnya di kuartal tersebut.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 17,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 4: IMPLEMENTASI AI & LAYOFF] Firma hukum LegaLuxe mengadopsi perangkat lunak Generative AI untuk melakukan tinjauan kontrak dasar (due diligence). Dalam enam bulan, waktu penyelesaian kontrak klien meningkat kecepatannya sebesar 40%. Namun, jumlah kesalahan faktual dalam draf kontrak naik sebesar 2%. Manajemen kemudian memberhentikan (layoff) 30% staf paralegal junior dan mengalihkan sisa anggarannya untuk menyewa konsultan jaminan mutu (Quality Assurance).",
+      "pertanyaan": "Manajemen mengasumsikan bahwa peran staf paralegal junior sepenuhnya dapat digantikan oleh kecepatan AI dan akurasi konsultan Quality Assurance.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 18,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 4: IMPLEMENTASI AI & LAYOFF] Firma hukum LegaLuxe mengadopsi perangkat lunak Generative AI untuk melakukan tinjauan kontrak dasar (due diligence). Dalam enam bulan, waktu penyelesaian kontrak klien meningkat kecepatannya sebesar 40%. Namun, jumlah kesalahan faktual dalam draf kontrak naik sebesar 2%. Manajemen kemudian memberhentikan (layoff) 30% staf paralegal junior dan mengalihkan sisa anggarannya untuk menyewa konsultan jaminan mutu (Quality Assurance).",
+      "pertanyaan": "Terdapat pertukaran (trade-off) empiris antara efisiensi waktu penyelesaian kontrak (naik 40%) dengan akurasi kualitas draf (naik kesalahan 2%) pasca implementasi AI.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 19,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 4: IMPLEMENTASI AI & LAYOFF] Firma hukum LegaLuxe mengadopsi perangkat lunak Generative AI untuk melakukan tinjauan kontrak dasar (due diligence). Dalam enam bulan, waktu penyelesaian kontrak klien meningkat kecepatannya sebesar 40%. Namun, jumlah kesalahan faktual dalam draf kontrak naik sebesar 2%. Manajemen kemudian memberhentikan (layoff) 30% staf paralegal junior dan mengalihkan sisa anggarannya untuk menyewa konsultan jaminan mutu (Quality Assurance).",
+      "pertanyaan": "Perangkat lunak Generative AI yang dibeli LegaLuxe diprogram untuk sengaja melakukan kesalahan faktual 2% demi menguji ketelitian staf manusia.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 20,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 4: IMPLEMENTASI AI & LAYOFF] Firma hukum LegaLuxe mengadopsi perangkat lunak Generative AI untuk melakukan tinjauan kontrak dasar (due diligence). Dalam enam bulan, waktu penyelesaian kontrak klien meningkat kecepatannya sebesar 40%. Namun, jumlah kesalahan faktual dalam draf kontrak naik sebesar 2%. Manajemen kemudian memberhentikan (layoff) 30% staf paralegal junior dan mengalihkan sisa anggarannya untuk menyewa konsultan jaminan mutu (Quality Assurance).",
+      "pertanyaan": "Keputusan manajemen mengalihkan anggaran paralegal junior ke konsultan Quality Assurance merupakan argumen operasional yang logis untuk mengatasi masalah kenaikan kesalahan faktual 2%.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 21,
+      "kategori": "Inference",
+      "narasi": "[KASUS 5: KRISIS RANTAI PASOK] Global AgriFood mengalami penurunan pasokan gandum dari Eropa Timur sebesar 40% akibat konflik geopolitik. Untuk menutupi defisit, perusahaan beralih ke pemasok dari Amerika Selatan yang mematok harga 15% lebih mahal dengan waktu pengiriman 3 minggu lebih lambat. Untuk menghindari kerugian finansial kuartalan, CEO menaikkan harga jual roti kemasan ke konsumen sebesar 10% dan mengurangi ukuran produk (shrinkflation) sebesar 5%.",
+      "pertanyaan": "CEO Global AgriFood memprioritaskan stabilitas marjin keuntungan kuartalan perusahaan di atas sentimen loyalitas konsumen terhadap ukuran produk.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 22,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 5: KRISIS RANTAI PASOK] Global AgriFood mengalami penurunan pasokan gandum dari Eropa Timur sebesar 40% akibat konflik geopolitik. Untuk menutupi defisit, perusahaan beralih ke pemasok dari Amerika Selatan yang mematok harga 15% lebih mahal dengan waktu pengiriman 3 minggu lebih lambat. Untuk menghindari kerugian finansial kuartalan, CEO menaikkan harga jual roti kemasan ke konsumen sebesar 10% dan mengurangi ukuran produk (shrinkflation) sebesar 5%.",
+      "pertanyaan": "CEO berasumsi bahwa konsumen tidak akan menyadari pengurangan ukuran produk (shrinkflation) sebesar 5% pada kemasan roti.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 23,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 5: KRISIS RANTAI PASOK] Global AgriFood mengalami penurunan pasokan gandum dari Eropa Timur sebesar 40% akibat konflik geopolitik. Untuk menutupi defisit, perusahaan beralih ke pemasok dari Amerika Selatan yang mematok harga 15% lebih mahal dengan waktu pengiriman 3 minggu lebih lambat. Untuk menghindari kerugian finansial kuartalan, CEO menaikkan harga jual roti kemasan ke konsumen sebesar 10% dan mengurangi ukuran produk (shrinkflation) sebesar 5%.",
+      "pertanyaan": "Total beban biaya produksi yang ditanggung oleh Global AgriFood untuk setiap unit roti meningkat akibat perubahan struktur biaya bahan baku dan logistik.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 24,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 5: KRISIS RANTAI PASOK] Global AgriFood mengalami penurunan pasokan gandum dari Eropa Timur sebesar 40% akibat konflik geopolitik. Untuk menutupi defisit, perusahaan beralih ke pemasok dari Amerika Selatan yang mematok harga 15% lebih mahal dengan waktu pengiriman 3 minggu lebih lambat. Untuk menghindari kerugian finansial kuartalan, CEO menaikkan harga jual roti kemasan ke konsumen sebesar 10% dan mengurangi ukuran produk (shrinkflation) sebesar 5%.",
+      "pertanyaan": "Pemasok gandum dari Amerika Selatan mengambil keuntungan dari konflik geopolitik di Eropa Timur dengan sengaja melambatkan waktu pengiriman menjadi 3 minggu.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 25,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 5: KRISIS RANTAI PASOK] Global AgriFood mengalami penurunan pasokan gandum dari Eropa Timur sebesar 40% akibat konflik geopolitik. Untuk menutupi defisit, perusahaan beralih ke pemasok dari Amerika Selatan yang mematok harga 15% lebih mahal dengan waktu pengiriman 3 minggu lebih lambat. Untuk menghindari kerugian finansial kuartalan, CEO menaikkan harga jual roti kemasan ke konsumen sebesar 10% dan mengurangi ukuran produk (shrinkflation) sebesar 5%.",
+      "pertanyaan": "Kebijakan gabungan berupa kenaikan harga jual 10% dan shrinkflation 5% merupakan argumen solusi finansial yang relevan dan terukur untuk meredam imbas kenaikan bahan baku 15%.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 26,
+      "kategori": "Inference",
+      "narasi": "[KASUS 6: TRANSISI KENDARAAN LISTRIK] NexaAuto, pabrikan mobil tradisional, meluncurkan lini kendaraan listrik (EV) pertamanya. Pada tahun pertama peluncuran, lini EV menyumbang 8% dari total pendapatan, namun menguras 35% dari total anggaran pemasaran tahunan perusahaan. Penjualan mobil bermesin bensin (ICE) yang menjadi andalan utama mengalami stagnasi (0% growth). Direktur Pemasaran mengklaim bahwa strategi bakar uang (burn rate) pada lini EV adalah kesuksesan karena berhasil menarik demografi pembeli Gen-Z yang sebelumnya tidak pernah melirik merek NexaAuto.",
+      "pertanyaan": "Gen-Z merupakan kelompok penyumbang terbesar dari 8% total pendapatan yang dihasilkan oleh lini kendaraan listrik NexaAuto.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 27,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 6: TRANSISI KENDARAAN LISTRIK] NexaAuto, pabrikan mobil tradisional, meluncurkan lini kendaraan listrik (EV) pertamanya. Pada tahun pertama peluncuran, lini EV menyumbang 8% dari total pendapatan, namun menguras 35% dari total anggaran pemasaran tahunan perusahaan. Penjualan mobil bermesin bensin (ICE) yang menjadi andalan utama mengalami stagnasi (0% growth). Direktur Pemasaran mengklaim bahwa strategi bakar uang (burn rate) pada lini EV adalah kesuksesan karena berhasil menarik demografi pembeli Gen-Z yang sebelumnya tidak pernah melirik merek NexaAuto.",
+      "pertanyaan": "Direktur Pemasaran mengasumsikan bahwa menarik demografi pelanggan baru (Gen-Z) memiliki nilai investasi jangka panjang yang membenarkan penyerapan 35% anggaran pemasaran secara tidak proporsional.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 28,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 6: TRANSISI KENDARAAN LISTRIK] NexaAuto, pabrikan mobil tradisional, meluncurkan lini kendaraan listrik (EV) pertamanya. Pada tahun pertama peluncuran, lini EV menyumbang 8% dari total pendapatan, namun menguras 35% dari total anggaran pemasaran tahunan perusahaan. Penjualan mobil bermesin bensin (ICE) yang menjadi andalan utama mengalami stagnasi (0% growth). Direktur Pemasaran mengklaim bahwa strategi bakar uang (burn rate) pada lini EV adalah kesuksesan karena berhasil menarik demografi pembeli Gen-Z yang sebelumnya tidak pernah melirik merek NexaAuto.",
+      "pertanyaan": "Mobil bermesin bensin (ICE) masih menjadi kontributor utama penyumbang pendapatan NexaAuto meskipun mengalami stagnasi pertumbuhan penjualan.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 29,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 6: TRANSISI KENDARAAN LISTRIK] NexaAuto, pabrikan mobil tradisional, meluncurkan lini kendaraan listrik (EV) pertamanya. Pada tahun pertama peluncuran, lini EV menyumbang 8% dari total pendapatan, namun menguras 35% dari total anggaran pemasaran tahunan perusahaan. Penjualan mobil bermesin bensin (ICE) yang menjadi andalan utama mengalami stagnasi (0% growth). Direktur Pemasaran mengklaim bahwa strategi bakar uang (burn rate) pada lini EV adalah kesuksesan karena berhasil menarik demografi pembeli Gen-Z yang sebelumnya tidak pernah melirik merek NexaAuto.",
+      "pertanyaan": "Stagnasi penjualan mobil bermesin bensin secara langsung disebabkan oleh anggaran pemasarannya yang dicuri dan dialihkan sebesar 35% ke lini kendaraan listrik.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 30,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 6: TRANSISI KENDARAAN LISTRIK] NexaAuto, pabrikan mobil tradisional, meluncurkan lini kendaraan listrik (EV) pertamanya. Pada tahun pertama peluncuran, lini EV menyumbang 8% dari total pendapatan, namun menguras 35% dari total anggaran pemasaran tahunan perusahaan. Penjualan mobil bermesin bensin (ICE) yang menjadi andalan utama mengalami stagnasi (0% growth). Direktur Pemasaran mengklaim bahwa strategi bakar uang (burn rate) pada lini EV adalah kesuksesan karena berhasil menarik demografi pembeli Gen-Z yang sebelumnya tidak pernah melirik merek NexaAuto.",
+      "pertanyaan": "Klaim Direktur Pemasaran bahwa peluncuran EV adalah kesuksesan mutlak merupakan argumen yang lemah dalam konteks efisiensi rasio biaya pemasaran terhadap pendapatan tahun pertama.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 31,
+      "kategori": "Inference",
+      "narasi": "[KASUS 7: KEBIJAKAN PAJAK KARBON] Pemerintah menerapkan pajak karbon sebesar 10% untuk industri manufaktur berat mulai Q1 2026. SteelWorks, sebuah pabrik baja besar, merespons dengan membebankan 6% dari kenaikan biaya tersebut kepada konsumen akhir dan menyerap sisa 4% dengan melakukan pemotongan tunjangan karyawan. Serikat pekerja mengancam akan melakukan aksi mogok kerja selama 3 hari jika tunjangan tidak dikembalikan. Pemogokan ini diproyeksikan akan menghentikan produksi senilai $2 Juta per hari.",
+      "pertanyaan": "Pemotongan tunjangan karyawan oleh SteelWorks murni dilakukan untuk memberikan dividen lebih besar kepada para pemegang saham di Q1 2026.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 32,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 7: KEBIJAKAN PAJAK KARBON] Pemerintah menerapkan pajak karbon sebesar 10% untuk industri manufaktur berat mulai Q1 2026. SteelWorks, sebuah pabrik baja besar, merespons dengan membebankan 6% dari kenaikan biaya tersebut kepada konsumen akhir dan menyerap sisa 4% dengan melakukan pemotongan tunjangan karyawan. Serikat pekerja mengancam akan melakukan aksi mogok kerja selama 3 hari jika tunjangan tidak dikembalikan. Pemogokan ini diproyeksikan akan menghentikan produksi senilai $2 Juta per hari.",
+      "pertanyaan": "Manajemen SteelWorks mengambil asumsi awal bahwa menyerap sebagian biaya karbon melalui pemotongan tunjangan karyawan memiliki risiko kerugian yang lebih kecil dibandingkan menaikkan harga jual 10% ke konsumen.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 33,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 7: KEBIJAKAN PAJAK KARBON] Pemerintah menerapkan pajak karbon sebesar 10% untuk industri manufaktur berat mulai Q1 2026. SteelWorks, sebuah pabrik baja besar, merespons dengan membebankan 6% dari kenaikan biaya tersebut kepada konsumen akhir dan menyerap sisa 4% dengan melakukan pemotongan tunjangan karyawan. Serikat pekerja mengancam akan melakukan aksi mogok kerja selama 3 hari jika tunjangan tidak dikembalikan. Pemogokan ini diproyeksikan akan menghentikan produksi senilai $2 Juta per hari.",
+      "pertanyaan": "Jika serikat pekerja merealisasikan ancamannya secara penuh, maka kerugian penghentian produksi yang ditanggung SteelWorks akan mencapai setidaknya $6 Juta.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 34,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 7: KEBIJAKAN PAJAK KARBON] Pemerintah menerapkan pajak karbon sebesar 10% untuk industri manufaktur berat mulai Q1 2026. SteelWorks, sebuah pabrik baja besar, merespons dengan membebankan 6% dari kenaikan biaya tersebut kepada konsumen akhir dan menyerap sisa 4% dengan melakukan pemotongan tunjangan karyawan. Serikat pekerja mengancam akan melakukan aksi mogok kerja selama 3 hari jika tunjangan tidak dikembalikan. Pemogokan ini diproyeksikan akan menghentikan produksi senilai $2 Juta per hari.",
+      "pertanyaan": "Ancaman mogok kerja oleh serikat pekerja merupakan respons balas dendam politik terhadap pemerintah karena memberlakukan pajak karbon.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 35,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 7: KEBIJAKAN PAJAK KARBON] Pemerintah menerapkan pajak karbon sebesar 10% untuk industri manufaktur berat mulai Q1 2026. SteelWorks, sebuah pabrik baja besar, merespons dengan membebankan 6% dari kenaikan biaya tersebut kepada konsumen akhir dan menyerap sisa 4% dengan melakukan pemotongan tunjangan karyawan. Serikat pekerja mengancam akan melakukan aksi mogok kerja selama 3 hari jika tunjangan tidak dikembalikan. Pemogokan ini diproyeksikan akan menghentikan produksi senilai $2 Juta per hari.",
+      "pertanyaan": "Tuntutan serikat pekerja untuk mengembalikan tunjangan merupakan argumen negosiasi yang lemah secara nilai tukar (leverage) karena ancaman kerugian $6 Juta dari mogok kerja terlalu kecil bagi perusahaan sekelas SteelWorks.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 36,
+      "kategori": "Inference",
+      "narasi": "[KASUS 8: PERUBAHAN MODEL BISNIS MEDIA] MediaStream, sebuah platform portal berita digital, mengubah model bisnisnya dari '100% Gratis berbasis Iklan' menjadi 'Premium Berbayar (Paywall)' mulai bulan lalu. Akibatnya, trafik kunjungan harian anjlok sebesar 70%, namun pendapatan kotor platform naik 300% pada bulan yang sama. Para pengiklan besar mengeluh dan mengancam akan membatalkan kontrak pemasangan iklan (ad-placement) mereka untuk kuartal depan karena jangkauan audiens yang menyusut drastis.",
+      "pertanyaan": "Platform MediaStream saat ini bergantung pada langganan berbayar dari pengguna (subscribers) sebagai pendorong utama lonjakan pendapatan kotor sebesar 300%.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 37,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 8: PERUBAHAN MODEL BISNIS MEDIA] MediaStream, sebuah platform portal berita digital, mengubah model bisnisnya dari '100% Gratis berbasis Iklan' menjadi 'Premium Berbayar (Paywall)' mulai bulan lalu. Akibatnya, trafik kunjungan harian anjlok sebesar 70%, namun pendapatan kotor platform naik 300% pada bulan yang sama. Para pengiklan besar mengeluh dan mengancam akan membatalkan kontrak pemasangan iklan (ad-placement) mereka untuk kuartal depan karena jangkauan audiens yang menyusut drastis.",
+      "pertanyaan": "Pengiklan besar berasumsi bahwa nilai efektivitas kampanye iklan mereka berkorelasi linier dengan metrik trafik kunjungan harian (jangkauan audiens) secara keseluruhan.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 38,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 8: PERUBAHAN MODEL BISNIS MEDIA] MediaStream, sebuah platform portal berita digital, mengubah model bisnisnya dari '100% Gratis berbasis Iklan' menjadi 'Premium Berbayar (Paywall)' mulai bulan lalu. Akibatnya, trafik kunjungan harian anjlok sebesar 70%, namun pendapatan kotor platform naik 300% pada bulan yang sama. Para pengiklan besar mengeluh dan mengancam akan membatalkan kontrak pemasangan iklan (ad-placement) mereka untuk kuartal depan karena jangkauan audiens yang menyusut drastis.",
+      "pertanyaan": "Kebijakan Premium Berbayar (Paywall) merupakan katalis eksklusif yang memicu penurunan lalu lintas audiens gratis secara masif di platform tersebut.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 39,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 8: PERUBAHAN MODEL BISNIS MEDIA] MediaStream, sebuah platform portal berita digital, mengubah model bisnisnya dari '100% Gratis berbasis Iklan' menjadi 'Premium Berbayar (Paywall)' mulai bulan lalu. Akibatnya, trafik kunjungan harian anjlok sebesar 70%, namun pendapatan kotor platform naik 300% pada bulan yang sama. Para pengiklan besar mengeluh dan mengancam akan membatalkan kontrak pemasangan iklan (ad-placement) mereka untuk kuartal depan karena jangkauan audiens yang menyusut drastis.",
+      "pertanyaan": "Lonjakan pendapatan 300% bersifat sementara dan pasti akan mengalami penurunan tajam di kuartal depan ketika seluruh kontrak pengiklan besar dibatalkan.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 40,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 8: PERUBAHAN MODEL BISNIS MEDIA] MediaStream, sebuah platform portal berita digital, mengubah model bisnisnya dari '100% Gratis berbasis Iklan' menjadi 'Premium Berbayar (Paywall)' mulai bulan lalu. Akibatnya, trafik kunjungan harian anjlok sebesar 70%, namun pendapatan kotor platform naik 300% pada bulan yang sama. Para pengiklan besar mengeluh dan mengancam akan membatalkan kontrak pemasangan iklan (ad-placement) mereka untuk kuartal depan karena jangkauan audiens yang menyusut drastis.",
+      "pertanyaan": "Ancaman pembatalan kontrak oleh pengiklan merupakan argumen logis yang valid untuk diutarakan, mengingat terjadi penurunan jangkauan distribusi (kunjungan) yang sangat drastis.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 41,
+      "kategori": "Inference",
+      "narasi": "[KASUS 9: STRATEGI HARGA LUXEBRAND] LuxeBrand, sebuah label perhiasan desainer eksklusif, mengalami kelangkaan bahan baku berlian langka yang menyebabkan keterlambatan produksi lini koleksi terbarunya. Alih-alih meminta maaf atau memberikan diskon, Chief Marketing Officer (CMO) LuxeBrand justru menaikkan harga jual produk yang langka tersebut sebesar 40% dan meluncurkan narasi kampanye 'Edisi Terbatas Paling Langka Abad Ini'. Hasilnya, koleksi tersebut terjual habis (sold-out) dalam waktu 48 jam kepada klien VIP.",
+      "pertanyaan": "Pelanggan VIP LuxeBrand lebih menghargai elemen kelangkaan dan eksklusivitas dibandingkan faktor harga jual dari perhiasan tersebut.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 42,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 9: STRATEGI HARGA LUXEBRAND] LuxeBrand, sebuah label perhiasan desainer eksklusif, mengalami kelangkaan bahan baku berlian langka yang menyebabkan keterlambatan produksi lini koleksi terbarunya. Alih-alih meminta maaf atau memberikan diskon, Chief Marketing Officer (CMO) LuxeBrand justru menaikkan harga jual produk yang langka tersebut sebesar 40% dan meluncurkan narasi kampanye 'Edisi Terbatas Paling Langka Abad Ini'. Hasilnya, koleksi tersebut terjual habis (sold-out) dalam waktu 48 jam kepada klien VIP.",
+      "pertanyaan": "CMO LuxeBrand mengasumsikan bahwa permintaan pelanggan elit (Veblen goods) cenderung merespons secara paradoks terhadap kenaikan harga—yaitu menaikkan harga justru memperkuat daya pikat produk akibat kelangkaannya.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 43,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 9: STRATEGI HARGA LUXEBRAND] LuxeBrand, sebuah label perhiasan desainer eksklusif, mengalami kelangkaan bahan baku berlian langka yang menyebabkan keterlambatan produksi lini koleksi terbarunya. Alih-alih meminta maaf atau memberikan diskon, Chief Marketing Officer (CMO) LuxeBrand justru menaikkan harga jual produk yang langka tersebut sebesar 40% dan meluncurkan narasi kampanye 'Edisi Terbatas Paling Langka Abad Ini'. Hasilnya, koleksi tersebut terjual habis (sold-out) dalam waktu 48 jam kepada klien VIP.",
+      "pertanyaan": "Strategi menaikkan harga 40% pada saat rantai pasok terganggu berhasil mencegah LuxeBrand dari kebangkrutan finansial tahun ini.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 44,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 9: STRATEGI HARGA LUXEBRAND] LuxeBrand, sebuah label perhiasan desainer eksklusif, mengalami kelangkaan bahan baku berlian langka yang menyebabkan keterlambatan produksi lini koleksi terbarunya. Alih-alih meminta maaf atau memberikan diskon, Chief Marketing Officer (CMO) LuxeBrand justru menaikkan harga jual produk yang langka tersebut sebesar 40% dan meluncurkan narasi kampanye 'Edisi Terbatas Paling Langka Abad Ini'. Hasilnya, koleksi tersebut terjual habis (sold-out) dalam waktu 48 jam kepada klien VIP.",
+      "pertanyaan": "Keterlambatan produksi lini koleksi perhiasan terbaru merupakan rekayasa atau kebohongan yang sengaja diciptakan CMO LuxeBrand untuk menciptakan ilusi kelangkaan di pasar.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 45,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 9: STRATEGI HARGA LUXEBRAND] LuxeBrand, sebuah label perhiasan desainer eksklusif, mengalami kelangkaan bahan baku berlian langka yang menyebabkan keterlambatan produksi lini koleksi terbarunya. Alih-alih meminta maaf atau memberikan diskon, Chief Marketing Officer (CMO) LuxeBrand justru menaikkan harga jual produk yang langka tersebut sebesar 40% dan meluncurkan narasi kampanye 'Edisi Terbatas Paling Langka Abad Ini'. Hasilnya, koleksi tersebut terjual habis (sold-out) dalam waktu 48 jam kepada klien VIP.",
+      "pertanyaan": "Taktik CMO merubah musibah kelangkaan menjadi narasi kampanye 'Edisi Terbatas' merupakan argumen pemosisian merek (brand positioning) yang brilian dan didukung oleh hasil penjualan empiris.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 46,
+      "kategori": "Inference",
+      "narasi": "[KASUS 10: RESTRUKTURISASI UTANG BUILDCORP] Perusahaan konstruksi raksasa, BuildCorp, gagal membayar bunga utang obligasi sebesar $50 Juta minggu lalu akibat keterlambatan pembayaran termin dari proyek pemerintah pusat. Konsorsium kreditur memberi waktu 30 hari untuk merestrukturisasi utang atau mereka akan mengambil alih jaminan aset perusahaan. Direktur Utama BuildCorp memutuskan untuk menjual 40% kepemilikan saham di anak perusahaannya yang bergerak di sektor jalan tol berbayar demi mendapatkan uang tunai (likuiditas) secara cepat, meskipun bisnis jalan tol tersebut adalah sumber aliran kas stabil jangka panjang.",
+      "pertanyaan": "Gagal bayar utang obligasi BuildCorp diakibatkan oleh mismanajemen investasi spekulatif internal oleh Direktur Utama di bursa saham.",
+      "kunci_jawaban": 2
+    },
+    {
+      "id": 47,
+      "kategori": "Recognition of Assumptions",
+      "narasi": "[KASUS 10: RESTRUKTURISASI UTANG BUILDCORP] Perusahaan konstruksi raksasa, BuildCorp, gagal membayar bunga utang obligasi sebesar $50 Juta minggu lalu akibat keterlambatan pembayaran termin dari proyek pemerintah pusat. Konsorsium kreditur memberi waktu 30 hari untuk merestrukturisasi utang atau mereka akan mengambil alih jaminan aset perusahaan. Direktur Utama BuildCorp memutuskan untuk menjual 40% kepemilikan saham di anak perusahaannya yang bergerak di sektor jalan tol berbayar demi mendapatkan uang tunai (likuiditas) secara cepat, meskipun bisnis jalan tol tersebut adalah sumber aliran kas stabil jangka panjang.",
+      "pertanyaan": "Direktur Utama mengasumsikan bahwa penjualan 40% saham jalan tol akan berhasil mendatangkan likuiditas dana segar yang cukup besar sebelum batas tenggat waktu 30 hari berakhir.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 48,
+      "kategori": "Deduction",
+      "narasi": "[KASUS 10: RESTRUKTURISASI UTANG BUILDCORP] Perusahaan konstruksi raksasa, BuildCorp, gagal membayar bunga utang obligasi sebesar $50 Juta minggu lalu akibat keterlambatan pembayaran termin dari proyek pemerintah pusat. Konsorsium kreditur memberi waktu 30 hari untuk merestrukturisasi utang atau mereka akan mengambil alih jaminan aset perusahaan. Direktur Utama BuildCorp memutuskan untuk menjual 40% kepemilikan saham di anak perusahaannya yang bergerak di sektor jalan tol berbayar demi mendapatkan uang tunai (likuiditas) secara cepat, meskipun bisnis jalan tol tersebut adalah sumber aliran kas stabil jangka panjang.",
+      "pertanyaan": "Tindakan penjualan anak perusahaan jalan tol adalah bentuk perlindungan pertahanan diri untuk mencegah konsorsium kreditur menyita jaminan aset induk perusahaan BuildCorp.",
+      "kunci_jawaban": 1
+    },
+    {
+      "id": 49,
+      "kategori": "Interpretation",
+      "narasi": "[KASUS 10: RESTRUKTURISASI UTANG BUILDCORP] Perusahaan konstruksi raksasa, BuildCorp, gagal membayar bunga utang obligasi sebesar $50 Juta minggu lalu akibat keterlambatan pembayaran termin dari proyek pemerintah pusat. Konsorsium kreditur memberi waktu 30 hari untuk merestrukturisasi utang atau mereka akan mengambil alih jaminan aset perusahaan. Direktur Utama BuildCorp memutuskan untuk menjual 40% kepemilikan saham di anak perusahaannya yang bergerak di sektor jalan tol berbayar demi mendapatkan uang tunai (likuiditas) secara cepat, meskipun bisnis jalan tol tersebut adalah sumber aliran kas stabil jangka panjang.",
+      "pertanyaan": "Pemerintah pusat akan segera membayar termin proyek yang terlambat jika BuildCorp berhasil merestrukturisasi utangnya kepada pihak kreditur.",
+      "kunci_jawaban": 3
+    },
+    {
+      "id": 50,
+      "kategori": "Evaluation of Arguments",
+      "narasi": "[KASUS 10: RESTRUKTURISASI UTANG BUILDCORP] Perusahaan konstruksi raksasa, BuildCorp, gagal membayar bunga utang obligasi sebesar $50 Juta minggu lalu akibat keterlambatan pembayaran termin dari proyek pemerintah pusat. Konsorsium kreditur memberi waktu 30 hari untuk merestrukturisasi utang atau mereka akan mengambil alih jaminan aset perusahaan. Direktur Utama BuildCorp memutuskan untuk menjual 40% kepemilikan saham di anak perusahaannya yang bergerak di sektor jalan tol berbayar demi mendapatkan uang tunai (likuiditas) secara cepat, meskipun bisnis jalan tol tersebut adalah sumber aliran kas stabil jangka panjang.",
+      "pertanyaan": "Keputusan menjual porsi aset jalan tol yang memberikan aliran kas stabil adalah argumen atau manuver strategis yang sangat keliru karena akan langsung menyebabkan pemerintah pusat membatalkan seluruh proyek BuildCorp.",
+      "kunci_jawaban": 2
+    }
+  ]
+}
