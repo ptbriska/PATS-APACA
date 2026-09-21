@@ -1,0 +1,261 @@
+{
+  "test_info": {
+    "kode": "KS16",
+    "nama_resmi": "APACA Academic Stress & Burnout Inventory (AASBI)",
+    "nama_singkat": "Academic Stress & Burnout Inventory",
+    "versi": "Versi 1.0 / 2026",
+    "token_ujian": "AASBI2026",
+    "token_master": "PatsTestingKS16",
+    "durasi_menit": 15,
+    "psikolog_pj": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "SIPP": "2026-0819-PSI-01"
+  },
+  "options": [
+    { "label": "Sangat Tidak Sesuai", "value": 1 },
+    { "label": "Tidak Sesuai", "value": 2 },
+    { "label": "Sesuai", "value": 3 },
+    { "label": "Sangat Sesuai", "value": 4 }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": true,
+      "pertanyaan": "Jantung saya berdebar kencang dan pikiran saya mendadak panik saat lembar soal ujian mulai dibagikan."
+    },
+    {
+      "id": 2,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": true,
+      "pertanyaan": "Saya bangun tidur di pagi hari dengan perasaan sangat lelah dan kehabisan energi untuk menghadapi jam pelajaran."
+    },
+    {
+      "id": 3,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa bahwa segala usaha keras belajar yang saya lakukan selama ini pada akhirnya tidak ada gunanya."
+    },
+    {
+      "id": 4,
+      "dimensi": "Pressure Source",
+      "is_favorable": true,
+      "pertanyaan": "Tingginya tuntutan ekspektasi nilai dari orang tua menjadi beban pikiran berat yang terus membayangi saya."
+    },
+    {
+      "id": 5,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": true,
+      "pertanyaan": "Kekhawatiran berlebihan akan kegagalan masa depan membuat saya sering mengalami kesulitan tidur nyenyak."
+    },
+    {
+      "id": 6,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": true,
+      "pertanyaan": "Aktivitas pembelajaran seharian membuat stamina emosional saya terasa benar-benar terkuras habis."
+    },
+    {
+      "id": 7,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": true,
+      "pertanyaan": "Saya menjadi semakin tidak peduli (apatis) terhadap angka nilai atau pencapaian akademis saya di sekolah/kampus."
+    },
+    {
+      "id": 8,
+      "dimensi": "Pressure Source",
+      "is_favorable": true,
+      "pertanyaan": "Iklim persaingan nilai yang ketat di dalam kelas membuat saya merasa cemas dan tertekan setiap hari."
+    },
+    {
+      "id": 9,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa sangat gelisah jika harus menghadiri evaluasi atau tes tanpa sempat menguasai seluruh materi."
+    },
+    {
+      "id": 10,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa sudah tidak memiliki daya kognitif yang cukup untuk menuntaskan tumpukan tugas yang diberikan."
+    },
+    {
+      "id": 11,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": true,
+      "pertanyaan": "Saya mulai meragukan apakah jurusan atau sekolah yang saya jalani saat ini benar-benar memiliki arti bagi saya."
+    },
+    {
+      "id": 12,
+      "dimensi": "Pressure Source",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa sangat cemas akan risiko kehilangan beasiswa, peringkat, atau fasilitas belajar jika performa saya menurun."
+    },
+    {
+      "id": 13,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": true,
+      "pertanyaan": "Rasa takut dinilai tidak kompeten membendung keberanian saya saat diminta tampil melakukan presentasi di depan kelas."
+    },
+    {
+      "id": 14,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": true,
+      "pertanyaan": "Padatnya jam belajar dan tenggat tugas membuat saya sering mengalami kelelahan fisik, pusing, atau sakit perut."
+    },
+    {
+      "id": 15,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": true,
+      "pertanyaan": "Saya cenderung sengaja menarik diri dan enggan berinteraksi dalam kegiatan diskusi atau kelompok belajar."
+    },
+    {
+      "id": 16,
+      "dimensi": "Pressure Source",
+      "is_favorable": true,
+      "pertanyaan": "Tumpukan instruksi tugas dari guru/dosen terasa melampaui batas wajar kapasitas kemampuan harian saya."
+    },
+    {
+      "id": 17,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": true,
+      "pertanyaan": "Fokus pikiran saya mendadak 'blank' atau membeku ketika menemukan tipe soal yang sukar di dalam ruang ujian."
+    },
+    {
+      "id": 18,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": true,
+      "pertanyaan": "Mendengar kata 'tugas' atau 'ujian' saja sudah cukup untuk membuat emosi saya merasa sangat lelah dan jenuh."
+    },
+    {
+      "id": 19,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": true,
+      "pertanyaan": "Proses kegiatan belajar harian terasa seperti formalitas rutin yang sangat membosankan dan menyiksa."
+    },
+    {
+      "id": 20,
+      "dimensi": "Pressure Source",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa terbebankan oleh dorongan internal dan eksternal untuk selalu tampil sempurna tanpa cela."
+    },
+    {
+      "id": 21,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": true,
+      "pertanyaan": "Tingkat ketegangan dan rasa panik saya meningkat drastis setiap kali jadwal pengumuman nilai mendekat."
+    },
+    {
+      "id": 22,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa tidak lagi memiliki sisa energi emosional untuk bersikap ramah kepada teman atau guru di lingkungan sekolah."
+    },
+    {
+      "id": 23,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": true,
+      "pertanyaan": "Saya merasa kemampuan berpikir dan kapasitas diri saya secara bertahap terus merosot dari hari ke hari."
+    },
+    {
+      "id": 24,
+      "dimensi": "Pressure Source",
+      "is_favorable": true,
+      "pertanyaan": "Lingkungan sekitar saya seolah tidak memberikan ruang toleransi sedikit pun untuk sebuah kesalahan atau kegagalan."
+    },
+    {
+      "id": 25,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": false,
+      "pertanyaan": "Saya mampu menjaga ketenangan pikiran dan kepercayaan diri saat menghadapi ujian yang relatif sulit."
+    },
+    {
+      "id": 26,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": false,
+      "pertanyaan": "Saya bangun di pagi hari dengan tubuh yang segar dan bersemangat menyambut aktivitas pembelajaran baru."
+    },
+    {
+      "id": 27,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": false,
+      "pertanyaan": "Saya menemukan rasa bangga dan kebahagiaan tersendiri saat berhasil menguasai materi pelajaran yang baru."
+    },
+    {
+      "id": 28,
+      "dimensi": "Pressure Source",
+      "is_favorable": false,
+      "pertanyaan": "Orang tua saya memberikan dukungan emosional yang hangat tanpa membebani saya dengan target nilai yang kaku."
+    },
+    {
+      "id": 29,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": false,
+      "pertanyaan": "Saya memiliki cara yang efektif untuk meredakan rasa cemas dan tegang sebelum sesi presentasi dimulai."
+    },
+    {
+      "id": 30,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": false,
+      "pertanyaan": "Saya memiliki stamina mental dan energi yang cukup untuk menyelesaikan seluruh kewajiban tugas harian."
+    },
+    {
+      "id": 31,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": false,
+      "pertanyaan": "Saya meyakini bahwa apa yang saya pelajari saat ini sangat bermanfaat bagi pertumbuhan masa depan saya."
+    },
+    {
+      "id": 32,
+      "dimensi": "Pressure Source",
+      "is_favorable": false,
+      "pertanyaan": "Suasana dan iklim belajar di kelas saya terasa sangat saling mendukung dan jauh dari persaingan yang tidak sehat."
+    },
+    {
+      "id": 33,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": false,
+      "pertanyaan": "Saya merasa mantap dan yakin pada persiapan belajar yang telah saya lakukan sebelum hari evaluasi tiba."
+    },
+    {
+      "id": 34,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": false,
+      "pertanyaan": "Saya merasa antusias dan menikmati ritme rutinitas harian di lingkungan sekolah/kampus."
+    },
+    {
+      "id": 35,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": false,
+      "pertanyaan": "Saya merasa senang dapat berdiskusi aktif dan menjaga relasi yang hangat bersama teman sekelas dan pengajar."
+    },
+    {
+      "id": 36,
+      "dimensi": "Pressure Source",
+      "is_favorable": false,
+      "pertanyaan": "Guru/dosen memberikan alokasi porsi tugas dan tenggat waktu yang sangat realistis dan terukur."
+    },
+    {
+      "id": 37,
+      "dimensi": "Academic Anxiety",
+      "is_favorable": false,
+      "pertanyaan": "Saya mampu mempertahankan kejernihan berpikir dan memecahkan soal ujian secara sistematis meskipun dalam tekanan."
+    },
+    {
+      "id": 38,
+      "dimensi": "Emotional Exhaustion",
+      "is_favorable": false,
+      "pertanyaan": "Saya dapat mengelola waktu istirahat dan menjaga kestabilan fisik sehingga tidak mudah mengalami kelelahan mental."
+    },
+    {
+      "id": 39,
+      "dimensi": "Burnout (Cynicism)",
+      "is_favorable": false,
+      "pertanyaan": "Saya percaya pada potensi dan kompetensi akademik diri saya untuk terus berkembang menjadi lebih baik."
+    },
+    {
+      "id": 40,
+      "dimensi": "Pressure Source",
+      "is_favorable": false,
+      "pertanyaan": "Saya merasa bebas untuk mengekspresikan proses belajar saya tanpa merasa takut dihakimi oleh orang lain."
+    }
+  ]
+}
