@@ -1,0 +1,555 @@
+{
+  "test_info": {
+    "kode": "KU4",
+    "nama_resmi": "APACA Personality Preference Indicator (PPI)",
+    "nama_singkat": "General Personality Preference Indicator",
+    "versi": "Versi General 1.0 / 2026",
+    "token_ujian": "MBTI2026",
+    "token_master": "PatsTestingKU4",
+    "durasi_menit": 20,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "dikotomi": "E_vs_I",
+      "skenario": "Saat berada di lingkungan atau acara sosial yang baru, kamu biasanya lebih cenderung untuk:",
+      "options": [
+        { "code": "A", "label": "Aktif membuka obrolan dan berkenalan dengan banyak orang baru.", "pole": "E" },
+        { "code": "B", "label": "Menunggu diajak bicara atau mengobrol secara mendalam dengan beberapa orang saja.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 2,
+      "dikotomi": "S_vs_N",
+      "skenario": "Saat mempelajari atau memahami sesuatu hal yang baru, kamu lebih tertarik pada:",
+      "options": [
+        { "code": "A", "label": "Fakta nyata, detail konkret, dan hal-hal praktis yang terjadi saat ini.", "pole": "S" },
+        { "code": "B", "label": "Konsep dasar, gambaran besar (big picture), dan potensi kemungkinan masa depan.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 3,
+      "dikotomi": "T_vs_F",
+      "skenario": "Saat harus mengambil keputusan penting dalam hidup, pertimbangan utamamu adalah:",
+      "options": [
+        { "code": "A", "label": "Logika rasional, kebenaran objektif, dan analisis untung-rugi secara adil.", "pole": "T" },
+        { "code": "B", "label": "Perasaan hati, nilai-nilai personal, dan dampaknya bagi keharmonisan hubungan.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 4,
+      "dikotomi": "J_vs_P",
+      "skenario": "Dalam menjalankan aktivitas dan agenda sehari-hari, kamu merasa lebih nyaman jika:",
+      "options": [
+        { "code": "A", "label": "Memiliki rencana yang terstruktur, rapi, dan target waktu yang jelas.", "pole": "J" },
+        { "code": "B", "label": "Tetap fleksibel, santai, dan membiarkan alur berjalan secara spontan.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 5,
+      "dikotomi": "E_vs_I",
+      "skenario": "Setelah menjalani pekan yang sangat sibuk dan melelahkan, cara terbaikmu untuk mengisi ulang energi adalah:",
+      "options": [
+        { "code": "A", "label": "Pergi keluar nongkrong atau berkumpul bersama teman-teman.", "pole": "E" },
+        { "code": "B", "label": "Menyendiri di rumah menikmati waktu pribadi tanpa gangguan.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 6,
+      "dikotomi": "S_vs_N",
+      "skenario": "Orang lain lebih sering mengenalmu sebagai pribadi yang:",
+      "options": [
+        { "code": "A", "label": "Realistis, praktis, dan fokus pada fakta di depan mata.", "pole": "S" },
+        { "code": "B", "label": "Imajinatif, inovatif, dan kaya akan ide-ide masa depan.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 7,
+      "dikotomi": "T_vs_F",
+      "skenario": "Ketika memberikan kritik atau masukan kepada teman yang melakukan kesalahan, kamu cenderung:",
+      "options": [
+        { "code": "A", "label": "Sangat jujur, lugas, dan berfokus pada fakta kesalahan agar cepat diperbaiki.", "pole": "T" },
+        { "code": "B", "label": "Hati-hati dalam memilih kata agar tidak menyakiti perasaannya.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 8,
+      "dikotomi": "J_vs_P",
+      "skenario": "Bagaimana caramu saat merencanakan liburan atau perjalanan jauh?",
+      "options": [
+        { "code": "A", "label": "Menyusun rute, tempat tinggal, dan jadwal kegiatan secara rinci jauh-jauh hari.", "pole": "J" },
+        { "code": "B", "label": "Membeli tiket saja dulu, sisanya dipikirkan secara mendadak saat sampai di lokasi.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 9,
+      "dikotomi": "E_vs_I",
+      "skenario": "Saat sedang berdiskusi dalam kelompok, gaya komunikasimu biasanya:",
+      "options": [
+        { "code": "A", "label": "Langsung mengutarakan ide secara lisan sambil berpikir.", "pole": "E" },
+        { "code": "B", "label": "Merangkai pikiran dalam otak dulu, baru berbicara jika gagasannya sudah matang.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 10,
+      "dikotomi": "S_vs_N",
+      "skenario": "Saat membaca buku atau menonton film, kamu lebih menyukai alur cerita yang:",
+      "options": [
+        { "code": "A", "label": "Jelas, logis, dan mengangkat kisah nyata sehari-hari.", "pole": "S" },
+        { "code": "B", "label": "Penuh kiasan, simbolik, atau fantasi yang memancing imajinasi.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 11,
+      "dikotomi": "T_vs_F",
+      "skenario": "Mana yang menurutmu lebih penting dalam menciptakan iklim komunitas yang baik?",
+      "options": [
+        { "code": "A", "label": "Keadilan, kebenaran hukum/aturan, dan kesetaraan hak.", "pole": "T" },
+        { "code": "B", "label": "Empati, kepedulian sosial, dan rasa saling mengasihi.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 12,
+      "dikotomi": "J_vs_P",
+      "skenario": "Kondisi kamar tidur atau meja belajarmu sehari-hari biasanya:",
+      "options": [
+        { "code": "A", "label": "Selalu rapi, barang diletakkan kembali sesuai tempatnya.", "pole": "J" },
+        { "code": "B", "label": "Agak berantakan tapi kamu tetap tahu letak barang-barangmu.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 13,
+      "dikotomi": "E_vs_I",
+      "skenario": "Kamu merasa lebih mudah mengekspresikan pikiran dan perasaanmu melalui:",
+      "options": [
+        { "code": "A", "label": "Obrolan lisan secara langsung.", "pole": "E" },
+        { "code": "B", "label": "Tulisan (chat, memo, atau diary).", "pole": "I" }
+      ]
+    },
+    {
+      "id": 14,
+      "dikotomi": "S_vs_N",
+      "skenario": "Saat dihadapkan pada suatu permasalahan, langkah pertama yang kamu lakukan adalah:",
+      "options": [
+        { "code": "A", "label": "Melihat fakta empiris dan solusi nyata yang sudah pernah terbukti berhasil.", "pole": "S" },
+        { "code": "B", "label": "Mencari sudut pandang baru dan alternatif terobosan yang berbeda.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 15,
+      "dikotomi": "T_vs_F",
+      "skenario": "Saat ada teman yang menceritakan masalah hidupnya padamu, kamu cenderung spontan:",
+      "options": [
+        { "code": "A", "label": "Memberikan saran logis dan langkah solusi nyata untuk menyelesaikan masalahnya.", "pole": "T" },
+        { "code": "B", "label": "Mendengarkan dengan emosional dan memberikan rasa tenang serta kehangatan.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 16,
+      "dikotomi": "J_vs_P",
+      "skenario": "Bagaimana sikapmu terhadap tenggat waktu (deadline) suatu tugas?",
+      "options": [
+        { "code": "A", "label": "Menyelesaikannya bertahap jauh hari sebelum deadline agar pikiran tenang.", "pole": "J" },
+        { "code": "B", "label": "Mengerjakannya secara cepat dan fokus saat sudah mendekati batas akhir.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 17,
+      "dikotomi": "E_vs_I",
+      "skenario": "Di lingkungan sekitarmu, kamu biasanya dianggap sebagai orang yang:",
+      "options": [
+        { "code": "A", "label": "Sangat ekspresif, mudah berteman, dan terbuka.", "pole": "E" },
+        { "code": "B", "label": "Tenang, privasi terjaga, dan pemilih dalam berteman.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 18,
+      "dikotomi": "S_vs_N",
+      "skenario": "Kamu lebih menikmati instruksi atau arahan yang bersifat:",
+      "options": [
+        { "code": "A", "label": "Jelas, detail, dan langkah demi langkah.", "pole": "S" },
+        { "code": "B", "label": "Garis besar saja, sisanya diberikan kebebasan berimajinasi.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 19,
+      "dikotomi": "T_vs_F",
+      "skenario": "Dalam menilai sebuah keputusan akhir, kamu merasa lebih puas jika keputusan tersebut:",
+      "options": [
+        { "code": "A", "label": "Masuk akal secara logika ilmiah walau ada yang kurang suka.", "pole": "T" },
+        { "code": "B", "label": "Dapat diterima dengan baik oleh semua pihak demi perdamaian.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 20,
+      "dikotomi": "J_vs_P",
+      "skenario": "Sikapmu ketika rencana yang sudah dibuat mendadak berantakan akibat situasi darurat:",
+      "options": [
+        { "code": "A", "label": "Kecewa dan tertekan karena jadwal yang disiapkan jadi kacau.", "pole": "J" },
+        { "code": "B", "label": "Biasa saja dan dengan santai langsung menyesuaikan diri.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 21,
+      "dikotomi": "E_vs_I",
+      "skenario": "Ketika mendapatkan ide baru yang menarik, respon spontanmu adalah:",
+      "options": [
+        { "code": "A", "label": "Segera menceritakannya kepada orang terdekat untuk meminta pendapat.", "pole": "E" },
+        { "code": "B", "label": "Memikirkannya sendiri secara mendalam sebelum membagikannya.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 22,
+      "dikotomi": "S_vs_N",
+      "skenario": "Mana yang lebih menarik minat perhatianmu sehari-hari?",
+      "options": [
+        { "code": "A", "label": "Hal-hal nyata yang sedang terjadi di sekitarmu saat ini.", "pole": "S" },
+        { "code": "B", "label": "Gagasan, makna tersembunyi, dan visi tentang apa yang mungkin terjadi nanti.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 23,
+      "dikotomi": "T_vs_F",
+      "skenario": "Saat terjadi perselisihan antara dua teman dekatmu, kamu berusaha untuk:",
+      "options": [
+        { "code": "A", "label": "Bersikap netral dan mencari tahu siapa yang benar berdasarkan fakta.", "pole": "T" },
+        { "code": "B", "label": "Menenangkan perasaan mereka berdua dan memulihkan hubungan baik.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 24,
+      "dikotomi": "J_vs_P",
+      "skenario": "Kamu merasa lebih memiliki kontrol atas hidupmu jika:",
+      "options": [
+        { "code": "A", "label": "Segalanya sudah diputuskan dan memiliki kepastian.", "pole": "J" },
+        { "code": "B", "label": "Banyak pilihan yang tetap dibiarkan terbuka.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 25,
+      "dikotomi": "E_vs_I",
+      "skenario": "Dalam sebuah acara pesta atau kumpul bersama, kamu cenderung:",
+      "options": [
+        { "code": "A", "label": "Bertahan hingga akhir acara dan menikmati suasana ramai.", "pole": "E" },
+        { "code": "B", "label": "Pulang lebih awal setelah merasa energi sosialmu habis.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 26,
+      "dikotomi": "S_vs_N",
+      "skenario": "Dalam mengingat peristiwa masa lalu, ingatanmu lebih kuat pada:",
+      "options": [
+        { "code": "A", "label": "Detail peristiwa: siapa saja yang hadir, lokasi, dan apa persisnya yang terjadi.", "pole": "S" },
+        { "code": "B", "label": "Kesan emosional, suasana, atau makna dari kejadian tersebut.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 27,
+      "dikotomi": "T_vs_F",
+      "skenario": "Manakah pujian yang membuatmu merasa paling dihargai atas usahamu?",
+      "options": [
+        { "code": "A", "label": "“Kamu sangat cerdas, kritis, dan hasil kerjamu sangat tepat!”", "pole": "T" },
+        { "code": "B", "label": "“Kamu sangat baik, peduli, dan selalu ada untuk membantu!”", "pole": "F" }
+      ]
+    },
+    {
+      "id": 28,
+      "dikotomi": "J_vs_P",
+      "skenario": "Dalam menuntaskan daftar kewajiban harian (to-do list), gaya kerjamu adalah:",
+      "options": [
+        { "code": "A", "label": "Mencoret satu per satu secara berurutan sesuai prioritas.", "pole": "J" },
+        { "code": "B", "label": "Mengerjakan mana yang terasa ingin dikerjakan dulu saat itu.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 29,
+      "dikotomi": "E_vs_I",
+      "skenario": "Bagaimana caramu mengenal seseorang lebih dekat?",
+      "options": [
+        { "code": "A", "label": "Sering berinteraksi dan melakukan aktivitas bersama.", "pole": "E" },
+        { "code": "B", "label": "Melakukan percakapan pribadi yang mendalam dari hati ke hati.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 30,
+      "dikotomi": "S_vs_N",
+      "skenario": "Kamu lebih mengagumi orang yang memiliki kemampuan:",
+      "options": [
+        { "code": "A", "label": "Sangat teliti, paham detail operasional, dan handal mengeksekusi.", "pole": "S" },
+        { "code": "B", "label": "Visioner, kreatif menciptakan gagasan baru yang belum pernah ada.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 31,
+      "dikotomi": "T_vs_F",
+      "skenario": "Saat dihadapkan pada situasi dilema emosional, kamu cenderung lebih mempercayai:",
+      "options": [
+        { "code": "A", "label": "Analisis pikiran dingin dan bukti fakta rasional.", "pole": "T" },
+        { "code": "B", "label": "Kata hati, intuisi kebaikan, dan nilai empati.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 32,
+      "dikotomi": "J_vs_P",
+      "skenario": "Gaya kerjamu saat menyelesaikan sebuah proyek atau tugas adalah:",
+      "options": [
+        { "code": "A", "label": "Konsisten dengan ritme yang sama dari awal hingga akhir.", "pole": "J" },
+        { "code": "B", "label": "Melakukan dorongan energi besar secara tiba-tiba menjelang akhir.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 33,
+      "dikotomi": "E_vs_I",
+      "skenario": "Saat berada di antara kumpulan orang banyak, kamu lebih merasa sebagai:",
+      "options": [
+        { "code": "A", "label": "Bagian pusat dari dinamika atau interaksi kelompok.", "pole": "E" },
+        { "code": "B", "label": "Pengamat tenang yang menikmati dari pinggir.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 34,
+      "dikotomi": "S_vs_N",
+      "skenario": "Saat diberi hadiah atau barang baru, perhatian pertamamu tertuju pada:",
+      "options": [
+        { "code": "A", "label": "Wujud fisik, kualitas buatan, dan kegunaan praktisnya saat ini.", "pole": "S" },
+        { "code": "B", "label": "Makna di balik pemberian itu dan potensi penggunaannya secara kreatif.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 35,
+      "dikotomi": "T_vs_F",
+      "skenario": "Di antara dua kelemahan ini, mana yang lebih sulit kamu toleransi dari orang lain?",
+      "options": [
+        { "code": "A", "label": "Ketidaklogisan, kebodohan yang disengaja, dan ketidakadilan.", "pole": "T" },
+        { "code": "B", "label": "Kekejaman, sikap dingin tak berhati, dan ketidakpedulian.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 36,
+      "dikotomi": "J_vs_P",
+      "skenario": "Kamu merasa kehidupan sehari-harimu akan lebih menyenangkan jika:",
+      "options": [
+        { "code": "A", "label": "Memiliki rutinitas yang teratur dan dapat diprediksi.", "pole": "J" },
+        { "code": "B", "label": "Memiliki banyak kejutan spontan dan pengalaman bebas.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 37,
+      "dikotomi": "E_vs_I",
+      "skenario": "Dalam mengekspresikan minatmu terhadap suatu topik baru, kamu cenderung:",
+      "options": [
+        { "code": "A", "label": "Suka membicarakannya dengan siapa saja yang kamu temui.", "pole": "E" },
+        { "code": "B", "label": "Mendalaminya secara privat sampai benar-benar paham.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 38,
+      "dikotomi": "S_vs_N",
+      "skenario": "Ketika mendengarkan seseorang berbicara panjang lebar, kamu mulai bosan jika ia:",
+      "options": [
+        { "code": "A", "label": "Bicara terlalu berputar-putar dalam teori tanpa contoh nyata.", "pole": "S" },
+        { "code": "B", "label": "Bicara terlalu mendetail pada hal-hal kecil yang tidak penting.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 39,
+      "dikotomi": "T_vs_F",
+      "skenario": "Menurut pandangan hidupmu, mana yang lebih baik?",
+      "options": [
+        { "code": "A", "label": "Bersikap adil walaupun harus mengorbankan perasaan.", "pole": "T" },
+        { "code": "B", "label": "Bersikap pengasih walaupun harus mengalah pada aturan.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 40,
+      "dikotomi": "J_vs_P",
+      "skenario": "Bagaimana sikapmu terhadap keputusan yang sudah dibuat?",
+      "options": [
+        { "code": "A", "label": "Lega karena masalah sudah selesai dan bisa lanjut ke hal berikutnya.", "pole": "J" },
+        { "code": "B", "label": "Kadang ragu dan masih ingin mempertimbangkan kemungkinan opsi lain.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 41,
+      "dikotomi": "E_vs_I",
+      "skenario": "Saat waktu luang di akhir pekan, kamu lebih memilih untuk:",
+      "options": [
+        { "code": "A", "label": "Menghubungi teman untuk jalan-jalan atau beraktivitas luar.", "pole": "E" },
+        { "code": "B", "label": "Menikmati hobi mandiri di rumah (membaca, main game, streaming).", "pole": "I" }
+      ]
+    },
+    {
+      "id": 42,
+      "dikotomi": "S_vs_N",
+      "skenario": "Dalam menyelesaikan masalah matematika atau logika, kamu lebih menyukai:",
+      "options": [
+        { "code": "A", "label": "Rumus teruji yang langkah-langkahnya sudah pasti.", "pole": "S" },
+        { "code": "B", "label": "Menemukan pola atau pola pemikiran baru secara mandiri.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 43,
+      "dikotomi": "T_vs_F",
+      "skenario": "Saat temanmu melakukan sesuatu yang salah secara aturan, kamu akan:",
+      "options": [
+        { "code": "A", "label": "Tegas menegurnya karena aturan berlaku sama untuk semua orang.", "pole": "T" },
+        { "code": "B", "label": "Memaklumi alasannya dan mencari cara membantunya secara personal.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 44,
+      "dikotomi": "J_vs_P",
+      "skenario": "Menjelang tidur malam, kamu cenderung:",
+      "options": [
+        { "code": "A", "label": "Membayangkan agenda kegiatan besok yang sudah tersusun.", "pole": "J" },
+        { "code": "B", "label": "Membiarkan pikiran mengembara tanpa memikirkan jadwal besok.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 45,
+      "dikotomi": "E_vs_I",
+      "skenario": "Ketika harus berada dalam kelompok yang belum kamu kenal sama sekali, kamu merasa:",
+      "options": [
+        { "code": "A", "label": "Tertantang dan bersemangat untuk memulai persahabatan baru.", "pole": "E" },
+        { "code": "B", "label": "Canggung dan membutuhkan waktu untuk beradaptasi.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 46,
+      "dikotomi": "S_vs_N",
+      "skenario": "Saat membeli gawai atau barang elektronik baru, kamu fokus pada:",
+      "options": [
+        { "code": "A", "label": "Spesifikasi teknik, daya tahan, dan perbandingan harga nyata.", "pole": "S" },
+        { "code": "B", "label": "Konsep desain, kecanggihan fitur masa depan, dan gengsinya.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 47,
+      "dikotomi": "T_vs_F",
+      "skenario": "Manakah pernyataan yang lebih cocok menggambarkan dirimu?",
+      "options": [
+        { "code": "A", "label": "“Saya dipimpin oleh otak dan logika berpikir saya.”", "pole": "T" },
+        { "code": "B", "label": "“Saya dipimpin oleh kata hati dan nilai empati saya.”", "pole": "F" }
+      ]
+    },
+    {
+      "id": 48,
+      "dikotomi": "J_vs_P",
+      "skenario": "Bagaimana caramu mengelola berkas atau catatan pribadi?",
+      "options": [
+        { "code": "A", "label": "Dikelompokkan rapi dalam folder berlabel khusus.", "pole": "J" },
+        { "code": "B", "label": "Disimpan secara acak asal mudah dicari lewat pencarian otomatis.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 49,
+      "dikotomi": "E_vs_I",
+      "skenario": "Saat merasa stres, kamu lebih cepat tenang jika:",
+      "options": [
+        { "code": "A", "label": "Meluapkan cerita dan keluh kesahmu kepada orang lain.", "pole": "E" },
+        { "code": "B", "label": "Mengasingkan diri sejenak untuk memproses emosi secara mandiri.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 50,
+      "dikotomi": "S_vs_N",
+      "skenario": "Saat mendengarkan lagu, kamu lebih mudah tertarik pada:",
+      "options": [
+        { "code": "A", "label": "Nada musiknya yang enak didengar dan iramanya yang nyata.", "pole": "S" },
+        { "code": "B", "label": "Lirik lagu yang memiliki arti mendalam dan penuh kiasan.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 51,
+      "dikotomi": "T_vs_F",
+      "skenario": "Dalam sebuah kerja tim, peran yang paling sesuai untukmu adalah:",
+      "options": [
+        { "code": "A", "label": "Pengevaluasi kritis yang memastikan kebenaran hasil kerja.", "pole": "T" },
+        { "code": "B", "label": "Penjaga motivasi yang memastikan semua anggota merasa nyaman.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 52,
+      "dikotomi": "J_vs_P",
+      "skenario": "Saat berbelanja ke supermarket atau pasar, kamu biasanya:",
+      "options": [
+        { "code": "A", "label": "Membawa catatan belanjaan dan hanya membeli sesuai daftar.", "pole": "J" },
+        { "code": "B", "label": "Melihat-lihat dulu dan membeli apa saja yang tampak menarik.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 53,
+      "dikotomi": "E_vs_I",
+      "skenario": "Dalam lingkungan kerja atau sekolah, orang-orang biasanya:",
+      "options": [
+        { "code": "A", "label": "Mudah tahu apa yang sedang kamu pikirkan atau kerjakan.", "pole": "E" },
+        { "code": "B", "label": "Kaget saat tahu apa yang sedang kamu rencanakan diam-diam.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 54,
+      "dikotomi": "S_vs_N",
+      "skenario": "Kamu lebih percaya pada pengetahuan yang didapat dari:",
+      "options": [
+        { "code": "A", "label": "Pengalaman praktis dan pengamatan langsung mata kepala sendiri.", "pole": "S" },
+        { "code": "B", "label": "Teori, pemikiran abstrak, dan wawasan intuisi dalam pikiran.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 55,
+      "dikotomi": "T_vs_F",
+      "skenario": "Ketika harus memilih di antara dua hal ini untuk diri sendiri:",
+      "options": [
+        { "code": "A", "label": "Lebih baik dihormati karena kompetensi dan ketegasanmu.", "pole": "T" },
+        { "code": "B", "label": "Lebih baik disukai karena kebaikan dan kepedulianmu.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 56,
+      "dikotomi": "J_vs_P",
+      "skenario": "Bagaimana caramu merapikan pekerjaan sebelum dikumpulkan?",
+      "options": [
+        { "code": "A", "label": "Memeriksanya berulang kali memastikan tidak ada aturan yang terlewat.", "pole": "J" },
+        { "code": "B", "label": "Langsung mengumpulkannya saat merasa esensi tugasnya sudah cukup.", "pole": "P" }
+      ]
+    },
+    {
+      "id": 57,
+      "dikotomi": "E_vs_I",
+      "skenario": "Manakah yang membuatmu merasa lebih berenergi di akhir hari?",
+      "options": [
+        { "code": "A", "label": "Banyak berinteraksi dan bertukar cerita dengan banyak orang.", "pole": "E" },
+        { "code": "B", "label": "Memiliki momen hening dan ruang pribadi yang tenang.", "pole": "I" }
+      ]
+    },
+    {
+      "id": 58,
+      "dikotomi": "S_vs_N",
+      "skenario": "Ketika diberi ide baru yang tidak biasa, reaksi pertama kamu:",
+      "options": [
+        { "code": "A", "label": "Mencari kelemahan praktisnya dan bertanya bagaimana penerapannya.", "pole": "S" },
+        { "code": "B", "label": "Antusias membayangkan potensi besar di balik ide tersebut.", "pole": "N" }
+      ]
+    },
+    {
+      "id": 59,
+      "dikotomi": "T_vs_F",
+      "skenario": "Manakah sifat yang paling kamu banggakan dari dirimu?",
+      "options": [
+        { "code": "A", "label": "Ketajaman berfikir rasional dan kejujuran tanpa kompromi.", "pole": "T" },
+        { "code": "B", "label": "Kelembutan hati dan ketulusan dalam membantu sesama.", "pole": "F" }
+      ]
+    },
+    {
+      "id": 60,
+      "dikotomi": "J_vs_P",
+      "skenario": "Secara keseluruhan, ritme hidupmu paling tepat digambarkan sebagai:",
+      "options": [
+        { "code": "A", "label": "Terstruktur, pasti, dan penuh dengan perencanaan matang.", "pole": "J" },
+        { "code": "B", "label": "Bebas, fleksibel, dan selalu siap mengikuti arus kejutan.", "pole": "P" }
+      ]
+    }
+  ]
+}
