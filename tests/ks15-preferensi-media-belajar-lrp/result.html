@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KS15 APACA Learning Resource Preference Test (LRP)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean White Modern Futurism Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #0d9488; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.80rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-primary { background: linear-gradient(135deg, #0d9488, #14b8a6); }
+    .badge-secondary { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .badge-tertiary { background: linear-gradient(135deg, #6366f1, #818cf8); }
+    .badge-low { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-avoided { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 900px) {
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+
+    .chart-box { 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(13, 148, 136, 0.05);
+    }
+
+    .highlight-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .hl-card {
+      border-radius: 10px;
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .hl-card.primary {
+      background: #f0fdf4;
+      border-left: 6px solid #16a34a;
+    }
+
+    .hl-card.avoided {
+      background: #fef2f2;
+      border-left: 6px solid #dc2626;
+    }
+
+    .hl-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: #ffffff;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .strategy-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+      border: 1px solid #ccfbf1;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 20px 0;
+    }
+
+    .step-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 10px;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0d9488;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .combo-card {
+      background-color: #ffffff;
+      border: 1px solid #99f6e4;
+      border-left: 6px solid #0d9488;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+
+    .guidance-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS15_LRP_Profil_Media_Belajar.pdf')" class="btn-primary" style="width: auto; background-color: #0d9488;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN LEARNING RESOURCE PREFERENCE TEST (LRP)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS15 - APACA Learning Resource Preference Test (LRP)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Top vs Avoided Media -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN REKOMENDASI MEDIA UTAMA VS. DIHINDARI</div>
+        
+        <div class="highlight-cards">
+          <div class="hl-card primary">
+            <h4 style="color: #15803d; margin-top: 0; margin-bottom: 12px; font-size: 1rem;">🌟 TOP 3 PRIMARY RESOURCES (Pemicu Akselerasi)</h4>
+            <div id="top3-list">
+              <!-- Render via JS -->
+            </div>
+          </div>
+
+          <div class="hl-card avoided">
+            <h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 12px; font-size: 1rem;">⚠️ AVOIDED RESOURCES (Memicu Kejenuhan / Distraksi)</h4>
+            <div id="bottom2-list">
+              <!-- Render via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Visualisasi Dual Chart (Hierarchy Bar & Category Breakdown) -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI PERINGKAT HIERARKI & KATEGORI MEDIA BELAJAR</div>
+        
+        <div class="charts-grid">
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Resource Stack Hierarchy Chart (14 Media)</h5>
+            <canvas id="lrpHierarchyChart" style="max-height: 420px;"></canvas>
+          </div>
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Category Breakdown (4 Kelompok)</h5>
+            <canvas id="lrpCategoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Tabulasi & Pemeringkatan 14 Artefak Media -->
+      <div class="report-section">
+        <div class="report-section-title">III. PEMERINGKATAN DETAIL 14 ARTEFAK MEDIA BELAJAR</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Artefak Media Belajar</th>
+              <th>Kategori Media</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Preference (%)</th>
+              <th>Status Dominasi</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section IV: Deteksi Pola Kombinasi Resource Stack -->
+      <div class="report-section">
+        <div class="report-section-title">IV. ANALISIS POLA KOMBINASI RESOURCE STACK</div>
+        <div id="combo-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section V: Resource Stack Strategy Builder (3-Step Loop) -->
+      <div class="report-section">
+        <div class="report-section-title">V. RANGKAIAN STRATEGI BELAJAR OPTIMAL (RESOURCE STACK BUILDER)</div>
+        <div class="strategy-card">
+          <h4 style="margin-top:0; color:#0d9488; font-size:1.05rem;">Alur Rangkaian Belajar 3 Tahap (3-Step Learning Loop)</h4>
+          <p style="font-size:0.88rem; color:#334155; margin-bottom:14px;">
+            Gunakan urutan tahapan media berikut untuk mencapai efisiensi kognitif puncak dan daya ingat jangka panjang:
+          </p>
+
+          <div class="step-box">
+            <div class="step-num">1</div>
+            <div>
+              <strong style="color:#0f172a; font-size:0.9rem;">TAHAP 1: OPENER (PEMBUKA KONSEP)</strong>
+              <div id="stg-step1" style="font-size:0.85rem; color:#0d9488; font-weight:700;">-</div>
+              <div style="font-size:0.80rem; color:#64748b;">Gunakan media ini untuk memicu pemahaman awal tanpa tekanan hafalan.</div>
+            </div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-num">2</div>
+            <div>
+              <strong style="color:#0f172a; font-size:0.9rem;">TAHAP 2: DEEP DIVE (PENDALAMAN MATERI)</strong>
+              <div id="stg-step2" style="font-size:0.85rem; color:#0284c7; font-weight:700;">-</div>
+              <div style="font-size:0.80rem; color:#64748b;">Gunakan media ini untuk membedah detail logika dan mengklarifikasi bagian sulit.</div>
+            </div>
+          </div>
+
+          <div class="step-box">
+            <div class="step-num">3</div>
+            <div>
+              <strong style="color:#0f172a; font-size:0.9rem;">TAHAP 3: CONSOLIDATION (KUNCI RETENSI UJIAN)</strong>
+              <div id="stg-step3" style="font-size:0.85rem; color:#16a34a; font-weight:700;">-</div>
+              <div style="font-size:0.80rem; color:#64748b;">Uji daya rekam dan kesiapan ujian secara aktif sebelum hari tes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section VI: Panduan Aksional untuk Orang Tua & Sekolah -->
+      <div class="report-section">
+        <div class="report-section-title">VI. PANDUAN PENATAAN MEDIA UNTUK ORANG TUA & SEKOLAH</div>
+        <div id="guidance-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KS15
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS15");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KS15
+        const result = KS15_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS15_Scoring.sendRekapToGAS === "function") {
+          KS15_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Top 3 & Bottom 2 Highlights
+        const topContainer = document.getElementById("top3-list");
+        topContainer.innerHTML = "";
+        result.top3Primary.forEach((item, idx) => {
+          topContainer.innerHTML += `
+            <div class="hl-item" style="color:#15803d;">
+              <span>🥇 #${idx+1} ${item.nama_resmi}</span>
+              <span>${item.rpi}%</span>
+            </div>
+          `;
+        });
+
+        const botContainer = document.getElementById("bottom2-list");
+        botContainer.innerHTML = "";
+        result.bottom2Avoided.forEach(item => {
+          botContainer.innerHTML += `
+            <div class="hl-item" style="color:#b91c1c;">
+              <span>⚠️ ${item.nama_resmi}</span>
+              <span>${item.rpi}%</span>
+            </div>
+          `;
+        });
+
+        // 6. Render Horizontal Bar Chart (14 Media Hierarchy)
+        const hierLabels = result.resourceRows.map(r => r.resource);
+        const hierValues = result.resourceRows.map(r => r.rpi);
+        const hierColors = result.resourceRows.map(r => 
+          r.rpi >= 81 ? '#0d9488' :
+          r.rpi >= 61 ? '#0284c7' :
+          r.rpi >= 41 ? '#6366f1' :
+          r.rpi >= 21 ? '#f59e0b' : '#ef4444'
+        );
+
+        new Chart(document.getElementById('lrpHierarchyChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: hierLabels,
+            datasets: [{
+              data: hierValues,
+              backgroundColor: hierColors,
+              borderRadius: 6
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            scales: {
+              x: { beginAtZero: true, max: 100 }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 7. Render Doughnut / Radar Chart (4 Category Breakdown)
+        const catLabels = Object.keys(result.categoryScores);
+        const catValues = Object.values(result.categoryScores);
+
+        new Chart(document.getElementById('lrpCategoryChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: ['Teks/Statis', 'Audiovisual', 'Digital/AI', 'Praktis/Manusia'],
+            datasets: [{
+              label: 'Indeks Kategori (%)',
+              data: catValues,
+              backgroundColor: 'rgba(13, 148, 136, 0.2)',
+              borderColor: '#0d9488',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#0d9488'
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#cbd5e1' },
+                grid: { color: '#f1f5f9' },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { display: false }
+              }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 8. Render Table Pemeringkatan 14 Media
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        result.resourceRows.forEach(row => {
+          const badgeClass = 
+            row.rpi >= 81 ? "badge-primary" :
+            row.rpi >= 61 ? "badge-secondary" :
+            row.rpi >= 41 ? "badge-tertiary" :
+            row.rpi >= 21 ? "badge-low" : "badge-avoided";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.nama_resmi}</td>
+            <td style="font-size: 0.82rem; color: #475569;">${row.kategori}</td>
+            <td>${row.rs}</td>
+            <td><strong>${row.rpi}%</strong></td>
+            <td><span class="badge-status ${badgeClass}">${row.label_status}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // 9. Render Pola Kombinasi
+        const comboContainer = document.getElementById("combo-container");
+        comboContainer.innerHTML = "";
+
+        if (result.detectedCombinations && result.detectedCombinations.length > 0) {
+          result.detectedCombinations.forEach(c => {
+            comboContainer.innerHTML += `
+              <div class="combo-card">
+                <h4 style="color: #0d9488; margin-top: 0; margin-bottom: 6px; font-size: 1rem;">🔍 DETEKSI POLA RESOURCE STACK: ${c.nama_pola}</h4>
+                <p style="font-size: 0.88rem; color: #334155; margin-bottom: 10px; line-height: 1.5;">${c.analisis_klinis}</p>
+                <div style="font-size: 0.85rem; color: #0f766e; background: #f0fdfa; padding: 10px 14px; border-radius: 6px; border: 1px solid #99f6e4;">
+                  <strong>Rekomendasi Stack:</strong> ${c.rekomendasi_stack}
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          comboContainer.innerHTML = `
+            <div style="background-color: #ffffff; border: 1px solid #86efac; border-left: 6px solid #16a34a; padding: 16px 20px; border-radius: 8px; color: #166534; font-size: 0.9rem;">
+              ✅ <strong>Resource Profile Fleksibel:</strong> Anda memiliki adaptabilitas media yang seimbang tanpa ketergantungan atau kelemahan ekstrem.
+            </div>
+          `;
+        }
+
+        // 10. Render Strategy Builder
+        document.getElementById("stg-step1").innerText = result.strategyBuilder.opener;
+        document.getElementById("stg-step2").innerText = result.strategyBuilder.deepDive;
+        document.getElementById("stg-step3").innerText = result.strategyBuilder.consolidation;
+
+        // 11. Render Panduan Aksional Orang Tua & Sekolah
+        const guidanceContainer = document.getElementById("guidance-container");
+        guidanceContainer.innerHTML = "";
+
+        result.top3Primary.forEach(topMedia => {
+          guidanceContainer.innerHTML += `
+            <div style="margin-bottom: 16px;">
+              <h4 style="margin-bottom:6px; color:#0d9488; font-size:0.95rem;">📌 Optimalisasi Media Utama: ${topMedia.nama_resmi}</h4>
+              <div class="guidance-box">
+                <p style="margin-top:0; margin-bottom:6px;"><strong>Panduan Orang Tua:</strong> ${topMedia.panduan_orang_tua}</p>
+                <p style="margin-bottom:0; color:#0284c7;"><strong>Panduan Sekolah:</strong> ${topMedia.panduan_sekolah}</p>
+              </div>
+            </div>
+          `;
+        });
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS15:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan LRP.");
+      }
+    });
+  </script>
+</body>
+</html>
