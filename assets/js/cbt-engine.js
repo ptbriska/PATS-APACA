@@ -1,6 +1,6 @@
 /* ==========================================================================
    PATS PORTAL - CBT ENGINE CORE (assets/js/cbt-engine.js)
-   Engine Utama Panel Pengerjaan Ujian PATS
+   Engine Utama Panel Pengerjaan Ujian PATS (Support Multi-Format Options & Case Study)
    ========================================================================== */
 
 class CBTEngine {
@@ -44,6 +44,17 @@ class CBTEngine {
         asal_instansi: "PATS System"
       };
     }
+  }
+
+  /**
+   * Helper internal untuk mengecek apakah suatu nomor soal sudah dijawab secara valid
+   */
+  isQuestionAnswered(questionId) {
+    const qKey = String(questionId);
+    return Object.prototype.hasOwnProperty.call(this.answers, qKey) && 
+           this.answers[qKey] !== null && 
+           this.answers[qKey] !== undefined && 
+           this.answers[qKey] !== "";
   }
 
   /**
@@ -107,6 +118,7 @@ class CBTEngine {
             <span id="cbt-question-status" style="font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: var(--text-secondary, #64748b);">Belum Dijawab</span>
           </div>
 
+          <!-- Menggunakan innerHTML agar mendukung teks bacaan/wacana panjang & formatting HTML -->
           <div id="cbt-question-text" style="font-size: 1.05rem; margin-bottom: 24px; line-height: 1.6; min-height: 60px;">
             Memuat pertanyaan...
           </div>
@@ -202,12 +214,15 @@ class CBTEngine {
     const optsContainer = document.getElementById("cbt-options-container");
 
     if (qNumberEl) qNumberEl.innerText = `Soal No. ${this.currentIndex + 1} dari ${this.questions.length}`;
-    if (qTextEl) qTextEl.innerText = q.pertanyaan;
+    
+    // Render teks pertanyaan menggunakan innerHTML (Support HTML Formatting)
+    if (qTextEl) qTextEl.innerHTML = q.pertanyaan;
 
+    const hasAnswered = this.isQuestionAnswered(q.id);
     const selectedVal = this.answers[String(q.id)];
 
     if (qStatusEl) {
-      if (selectedVal !== undefined) {
+      if (hasAnswered) {
         qStatusEl.innerText = "Sudah Dijawab";
         qStatusEl.style.background = "#dcfce7";
         qStatusEl.style.color = "#15803d";
@@ -224,12 +239,15 @@ class CBTEngine {
     // Render Pilihan Jawaban
     let optsHtml = "";
     availableOptions.forEach(opt => {
-      const isChecked = String(selectedVal) === String(opt.value) ? "checked" : "";
-      const bgActive = String(selectedVal) === String(opt.value) ? "background-color: #eff6ff; border-color: var(--primary-color, #2563eb);" : "";
+      const isChecked = (hasAnswered && String(selectedVal) === String(opt.value)) ? "checked" : "";
+      const bgActive = isChecked ? "background-color: #eff6ff; border-color: var(--primary-color, #2563eb);" : "";
+
+      // Safe parameter passing untuk string atau angka
+      const safeValArg = typeof opt.value === 'string' ? `'${opt.value.replace(/'/g, "\\'")}'` : opt.value;
 
       optsHtml += `
         <label style="display: flex; align-items: center; padding: 12px 16px; border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-sm, 6px); cursor: pointer; transition: all 0.2s; ${bgActive}">
-          <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} style="margin-right: 12px; accent-color: var(--primary-color, #2563eb);" onchange="cbtApp.saveAnswer('${q.id}', ${typeof opt.value === 'string' ? `'${opt.value}'` : opt.value})">
+          <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} style="margin-right: 12px; accent-color: var(--primary-color, #2563eb);" onchange="cbtApp.saveAnswer('${q.id}', ${safeValArg})">
           <span style="font-size: 0.95rem; color: var(--text-primary, #1e293b);">${opt.label}</span>
         </label>
       `;
@@ -260,7 +278,7 @@ class CBTEngine {
     let gridHtml = "";
     this.questions.forEach((q, idx) => {
       const isCurrent = idx === this.currentIndex;
-      const isAnswered = this.answers[String(q.id)] !== undefined;
+      const isAnswered = this.isQuestionAnswered(q.id);
 
       let style = "padding: 8px 0; font-size: 0.85rem; font-weight: 700; border-radius: 6px; cursor: pointer; text-align: center; border: 1px solid #e2e8f0;";
 
@@ -308,7 +326,11 @@ class CBTEngine {
   }
 
   confirmSubmit() {
-    const answeredCount = Object.keys(this.answers).length;
+    let answeredCount = 0;
+    this.questions.forEach(q => {
+      if (this.isQuestionAnswered(q.id)) answeredCount++;
+    });
+
     const totalCount = this.questions.length;
 
     let confirmMsg = `Anda telah menjawab ${answeredCount} dari ${totalCount} soal. Apakah Anda yakin ingin mengirimkan jawaban?`;
