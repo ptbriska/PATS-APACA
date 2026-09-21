@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Panel - KU6 Work Personality (Enneagram Model)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    :root {
+      --primary-indigo: #6366f1;
+      --primary-indigo-hover: #4f46e5;
+      --bg-slate: #f8fafc;
+      --text-dark: #0f172a;
+      --border-color: #cbd5e1;
+    }
+
+    body {
+      background-color: var(--bg-slate);
+      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Navigasi CBT */
+    .cbt-header {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--primary-indigo);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .cbt-header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cbt-timer-badge {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: monospace, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Layout Main CBT */
+    .cbt-container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .cbt-container { grid-template-columns: 1fr; }
+    }
+
+    /* Kartu Soal Pairwise Choice */
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .instruction-box {
+      background: #f0fdf4;
+      border-left: 5px solid #059669;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      color: #166534;
+      line-height: 1.5;
+    }
+
+    /* Kartu Opsi Pilihan Pairwise */
+    .pairwise-options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .pairwise-option-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .pairwise-option-card:hover {
+      border-color: #a5b4fc;
+      background: #fafafa;
+    }
+
+    .pairwise-option-card.selected {
+      border-color: var(--primary-indigo);
+      background: #f5f3ff;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.15);
+    }
+
+    .opt-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .pairwise-option-card.selected .opt-badge {
+      background: var(--primary-indigo);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    }
+
+    .opt-text {
+      font-size: 0.96rem;
+      color: #334155;
+      font-weight: 500;
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    /* Panel Navigasi Samping */
+    .nav-panel {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      height: fit-content;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-top: 14px;
+    }
+
+    .nav-btn {
+      aspect-ratio: 1;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-btn.complete {
+      background: var(--primary-indigo);
+      color: #ffffff;
+      border-color: var(--primary-indigo);
+    }
+
+    .nav-btn.active {
+      outline: 2px solid #0891b2;
+      outline-offset: 2px;
+      font-weight: 800;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--primary-indigo);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .btn-action {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-next { background: var(--primary-indigo); color: #ffffff; }
+    .btn-next:hover { background: var(--primary-indigo-hover); }
+    .btn-prev { background: #e2e8f0; color: #334155; }
+    .btn-prev:hover { background: #cbd5e1; }
+    .btn-submit { background: #059669; color: #ffffff; width: 100%; margin-top: 16px; }
+    .btn-submit:hover { background: #047857; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="cbt-header">
+    <div class="cbt-header-content">
+      <div>
+        <h4 style="margin: 0; color: var(--primary-indigo); font-size: 1.1rem;">APACA WPCM - Enneagram (KU6)</h4>
+        <div style="font-size: 0.8rem; color: #64748b;" id="user-info-text">Peserta: -</div>
+      </div>
+      <div class="cbt-timer-badge">
+        <span>⏱️</span>
+        <span id="timer-display">20:00</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main CBT Layout -->
+  <main class="cbt-container">
+    <!-- Panel Soal Enneagram Pairwise -->
+    <section class="question-card">
+      <div>
+        <div class="question-meta">
+          <span style="font-weight: 800; color: var(--primary-indigo); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">Forced-Choice Pairwise Block</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;" id="q-number-text">Item 1 dari 36</span>
+        </div>
+
+        <div class="instruction-box">
+          📌 <strong>Petunjuk Pengisian:</strong> Pilihlah 1 (satu) opsi pernyataan (A atau B) yang <strong>PALING menggambarkan</strong> alasan mendasar atau dorongan alami Anda saat bekerja.
+        </div>
+
+        <div class="pairwise-options-grid" id="pairwise-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid #f1f5f9;">
+        <button class="btn-action btn-prev" id="btn-prev" onclick="navigateQuestion(-1)">&larr; Sebelumnya</button>
+        <button class="btn-action btn-next" id="btn-next" onclick="navigateQuestion(1)">Selanjutnya &rarr;</button>
+      </div>
+    </section>
+
+    <!-- Navigasi Panel Kanan -->
+    <aside class="nav-panel">
+      <h5 style="margin: 0 0 6px 0; color: #0f172a; font-size: 0.95rem;">Navigasi Soal</h5>
+      <div style="font-size: 0.78rem; color: #64748b;">Terisi Lengkap: <strong id="answered-count">0</strong> / <span id="total-count">36</span></div>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="nav-grid" id="nav-grid">
+        <!-- Render 36 buttons via JS -->
+      </div>
+
+      <button class="btn-action btn-submit" onclick="confirmSubmit()">Selesaikan Ujian</button>
+    </aside>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script>
+    let questionsData = [];
+    let currentIndex = 0;
+    let answers = {}; // Structure: { 1: "A", 2: "B", ... }
+    let timerSeconds = 20 * 60; // Default 20 Menit
+    let timerInterval = null;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Verifikasi Sesi User
+      if (typeof PATS_AUTH !== "undefined") {
+        const user = PATS_AUTH.getSession();
+        if (user) {
+          document.getElementById("user-info-text").innerText = `Peserta: ${user.nama_lengkap || 'Siswa'} (${user.kode_akses || 'KU6'})`;
+        }
+      }
+
+      // 2. Muat Berkas Soal KU6
+      try {
+        const res = await fetch("soal.json");
+        const testData = await res.json();
+        questionsData = testData.questions || [];
+
+        if (testData.test_info && testData.test_info.durasi_menit) {
+          timerSeconds = testData.test_info.durasi_menit * 60;
+        }
+
+        document.getElementById("total-count").innerText = questionsData.length;
+
+        // Restore Progress dari SessionStorage jika tersedia
+        const saved = sessionStorage.getItem("pats_answers_KU6");
+        if (saved) {
+          answers = JSON.parse(saved);
+        }
+
+        renderNavGrid();
+        renderQuestion(currentIndex);
+        startTimer();
+
+      } catch (err) {
+        console.error("Gagal memuat soal KU6:", err);
+        alert("Terjadi kesalahan saat memuat berkas soal Enneagram.");
+      }
+    });
+
+    // RENDERER UTAMA KELOMPOK PAIRWISE KU6
+    function renderQuestion(index) {
+      if (index < 0 || index >= questionsData.length) return;
+      currentIndex = index;
+
+      const q = questionsData[index];
+      document.getElementById("q-number-text").innerText = `Item ${index + 1} dari ${questionsData.length}`;
+
+      const container = document.getElementById("pairwise-container");
+      container.innerHTML = "";
+
+      const currentChosen = answers[q.id];
+
+      if (q.options) {
+        q.options.forEach(opt => {
+          const isSelected = currentChosen === opt.code;
+          const card = document.createElement("div");
+          card.className = `pairwise-option-card ${isSelected ? 'selected' : ''}`;
+          card.onclick = () => selectOption(q.id, opt.code);
+
+          card.innerHTML = `
+            <div class="opt-badge">${opt.code}</div>
+            <div class="opt-text">${opt.label}</div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      // Navigasi Prev/Next State
+      document.getElementById("btn-prev").disabled = index === 0;
+      document.getElementById("btn-next").innerText = index === questionsData.length - 1 ? "Selesai" : "Selanjutnya \u2192";
+
+      updateNavHighlight();
+    }
+
+    // SIMPAN PILIHAN JAWABAN
+    function selectOption(questionId, optionCode) {
+      answers[questionId] = optionCode;
+      sessionStorage.setItem("pats_answers_KU6", JSON.stringify(answers));
+
+      renderQuestion(currentIndex);
+      updateProgress();
+    }
+
+    // NAVIGASI INDEX SOAL
+    function navigateQuestion(direction) {
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < questionsData.length) {
+        renderQuestion(newIndex);
+      } else if (newIndex >= questionsData.length) {
+        confirmSubmit();
+      }
+    }
+
+    // RENDER PANEL NAVIGASI
+    function renderNavGrid() {
+      const grid = document.getElementById("nav-grid");
+      grid.innerHTML = "";
+
+      questionsData.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.id = `nav-btn-${idx}`;
+        btn.innerText = idx + 1;
+        btn.onclick = () => renderQuestion(idx);
+        grid.appendChild(btn);
+      });
+
+      updateProgress();
+    }
+
+    function updateNavHighlight() {
+      questionsData.forEach((q, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        if (btn) {
+          const isComplete = !!answers[q.id];
+          btn.className = `nav-btn ${isComplete ? 'complete' : ''} ${idx === currentIndex ? 'active' : ''}`;
+        }
+      });
+    }
+
+    function updateProgress() {
+      const completeCount = Object.keys(answers).length;
+      document.getElementById("answered-count").innerText = completeCount;
+      const total = questionsData.length;
+      const pct = Math.round((completeCount / total) * 100);
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    // TIMER COUNTDOWN
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert("Waktu pengerjaan telah habis. Hasil pengerjaan Anda akan dikumpulkan otomatis.");
+          submitTest();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      document.getElementById("timer-display").innerText = 
+        `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // KONFIRMASI PENGUMPULAN
+    function confirmSubmit() {
+      const completeCount = Object.keys(answers).length;
+      const total = questionsData.length;
+
+      if (completeCount < total) {
+        if (!confirm(`Anda baru menjawab ${completeCount} dari ${total} item. Yakin ingin mengumpulkan sekarang?`)) {
+          return;
+        }
+      } else {
+        if (!confirm("Seluruh 36 item soal telah dijawab. Yakin ingin mengumpulkan pengerjaan KU6?")) {
+          return;
+        }
+      }
+
+      submitTest();
+    }
+
+    function submitTest() {
+      clearInterval(timerInterval);
+      sessionStorage.setItem("pats_answers_KU6", JSON.stringify(answers));
+      window.location.href = "result.html";
+    }
+  </script>
+</body>
+</html>
