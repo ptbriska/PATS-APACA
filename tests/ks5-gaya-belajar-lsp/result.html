@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Profiler - KS5 Learning Style Preference (LSP)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --navy-dark: #0f172a;
+      --gold-premium: #b45309;
+      --gold-light: #fef3c7;
+      --teal-accent: #0f766e;
+      --gray-bg: #f8fafc;
+    }
+
+    body {
+      background-color: #e2e8f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #334155;
+    }
+
+    .report-paper {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      padding: 45px;
+      max-width: 950px;
+      margin: 0 auto;
+      border-top: 8px solid var(--navy-dark);
+    }
+
+    .title-banner {
+      text-align: center;
+      margin: 20px 0 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--gray-bg);
+    }
+    .title-banner h3 {
+      font-size: 1.6rem;
+      color: var(--navy-dark);
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    .title-banner span {
+      font-size: 0.9rem;
+      color: var(--gold-premium);
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* Grid Ringkasan Eksekutif */
+    .executive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .exec-card {
+      background: var(--gray-bg);
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .exec-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .exec-title { font-size: 0.8rem; color: #64748b; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+    .exec-value { font-size: 1.25rem; color: var(--navy-dark); font-weight: 800; margin-bottom: 4px; }
+    .exec-pct { font-size: 0.9rem; color: var(--teal-accent); font-weight: 700; }
+
+    /* Chart Containers */
+    .chart-container-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+    .radar-box {
+      flex: 1;
+      min-width: 300px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .bar-box {
+      flex: 1.5;
+      min-width: 400px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy-dark);
+      border-left: 4px solid var(--gold-premium);
+      padding-left: 12px;
+      margin: 30px 0 16px;
+      text-transform: uppercase;
+    }
+
+    /* Kartu Detail Dimensi */
+    .insight-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 16px;
+      background-color: #ffffff;
+    }
+    .insight-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .insight-title { font-size: 1.05rem; font-weight: 800; color: var(--navy-dark); }
+    .badge-status { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; }
+    
+    .badge-utama { background: var(--navy-dark); color: #ffffff; }
+    .badge-pendukung { background: var(--teal-accent); color: #ffffff; }
+    .badge-transisi { background: #fef3c7; color: var(--gold-premium); border: 1px solid #fde68a; }
+    
+    .insight-desc { font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 12px; }
+    .insight-action { background: var(--gray-bg); padding: 12px; border-radius: 6px; font-size: 0.85rem; color: var(--navy-dark); border-left: 3px solid var(--teal-accent); }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="no-print" style="background-color: #0a0304; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #334155; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS5_LSP_Executive_Profiler.pdf')" class="btn-primary" style="width: auto; background-color: #b45309;">Cetak / Unduh Laporan Premium</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <div class="title-banner">
+        <h3 id="r-judul-tes">EXECUTIVE LEARNING STYLE PROFILER (LSP)</h3>
+        <span>PEMETAAN ARSITEKTUR KOGNITIF & EKOSISTEM BELAJAR</span>
+      </div>
+
+      <!-- Biodata -->
+      <table class="report-biodata" style="margin-bottom: 24px;">
+        <tr>
+          <td class="label">Nama Siswa / Mahasiswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Tingkat Pendidikan</td>
+          <td>: <span id="r-instansi">-</span></td>
+          <td class="label">Instrumen Asesmen</td>
+          <td>: <span id="r-instrumen">KS5 - LSP Versi Edu 1.0 (2026)</span></td>
+        </tr>
+      </table>
+
+      <!-- Ringkasan Eksekutif -->
+      <div class="section-header">I. RINGKASAN EKSEKUTIF PROFIL BELAJAR</div>
+      <div class="executive-grid">
+        <div class="exec-card">
+          <div class="exec-title">Modalitas Utama</div>
+          <div id="r-dom-modality" class="exec-value">-</div>
+          <div id="r-dom-modality-pct" class="exec-pct">-</div>
+        </div>
+        <div class="exec-card">
+          <div class="exec-title">Gaya Pemrosesan</div>
+          <div id="r-dom-processing" class="exec-value">-</div>
+          <div id="r-dom-processing-pct" class="exec-pct">-</div>
+        </div>
+        <div class="exec-card">
+          <div class="exec-title">Ekosistem Lingkungan</div>
+          <div id="r-dom-environment" class="exec-value">-</div>
+          <div id="r-dom-environment-pct" class="exec-pct">-</div>
+        </div>
+        <div class="exec-card">
+          <div class="exec-title">Dinamika Interaksi</div>
+          <div id="r-dom-interaction" class="exec-value">-</div>
+          <div id="r-dom-interaction-pct" class="exec-pct">-</div>
+        </div>
+      </div>
+
+      <!-- Grafik Visualisasi -->
+      <div class="section-header">II. VISUALISASI MULTI-DIMENSI</div>
+      <div class="chart-container-split">
+        <!-- Radar Chart Modalitas -->
+        <div class="radar-box">
+          <h4 style="text-align:center; font-size:0.9rem; color:#64748b; margin-bottom:10px;">Peta Modalitas Representasi</h4>
+          <div style="position: relative; height: 240px; width: 100%;">
+            <canvas id="radarModalityChart"></canvas>
+          </div>
+        </div>
+        
+        <!-- Bar Chart Gaya Kognitif -->
+        <div class="bar-box">
+          <h4 style="text-align:center; font-size:0.9rem; color:#64748b; margin-bottom:10px;">Spektrum Pemrosesan, Lingkungan & Interaksi</h4>
+          <div style="position: relative; height: 240px; width: 100%;">
+            <canvas id="barSpectrumChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analisis Diagnostik (Hanya menampilkan yang Dominan & Sangat Dominan > 50%) -->
+      <div class="section-header">III. ANALISIS DIAGNOSTIK & STRATEGI PEMBELAJARAN</div>
+      <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 16px;">
+        Berikut adalah penjabaran mendalam mengenai elemen-elemen belajar yang paling mendominasi arsitektur kognitif Anda (Skor > 50%)[cite: 9]:
+      </p>
+      
+      <div id="diagnostic-cards-container">
+        <!-- Render via JS -->
+      </div>
+
+      <!-- Tanda Tangan Psikolog -->
+      <div class="report-footer-sign" style="margin-top: 40px; display: flex; justify-content: flex-end;">
+        <div class="sign-box" style="text-align: center;">
+          <p>Psikolog / Assessor Penanggung Jawab,</p>
+          <div class="sign-space" style="height: 60px;"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Tim Ahli Psikometri APACA</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">Lisensi Edu-Assessment 2026</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Render Kop
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Ambil Sesi Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+      }
+
+      // 3. Ambil Jawaban & JSON
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS5");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Kalkulasi via KS5_Scoring
+        const result = KS5_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS5_Scoring.sendRekapToGAS === "function") {
+          KS5_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Update UI Ringkasan Eksekutif (4 Dimensi Dominan Utama)
+        const execModality = result.topDominants["Modalitas"];
+        document.getElementById("r-dom-modality").innerText = execModality.name.replace("Modalitas - ", "");
+        document.getElementById("r-dom-modality-pct").innerText = `${execModality.score}% (${execModality.level})`;
+
+        const execProcessing = result.topDominants["Pemrosesan"];
+        document.getElementById("r-dom-processing").innerText = execProcessing.name.replace("Pemrosesan - ", "");
+        document.getElementById("r-dom-processing-pct").innerText = `${execProcessing.score}% (${execProcessing.level})`;
+
+        const execEnvironment = result.topDominants["Lingkungan"];
+        document.getElementById("r-dom-environment").innerText = execEnvironment.name.replace("Lingkungan - ", "");
+        document.getElementById("r-dom-environment-pct").innerText = `${execEnvironment.score}% (${execEnvironment.level})`;
+
+        const execInteraction = result.topDominants["Interaksi"];
+        document.getElementById("r-dom-interaction").innerText = execInteraction.name.replace("Interaksi - ", "");
+        document.getElementById("r-dom-interaction-pct").innerText = `${execInteraction.score}% (${execInteraction.level})`;
+
+        // 6. Inisialisasi Radar Chart (Modalitas)
+        const modalityLabels = ["Visual", "Auditori", "Verbal / Textual", "Kinestetik"];
+        const modalityData = [
+          result.percentages["Modalitas - Visual"],
+          result.percentages["Modalitas - Auditori"],
+          result.percentages["Modalitas - Verbal / Textual"],
+          result.percentages["Modalitas - Kinestetik"]
+        ];
+        initRadarChart(modalityLabels, modalityData);
+
+        // 7. Inisialisasi Bar Chart (Top Score per dimensi sisanya untuk spektrum ringkas)
+        const spectrumLabels = ["Concrete", "Intuitive", "Global", "Reflective", "Quiet", "Structured", "Indoor", "Stable"];
+        const spectrumData = [
+          result.percentages["Pemrosesan - Concrete"],
+          result.percentages["Pemrosesan - Intuitive"],
+          result.percentages["Pemrosesan - Global"],
+          result.percentages["Pemrosesan - Reflective"],
+          result.percentages["Lingkungan - Quiet"],
+          result.percentages["Lingkungan - Structured"],
+          result.percentages["Lingkungan - Indoor"],
+          result.percentages["Lingkungan - Stable"]
+        ];
+        initBarChart(spectrumLabels, spectrumData);
+
+        // 8. Render Kartu Analisis Diagnostik (Hanya yang >= 51%)
+        const container = document.getElementById("diagnostic-cards-container");
+        container.innerHTML = "";
+        
+        result.detailedDiagnostics.forEach(diag => {
+          // Hanya tampilkan jika Dominan atau Sangat Dominan
+          if (diag.score >= 51) {
+            const card = document.createElement("div");
+            card.className = "insight-card";
+            
+            const badgeClass = diag.score >= 76 ? "badge-utama" : "badge-pendukung";
+            
+            card.innerHTML = `
+              <div class="insight-header">
+                <div class="insight-title">${diag.judul_dimensi}</div>
+                <div>
+                  <span style="font-size:0.85rem; font-weight:700; color:#0f766e; margin-right:8px;">${diag.score}%</span>
+                  <span class="badge-status ${badgeClass}">${diag.label_status}</span>
+                </div>
+              </div>
+              <p class="insight-desc"><strong>Karakteristik:</strong> ${diag.deskripsi_umum}</p>
+              <div class="insight-action">
+                <strong>Rekomendasi Strategi:</strong> ${diag.rekomendasi_strategi}
+              </div>
+            `;
+            container.appendChild(card);
+          }
+        });
+
+      } catch (err) {
+        console.error("Gagal memuat laporan KS5:", err);
+        alert("Terjadi kesalahan saat memuat data laporan LSP KS5.");
+      }
+    });
+
+    // Helper: Chart.js Radar
+    function initRadarChart(labels, data) {
+      const ctx = document.getElementById('radarModalityChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Persentase Dominasi (%)',
+            data: data,
+            backgroundColor: 'rgba(15, 118, 110, 0.2)',
+            borderColor: 'rgba(15, 118, 110, 1)',
+            pointBackgroundColor: '#b45309',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { r: { min: 0, max: 100, ticks: { stepSize: 25 } } },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    // Helper: Chart.js Bar
+    function initBarChart(labels, data) {
+      const ctx = document.getElementById('barSpectrumChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Indeks Preferensi (%)',
+            data: data,
+            backgroundColor: '#0f172a',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { min: 0, max: 100 } },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
