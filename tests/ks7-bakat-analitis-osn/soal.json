@@ -1,0 +1,51 @@
+{
+  "test_info": {
+    "kode": "KS7",
+    "nama_resmi": "OSN Screen Test (OST)",
+    "nama_singkat": "OSN Screening Test",
+    "versi": "Versi 1.0 / 2026",
+    "token_ujian": "OSTOSN2026",
+    "token_master": "PatsTestingKS7",
+    "durasi_menit": 10,
+    "psikolog_pj": "Tim Pengembang Alat Tes APACA & Tim Ahli Psikometri",
+    "SIPP": "-"
+  },
+  "options": [
+    { "label": "Sangat Tidak Sesuai", "value": 1 },
+    { "label": "Tidak Sesuai", "value": 2 },
+    { "label": "Sesuai", "value": 3 },
+    { "label": "Sangat Sesuai", "value": 4 }
+  ],
+  "questions": [
+    { "id": 1, "kategori": "P01", "type": "Favorable", "pertanyaan": "Ketika menghadapi soal olimpiade yang tidak saya pahami sama sekali konsepnya selama berjam-jam, saya tetap tenang dan tidak merasa frustrasi." },
+    { "id": 2, "kategori": "P02", "type": "Favorable", "pertanyaan": "Saya percaya bahwa kemampuan bernalar dan logika saya dalam sains bukanlah bakat mati, melainkan bisa terus meningkat jika ditekan dengan latihan keras." },
+    { "id": 3, "kategori": "P03", "type": "Favorable", "pertanyaan": "Saya secara refleks memeriksa ulang setiap tahap perhitungan dan asumsi logika hingga detail terkecil sebelum menyerahkan jawaban akhir." },
+    { "id": 4, "kategori": "P04", "type": "Favorable", "pertanyaan": "Melihat pengerjaan atau skor saingan yang lebih tinggi di papan peringkat justru memicu gairah kompetitif internal saya untuk melampaui mereka." },
+    { "id": 5, "kategori": "P05", "type": "Favorable", "pertanyaan": "Tanpa perlu diminta atau ditugaskan oleh guru, saya secara proaktif mencari draf materi dan pembahasan soal tingkat lanjut di internet." },
+    { "id": 6, "kategori": "P06", "type": "Favorable", "pertanyaan": "Saya memiliki komitmen yang tak tergoyahkan untuk menyisihkan waktu 2 hingga 3 jam setiap hari khusus untuk membedah materi sains." },
+    { "id": 7, "kategori": "P07", "type": "Favorable", "pertanyaan": "Saya merasa sangat antusias dan tertantang ketika diminta memecahkan teka-teki logika abstrak yang tidak memiliki wujud nyata di dunia fisik." },
+    { "id": 8, "kategori": "P08", "type": "Favorable", "pertanyaan": "Saya sering tertahan lama untuk mengamati, mempertanyakan, dan menganalisis fenomena alam atau kejadian sosial di sekitar saya." },
+    { "id": 9, "kategori": "P09", "type": "Favorable", "pertanyaan": "Saya tidak pernah puas hanya dengan menghafal rumus instan; saya wajib membongkar dan memahami asal-usul penurunan rumus tersebut secara mendalam." },
+    { "id": 10, "kategori": "P10", "type": "Favorable", "pertanyaan": "Saya mampu menyerap, mengasimilasi, dan mengaplikasikan teorema atau konsep matematika/sains asing yang baru saja saya baca." },
+    { "id": 11, "kategori": "P11", "type": "Favorable", "pertanyaan": "Membaca buku teks perguruan tinggi atau modul tebal beratus-ratus halaman yang padat istilah teknis adalah aktivitas yang mengasyikkan bagi saya." },
+    { "id": 12, "kategori": "P12", "type": "Favorable", "pertanyaan": "Saya bersedia bertahan pada satu nomor soal yang sangat rumit hingga berhari-hari sampai saya menemukan logika penyelesaiannya." },
+    { "id": 13, "kategori": "P13", "type": "Favorable", "pertanyaan": "Saya sangat terbuka menerima kritik tajam, koreksi alur pengerjaan yang salah, dan perombakan pola pikir dari pembina OSN." },
+    { "id": 14, "kategori": "P14", "type": "Favorable", "pertanyaan": "Saya secara sadar dan tanpa penyesalan rela mengorbankan waktu bermain, media sosial, atau hiburan di akhir pekan demi fokus menguasai sains." },
+    { "id": 15, "kategori": "P15", "type": "Favorable", "pertanyaan": "Saat sisa waktu ujian tinggal sedikit dan pengerjaan saya buntu, saya mampu mengendalikan detak jantung dan emosi agar tidak panik." },
+    { "id": 16, "kategori": "P01", "type": "Favorable", "pertanyaan": "Kebingungan mental saat membaca materi sains tingkat tinggi saya anggap sebagai tanda bahwa otak saya sedang berkembang, bukan sinyal kelemahan." },
+    { "id": 17, "kategori": "P02", "type": "Favorable", "pertanyaan": "Kegagalan mendapat skor bagus dalam simulasi tes justru melipatgandakan motivasi saya untuk mempelajari kembali kelemahan alur berpikir saya." },
+    { "id": 18, "kategori": "P03", "type": "Favorable", "pertanyaan": "Saya sangat terganggu dengan kekeliruan kecil seperti salah tanda minus atau variabel, sehingga saya menerapkan pembuktian ketat pada tiap baris jawaban." },
+    { "id": 19, "kategori": "P04", "type": "Favorable", "pertanyaan": "Saya menikmati atmosfer persaingan yang ketat dan sengit karena situasi tersebut memaksa saya mengeluarkan kapasitas berpikir terbaik." },
+    { "id": 20, "kategori": "P05", "type": "Favorable", "pertanyaan": "Saya terbiasa mendesain sendiri target belajar mingguan dan mengevaluasi kemajuan pemahaman modul sains secara mandiri." },
+    { "id": 21, "kategori": "P06", "type": "Favorable", "pertanyaan": "Menjaga disiplin latihan soal sains secara konsisten terasa lebih alami bagi saya dibandingkan belajar secara mendadak saat mendekati ujian." },
+    { "id": 22, "kategori": "P07", "type": "Favorable", "pertanyaan": "Gagasan teoritis dan manipulasi matematika yang rumit membuat saya terpikat untuk terus meng eksplorasi batas kemampuan kognitif saya." },
+    { "id": 23, "kategori": "P08", "type": "Favorable", "pertanyaan": "Saya secara alami sering mengaitkan hukum sains yang saya pelajari di kelas dengan mekanika atau fakta riil yang terjadi di lapangan." },
+    { "id": 24, "kategori": "P09", "type": "Favorable", "pertanyaan": "Rasa ingin tahu saya terusik jika menemukan hasil eksperimen atau hitungan yang kontradiktif, dan saya akan mengejarnya sampai menemukan jawaban logis." },
+    { "id": 25, "kategori": "P10", "type": "Favorable", "pertanyaan": "Ketika diberikan pendekatan baru yang belum pernah diajarkan di sekolah, saya dapat dengan cepat mengerti cara kerjanya dalam hitungan menit." },
+    { "id": 26, "kategori": "P11", "type": "Favorable", "pertanyaan": "Daya tahan membaca saya sangat tinggi; saya sanggup menelaah literatur ilmiah yang padat tanpa kehilangan konsentrasi pemahaman." },
+    { "id": 27, "kategori": "P12", "type": "Favorable", "pertanyaan": "Rasa penasaran saya yang tinggi membuat saya menolak mengintip kunci jawaban sebelum mencoba segala macam pendekatan pada soal sulit." },
+    { "id": 28, "kategori": "P13", "type": "Favorable", "pertanyaan": "Saya merasa beruntung ketika strategi penyelesaian saya dibongkar dan diperbaiki oleh mentor agar menjadi jauh lebih efisien." },
+    { "id": 29, "kategori": "P14", "type": "Favorable", "pertanyaan": "Saya dapat mengelola prioritas dengan ketat sehingga jadwal latihan olimpiade tidak mengganggu kewajiban akademis harian." },
+    { "id": 30, "kategori": "P15", "type": "Favorable", "pertanyaan": "Di bawah kondisi tekanan waktu yang ekstrem, saya tetap mampu berpikir jernih dan menentukan urutan nomor mana yang paling rasional dieksekusi terlebih dahulu." }
+  ]
+}
