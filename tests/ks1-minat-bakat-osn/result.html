@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - OSN Talent Mapping (OTM) Test</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      background-color: #f8fafc !important;
+      color: #0f172a;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* TOP BAR NAVIGATION */
+    .top-nav {
+      background-color: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* HERO PROFILE CARD */
+    .hero-card-otm {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+      border-radius: 16px;
+      padding: 28px 32px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 20px 0 28px 0;
+      box-shadow: 0 12px 28px -6px rgba(30, 58, 138, 0.3);
+      border-left: 6px solid #2563eb;
+    }
+
+    .iq-badge-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 16px 24px;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .iq-score-display {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #38bdf8;
+      line-height: 1;
+      font-family: monospace, sans-serif;
+    }
+
+    /* TABLES & BADGES */
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px 0;
+      font-size: 0.88rem;
+    }
+
+    .report-table th, .report-table td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .report-table th {
+      background-color: #f8fafc;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #2563eb;
+    }
+
+    .badge-status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .badge-pass { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .badge-locked { background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .badge-warning { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+    .tag-pill {
+      display: inline-block;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin: 3px 2px;
+    }
+
+    .info-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .report-section-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin: 28px 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Navigation Bar -->
+  <div class="top-nav no-print">
+    <div class="container">
+      <a href="../../index.html" class="btn-primary" style="background-color: #475569; text-decoration: none;">&larr; Portal Asesmen</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_Hasil_OTM_Test.pdf')" class="btn-primary" style="background-color: #2563eb;">Cetak Dokumen Laporan (PDF)</button>
+    </div>
+  </div>
+
+  <main style="padding: 40px 16px;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Header Kop Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3>LAPORAN HASIL ASESMEN OSN TALENT MAPPING (OTM) TEST</h3>
+        <div style="font-size: 0.85rem; color: #64748b; font-weight: 600; margin-top: 4px;">Integrasi Diagnostik Kognitif Murni, Minat Lintas Disiplin, & Resiliensi Mental</div>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">ID Registrasi Tes</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Kelas / Jurusan</td>
+          <td>: <span id="r-kelas">-</span></td>
+          <td class="label">Tanggal Asesmen</td>
+          <td>: <span id="r-tanggal">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Asal Sekolah</td>
+          <td>: <span id="r-instansi">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span>KS1 - OSN Talent Mapping (3 Pilar)</span></td>
+        </tr>
+      </table>
+
+      <!-- Hero Card: Profil IQ APACA OTM -->
+      <div class="hero-card-otm">
+        <div style="flex: 1;">
+          <div style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#93c5fd; margin-bottom:4px;">Kapasitas Kognitif Murni</div>
+          <h2 id="r-iq-category" style="margin: 0 0 8px 0; font-size: 1.4rem; color: #ffffff;">Superior</h2>
+          <p id="r-iq-desc" style="font-size: 0.88rem; line-height: 1.5; margin: 0; opacity: 0.9;">-</p>
+        </div>
+        <div class="iq-badge-box">
+          <div id="r-iq-score" class="iq-score-display">128</div>
+          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; color: #e2e8f0;">IQ APACA OTM</div>
+        </div>
+      </div>
+
+      <!-- Section I: Ringkasan Top 3 Bidang Rekomendasi Utama -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN TOP 3 BIDANG REKOMENDASI UTAMA</div>
+        
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Peringkat</th>
+              <th style="text-align: left;">Bidang Rekomendasi OSN & AI</th>
+              <th>Total Skor Akhir</th>
+              <th>Gatekeeper Status</th>
+              <th>Indeks Intimidasi</th>
+              <th>Status Rekomendasi Akhir</th>
+            </tr>
+          </thead>
+          <tbody id="top-3-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section II: Visualisasi Grafik Performa 3 Pilar -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI PROFIL COMBINED 3 PILAR (10 BIDANG)</div>
+        <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:20px; margin-bottom:24px;">
+          <canvas id="chartOTM" style="max-height: 380px;"></canvas>
+        </div>
+      </div>
+
+      <!-- Section III: Pilar I - Analisis Bakat Kognitif (8 Sub-Modul) -->
+      <div class="report-section">
+        <div class="report-section-title">III. PILAR I: DIAGNOSTIK BAKAT KOGNITIF MURNI ($S_{Bakat}$)</div>
+        
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Kode</th>
+              <th style="text-align: left;">Nama Sub-Modul Kognitif</th>
+              <th>Akurasi (70%)</th>
+              <th>Efisiensi Waktu (30%)</th>
+              <th>Skor Modul ($M_i$)</th>
+              <th style="text-align: left;">Catatan Analisis Kognitif</th>
+            </tr>
+          </thead>
+          <tbody id="pilar1-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section IV: Pilar II - Analisis Minat Lintas Disiplin -->
+      <div class="report-section">
+        <div class="report-section-title">IV. PILAR II: MINAT KEILMUAN & ASYMMETRIC CROSS-FIELD MAPPING ($S_{Minat}$)</div>
+        
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Bidang OSN / AI</th>
+              <th>Minat Murni Dominan</th>
+              <th>Minat Terbobot ($S_{Minat}$)</th>
+              <th>Klaster Profil Minat</th>
+              <th style="text-align: left;">Diagnostik Keilmuan</th>
+            </tr>
+          </thead>
+          <tbody id="pilar2-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section V: Pilar III - Resiliensi Mental & Indeks Intimidasi -->
+      <div class="report-section">
+        <div class="report-section-title">V. PILAR III: RESILIENSI MENTAL & SCIENCE COMFORT ($S_{Pilar3}$)</div>
+        
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Bidang OSN / AI</th>
+              <th>Skor Comfort ($S_{Pilar3}$)</th>
+              <th>Indeks Intimidasi ($C_1+C_2$)/2</th>
+              <th>Status Mental Fit</th>
+              <th style="text-align: left;">Evaluasi Resiliensi Pembinaan</th>
+            </tr>
+          </thead>
+          <tbody id="pilar3-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section VI: Matriks Kelayakan Pembinaan (ROI Sekolah) -->
+      <div class="report-section">
+        <div class="report-section-title">VI. MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (INVESTABILITY INDEX)</div>
+        
+        <div class="info-box" style="border-left: 5px solid #2563eb;">
+          <h5 style="margin:0 0 6px 0; color:#1e3a8a; font-size:0.95rem;">📊 Pemetaan Kuadran Rekomendasi Alokasi Anggaran Sekolah:</h5>
+          <div id="kuadran-summary-container" style="font-size:0.88rem; color:#334155; line-height:1.6;">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Section VII: Proyeksi Program Studi & Karir Masa Depan -->
+      <div class="report-section">
+        <div class="report-section-title">VII. PROYEKSI PROGRAM STUDI & KARIER MASA DEPAN (AUTO-GENERATED)</div>
+        
+        <div id="career-projection-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Section VIII: Panduan Rekomendasi Aksi Konkret -->
+      <div class="report-section">
+        <div class="report-section-title">VIII. PANDUAN REKOMENDASI AKSI STRATEGIS</div>
+        
+        <div class="info-box">
+          <h5 style="margin:0 0 6px 0; color:#1e3a8a; font-size:0.92rem;">👨‍🏫 Untuk Guru Konselor & Pembina OSN:</h5>
+          <p id="rec-guru" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box">
+          <h5 style="margin:0 0 6px 0; color:#059669; font-size:0.92rem;">🎓 Untuk Siswa Peserta:</h5>
+          <p id="rec-siswa" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box">
+          <h5 style="margin:0 0 6px 0; color:#d97706; font-size:0.92rem;">👨‍👩‍👧 Untuk Orang Tua Siswa:</h5>
+          <p id="rec-ortu" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Pengesahan -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Guru Konselor / Pembina OSN,</p>
+          <div class="sign-space"></div>
+          <p style="font-weight: 700; text-decoration: underline;">( ________________________________ )</p>
+          <p style="font-size: 0.75rem; color: #64748b;">NIP. -</p>
+        </div>
+        <div class="sign-box">
+          <p>Lead Psychometrician APACA,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring1.js"></script>
+  <script src="scoring2.js"></script>
+  <script src="scoring3.js"></script>
+  <script src="scoring_total.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Setup Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Setup Biodata
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "Siswa OTM";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "OTM-2026-REG";
+        document.getElementById("r-kelas").innerText = user.kelas_jurusan || user.jenis_kelamin || "X / MIPA";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || user.sekolah || "SMA Negeri";
+      }
+      document.getElementById("r-tanggal").innerText = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      // 3. Muat Data Evaluasi & Rubrik JSON
+      try {
+        const resRubrik = await fetch("rubrik.json");
+        const rubrikData = await resRubrik.json();
+
+        // Evaluasi Total OTM (3 Pilar)
+        const evaluation = Total_Scoring.loadAndEvaluateFromSession();
+
+        if (evaluation.isInvalid) {
+          alert(evaluation.message);
+          return;
+        }
+
+        const p1Data = JSON.parse(sessionStorage.getItem("pats_pilar1_results") || "{}");
+        const p2Data = JSON.parse(sessionStorage.getItem("pats_pilar2_results") || "{}");
+        const p3Data = JSON.parse(sessionStorage.getItem("pats_pilar3_results") || "{}");
+
+        // 4. Render Hero IQ APACA OTM
+        const iqRes = evaluation.iq_summary;
+        document.getElementById("r-iq-score").innerText = iqRes.iq_score || 0;
+        document.getElementById("r-iq-category").innerText = iqRes.category || "-";
+        
+        const iqCategoryObj = (rubrikData.pilar1_kognitif.norma_iq_apaca_otm.kategori || []).find(k => k.label === iqRes.category);
+        document.getElementById("r-iq-desc").innerText = iqCategoryObj ? iqCategoryObj.deskripsi : "Kapasitas kognitif murni dalam menyelesaikan tugas penalaran sains.";
+
+        // 5. Render Top 3 Table
+        const top3Body = document.getElementById("top-3-table-body");
+        top3Body.innerHTML = "";
+
+        const top3List = [evaluation.top_recommendation, evaluation.secondary_recommendation, evaluation.tertiary_recommendation];
+        const rankLabels = ["TOP 1", "TOP 2", "TOP 3"];
+
+        top3List.forEach((rec, idx) => {
+          if (!rec) return;
+          const tr = document.createElement("tr");
+          const gateBadge = rec.gatekeeper_status === "PASS" ? 
+            `<span class="badge-status badge-pass">PASS</span>` : 
+            `<span class="badge-status badge-locked">LOCKED</span>`;
+
+          tr.innerHTML = `
+            <td><strong>${rankLabels[idx]}</strong></td>
+            <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
+            <td><strong>${rec.skor_total}</strong></td>
+            <td>${gateBadge}</td>
+            <td>${rec.indeks_intimidasi.toFixed(2)}</td>
+            <td style="font-weight: 700; color: #059669;">${rec.status_rekomendasi}</td>
+          `;
+          top3Body.appendChild(tr);
+        });
+
+        // 6. Render Chart.js Combined 3 Pilar
+        const allRanking = evaluation.all_fields_ranking;
+        const chartLabels = allRanking.map(r => r.bidang);
+        const p1Scores = allRanking.map(r => r.skor_pilar1_bakat);
+        const p2Scores = allRanking.map(r => r.skor_pilar2_minat);
+        const p3Scores = allRanking.map(r => r.skor_pilar3_persona);
+
+        new Chart(document.getElementById('chartOTM').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: chartLabels,
+            datasets: [
+              { label: 'Pilar I: Bakat (50%)', data: p1Scores, backgroundColor: '#2563eb' },
+              { label: 'Pilar II: Minat (30%)', data: p2Scores, backgroundColor: '#059669' },
+              { label: 'Pilar III: Comfort (20%)', data: p3Scores, backgroundColor: '#d97706' }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { suggestedMin: 0, suggestedMax: 100 } }
+          }
+        });
+
+        // 7. Render Pilar I Sub-modul Table
+        const p1Body = document.getElementById("pilar1-table-body");
+        p1Body.innerHTML = "";
+        const modScores = p1Data.module_scores || {};
+
+        Object.keys(modScores).forEach(code => {
+          const m = modScores[code];
+          const modCfg = rubrikData.pilar1_kognitif.daftar_modul[code] || {};
+          let catLabel = "Sedang";
+          if (m.final_score >= 80) catLabel = "Sangat Tinggi";
+          else if (m.final_score >= 60) catLabel = "Tinggi";
+          else if (m.final_score >= 40) catLabel = "Cukup";
+          else catLabel = "Kurang";
+
+          const notesObj = rubrikData.pilar1_kognitif.catatan_analisis_submodul[code] || {};
+          const noteText = notesObj[catLabel] || modCfg.fokus || "-";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><strong>${code}</strong></td>
+            <td style="text-align: left; font-weight: 600;">${modCfg.nama || code}</td>
+            <td>${m.accuracy_score.toFixed(1)} pts</td>
+            <td>${m.speed_score.toFixed(1)} pts</td>
+            <td><strong>${m.final_score}</strong></td>
+            <td style="text-align: left; font-size: 0.82rem;">${noteText}</td>
+          `;
+          p1Body.appendChild(tr);
+        });
+
+        // 8. Render Pilar II Table
+        const p2Body = document.getElementById("pilar2-table-body");
+        p2Body.innerHTML = "";
+        const p2Eval = p2Data.weighted_evaluations || {};
+        const p2Pure = p2Data.pure_scores || {};
+
+        Object.keys(p2Eval).forEach(field => {
+          const ev = p2Eval[field];
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600;">${field}</td>
+            <td>${p2Pure["MIN_" + field] || 70} pts</td>
+            <td><strong>${ev.score}</strong></td>
+            <td><span class="tag-pill">${ev.category}</span></td>
+            <td style="text-align: left; font-size: 0.82rem;">${ev.description}</td>
+          `;
+          p2Body.appendChild(tr);
+        });
+
+        // 9. Render Pilar III Table
+        const p3Body = document.getElementById("pilar3-table-body");
+        p3Body.innerHTML = "";
+        const p3Eval = p3Data.field_results || {};
+
+        Object.keys(p3Eval).forEach(code => {
+          const res = p3Eval[code];
+          const tr = document.createElement("tr");
+          const warnBadge = res.warning_tag ? 
+            `<span class="badge-status badge-warning">[WARNING: RISK OF BURNOUT]</span>` : 
+            `<span class="badge-status badge-pass">FIT</span>`;
+
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600;">${res.field_name}</td>
+            <td><strong>${res.score_pilar3}</strong></td>
+            <td>${res.intimidation_index.toFixed(2)}</td>
+            <td>${warnBadge}</td>
+            <td style="text-align: left; font-size: 0.82rem;">${res.evaluasi}</td>
+          `;
+          p3Body.appendChild(tr);
+        });
+
+        // 10. Render Kuadran & Career Projections
+        const top1Field = evaluation.top_recommendation.bidang;
+        const kuadranText = `<strong>Top Bidang Siswa: ${top1Field}</strong> berada di <strong>KUADRAN I (High Priority / High ROI)</strong>. Siswa memiliki gabungan Bakat Kognitif murni yang lolos batas minimum (PASS) serta Indeks Intimidasi yang stabil (FIT). Sangat layak dialokasikan anggaran pelatihan eksternal penuh (100% Full Grant).`;
+        document.getElementById("kuadran-summary-container").innerHTML = kuadranText;
+
+        const careerContainer = document.getElementById("career-projection-container");
+        careerContainer.innerHTML = "";
+
+        top3List.forEach(rec => {
+          if (!rec) return;
+          const proj = rubrikData.proyeksi_karir[rec.bidang] || { kuliah: [], karir: [] };
+          const box = document.createElement("div");
+          box.className = "info-box";
+          box.innerHTML = `
+            <h5 style="margin:0 0 8px 0; color:#1e3a8a; font-size:0.95rem;">🎯 Proyeksi Bidang ${rec.bidang}</h5>
+            <div style="font-size:0.85rem; margin-bottom:6px;"><strong>Proyeksi Program Studi:</strong> ${(proj.kuliah || []).join(", ")}</div>
+            <div style="font-size:0.85rem;"><strong>Proyeksi Karir Masa Depan:</strong> ${(proj.karir || []).join(", ")}</div>
+          `;
+          careerContainer.appendChild(box);
+        });
+
+        // 11. Render Action Guidance
+        document.getElementById("rec-guru").innerText = `Fokuskan pembinaan siswa pada bidang ${top1Field}. Alokasikan pelatih eksternal dan modul intensif. Hindari memaksakan siswa pada bidang yang berstatus LOCKED atau memicu Warning Tag Burnout.`;
+        document.getElementById("rec-siswa").innerText = `Pertahankan disiplin belajar pada bidang ${top1Field}. Jangan ragu untuk memperdalam alur penalaran dan terus berlatih soal tingkat lanjut.`;
+        document.getElementById("rec-ortu").innerText = `Fasilitasi minat dan daya juang putra/putri Anda di bidang ${top1Field}. Berikan dukungan moral dan sarana belajar yang kondusif.`;
+
+      } catch (err) {
+        console.error("Gagal memuat data Laporan OTM:", err);
+        alert("Terjadi kesalahan saat menyusun berkas Laporan OTM.");
+      }
+    });
+  </script>
+</body>
+</html>
