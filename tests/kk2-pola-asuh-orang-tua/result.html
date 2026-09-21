@@ -3,30 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laporan Hasil Asesmen - KK2 Pola Asuh Orang Tua</title>
+  <title>Laporan Hasil Asesmen - KK2 APACA Parenting Style Inventory (APSI)</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/print-pdf.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Chart.js CDN untuk Grafik Visual Futuristik -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <style>
-    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
-    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: center; }
-    .score-table th { background-color: #f8fafc; }
+    /* Styling Latar Putih Statis Futuristik */
+    body {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .report-paper {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    /* Score Table Styling */
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #e2e8f0; padding: 10px 14px; text-align: center; }
+    .score-table th { background-color: #f8fafc; color: #334155; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+    
+    .badge-dominan {
+      background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.25);
+    }
+
+    /* Modern Visual Cards & Grids */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .chart-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .chart-card h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #475569;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .box-futuristic {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #3b82f6;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .box-futuristic h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .list-custom {
+      margin-left: 18px;
+      font-size: 0.88rem;
+      color: #334155;
+    }
+
+    .list-custom li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    @media print {
+      .charts-grid, .grid-2col { grid-template-columns: 1fr 1fr; }
+      .no-print { display: none !important; }
+      body { background-color: #ffffff; }
+      .report-paper { box-shadow: none; border: none; padding: 0; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation Bar (Hidden during Print/Export) -->
-  <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
+  <!-- Navigation Bar (Hidden during Print/Export) -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #1e293b; padding: 14px 0;">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Beranda Portal</a>
-      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KK2_Pola_Asuh_Orang_Tua.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #334155; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KK2_Parenting_APSI.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
     </div>
   </div>
 
-  <main class="container" style="padding: 40px 0;">
+  <main class="container" style="padding: 30px 0;">
     <div id="report-paper" class="report-paper">
       
-      <!-- Kop Laporan Resmi (Dinamis dari config.js) -->
+      <!-- Kop Laporan Resmi -->
       <div class="report-header">
         <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
         <div class="instansi-info">
@@ -36,9 +137,9 @@
         </div>
       </div>
 
-      <!-- Judul Laporan (Dinamis dari soal.json) -->
+      <!-- Judul Laporan -->
       <div class="report-title">
-        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN POLA ASUH ORANG TUA</h3>
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN PARENTING STYLE INVENTORY (APSI)</h3>
       </div>
 
       <!-- Biodata Peserta -->
@@ -52,61 +153,116 @@
         <tr>
           <td class="label">Jenis Kelamin</td>
           <td>: <span id="r-jk">-</span></td>
-          <td class="label">Asal Instansi/Sekolah</td>
+          <td class="label">Asal Instansi/Komunitas</td>
           <td>: <span id="r-instansi">-</span></td>
         </tr>
         <tr>
           <td class="label">Daerah Domisili</td>
           <td>: <span id="r-daerah">-</span></td>
           <td class="label">Instrumen Asesmen</td>
-          <td>: <span id="r-instrumen">-</span></td>
+          <td>: <span id="r-instrumen">KK2 — APACA Parenting Style Inventory</span></td>
         </tr>
       </table>
 
-      <!-- Tabel Skor Tipologi (Dinamis) -->
+      <!-- Section I: Tabulasi Skor & Visualisasi Chart -->
       <div class="report-section">
-        <div class="report-section-title">I. TABULASI SKOR STABILITAS POLA ASUH</div>
+        <div class="report-section-title">I. PROFIL POLA ASUH & VISUALISASI DIMENSI (4 TIPOLOGI)</div>
+        
         <table class="score-table">
           <thead>
             <tr>
               <th>Tipologi Pola Asuh</th>
               <th>Skor Mentah (RS)</th>
-              <th>Standard Score (T-Score)</th>
+              <th>Skor Standar (T-Score)</th>
               <th>Kategori Norma</th>
+              <th>Status Profil</th>
             </tr>
           </thead>
           <tbody id="score-table-body">
-            <!-- Render dinamis via JavaScript -->
+            <!-- Render via JavaScript -->
           </tbody>
         </table>
+
+        <!-- Visual Charts Grid (Radar & Bar Chart) -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h4>Radar Profil Pola Asuh</h4>
+            <div style="width: 100%; height: 230px;">
+              <canvas id="radarChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <h4>Sumbu Tuntutan vs Responsivitas</h4>
+            <div style="width: 100%; height: 230px;">
+              <canvas id="axesChart"></canvas>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Analisis Naratif Psikolog -->
+      <!-- Section II: Analisis Dinamika Pola Asuh Dominan -->
       <div class="report-section">
-        <div class="report-section-title">II. GAMBARAN DINAMIKA PENGASUHAN DOMINAN</div>
+        <div class="report-section-title">II. ANALISIS DINAMIKA POLA ASUH DOMINAN</div>
         <p class="report-paragraph">
-          Berdasarkan hasil pengolahan data psikometri, kecenderungan gaya pengasuhan utama yang diterapkan oleh orang tua adalah: <strong id="r-judul-dominan" style="color: #2563eb;">-</strong>.
+          Berdasarkan pengolahan data psikometri, kecenderungan utama gaya pengasuhan Anda adalah: <strong id="r-judul-dominan" style="color: #2563eb;">-</strong>.
         </p>
-        <p id="r-deskripsi-narasi" class="report-paragraph">
-          Memuat analisis naratif psikolog...
+        <p id="r-deskripsi-narasi" class="report-paragraph" style="text-align: justify;">
+          Memuat deskripsi naratif pola asuh...
         </p>
+
+        <!-- Sifat Orang Tua & Dampak pada Anak Grid -->
+        <div class="grid-2col">
+          <div class="box-futuristic" style="border-left-color: #3b82f6;">
+            <h4 style="color: #1d4ed8;">Karakteristik Sifat Pengasuhan:</h4>
+            <p id="r-sifat-orangtua" style="font-size: 0.85rem; line-height: 1.5; color: #334155;">-</p>
+          </div>
+          <div class="box-futuristic" style="border-left-color: #8b5cf6;">
+            <h4 style="color: #6d28d9;">Dampak Psikologis pada Anak:</h4>
+            <p id="r-dampak-anak" style="font-size: 0.85rem; line-height: 1.5; color: #334155;">-</p>
+          </div>
+        </div>
+
+        <!-- Box Kelebihan -->
+        <div class="box-futuristic" style="border-left-color: #10b981; margin-top: 10px;">
+          <h4 style="color: #065f46;">Keunggulan & Kekuatan Pengasuhan:</h4>
+          <ul id="r-list-kelebihan" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
+
+        <!-- Box Potensi Risiko -->
+        <div class="box-futuristic" style="border-left-color: #f59e0b;">
+          <h4 style="color: #92400e;">Area Kerentanan & Potensi Risiko Tantangan Anak:</h4>
+          <ul id="r-list-risiko" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
       </div>
 
-      <!-- Rekomendasi Konseling -->
+      <!-- Section III: Rekomendasi Taktis & Strategi Intervensi -->
       <div class="report-section">
-        <div class="report-section-title">III. REKOMENDASI TACTICAL PARENTING</div>
-        <p id="r-rekomendasi" class="report-paragraph" style="font-weight: 500;">
+        <div class="report-section-title">III. REKOMENDASI TAKTIS & STRATEGI INTERVENSI PARENTING</div>
+        
+        <p style="font-weight: 600; margin-bottom: 4px; font-size: 0.9rem;">Saran Pengembangan Pengasuhan:</p>
+        <p id="r-rekomendasi" class="report-paragraph" style="margin-bottom: 12px; text-align: justify;">
           -
         </p>
+
+        <div class="box-futuristic" style="border-left-color: #6366f1;">
+          <h4 style="color: #3730a3;">Langkah Taktis Intervensi Harian:</h4>
+          <ul id="r-list-intervensi" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
       </div>
 
-      <!-- Tanda Tangan Psikolog Penanggung Jawab (Dinamis dari soal.json) -->
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
       <div class="report-footer-sign">
         <div class="sign-box">
           <p>Psikolog Penanggung Jawab,</p>
           <div class="sign-space"></div>
-          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">-</p>
-          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">-</p>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
         </div>
       </div>
 
@@ -119,19 +275,19 @@
   <script src="scoring.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
-      // 1. Render Kop Laporan Resmi dari config.js
+      // 1. Render Kop Laporan dari config.js
       if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
         const org = PATS_CONFIG.organization;
-        document.getElementById("kop-instansi-nama").innerText = org.name || "";
-        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "";
-        document.getElementById("kop-instansi-alamat").innerText = org.address || "";
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
         
         const logoElem = document.getElementById("kop-logo");
         logoElem.src = org.logoUrl || "../../logo.png";
         logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
       }
 
-      // 2. Ambil data sesi peserta
+      // 2. Load Sesi Peserta
       const user = PATS_AUTH.getSession();
       if (user) {
         document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
@@ -148,64 +304,192 @@
         document.getElementById("r-daerah").innerText = daerahText;
       }
 
-      // 3. Ambil data jawaban & metadata soal.json
+      // 3. Load Jawaban KK2 & JSON Files
       const rawAnswers = sessionStorage.getItem("pats_answers_KK2");
       const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
 
-      const res = await fetch("soal.json");
-      const soalData = await res.json();
-      const testInfo = soalData.test_info || {};
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
 
-      // 4. Render Metadata Ujian & Penanggung Jawab Dinamis dari soal.json
-      if (testInfo.nama_resmi) {
-        document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
-      }
-      document.getElementById("r-instrumen").innerText = `${testInfo.kode || 'KK2'} - ${testInfo.nama_resmi || 'APACA Parenting Style Inventory'}`;
-      document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
-      document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '2026-0819-PSI-01'}`;
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+        const testInfo = soalData.test_info || {};
 
-      // 5. Hitung Skor Psikometri
-      const result = KK2_Scoring.evaluate(answers, soalData);
+        if (testInfo.nama_resmi) {
+          document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
+        }
+        document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+        document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '2026-0819-PSI-01'}`;
 
-      if (result.isInvalid) {
-        alert(result.message);
-        return;
-      }
+        // 4. Hitung Skor Psikometri via KK2_Scoring
+        const result = KK2_Scoring.evaluate(answers, soalData, rubrikData);
 
-      // 6. Kirim Rekap Otomatis ke Google Sheets via GAS Engine
-      if (user) {
-        KK2_Scoring.sendRekapToGAS(answers, user, result);
-      }
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
 
-      // 7. Render Tabulasi Skor Dinamis
-      const tbody = document.getElementById("score-table-body");
-      tbody.innerHTML = ""; // Bersihkan placeholder
-      
-      const categories = [
-        { key: "Otoritatif", label: "Otoritatif (Demokratis)" },
-        { key: "Otoriter", label: "Otoriter" },
-        { key: "Permisif", label: "Permisif" },
-        { key: "Pengabaian", label: "Pengabaian (Apatis)" }
-      ];
+        // 5. Send Rekap to Spreadsheet
+        if (user && typeof KK2_Scoring.sendRekapToGAS === "function") {
+          KK2_Scoring.sendRekapToGAS(answers, user, result);
+        }
 
-      categories.forEach(cat => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td style="text-align: left; font-weight: 600;">${cat.label}</td>
-          <td>${result.rawScores[cat.key] ?? '-'}</td>
-          <td>${result.tScores[cat.key] ?? '-'}</td>
-          <td>${result.categories[cat.key] ?? '-'}</td>
-        `;
-        tbody.appendChild(row);
-      });
+        // 6. Render Tabel Hasil Psikometri
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
 
-      // 8. Render Narasi & Rekomendasi
-      if (result.narrative) {
-        document.getElementById("r-judul-dominan").innerText = result.narrative.judul || result.dominantCategory;
-        document.getElementById("r-deskripsi-narasi").innerText = result.narrative.deskripsi || "Deskripsi tidak ditemukan.";
-        document.getElementById("r-rekomendasi").innerText = result.narrative.rekomendasi || "Rekomendasi tidak ditemukan.";
+        const chartLabels = [];
+        const chartTScores = [];
+
+        if (result.tableRows && Array.isArray(result.tableRows)) {
+          result.tableRows.forEach(row => {
+            const tr = document.createElement("tr");
+            const isDominant = row.categoryKey === result.dominantKey;
+            
+            chartLabels.push(row.label);
+            chartTScores.push(row.ts);
+
+            tr.innerHTML = `
+              <td style="text-align: left; font-weight: 600;">${row.label}</td>
+              <td>${row.rs} / 40</td>
+              <td>T-${row.ts}</td>
+              <td>${row.category}</td>
+              <td>${isDominant ? '<span class="badge-dominan">DOMINAN</span>' : '-'}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        // 7. Render Charts via Chart.js
+        renderCharts(chartLabels, chartTScores, result.baumrindAxes);
+
+        // 8. Render Detail Narasi & Karakteristik
+        if (result.narrative) {
+          const narasi = result.narrative;
+          document.getElementById("r-judul-dominan").innerText = narasi.judul || result.dominantKey;
+          document.getElementById("r-deskripsi-narasi").innerText = narasi.deskripsi || "-";
+          document.getElementById("r-rekomendasi").innerText = narasi.rekomendasi || "-";
+
+          // Render Sifat Orang Tua
+          if (narasi.sifat_orang_tua) {
+            document.getElementById("r-sifat-orangtua").innerText = typeof narasi.sifat_orang_tua === 'object'
+              ? `Regulasi: ${narasi.sifat_orang_tua.gaya_regulasi} Iklim: ${narasi.sifat_orang_tua.iklim_emosional}`
+              : narasi.sifat_orang_tua;
+          }
+
+          // Render Dampak pada Anak
+          if (narasi.dampak_pada_anak) {
+            document.getElementById("r-dampak-anak").innerText = typeof narasi.dampak_pada_anak === 'object'
+              ? `Emosional: ${narasi.dampak_pada_anak.perkembangan_emosional} Sosial: ${narasi.dampak_pada_anak.keterampilan_sosial}`
+              : narasi.dampak_pada_anak;
+          }
+
+          // Render List Kelebihan
+          const ulKelebihan = document.getElementById("r-list-kelebihan");
+          ulKelebihan.innerHTML = "";
+          (narasi.kelebihan || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulKelebihan.appendChild(li);
+          });
+
+          // Render List Potensi Risiko
+          const ulRisiko = document.getElementById("r-list-risiko");
+          ulRisiko.innerHTML = "";
+          (narasi.potensi_risiko || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulRisiko.appendChild(li);
+          });
+
+          // Render List Strategi Intervensi
+          const ulIntervensi = document.getElementById("r-list-intervensi");
+          ulIntervensi.innerHTML = "";
+          (narasi.strategi_intervensi || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulIntervensi.appendChild(li);
+          });
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat laporan KK2:", err);
+        alert("Terjadi kesalahan saat memproses data laporan hasil tes.");
       }
     });
+
+    // Function to render Chart.js Radar & Bar Axes
+    function renderCharts(labels, tScores, axes) {
+      // 1. Radar Chart 4 Tipologi
+      const ctxRadar = document.getElementById('radarChart').getContext('2d');
+      new Chart(ctxRadar, {
+        type: 'radar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'T-Score Tipologi',
+            data: tScores,
+            backgroundColor: 'rgba(59, 130, 246, 0.25)',
+            borderColor: '#3b82f6',
+            borderWidth: 2,
+            pointBackgroundColor: '#1d4ed8',
+            pointBorderColor: '#ffffff',
+            pointHoverBackgroundColor: '#ffffff',
+            pointHoverBorderColor: '#1d4ed8'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              angleLines: { color: '#e2e8f0' },
+              grid: { color: '#f1f5f9' },
+              pointLabels: { font: { size: 10, weight: '600' }, color: '#475569' },
+              suggestedMin: 30,
+              suggestedMax: 70
+            }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      // 2. Horizontal Bar Chart (Tuntutan vs Responsivitas)
+      const ctxAxes = document.getElementById('axesChart').getContext('2d');
+      new Chart(ctxAxes, {
+        type: 'bar',
+        data: {
+          labels: ['Tuntutan (Control)', 'Responsivitas (Support)'],
+          datasets: [{
+            label: 'Indeks Sumbu (T-Score)',
+            data: [axes.demandingness, axes.responsiveness],
+            backgroundColor: ['#6366f1', '#10b981'],
+            borderRadius: 6,
+            barThickness: 24
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              suggestedMin: 30,
+              suggestedMax: 70,
+              grid: { color: '#f1f5f9' }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { font: { size: 11, weight: '600' }, color: '#334155' }
+            }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
   </script>
 </body>
 </html>
