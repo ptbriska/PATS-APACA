@@ -1,0 +1,237 @@
+{
+  "kode_tes": "KS10",
+  "nama_tes": "APACA Learning Technique Inventory (LTE)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Tim Asesmen APACA",
+    "sipp": "-"
+  },
+  "informasi_umum": "APACA Learning Technique Inventory (LTE) mengukur, mengidentifikasi, dan memetakan repertoar teknik belajar konkret (tindakan atau prosedur taktis) yang digunakan individu serta tingkat efektivitas kognitifnya dalam aktivitas belajar sehari-hari.",
+  "rubrik_dimensi": {
+    "Retrieval & Memory": {
+      "deskripsi": "Prosedur menguji dan memanggil kembali informasi dari ingatan jangka panjang (long-term memory) secara aktif tanpa bergantung pada catatan.",
+      "sub_dimensi": {
+        "Active Recall": {
+          "deskripsi_teknik": "Menguji ingatan secara aktif dengan menutup buku/catatan dan mengingat kembali konsep utama secara lisan atau tertulis.",
+          "efek_kognitif": "Memperkuat jejak memori (memory trace) dan mempermudah akses ingatan saat ujian.",
+          "rekomendasi_taktis": "Lakukan penutupan materi secara berkala setiap selesai membaca satu bab, lalu sebutkan 3-5 poin kunci utama."
+        },
+        "Practice Testing": {
+          "deskripsi_teknik": "Mengerjakan latihan soal mandiri tanpa melihat kunci jawaban sebagai sarana utama merevisi materi.",
+          "efek_kognitif": "Mengidentifikasi celah pemahaman (knowledge gaps) dan membiasakan pola pikir saat menghadapi soal.",
+          "rekomendasi_taktis": "Gunakan bank soal tahun-tahun sebelumnya dan kerjakan secara mandiri sebelum membuka pembahasan."
+        },
+        "Flashcards": {
+          "deskripsi_teknik": "Menggunakan kartu kilat (fisik atau aplikasi digital seperti Anki/Quizlet) berisi kata kunci di satu sisi dan definisi di sisi lain.",
+          "efek_kognitif": "Sangat efektif untuk otomatisasi ingatan istilah asing, rumus, atau kosa kata.",
+          "rekomendasi_taktis": "Pisahkan kartu yang sudah dikuasai dan kartu yang sering salah agar pengulangan lebih fokus pada materi sulit."
+        },
+        "Free Recall & Blurting": {
+          "deskripsi_teknik": "Menuliskan seluruh informasi yang diingat pada kertas kosong secepat mungkin, kemudian mencocokkannya dengan catatan utama.",
+          "efek_kognitif": "Melatih pemanggilan memori dalam jumlah besar sekaligus mengevaluasi tingkat kelengkapan ingatan.",
+          "rekomendasi_taktis": "Sediakan kertas kosong sehabis sesi belajar, tuliskan semua hal yang diingat selama 5 menit, lalu beri stabilo pada bagian yang terlewat."
+        }
+      }
+    },
+    "Spacing": {
+      "deskripsi": "Strategi pembagian alokasi waktu pengulangan materi dan pengacakan topik untuk mencegah forgetting curve.",
+      "sub_dimensi": {
+        "Spaced Repetition": {
+          "deskripsi_teknik": "Mengulang pengulasan materi dengan interval waktu yang kian bertambah (misal: H+1, H+3, H+7, H+30).",
+          "efek_kognitif": "Mencegah kelupaan eksponensial dan memindahkan informasi ke memori jangka panjang.",
+          "rekomendasi_taktis": "Buat kalender revisi berkala untuk menandai kapan suatu bab harus diulas kembali secara bertahap."
+        },
+        "Distributed Practice": {
+          "deskripsi_teknik": "Membagi alokasi waktu belajar menjadi potongan-potongan kecil dalam beberapa hari dibanding sistem kebutuhan semalam (SKS).",
+          "efek_kognitif": "Menjaga daya tahan konsentrasi dan meningkatkan konsolidasi memori saat tidur.",
+          "rekomendasi_taktis": "Jadwalkan sesi belajar 30-45 menit setiap hari ketimbang maraton 4 jam sekaligus dalam semalam."
+        },
+        "Interleaving": {
+          "deskripsi_teknik": "Mengacak dan mencampur beberapa topik atau subjek pelajaran berbeda dalam satu sesi belajar.",
+          "efek_kognitif": "Melatih fleksibilitas kognitif dan kemampuan membedakan jenis masalah secara cepat.",
+          "rekomendasi_taktis": "Campur latihan soal dari beberapa bab berbeda dalam satu sesi latihan agar otak terbiasa berpindah konteks."
+        }
+      }
+    },
+    "Elaborasi & Pemahaman": {
+      "deskripsi": "Teknik menghubungkan materi baru dengan pengetahuan yang sudah ada melalui pemaknaan mendalam dan penjelasannya kembali.",
+      "sub_dimensi": {
+        "Feynman Technique": {
+          "deskripsi_teknik": "Menjelaskan konsep rumit menggunakan bahasa paling sederhana seolah-olah mengajarinya kepada anak kecil atau orang awam.",
+          "efek_kognitif": "Membongkar jargon kompleks dan mendeteksi secara presisi bagian mana dari materi yang belum benar-benar dipahami.",
+          "rekomendasi_taktis": "Tuliskan penjelasan materi dalam 1 paragraf sederhana tanpa menggunakan kata-kata ilmiah yang rumit."
+        },
+        "Elaborative Interrogation": {
+          "deskripsi_teknik": "Secara aktif mengajukan pertanyaan 'mengapa fakta ini benar?' dan 'bagaimana proses ini terjadi?' saat membaca.",
+          "efek_kognitif": "Membangun struktur sebab-akibat logis di dalam otak sehingga materi tidak sekadar dihafal mati.",
+          "rekomendasi_taktis": "Setiap menemukan pernyataan fakta di buku, tuliskan minimal satu alasan logis mengapa fakta tersebut terjadi."
+        },
+        "Self-Explanation": {
+          "deskripsi_teknik": "Menjelaskan alur berpikir dan langkah penalaran pribadi secara eksplisit saat menyelesaikan soal atau membaca teks.",
+          "efek_kognitif": "Meningkatkan kesadaran metakognitif dan mengurangi kesalahan akibat ketidaktelitian.",
+          "rekomendasi_taktis": "Tuliskan keterangan singkat di samping tiap langkah pengerjaan soal hitungan/logika."
+        },
+        "Analogy & Concrete Examples": {
+          "deskripsi_teknik": "Membuat perumpamaan analogi konteks dan mencari contoh penerapan nyata dari suatu teori abstrak.",
+          "efek_kognitif": "Menjangkar konsep abstrak dengan pengalaman sensori riil yang sudah dikenal.",
+          "rekomendasi_taktis": "Cari fenomena di kehidupan sehari-hari yang prinsip kerjanya mirip dengan teori yang sedang dipelajari."
+        },
+        "Teaching Others": {
+          "deskripsi_teknik": "Mengajarkan kembali materi yang baru dipelajari kepada teman sebaya atau kelompok belajar.",
+          "efek_kognitif": "Memaksa pembentukan struktur informasi yang sistematis dan meningkatkan retensi pemahaman hingga titik tertinggi.",
+          "rekomendasi_taktis": "Manfaatkan kerja kelompok untuk saling bertukar peran menjadi pengajar bagi topik yang dikuasai."
+        }
+      }
+    },
+    "Organisasi Informasi": {
+      "deskripsi": "Teknik menata, merangkum, dan memetakan struktur hubungan antarkonsep secara hierarkis maupun visual.",
+      "sub_dimensi": {
+        "Mind / Concept Mapping": {
+          "deskripsi_teknik": "Membuat bagan visual, skema, atau peta pikiran non-linear yang menghubungkan ide-ide utama dan cabang turunan.",
+          "efek_kognitif": "Memudahkan pemahaman hubungan spasial dan asosiasi antar variabel secara holistik.",
+          "rekomendasi_taktis": "Gunakan warna dan simbol berbeda untuk tiap cabang topik utama pada peta konsep."
+        },
+        "Outlining & Cornell": {
+          "deskripsi_teknik": "Merangkum catatan terstruktur menggunakan format poin hirarki atau sistem kolom catat Cornell (kolom kata kunci, catatan utama, dan ringkasan).",
+          "efek_kognitif": "Mendorong pemrosesan informasi secara rapi dan mempermudah ulasan cepat saat persiapan ujian.",
+          "rekomendasi_taktis": "Bagi kertas menjadi 2 kolom: kolom kiri untuk kata kunci/pertanyaan dan kolom kanan untuk catatan penjelasan."
+        },
+        "Summarization & Categorization": {
+          "deskripsi_teknik": "Menuliskan ulang intisari materi menggunakan kalimat sendiri serta mengelompokkan data berdasarkan kriteria kesamaan.",
+          "efek_kognitif": "Menyaring informasi non-esensial dan melatih sintesis data secara ringkas.",
+          "rekomendasi_taktis": "Batasi ringkasan satu bab menjadi maksimal satu lembar kertas dengan fokus hanya pada poin vital."
+        }
+      }
+    },
+    "Reading Techniques": {
+      "deskripsi": "Prosedur sistematis dalam mengekstraksi informasi dan mempertahankan fokus dari teks bacaan.",
+      "sub_dimensi": {
+        "SQ3R / SQ4R": {
+          "deskripsi_teknik": "Menerapkan tahapan membaca terstruktur: Survey (tinjau), Question (tanya), Read (baca), Recite (sebutkan), Review (ulas).",
+          "efek_kognitif": "Meningkatkan pemahaman bacaan mendalam dan efisiensi waktu membaca.",
+          "rekomendasi_taktis": "Selalu baca pertanyaan akhir bab terlebih dahulu sebelum mulai membaca teks utama."
+        },
+        "Previewing & Questioning": {
+          "deskripsi_teknik": "Membaca sekilas judul, grafik, dan kesimpulan serta merumuskan pertanyaan tebakan sebelum membaca utuh.",
+          "efek_kognitif": "Mengaktifkan pengetahuan awal (prior knowledge) dan memberikan arah fokus pembacaan.",
+          "rekomendasi_taktis": "Ubah setiap judul sub-bab menjadi kalimat pertanyaan sebelum paragrafnya dibaca."
+        },
+        "Annotation & Skimming": {
+          "deskripsi_teknik": "Memberikan garis bawah, stiker penanda, catatan pinggir, serta membaca cepat menyapu halaman untuk ide pokok.",
+          "efek_kognitif": "Mempertahankan keterlibatan aktif kinestetik saat membaca teks tebal.",
+          "rekomendasi_taktis": "Tuliskan 2-3 kata rangkuman di margin samping setiap paragraf yang selesai dibaca."
+        }
+      }
+    },
+    "Practice & Problem Solving": {
+      "deskripsi": "Penerapan taktis dalam menyelesaikan soal, evaluasi kesalahan, dan pengondisian situasi ujian.",
+      "sub_dimensi": {
+        "Deliberate Practice": {
+          "deskripsi_teknik": "Fokus latihan intensif secara spesifik pada area atau jenis soal yang paling terasa sulit hingga mahir.",
+          "efek_kognitif": "Mendorong batas kemampuan kognitif dan memperbaiki kelemahan spesifik.",
+          "rekomendasi_taktis": "Kumpulkan jenis soal yang paling sering membuat Anda salah, lalu kerjakan secara berturut-turut."
+        },
+        "Worked Examples": {
+          "deskripsi_teknik": "Mempelajari langkah-langkah penyelesaian dari contoh soal yang sudah terpecahkan sebelum mencoba mengerjakan soal baru.",
+          "efek_kognitif": "Mengurangi beban kerja memori (cognitive load) pada tahap awal pemahaman prosedur.",
+          "rekomendasi_taktis": "Amati 2-3 contoh soal terpecahkan, pahami polanya, baru kemudian kerjakan latihan mandiri."
+        },
+        "Problem Solving & Mixed": {
+          "deskripsi_teknik": "Mengerjakan kombinasi variasi soal acak secara langsung tanpa bantuan petunjuk atau kunci jawaban.",
+          "efek_kognitif": "Membangun ketangkasan analisis dan kemandirian penyelesaian masalah.",
+          "rekomendasi_taktis": "Kerjakan latihan soal secara acak tanpa melihat rumus di lembar terpisah."
+        },
+        "Error Analysis": {
+          "deskripsi_teknik": "Menganalisis kembali letak dan penyebab kesalahan pada tugas atau ujian masa lalu.",
+          "efek_kognitif": "Mencegah pengulangan pola kesalahan serupa di masa mendatang.",
+          "rekomendasi_taktis": "Buat buku jurnal kesalahan (Error Log) yang mencatat soal salah, jawaban benar, dan alasan kekeliruannya."
+        },
+        "Exam Simulation": {
+          "deskripsi_teknik": "Melakukan simulasi kondisi ujian lengkap dengan durasi waktu ketat, keheningan, dan tanpa catatan.",
+          "efek_kognitif": "Melatih desensitisasi kecemasan ujian dan manajemen alokasi waktu ujian riil.",
+          "rekomendasi_taktis": "Pasang timer pengatur waktu dan jauhkan ponsel saat mengerjakan paket try-out."
+        }
+      }
+    },
+    "Time Management": {
+      "deskripsi": "Pengaturan ritme kerja kognitif, alokasi jam belajar, dan pembagian interval istirahat.",
+      "sub_dimensi": {
+        "Pomodoro Technique": {
+          "deskripsi_teknik": "Menerapkan sesi belajar fokus berdurasi pendek (misal 25 menit) yang diselingi istirahat singkat (5 menit).",
+          "efek_kognitif": "Menjaga kesegaran otak dan mencegah kelelahan mental akibat fokus terlalu lama.",
+          "rekomendasi_taktis": "Gunakan aplikasi pengatur waktu Pomodoro dan patuhi interval istirahat secara ketat."
+        },
+        "Time Blocking": {
+          "deskripsi_teknik": "Memblokir alokasi jam tertentu pada kalender harian khusus untuk subjek tertentu tanpa gangguan.",
+          "efek_kognitif": "Meminimalkan kebingungan keputusan (decision fatigue) terkait materi apa yang harus dipelajari.",
+          "rekomendasi_taktis": "Tentukan jam pasti di agenda harian untuk belajar dan perlakukan sebagai janji penting."
+        },
+        "Study Sprint & Breaks": {
+          "deskripsi_teknik": "Sesi belajar intensif berdurasi sedang diimbangi aturan istirahat terencana untuk peregangan fisik.",
+          "efek_kognitif": "Menjaga stamina kognitif serta stabilitas mood sepanjang hari.",
+          "rekomendasi_taktis": "Lakukan gerakan fisik atau peregangan ringan saat jeda istirahat untuk melancarkan sirkulasi."
+        }
+      }
+    },
+    "Monitoring & Metakognisi": {
+      "deskripsi": "Prosedur mengawasi, menilai, dan merefleksikan sejauh mana efektivitas dan pemahaman belajar telah dicapai.",
+      "sub_dimensi": {
+        "Self-questioning": {
+          "deskripsi_teknik": "Memeriksa pemahaman pribadi melalui pertanyaan reflektif mandiri di tengah-tengah sesi belajar.",
+          "efek_kognitif": "Mencegah ilusi pemahaman (illusion of competence) saat sekadar membaca.",
+          "rekomendasi_taktis": "Tanyakan pada diri sendiri di tengah membaca: 'Apakah saya bisa menjelaskan paragraf ini tanpa mengintip?'."
+        },
+        "Error Log & Tracking": {
+          "deskripsi_teknik": "Mencatat dan memantau riwayat topik yang belum dikuasai dalam jurnal khusus secara berkala.",
+          "efek_kognitif": "Memberikan gambaran terukur mengenai kemajuan belajar pribadi.",
+          "rekomendasi_taktis": "Bikin daftar centang (checklist) bab yang belum paham dan perbarui statusnya setiap minggu."
+        },
+        "Confidence Rating": {
+          "deskripsi_teknik": "Menilai tingkat kepastian dan keyakinan atas keakuratan jawaban sebelum mengumpulkannya.",
+          "efek_kognitif": "Mengasah kalibrasi metakognitif antara apa yang dirasa tahu dengan apa yang benar-benar diketahui.",
+          "rekomendasi_taktis": "Beri skala keyakinan 1-3 pada tiap nomor soal latihan untuk menandai nomor yang butuh ulasan ulang."
+        }
+      }
+    }
+  },
+  "norma_kategori": [
+    {
+      "skor_indeks_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Sangat Tinggi (Mastery)",
+      "deskripsi": "Teknik ini menjadi senjata utama yang sangat sering dan efektif digunakan siswa secara konsisten.",
+      "tindakan": "Pertahankan penerapan teknik ini dan kombinasikan dengan strategi canggih lainnya."
+    },
+    {
+      "skor_indeks_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Tinggi (Active)",
+      "deskripsi": "Teknik ini secara rutin diterapkan dan memberikan dampak positif pada pemahaman materi.",
+      "tindakan": "Tingkatkan frekuensi pemakaian agar teknik menjadi kebiasaan otomatis."
+    },
+    {
+      "skor_indeks_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Sedang (Emerging)",
+      "deskripsi": "Teknik kadang digunakan, namun belum konsisten atau belum dioptimalkan secara penuh.",
+      "tindakan": "Berikan panduan taktis agar siswa lebih percaya diri menerapkan teknik ini."
+    },
+    {
+      "skor_indeks_persen": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Rendah (Underused)",
+      "deskripsi": "Jarang diterapkan; siswa mungkin belum menguasai prosedur teknis penggunaannya.",
+      "tindakan": "Perlu pembekalan atau coaching taktis untuk mengenalkan manfaat teknik ini."
+    },
+    {
+      "skor_indeks_persen": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Sangat Rendah (Absent)",
+      "deskripsi": "Teknik tidak pernah digunakan atau dianggap tidak efektif oleh siswa.",
+      "tindakan": "Evaluasi alasan ketidakgunaan dan kenalkan secara bertahap jika relevan."
+    }
+  ],
+  "protokol_coaching_remediasi": {
+    "cut_off_retrieval_practice": "Jika skor Indeks Retrieval & Memory < 60%, siswa wajib mengikuti coaching teknik uji ingatan aktif (Active Recall & Flashcards).",
+    "cut_off_spacing": "Jika skor Indeks Spacing < 50%, siswa berisiko tinggi melakukan Sistem Kebut Semalam (SKS) dan membutuhkan pendampingan pembuatan jadwal revisi bertahap."
+  }
+}
