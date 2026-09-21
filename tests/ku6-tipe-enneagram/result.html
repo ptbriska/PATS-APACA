@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KU6 APACA WPCM (Enneagram Model)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Modern Futurism Clean White Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* HERO ENNEAGRAM PROFILE CARD */
+    .ennea-hero-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      border-radius: 16px;
+      padding: 32px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 20px 0 28px 0;
+      box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.3);
+      border-left: 6px solid #6366f1;
+    }
+
+    @media (max-width: 768px) {
+      .ennea-hero-card { flex-direction: column; text-align: center; }
+    }
+
+    .ennea-code-display {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1;
+      font-family: monospace, sans-serif;
+      color: #818cf8;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* TRIAD CENTER GRID */
+    .triad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .triad-grid { grid-template-columns: 1fr; }
+    }
+
+    .triad-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .triad-card.gut { border-top: 4px solid #ef4444; }
+    .triad-card.heart { border-top: 4px solid #ec4899; }
+    .triad-card.head { border-top: 4px solid #3b82f6; }
+
+    /* CHARTS CONTAINER GRID */
+    .chart-grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 900px) {
+      .chart-grid-two { grid-template-columns: 1fr; }
+    }
+
+    .chart-box-ennea {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    /* FEATURE GRID */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .feature-card.strengths { border-left: 5px solid #059669; }
+    .feature-card.weaknesses { border-left: 5px solid #dc2626; }
+
+    .tag-pill {
+      display: inline-block;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin: 3px 2px;
+    }
+
+    .tag-pill.career {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1e40af;
+      font-weight: 700;
+    }
+
+    .info-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    /* SCORE TABULATION TABLE */
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #6366f1; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KU6_Enneagram_Profil.pdf')" class="btn-primary" style="width: auto; background-color: #6366f1;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN WORK PERSONALITY & CORE MOTIVATION INVENTORY (ENNEAGRAM)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Instansi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KU6 - WPCM Enneagram Model</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Hero Enneagram Profile Card -->
+      <div class="report-section">
+        <div class="ennea-hero-card">
+          <div style="flex: 1;">
+            <div style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#a5b4fc; margin-bottom:4px;">Main Core Type & Wing</div>
+            <h2 id="r-hero-title" style="margin: 0 0 8px 0; font-size: 1.5rem; color: #ffffff;">The Target Achiever</h2>
+            <p id="r-hero-desc" style="font-size: 0.88rem; line-height: 1.6; margin: 0; opacity: 0.9;">-</p>
+          </div>
+          <div style="text-align: center; min-width: 140px;">
+            <div id="r-hero-code" class="ennea-code-display">3w4</div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; opacity: 0.8;">Profil Dinamika</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Triad Center Distribution -->
+      <div class="report-section">
+        <div class="report-section-title">I. DISTRIBUSI PUSAT ENERGI (TRIAD CENTERS)</div>
+        <div class="triad-grid">
+          <div class="triad-card gut">
+            <h5 style="margin:0 0 4px 0; color:#dc2626; font-size:0.95rem;">Gut / Instinctive Center</h5>
+            <div id="triad-gut-score" style="font-size:2rem; font-weight:900; color:#0f172a; margin:4px 0;">0</div>
+            <div style="font-size:0.75rem; color:#64748b;">Tipe 8, 9, 1 (Otonomi & Insting)</div>
+          </div>
+          <div class="triad-card heart">
+            <h5 style="margin:0 0 4px 0; color:#db2777; font-size:0.95rem;">Heart / Feeling Center</h5>
+            <div id="triad-heart-score" style="font-size:2rem; font-weight:900; color:#0f172a; margin:4px 0;">0</div>
+            <div style="font-size:0.75rem; color:#64748b;">Tipe 2, 3, 4 (Relasi & Citra Diri)</div>
+          </div>
+          <div class="triad-card head">
+            <h5 style="margin:0 0 4px 0; color:#2563eb; font-size:0.95rem;">Head / Thinking Center</h5>
+            <div id="triad-head-score" style="font-size:2rem; font-weight:900; color:#0f172a; margin:4px 0;">0</div>
+            <div style="font-size:0.75rem; color:#64748b;">Tipe 5, 6, 7 (Data & Keamanan)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Visualisasi 2 Grafik Modern Enneagram -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI PROFIL SKOR 9 TIPE ENNEAGRAM</div>
+        <div class="chart-grid-two">
+          <div class="chart-box-ennea">
+            <h5 style="margin:0 0 12px 0; text-align:center; color:#4338ca; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px;">Grafik Batang Distribusi 9 Tipe</h5>
+            <canvas id="enneaBarChart"></canvas>
+          </div>
+          <div class="chart-box-ennea">
+            <h5 style="margin:0 0 12px 0; text-align:center; color:#0284c7; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px;">Radar Keseimbangan Motivasi</h5>
+            <canvas id="enneaRadarChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section IV: Tabulasi Skor 9 Tipe -->
+      <div class="report-section">
+        <div class="report-section-title">III. TABULASI SKOR 9 TIPE MOTIVASI KERJA</div>
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Tipe Enneagram</th>
+              <th>Pusat Triad</th>
+              <th>Skor Mentah (0-8)</th>
+              <th>Persentase Dominansi</th>
+              <th>Status Kategori</th>
+            </tr>
+          </thead>
+          <tbody id="ennea-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section V: Analisis Kekuatan & Area Kebocoran -->
+      <div class="report-section">
+        <div class="report-section-title">IV. ANALISIS KEKUATAN & POTENSI TANTANGAN PERILAKU</div>
+        <div class="feature-grid">
+          <div class="feature-card strengths">
+            <h4 style="color:#059669; margin-top:0; margin-bottom:12px; font-size:1rem;">🌟 Kekuatan Utama Motivasi</h4>
+            <div id="r-strengths-tags"></div>
+          </div>
+          <div class="feature-card weaknesses">
+            <h4 style="color:#dc2626; margin-top:0; margin-bottom:12px; font-size:1rem;">⚠️ Potensi Kebocoran / Tantangan Emosional</h4>
+            <div id="r-weaknesses-tags"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section VI: Dinamika Core Desire, Fear, Wing & Kepemimpinan -->
+      <div class="report-section">
+        <div class="report-section-title">V. DINAMIKA PARAMETER MOTIVASI & GAYA KERJA</div>
+        
+        <div class="info-box" style="border-left: 5px solid #059669;">
+          <h5 style="margin:0 0 6px 0; color:#059669; font-size:0.92rem;">🚀 Core Desire (Dorongan Motivasi Utama)</h5>
+          <p id="r-core-desire" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #dc2626;">
+          <h5 style="margin:0 0 6px 0; color:#dc2626; font-size:0.92rem;">⚠️ Core Fear (Ketakutan Utama di Tempat Kerja)</h5>
+          <p id="r-core-fear" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #818cf8; background:#f5f3ff;">
+          <h5 style="margin:0 0 6px 0; color:#4338ca; font-size:0.92rem;">🪶 Wing Dynamic (Pengaruh Sayap Kepribadian)</h5>
+          <p id="r-wing-name" style="font-size:0.9rem; font-weight:700; color:#1e1b4b; margin:0 0 4px 0;">-</p>
+          <p id="r-wing-desc" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box">
+          <h5 style="margin:0 0 6px 0; color:#4f46e5; font-size:0.92rem;">🗣️ Gaya Komunikasi</h5>
+          <p id="r-gaya-komunikasi" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box">
+          <h5 style="margin:0 0 6px 0; color:#0891b2; font-size:0.92rem;">👑 Gaya Kepemimpinan (Leadership Style)</h5>
+          <p id="r-gaya-kepemimpinan" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box">
+          <h5 style="margin:0 0 6px 0; color:#059669; font-size:0.92rem;">🏞️ Lingkungan Kerja Ideal</h5>
+          <p id="r-lingkungan-ideal" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.5;">-</p>
+        </div>
+      </div>
+
+      <!-- Section VII: Jalur Integrasi, Desintegrasi & Karir -->
+      <div class="report-section">
+        <div class="report-section-title">VI. JALUR PERKEMBANGAN (INTEGRATION), STRES, & POTENSI KARIR</div>
+
+        <div class="info-box" style="background:#f0fdf4; border-color:#bbf7d0;">
+          <h5 style="margin:0 0 6px 0; color:#166534; font-size:0.92rem;">🌱 Integration Path (Arah Growth / Optimal)</h5>
+          <p id="r-integration-desc" style="font-size:0.88rem; color:#166534; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box" style="background:#fef2f2; border-color:#fecaca;">
+          <h5 style="margin:0 0 6px 0; color:#991b1b; font-size:0.92rem;">⚡ Disintegration Path (Peta Stres / Tekanan Kerja)</h5>
+          <p id="r-disintegration-desc" style="font-size:0.88rem; color:#991b1b; margin:0; line-height:1.5;">-</p>
+        </div>
+
+        <div class="info-box" style="background:#f0f9ff; border-color:#bae6fd; margin-top:14px;">
+          <h5 style="margin:0 0 10px 0; color:#0369a1; font-size:0.95rem;">💼 Potensi Karir & Peran Profesi Ideal</h5>
+          <div id="r-potensi-karir"></div>
+        </div>
+
+        <div class="info-box" style="background:#f5f3ff; border-color:#ddd6fe; border-left:5px solid #6366f1; margin-top:12px;">
+          <h5 style="margin:0 0 6px 0; color:#4338ca; font-size:0.95rem;">🌱 Saran Pengembangan Diri (Growth Action Plan)</h5>
+          <p id="r-saran-pengembangan" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.6;">-</p>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KU6
+      const rawAnswers = sessionStorage.getItem("pats_answers_KU6");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KU6
+        const result = KU6_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KU6_Scoring.sendRekapToGAS === "function") {
+          KU6_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        const mainDet = result.mainDetail;
+        const wingDet = result.wingDetail;
+        const rawScores = result.rawScores;
+
+        // 5. Render Hero Enneagram Card
+        document.getElementById("r-hero-code").innerText = result.enneagramCode;
+        document.getElementById("r-hero-title").innerText = mainDet.julukan || `Core Type ${result.mainType}`;
+        document.getElementById("r-hero-desc").innerText = mainDet.ringkasan_perilaku || "-";
+
+        // 6. Render Triad Scores
+        document.getElementById("triad-gut-score").innerText = result.triadScores.Gut;
+        document.getElementById("triad-heart-score").innerText = result.triadScores.Heart;
+        document.getElementById("triad-head-score").innerText = result.triadScores.Head;
+
+        // 7. Render 2 Charts (Bar Chart & Radar Chart)
+        const typeLabels = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9'];
+        const scoreData = typeLabels.map((_, idx) => rawScores[idx + 1] || 0);
+
+        // Bar Chart
+        new Chart(document.getElementById('enneaBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: typeLabels,
+            datasets: [{
+              label: 'Skor Mentah',
+              data: scoreData,
+              backgroundColor: 'rgba(99, 102, 241, 0.75)',
+              borderColor: '#4338ca',
+              borderWidth: 1.5,
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true, max: 8, ticks: { stepSize: 1 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // Radar Chart
+        new Chart(document.getElementById('enneaRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: typeLabels,
+            datasets: [{
+              label: 'Profil Motivasi',
+              data: scoreData,
+              backgroundColor: 'rgba(2, 132, 199, 0.2)',
+              borderColor: '#0284c7',
+              borderWidth: 2,
+              pointBackgroundColor: '#0284c7',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { r: { beginAtZero: true, max: 8, ticks: { stepSize: 2 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 8. Render Tabulasi Tabel 9 Tipe
+        const tbody = document.getElementById("ennea-table-body");
+        tbody.innerHTML = "";
+
+        const typeNames = {
+          1: "Tipe 1 - Quality Control / Reformer",
+          2: "Tipe 2 - Team Supporter / Helper",
+          3: "Tipe 3 - Target Achiever / Performer",
+          4: "Tipe 4 - Creative Specialist / Individualist",
+          5: "Tipe 5 - Data & Knowledge Expert",
+          6: "Tipe 6 - Risk & Compliance Analyst",
+          7: "Tipe 7 - Innovation Catalyst / Enthusiast",
+          8: "Tipe 8 - Executive Leader / Challenger",
+          9: "Tipe 9 - Organizational Mediator"
+        };
+
+        const triadBelong = {
+          1: "Gut", 2: "Heart", 3: "Heart", 4: "Heart", 5: "Head", 6: "Head", 7: "Head", 8: "Gut", 9: "Gut"
+        };
+
+        for (let t = 1; t <= 9; t++) {
+          const score = rawScores[t] || 0;
+          const pct = Math.round((score / 8) * 100);
+          
+          let statusLabel = "<span style='color:#64748b;'>Rendah</span>";
+          if (t === result.mainType) {
+            statusLabel = "<strong style='color:#6366f1;'>★ Main Core Type</strong>";
+          } else if (t === result.wingType) {
+            statusLabel = "<strong style='color:#0284c7;'>🪶 Wing Dynamic</strong>";
+          } else if (score >= 5) {
+            statusLabel = "<strong style='color:#059669;'>Tinggi</strong>";
+          } else if (score >= 3) {
+            statusLabel = "<span style='color:#d97706;'>Sedang</span>";
+          }
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${typeNames[t]}</td>
+            <td><strong>${triadBelong[t]}</strong></td>
+            <td>${score} / 8</td>
+            <td>${pct}%</td>
+            <td>${statusLabel}</td>
+          `;
+          tbody.appendChild(tr);
+        }
+
+        // 9. Render Kekuatan & Kelemahan
+        document.getElementById("r-strengths-tags").innerHTML = (mainDet.kekuatan_utama || [])
+          .map(s => `<span class="tag-pill" style="border-color:#a7f3d0; background:#ecfdf5; color:#065f46;">✓ ${s}</span>`)
+          .join(" ");
+
+        document.getElementById("r-weaknesses-tags").innerHTML = (mainDet.kelemahan_utama || [])
+          .map(w => `<span class="tag-pill" style="border-color:#fecaca; background:#fef2f2; color:#991b1b;">! ${w}</span>`)
+          .join(" ");
+
+        // 10. Render Rincian Informasi Parameter
+        document.getElementById("r-core-desire").innerText = mainDet.core_desire || "-";
+        document.getElementById("r-core-fear").innerText = mainDet.core_fear || "-";
+        document.getElementById("r-wing-name").innerText = wingDet.nama || result.enneagramCode;
+        document.getElementById("r-wing-desc").innerText = wingDet.deskripsi || "-";
+
+        document.getElementById("r-gaya-komunikasi").innerText = mainDet.gaya_komunikasi || "-";
+        document.getElementById("r-gaya-kepemimpinan").innerText = mainDet.gaya_kepemimpinan || "-";
+        document.getElementById("r-lingkungan-ideal").innerText = mainDet.lingkungan_ideal || "-";
+
+        document.getElementById("r-integration-desc").innerText = mainDet.integration_desc || "-";
+        document.getElementById("r-disintegration-desc").innerText = mainDet.disintegration_desc || "-";
+
+        // 11. Render Karir & Saran
+        document.getElementById("r-potensi-karir").innerHTML = (mainDet.potensi_karir || [])
+          .map(c => `<span class="tag-pill career">🎯 ${c}</span>`)
+          .join(" ");
+
+        document.getElementById("r-saran-pengembangan").innerText = mainDet.saran_pengembangan || "-";
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KU6:", err);
+        alert("Terjadi kesalahan saat memuat berkas data pendukung laporan Enneagram.");
+      }
+    });
+  </script>
+</body>
+</html>
