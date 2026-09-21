@@ -3,47 +3,573 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel CBT - PATS Portal</title>
+  <title>CBT Panel - KU5 Behavior Preference Indicator (DISC)</title>
   <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
-<body style="background-color: var(--bg-color, #f8fafc); padding-bottom: 40px;">
+  <style>
+    :root {
+      --primary-indigo: #4f46e5;
+      --primary-indigo-hover: #4338ca;
+      --most-green: #059669;
+      --most-green-bg: #ecfdf5;
+      --least-red: #dc2626;
+      --least-red-bg: #fef2f2;
+      --bg-slate: #f8fafc;
+      --text-dark: #0f172a;
+      --border-color: #cbd5e1;
+    }
 
-  <main class="container" style="margin-top: 20px;">
-    <div id="cbt-app">Memuat Panel Ujian...</div>
+    body {
+      background-color: var(--bg-slate);
+      color: var(--text-dark);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Navigasi CBT */
+    .cbt-header {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--primary-indigo);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .cbt-header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cbt-timer-badge {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: monospace, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Layout Main CBT */
+    .cbt-container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .cbt-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Kartu Soal Quadruple Choice */
+    .question-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .instruction-box {
+      background: #f0fdf4;
+      border-left: 5px solid var(--most-green);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      color: #166534;
+      line-height: 1.5;
+    }
+
+    /* Daftar 4 Deskriptor Pilihan */
+    .disc-block-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .disc-option-row {
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .disc-option-row:hover {
+      border-color: #cbd5e1;
+      background: #fafafa;
+    }
+
+    .disc-option-text {
+      font-size: 0.95rem;
+      color: #334155;
+      font-weight: 500;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* Tombol Pilihan Dual Chip (MOST vs LEAST) */
+    .chip-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-width: fit-content;
+    }
+
+    .chip-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: #64748b;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .chip-btn.most-btn:hover {
+      border-color: var(--most-green);
+      color: var(--most-green);
+      background: var(--most-green-bg);
+    }
+
+    .chip-btn.most-btn.active {
+      background: var(--most-green);
+      color: #ffffff;
+      border-color: var(--most-green);
+      box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+    }
+
+    .chip-btn.least-btn:hover {
+      border-color: var(--least-red);
+      color: var(--least-red);
+      background: var(--least-red-bg);
+    }
+
+    .chip-btn.least-btn.active {
+      background: var(--least-red);
+      color: #ffffff;
+      border-color: var(--least-red);
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+    }
+
+    /* Panel Navigasi Samping */
+    .nav-panel {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      height: fit-content;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-top: 14px;
+    }
+
+    .nav-btn {
+      aspect-ratio: 1;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-btn.partial {
+      background: #fef3c7;
+      color: #d97706;
+      border-color: #fcd34d;
+    }
+
+    .nav-btn.complete {
+      background: var(--primary-indigo);
+      color: #ffffff;
+      border-color: var(--primary-indigo);
+    }
+
+    .nav-btn.active {
+      outline: 2px solid #0891b2;
+      outline-offset: 2px;
+      font-weight: 800;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--primary-indigo);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .btn-action {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-next { background: var(--primary-indigo); color: #ffffff; }
+    .btn-next:hover { background: var(--primary-indigo-hover); }
+    .btn-prev { background: #e2e8f0; color: #334155; }
+    .btn-prev:hover { background: #cbd5e1; }
+    .btn-submit { background: #059669; color: #ffffff; width: 100%; margin-top: 16px; }
+    .btn-submit:hover { background: #047857; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="cbt-header">
+    <div class="cbt-header-content">
+      <div>
+        <h4 style="margin: 0; color: var(--primary-indigo); font-size: 1.1rem;" id="test-title">APACA GBPI - DISC (KU5)</h4>
+        <div style="font-size: 0.8rem; color: #64748b;" id="user-info-text">Peserta: -</div>
+      </div>
+      <div class="cbt-timer-badge">
+        <span>⏱️</span>
+        <span id="timer-display">15:00</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main CBT Layout -->
+  <main class="cbt-container">
+    <!-- Panel Soal DISC -->
+    <section class="question-card">
+      <div>
+        <div class="question-meta">
+          <span style="font-weight: 800; color: var(--primary-indigo); text-transform: uppercase; font-size: 0.82rem; letter-spacing: 0.5px;">Forced-Choice Block</span>
+          <span style="font-size: 0.85rem; font-weight: 700; color: #64748b;" id="q-number-text">Kelompok 1 dari 24</span>
+        </div>
+
+        <div class="instruction-box">
+          📌 <strong>Petunjuk Pengisian:</strong> Pada setiap kelompok, pilih 1 kata/pernyataan yang <strong>PALING menggambarkan (MOST)</strong> dan 1 yang <strong>PALING TIDAK menggambarkan (LEAST)</strong> diri Anda saat berinteraksi.
+        </div>
+
+        <div class="disc-block-grid" id="disc-options-container">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid #f1f5f9;">
+        <button class="btn-action btn-prev" id="btn-prev" onclick="navigateQuestion(-1)">&larr; Sebelumnya</button>
+        <button class="btn-action btn-next" id="btn-next" onclick="navigateQuestion(1)">Selanjutnya &rarr;</button>
+      </div>
+    </section>
+
+    <!-- Navigasi Panel Kanan -->
+    <aside class="nav-panel">
+      <h5 style="margin: 0 0 6px 0; color: #0f172a; font-size: 0.95rem;">Navigasi Kelompok</h5>
+      <div style="font-size: 0.78rem; color: #64748b;">Terisi Lengkap: <strong id="answered-count">0</strong> / <span id="total-count">24</span></div>
+      
+      <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="nav-grid" id="nav-grid">
+        <!-- Render 24 buttons via JS -->
+      </div>
+
+      <button class="btn-action btn-submit" onclick="confirmSubmit()">Selesaikan Ujian</button>
+    </aside>
   </main>
 
+  <script src="../../config.js"></script>
   <script src="../../assets/js/auth.js"></script>
-  <script src="../../assets/js/cbt-engine.js"></script>
-  
   <script>
-    let cbtApp = null;
+    let testData = null;
+    let questionsData = [];
+    let currentIndex = 0;
+    let answers = {}; // Structure: { 1: { most: "A", least: "C" }, ... }
+    let timerSeconds = 15 * 60; // 15 Menit default
+    let timerInterval = null;
 
     document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Verifikasi Sesi User
+      if (typeof PATS_AUTH !== "undefined") {
+        const user = PATS_AUTH.getSession();
+        if (user) {
+          document.getElementById("user-info-text").innerText = `Peserta: ${user.nama_lengkap || 'Siswa'} (${user.kode_akses || 'KU5'})`;
+        }
+      }
+
+      // 2. Muat Berkas Soal KU5
       try {
-        const response = await fetch("soal.json");
-        const soalData = await response.json();
-        const testCode = (soalData.test_info && soalData.test_info.kode) ? soalData.test_info.kode : "TEST";
+        const res = await fetch("soal.json");
+        testData = await res.json();
+        
+        questionsData = testData.questions || [];
 
-        cbtApp = new CBTEngine({
-          testCode: testCode,
-          testInfo: soalData.test_info,
-          questions: soalData.questions,
-          options: soalData.options,
-          onSubmit: (answers) => {
-            window.location.href = "result.html";
-          },
-          onExit: () => {
-            window.location.href = "index.html";
-          }
-        });
+        if (testData.test_info && testData.test_info.durasi_menit) {
+          timerSeconds = testData.test_info.durasi_menit * 60;
+        }
 
-        cbtApp.renderApp("cbt-app");
+        document.getElementById("total-count").innerText = questionsData.length;
+
+        // Restore Progress dari SessionStorage jika tersedia
+        const saved = sessionStorage.getItem("pats_answers_KU5");
+        if (saved) {
+          answers = JSON.parse(saved);
+        }
+
+        renderNavGrid();
+        renderQuestion(currentIndex);
+        startTimer();
 
       } catch (err) {
-        console.error("Gagal memuat soal:", err);
-        alert("Terjadi kesalahan saat memuat modul ujian.");
+        console.error("Gagal memuat soal KU5:", err);
+        alert("Terjadi kesalahan saat memuat berkas soal DISC.");
       }
     });
+
+    // RENDERER UTAMA KELOMPOK FORCED-CHOICE DISC
+    function renderQuestion(index) {
+      if (index < 0 || index >= questionsData.length) return;
+      currentIndex = index;
+
+      const q = questionsData[index];
+      document.getElementById("q-number-text").innerText = `Kelompok ${index + 1} dari ${questionsData.length}`;
+
+      const container = document.getElementById("disc-options-container");
+      container.innerHTML = "";
+
+      const currentAns = answers[q.id] || { most: null, least: null };
+
+      if (q.options) {
+        q.options.forEach(opt => {
+          const isMost = currentAns.most === opt.code;
+          const isLeast = currentAns.least === opt.code;
+
+          const row = document.createElement("div");
+          row.className = "disc-option-row";
+
+          row.innerHTML = `
+            <div class="disc-option-text">${opt.label}</div>
+            <div class="chip-group">
+              <button class="chip-btn most-btn ${isMost ? 'active' : ''}" 
+                      onclick="selectChoice(${q.id}, '${opt.code}', 'most')">
+                ${isMost ? '✓ MOST (M)' : '+ MOST (M)'}
+              </button>
+              <button class="chip-btn least-btn ${isLeast ? 'active' : ''}" 
+                      onclick="selectChoice(${q.id}, '${opt.code}', 'least')">
+                ${isLeast ? '✓ LEAST (L)' : '- LEAST (L)'}
+              </button>
+            </div>
+          `;
+          container.appendChild(row);
+        });
+      }
+
+      // Navigasi Prev/Next State
+      document.getElementById("btn-prev").disabled = index === 0;
+      document.getElementById("btn-next").innerText = index === questionsData.length - 1 ? "Selesai" : "Selanjutnya \u2192";
+
+      updateNavHighlight();
+    }
+
+    // SIMPAN PILIHAN (DENGAN PROTEKSI MULTI-SELECT BADGE)
+    function selectChoice(questionId, optionCode, choiceType) {
+      if (!answers[questionId]) {
+        answers[questionId] = { most: null, least: null };
+      }
+
+      const qState = answers[questionId];
+
+      if (choiceType === 'most') {
+        if (qState.most === optionCode) {
+          qState.most = null; // Toggle off jika diklik ulang
+        } else {
+          qState.most = optionCode;
+          if (qState.least === optionCode) {
+            qState.least = null; // Reset Least jika dipasang di baris yang sama
+          }
+        }
+      } else if (choiceType === 'least') {
+        if (qState.least === optionCode) {
+          qState.least = null; // Toggle off jika diklik ulang
+        } else {
+          qState.least = optionCode;
+          if (qState.most === optionCode) {
+            qState.most = null; // Reset Most jika dipasang di baris yang sama
+          }
+        }
+      }
+
+      sessionStorage.setItem("pats_answers_KU5", JSON.stringify(answers));
+
+      renderQuestion(currentIndex);
+      updateProgress();
+    }
+
+    // NAVIGASI INDEX SOAL
+    function navigateQuestion(direction) {
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < questionsData.length) {
+        renderQuestion(newIndex);
+      } else if (newIndex >= questionsData.length) {
+        confirmSubmit();
+      }
+    }
+
+    // RENDER PANEL NAVIGASI
+    function renderNavGrid() {
+      const grid = document.getElementById("nav-grid");
+      grid.innerHTML = "";
+
+      questionsData.forEach((q, idx) => {
+        const btn = document.createElement("button");
+        btn.id = `nav-btn-${idx}`;
+        btn.innerText = idx + 1;
+        btn.onclick = () => renderQuestion(idx);
+        grid.appendChild(btn);
+      });
+
+      updateProgress();
+    }
+
+    function updateNavHighlight() {
+      questionsData.forEach((q, idx) => {
+        const btn = document.getElementById(`nav-btn-${idx}`);
+        if (btn) {
+          const ans = answers[q.id];
+          const isComplete = ans && ans.most && ans.least;
+          const isPartial = ans && (ans.most || ans.least) && !isComplete;
+
+          btn.className = `nav-btn ${isComplete ? 'complete' : isPartial ? 'partial' : ''} ${idx === currentIndex ? 'active' : ''}`;
+        }
+      });
+    }
+
+    function updateProgress() {
+      let completeCount = 0;
+      questionsData.forEach(q => {
+        const ans = answers[q.id];
+        if (ans && ans.most && ans.least) {
+          completeCount++;
+        }
+      });
+
+      document.getElementById("answered-count").innerText = completeCount;
+      const total = questionsData.length;
+      const pct = Math.round((completeCount / total) * 100);
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    // TIMER COUNTDOWN
+    function startTimer() {
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        timerSeconds--;
+        updateTimerDisplay();
+
+        if (timerSeconds <= 0) {
+          clearInterval(timerInterval);
+          alert("Waktu pengerjaan telah habis. Hasil pengerjaan Anda akan dikumpulkan otomatis.");
+          submitTest();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerSeconds / 60);
+      const secs = timerSeconds % 60;
+      document.getElementById("timer-display").innerText = 
+        `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // KONFIRMASI PENGUMPULAN
+    function confirmSubmit() {
+      let completeCount = 0;
+      questionsData.forEach(q => {
+        const ans = answers[q.id];
+        if (ans && ans.most && ans.least) {
+          completeCount++;
+        }
+      });
+
+      const total = questionsData.length;
+
+      if (completeCount < total) {
+        if (!confirm(`Anda baru melengkapi ${completeCount} dari ${total} kelompok soal. Yakin ingin mengumpulkan sekarang?`)) {
+          return;
+        }
+      } else {
+        if (!confirm("Seluruh 24 kelompok soal telah dilengkapi opsi MOST dan LEAST. Yakin ingin mengumpulkan pengerjaan KU5?")) {
+          return;
+        }
+      }
+
+      submitTest();
+    }
+
+    function submitTest() {
+      clearInterval(timerInterval);
+      sessionStorage.setItem("pats_answers_KU5", JSON.stringify(answers));
+      window.location.href = "result.html";
+    }
   </script>
 </body>
 </html>
