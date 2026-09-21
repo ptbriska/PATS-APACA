@@ -7,7 +7,7 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
 
 const KK1_Scoring = {
   /**
-   * Menghitung Skor Mentah (RS), T-Score, Kategorisasi Norma, dan Narasi untuk KK1
+   * Menghitung Skor Mentah (RS), T-Score, Categorization, dan Data Tabel untuk KK1
    * @param {object} answers - Objek jawaban { questionId: value }
    * @param {object} soalData - Master data dari soal.json (KK1)
    */
@@ -44,29 +44,45 @@ const KK1_Scoring = {
       }
     });
 
-    // 3. Konversi Skor Mentah (RS) ke T-Score (Mean=50, SD=10)
-    // Norma Statistik Baku ATSI (Mean RS = 25, SD RS = 5)
+    // 3. Konversi Skor Mentah (RS) ke T-Score & Hitung Persentase Dominansi
     const tScores = {};
     const categories = {};
+    const percentages = {};
+    const tableRows = [];
 
     for (const [kategori, rs] of Object.entries(rawScores)) {
+      // T-Score (Mean RS = 25, SD RS = 5)
       const meanRS = 25;
       const sdRS = 5;
       const tScore = Math.round(50 + 10 * ((rs - meanRS) / sdRS));
       tScores[kategori] = tScore;
 
-      // Categorization Matrix (Sesuai Manual Book ATSI Bab V)
+      // Hitung Persentase (Min Skor 10, Max Skor 40 -> Rentang 30)
+      const pct = Math.round(((rs - 10) / 30) * 100);
+      percentages[kategori] = pct;
+
+      // Categorization Matrix
+      let katNorma = "Sangat Rendah";
       if (tScore >= 65) {
-        categories[kategori] = "Sangat Dominan";
+        katNorma = "Sangat Dominan";
       } else if (tScore >= 55) {
-        categories[kategori] = "Dominan";
+        katNorma = "Dominan";
       } else if (tScore >= 45) {
-        categories[kategori] = "Sedang";
+        katNorma = "Sedang";
       } else if (tScore >= 35) {
-        categories[kategori] = "Rendah";
-      } else {
-        categories[kategori] = "Sangat Rendah";
+        katNorma = "Rendah";
       }
+      categories[kategori] = katNorma;
+
+      // Format data untuk tabel di result.html
+      tableRows.push({
+        label: kategori,
+        categoryKey: kategori,
+        rs: rs,
+        ts: tScore,
+        percentage: pct,
+        category: katNorma
+      });
     }
 
     // 4. Menentukan Gaya Mengajar Utama (Dominan)
@@ -88,17 +104,17 @@ const KK1_Scoring = {
       isInvalid: false,
       rawScores: rawScores,
       tScores: tScores,
+      percentages: percentages,
       categories: categories,
       dominantCategory: dominantCategory,
+      dominantKey: dominantCategory, // Disesuaikan untuk penandaan badge di result.html
+      tableRows: tableRows,           // Diperlukan oleh result.html
       narrative: narrative
     };
   },
 
   /**
    * Menyusun Payload dan Mengirimkan Hasil Rekap ke Google Sheets via GAS
-   * @param {object} answers - Objek jawaban peserta
-   * @param {object} userSession - Data sesi peserta dari sessionStorage
-   * @param {object} evaluationResult - Hasil kembalian dari method evaluate()
    */
   async sendRekapToGAS(answers, userSession, evaluationResult) {
     if (evaluationResult.isInvalid) return;
@@ -126,7 +142,7 @@ const KK1_Scoring = {
       timestamp: formattedTimestamp,
       kode_akses: userSession.kode_akses || "-",
       nama_lengkap: userSession.nama_lengkap || "-",
-      asal_instansi: userSession.asal_instansi || "Umum",
+      asal_instansi: userSession.asal_instansi || "Khusus",
       daerah: `${userSession.asal_kabupaten || ''}, ${userSession.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '') || "Umum",
       kode_modul: "KK1",
       skor_mentah: skorMentahStr,
