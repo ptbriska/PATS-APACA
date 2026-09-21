@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KS14 APACA Learning Environment Inventory (LEI)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean White Modern Futurism Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #0284c7; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-essential { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .badge-preferred { background: linear-gradient(135deg, #059669, #10b981); }
+    .badge-adaptable { background: linear-gradient(135deg, #6366f1, #818cf8); }
+    .badge-inconvenient { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-inhibitory { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+
+    .chart-box { 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.05);
+    }
+
+    .matrix-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .matrix-box {
+      border-radius: 10px;
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .matrix-box.optimal {
+      background: #f0fdf4;
+      border-left: 6px solid #16a34a;
+    }
+
+    .matrix-box.distractor {
+      background: #fef2f2;
+      border-left: 6px solid #dc2626;
+    }
+
+    .trigger-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: #ffffff;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .combo-card {
+      background-color: #ffffff;
+      border: 1px solid #bae6fd;
+      border-left: 6px solid #0284c7;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+
+    .remote-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      border: 1px solid #e0f2fe;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .guidance-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS14_LEI_Profil_Lingkungan_Belajar.pdf')" class="btn-primary" style="width: auto; background-color: #0284c7;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN LEARNING ENVIRONMENT INVENTORY (LEI)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS14 - APACA Learning Environment Inventory (LEI)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Environment Pentagon Radar Chart -->
+      <div class="report-section">
+        <div class="report-section-title">I. PEMETAAN PENTAGON EKO-SISTEM BELAJAR UTAMA</div>
+        
+        <div class="charts-grid">
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Environment Preference Pentagon (5 Dimensi)</h5>
+            <canvas id="leiRadarChart"></canvas>
+          </div>
+          <div class="chart-box" style="display:flex; flex-direction:column; justify-content:center;">
+            <h4 style="margin-top:0; color:#0284c7;">Ringkasan Sensitivitas Ekosistem</h4>
+            <p style="font-size:0.88rem; color:#334155; line-height:1.6;">
+              Grafik Pentagon memetakan tingkat ketergantungan dan kenyamanan Anda pada 5 dimensi ekosistem eksternal. Semakin mendekati angka 100%, semakin krusial faktor tersebut sebagai pemicu pemrosesan kognitif puncak Anda.
+            </p>
+            <div id="perekatan-ringkasan" style="margin-top:10px;">
+              <!-- Inserted via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Optimal vs. Distracting Triggers Matrix -->
+      <div class="report-section">
+        <div class="report-section-title">II. MATRIKS PEMICU OPTIMAL VS. DISTRAKSI BERSENSITIVITAS TINGGI</div>
+        
+        <div class="matrix-container">
+          <div class="matrix-box optimal">
+            <h4 style="color: #15803d; margin-top: 0; margin-bottom: 12px; font-size: 1rem;">🚀 OPTIMAL TRIGGERS (Enabler Utama Kognitif)</h4>
+            <p style="font-size: 0.82rem; color: #166534; margin-bottom: 12px;">Kondisi lingkungan yang wajib ada untuk memicu konsentrasi puncak:</p>
+            <div id="optimal-triggers-list">
+              <!-- Render via JS -->
+            </div>
+          </div>
+
+          <div class="matrix-box distractor">
+            <h4 style="color: #b91c1c; margin-top: 0; margin-bottom: 12px; font-size: 1rem;">⚠️ DISTRACTING TRIGGERS (Inhibitor Kognitif)</h4>
+            <p style="font-size: 0.82rem; color: #991b1b; margin-bottom: 12px;">Kondisi lingkungan yang memicu kelelahan mental & kebocoran fokus:</p>
+            <div id="distractor-triggers-list">
+              <!-- Render via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Tabulasi & Evaluasi 5 Dimensi Utama -->
+      <div class="report-section">
+        <div class="report-section-title">III. BREAKDOWN EVALUASI 5 DIMENSI LINGKUNGAN BELAJAR</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Utama Ekosistem</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Preference (%)</th>
+              <th>Kategori Kesesuaian</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section IV: Deteksi Kombinasi Ekosistem & Diagnostik Khusus -->
+      <div class="report-section">
+        <div class="report-section-title">IV. ANALISIS POLA KOMBINASI EKOSISTEM BELAJAR</div>
+        <div id="combo-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section V: Status Kesiapan Pembelajaran Jarak Jauh (PJJ) -->
+      <div class="report-section">
+        <div class="report-section-title">V. KESIAPAN PEMBELAJARAN JARAK JAUH / REMOTE LEARNING</div>
+        <div id="remote-learning-container" class="remote-card">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section VI: Panduan Strategis Orang Tua & Sekolah -->
+      <div class="report-section">
+        <div class="report-section-title">VI. PANDUAN PENATAAN EKOSISTEM UNTUK ORANG TUA & SEKOLAH</div>
+        <div id="guidance-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KS14
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS14");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KS14
+        const result = KS14_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS14_Scoring.sendRekapToGAS === "function") {
+          KS14_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Pentagon Radar Chart (5 Dimensi Utama)
+        const mainLabels = Object.keys(result.mainScores);
+        const mainValues = Object.values(result.mainScores);
+
+        new Chart(document.getElementById('leiRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: mainLabels,
+            datasets: [{
+              label: 'Indeks Ekosistem (%)',
+              data: mainValues,
+              backgroundColor: 'rgba(2, 132, 199, 0.2)',
+              borderColor: '#0284c7',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#0284c7',
+              pointRadius: 5
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#cbd5e1' },
+                grid: { color: '#f1f5f9' },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { display: false }
+              }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 6. Render Triggers Matrix
+        const optContainer = document.getElementById("optimal-triggers-list");
+        optContainer.innerHTML = "";
+        if (result.optimalTriggers.length > 0) {
+          result.optimalTriggers.forEach(t => {
+            optContainer.innerHTML += `
+              <div class="trigger-item" style="color:#15803d;">
+                <span>🟢 ${t.name}</span>
+                <span>${t.score}%</span>
+              </div>
+            `;
+          });
+        } else {
+          optContainer.innerHTML = `<div style="font-size:0.85rem; color:#64748b;">Tidak ada pemicu ekstrem; fleksibel pada berbagai kondisi.</div>`;
+        }
+
+        const distContainer = document.getElementById("distractor-triggers-list");
+        distContainer.innerHTML = "";
+        if (result.distractingTriggers.length > 0) {
+          result.distractingTriggers.forEach(t => {
+            distContainer.innerHTML += `
+              <div class="trigger-item" style="color:#b91c1c;">
+                <span>🔴 ${t.name}</span>
+                <span>${t.score}%</span>
+              </div>
+            `;
+          });
+        } else {
+          distContainer.innerHTML = `<div style="font-size:0.85rem; color:#64748b;">Toleransi tinggi; tidak terganggu oleh variasi lingkungan.</div>`;
+        }
+
+        // 7. Render Table Breakdown Dimensi Utama
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        result.mainRows.forEach(row => {
+          const badgeClass = 
+            row.percentage >= 81 ? "badge-essential" :
+            row.percentage >= 61 ? "badge-preferred" :
+            row.percentage >= 41 ? "badge-adaptable" :
+            row.percentage >= 21 ? "badge-inconvenient" : "badge-inhibitory";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+            <td>${row.rs}</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td><span class="badge-status ${badgeClass}">${row.label_status}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // 8. Render Pola Kombinasi
+        const comboContainer = document.getElementById("combo-container");
+        comboContainer.innerHTML = "";
+
+        if (result.detectedCombinations && result.detectedCombinations.length > 0) {
+          result.detectedCombinations.forEach(c => {
+            comboContainer.innerHTML += `
+              <div class="combo-card">
+                <h4 style="color: #0284c7; margin-top: 0; margin-bottom: 6px; font-size: 1rem;">🔍 DETEKSI POLA EKOSISTEM: ${c.nama_pola}</h4>
+                <p style="font-size: 0.88rem; color: #334155; margin-bottom: 10px; line-height: 1.5;">${c.analisis_klinis}</p>
+                <div style="font-size: 0.85rem; color: #0369a1; background: #f0f9ff; padding: 10px 14px; border-radius: 6px; border: 1px solid #bae6fd;">
+                  <strong>Rekomendasi Utama:</strong> ${c.rekomendasi_orang_tua}
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          comboContainer.innerHTML = `
+            <div style="background-color: #ffffff; border: 1px solid #86efac; border-left: 6px solid #16a34a; padding: 16px 20px; border-radius: 8px; color: #166534; font-size: 0.9rem;">
+              ✅ <strong>Ekosistem Seimbang:</strong> Tidak terdeteksi adanya gesekan ekstrem atau kontradiksi lingkungan pada profil belajar Anda.
+            </div>
+          `;
+        }
+
+        // 9. Render Remote Learning Readiness
+        const remoteContainer = document.getElementById("remote-learning-container");
+        const rl = result.remoteLearning;
+        if (rl.isReady) {
+          remoteContainer.innerHTML = `
+            <div style="font-size:2.5rem;">💻</div>
+            <div>
+              <h4 style="margin:0; color:#059669; font-size:1.1rem;">SIAP UNTUK PEMBELAJARAN JARAK JAUH (PJJ / REMOTE LEARNING)</h4>
+              <p style="margin:4px 0 0 0; font-size:0.88rem; color:#334155;">
+                Siswa memiliki Indeks Digital (${rl.digitalScore}%) dan Alur Mandiri (${rl.selfPacedScore}%) di atas ambang cut-off (65%). Sangat efektif mengikuti kelas online/mandiri.
+              </p>
+            </div>
+          `;
+        } else {
+          remoteContainer.innerHTML = `
+            <div style="font-size:2.5rem;">🏫</div>
+            <div>
+              <h4 style="margin:0; color:#d97706; font-size:1.1rem;">DIREKOMENDASIKAN PEMBELAJARAN TATAP MUKU / TERTUNTUN</h4>
+              <p style="margin:4px 0 0 0; font-size:0.88rem; color:#334155;">
+                Siswa membutuhkan dampingan fisik atau struktur kelas langsung (Indeks Digital: ${rl.digitalScore}%, Alur Mandiri: ${rl.selfPacedScore}%).
+              </p>
+            </div>
+          `;
+        }
+
+        // 10. Render Panduan Strategis Orang Tua & Sekolah
+        const guidanceContainer = document.getElementById("guidance-container");
+        guidanceContainer.innerHTML = "";
+
+        const rubrikDim = rubrikData.rubrik_dimensi_utama || {};
+        for (const [dimKey, dimDetail] of Object.entries(rubrikDim)) {
+          guidanceContainer.innerHTML += `
+            <div style="margin-bottom: 16px;">
+              <h4 style="margin-bottom:6px; color:#0f172a; font-size:0.95rem;">📌 ${dimDetail.judul_dimensi}</h4>
+              <div class="guidance-box">
+                <p style="margin-top:0; margin-bottom:6px;"><strong>Deskripsi:</strong> ${dimDetail.deskripsi}</p>
+                <p style="margin-bottom:0; color:#0284c7;"><strong>Saran Aksional:</strong> Penataan ruang & media disesuaikan dengan kebutuhan indikator utama dimensi ini.</p>
+              </div>
+            </div>
+          `;
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS14:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan LEI.");
+      }
+    });
+  </script>
+</body>
+</html>
