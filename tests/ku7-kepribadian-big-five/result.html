@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KU7 Work Personality Trait Inventory (WPTI-OCEAN)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; }
+    
+    .badge-dominan {
+      background-color: #dbeafe;
+      color: #1e40af;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .box-point {
+      background-color: #f8fafc;
+      border-left: 4px solid #2563eb;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 0 6px 6px 0;
+    }
+    
+    .box-point h4 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: #1e293b;
+    }
+
+    .list-custom {
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+
+    .list-custom li {
+      margin-bottom: 4px;
+    }
+
+    .trait-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media print {
+      .trait-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar (Hidden on Print/PDF Export) -->
+  <div class="no-print" style="background-color: #0a0304; border-bottom: 1px solid rgba(255,30,67,0.3); padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KU7_WPTI_OCEAN.pdf')" class="btn-primary" style="width: auto; background-color: #10b981;">Cetak / Unduh PDF Laporan</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">-</h2>
+          <div id="kop-instansi-sub" class="sub-title">-</div>
+          <div id="kop-instansi-alamat" class="address">-</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN WORK PERSONALITY TRAIT INVENTORY (WPTI-OCEAN)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Kegiatan</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Instansi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Daerah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Asesmen</td>
+          <td>: <span id="r-instrumen">KU7 — WPTI Big Five OCEAN Model</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Tabulasi Profil Kepribadian (5 Dimensi) -->
+      <div class="report-section">
+        <div class="report-section-title">I. TABULASI SKOR PROFIL KEPRIBADIAN (BIG FIVE OCEAN)</div>
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th>Dimensi Kepribadian</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Skor Standar (T-Score)</th>
+              <th>Kategori Norma</th>
+              <th>Status Profile</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section II: Analisis Dinamika Kepribadian Dominan -->
+      <div class="report-section">
+        <div class="report-section-title">II. GAMBARAN DINAMIKA TRAIT DOMINAN</div>
+        <p class="report-paragraph">
+          Berdasarkan hasil pengolahan data psikometri, dimensi kepribadian yang paling menonjol pada profil Anda adalah: <strong id="r-judul-dominan" style="color: #2563eb;">-</strong>.
+        </p>
+        <p id="r-deskripsi-narasi" class="report-paragraph" style="text-align: justify;">
+          Memuat deskripsi naratif kepribadian...
+        </p>
+
+        <!-- Dynamic Grid: Sifat Pekerja & Atasan -->
+        <div class="trait-grid">
+          <div class="box-point" style="border-left-color: #3b82f6;">
+            <h4 style="color: #1d4ed8;">Karakteristik sebagai Pekerja/Staf:</h4>
+            <p id="r-sifat-pekerja" style="font-size: 0.85rem; line-height: 1.4; color: #334155;">-</p>
+          </div>
+          <div class="box-point" style="border-left-color: #8b5cf6;">
+            <h4 style="color: #6d28d9;">Karakteristik sebagai Atasan/Pemimpin:</h4>
+            <p id="r-sifat-atasan" style="font-size: 0.85rem; line-height: 1.4; color: #334155;">-</p>
+          </div>
+        </div>
+
+        <!-- Box Kekuatan Utama -->
+        <div class="box-point" style="border-left-color: #10b981; margin-top: 8px;">
+          <h4 style="color: #065f46;">Keunggulan & Kekuatan Utama:</h4>
+          <ul id="r-list-kelebihan" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
+
+        <!-- Box Potensi Risiko -->
+        <div class="box-point" style="border-left-color: #f59e0b;">
+          <h4 style="color: #92400e;">Area Kerentanan & Potensi Risiko Kerja:</h4>
+          <ul id="r-list-risiko" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section III: Rekomendasi Aplikasi Organisasi & Karir -->
+      <div class="report-section">
+        <div class="report-section-title">III. REKOMENDASI PENGEMBANGAN & KESESUAIAN PERAN</div>
+        
+        <p style="font-weight: 600; margin-bottom: 4px; font-size: 0.9rem;">Saran Strategi Pengembangan Diri:</p>
+        <p id="r-rekomendasi" class="report-paragraph" style="margin-bottom: 12px; text-align: justify;">
+          -
+        </p>
+
+        <p style="font-weight: 600; margin-bottom: 4px; font-size: 0.9rem;">Gaya Komunikasi & Lingkungan Kerja Ideal:</p>
+        <p id="r-gaya-komunikasi" class="report-paragraph" style="margin-bottom: 12px; text-align: justify;">
+          -
+        </p>
+
+        <div class="box-point" style="border-left-color: #6366f1;">
+          <h4 style="color: #3730a3;">Rekomendasi Posisi / Peran Karir yang Sesuai:</h4>
+          <ul id="r-list-karir" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Render Kop Laporan dari config.js
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Load Sesi Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Load Jawaban KU7 & JSON Files
+      const rawAnswers = sessionStorage.getItem("pats_answers_KU7");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+        const testInfo = soalData.test_info || {};
+
+        if (testInfo.nama_resmi) {
+          document.getElementById("r-judul-tes").innerText = `LAPORAN HASIL ASESMEN ${testInfo.nama_resmi.toUpperCase()}`;
+        }
+        document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+        document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || testInfo.sipp || '2026-0819-PSI-01'}`;
+
+        // 4. Hitung Skor Psikometri via KU7_Scoring
+        const result = KU7_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        // 5. Send Rekap to Spreadsheet
+        if (user && typeof KU7_Scoring.sendRekapToGAS === "function") {
+          KU7_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 6. Render Tabel Hasil Psikometri
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        if (result.tableRows && Array.isArray(result.tableRows)) {
+          result.tableRows.forEach(row => {
+            const tr = document.createElement("tr");
+            const isDominant = row.categoryKey === result.dominantKey;
+            
+            tr.innerHTML = `
+              <td style="text-align: left; font-weight: 600;">${row.label}</td>
+              <td>${row.rs} / 40</td>
+              <td>T-${row.ts}</td>
+              <td>${row.category}</td>
+              <td>${isDominant ? '<span class="badge-dominan">DOMINAN</span>' : '-'}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        // 7. Render Detail Narasi & Karakteristik
+        if (result.narrative) {
+          const narasi = result.narrative;
+          document.getElementById("r-judul-dominan").innerText = narasi.judul || result.dominantKey;
+          document.getElementById("r-deskripsi-narasi").innerText = narasi.deskripsi || "-";
+          document.getElementById("r-rekomendasi").innerText = narasi.rekomendasi || "-";
+
+          // Sifat Pekerja & Atasan
+          if (narasi.sifat_sebagai_pekerja) {
+            document.getElementById("r-sifat-pekerja").innerText = typeof narasi.sifat_sebagai_pekerja === 'object' 
+              ? `${narasi.sifat_sebagai_pekerja.gaya_eksekusi} ${narasi.sifat_sebagai_pekerja.orientasi_tugas}`
+              : narasi.sifat_sebagai_pekerja;
+          }
+          if (narasi.sifat_sebagai_atasan) {
+            document.getElementById("r-sifat-atasan").innerText = typeof narasi.sifat_sebagai_atasan === 'object' 
+              ? `Gaya: ${narasi.sifat_sebagai_atasan.gaya_kepemimpinan}. Pendekatan: ${narasi.sifat_sebagai_atasan.pendekatan_tim}`
+              : narasi.sifat_sebagai_atasan;
+          }
+
+          // Gaya Komunikasi & Lingkungan Kerja
+          let komText = [];
+          if (narasi.gaya_komunikasi) komText.push(`Gaya Komunikasi: ${narasi.gaya_komunikasi}`);
+          if (narasi.lingkungan_kerja_ideal) komText.push(`Lingkungan Kerja Ideal: ${narasi.lingkungan_kerja_ideal}`);
+          document.getElementById("r-gaya-komunikasi").innerText = komText.join(" | ") || "-";
+
+          // Render List Kelebihan
+          const ulKelebihan = document.getElementById("r-list-kelebihan");
+          ulKelebihan.innerHTML = "";
+          (narasi.kelebihan || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulKelebihan.appendChild(li);
+          });
+
+          // Render List Potensi Risiko
+          const ulRisiko = document.getElementById("r-list-risiko");
+          ulRisiko.innerHTML = "";
+          (narasi.potensi_risiko || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulRisiko.appendChild(li);
+          });
+
+          // Render List Posisi Karir Disarankan
+          const ulKarir = document.getElementById("r-list-karir");
+          ulKarir.innerHTML = "";
+          (narasi.posisi_karir_disarankan || []).forEach(item => {
+            const li = document.createElement("li");
+            li.innerText = item;
+            ulKarir.appendChild(li);
+          });
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat laporan KU7:", err);
+        alert("Terjadi kesalahan saat memproses data laporan hasil tes.");
+      }
+    });
+  </script>
+</body>
+</html>
