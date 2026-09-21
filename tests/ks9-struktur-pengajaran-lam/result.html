@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Asesmen - KS9 Learning Approach Method (LAM)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Educational & Insightful Theme */
+    body { background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; }
+    .report-paper { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 40px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+    
+    .top-traits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .trait-card {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 4px solid #0284c7;
+    }
+
+    .trait-card-title { font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+    .trait-card-value { font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .trait-card-pct { font-size: 0.85rem; font-weight: 700; }
+
+    .chart-container { width: 100%; max-width: 800px; margin: 24px auto; padding: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; }
+
+    .insight-section { margin-top: 32px; }
+    .insight-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    
+    .insight-header { background: #f8fafc; padding: 12px 16px; border-bottom: 1px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center; }
+    .insight-title { font-weight: 700; font-size: 1rem; color: #0f172a; }
+    .insight-badge { padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; color: #fff; }
+    
+    .insight-body { padding: 16px; background: #ffffff; }
+    .insight-desc { font-size: 0.9rem; color: #334155; margin-bottom: 12px; line-height: 1.5; }
+    
+    .guidance-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin-bottom: 8px; }
+    .guidance-box.school { background: #eff6ff; border: 1px solid #bfdbfe; }
+    .guidance-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+    .guidance-text { font-size: 0.85rem; color: #1e293b; line-height: 1.4; }
+    
+    .section-divider { border-bottom: 2px dashed #cbd5e1; margin: 30px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS9_LAM_Gaya_Belajar.pdf')" class="btn-primary" style="width: auto; background-color: #059669;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN PEMETAAN METODOLOGI & GAYA BELAJAR (LAM)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Siswa / Mahasiswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS9 - Learning Approach Method Test</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Profil Belajar Utama -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN PROFIL BELAJAR DOMINAN</div>
+        <p style="font-size: 0.9rem; color: #475569; margin-bottom: 12px;">Berdasarkan hasil asesmen, berikut adalah pendekatan makro yang paling dominan dan alami bagi siswa dalam memproses informasi.</p>
+        
+        <div class="top-traits-grid" id="top-traits-container">
+          <!-- Render via JS -->
+        </div>
+      </div>
+
+      <!-- Section II: Peta Aktivitas Kognitif (Chart) -->
+      <div class="report-section">
+        <div class="report-section-title">II. PETA PREFERENSI AKTIVITAS BELAJAR (METHODOLOGY)</div>
+        <div class="chart-container">
+          <canvas id="aktivitasBarChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Section III: Panduan Mendalam Orang Tua & Sekolah -->
+      <div class="report-section insight-section">
+        <div class="report-section-title">III. PANDUAN MENDALAM & REKOMENDASI LINGKUNGAN BELAJAR</div>
+        <p style="font-size: 0.9rem; color: #475569; margin-bottom: 20px;">
+          Bagian ini menampilkan sub-dimensi belajar siswa yang berada pada kategori <strong>Dominan</strong> dan <strong>Sangat Dominan (Psub ≥ 61%)</strong>, lengkap dengan insight praktis untuk orang tua di rumah dan guru di sekolah.
+        </p>
+        
+        <div id="insights-container">
+          <!-- Render via JS -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+      }
+
+      // 3. Evaluasi KS9
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS9");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        const result = KS9_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert("Data pengerjaan tidak valid (Careless Responding).");
+          return;
+        }
+
+        if (user && typeof KS9_Scoring.sendRekapToGAS === "function") {
+          KS9_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 4. Render Top Traits (Ringkasan Profil Utama)
+        const topTraitsContainer = document.getElementById("top-traits-container");
+        const dimensionLabels = {
+          "Sumber_Pembelajaran": "Sumber Kendali Belajar",
+          "Aktivitas_Utama": "Aktivitas Terdrekomendasi",
+          "Struktur_Pembelajaran": "Kebutuhan Struktur",
+          "Orientasi_Pembelajaran": "Orientasi Motivasi"
+        };
+
+        for (const [dimKey, topSub] of Object.entries(result.topTraits)) {
+          if(!topSub) continue;
+          const card = document.createElement("div");
+          card.className = "trait-card";
+          card.innerHTML = `
+            <div class="trait-card-title">${dimensionLabels[dimKey] || dimKey}</div>
+            <div class="trait-card-value">${topSub.nama}</div>
+            <div class="trait-card-pct" style="color: ${topSub.color};">${topSub.persentase}% - ${topSub.kategori}</div>
+          `;
+          topTraitsContainer.appendChild(card);
+        }
+
+        // 5. Render Bar Chart (Aktivitas Utama)
+        const ctx = document.getElementById('aktivitasBarChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: result.aktivitasChartData.labels,
+            datasets: [{
+              label: 'Indeks Kesesuaian (%)',
+              data: result.aktivitasChartData.data,
+              backgroundColor: result.aktivitasChartData.colors,
+              borderRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true, max: 100, ticks: { stepSize: 20 } },
+              x: { ticks: { maxRotation: 45, minRotation: 45, font: { size: 11 } } }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 6. Render Insights untuk Orang Tua & Sekolah (Hanya yang >= 61% / Dominan ke atas)
+        const insightsContainer = document.getElementById("insights-container");
+        
+        for (const [dimKey, dimData] of Object.entries(result.reportData)) {
+          // Filter hanya sub-dimensi yang Dominan/Sangat Dominan
+          const dominantSubs = dimData.sub_list.filter(s => s.persentase >= 61);
+          
+          if(dominantSubs.length > 0) {
+            const dimHeader = document.createElement("h4");
+            dimHeader.style.cssText = "margin: 24px 0 12px 0; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;";
+            dimHeader.innerText = dimensionLabels[dimKey] || dimKey.replace(/_/g, " ");
+            insightsContainer.appendChild(dimHeader);
+
+            dominantSubs.forEach(sub => {
+              const card = document.createElement("div");
+              card.className = "insight-card";
+              card.innerHTML = `
+                <div class="insight-header">
+                  <div class="insight-title">${sub.nama} <span style="font-weight:400; font-size:0.9rem; color:#64748b;">(${sub.persentase}%)</span></div>
+                  <div class="insight-badge" style="background-color: ${sub.color};">${sub.kategori}</div>
+                </div>
+                <div class="insight-body">
+                  <div class="insight-desc">${sub.deskripsi_profil}</div>
+                  <div class="guidance-box">
+                    <div class="guidance-title" style="color: #166534;">💡 Insight untuk Orang Tua (Di Rumah):</div>
+                    <div class="guidance-text">${sub.insight_untuk_orangtua}</div>
+                  </div>
+                  <div class="guidance-box school">
+                    <div class="guidance-title" style="color: #1e40af;">🏫 Rekomendasi untuk Sekolah / Guru:</div>
+                    <div class="guidance-text">${sub.rekomendasi_sekolah}</div>
+                  </div>
+                </div>
+              `;
+              insightsContainer.appendChild(card);
+            });
+          }
+        }
+
+        if (insightsContainer.innerHTML === "") {
+          insightsContainer.innerHTML = "<p style='color:#64748b;'>Tidak ada profil dominan yang menonjol secara spesifik (Skor tersebar merata).</p>";
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat laporan KS9:", err);
+        alert("Terjadi kesalahan saat memuat data laporan.");
+      }
+    });
+  </script>
+</body>
+</html>
