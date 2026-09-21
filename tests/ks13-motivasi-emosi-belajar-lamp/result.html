@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KS13 APACA Learning Affective & Motivational Profile (LAMP)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean Neutral White Modern Futurism Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #4f46e5; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-resilient { background: linear-gradient(135deg, #059669, #10b981); }
+    .badge-motivated { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+    .badge-vulnerable { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .badge-fragile { background: linear-gradient(135deg, #ea580c, #f97316); }
+    .badge-demotivated { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .charts-grid { grid-template-columns: 1fr; }
+    }
+
+    .chart-box { 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.05);
+    }
+
+    .global-score-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+      border: 1px solid #ddd6fe;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .global-score-number {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #4f46e5;
+      line-height: 1;
+      margin: 6px 0;
+      font-family: monospace, sans-serif;
+    }
+
+    .driver-card {
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+    }
+
+    .driver-card.top1 { border-left: 6px solid #4f46e5; background: #faf5ff; }
+    .driver-card.top2 { border-left: 6px solid #0891b2; background: #f0fdf4; }
+    .driver-card.lowest { border-left: 6px solid #94a3b8; background: #f8fafc; }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .combo-card {
+      background-color: #ffffff;
+      border: 1px solid #fde68a;
+      border-left: 6px solid #d97706;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
+
+    .list-custom {
+      margin-left: 20px;
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS13_LAMP_Profil_Afektif_Motivasi.pdf')" class="btn-primary" style="width: auto; background-color: #4f46e5;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN PROFIL AFEKTIF & MOTIVASI BELAJAR (LAMP)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS13 - APACA Learning Affective & Motivational Profile (LAMP)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Academic Resilience Index Global -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN ACADEMIC RESILIENCE INDEX</div>
+        
+        <div class="global-score-card">
+          <div style="flex: 1; text-align: center; border-right: 2px solid #ddd6fe; padding-right: 20px;">
+            <div style="font-size: 0.82rem; color: #4f46e5; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Academic Resilience Index</div>
+            <div id="r-overall-index" class="global-score-number">0%</div>
+            <div id="r-overall-badge" class="badge-status badge-vulnerable">MODERAT</div>
+          </div>
+          <div style="flex: 2; padding-left: 8px;">
+            <h4 id="r-global-kategori" style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 1.15rem;">-</h4>
+            <p id="r-global-deskripsi" style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin-bottom: 8px;">-</p>
+            <p style="font-size: 0.85rem; color: #475569; margin: 0;"><strong>Dampak Akademik:</strong> <span id="r-global-dampak">-</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Visualisasi Dual Chart (Hexagon Afektif & Spektrum Motivasi) -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI PROFIL AFEKTIF & SPEKTRUM MOTIVASI</div>
+        
+        <div class="charts-grid">
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Affective Hexagon Chart (5 Dimensi Core)</h5>
+            <canvas id="lampRadarChart"></canvas>
+          </div>
+          <div class="chart-box">
+            <h5 style="text-align: center; margin-top: 0; color: #0f172a; font-size: 0.95rem;">Spektrum Motivasi Belajar (6 Driver Tipe)</h5>
+            <canvas id="lampBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Pemeringkatan Driver Motivasi Utama -->
+      <div class="report-section">
+        <div class="report-section-title">III. PROFIL DRIVER MOTIVASI UTAMA & PANDUAN AKSI</div>
+        <div id="drivers-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section IV: Tabulasi & Evaluasi 5 Dimensi Afektif Utama -->
+      <div class="report-section">
+        <div class="report-section-title">IV. EVALUASI DIMENSI KETAHANAN AFEKTIF UTAMA</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Afektif Utama</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Tingkat Ketahanan</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+
+        <div id="affective-cards-container" style="margin-top: 20px;">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section V: Matriks Kombinasi Afektif & Rekomendasi Khusus -->
+      <div class="report-section">
+        <div class="report-section-title">V. ANALISIS KOMBINASI AFEKTIF & REKOMENDASI INTERVENSI</div>
+        <div id="combo-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KS13
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS13");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi via Engine KS13
+        const result = KS13_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS13_Scoring.sendRekapToGAS === "function") {
+          KS13_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Ringkasan Global
+        const idx = result.overallIndex || 0;
+        document.getElementById("r-overall-index").innerText = `${idx}%`;
+        
+        const norm = result.globalNorm || {};
+        document.getElementById("r-global-kategori").innerText = norm.kategori || "-";
+        document.getElementById("r-global-deskripsi").innerText = norm.deskripsi_kondisi || "-";
+        document.getElementById("r-global-dampak").innerText = norm.dampak_akademik || "-";
+
+        const badgeElem = document.getElementById("r-overall-badge");
+        badgeElem.innerText = norm.label_status || "MODERAT";
+        badgeElem.className = "badge-status " + (
+          norm.label_status === "SANGAT TANGGUH" ? "badge-resilient" :
+          norm.label_status === "TANGGUH" ? "badge-motivated" :
+          norm.label_status === "MODERAT & RENTAN" ? "badge-vulnerable" :
+          norm.label_status === "FRAGILE / RENTAN DROPOUT" ? "badge-fragile" : "badge-demotivated"
+        );
+
+        // 6. Render Dual Chart (Radar Afektif & Bar Spektrum Motivasi)
+        // Chart 1: Radar Afektif
+        const affLabels = Object.keys(result.affectiveScores);
+        const affValues = Object.values(result.affectiveScores);
+
+        new Chart(document.getElementById('lampRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: affLabels,
+            datasets: [{
+              label: 'Indeks Afektif (%)',
+              data: affValues,
+              backgroundColor: 'rgba(79, 70, 229, 0.18)',
+              borderColor: '#4f46e5',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#4f46e5',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#e2e8f0' },
+                grid: { color: '#f1f5f9' },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { display: false }
+              }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // Chart 2: Bar Spektrum Motivasi
+        const motLabels = Object.keys(result.motivationScores);
+        const motValues = Object.values(result.motivationScores);
+
+        new Chart(document.getElementById('lampBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: motLabels,
+            datasets: [{
+              data: motValues,
+              backgroundColor: ['#4f46e5', '#0891b2', '#7c3aed', '#f59e0b', '#059669', '#dc2626'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true, max: 100 }
+            },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 7. Render Driver Motivasi Utama
+        const driverContainer = document.getElementById("drivers-container");
+        driverContainer.innerHTML = "";
+
+        const spektrumDetail = rubrikData.spektrum_motivasi_detail || {};
+        const ranked = result.rankedMotivations;
+
+        const renderDriverBox = (driverObj, titleText, cssClass) => {
+          const detail = spektrumDetail[driverObj.type] || {};
+          return `
+            <div class="driver-card ${cssClass}">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <h4 style="margin:0; color:#0f172a; font-size:1rem;">${titleText}: ${detail.nama_tipe || driverObj.type}</h4>
+                <span style="font-weight:800; color:#4f46e5; font-size:1.1rem;">${driverObj.pct}%</span>
+              </div>
+              <p style="font-size:0.88rem; color:#334155; margin-bottom:8px; line-height:1.5;">${detail.deskripsi || ''}</p>
+              <div style="font-size:0.85rem; color:#475569; background:#ffffff; padding:10px 14px; border-radius:6px; border:1px solid #cbd5e1; margin-bottom:6px;">
+                <strong>Panduan untuk Orang Tua:</strong> ${detail.panduan_orang_tua || '-'}
+              </div>
+              <div style="font-size:0.85rem; color:#475569; background:#ffffff; padding:10px 14px; border-radius:6px; border:1px solid #cbd5e1;">
+                <strong>Panduan untuk Guru:</strong> ${detail.panduan_guru || '-'}
+              </div>
+            </div>
+          `;
+        };
+
+        driverContainer.innerHTML += renderDriverBox(ranked.top1, "🥇 Top Driver 1 (Motivasi Utama)", "top1");
+        driverContainer.innerHTML += renderDriverBox(ranked.top2, "🥈 Top Driver 2 (Motivasi Pendukung)", "top2");
+        driverContainer.innerHTML += renderDriverBox(ranked.lowest, "⚠️ Lowest Driver (Bentuk pendorong yang sebaiknya dihindari)", "lowest");
+
+        // 8. Render Tabulasi Tabel Afektif & Kartu Detail
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        const affCardsContainer = document.getElementById("affective-cards-container");
+        affCardsContainer.innerHTML = "";
+
+        result.affectiveRows.forEach(row => {
+          // Table Row
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+            <td>${row.rs} / ${row.dimensi === 'Growth Mindset' ? 32 : 64}</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td><span style="font-weight:700; color:${row.percentage >= 61 ? '#059669' : row.percentage >= 41 ? '#d97706' : '#dc2626'};">${row.level}</span></td>
+          `;
+          tbody.appendChild(tr);
+
+          // Card Detail
+          const card = document.createElement("div");
+          card.className = "dimensi-card";
+          card.innerHTML = `
+            <div style="display:flex; justify-style:space-between; align-items:center; border-bottom:2px solid #f1f5f9; padding-bottom:8px; margin-bottom:10px;">
+              <div style="font-weight: 800; color: #0f172a; font-size: 1rem;">${row.judul_dimensi}</div>
+              <div style="font-weight:700; font-size:0.88rem; color: #4f46e5;">Indeks: ${row.percentage}% (${row.kondisi})</div>
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; margin-bottom: 8px; line-height: 1.5;">${row.interpretasi}</p>
+            <div style="font-size: 0.85rem; color: #475569; margin-bottom: 8px;"><strong>Dampak Akademik:</strong> ${row.dampak_akademik}</div>
+            <div style="font-size: 0.85rem; color: #4338ca; background: #f5f3ff; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #4f46e5;">
+              <strong>Saran Pengembangan:</strong> ${row.saran_pengembangan}
+            </div>
+          `;
+          affCardsContainer.appendChild(card);
+        });
+
+        // 9. Render Kombinasi Afektif
+        const comboContainer = document.getElementById("combo-container");
+        comboContainer.innerHTML = "";
+
+        if (result.detectedCombinations && result.detectedCombinations.length > 0) {
+          result.detectedCombinations.forEach(c => {
+            comboContainer.innerHTML += `
+              <div class="combo-card">
+                <h4 style="color: #b45309; margin-top: 0; margin-bottom: 6px; font-size: 1rem;">🔍 POLA AFEKTIF DETEKSI: ${c.nama_pola}</h4>
+                <p style="font-size: 0.88rem; color: #334155; margin-bottom: 8px; line-height: 1.5;">${c.analisis_klinis}</p>
+                <div style="font-size: 0.85rem; color: #92400e; background: #fffbeb; padding: 10px 14px; border-radius: 6px; border: 1px solid #fcd34d;">
+                  <strong>Rekomendasi Intervensi:</strong> ${c.rekomendasi_intervensi}
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          comboContainer.innerHTML = `
+            <div style="background-color: #ffffff; border: 1px solid #86efac; border-left: 6px solid #16a34a; padding: 16px 20px; border-radius: 8px; color: #166534; font-size: 0.9rem;">
+              ✅ <strong>Sistem Afektif Harmonis:</strong> Tidak terdeteksi adanya kontradiksi emosional atau kerentanan kombinasi khusus pada profil belajar Anda.
+            </div>
+          `;
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS13:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan LAMP.");
+      }
+    });
+  </script>
+</body>
+</html>
