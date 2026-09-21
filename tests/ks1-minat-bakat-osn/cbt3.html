@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBT Panel - Pilar III Science Persona Fit Test</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    :root {
+      --primary-indigo: #4f46e5;
+      --bg-slate: #f8fafc;
+      --border-color: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-slate); font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* Header */
+    .cbt-header { background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
+
+    /* Responsive 3-Panel Grid Layout */
+    .pilar3-container { display: grid; grid-template-columns: 240px 1fr 380px; flex: 1; overflow: hidden; }
+
+    /* Panel Kiri: Navigasi 10 Bidang */
+    .panel-nav { background: #ffffff; border-right: 1px solid var(--border-color); padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+    .nav-item { padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border-color); background: #f8fafc; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: #334155; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; }
+    .nav-item:hover { background: #f1f5f9; }
+    .nav-item.active { background: #e0e7ff; border-color: var(--primary-indigo); color: var(--primary-indigo); font-weight: 700; }
+    .badge-status { font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; background: #cbd5e1; color: #ffffff; }
+    .nav-item.complete .badge-status { background: #10b981; }
+
+    /* Panel Tengah: PDF Viewer */
+    .panel-pdf { background: #475569; display: flex; flex-direction: column; height: 100%; position: relative; }
+    .pdf-frame { width: 100%; height: 100%; border: none; }
+
+    /* Panel Kanan: Soal Kuesioner (1 Soal per Tampilan) */
+    .panel-question { background: #ffffff; border-left: 1px solid var(--border-color); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto; }
+    .q-meta { font-size: 0.8rem; font-weight: 800; color: var(--primary-indigo); text-transform: uppercase; margin-bottom: 8px; }
+    .q-prompt { font-size: 1rem; font-weight: 600; color: #0f172a; line-height: 1.5; margin-bottom: 24px; }
+
+    /* Options Likert */
+    .likert-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .likert-btn { padding: 12px 16px; border: 1.5px solid var(--border-color); border-radius: 8px; background: #ffffff; text-align: left; font-size: 0.88rem; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.15s; }
+    .likert-btn:hover { background: #f8fafc; border-color: #cbd5e1; }
+    .likert-btn.active { background: #e0e7ff; border-color: var(--primary-indigo); color: var(--primary-indigo); }
+
+    /* Footer Action Buttons */
+    .action-group { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--border-color); padding-top: 16px; }
+    .btn-nav-q { flex: 1; padding: 10px; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; }
+    .btn-prev { background: #e2e8f0; color: #334155; }
+    .btn-next { background: var(--primary-indigo); color: #ffffff; }
+
+    /* Tablet & Mobile Layout Adjustment */
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .pilar3-container { grid-template-columns: 1fr; grid-template-rows: auto 400px auto; overflow: visible; }
+      .panel-nav { flex-direction: row; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--border-color); }
+      .nav-item { min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="cbt-header">
+    <div>
+      <h3 style="margin:0; color: var(--primary-indigo);">Pilar III: Science Persona Fit Test</h3>
+      <div style="font-size:0.8rem; color:#64748b;" id="active-field-title">Bidang: Matematika</div>
+    </div>
+    <button class="btn-primary" style="padding: 8px 16px; background:#059669;" onclick="confirmSubmitAll()">Selesaikan Pilar III</button>
+  </header>
+
+  <main class="pilar3-container">
+    <!-- Panel Kiri: Daftar 10 Bidang -->
+    <aside class="panel-nav" id="field-nav-list"></aside>
+
+    <!-- Panel Tengah: PDF Viewer Demo Soal -->
+    <section class="panel-pdf">
+      <iframe id="pdf-viewer" class="pdf-frame" src=""></iframe>
+    </section>
+
+    <!-- Panel Kanan: Soal Kuesioner (1 Soal per Tampilan) -->
+    <section class="panel-question">
+      <div>
+        <div class="q-meta" id="q-number-meta">Soal 1 dari 8</div>
+        <div class="q-prompt" id="q-prompt-text">Loading...</div>
+        <div class="likert-list" id="likert-options-container"></div>
+      </div>
+
+      <div class="action-group">
+        <button class="btn-nav-q btn-prev" id="btn-prev-q" onclick="navigateQ(-1)">← Sebelumnya</button>
+        <button class="btn-nav-q btn-next" id="btn-next-q" onclick="navigateQ(1)">Selanjutnya →</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="../../assets/js/auth.js"></script>
+  <script src="scoring3.js"></script>
+  <script>
+    const PDF_BASE_PATH = "tests/ks1-minat-bakat-osn/pdf/";
+    let testData = null;
+    let currentFieldIndex = 0;
+    let currentQIndex = 0;
+    
+    // Structure: { "MTK": { 1: 5, 2: 4 }, "FIS": { ... } }
+    let userAnswers = {};
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const res = await fetch("soal3.json");
+        testData = await res.json();
+
+        // Inisialisasi struktur jawaban kosong untuk 10 bidang
+        testData.bidang_list.forEach(b => {
+          userAnswers[b.code] = {};
+        });
+
+        renderFieldNav();
+        loadField(0);
+      } catch (err) {
+        alert("Gagal memuat data Pilar III.");
+      }
+    });
+
+    function renderFieldNav() {
+      const container = document.getElementById("field-nav-list");
+      container.innerHTML = "";
+
+      testData.bidang_list.forEach((b, idx) => {
+        const isComplete = Object.keys(userAnswers[b.code] || {}).length === 8;
+        const div = document.createElement("div");
+        div.className = `nav-item ${idx === currentFieldIndex ? 'active' : ''} ${isComplete ? 'complete' : ''}`;
+        div.onclick = () => loadField(idx);
+        div.innerHTML = `
+          <span>${b.nama}</span>
+          <span class="badge-status">${isComplete ? '✓' : '0/8'}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function loadField(fieldIdx) {
+      currentFieldIndex = fieldIdx;
+      currentQIndex = 0; // Reset ke soal pertama pada bidang baru
+      
+      const currentField = testData.bidang_list[fieldIdx];
+      document.getElementById("active-field-title").innerText = `Bidang: ${currentField.nama}`;
+      
+      // Load PDF
+      document.getElementById("pdf-viewer").src = `${PDF_BASE_PATH}${currentField.pdf_file}`;
+
+      renderFieldNav();
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const fieldCode = testData.bidang_list[currentFieldIndex].code;
+      const qData = testData.resilience_questions[currentQIndex];
+      const savedVal = userAnswers[fieldCode][qData.id] || null;
+
+      document.getElementById("q-number-meta").innerText = `Soal ${currentQIndex + 1} dari 8 (${qData.indicator})`;
+      document.getElementById("q-prompt-text").innerText = qData.prompt;
+
+      const container = document.getElementById("likert-options-container");
+      container.innerHTML = "";
+
+      testData.likert_scale.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = `likert-btn ${savedVal === opt.value ? 'active' : ''}`;
+        btn.innerText = opt.label;
+        btn.onclick = () => selectLikert(qData.id, opt.value);
+        container.appendChild(btn);
+      });
+
+      // Controls State
+      document.getElementById("btn-prev-q").disabled = (currentQIndex === 0);
+      document.getElementById("btn-next-q").innerText = (currentQIndex === 7) ? "Bidang Berikutnya →" : "Selanjutnya →";
+    }
+
+    function selectLikert(qId, val) {
+      const fieldCode = testData.bidang_list[currentFieldIndex].code;
+      userAnswers[fieldCode][qId] = val;
+
+      renderFieldNav();
+      renderQuestion();
+    }
+
+    function navigateQ(dir) {
+      const nextIdx = currentQIndex + dir;
+      if (nextIdx >= 0 && nextIdx < 8) {
+        currentQIndex = nextIdx;
+        renderQuestion();
+      } else if (nextIdx >= 8) {
+        // Jika sudah di soal ke-8, otomatis lanjut ke bidang OSN berikutnya jika ada
+        if (currentFieldIndex < testData.bidang_list.length - 1) {
+          loadField(currentFieldIndex + 1);
+        } else {
+          confirmSubmitAll();
+        }
+      }
+    }
+
+    function confirmSubmitAll() {
+      // Hitung progress kelengkapan
+      let totalAnsweredFields = 0;
+      testData.bidang_list.forEach(b => {
+        if (Object.keys(userAnswers[b.code] || {}).length === 8) totalAnsweredFields++;
+      });
+
+      if (totalAnsweredFields < 10) {
+        if (!confirm(`Anda baru melengkapi ${totalAnsweredFields} dari 10 bidang OSN. Yakin ingin mengumpulkan Pilar III sekarang?`)) {
+          return;
+        }
+      } else {
+        if (!confirm("Seluruh kuesioner resiliensi 10 bidang OSN telah diisi. Simpan dan selesaikan tes?")) return;
+      }
+
+      // Evaluasi & Simpan Hasil
+      const evaluation = Pilar3_Scoring.evaluate(userAnswers);
+      sessionStorage.setItem("pats_pilar3_results", JSON.stringify(evaluation));
+
+      alert("Pilar III Berhasil Disimpan!");
+      window.location.href = "result_total.html"; // Ke Laporan Akhir Kombinasi 3 Pilar
+    }
+  </script>
+</body>
+</html>
