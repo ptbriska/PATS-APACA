@@ -1,0 +1,565 @@
+{
+  "test_info": {
+    "kode": "KU8",
+    "nama_resmi": "APACA Leadership & Soft Skills Assessment (ALSA)",
+    "nama_singkat": "Leadership Executive Function Profile Test",
+    "versi": "Versi 1.0 / 2026",
+    "token_ujian": "ALSA2026",
+    "token_master": "PatsTestingKU8",
+    "durasi_menit": 45,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "dimension": "Decision Making",
+      "scenario": "Tiga hari sebelum acara puncak organisasi dilaksanakan, lokasi kegiatan yang telah disepakati mendadak dibatalkan oleh pihak pengelola karena perbaikan darurat. Tim berada dalam kondisi panik dan anggaran alternatif sangat terbatas.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengumpulkan tim inti untuk memetakan tiga opsi lokasi darurat berbasis rasio biaya dan kapasitas, lalu memutuskan lokasi terbaik dalam waktu empat jam." },
+        { "code": "B", "points": 3, "label": "Memindahkan acara ke lokasi terdekat milik salah satu anggota tim tanpa memikirkan izin resmi demi menghemat waktu." },
+        { "code": "C", "points": 2, "label": "Menunda pelaksanaan acara hingga lokasi awal selesai diperbaiki tanpa meminta persetujuan pembina atau pemangku kepentingan." },
+        { "code": "D", "points": 1, "label": "Melimpahkan seluruh urusan pencarian lokasi baru kepada divisi konsumsi dan logistik secara sepihak." }
+      ]
+    },
+    {
+      "id": 2,
+      "dimension": "Decision Making",
+      "scenario": "Di tengah pelaksanaan program kerja utama, ditemukan indikasi selisih dana anggaran akibat pencatatan nota yang acak-acakan oleh bendahara panitia.",
+      "options": [
+        { "code": "A", "points": 1, "label": "Menutupi selisih anggaran tersebut menggunakan dana pribadi agar organisasi tidak mendapat teguran." },
+        { "code": "B", "points": 4, "label": "Melakukan audit internal cepat bersama tim keuangan, mencocokkan arus kas riil, dan melaporkan secara transparan ke pembina beserta solusinya." },
+        { "code": "C", "points": 3, "label": "Menghentikan seluruh transaksi keuangan program kerja hingga audit eksternal formal dilakukan dua minggu kemudian." },
+        { "code": "D", "points": 2, "label": "Menegur bendahara di hadapan seluruh anggota panitia dan memberhentikannya secara mendadak." }
+      ]
+    },
+    {
+      "id": 3,
+      "dimension": "Decision Making",
+      "scenario": "Organisasi Anda menerima tawaran kerja sama sponsor dari perusahaan besar. Namun, produk perusahaan tersebut bertentangan dengan nilai dasar dan etika organisasi.",
+      "options": [
+        { "code": "A", "points": 2, "label": "Menerima tawaran sponsor tersebut diam-diam tanpa mencantumkan logo perusahaan di media publikasi acara." },
+        { "code": "B", "points": 4, "label": "Menolak tawaran secara profesional dengan alasan keselarasan nilai, lalu mengarahkan tim humas mencari alternatif sponsor yang sejalan." },
+        { "code": "C", "points": 3, "label": "Mengubah nilai dan aturan dasar organisasi agar kerja sama bernilai besar tersebut dapat direalisasikan." },
+        { "code": "D", "points": 1, "label": "Abaikan pesan dari pihak sponsor tanpa memberikan jawaban atau tanggapan resmi." }
+      ]
+    },
+    {
+      "id": 4,
+      "dimension": "Decision Making",
+      "scenario": "Sistem pendaftaran daring (online) untuk kegiatan besar organisasi mengalami kelumpuhan (crash) pada hari terakhir pendaftaran akibat lonjakan peserta.",
+      "options": [
+        { "code": "A", "points": 3, "label": "Menutup pendaftaran lebih awal dan mengabaikan calon peserta yang belum terdata." },
+        { "code": "B", "points": 1, "label": "Menyalahkan tim IT secara terbuka di grup percakapan panitia atas kegagalan sistem." },
+        { "code": "C", "points": 4, "label": "Segera mengaktifkan formulir pendaftaran cadangan, mengumumkan perpanjangan waktu 24 jam di media sosial, dan memperbaiki peladen utama." },
+        { "code": "D", "points": 2, "label": "Menunggu peladen pulih secara alami tanpa memberikan informasi apa pun kepada calon peserta." }
+      ]
+    },
+    {
+      "id": 5,
+      "dimension": "Decision Making",
+      "scenario": "Seorang anggota tim kerja menyerahkan laporan hasil kegiatan yang terbukti memuat data palsu untuk memenuhi tenggat waktu.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Memanggil anggota tersebut secara tertutup untuk klarifikasi, meminta perbaikan data berdasarkan fakta riil, dan memberikan penegasan etika." },
+        { "code": "B", "points": 2, "label": "Membiarkan laporan tersebut tetap digunakan demi menjaga nama baik tim di depan pimpinan senior." },
+        { "code": "C", "points": 3, "label": "Mengambil alih seluruh penyusunan ulang laporan tersebut sendirian tanpa melibatkan anggota yang bersangkutan." },
+        { "code": "D", "points": 1, "label": "Langsung mengeluarkan anggota tersebut dari kepengurusan tanpa proses konfirmasi." }
+      ]
+    },
+    {
+      "id": 6,
+      "dimension": "Decision Making",
+      "scenario": "Terdapat dua usulan program kerja yang berbobot sama bagusnya, tetapi anggaran dan daya manusia organisasi hanya cukup untuk mendanai satu program.",
+      "options": [
+        { "code": "A", "points": 2, "label": "Menentukan usulan terpilih berdasarkan voting cepat di grup obrolan tanpa kriteria penilaian." },
+        { "code": "B", "points": 4, "label": "Menyusun matriks evaluasi kelayakan berbasis dampak, biaya, dan relevansi terhadap visi organisasi, lalu memutuskan bersama tim pengurus." },
+        { "code": "C", "points": 1, "label": "Paksakan membiayai kedua program sekaligus dengan cara memotong anggaran operasional rutin organisasi hingga habis." },
+        { "code": "D", "points": 3, "label": "Membatalkan kedua program tersebut agar tidak menimbulkan kekecewaan di antara para pengusul." }
+      ]
+    },
+    {
+      "id": 7,
+      "dimension": "Decision Making",
+      "scenario": "Narasumber utama acara nasional organisasi Anda membatalkan kehadiran secara sepihak dua jam sebelum sesi seminar dimulai.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menghubungi pemateri cadangan dari internal/jaringan organisasi, menggeser sedikit susunan acara, dan menginformasikan perubahan ke peserta secara sopan." },
+        { "code": "B", "points": 2, "label": "Membatalkan seluruh rangkaian sesi acara dan mengembalikan biaya pendaftaran saat itu juga." },
+        { "code": "C", "points": 3, "label": "Meminta pembawa acara untuk mengisi waktu kosong dengan diskusi santai tanpa konsep yang jelas." },
+        { "code": "D", "points": 1, "label": "Menyalahkan narasumber di panggung depan seluruh peserta secara emosional." }
+      ]
+    },
+    {
+      "id": 8,
+      "dimension": "Decision Making",
+      "scenario": "Pernyataan resmi organisasi di media sosial memicu kritik tajam dari publik akibat timbulnya salah penafsiran kata.",
+      "options": [
+        { "code": "A", "points": 1, "label": "Menghapus postingan tersebut tanpa memberikan konfirmasi dan memblokir akun-akun yang mengkritik." },
+        { "code": "B", "points": 3, "label": "Membiarkan postingan tersebut dan tidak memberikan tanggapan agar isu mereda dengan sendirinya." },
+        { "code": "C", "points": 4, "label": "Mengkaji dampak narasi bersama tim, lalu menerbitkan klarifikasi resmi yang santun, objektif, dan meluruskan poin kesalahpahaman." },
+        { "code": "D", "points": 2, "label": "Debat secara langsung dengan para pengkritik di kolom komentar menggunakan akun pribadi." }
+      ]
+    },
+    {
+      "id": 9,
+      "dimension": "Decision Making",
+      "scenario": "Organisasi dihadapkan pada pilihan memperbarui sistem manajemen berbasis digital atau mempertahankan sistem manual yang sudah biasa dijalankan.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Melakukan masa transisi bertahap, menyediakan pelatihan teknis bagi anggota, dan mengevaluasi efisiensi sistem baru." },
+        { "code": "B", "points": 2, "label": "Langsung mewajibkan penggunaan sistem baru tanpa memberikan panduan bagi anggota yang bingung." },
+        { "code": "C", "points": 3, "label": "Menolak pembaruan digital karena anggota merasa nyaman dengan metode manual." },
+        { "code": "D", "points": 1, "label": "Yerahkan keputusan pembaruan sepenuhnya kepada anggota baru tanpa arahan pimpinan." }
+      ]
+    },
+    {
+      "id": 10,
+      "dimension": "Decision Making",
+      "scenario": "Di tengah pelaksanaan proyek, ditemukan indikasi bahwa dampak kegiatan tidak sesuai dengan tujuan awal yang ditargetkan.",
+      "options": [
+        { "code": "A", "points": 3, "label": "Melanjutkan proyek sesuai rencana awal agar anggaran yang sudah keluar tidak terbuang sia-sia." },
+        { "code": "B", "points": 4, "label": "Melakukan penyesuaian strategi di tengah jalan (pivot) agar indikator capaian utama tetap dapat terpenuhi." },
+        { "code": "C", "points": 1, "label": "Menghentikan seluruh proyek secara mendadak dan membubarkan panitia." },
+        { "code": "D", "points": 2, "label": "Manipulasi data evaluasi agar laporan akhir tetap terlihat berhasil di depan pimpinan." }
+      ]
+    },
+    {
+      "id": 11,
+      "dimension": "Time Management",
+      "scenario": "Sebagai ketua proyek, Anda menghadapi tiga tugas mendesak bersamaan: menyelesaikan proposal sponsor, menghadiri rapat pimpinan, dan meninjau kesiapan panggung.",
+      "options": [
+        { "code": "A", "points": 3, "label": "Mengerjakan ketiga tugas tersebut sendiri secara bergantian hingga larut malam." },
+        { "code": "B", "points": 4, "label": "Menghadiri rapat pimpinan utama, mendelegasikan peninjauan panggung ke divisi koordinator, dan membagi penyusunan proposal ke sekretaris." },
+        { "code": "C", "points": 2, "label": "Menunda seluruh tugas hingga hari esok agar pikiran menjadi lebih segar." },
+        { "code": "D", "points": 1, "label": "Fokus hanya pada peninjauan panggung dan mengabaikan proposal serta rapat pimpinan." }
+      ]
+    },
+    {
+      "id": 12,
+      "dimension": "Time Management",
+      "scenario": "Salah satu Koordinator Divisi tidak kunjung menyelesaikan tugas pentingnya karena menghilang tanpa kabar saat mendekati tenggat waktu.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Segera menunjuk staf senior divisi tersebut sebagai pelaksana tugas sementara (ad-interim) dan mencari konfirmasi keberadaan koordinator." },
+        { "code": "B", "points": 1, "label": "Menunggu koordinator tersebut muncul kembali sebelum melanjutkan langkah berikutnya." },
+        { "code": "C", "points": 2, "label": "Mengerjakan seluruh porsi tugas divisi tersebut sendirian di luar batas kapasitas pribadi." },
+        { "code": "D", "points": 3, "label": "Membatalkan porsi kerja divisi tersebut dari rencana kegiatan utama." }
+      ]
+    },
+    {
+      "id": 13,
+      "dimension": "Time Management",
+      "scenario": "Pembina atau penasihat organisasi meminta laporan perkembangan tambahan dalam waktu dua jam, di saat Anda sedang memimpin agenda simulasi acara.",
+      "options": [
+        { "code": "A", "points": 2, "label": "Hentikan sesi simulasi acara saat itu juga demi menyusun laporan pembina." },
+        { "code": "B", "points": 4, "label": "Meminta sekretaris mengompilasi draf data yang ada, lalu Anda memeriksa dan mengirimkannya tepat waktu tanpa menghentikan simulasi." },
+        { "code": "C", "points": 1, "label": "Mengabaikan permintaan pembina hingga sesi simulasi seluruhnya selesai malam hari." },
+        { "code": "D", "points": 3, "label": "Mengirimkan dokumen mentah tanpa verifikasi data terlebih dahulu kepada pembina." }
+      ]
+    },
+    {
+      "id": 14,
+      "dimension": "Time Management",
+      "scenario": "Rapat koordinasi bulanan organisasi sering kali berlangsung terlalu lama (melebihi tiga jam) karena pembahasan melenceng dari agenda utama.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menyusun lembar alur agenda (rundown) rapat yang ketat dengan batasan waktu per topik dan menunjuk pencatat waktu (timekeeper)." },
+        { "code": "B", "points": 3, "label": "Membatasi waktu rapat secara kaku maksimal 30 menit tanpa memedulikan apakah keputusan sudah tercapai atau belum." },
+        { "code": "C", "points": 2, "label": "Menghapuskan agenda rapat tatap muka dan menggantinya penuh lewat pesan teks bebas." },
+        { "code": "D", "points": 1, "label": "Membiarkan rapat berjalan alami tanpa intervensi karena menghargai kebebasan berpendapat." }
+      ]
+    },
+    {
+      "id": 15,
+      "dimension": "Time Management",
+      "scenario": "Banyak anggota organisasi mengeluhkan kelelahan fisik dan mental (burnout) akibat rentetan jadwal rapat yang terlalu padat setiap malam.",
+      "options": [
+        { "code": "A", "points": 1, "label": "Menegur anggota dan meminta mereka meningkatkan daya tahan tubuh demi profesionalisme." },
+        { "code": "B", "points": 4, "label": "Melakukan audit jam kerja, mengonsolidasikan agenda rapat menjadi sistem hibrida/asinkron, dan menetapkan hari bebas rapat." },
+        { "code": "C", "points": 3, "label": "Membatalkan seluruh sisa agenda kegiatan organisasi untuk sisa semester ini." },
+        { "code": "D", "points": 2, "label": "Mengurangi durasi rapat tetapi menambah frekuensi pertemuan menjadi setiap hari." }
+      ]
+    },
+    {
+      "id": 16,
+      "dimension": "Time Management",
+      "scenario": "Dalam penyusunan proyek, terjadi penambahan cakupan tugas baru (scope creep) dari pihak eksternal yang mengancam ketepatan tenggat waktu.",
+      "options": [
+        { "code": "A", "points": 2, "label": "Menerima seluruh penambahan tugas baru tanpa negosiasi dan memaksa tim lembur." },
+        { "code": "B", "points": 4, "label": "Bernegosiasi dengan pihak eksternal terkait penyesuaian jadwal atau penambahan sumber daya sebelum menyetujui tugas tambahan." },
+        { "code": "C", "points": 1, "label": "Menolak keras seluruh masukan eksternal dengan nada emosional." },
+        { "code": "D", "points": 3, "label": "Mengurangi kualitas pekerjaan pada tugas utama demi mengakomodasi tugas baru tersebut." }
+      ]
+    },
+    {
+      "id": 17,
+      "dimension": "Time Management",
+      "scenario": "Pengurus merasa kewalahan membagi fokus antara penyelesaian program harian yang mendesak dan perencanaan strategis jangka panjang.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menggunakan prinsip Matriks Prioritas (Eisenhower Matrix) untuk mengelompokkan tugas penting-mendesak dan melatih delegasi." },
+        { "code": "B", "points": 3, "label": "Mengerjakan seluruh tugas harian terlebih dahulu dan mengabaikan perencanaan jangka panjang." },
+        { "code": "C", "points": 2, "label": "Fokus hanya pada rencana jangka panjang dan membiarkan tugas harian terbengkalai." },
+        { "code": "D", "points": 1, "label": "Melimpahkan seluruh pekerjaan strategis kepada anggota yang baru bergabung." }
+      ]
+    },
+    {
+      "id": 18,
+      "dimension": "Time Management",
+      "scenario": "Penyedia jasa vendor perlengkapan mengabarkan keterlambatan pengiriman barang dua jam dari jadwal yang diperhitungkan.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Penyesuaian urutan gladi bersih pada bagian yang tidak membutuhkan perlengkapan tersebut sembari memantau kedatangan vendor." },
+        { "code": "B", "points": 1, "label": "Hentikan seluruh persiapan dan menanti vendor tiba di lokasi tanpa berbuat apa-apa." },
+        { "code": "C", "points": 2, "label": "Membatalkan kontrak vendor secara sepihak saat itu juga tanpa ada perlengkapan pengganti." },
+        { "code": "D", "points": 3, "label": "Menyewa perlengkapan baru di tempat lain dengan pengeluaran anggaran ganda." }
+      ]
+    },
+    {
+      "id": 19,
+      "dimension": "Time Management",
+      "scenario": "Hampir semua Koordinator Divisi mengajukan dokumen persetujuan kepada Anda pada jam yang persis sama menjelang penutupan jam operasional.",
+      "options": [
+        { "code": "A", "points": 2, "label": "Tanda tangani seluruh dokumen secara cepat tanpa membaca risesis isinya." },
+        { "code": "B", "points": 4, "label": "Mengurutkan verifikasi dokumen berdasarkan skala urgensi dampak kegiatan, serta menetapkan jadwal persetujuan harian yang teratur." },
+        { "code": "C", "points": 1, "label": "Menolak memeriksa seluruh dokumen dan meminta diajukan ulang minggu depan." },
+        { "code": "D", "points": 3, "label": "Memilih dokumen milik koordinator yang paling dekat secara personal saja." }
+      ]
+    },
+    {
+      "id": 20,
+      "dimension": "Time Management",
+      "scenario": "Saat Anda sedang fokus mengerjakan tugas analisis anggaran organisasi yang rumit, anggota tim berulang kali datang meminta konsultasi hal kecil.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menetapkan jam konsultasi terbuka (office hours) khusus dan meminta tim mengumpulkan pertanyaan non-darurat pada waktu tersebut." },
+        { "code": "B", "points": 2, "label": "Marah dan mengusir anggota yang datang agar tidak mengganggu konsentrasi." },
+        { "code": "C", "points": 3, "label": "Melayani setiap pertanyaan langsung dan membiarkan tugas analisis anggaran berantakan." },
+        { "code": "D", "points": 1, "label": "Meninggalkan lokasi kerja tanpa memberi tahu keberadaan Anda kepada tim." }
+      ]
+    },
+    {
+      "id": 21,
+      "dimension": "Teamwork",
+      "scenario": "Terdapat ketimpangan beban kerja di mana Divisi Acara bekerja sangat keras hingga larut malam, sementara Divisi Humas terlihat santai.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menganalisis ulang alokasi beban kerja dan melakukan pembantuan silang (cross-division support) dari Humas ke Acara secara adil." },
+        { "code": "B", "points": 2, "label": "Membiarkan kondisi tersebut karena setiap divisi memiliki deskripsi kerja masing-masing sejak awal." },
+        { "code": "C", "points": 1, "label": "Menegur Divisi Humas secara publik di hadapan seluruh anggota panitia." },
+        { "code": "D", "points": 3, "label": "Memindahkan sebagian anggaran Divisi Humas ke Divisi Acara tanpa komunikasi." }
+      ]
+    },
+    {
+      "id": 22,
+      "dimension": "Teamwork",
+      "scenario": "Seorang anggota tim yang sangat berbakat mendadak menjadi pasif dan jarang bersuara dalam diskusi kelompok beberapa minggu terakhir.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengajaknya berdiskusi secara pribadi dari hati ke hati untuk memahami kendala yang dihadapi serta memberikan apresiasi atas kontribusinya." },
+        { "code": "B", "points": 2, "label": "Mengabaikan perubahan perilakunya selama tugas tetap selesai." },
+        { "code": "C", "points": 3, "label": "Memberikan sanksi teguran tertulis langsung atas penurunan keaktifan." },
+        { "code": "D", "points": 1, "label": "Membicarakan pasifnya anggota tersebut kepada rekan-rekan lain di belakangnya." }
+      ]
+    },
+    {
+      "id": 23,
+      "dimension": "Teamwork",
+      "scenario": "Terjadi perdebatan sengit antara Divisi Kreatif yang menginginkan konsep panggung mewah dan Divisi Bendahara yang membatasi pengeluaran dana.",
+      "options": [
+        { "code": "A", "points": 3, "label": "Mendukung penuh keputusan Divisi Bendahara tanpa mendengarkan usulan Divisi Kreatif." },
+        { "code": "B", "points": 4, "label": "Memfasilitasi sesi kompromi untuk merancang ulang konsep panggung yang tetap estetik namun efisien dari segi anggaran." },
+        { "code": "C", "points": 1, "label": "Membiarkan kedua divisi saling berdebat hingga salah satu menyerah sendiri." },
+        { "code": "D", "points": 2, "label": "Mengambil pinjaman dana luar agar keinginan Divisi Kreatif tercapai tanpa memedulikan risiko." }
+      ]
+    },
+    {
+      "id": 24,
+      "dimension": "Teamwork",
+      "scenario": "Dalam sesi sumbang saran (brainstorming), beberapa anggota senior mendominasi percakapan sehingga anggota baru tidak berani menyampaikan ide.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menggunakan metode pengumpulan ide secara tertulis atau rotasi bergiliran agar setiap peserta memiliki kesempatan bicara yang setara." },
+        { "code": "B", "points": 2, "label": "Membiarkan anggota senior mendominasi karena mereka memiliki pengalaman lebih banyak." },
+        { "code": "C", "points": 3, "label": "Menegur keras anggota senior di tengah rapat agar berhenti berbicara." },
+        { "code": "D", "points": 1, "label": "Menghentikan sesi rapat dan memutuskan gagasan secara sepihak oleh pimpinan." }
+      ]
+    },
+    {
+      "id": 25,
+      "dimension": "Teamwork",
+      "scenario": "Anggota baru organisasi terlihat kesulitan berbaur dengan kelompok pengurus lama yang sudah membentuk lingkaran pertemanan yang eksklusif.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Merancang kegiatan orientasi tim (team bonding) dan membentuk pasangan kerja (buddy system) antara pengurus lama dan baru." },
+        { "code": "B", "points": 2, "label": "Membiarkan proses pembauran terjadi secara alami seiring berjalannya waktu." },
+        { "code": "C", "points": 3, "label": "Memisahkan kelompok kerja anggota baru dari pengurus lama secara permanen." },
+        { "code": "D", "points": 1, "label": "Menyalahkan anggota baru karena dianggap kurang aktif membuka pergaulan." }
+      ]
+    },
+    {
+      "id": 26,
+      "dimension": "Teamwork",
+      "scenario": "Seorang Ketua Divisi enggan membagikan informasi perkembangan kerja proyeknya kepada divisi lain, sehingga menimbulkan miskomunikasi.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Membuat papan pemantauan kerja bersama (seperti Trello/Kanban) yang transparan dan mewajibkan pembaruan berkala." },
+        { "code": "B", "points": 3, "label": "Mengambil alih fungsi kepemimpinan divisi tersebut secara langsung." },
+        { "code": "C", "points": 1, "label": "Menyampaikan sindiran pada rapat pleno terkait sikap tertutup divisi tersebut." },
+        { "code": "D", "points": 2, "label": "Membiarkan divisi tersebut bekerja sendiri tanpa integrasi hingga akhir proyek." }
+      ]
+    },
+    {
+      "id": 27,
+      "dimension": "Teamwork",
+      "scenario": "Semangat kerja tim mendadak anjlok drastis setelah presentasi usulan kegiatan mereka ditolak oleh pembina atau manajemen.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengadakan sesi evaluasi positif (debriefing), mengapresiasi kerja keras tim, dan fokus membedah catatan perbaikan untuk pengajuan ulang." },
+        { "code": "B", "points": 2, "label": "Menyalahkan pihak pembina yang dianggap tidak mendukung inovasi anak muda." },
+        { "code": "C", "points": 1, "label": "Menunjukkan rasa kecewa berat dan meninggalkan tim tanpa arahan lanjutan." },
+        { "code": "D", "points": 3, "label": "Memaksa tim membuat proposal baru malam itu juga tanpa istirahat." }
+      ]
+    },
+    {
+      "id": 28,
+      "dimension": "Teamwork",
+      "scenario": "Salah seorang anggota tim sering kali tidak mengumpulkan porsi tugasnya (free-rider) tetapi tetap ingin namanya tercantum dalam laporan akhir.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengonfirmasi kendala anggota tersebut, memberikan peringatan tegas, dan hanya mencantumkan nama sesuai kontribusi riil." },
+        { "code": "B", "points": 3, "label": "Tetap mencantumkan namanya demi menjaga keharmonisan pertemanan." },
+        { "code": "C", "points": 1, "label": "Langsung mencoret namanya tanpa melakukan konfirmasi atau pembinaan awal." },
+        { "code": "D", "points": 2, "label": "Mengerjakan porsi tugasnya diam-diam tanpa memberi tahu anggota lain." }
+      ]
+    },
+    {
+      "id": 29,
+      "dimension": "Teamwork",
+      "scenario": "Anggota organisasi memiliki latar belakang dan budaya kerja yang sangat beragam, sehingga sering memicu salah paham gaya komunikasi.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menyusun piagam norma komunikasi tim (team charter) yang disepakati bersama untuk saling menghargai perbedaan." },
+        { "code": "B", "points": 2, "label": "Mewajibkan semua anggota mengikuti gaya komunikasi pimpinan utama." },
+        { "code": "C", "points": 3, "label": "Mengelompokkan anggota berdasarkan kesamaan latar belakang daerah/asal saja." },
+        { "code": "D", "points": 1, "label": "Mengabaikan gesekan kecil tersebut karena dianggap konsekuensi wajar." }
+      ]
+    },
+    {
+      "id": 30,
+      "dimension": "Teamwork",
+      "scenario": "Kerja tim secara jarak jauh (hybrid/online) mengalami kemacetan akibat koordinasi yang berantakan di grup percakapan.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Merapikan saluran komunikasi berbasis topik (channel) dan menetapkan etika batas waktu respons pesan." },
+        { "code": "B", "points": 3, "label": "Mewajibkan seluruh anggota untuk terus siaga (standby) di grup percakapan selama 24 jam." },
+        { "code": "C", "points": 2, "label": "Mengubah kembali seluruh kegiatan menjadi tatap muka langsung tanpa kompromi." },
+        { "code": "D", "points": 1, "label": "Membiarkan percakapan tetap tidak teratur di satu grup umum." }
+      ]
+    },
+    {
+      "id": 31,
+      "dimension": "Situational Leadership",
+      "scenario": "Seorang pengurus senior memiliki kompetensi teknis yang sangat tinggi, namun terlihat kehilangan motivasi kerja dan sering terlambat.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menggunakan pendekatan mendukung (Supporting): Berdiskusi pribadi, memberikan ruang otonomi, dan melibatkan dalam pengambilan keputusan strategis." },
+        { "code": "B", "points": 2, "label": "Menggunakan pendekatan mengarahkan (Directing): Memberikan instruksi rinci langkah demi langkah setiap hari." },
+        { "code": "C", "points": 1, "label": "Memberikan sanksi disiplin keras tanpa bertanya kendala utama yang dihadapi." },
+        { "code": "D", "points": 3, "label": "Membiarkan perilakunya karena menghargai statusnya sebagai senior." }
+      ]
+    },
+    {
+      "id": 32,
+      "dimension": "Situational Leadership",
+      "scenario": "Anggota baru yang sangat bersemangat baru saja bergabung, tetapi ia belum memiliki keterampilan teknis yang cukup untuk tugas yang diberikan.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menggunakan pendekatan instruksi (Directing): Memberikan panduan jelas, contoh konkret, serta pengawasan mendampingi secara rutin." },
+        { "code": "B", "points": 2, "label": "Menggunakan pendekatan mendelegasikan (Delegating): Melepas penuh tugas tersebut tanpa pengawasan." },
+        { "code": "C", "points": 3, "label": "Memindahkan anggota tersebut ke divisi lain yang tidak membutuhkan keterampilan." },
+        { "code": "D", "points": 1, "label": "Menegurnya karena dianggap tidak memenuhi standar kualifikasi awal." }
+      ]
+    },
+    {
+      "id": 33,
+      "dimension": "Situational Leadership",
+      "scenario": "Seorang Koordinator Divisi memiliki rekam jejak kerja yang sangat ahli, mandiri, dan berdedikasi tinggi dalam setiap proyek.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menggunakan pendekatan mendelegasikan (Delegating): Memberikan wewenang penuh atas hasil akhir, sasaran jelas, serta otonomi cara kerja." },
+        { "code": "B", "points": 1, "label": "Mengatur cara kerjanya secara mendalam hingga ke detail kecil (micromanagement)." },
+        { "code": "C", "points": 3, "label": "Mengurangi beban kerjanya karena khawatir ia mengalami kelelahan." },
+        { "code": "D", "points": 2, "label": "Mendampingi setiap langkah tindakannya sepanjang hari di lapangan." }
+      ]
+    },
+    {
+      "id": 34,
+      "dimension": "Situational Leadership",
+      "scenario": "Anggota tim mengalami penurunan rasa percaya diri setelah tugas pertama yang dikerjakannya mendapatkan kritik dari pihak luar.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menggunakan pendekatan membimbing (Coaching): Mendampingi dalam evaluasi, memperjelas langkah perbaikan, serta membangun optimisme." },
+        { "code": "B", "points": 2, "label": "Mengambil alih seluruh tugasnya agar tidak timbul kesalahan kedua." },
+        { "code": "C", "points": 1, "label": "Memintanya mengabaikan kritik luar tersebut tanpa ada analisis perbaikan." },
+        { "code": "D", "points": 3, "label": "Mengganti posisi posisinya dengan anggota lain yang lebih siap." }
+      ]
+    },
+    {
+      "id": 35,
+      "dimension": "Situational Leadership",
+      "scenario": "Anda baru saja terpilih menjadi pimpinan organisasi yang membawahi rekan-rekan sebaya yang sebelumnya merupakan kawan akrab Anda.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menetapkan batasan profesional yang jelas saat menjalankan tugas organisasi, tanpa merusak kehangatan pertemanan di luar jam kerja." },
+        { "code": "B", "points": 2, "label": "Bersikap sangat otoriter dan kaku agar terlihat berwibawa di depan kawan akrab." },
+        { "code": "C", "points": 3, "label": "Gunakan rasa pertemanan untuk memaklumi pelanggaran aturan yang dilakukan kawan dekat." },
+        { "code": "D", "points": 1, "label": "Mundurkan diri dari jabatan pimpinan karena canggung mengarahkan teman." }
+      ]
+    },
+    {
+      "id": 36,
+      "dimension": "Situational Leadership",
+      "scenario": "Pengurus senior enggan menggunakan sistem pendaftaran digital baru dan tetap memilih mencatat peserta di kertas manual.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menjelaskan manfaat efisiensi sistem baru, memberikan pendampingan teknis sabar, dan memperlihatkan kemudahan penggunaannya." },
+        { "code": "B", "points": 2, "label": "Membiarkan senior tersebut tetap memakai cara manual sendirian." },
+        { "code": "C", "points": 1, "label": "Mengancam akan mengeluarkan senior tersebut jika tidak mematuhi alur digital." },
+        { "code": "D", "points": 3, "label": "Membatalkan implementasi sistem digital baru bagi seluruh pengurus." }
+      ]
+    },
+    {
+      "id": 37,
+      "dimension": "Situational Leadership",
+      "scenario": "Seorang anggota tim berkinerja sangat tinggi tetapi sering menunjukkan sikap sombong dan meremehkan anggota lain.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Memberikan umpan balik (feedback) tegas secara pribadi terkait dampak perilakunya pada dinamika tim dan menjadikannya mentor bagi anggota lain." },
+        { "code": "B", "points": 3, "label": "Membiarkan perilakunya selama ia terus menyumbangkan hasil kinerja luar biasa." },
+        { "code": "C", "points": 1, "label": "Menegurnya dengan nada sindiran keras saat rapat pleno berlangsung." },
+        { "code": "D", "points": 2, "label": "Mengurangi beban tugas kinerjanya tanpa penjelasan mendasar." }
+      ]
+    },
+    {
+      "id": 38,
+      "dimension": "Situational Leadership",
+      "scenario": "Ketua Divisi yang baru diangkat terlihat sangat bingung dan tertekan dengan tumpukan berkas administratif kepengurusan.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Memberikan contoh templat laporan baku, melatih alur kerja administratif, serta memantau perkembangannya secara berkala." },
+        { "code": "B", "points": 2, "label": "Mengerjakan seluruh berkas administratif divisi tersebut oleh pimpinan utama." },
+        { "code": "C", "points": 3, "label": "Mengganti Ketua Divisi tersebut dengan kawan lain yang lihai administrasi." },
+        { "code": "D", "points": 1, "label": "Membiarkannya belajar sendiri tanpa ada contoh panduan awal." }
+      ]
+    },
+    {
+      "id": 39,
+      "dimension": "Situational Leadership",
+      "scenario": "Tim kerja merasa bingung karena arahan arahan jangka panjang dari pimpinan tinggi dirasa terlalu abstrak dan sulit diterjemahkan ke lapangan.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menerjemahkan visi abstrak tersebut menjadi petunjuk teknis turunan (breakdown) yang terukur dan membaginya ke indikator mingguan." },
+        { "code": "B", "points": 2, "label": "Meminta tim menebak sendiri maksud arahan pimpinan tinggi tersebut." },
+        { "code": "C", "points": 3, "label": "Mengabaikan arah visi pimpinan tinggi dan membuat rencana kerja sendiri tanpa konfirmasi." },
+        { "code": "D", "points": 1, "label": "Mengeluhkan kaburnya visi pimpinan di depan seluruh anggota tim kerja." }
+      ]
+    },
+    {
+      "id": 40,
+      "dimension": "Situational Leadership",
+      "scenario": "Seorang anggota telah dua kali gagal memenuhi target tenggat waktu yang disepakati, meskipun instruksi telah diberikan secara rinci.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengevaluasi akar kendala utama (apakah kapasitas, beban pribadi, atau komitmen), menetapkan batas toleransi akhir, dan memposisikan ulang jika perlu." },
+        { "code": "B", "points": 2, "label": "Memberikan toleransi waktu tambahan berulang kali tanpa ada tindakan evaluasi." },
+        { "code": "C", "points": 1, "label": "Langsung mengeluarkan anggota tersebut secara emosional dari kepengurusan." },
+        { "code": "D", "points": 3, "label": "Mengabaikan kegagalan tersebut dan menyerahkan tugasnya ke anggota lain secara permanen." }
+      ]
+    },
+    {
+      "id": 41,
+      "dimension": "Conflict Resolution",
+      "scenario": "Dua Koordinator Divisi terlibat konflik pribadi akibat salah paham di luar organisasi, yang kini berdampak pada terhambatnya kerja sama antar-divisi.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Memanggil kedua koordinator ke sesi mediasi netral, memisahkan ranah konflik pribadi dari profesionalitas, dan menyepakati komitmen kerja." },
+        { "code": "B", "points": 2, "label": "Membiarkan konflik mereka dengan harapan akan mereda secara alami." },
+        { "code": "C", "points": 3, "label": "Memindahkan salah satu koordinator ke divisi lain tanpa memediasi masalah utama." },
+        { "code": "D", "points": 1, "label": "Meminta anggota organisasi memilih untuk memihak salah satu koordinator." }
+      ]
+    },
+    {
+      "id": 42,
+      "dimension": "Conflict Resolution",
+      "scenario": "Dalam rapat penentuan anggaran acara, masing-masing divisi saling mengklaim bahwa divisinya paling penting dan menuntut porsi dana terbesar.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengarahkan fokus kembali ke skala prioritas kriteria dampak acara, membedah draf alokasi rasional, dan menyepakati win-win solution." },
+        { "code": "B", "points": 3, "label": "Membagi rata anggaran secara sama rata ke semua divisi tanpa memedulikan kebutuhan riil." },
+        { "code": "C", "points": 2, "label": "Menentukan alokasi anggaran berdasarkan divisi mana yang memilik koordinator paling vokal." },
+        { "code": "D", "points": 1, "label": "Membatalkan seluruh porsi anggaran belanja operasional acara." }
+      ]
+    },
+    {
+      "id": 43,
+      "dimension": "Conflict Resolution",
+      "scenario": "Pihak mitra eksternal mengajukan komplain keras karena salah satu anggota panitia organisasi Anda bersikap tidak sopan saat berkomunikasi.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Sampaikan permohonan maaf resmi secara profesional kepada mitra, lakukan klarifikasi internal dengan anggota terkait, dan tetapkan langkah koreksi." },
+        { "code": "B", "points": 1, "label": "Membela anggota panitia tersebut secara buta tanpa melakukan penelusuran fakta." },
+        { "code": "C", "points": 2, "label": "Mengabaikan komplain mitra dan memutuskan hubungan kerja sama secara sepihak." },
+        { "code": "D", "points": 3, "label": "Menyalahkan anggota tersebut sepenuhnya di hadapan mitra tanpa permohonan maaf resmi lembaga." }
+      ]
+    },
+    {
+      "id": 44,
+      "dimension": "Conflict Resolution",
+      "scenario": "Terjadi perbedaan pendapat tajam antara pengurus senior yang mempertahankan tradisi lama kegiatan dengan pengurus muda yang menginginkan inovasi modern.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menciptakan formula kegiatan gabungan yang mempertahankan esensi nilai tradisi positif sekaligus mengadopsi kemasan inovasi modern." },
+        { "code": "B", "points": 3, "label": "Mengabaikan usulan pengurus muda dan mempertahankan tradisi lama secara kaku." },
+        { "code": "C", "points": 2, "label": "Menghapus seluruh tradisi lama dan menggantinya penuh dengan ide pengurus muda." },
+        { "code": "D", "points": 1, "label": "Membatalkan seluruh kegiatan karena kedua belah pihak tidak mau mengalah." }
+      ]
+    },
+    {
+      "id": 45,
+      "dimension": "Conflict Resolution",
+      "scenario": "Sebagian anggota melayangkan protes terbuka karena merasa pimpinan organisasi tidak transparan dalam pengambilan keputusan strategis.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Membuat forum dialog terbuka (town hall), menjelaskan alasan logis latar belakang keputusan, dan membuka masukan konstruktif." },
+        { "code": "B", "points": 1, "label": "Mengancam akan memberi sanksi sanksi kepada anggota yang berani melayangkan protes." },
+        { "code": "C", "points": 2, "label": "Mengabaikan protes tersebut karena menganggap pimpinan memiliki hak penuh." },
+        { "code": "D", "points": 3, "label": "Mundur dari jabatan pimpinan secara mendadak karena merasa tidak dihargai." }
+      ]
+    },
+    {
+      "id": 46,
+      "dimension": "Conflict Resolution",
+      "scenario": "Anggota Divisi Logistik merasa dikecewakan dan menyampaikan kritik atas gaya kepemimpinan Koordinator Divisinya yang dinilai kaku dan suka memerintah.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mendampingi Koordinator Divisi untuk menerima umpan balik balik secara bijak, serta melatih keterampilan komunikasi kepemimpinan yang lebih inklusif." },
+        { "code": "B", "points": 3, "label": "Langsung mengganti Koordinator Divisi tersebut tanpa ada proses pembinaan." },
+        { "code": "C", "points": 1, "label": "Meminta anggota logistik menahan diri dan menuruti saja semua perintah koordinator." },
+        { "code": "D", "points": 2, "label": "Membubarkan divisi logistik dan membagi anggotanya ke divisi lain." }
+      ]
+    },
+    {
+      "id": 47,
+      "dimension": "Conflict Resolution",
+      "scenario": "Setelah sebuah acara selesai dengan beberapa kekurangberhasilan, para koordinator divisi mulai saling menyalahkan satu sama lain.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Mengarahkan sesi evaluasi dari sikap menyalahkan orang (who) menjadi membedah kelemahan sistem (what/how), serta menyusun rencana perbaikan." },
+        { "code": "B", "points": 2, "label": "Mencari satu orang yang paling bersalah dan membebankan seluruh tanggung jawab padanya." },
+        { "code": "C", "points": 1, "label": "Menutup rangkaian acara tanpa mengadakan sesi evaluasi akhir." },
+        { "code": "D", "points": 3, "label": "Membiarkan saling tuduh terjadi agar setiap divisi menyadari kesalahannya." }
+      ]
+    },
+    {
+      "id": 48,
+      "dimension": "Conflict Resolution",
+      "scenario": "Terdapat konflik antara keinginan peserta acara yang meminta kelonggaran aturan dengan panitia pengaman yang menjaga ketertiban lokasi.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menjelaskan alasan keselamatan di balik aturan secara ramah, dan memberikan solusi kompromi yang tidak melanggar batasan utama keamanan." },
+        { "code": "B", "points": 3, "label": "Menolak keras seluruh permintaan peserta tanpa penjelasan tambahan." },
+        { "code": "C", "points": 2, "label": "Membebaskan peserta melanggar seluruh aturan demi kepuasan peserta." },
+        { "code": "D", "points": 1, "label": "Mengusir peserta yang mengajukan komplain dari lokasi acara." }
+      ]
+    },
+    {
+      "id": 49,
+      "dimension": "Conflict Resolution",
+      "scenario": "Miskomunikasi di grup obrolan panitia memicu perselisihan kata-kata yang memanas di depan seluruh pengurus organisasi.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menghentikan perdebatan di grup publik secara tenang, dan mengalihkan pembahasan ke sesi diskusi tatap muka/panggilan khusus." },
+        { "code": "B", "points": 2, "label": "Ikut berdebat di grup publik untuk membela pihak yang dianggap benar." },
+        { "code": "C", "points": 1, "label": "Menghapus grup obrolan panitia tersebut secara mendadak." },
+        { "code": "D", "points": 3, "label": "Membiarkan perdebatan memanas agar masalahnya tuntas di grup." }
+      ]
+    },
+    {
+      "id": 50,
+      "dimension": "Conflict Resolution",
+      "scenario": "Dua kubu besar dalam organisasi memiliki perbedaan pandangan politik internal yang sangat tajam menjelang pemilihan pimpinan baru.",
+      "options": [
+        { "code": "A", "points": 4, "label": "Menjelaskan regulasi pemilihan netral, menegakkan etika kampanye santun, dan fokus pada visi-misi pembangunan organisasi bersama." },
+        { "code": "B", "points": 2, "label": "Mendukung salah satu kubu secara terbuka menggunakan fasilitas organisasi." },
+        { "code": "C", "points": 3, "label": "Menunda pemilihan pimpinan baru hingga rentang waktu yang tidak ditentukan." },
+        { "code": "D", "points": 1, "label": "Membagi organisasi menjadi dua lembaga yang terpisah secara permanen." }
+      ]
+    }
+  ]
+}
