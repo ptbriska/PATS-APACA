@@ -1,0 +1,920 @@
+{
+  "test_info": {
+    "kode": "KU2",
+    "nama_resmi": "APACA Work Integrity & Ethics Test (WIET)",
+    "nama_singkat": "Work Integrity Ethics Test",
+    "versi": "Versi Work 1.0 / 2026",
+    "token_ujian": "WIET2026",
+    "token_master": "PatsTestingKU2",
+    "durasi_menit": 20,
+    "psikolog_pj": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "SIPP": "2026-0819-PSI-01"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Anda menemukan kekeliruan kecil pada data laporan bulanan yang telah disetujui atasan. Kekeliruan ini tidak berdampak finansial langsung, namun berpotensi memicu pertanyaan saat audit tahunan. Apa yang Anda lakukan?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Segera mengajukan revisi resmi dan melaporkan detail kekeliruan tersebut kepada atasan meskipun berisiko menurunkan nilai efisiensi kerja saya.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menyiapkan data perbaikan secara mandiri dan baru akan menyampaikannya jika auditor menemukan serta mempertanyakan hal tersebut.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Klien memuji Anda atas keberhasilan proyek besar yang sebenarnya dikerjakan oleh tim kerja lintas divisi. Atasan Anda hadir saat pujian itu disampaikan. Bagaimana tindakan Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menerima pujian tersebut secara profesional untuk menjaga impresi positif klien, lalu membagikan apresiasi kepada tim saat rapat internal.",
+          "is_ethical": false
+        },
+        {
+          "code": "B",
+          "label": "Mengklarifikasi langsung saat itu juga bahwa keberhasilan tersebut merupakan hasil kerja keras seluruh anggota tim lintas divisi.",
+          "is_ethical": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Anda secara tidak sengaja merusakkan salah satu fasilitas unit kerja yang tidak terawasi kamera CCTV. Tidak ada saksi mata saat kejadian tersebut. Tindakan Anda adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Melaporkan kejadian tersebut kepada bagian umum dan bersedia menanggung biaya perbaikan sesuai prosedur yang berlaku.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Meninggalkan lokasi dan mengasumsikan fasilitas tersebut memang sudah mengalami penurunan fungsi karena faktor pemakaian rutin.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Rekan kerja terdekat Anda meminta Anda memberikan konfirmasi kehadiran atas namanya pada sesi pelatihan wajib perusahaan karena ia ada keperluan pribadi mendesak. Apa respons Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menolak secara halus dan menyarankannya untuk mengajukan izin resmi sesuai prosedur perusahaan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Bantu mencatatkan kehadirannya kali ini saja mengingat kontribusi positif dan hubungan kerja baik yang selama ini terjalin.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Anda menyadari ada kelemahan mendasar pada produk/layanan perusahaan yang dijual ke klien, namun belum disadari oleh manajemen maupun klien. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menyampaikan temuan risiko tersebut secara formal kepada manajemen meskipun berpotensi menunda target penjualan bulan ini.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Membiarkan proses penjualan tetap berjalan sambil menunggu tanggapan resmi dari tim pengembangan produk.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Saat diwawancarai oleh tim manajemen mengenai penyebab keterlambatan proyek, rekan kerja Anda melemparkan tanggung jawab atas kesalahannya kepada anggota tim lain yang sedang tidak hadir. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Memberikan kesaksian objektif mengenai kronologi sebenarnya demi meluruskan informasi, meskipun merusak hubungan kerja dengan rekan tersebut.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Memilih diam dalam rapat untuk menjaga soliditas tim internal dan menyelesaikannya secara pribadi pasca-rapat.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Anda diminta atasan untuk menambahkan sedikit ornamen data agar presentasi capaian tim terlihat lebih memukau di depan investor luar. Apa sikap Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menyesuaikan tampilan grafik agar terlihat lebih menarik tanpa merubah substansi utama sesuai instruksi atasan.",
+          "is_ethical": false
+        },
+        {
+          "code": "B",
+          "label": "Menolak secara sopan dan mempertahankan penyajian data sesuai dengan angka fakta aktual lapangan.",
+          "is_ethical": true
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Anda mengetahui bahwa kompetitor utama perusahaan tidak sengaja mengirimkan dokumen strategi pemasaran konfidensial mereka ke email kerja Anda. Apa yang Anda lakukan?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengabaikan/menghapus email tersebut serta memberitahukan pihak pengirim bahwa terjadi salah alamat pengiriman.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Memanfaatkan informasi tersebut sebagai bahan pertimbangan strategi internal perusahaan karena kesalahan bukan dari pihak Anda.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Dalam klaim penggantian biaya operasional (reimbursement), Anda menyadari ada kelebihan pembayaran sebesar Rp150.000 dari bagian keuangan karena kesalahan input sistem. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Segera mengembalikan kelebihan dana tersebut ke bagian keuangan disertai bukti rekap yang benar.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Simpan dana tersebut dan memotongnya secara otomatis pada pengajuan penggantian biaya operasional periode berikutnya.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "forced_choice",
+      "dimensi": "Kejujuran",
+      "skenario": "Anda mengetahui seorang kolega senior yang disegani menggunakan fasilitas operasional kantor untuk kepentingan usaha sampingan pribadinya secara berkala. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Memilih untuk tidak mencampuri urusan pribadi senior selama kinerja utamanya tidak terganggu.",
+          "is_ethical": false
+        },
+        {
+          "code": "B",
+          "label": "Melaporkan penyalahgunaan aset perusahaan tersebut melalui saluran pelaporan etika (whistleblowing) internal.",
+          "is_ethical": true
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Anda dihadapkan pada tenggat waktu laporan krusial pukul 17.00. Pada pukul 16.30, terjadi kendala teknis sistem yang memandekkan pekerjaan Anda. Apa yang Anda lakukan?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap bertahan di kantor hingga malam hari untuk menyelesaikan laporan secara manual demi memenuhi janji komitmen.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mengirimkan draf seadanya tepat pukul 17.00 disertai catatan mengenai gangguan teknis sistem perusahaan.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Atasan memberikan penugasan proyek tambahan di luar deskripsi kerja resmi Anda dengan tenggat waktu sangat singkat. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menerima tugas tersebut, menyusun skala prioritas ulang, dan memastikannya tuntas sesuai standar kinerja.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menolak secara halus karena khawatir penugasan baru akan menurunkan kualitas fokus pada tugas utama saya.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Saat mengawasi pelaksanaan pengerjaan vendor lapangan tanpa kehadiran atasan, Anda melihat vendor melakukan pemotongan langkah kerja kecil yang efisien namun melenceng dari kesepakatan awal. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tegas menegur vendor untuk kembali mengikuti standar alur teknis yang telah disepakati dalam kontrak.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Membiarkan hal tersebut selama hasil akhirnya terlihat sama dan pekerjaan dapat selesai lebih cepat.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Anda dijadwalkan memimpin rapat penting dengan klien utama besok pagi, namun malam ini Anda mengalami gejala flu ringan. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mendelegasikan kepemimpinan rapat kepada rekan tim dan beristirahat total di rumah.",
+          "is_ethical": false
+        },
+        {
+          "code": "B",
+          "label": "Mengkonsumsi obat, mempersiapkan materi mumpuni, dan tetap memimpin rapat secara profesional sesuai komitmen.",
+          "is_ethical": true
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Proyek yang Anda pimpin mengalami kegagalan akibat asumsi analisis Anda yang kurang cermat. Sikap Anda di depan manajemen adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengakui secara penuh kekeliruan analisis pribadi dan menyampaikan rencana perbaikan konkret.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menjelaskan bahwa kegagalan tersebut disebabkan oleh dinamika perubahan pasar yang terlampau cepat.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Rekan tim yang memegang porsi penting dalam pekerjaan bersama mendadak berhalangan hadir karena musibah keluarga saat tenggat waktu tersisa 1 hari. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengambil alih seluruh porsi pekerjaan rekan tersebut dan bekerja lembur demi memastikan hasil akhir tuntas tepat waktu.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mengajukan permohonan perpanjangan tenggat waktu proyek kepada atasan disertai alasan keadaan darurat rekan tim.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Anda dipercaya mengelola anggaran kegiatan divisi. Di akhir periode, terdapat sisa dana operasional yang cukup besar. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengembalikan seluruh sisa anggaran secara utuh ke kas kasir perusahaan sesuai catatan transaksi aktual.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mengalokasikan sisa dana tersebut untuk kegiatan konsolidasi tim agar penyerapan anggaran mencapai 100%.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Saat bekerja dari rumah (Work From Home), sistem pemantauan kehadiran tidak berfungsi. Beban kerja harian Anda telah selesai pada jam 14.00. Apa yang Anda lakukan?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Melaporkan penyelesaian tugas kepada atasan dan meminta penugasan baru atau melakukan kajian kaji ulang mandiri hingga jam kerja usai.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Memanfaatkan sisa waktu untuk istirahat pribadi sambil tetap bersiaga memantau notifikasi pesan masuk.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Anda mengetahui adanya kesalahan fatal pada instruksi kerja yang disusun oleh atasan Anda yang dapat menurunkan mutu operasional. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menyampaikan koreksi dan usulan perbaikan secara pribadi kepada atasan sebelum instruksi tersebut disebarkan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Tetap menjalankan instruksi kerja tersebut sesuai arahan hirarki demi menjaga formalitas komando.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "forced_choice",
+      "dimensi": "Keandalan",
+      "skenario": "Anda berjanji memberikan umpan balik atas draf penulisan junior Anda jam 16.00, namun mendadak atasan memanggil Anda untuk diskusi mendesak jam 15.45. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Memberitahukan junior tersebut sebelum jam 16.00 mengenai penundaan dan memberikan kepastian jadwal baru.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Selesaikan panggilan atasan terlebih dahulu, baru memberikan penjelasan kepada junior setelahnya.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Penerapan SOP keamanan baru memerlukan 3 tahap verifikasi yang memakan waktu cukup lama dalam transaksi harian. Klien mulai mengeluh lambat. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap menjalankan 3 tahap verifikasi SOP secara disiplin sambil memberikan edukasi sopan mengenai regulasi keamanan kepada klien.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Pangkas 1 tahap verifikasi sementara waktu khusus untuk klien penting demi menjaga kepuasan layanan.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Kebijakan perusahaan melarang keras penggunaan flashdisk pribadi pada komputer kantor untuk mencegah virus. Anda sangat membutuhkan berkas tugas yang tertinggal di flashdisk. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Membuka flashdisk tersebut sebentar untuk memindai dokumen dengan antivirus kantor sebelum digunakan.",
+          "is_ethical": false
+        },
+        {
+          "code": "B",
+          "label": "Meminta bantuan tim IT resmi perusahaan untuk memindahkan berkas sesuai prosedur keamanan terstandar.",
+          "is_ethical": true
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Atasan langsung meminta Anda untuk menyetujui pengeluaran anggaran yang belum dilengkapi kuitansi resmi dengan janji kuitansi akan menyusul minggu depan. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menolak memproses pencairan hingga kuitansi bukti pembayaran resmi terlampir secara lengkap sesuai prosedur keuangan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Memproses pencairan dana tersebut atas dasar diskresi dan tanggung jawab atasan langsung.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Aturan kantor mewajibkan penggunaan alat pelindung diri (APD) lengkap saat memasuki area pabrik. Cuaca hari ini sangat panas dan Anda hanya ingin meninjau lokasi selama 2 menit. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap mengenakan seluruh APD lengkap sesuai standar keselamatan sebelum menginjajkan kaki di area pabrik.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Memasuki pabrik tanpa APD lengkap khusus untuk peninjauan singkat 2 menit demi efisiensi waktu.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Anda mengetahui ada celah legalitas pada aturan baru pemerintah yang dapat dimanfaatkan untuk memotong biaya pajak perusahaan dalam jumlah besar. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Konsultasikan temuan tersebut kepada tim hukum perusahaan untuk memastikan kepatuhan tata kelola tanpa melanggar regulasi.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Posisikan temuan tersebut sebagai opsi hemat efisiensi efisien untuk langsung disetujui jajaran direksi.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Perusahaan melarang penerimaan hadiah dalam bentuk apa pun dari mitra kerja. Seorang mitra lamanya mengirimkan bingkisan kue ulang tahun ke rumah pribadi Anda. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Melaporkan dan menyerahkan bingkisan tersebut kepada tim kepatuhan (compliance) perusahaan untuk ditindaklanjuti.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menerima bingkisan tersebut karena nilainya kecil dan dikirimkan ke alamat rumah sebagai bentuk keramahan personal.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Rekan kerja Anda sering mengabaikan prosedur pengarsipan dokumen kerja yang benar sehingga arsip divisi menjadi berantakan. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menegurnya secara langsung dan mengingatkan pentingnya kepatuhan prosedur pengarsipan bersama.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Bantu merapikan dokumen-dokumennya saat waktu luang demi menjaga keteraturan ruang kerja.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Dalam prosedur pengadaan barang, Anda diwajibkan mengumpulkan minimal 3 penawaran vendor. Anda sudah memiliki 1 vendor langganan yang paling murah dan terpercaya. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap mencari 2 penawaran vendor pembanding resmi lainnya secara objektif sesuai ketentuan SOP pengadaan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menggunakan draf pembanding standar vendor lain untuk mempercepat proses persetujuan pengadaan barang.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Kebijakan kerahasiaan melarang membawa dokumen kerja ke luar lingkungan kantor. Anda memiliki tugas mendesak yang harus dituntaskan besok pagi. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap bekerja lembur di dalam area kantor hingga dokumen selesai dikerjakan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Membawa salinan dokumen tersebut pulang dengan janji menjaga kerahasiaannya secara pribadi.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "type": "forced_choice",
+      "dimensi": "Kepatuhan Aturan",
+      "skenario": "Sistem presensi kehadiran mengalami kerusakan teknis selama 3 hari. Setiap karyawan diminta melaporkan jam hadir mandiri secara jujur. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengisi jam hadir aktual sesuai waktu kedatangan nyata saya di kantor tanpa pembulatan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mengisi jam hadir sesuai dengan jam masuk resmi kantor (08.00) seperti kebiasaan rutin harian.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Seorang vendor pengadaan menawarkan fasilitas tiket liburan gratis kepada Anda sebagai bentuk 'apresiasi kerja sama' jika perusahaannya terpilih kembali. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menolak tegas penawaran tersebut dan mengelungkannya ke tim komite etika perusahaan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menolak hadiah liburan tersebut secara halus namun tetap menjaga kelangsungan kerja sama vendor tersebut.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Anda merasa sangat kecewa dan diperlakukan tidak adil saat evaluasi penilaian kinerja oleh atasan. Bagaimanakah respons perilaku Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengajukan banding penilaian secara resmi melalui prosedur HRD disertai bukti pencapaian objektif.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menurunkan tempo kecepatan kerja harian sebagai bentuk protes atas ketidakadilan penilaian tersebut.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Anda melihat peluang kecil untuk mencetak dokumen pribadi dalam jumlah banyak menggunakan printer kantor tanpa ketahuan siapa pun. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mencetak dokumen pribadi tersebut di tempat percetakan umum di luar kantor menggunakan dana pribadi.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menggunakan printer kantor kali ini saja untuk efisiensi mengingat biaya cetak luar yang cukup mahal.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Dalam diskusi santai istirahat makan siang, beberapa rekan kerja mulai menyebarkan rumor negatif mengenai kehidupan pribadi salah satu manajer. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengalihkan topik pembicaraan ke pembahasan pekerjaan dan menolak terlibat dalam rumor tersebut.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mendengarkan pembicaraan tersebut tanpa ikut memberikan tanggapan agar tetap membaur dengan rekan kerja.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Perusahaan menetapkan kebijakan pemotongan tunjangan bagi karyawan yang terlambat hadir lebih dari 15 menit. Anda terlambat 18 menit karena macet luar biasa. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menerima pemotongan tunjangan sesuai aturan konsetkuensi terlambat tanpa mencari kompromi.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Meminta bagian presensi untuk menyesuaikan catatan keterlambatan menjadi 14 menit khusus untuk musibah macet hari ini.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Anda mengundurkan diri dari perusahaan dan akan pindah ke perusahaan pesaing. Berkas proyek lama yang Anda susun sendiri sangat berguna untuk pekerjaan baru Anda. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Meninggalkan seluruh berkas dokumen kerja secara utuh di server kantor sesuai ketentuan aset intelektual perusahaan.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menyimpan salinan berkas proyek susunan pribadi tersebut ke dalam penyimpanan pribadi sebagai bahan portofolio.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Anda mengetahui bahwa ada kebiasaan di unit kerja Anda untuk memanipulasi waktu lembur agar tunjangan bulanan bertambah. Apa sikap Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menolak ikut serta dalam praktik tersebut dan tetap mengklaim jam lembur aktual sesuai pekerjaan nyata.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mengklaim waktu lembur sesuai kebiasaan unit kerja agar tidak dikucilkan dari ikatan kelompok.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Seorang mantan kawan kuliah Anda melamar pekerjaan di perusahaan Anda. Anda ditunjuk sebagai salah satu penilai kelayakan. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Melaporkan potensi konflik kepentingan (conflict of interest) kepada komite seleksi dan meminta digantikan penilai lain.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Tetap menilai secara profesional tanpa perlu memberitahukan hubungan pertemanan masa lalu tersebut.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Atasan memberikan anggaran taktis promosi tanpa kewajiban melampirkan bukti pengeluaran nota. Tindakan Anda terhadap anggaran tersebut:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap mencatat setiap rincian pengeluaran secara terpisah dan menyimpan bukti nota transaksi pribadi.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menggunakan dana tersebut secara fleksibel tanpa pencatatan khusus sesuai dengan kelonggaran aturan kebijakan.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "forced_choice",
+      "dimensi": "Risiko Perilaku Kontra-produktif",
+      "skenario": "Anda tidak sengaja menemukan berkas rahasia kenaikan gaji dan bonus seluruh karyawan divisi Anda di atas meja mesin fotokopi. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Segera mengambil dokumen tersebut tanpa mengintip isinya dan menyerahkannya langsung ke ruang HRD.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Melihat sekilas angka posisi gaji pribadi untuk pembanding sebelum menyerahkan berkas ke HRD.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "lie_scale",
+      "dimensi": "Lie Scale",
+      "skenario": "Pilih satu pernyataan yang paling menggambarkan prinsip hidup nyata Anda sehari-hari:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Saya sama sekali tidak pernah berbohong atau membual sepanjang hidup saya, dalam situasi apa pun.",
+          "is_lie": true
+        },
+        {
+          "code": "B",
+          "label": "Saya terkadang pernah melakukan kekeliruan kecil atau menyembunyikan hal sepele dalam interaksi harian.",
+          "is_lie": false
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "lie_scale",
+      "dimensi": "Lie Scale",
+      "skenario": "Manakah reaksi personal yang paling jujur mewakili diri Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Saya tidak pernah merasa kesal, marah, atau jengkel sedikit pun ketika dikritik oleh orang lain.",
+          "is_lie": true
+        },
+        {
+          "code": "B",
+          "label": "Saya terkadang merasa agak jengkel saat dikritik, meskipun berusaha mengendalikannya secara profesional.",
+          "is_lie": false
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "lie_scale",
+      "dimensi": "Lie Scale",
+      "skenario": "Pilih satu ungkapan kepribadian yang paling tepat menggambarkan diri Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Saya selalu mematuhi seluruh peraturan lalu lintas dan aturan kantor tanpa pernah melanggarnya sekali pun.",
+          "is_lie": true
+        },
+        {
+          "code": "B",
+          "label": "Saya pernah secara tidak sengaja atau karena tergesa-gesa melanggar aturan kecil dalam kehidupan saya.",
+          "is_lie": false
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "type": "lie_scale",
+      "dimensi": "Lie Scale",
+      "skenario": "Bagaimana sikap perasaan intuitif Anda terhadap orang yang tidak Anda sukai?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Saya mencintai semua orang dan tidak pernah menyimpan rasa prasangka atau tidak suka kepada siapa pun.",
+          "is_lie": true
+        },
+        {
+          "code": "B",
+          "label": "Ada kalanya saya merasa kurang cocok atau tidak menyukai perilaku orang tertentu.",
+          "is_lie": false
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "type": "lie_scale",
+      "dimensi": "Lie Scale",
+      "skenario": "Pilihlah ungkapan yang paling jujur mengekspresikan dinamika kebiasaan kerja Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Saya tidak pernah menunda-nunda pekerjaan dan selalu menyelesaikan semua tugas seketika itu juga.",
+          "is_lie": true
+        },
+        {
+          "code": "B",
+          "label": "Saya sesekali pernah menunda pengerjaan tugas saat kondisi lelah atau kejenuhan meningkat.",
+          "is_lie": false
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "type": "consistency_check",
+      "dimensi": "Consistency Check",
+      "target_pair_id": 5,
+      "skenario": "Uji Silang C-1 (Kejujuran): Ketika Anda menyadari adanya kelemahan signifikan pada laporan performa yang sudah dikirim ke direksi, langkah Anda adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Segera mengirimkan adendum klarifikasi revisi data meskipun dapat menurunkan reputasi akurasi tim saya.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menunggu sampai ada permintaan penjelasan resmi dari jajaran direksi sebelum melakukan pembetulan.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "type": "consistency_check",
+      "dimensi": "Consistency Check",
+      "target_pair_id": 14,
+      "skenario": "Uji Silang C-2 (Keandalan): Besok pagi adalah presentasi tender penting, sementara kondisi fisik Anda mulai mendadak meriang sore ini. Apa keputusan Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tetap memaksakan diri memimpin presentasi tender secara maksimal dengan bantuan pengobatan darurat.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Menyerahkan berkas presentasi kepada rekan sejawat untuk mewakili tender demi pemulihan kesehatan.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "type": "consistency_check",
+      "dimensi": "Consistency Check",
+      "target_pair_id": 23,
+      "skenario": "Uji Silang C-3 (Kepatuhan Aturan): Atasan meminta Anda memproses pembayaran vendor tanpa melampirkan berkas berita acara serah terima (BAST) resmi. Sikap Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menahan pemrosesan pencairan dana hingga berkas BAST resmi ditandatangani lengkap sesuai aturan SOP.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Meluluskan pencairan dana tersebut demi menjaga hubungan baik dan arahan lisan atasan.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "type": "consistency_check",
+      "dimensi": "Consistency Check",
+      "target_pair_id": 32,
+      "skenario": "Uji Silang C-4 (Risiko CWB): Anda merasa perlakuan manajemen sangat tidak adil terkait pemotongan insentif bulanan tim Anda. Bagaimana tindakan Anda?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menyampaikan nota keberatan resmi melalui mekanisme perselisihan hubungan industrial internal.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mengurangi kadar keseriusan dan efisiensi kerja harian sebagai respons atas ketidakadilan tersebut.",
+          "is_ethical": false
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "type": "consistency_check",
+      "dimensi": "Consistency Check",
+      "target_pair_id": 10,
+      "skenario": "Uji Silang C-5 (Risiko CWB): Anda mengetahui rekan kerja menggunakan gawai dan aset kantor untuk proyek konsultasi pribadi di luar jam kerja. Tindakan Anda:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Melaporkan tindakan penyalahgunaan aset tersebut kepada unit kepatuhan etika internal.",
+          "is_ethical": true
+        },
+        {
+          "code": "B",
+          "label": "Mendiamkan hal tersebut selama tidak mengganggu penyelesaian tugas utama kantor.",
+          "is_ethical": false
+        }
+      ]
+    }
+  ]
+}
