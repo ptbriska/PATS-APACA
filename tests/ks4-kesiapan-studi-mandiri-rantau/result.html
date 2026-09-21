@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Asesmen Kesiapan Studi Mandiri & Luar Negeri - KS4 AOISRI</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Chart.js untuk Gauges & Visualisasi Grafik -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary-navy: #0f172a;
+      --accent-gold: #d97706;
+      --emerald-ready: #059669;
+      --blue-ready: #2563eb;
+      --amber-warn: #d97706;
+      --rose-danger: #dc2626;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #334155;
+    }
+
+    .report-paper {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01);
+      padding: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gauge-wrapper {
+      position: relative;
+      width: 280px;
+      height: 150px;
+      margin: 0 auto;
+    }
+
+    .gauge-score-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .gauge-score-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #0f172a;
+    }
+
+    .badge-status-ks4 {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-optimal { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
+    .badge-siap { background-color: #dbeafe; color: #1e40af; border: 1px solid #60a5fa; }
+    .badge-peringatan { background-color: #fef3c7; color: #92400e; border: 1px solid #fbbf24; }
+    .badge-risiko { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+    .badge-critical { background-color: #450a0a; color: #fca5a5; border: 1px solid #ef4444; animation: pulse 2s infinite; }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; color: #0f172a; font-weight: 700; }
+
+    .box-card-dimensi {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .box-card-dimensi:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .critical-alert-box {
+      background-color: #fef2f2;
+      border: 2px dashed #ef4444;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 20px 0;
+    }
+
+    .list-custom { margin-left: 20px; font-size: 0.9rem; }
+    .list-custom li { margin-bottom: 6px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 2px solid #d97706; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #334155; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS4_Kesiapan_Studi_AOISRI.pdf')" class="btn-primary" style="width: auto; background-color: #059669;">Cetak / Unduh PDF Laporan Premium</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title" style="text-align: center; margin: 20px 0; border-bottom: 2px solid #0f172a; padding-bottom: 10px;">
+        <h3 id="r-judul-tes" style="letter-spacing: 1px; color: #0f172a;">LAPORAN HASIL ASESMEN KESIAPAN STUDI MANDIRI & LUAR NEGERI</h3>
+        <span style="font-size: 0.8rem; color: #64748b; font-weight: 600;">APACA OVERSEAS & INDEPENDENT STUDY READINESS INVENTORY (AOISRI)</span>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Kandidat / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Instansi / Sekolah Asal</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Asesmen</td>
+          <td>: <span id="r-instrumen">KS4 - AOISRI Versi 1.0 (2026)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Gauge Chart Adaptability Index Utama -->
+      <div class="report-section" style="margin-top: 24px;">
+        <div class="report-section-title">I. INDEX KESIAPAN ADAPTASI GLOBAL (ADAPTABILITY INDEX)</div>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin: 16px 0;">
+          
+          <!-- Gauge Speedometer Chart (Bab 6.1 Manual Book) -->
+          <div style="flex: 1; min-width: 260px; text-align: center;">
+            <div class="gauge-wrapper">
+              <canvas id="gaugeAdaptability"></canvas>
+              <div class="gauge-score-overlay">
+                <div id="r-index-value" class="gauge-score-value">0%</div>
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <span id="r-index-badge" class="badge-status-ks4 badge-siap">SIAP</span>
+            </div>
+          </div>
+
+          <!-- Deskripsi Prediksi Performa Adaptasi -->
+          <div style="flex: 1.5; min-width: 280px; border-left: 1px solid #cbd5e1; padding-left: 20px;">
+            <h4 id="r-index-kategori" style="color: #0f172a; font-size: 1.2rem; margin-bottom: 6px;">-</h4>
+            <p id="r-index-prediksi" style="font-size: 0.9rem; color: #334155; line-height: 1.6; margin-bottom: 10px;">-</p>
+            <p style="font-size: 0.85rem; color: #475569; background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #e2e8f0;">
+              <strong>Implikasi Keberangkatan:</strong> <span id="r-index-implikasi">-</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Warning Alert Box jika Critical Flag / Resiko (<55%) -->
+        <div id="box-critical-flag" class="critical-alert-box" style="display: none;">
+          <h4 style="color: #991b1b; margin-bottom: 6px;">⚠️ PERINGATAN KESIAPAN ADAPTASI (CRITICAL FLAG TRIGGERED)</h4>
+          <p style="font-size: 0.88rem; color: #7f1d1d; line-height: 1.5;">
+            Kandidat memiliki Adaptability Index &lt; 55%[cite: 6]. Berdasarkan norma baku AOISRI KS4, terdapat potensi risiko gegar budaya traumatis atau penurunan performa akademik drastis di perantauan[cite: 6]. Diwajibkan mengikuti intervensi pembinaan mandiri intensif sebelum keberangkatan[cite: 6].
+          </p>
+        </div>
+      </div>
+
+      <!-- Section II: Bar Chart & Tabulasi 5 Dimensi -->
+      <div class="report-section">
+        <div class="report-section-title">II. PEMETAAN PROFIL 5 DIMENSI KESIAPAN ADAPTASI</div>
+        
+        <!-- Bar Chart Visual 5 Dimensi -->
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 16px 0;">
+          <canvas id="barDimensionsChart" style="max-height: 220px;"></canvas>
+        </div>
+
+        <!-- Tabel Ringkasan Skor -->
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Kesiapan</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Tingkat Skor</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section III: Evaluasi Detil 5 Dimensi & Area Kerentanan -->
+      <div class="report-section">
+        <div class="report-section-title">III. ANALISIS DIAGNOSTIK PER DIMENSI & KERENTANAN</div>
+        <div id="dimension-cards-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section IV: Rekomendasi Pra-Keberangkatan -->
+      <div class="report-section">
+        <div class="report-section-title">IV. REKOMENDASI PENDAMPINGAN PRA-KEBERANGKATAN (INTERVENTION GUIDE)</div>
+        
+        <div style="background-color: #f8fafc; border-left: 4px solid #059669; padding: 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px;">
+          <h4 style="color: #065f46; margin-bottom: 6px;">Saran Tindakan Lanjutan Kandidat & Keluarga:</h4>
+          <p id="r-tindakan-lanjutan" style="font-size: 0.9rem; color: #334155; line-height: 1.5;">-</p>
+        </div>
+
+        <div style="background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 16px; border-radius: 0 8px 8px 0;">
+          <h4 style="color: #1e40af; margin-bottom: 6px;">Prosedur Standar Pendampingan Konselor/Institusi:</h4>
+          <ul id="r-list-prosedur-konselor" class="list-custom">
+            <!-- Render via JavaScript -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign" style="margin-top: 40px; display: flex; justify-content: flex-end;">
+        <div class="sign-box" style="text-align: center;">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space" style="height: 60px;"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Render Kop Laporan Resmi dari config.js
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Ambil Sesi Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Ambil Jawaban & Master JSON
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS4");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+        const testInfo = soalData.test_info || {};
+
+        document.getElementById("r-psikolog-nama").innerText = testInfo.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+        document.getElementById("r-psikolog-sipp").innerText = `SIPP: ${testInfo.SIPP || '2026-0819-PSI-01'}`;
+
+        // 4. Hitung Skor via KS4_Scoring Engine
+        const result = KS4_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        // Send GAS
+        if (user && typeof KS4_Scoring.sendRekapToGAS === "function") {
+          KS4_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Gauge Speedometer Adaptability Index
+        const adaptIndex = result.adaptabilityIndex || 0;
+        document.getElementById("r-index-value").innerText = `${adaptIndex}%`;
+        
+        const matchedNorm = result.matchedNorm || {};
+        document.getElementById("r-index-kategori").innerText = matchedNorm.kategori || "-";
+        document.getElementById("r-index-prediksi").innerText = matchedNorm.deskripsi_kondisi || "-";
+        document.getElementById("r-index-implikasi").innerText = matchedNorm.implikasi_pemberangkatan || "-";
+
+        const badgeElem = document.getElementById("r-index-badge");
+        badgeElem.innerText = matchedNorm.label_status || "SIAP";
+        badgeElem.className = "badge-status-ks4 " + (
+          matchedNorm.label_status === "OPTIMAL" ? "badge-optimal" :
+          matchedNorm.label_status === "SIAP" ? "badge-siap" :
+          matchedNorm.label_status === "PERINGATAN" ? "badge-peringatan" :
+          matchedNorm.label_status === "RISIKO TINGGI" ? "badge-risiko" : "badge-critical"
+        );
+
+        if (result.isCritical) {
+          document.getElementById("box-critical-flag").style.display = "block";
+        }
+
+        // Initialize Gauge Chart
+        initGaugeChart(adaptIndex);
+
+        // 6. Render Bar Chart 5 Dimensi & Tabulasi Tabel
+        const dimensionLabels = [];
+        const dimensionValues = [];
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        if (result.dimensionRows && Array.isArray(result.dimensionRows)) {
+          result.dimensionRows.forEach(row => {
+            dimensionLabels.push(row.dimensi);
+            dimensionValues.push(row.percentage);
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+              <td>${row.rs} / 40</td>
+              <td><strong>${row.percentage}%</strong></td>
+              <td><span style="font-weight:600; color:${row.percentage >= 66 ? '#059669' : row.percentage >= 36 ? '#d97706' : '#dc2626'};">${row.level}</span></td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+
+        initBarChart(dimensionLabels, dimensionValues);
+
+        // 7. Render Kartu Detail 5 Dimensi
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        if (result.dimensionDetails && Array.isArray(result.dimensionDetails)) {
+          result.dimensionDetails.forEach(detail => {
+            const card = document.createElement("div");
+            card.className = "box-card-dimensi";
+            card.style.borderLeftColor = detail.percentage >= 66 ? "#059669" : detail.percentage >= 36 ? "#d97706" : "#dc2626";
+            
+            card.innerHTML = `
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <h4 style="margin:0; color:#0f172a;">${detail.judul_dimensi}</h4>
+                <span style="font-size:0.85rem; font-weight:700; color:#2563eb;">Indeks: ${detail.percentage}% (${detail.level})</span>
+              </div>
+              <p style="font-size:0.88rem; color:#475569; margin-bottom:8px;">${detail.deskripsi_spesifik}</p>
+              <div style="font-size:0.85rem; color:#334155; background:#f8fafc; padding:8px 12px; border-radius:4px; margin-bottom:6px;">
+                <strong>Dampak di Rantau:</strong> ${detail.dampak_adaptasi}
+              </div>
+              <div style="font-size:0.85rem; color:#065f46; background:#ecfdf5; padding:8px 12px; border-radius:4px;">
+                <strong>Saran Aksi:</strong> ${detail.rekomendasi_pengembangan}
+              </div>
+            `;
+            cardsContainer.appendChild(card);
+          });
+        }
+
+        // 8. Render Rekomendasi Konselor & Tindakan Lanjutan
+        document.getElementById("r-tindakan-lanjutan").innerText = matchedNorm.tindakan_lanjutan || "-";
+
+        const ulKonselor = document.getElementById("r-list-prosedur-konselor");
+        ulKonselor.innerHTML = "";
+        const procedures = (rubrikData.protokol_intervensi_pra_keberangkatan && rubrikData.protokol_intervensi_pra_keberangkatan.prosedur_penanganan)
+          ? rubrikData.protokol_intervensi_pra_keberangkatan.prosedur_penanganan
+          : ["Lakukan pembekalan rutinitas pra-keberangkatan."];
+
+        procedures.forEach(proc => {
+          const li = document.createElement("li");
+          li.innerText = proc;
+          ulKonselor.appendChild(li);
+        });
+
+      } catch (err) {
+        console.error("Gagal memuat laporan KS4:", err);
+        alert("Terjadi kesalahan saat memuat data pendukung laporan AOISRI KS4.");
+      }
+    });
+
+    // Helper Function: Chart.js Gauge Speedometer
+    function initGaugeChart(scoreValue) {
+      const ctx = document.getElementById('gaugeAdaptability').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [scoreValue, 100 - scoreValue],
+            backgroundColor: [
+              scoreValue >= 85 ? '#059669' : scoreValue >= 70 ? '#2563eb' : scoreValue >= 55 ? '#d97706' : '#dc2626',
+              '#e2e8f0'
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          rotation: -90,
+          circumference: 180,
+          cutout: '75%',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { tooltip: { enabled: false } }
+        }
+      });
+    }
+
+    // Helper Function: Chart.js Bar Chart 5 Dimensi
+    function initBarChart(labels, values) {
+      const ctx = document.getElementById('barDimensionsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Indeks Dimensi (%)',
+            data: values,
+            backgroundColor: values.map(v => v >= 66 ? '#059669' : v >= 36 ? '#d97706' : '#dc2626'),
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { min: 0, max: 100, ticks: { stepSize: 20 } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
