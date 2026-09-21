@@ -10,8 +10,9 @@ const KK1_Scoring = {
    * Menghitung Skor Mentah (RS), T-Score, Categorization, dan Data Tabel untuk KK1
    * @param {object} answers - Objek jawaban { questionId: value }
    * @param {object} soalData - Master data dari soal.json (KK1)
+   * @param {object} rubrikData - Data deskripsi dari rubrik.json (KK1)
    */
-  evaluate(answers, soalData) {
+  evaluate(answers, soalData, rubrikData) {
     const rawScores = {
       "Pakar": 0,
       "Otoritas Formal": 0,
@@ -30,19 +31,21 @@ const KK1_Scoring = {
     }
 
     // 2. Kalkulasi Skor Mentah (RS) dengan Pembobotan Favorable & Unfavorable
-    soalData.questions.forEach(q => {
-      const ansVal = answers[q.id] || 1;
-      let finalItemScore = ansVal;
+    if (soalData && soalData.questions) {
+      soalData.questions.forEach(q => {
+        const ansVal = answers[q.id] || 1;
+        let finalItemScore = ansVal;
 
-      // Item Unfavorable: STS=4, TS=3, S=2, SS=1
-      if (q.type === "Unfavorable") {
-        finalItemScore = 5 - ansVal;
-      }
+        // Item Unfavorable: STS=4, TS=3, S=2, SS=1
+        if (q.type === "Unfavorable") {
+          finalItemScore = 5 - ansVal;
+        }
 
-      if (rawScores[q.kategori] !== undefined) {
-        rawScores[q.kategori] += finalItemScore;
-      }
-    });
+        if (rawScores[q.kategori] !== undefined) {
+          rawScores[q.kategori] += finalItemScore;
+        }
+      });
+    }
 
     // 3. Konversi Skor Mentah (RS) ke T-Score & Hitung Persentase Dominansi
     const tScores = {};
@@ -96,8 +99,13 @@ const KK1_Scoring = {
       }
     }
 
-    const narrative = (soalData.rubrik_deskripsi && soalData.rubrik_deskripsi[dominantCategory]) 
-      ? soalData.rubrik_deskripsi[dominantCategory] 
+    // Penyesuaian: Mengambil data narasi dari rubrikData (rubrik.json)
+    const rubrikSource = (rubrikData && rubrikData.rubrik_deskripsi) 
+      ? rubrikData.rubrik_deskripsi 
+      : (soalData ? soalData.rubrik_deskripsi : null);
+
+    const narrative = (rubrikSource && rubrikSource[dominantCategory]) 
+      ? rubrikSource[dominantCategory] 
       : {};
 
     return {
