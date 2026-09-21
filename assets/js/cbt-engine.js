@@ -1,6 +1,6 @@
 /* ==========================================================================
    PATS PORTAL - CBT ENGINE CORE (assets/js/cbt-engine.js)
-   Engine Utama Panel Pengerjaan Ujian PATS (Final Solved Version)
+   Engine Utama Panel Pengerjaan Ujian PATS (Solved Forced-Choice Engine)
    ========================================================================== */
 
 class CBTEngine {
@@ -47,16 +47,16 @@ class CBTEngine {
   }
 
   /**
-   * Helper internal untuk mengestraksi nilai string murni dari berbagai format data
+   * Helper internal: Memaksa ekstrasi nilai menjadi STRING MURNI
    */
-  _toStrVal(v) {
-    if (v === null || v === undefined) return "";
-    if (typeof v === "object" && v.value !== undefined) return String(v.value).trim();
-    return String(v).trim();
+  _extractVal(val) {
+    if (val === null || val === undefined) return "";
+    if (typeof val === "object" && val.value !== undefined) return String(val.value).trim();
+    return String(val).trim();
   }
 
   /**
-   * Helper mengecek apakah nomor soal sudah terisi valid
+   * Helper internal: Mengecek apakah suatu nomor soal sudah dijawab secara valid
    */
   isQuestionAnswered(questionId) {
     const qKey = String(questionId);
@@ -65,10 +65,10 @@ class CBTEngine {
     const ans = this.answers[qKey];
     if (ans === null || ans === undefined || ans === "") return false;
 
-    // Untuk tipe Forced-Choice: Kedua opsi (most dan least) Wajib Terisi
+    // Khusus Tipe Forced-Choice (Most & Least HARUS Terisi Dua-duanya)
     if (typeof ans === "object") {
-      const m = this._toStrVal(ans.most);
-      const l = this._toStrVal(ans.least);
+      const m = this._extractVal(ans.most);
+      const l = this._extractVal(ans.least);
       return m !== "" && l !== "";
     }
 
@@ -252,16 +252,19 @@ class CBTEngine {
     this.renderNavGrid();
   }
 
+  // --- RENDERER A: Standard / Single Choice (Likert & Pilihan Ganda) ---
   renderStandardOptions(container, q, options, selectedVal, hasAnswered) {
     let optsHtml = "";
     options.forEach(opt => {
-      const isChecked = (hasAnswered && this._toStrVal(selectedVal) === this._toStrVal(opt.value)) ? "checked" : "";
+      const optStr = this._extractVal(opt.value);
+      const selStr = this._extractVal(selectedVal);
+      const isChecked = (hasAnswered && selStr === optStr) ? "checked" : "";
       const bgActive = isChecked ? "background-color: #eff6ff; border-color: var(--primary-color, #2563eb);" : "";
-      const safeVal = this._toStrVal(opt.value).replace(/'/g, "\\'");
+      const safeVal = optStr.replace(/'/g, "\\'");
 
       optsHtml += `
         <label style="display: flex; align-items: center; padding: 12px 16px; border: 1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-sm, 6px); cursor: pointer; transition: all 0.2s; ${bgActive}">
-          <input type="radio" name="opt_${q.id}" value="${opt.value}" ${isChecked} style="margin-right: 12px; accent-color: var(--primary-color, #2563eb);" onchange="cbtApp.saveAnswer('${q.id}', '${safeVal}')">
+          <input type="radio" name="opt_${q.id}" value="${optStr}" ${isChecked} style="margin-right: 12px; accent-color: var(--primary-color, #2563eb);" onchange="cbtApp.saveAnswer('${q.id}', '${safeVal}')">
           <span style="font-size: 0.95rem; color: var(--text-primary, #1e293b);">${opt.label}</span>
         </label>
       `;
@@ -269,14 +272,14 @@ class CBTEngine {
     if (container) container.innerHTML = optsHtml;
   }
 
-  // --- RENDERER FORCED CHOICE (SOLVED & ISOLATED) ---
+  // --- RENDERER B: FORCED-CHOICE IPSATIVE (REVISI SOLVED TOTAL) ---
   renderForcedChoiceOptions(container, q, options, selectedVal) {
-    let savedMost = "";
-    let savedLeast = "";
+    let currentMost = "";
+    let currentLeast = "";
 
     if (selectedVal && typeof selectedVal === "object") {
-      savedMost = this._toStrVal(selectedVal.most);
-      savedLeast = this._toStrVal(selectedVal.least);
+      currentMost = this._extractVal(selectedVal.most);
+      currentLeast = this._extractVal(selectedVal.least);
     }
 
     let tableHtml = `
@@ -293,9 +296,9 @@ class CBTEngine {
     `;
 
     options.forEach((opt, idx) => {
-      const optValStr = this._toStrVal(opt.value);
-      const isMostChecked = (savedMost !== "" && savedMost === optValStr) ? "checked" : "";
-      const isLeastChecked = (savedLeast !== "" && savedLeast === optValStr) ? "checked" : "";
+      const optValStr = this._extractVal(opt.value);
+      const isMostChecked = (currentMost !== "" && currentMost === optValStr) ? "checked" : "";
+      const isLeastChecked = (currentLeast !== "" && currentLeast === optValStr) ? "checked" : "";
       const safeVal = optValStr.replace(/'/g, "\\'");
 
       tableHtml += `
@@ -303,21 +306,21 @@ class CBTEngine {
           <td style="padding: 12px 10px; color: #1e293b; font-weight: 500;">${opt.label}</td>
           <td style="padding: 12px 10px; text-align: center; background-color: ${isMostChecked ? '#ecfdf5' : 'transparent'};">
             <input type="radio" 
-              id="fc_m_${q.id}_${idx}" 
-              name="fc_most_group_${q.id}" 
+              id="radio_m_${q.id}_${idx}" 
+              name="fc_most_${q.id}" 
               value="${optValStr}" 
               ${isMostChecked} 
               style="accent-color: #10b981; transform: scale(1.25); cursor: pointer;" 
-              onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'most', '${safeVal}', ${idx})">
+              onclick="cbtApp.saveForcedChoiceAnswer('${q.id}', 'most', '${safeVal}')">
           </td>
           <td style="padding: 12px 10px; text-align: center; background-color: ${isLeastChecked ? '#fef2f2' : 'transparent'};">
             <input type="radio" 
-              id="fc_l_${q.id}_${idx}" 
-              name="fc_least_group_${q.id}" 
+              id="radio_l_${q.id}_${idx}" 
+              name="fc_least_${q.id}" 
               value="${optValStr}" 
               ${isLeastChecked} 
               style="accent-color: #ef4444; transform: scale(1.25); cursor: pointer;" 
-              onchange="cbtApp.saveForcedChoiceAnswer('${q.id}', 'least', '${safeVal}', ${idx})">
+              onclick="cbtApp.saveForcedChoiceAnswer('${q.id}', 'least', '${safeVal}')">
           </td>
         </tr>
       `;
@@ -336,59 +339,49 @@ class CBTEngine {
   }
 
   saveAnswer(questionId, value) {
-    this.answers[String(questionId)] = value;
+    this.answers[String(questionId)] = this._extractVal(value);
     localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
     this.renderCurrentQuestion();
   }
 
   /**
-   * Logika Penanganan Input Forced Choice Tanpa Re-render Rusak
+   * Logika Penanganan Forced Choice Tanpa Mengganggu DOM Native
    */
-  saveForcedChoiceAnswer(questionId, targetType, valueStr, rowIdx) {
+  saveForcedChoiceAnswer(questionId, targetType, valueStr) {
     const qKey = String(questionId);
     let currentAns = this.answers[qKey];
 
     if (!currentAns || typeof currentAns !== "object") {
-      currentAns = { most: null, least: null };
+      currentAns = { most: "", least: "" };
+    } else {
+      currentAns = {
+        most: this._extractVal(currentAns.most),
+        least: this._extractVal(currentAns.least)
+      };
     }
+
+    const cleanVal = this._extractVal(valueStr);
 
     if (targetType === "most") {
-      currentAns.most = valueStr;
-      // Jika di baris yang sama sebelumnya sudah dipilih 'least', batalkan 'least'
-      if (this._toStrVal(currentAns.least) === valueStr) {
-        currentAns.least = null;
-        const leastRadio = document.getElementById(`fc_l_${questionId}_${rowIdx}`);
-        if (leastRadio) leastRadio.checked = false;
+      currentAns.most = cleanVal;
+      // Guard: Jika opsi yang sama dipilih pada least, bersihkan least
+      if (currentAns.least === cleanVal) {
+        currentAns.least = "";
       }
     } else if (targetType === "least") {
-      currentAns.least = valueStr;
-      // Jika di baris yang sama sebelumnya sudah dipilih 'most', batalkan 'most'
-      if (this._toStrVal(currentAns.most) === valueStr) {
-        currentAns.most = null;
-        const mostRadio = document.getElementById(`fc_m_${questionId}_${rowIdx}`);
-        if (mostRadio) mostRadio.checked = false;
+      currentAns.least = cleanVal;
+      // Guard: Jika opsi yang sama dipilih pada most, bersihkan most
+      if (currentAns.most === cleanVal) {
+        currentAns.most = "";
       }
     }
 
+    // Simpan ke state memori & localStorage
     this.answers[qKey] = currentAns;
     localStorage.setItem(this.storageKey, JSON.stringify(this.answers));
 
-    // Update Tampilan Indikator Status & Navigasi Kiri secara Realtime
-    const qStatusEl = document.getElementById("cbt-question-status");
-    const hasAnswered = this.isQuestionAnswered(questionId);
-    if (qStatusEl) {
-      if (hasAnswered) {
-        qStatusEl.innerText = "Sudah Dijawab";
-        qStatusEl.style.background = "#dcfce7";
-        qStatusEl.style.color = "#15803d";
-      } else {
-        qStatusEl.innerText = "Belum Dijawab (Pilih Most & Least)";
-        qStatusEl.style.background = "#f1f5f9";
-        qStatusEl.style.color = "#64748b";
-      }
-    }
-
-    this.renderNavGrid();
+    // Render ulang tampilan soal aktif agar status centang & warna background konsisten penuh
+    this.renderCurrentQuestion();
   }
 
   renderNavGrid() {
