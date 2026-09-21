@@ -1,0 +1,149 @@
+{
+  "kode_tes": "KD6",
+  "nama_tes": "APACA Work Burnout & Stress Indication Test (WBSIT)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Bagus Primohadi",
+    "sipp": "-"
+  },
+  "rubrik_deskripsi_dimensi": {
+    "Work Anxiety": {
+      "judul_dimensi": "Work Anxiety (Kecemasan Kerja)",
+      "deskripsi_umum": "Dimensi ini mengukur derajat reaksi kognitif, emosional, dan somatis Anda terhadap evaluasi kinerja, tekanan target, ancaman stabilitas karier, serta ketakutan akan kegagalan profesional.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Ketenangan Emosional & Keyakinan Performa",
+          "deskripsi_spesifik": "Anda memiliki ketenangan mental yang tinggi saat berhadapan dengan evaluasi kerja, ulasan kinerja, atau target yang kompleks. Kritik dari manajemen dipandang sebagai masukan konstruktif, bukan ancaman terhadap harga diri.",
+          "dampak_organisasional": "Mampu berpikir jernih di bawah tekanan, memiliki komunikasi yang stabil dengan atasan, dan jarang mengalami kepanikan saat terjadi ketidakpastian organisasi.",
+          "rekomendasi_pengembangan": "Pertahankan resiliensi kognitif ini dan bagikan strategi *coping* Anda sebagai mentor bagi rekan kerja yang memiliki tingkat kecemasan tinggi."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Kecemasan Kondisional / Situasional",
+          "deskripsi_spesifik": "Anda mengalami ketegangan atau kekhawatiran pada momen-momen tertentu, seperti jelang *performance appraisal*, presentasi direksi, atau penentuan target kuartalan. Namun, ketegangan ini umumnya masih bisa Anda kendalikan.",
+          "dampak_organisasional": "Kadang mengalami penurunan konsentrasi sementara atau gangguan tidur ringan saat periode penilaian kerja, tetapi fungsi operasional harian tetap berjalan.",
+          "rekomendasi_pengembangan": "Terapkan teknik *cognitive reframing* dan *anxiety grounding* sebelum rapat evaluasi. Batasi memikirkan asumsi buruk terkait ketidakpastian karier yang belum tentu terjadi."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Kecemasan Performa Akut & Antisipatif",
+          "deskripsi_spesifik": "Anda berada dalam kondisi waspada berlebih (*hypervigilance*). Muncul ketakutan intens akan pemutusan hubungan kerja (PHK), kegagalan target, serta reaksi fisio-somatis (jantung berdebar, tegang otot) saat menerima instruksi atasan.",
+          "dampak_organisasional": "Menurunnya efisiensi pengambilan keputusan, munculnya perilaku penghindaran (*avoidant behavior*), serta risiko kelelahan mental yang cepat akibat stres berlanjut.",
+          "rekomendasi_pengembangan": "Disarankan melakukan restrukturisasi pola pikir bersama konselor/HR melalui program EAP. Tetapkan batasan tegas antara jam kerja dan jam istirahat untuk memutus rantai cemas antisipatif."
+        }
+      }
+    },
+    "Emotional Exhaustion": {
+      "judul_dimensi": "Emotional Exhaustion (Kelelahan Emosional Kerja)",
+      "deskripsi_umum": "Dimensi ini mengukur tingkat pengurasan energi psikologis dan fisik akibat akumulasi beban kerja, jam kerja panjang (*overtime*), serta tuntutan peran yang melampaui kapasitas adaptasi diri.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Kapasitas Energi Optimal & Pemulihan Efektif",
+          "deskripsi_spesifik": "Kapasitas cadangan energi psikologis Anda berada pada tingkat yang sangat memadai. Anda bangun pagi dengan kesegaran mental dan memiliki sistem pemulihan energi (*recovery system*) yang berfungsi sangat baik pasca-jam kerja.",
+          "dampak_organisasional": "Menunjukkan vitalitas tinggi, daya tahan kerja yang stabil, serta fleksibilitas emosional yang baik saat menghadapi krisis operasional.",
+          "rekomendasi_pengembangan": "Jaga konsistensi pola tidur, nutrisi, serta *work-life balance* yang saat ini sudah berjalan efektif agar kapasitas vitalitas ini tidak tergerus dalam jangka panjang."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Kelelahan Kumulatif Terbatas",
+          "deskripsi_spesifik": "Anda mulai merasakan pengurasan energi psikologis, terutama di akhir pekan kerja atau saat *peak season*. Tubuh dan pikiran membutuhkan waktu pemulihan yang lebih lama dari biasanya untuk merasa benar-benar segar.",
+          "dampak_organisasional": "Mudah merasa lelah di sore hari, menurunnya kesabaran dalam menghadapi masalah interaksional, serta penurunan stamina fisik secara bertahap.",
+          "rekomendasi_pengembangan": "Lakukan pemetaan alokasi energi (*energy audit*). Kurangi komitmen kerja non-esensial dan manfaatkan hak cuti untuk memulihkan kelelahan emosional sebelum berubah menjadi burnout parah."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Kelelahan Emosional Ekstrem (Burnout Core)",
+          "deskripsi_spesifik": "Sumber daya emosional Anda berada pada titik nadir (terkuras total). Istirahat di akhir pekan atau tidur yang cukup tidak lagi mampu memulihkan kesegaran mental Anda. Gejala psikosomatis sering kali muncul secara rutin.",
+          "dampak_organisasional": "Penurunan drastis pada produktivitas, meningkatnya ketidakhadiran (*absenteeism*), emosi yang reaktif, dan risiko tinggi mengalami *nervous breakdown*.",
+          "rekomendasi_pengembangan": "Diperlukan intervensi manajemen segera! Ajukan negosiasi alokasi beban kerja (*workload re-balancing*) dengan pimpinan dan manfaatkan layanan konsultasi psikologis profesional."
+        }
+      }
+    },
+    "Depersonalization / Cynicism": {
+      "judul_dimensi": "Depersonalization / Cynicism (Kejenuhan & Cynicism Kerja)",
+      "deskripsi_umum": "Dimensi ini menilai tingkat penarikan diri secara emosional, munculnya sikap sinis, apatis terhadap tujuan organisasi, serta penurunan rasa keterikatan (*job engagement*) dan komitmen profesional.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Keterikatan Tinggi & Kebanggaan Profesional",
+          "deskripsi_spesifik": "Anda memiliki keterikatan emosional (*engagement*) yang kuat dengan rutinitas dan tujuan organisasi. Pekerjaan dihayati sebagai aktivitas yang bermakna, penuh nilai kepuasan personal, dan patut diperjuangkan.",
+          "dampak_organisasional": "Mendorong iklim kerja positif, menunjukkan kepedulian tinggi pada rekan tim, serta memiliki empati yang utuh dalam merespons permasalahan organisasi.",
+          "rekomendasi_pengembangan": "Pertahankan nilai-nilai personal (*core values*) Anda dan jadilah agen pembawa budaya kerja positif di divisi Anda."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Apatisme Operasional Terisolasi",
+          "deskripsi_spesifik": "Anda mulai memandang beberapa tugas sekadar sebagai kewajiban formalitas. Ada benih skeptisisme terhadap kebijakan perusahaan atau niat baik manajemen, meskipun Anda masih menjaga profesionalisme dasar.",
+          "dampak_organisasional": "Menurunnya inisiatif untuk berkontribusi lebih (*organizational citizenship behavior*), keterlibatan rapat yang pasif, serta hubungan dengan tim yang cenderung transaksional.",
+          "rekomendasi_pengembangan": "Temukan kembali *meaning of work* dengan mengidentifikasi aspek pekerjaan yang paling memberi rasa pencapaian. Diskusikan dengan atasan mengenai variasi tugas baru."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Depersonalisasi & Apatisme Total",
+          "deskripsi_spesifik": "Anda telah membangun benteng pertahanan psikologis berupa isolasi emosional total. Anda merasa pekerjaan sama sekali sia-sia, bersikap sinis mendalam terhadap atasan/rekan, dan kehilangan komitmen karier.",
+          "dampak_organisasional": "Berpotensi merusak iklim kerja tim (*toxic cynicism*), penurunan kualitas luaran kerja secara signifikan, serta keinginan kuat untuk berhenti bekerja (*turnover intention*).",
+          "rekomendasi_pengembangan": "Kondisi ini menandakan pertahanan diri psikologis yang terluka. Diperlukan konseling karir intensif atau pendampingan psikoterapi untuk mengurai akar kekecewaan terhadap organisasi."
+        }
+      }
+    },
+    "Workplace Pressure Source": {
+      "judul_dimensi": "Workplace Pressure Source (Sumber Tekanan Lingkungan)",
+      "deskripsi_umum": "Dimensi ini mengukur sejauh mana persepsi Anda terhadap ekosistem kerja—seperti ekspektasi atasan, deadline ketat, dinamika politik kantor, dan persaingan antar rekan—menjadi sumber stresor utama.",
+      "analisis_tingkat_skor": {
+        "Rendah (0% - 35%)": {
+          "kondisi": "Lingkungan Kerja Kondusif & Suportif",
+          "deskripsi_spesifik": "Anda mengartikan lingkungan kerja sebagai ekosistem yang aman secara psikologis (*psychologically safe*). Tekanan target dilihat sebagai tantangan positif (*eustress*) yang realistis untuk dicapai.",
+          "dampak_organisasional": "Komunikasi antar lini berjalan lancar, minim konflik peransial, serta mendukung terciptanya kolaborasi tim yang efisien dan minim gesekan.",
+          "rekomendasi_pengembangan": "Gunakan lingkungan yang kondusif ini untuk mengoptimalkan potensi inovasi diri dan mengambil peran kepemimpinan dalam proyek-proyek strategis."
+        },
+        "Sedang (36% - 65%)": {
+          "kondisi": "Tekanan Lingkungan Moderat",
+          "deskripsi_spesifik": "Anda merasakan adanya gesekan dinamika politik kantor, persaingan rekan kerja, atau instruksi atasan yang kadang kontradiktif. Namun, tuntutan tersebut masih dalam rentang batas kemampuan kendali Anda.",
+          "dampak_organisasional": "Kadang memicu gesekan emosional ringan saat *deadline* memuncak, namun koordinasi tugas antar lini organisasi masih dapat dipertahankan.",
+          "rekomendasi_pengembangan": "Tingkatkan keterampilan komunikasi asertif. Pelajari cara menetapkan batasan profesional (*professional boundaries*) terhadap tenggat waktu dan beban kerja yang tidak realistis."
+        },
+        "Tinggi (66% - 100%)": {
+          "kondisi": "Ekosistem Kerja Bertekanan Tinggi (High-Stress Environment)",
+          "deskripsi_spesifik": "Anda merasa terkepung oleh lingkungan kerja yang sangat menekan—mulai dari ekspektasi atasan yang tidak realistis, persaingan tidak sehat, *deadline* ekstrem, hingga perubahan aturan yang mendadak.",
+          "dampak_organisasional": "Tingkat ketegangan harian yang tinggi, menurunkan efektivitas komunikasi, memicu iklim kerja defensif, serta mempercepat proses pemogokan energi emosional.",
+          "rekomendasi_pengembangan": "Lakukan pemetaan *Circle of Control* (fokus pada hal yang bisa Anda kendalikan, lepaskan yang tidak). Minta sesi klarifikasi ekspektasi kerja bersama atasan langsung."
+        }
+      }
+    }
+  },
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "0% - 25%",
+      "kategori": "Normal (Resiliensi Tinggi)",
+      "label_status": "OPTIMAL",
+      "deskripsi_kondisi": "Kondisi kesehatan mental kerja sangat prima. Anda memiliki mekanisme koping stres yang sangat matang, resiliensi tinggi, dan mampu menjadikan tekanan sebagai sumber motivasi tumbuh (*eustress*).",
+      "implikasi_klinis_organisasi": "Risiko burnout sangat rendah. Produktivitas dan keterikatan kerja berada pada tahap puncak.",
+      "tindakan_lanjutan": "Pencegahan rutin melalui pemeliharaan gaya hidup sehat dan pembagian beban kerja yang seimbang."
+    },
+    {
+      "rentang_skor_persen": "26% - 50%",
+      "kategori": "Stres Ringan (Mild Stress)",
+      "label_status": "STABIL",
+      "deskripsi_kondisi": "Anda mengalami ketegangan emosional wajar yang terikat pada periode sibuk (*peak season*). Fungsi kognitif, produktivitas, dan kendali emosi harian Anda secara umum masih berada dalam taraf terjaga dengan baik.",
+      "implikasi_klinis_organisasi": "Terdapat fluktuasi energi harian, tetapi belum mengganggu kinerja operasional secara masif.",
+      "tindakan_lanjutan": "Optimalkan waktu istirahat di luar jam kerja dan lakukan hobi pemulihan energi secara teratur."
+    },
+    {
+      "rentang_skor_persen": "51% - 75%",
+      "kategori": "Stres Sedang (Moderate Stress)",
+      "label_status": "PERINGATAN",
+      "deskripsi_kondisi": "Menunjukkan indikasi kelelahan emosional dan kecemasan kerja yang konsisten. Keterikatan kerja (*job engagement*) serta produktivitas mulai mengalami penurunan secara perlahan namun pasti.",
+      "implikasi_klinis_organisasi": "Risiko komplikasi kesehatan fisik (psikosomatis ringan) dan penurunan efisiensi kerja jika tidak ditangani segera.",
+      "tindakan_lanjutan": "Perlu dilakukan sesi *workload balancing* bersama atasan, pelatihan manajemen waktu, serta intervensi manajemen stres melalui Employee Assistance Program (EAP)."
+    },
+    {
+      "rentang_skor_persen": "76% - 100%",
+      "kategori": "Stres Berat (Work Burnout)",
+      "label_status": "RED FLAG",
+      "deskripsi_kondisi": "Anda berada dalam fase kelelahan emosional ekstrem, apatis total terhadap pekerjaan, serta rentan mengalami gangguan psikosomatis serius dan krisis mental profesional (*workplace burnout*).",
+      "implikasi_klinis_organisasi": "Kondisi darurat kesehatan mental kerja. Berisiko tinggi memicu depresi kerja, keluhan fisik berat, serta kecenderungan keluar dari pekerjaan (*turnover*).",
+      "tindakan_lanjutan": "PROTOKOL RED FLAG: Wajib menjalani sesi konseling individual bersama HR / Psikolog Klinis maksimal 2x24 jam pasca-tes dan penyesuaian darurat terhadap beban kerja harian."
+    }
+  ],
+  "protokol_intervensi_klinis": {
+    "red_flag_threshold": 76,
+    "prosedur_penanganan": [
+      "Sistem memberikan notifikasi khusus pada laporan individu karyawan dan dasbor HR.",
+      "Tim HR / Konselor Perusahaan wajib menjadwalkan sesi *one-on-one counseling* dalam waktu 2x24 jam.",
+      "Pemberian opsi rujukan medis/psikologis ke Psikolog Klinis / Psikiater jika ditemukan gejala psikosomatis berat.",
+      "Evaluasi dan penyesuaian darurat atas alokasi tugas harian (*temporary workload adjustment*)."
+    ]
+  }
+}
