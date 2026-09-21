@@ -1,0 +1,280 @@
+{
+  "kode_tes": "KS11",
+  "nama_tes": "APACA Learning Strategy Inventory (LSI)",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "informasi_umum": "APACA Learning Strategy Inventory (LSI) mengukur dan memetakan kapasitas regulasi belajar mandiri (Self-Regulated Learning / SRL) pada ranah eksekutif dan metakognitif. Instrumen ini mengidentifikasi sejauh mana individu secara aktif merencanakan, mengontrol, memantau, dan menyesuaikan proses belajarnya demi mencapai puncak performa akademik.",
+  "norma_kategorisasi_global": [
+    {
+      "rentang_skor_persen": "81% - 100%",
+      "t_score": "T ≥ 63",
+      "kategori": "Sangat Mandiri (Advanced SRL)",
+      "label_status": "OPTIMAL",
+      "deskripsi_kondisi": "Memiliki kematangan fungsi eksekutif belajar yang sangat luar biasa. Anda mampu mengendalikan seluruh siklus belajar secara penuh, otonom, dan efektif tanpa bergantung pada dorongan eksternal.",
+      "dampak_akademik": "Konsistensi prestasi tinggi, resiliensi tinggi terhadap tekanan ujian, dan efisiensi waktu belajar yang sangat tinggi.",
+      "tindakan_lanjutan": "Pertahankan otensitas regulasi dan ambil peran sebagai mentor belajar atau pemimpin dalam proyek riset/kelompok."
+    },
+    {
+      "rentang_skor_persen": "61% - 80%",
+      "t_score": "55 ≤ T < 63",
+      "kategori": "Mandiri (Competent SRL)",
+      "label_status": "KOMPETEN",
+      "deskripsi_kondisi": "Mampu mengatur strategi belajar dengan baik dan terstruktur. Anda telah memiliki kesadaran metakognitif yang memadai dan hanya membutuhkan sedikit pengawasan pada situasi yang sangat bertekanan.",
+      "dampak_akademik": "Performa akademik stabil, mampu memenuhi target harian, namun sesekali masih mengalami penurunan fokus saat kelelahan.",
+      "tindakan_lanjutan": "Pertajam kemampuan adaptasi strategi dan optimalkan teknik pemantauan diri saat menghadapi materi tingkat tinggi (HOTS)."
+    },
+    {
+      "rentang_skor_persen": "41% - 60%",
+      "t_score": "45 ≤ T < 55",
+      "kategori": "Moderat (Developing SRL)",
+      "label_status": "BERKEMBANG",
+      "deskripsi_kondisi": "Kapasitas regulasi belajar cukup berkembang, namun penerapannya masih sering inkonsisten. Anda sering kali mahir dalam merencanakan namun lemah dalam eksekusi, atau sebaliknya.",
+      "dampak_akademik": "Hasil akademik cenderung berfluktuasi naik-turun tergantung pada tingkat kesusahan mata pelajaran dan dorongan lingkungan.",
+      "tindakan_lanjutan": "Perlu pendampingan khusus pada fase eksekusi (*task initiation*) serta penyederhanaan jadwal belajar harian."
+    },
+    {
+      "rentang_skor_persen": "21% - 40%",
+      "t_score": "37 ≤ T < 45",
+      "kategori": "Rendah (Guided SRL)",
+      "label_status": "MEMBUTUHKAN BANTUAN",
+      "deskripsi_kondisi": "Mengalami kesulitan signifikan dalam mengatur proses belajar secara otonom. Anda sangat bergantung pada instruksi ketat, teguran, atau dorongan dari luar (orang tua/guru).",
+      "dampak_akademik": "Rentan mengalami prokrastinasi kronis, pola belajar SKS (Sistem Kebut Semalam), serta kebingungan saat pengerjaan tugas mandiri.",
+      "tindakan_lanjutan": "Diperlukan intervensi coaching fungsi eksekutif (*Executive Function Coaching*) dan pembuatan struktur belajar harian yang rigid."
+    },
+    {
+      "rentang_skor_persen": "0% - 20%",
+      "t_score": "T < 37",
+      "kategori": "Sangat Rendah (Passive SRL)",
+      "label_status": "KRITIS",
+      "deskripsi_kondisi": "Hampir tidak memiliki kendali atau regulasi atas proses belajar pribadi. Belajar dihayati sebagai beban yang pasif dan dihindari sejauh mungkin.",
+      "dampak_akademik": "Berisiko tinggi mengalami kegagalan akademik masif, kecemasan ujian ekstrem, dan kehilangan motivasi belajar.",
+      "tindakan_lanjutan": "Diperlukan konseling akademik darurat bersama Konselor/Psikolog untuk membenahi motivasi dasar dan hambatan psikologis."
+    }
+  ],
+  "rubrik_dimensi": {
+    "Goal Setting": {
+      "judul_dimensi": "Goal Setting (Penetapan Target & Prioritas)",
+      "deskripsi_umum": "Mengukur kemampuan menentukan arah, penetapan target pencapaian spesifik, penyusunan skala prioritas, serta memecah tujuan besar menjadi unit-unit kecil yang terukur.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Target Jelas & Terstruktur Presisi",
+          "karakteristik": "Anda selalu memulai sesi belajar dengan kejelasan standar nilai dan target spesifik. Mampu menguraikan silabus tebal menjadi batasan harian yang realistis.",
+          "dampak_akademik": "Memiliki dorongan internal (*intrinsic drive*) yang kuat dan fokus belajar yang tidak mudah terombang-ambing.",
+          "rekomendasi_taktis": "Pertahankan kebiasaan menuliskan target SMART (Specific, Measurable, Achievable, Relevant, Time-bound) sebelum memulai bab baru."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Target Umum namun Kurang Spesifik",
+          "karakteristik": "Memiliki keinginan untuk sukses, namun target yang dibuat sering kali bersifat abstrak (misal: 'yang penting nilainya bagus') tanpa rincian angka terukur.",
+          "dampak_akademik": "Mudah merasa puas lebih awal atau sebaliknya bingung menentukan kapan sebuah sesi belajar dianggap selesai.",
+          "rekomendasi_taktis": "Ubah target abstrak menjadi indikator konkret, misalnya: 'Menyelesaikan 15 latihan soal matematika tanpa salah dalam 45 menit'."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Tanpa Arah Target (Reaktif)",
+          "karakteristik": "Belajar murni karena paksaan jadwal atau teguran guru tanpa memiliki gambaran pencapaian pribadi yang ingin diraih.",
+          "dampak_akademik": "Sangat rentan kehilangan motivasi dan menganggap rutinitas belajar sebagai gugur kewajiban formalitas semata.",
+          "rekomendasi_taktis": "Mulai dengan target mikro harian yang sangat mudah (micro-goals), seperti menguasai 3 istilah baru per hari untuk membangun momentum."
+        }
+      }
+    },
+    "Planning": {
+      "judul_dimensi": "Planning (Perencanaan & Alur Belajar)",
+      "deskripsi_umum": "Mengukur kapasitas merancang alur pengerjaan tugas, penentuan urutan materi, alokasi waktu, pemilihan sumber bacaan, serta taktik belajar sebelum melangkah ke sesi eksekusi.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Perencana Strategis Metodis",
+          "karakteristik": "Sangat mahir memeta-petakan alokasi jam harian, memperhitungkan tingkat kesulitan materi, dan menyiapkan seluruh peralatan sebelum belajar.",
+          "dampak_akademik": "Minim kepanikan mendekati deadline, pengerjaan tugas teratur, dan efisiensi energi kognitif tinggi.",
+          "rekomendasi_taktis": "Kombinasikan perencanaan jadwal dengan metode Time-Blocking pada kalender digital untuk menjaga konsistensi harian."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Perencanaan Situasional",
+          "karakteristik": "Menyusun rencana hanya saat menghadapi tugas-tugas besar atau minggu ujian, namun cenderung belajar secara acak pada hari biasa.",
+          "dampak_akademik": "Sering kehabisan waktu di akhir pekan akibat akumulasi tugas-tugas kecil yang terabaikan di awal minggu.",
+          "rekomendasi_taktis": "Buat matriks perencanaan mingguan setiap hari Minggu malam untuk memetakan beban tugas 7 hari ke depan."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Tanpa Perencanaan (Spontan / SKS)",
+          "karakteristik": "Langsung menyentuh buku atau tugas tanpa tahu urutan pengerjaan, sering terdistraksi oleh materi mana yang harus didahulukan.",
+          "dampak_akademik": "Sering mengalami kebingungan keputusan (*decision fatigue*) dan mengandalkan Sistem Kebut Semalam (SKS).",
+          "rekomendasi_taktis": "Terapkan Aturan 5 Menit Perencanaan: Luangkan 5 menit pertama sebelum membuka buku hanya untuk menuliskan alur pengerjaan 1-2-3."
+        }
+      }
+    },
+    "Execution": {
+      "judul_dimensi": "Execution (Eksekusi, Inisiasi & Fokus)",
+      "deskripsi_umum": "Mengukur ketangguhan fungsi eksekutif dalam memrakarsai tindakan belajar (*task initiation*), mempertahankan daya fokus, mengelola distraksi, dan menjaga ritme kerja kognitif.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Eksekutor Andal & Bebas Prokrastinasi",
+          "karakteristik": "Mampu langsung memulai pengerjaan tugas saat jam belajar tiba. Memiliki benteng pertahanan fokus yang kuat terhadap godaan gawai/hiburan.",
+          "dampak_akademik": "Tugas selalu selesai tepat waktu, tingkat ketelitian tinggi, dan stamina kerja mental sangat stabil.",
+          "rekomendasi_taktis": "Pertahankan ritme eksekusi dan gunakan teknik Pomodoro (25 menit fokus, 5 menit istirahat) untuk menjaga stamina jangka panjang."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Eksekusi Rentan Distraksi",
+          "karakteristik": "Dapat memulai belajar, tetapi sering mengalami penundaan singkat (15-30 menit awal) dan kerap teralihkan oleh notifikasi media sosial.",
+          "dampak_akademik": "Waktu yang dihabiskan di meja belajar lama, namun durasi kerja efektif yang benar-benar fokus tergolong pendek.",
+          "rekomendasi_taktis": "Gunakan aplikasi pemblokir situs/notifikasi gawai selama sesi fokus dan letakkan ponsel di ruangan terpisah saat belajar."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Paralisis Inisiasi & Prokrastinasi Kronis",
+          "karakteristik": "Mengalami hambatan berat untuk sekadar mulai membuka lembar tugas. Menunda-nunda hingga batas waktu terakhir karena merasa terbebani.",
+          "dampak_akademik": "Sering terlambat mengumpulkan tugas, hasil pengerjaan terburu-buru, dan tingkat stres akademis sangat tinggi.",
+          "rekomendasi_taktis": "Gunakan Aturan 2 Menit (*2-Minute Rule*): Komitmenkan diri untuk mengerjakan tugas selama 2 menit saja. Biasanya begitu dimulai, gesekan inisiasi akan hilang."
+        }
+      }
+    },
+    "Monitoring": {
+      "judul_dimensi": "Monitoring (Pemantauan Metakognitif Diri)",
+      "deskripsi_umum": "Mengukur kesadaran metakognitif dalam menyadari tingkat pemahaman secara riil, mendeteksi kebingungan di tengah membaca, menilai taraf konsentrasi, dan mengawasi kecerobohan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Kesadaran Metakognitif Tajam",
+          "karakteristik": "Sangat peka saat pikirannya mulai melamun atau ketika ada paragraf yang belum benar-benar dipahami. Secara aktif berhenti untuk mengecek ulang.",
+          "dampak_akademik": "Terhindar dari ilusi pemahaman (*illusion of competence*), tingkat kecerobohan hitungan sangat rendah.",
+          "rekomendasi_taktis": "Pertahankan kebiasaan melakukan self-questioning di setiap jeda bab: 'Apakah saya bisa menjelaskan kembali bagian ini tanpa mengintip?'."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Pemantauan Reaktif (Pasca-Latihan)",
+          "karakteristik": "Baru menyadari ketidakpahamannya setelah mengerjakan latihan soal dan melihat hasilnya salah, bukan saat proses membaca berlangsung.",
+          "dampak_akademik": "Kadang merasa sudah menguasai materi saat membaca, tetapi bingung saat dihadapkan pada variasi soal ujian.",
+          "rekomendasi_taktis": "Gunakan teknik menandai teks (*check-marking*): Beri tanda tanya kecil pada margin buku di baris kalimat yang membuat ragu."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Rendah Kesadaran Metakognitif (Pasif)",
+          "karakteristik": "Membaca teks dari awal hingga akhir seperti 'robot' tanpa menyerap maknanya. Tidak sadar jika pikiran sudah melayang ke mana-mana.",
+          "dampak_akademik": "Sangat rentan terjebak ilusi pemahaman (merasa sudah belajar lama padahal tidak ada materi yang tersangkut di otak).",
+          "rekomendasi_taktis": "Lakukan jeda paksa di setiap akhir halaman: Tutup buku dan sebutkan 1 kata kunci utama sebelum diperbolehkan balik halaman."
+        }
+      }
+    },
+    "Evaluation": {
+      "judul_dimensi": "Evaluation (Evaluasi & Analisis Akar Masalah)",
+      "deskripsi_umum": "Mengukur kemampuan menilai luaran belajar secara objektif, membandingkan hasil kerja dengan standar target, serta melakukan bedah akar kesalahan (*root cause analysis*).",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Evaluator Objektif & Analitis",
+          "karakteristik": "Selalu memeriksa kembali lembar koreksi ujian. Mampu memetakan apakah kesalahan terjadi akibat kurang teliti, salah rumus, atau lupa konsep.",
+          "dampak_akademik": "Jarang mengulangi jenis kesalahan yang sama pada tes berikutnya; pola pertumbuhan belajar (*growth mindset*) sangat pesat.",
+          "rekomendasi_taktis": "Buat buku Error Log (Jurnal Kesalahan) untuk mendokumentasikan soal salah, jawaban benar, dan penyebab kekeliruannya."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Evaluasi Sepintas",
+          "karakteristik": "Melihat nilai ujian yang didapat, namun hanya melihat skor akhir tanpa mau mendalami lembar pengerjaan mana yang salah secara detail.",
+          "dampak_akademik": "Progres peningkatan nilai cenderung lambat karena celah kelemahan materi tidak pernah benar-benar ditutup.",
+          "rekomendasi_taktis": "Alokasikan waktu khusus 15 menit pasca-pembagian nilai ujian murni untuk membahas kembali nomor-nomor yang salah."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Defensif / Menghindari Evaluasi",
+          "karakteristik": "Cenderung acuh tak acuh atau kecewa ekstrem saat nilai buruk, serta menyalahkan faktor luar (soal terlalu susah, guru tidak adil) dibanding introspeksi.",
+          "dampak_akademik": "Sering terjebak pada lingkaran kesalahan yang sama berulang kali dalam setiap ujian.",
+          "rekomendasi_taktis": "Ubah sudut pandang terhadap kesalahan: Pandang nilai buruk bukan sebagai vonis kemampuan, melainkan umpan balik peta lokasi yang harus diperbaiki."
+        }
+      }
+    },
+    "Adaptation": {
+      "judul_dimensi": "Adaptation (Fleksibilitas Strategi & Agilitas)",
+      "deskripsi_umum": "Mengukur fleksibilitas kognitif untuk menguji, mengubah, memodifikasi, atau mengganti strategi, jadwal, dan pendekatan belajar ketika cara awal terbukti gagal.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Agil & Fleksibel Kognitif",
+          "karakteristik": "Cepat tanggap merubah taktik belajar begitu mendapati nilainya stagnan. Berani mencoba metode baru (seperti flashcard, Feynman, atau latihan HOTS).",
+          "dampak_akademik": "Sangat adaptif terhadap berbagai tipe mengajar guru/dosen dan mampu bertahan di lingkungan akademik yang keras.",
+          "rekomendasi_taktis": "Eksplorasi variasi gaya belajar mutakhir dan sesuaikan dengan karakteristik khusus masing-masing mata pelajaran."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Adaptasi Lambat / Ragu-ragu",
+          "karakteristik": "Menyadari bahwa cara belajarnya kurang efektif, namun enggan mengubahnya karena sudah terbiasa dengan kenyamanan cara lama.",
+          "dampak_akademik": "Membutuhkan waktu transisi yang lama untuk bisa menyesuaikan diri dengan kenaikan tingkat kesulitan materi pelajaran baru.",
+          "rekomendasi_taktis": "Lakukan eksperimen strategi kecil (*small strategy trial*) selama 1 minggu sebelum memutuskan mengadopsi cara belajar baru secara penuh."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Kaku (Rigid) & Memaksa Cara Lama",
+          "karakteristik": "Terus-menerus menggunakan satu cara belajar (misal: sekadar membaca ulang) meskipun terbukti membuat nilainya anjlok berkali-kali.",
+          "dampak_akademik": "Mudah frustrasi dan merasa 'tidak berbakat' di suatu pelajaran, padahal masalah utamanya ada pada kekakuan strategi.",
+          "rekomendasi_taktis": "Minta bantuan guru BK/Tutor untuk memberikan demonstrasi langsung cara belajar alternatif yang sesuai dengan mata pelajaran tersebut."
+        }
+      }
+    },
+    "Resource Management": {
+      "judul_dimensi": "Resource Mgmt (Pengelolaan Sumber Daya & Lingkungan)",
+      "deskripsi_umum": "Mengukur kapasitas mengelola waktu, lingkungan fisik belajar, tingkat stamina/energi kognitif, kebersihan meja kerja, serta alat dan media belajar digital.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Manajer Sumber Daya Efisien",
+          "karakteristik": "Sangat piawai menciptakan kondisi fisik dan mental belajar yang kondusif. Mampu menjaga pola tidur, kebersihan file digital, dan kecukupan stamina.",
+          "dampak_akademik": "Daya tahan belajar lama tanpa mudah lelah (*burnout*), pencarian materi dokumen cepat dan terorganisir.",
+          "rekomendasi_taktis": "Pertahankan manajemen fisik dan susun folder materi digital menggunakan penamaan standar yang rapi."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Pengelolaan Cukup (Kadang Terganggu Fisik)",
+          "karakteristik": "Tempat belajar cukup rapi, namun sering kali memaksakan belajar dalam kondisi fisik yang sangat lelah atau mengantuk.",
+          "dampak_akademik": "Efektivitas penyerapan materi berkurang drastis saat stamina tubuh berada di titik rendah.",
+          "rekomendasi_taktis": "Dahulukan pemulihan stamina (tidur singkat 20 menit) sebelum memaksakan diri masuk ke sesi belajar malam."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Lingkungan Kacau & Stamina Buruk",
+          "karakteristik": "Belajar di lingkungan yang penuh gangguan (meja berantakan, suara bising), file catatan tercecer di mana-mana, serta pola tidur tidak teratur.",
+          "dampak_akademik": "Sering kehilangan dokumen penting, mudah lelah dalam 15 menit pertama, dan pikiran cepat terdistraksi.",
+          "rekomendasi_taktis": "Lakukan 'Staging Belajar': Luangkan 10 menit untuk merapikan meja dan mengumpulkan semua buku yang dibutuhkan sebelum duduk belajar."
+        }
+      }
+    },
+    "Help-Seeking": {
+      "judul_dimensi": "Help-Seeking (Pencarian Bantuan Strategis)",
+      "deskripsi_umum": "Mengukur kepekaan proaktif dalam mengenali batas kemampuan diri serta keberanian mencari dukungan berkualitas dari guru, tutor, teman sebaya, atau media tambahan.",
+      "analisis_tingkat_skor": {
+        "Tinggi (61% - 100%)": {
+          "kondisi": "Pencari Bantuan Proaktif & Taktis",
+          "karakteristik": "Tidak ragu bertanya saat menemui jalan buntu. Menyiapkan daftar pertanyaan spesifik sebelum menemui guru/tutor sehingga diskusi efektif.",
+          "dampak_akademik": "Masalah kebingungan materi terselesaikan dengan cepat, jaringan kolaborasi belajar luas.",
+          "rekomendasi_taktis": "Manfaatkan sesi konsultasi untuk menanyakan soal-soal tingkat tinggi (HOTS) guna memperdalam wawasan."
+        },
+        "Sedang (41% - 60%)": {
+          "kondisi": "Bertanya Saat Situasi Darurat",
+          "karakteristik": "Baru mau bertanya atau mencari bantuan kelompok belajar ketika mendekati hari H ujian atau saat nilai sudah terlanjur jatuh.",
+          "dampak_akademik": "Waktu perbaikan terbatas sehingga penanganan kebingungan materi kurang maksimal.",
+          "rekomendasi_taktis": "Tetapkan batas toleransi pengerjaan mandiri: Jika bingung pada 1 soal lebih dari 20 menit, segera catat dan tanyakan ke teman/guru."
+        },
+        "Rendah (0% - 40%)": {
+          "kondisi": "Terisolasi & Malu / Gengsi Bertanya",
+          "karakteristik": "Memendam kebingungan sendirian karena malu dianggap tidak pintar atau takut mengganggu orang lain.",
+          "dampak_akademik": "Kebingungan materi menumpuk seperti bola salju, menyebabkan keputusasaan sebelum ujian.",
+          "rekomendasi_taktis": "Gunakan sarana bertanya yang lebih nyaman (seperti mengirim pesan pribadi ke guru/tutor atau berdiskusi lewat forum daring anonim)."
+        }
+      }
+    }
+  },
+  "matriks_pola_bottleneck": [
+    {
+      "nama_pola": "The Planner without Execution (Perencana Tanpa Eksekusi)",
+      "kriteria_skor": "Planning ≥ 65% dan Execution ≤ 45%",
+      "analisis_klinis": "Siswa sangat canggih dalam membuat jadwal, merancang target, dan merapikan agenda belajar, namun mengalami paralisis berat saat harus memulainya. Mengalihkan kecemasan dengan terus-menerus 'merencanakan' daripada 'bekerja'.",
+      "rekomendasi_khusus": "Hentikan pembuatan jadwal baru! Fokus murni pada Task Initiation 15 menit pertama. Kecilkan skala target hingga titik di mana tidak ada alasan untuk menunda."
+    },
+    {
+      "nama_pola": "The Busy Doer without Direction (Pekerja Keras Tanpa Arah)",
+      "kriteria_skor": "Execution ≥ 65% dan Goal Setting / Planning ≤ 45%",
+      "analisis_klinis": "Siswa sangat rajin duduk di meja belajar dan menghabiskan jam-jam panjang, namun tidak memiliki target spesifik dan alur kerja yang rapi. Energi habis untuk aktivitas yang kurang esensial.",
+      "rekomendasi_khusus": "Dahulukan penetapan prioritas! Ajarkan prinsip Pareto 80/20 (fokus pada 20% materi paling esensial yang menghasilkan 80% dampak nilai)."
+    },
+    {
+      "nama_pola": "The Rigid Executor (Eksekutor Kaku)",
+      "kriteria_skor": "Execution ≥ 65% dan Adaptation ≤ 45%",
+      "analisis_klinis": "Siswa sangat disiplin menjalankan rutinitas, namun memaksakan metode belajar yang sama meski terbukti tidak memberikan hasil positif. Enggan keluar dari zona nyaman metode lama.",
+      "rekomendasi_khusus": "Lakukan uji coba metode belajar baru secara terbatas selama 1 minggu. Evaluasi hasil sebelum dan sesudah untuk membuktikan efektivitas cara baru."
+    },
+    {
+      "nama_pola": "The Isolated Struggler (Petarung Terisolasi)",
+      "kriteria_skor": "Help-Seeking ≤ 40% dan Monitoring / Evaluation ≤ 45%",
+      "analisis_klinis": "Siswa memendam seluruh kesulitan akademik seorang diri, tidak peka atas celah kelemahannya, dan enggan meminta bantuan hingga situasi menjadi kritis.",
+      "rekomendasi_khusus": "Wajibkan masuk ke dalam kelompok belajar terstruktur dan fasilitasi sesi konsultasi rutin bersama guru pembimbing/mentor."
+    }
+  ],
+  "protokol_coaching_eksekutif": {
+    "cut_off_execution": "Jika skor Execution < 45%, siswa wajib masuk ke program 'Task Initiation Protocol' (pendampingan 15 menit awal sesi belajar).",
+    "cut_off_monitoring": "Jika skor Monitoring < 45%, siswa diwajibkan menggunakan lembar kontrol 'Self-Questioning Checklist' di setiap sesi bacaan."
+  }
+}
