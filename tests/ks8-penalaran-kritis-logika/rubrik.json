@@ -1,0 +1,95 @@
+{
+  "kode_tes": "KS8",
+  "nama_tes": "APACA Work Critical Thinking & Analytical Logic Test (WCTL) - Corporate Executive Profiler",
+  "psikolog_penanggung_jawab": {
+    "nama": "Dra. Fitriani Rahayu, M.Psi., Psikolog",
+    "sipp": "2026-0819-PSI-01"
+  },
+  "informasi_kognitif": "WCTL adalah instrumen pengukur kemampuan kognitif tingkat tinggi (higher-order thinking skills) yang didesain berdasarkan model Watson-Glaser Critical Thinking Appraisal. Tes ini bukan pengukur kepribadian atau EQ, melainkan alat uji ketangkasan kandidat dalam mengurai disinformasi, membedah bias konfirmasi, dan mengeksekusi pemecahan masalah kompleks di lingkungan profesional.",
+  "rubrik_deskripsi_dimensi": {
+    "Inference": {
+      "judul_dimensi": "Inference (Inferensi Analitis)",
+      "deskripsi_umum": "Kapasitas kognitif untuk menilai probabilitas atau kebenaran mutlak dari suatu kesimpulan yang ditarik secara induktif dari kumpulan data mentah atau laporan naratif.",
+      "dampak_profesional": "Karyawan dengan skor inferensi yang tinggi mampu 'membaca yang tersirat' dari laporan bisnis, membedakan antara fakta operasional dan opini subjektif, serta memiliki proyeksi risiko yang tajam dalam kondisi ketidakpastian pasar.",
+      "rekomendasi_pengembangan": "Gunakan teknik 'Five Whys' saat menganalisis laporan. Selalu bedah perbedaan antara probabilitas statistik dengan kepastian faktual sebelum merilis keputusan strategis."
+    },
+    "Recognition of Assumptions": {
+      "judul_dimensi": "Recognition of Assumptions (Pengenalan Asumsi Terselubung)",
+      "deskripsi_umum": "Kemampuan vital dalam mendeteksi anggapan tersirat, prasyarat tersembunyi, atau celah logika yang kerap dianggap benar (taken for granted) tanpa adanya pembuktian empiris formal.",
+      "dampak_profesional": "Merupakan perisai utama terhadap bias konfirmasi (confirmation bias) dan groupthink. Sangat krusial bagi auditor, konsultan strategis, dan level manajerial untuk menghindari kerugian finansial akibat premis bisnis yang tidak teruji.",
+      "rekomendasi_pengembangan": "Terapkan prinsip berpikir 'Devil’s Advocate'. Biasakan membongkar proposal bisnis dengan mempertanyakan: 'Apa prasyarat dasar yang harus benar agar strategi ini berhasil, dan apakah kita punya datanya?'"
+    },
+    "Deduction": {
+      "judul_dimensi": "Deduction (Penalaran Deduktif Mutlak)",
+      "deskripsi_umum": "Kemampuan kognisi murni untuk menentukan apakah suatu kesimpulan secara mutlak menyertai (follows necessarily) kerangka premis logis yang diberikan, tanpa terkontaminasi asumsi pribadi dari luar.",
+      "dampak_profesional": "Menjamin ketepatan eksekusi SOP, kepatuhan hukum (legal compliance), dan desain algoritma. Individu yang unggul di dimensi ini bekerja dengan akurasi mekanis layaknya mesin pemroses logika, tidak mudah terdistraksi oleh informasi emosional.",
+      "rekomendasi_pengembangan": "Berlatih memetakan pernyataan bisnis menggunakan struktur silogisme formal (Premis Mayor, Premis Minor, Konklusi). Pisahkan antara 'apa yang Anda yakini' dengan 'apa yang secara harfiah tertulis di atas kertas'."
+    },
+    "Interpretation": {
+      "judul_dimensi": "Interpretation (Interpretasi Berbasis Bukti)",
+      "deskripsi_umum": "Kemampuan analitis untuk menimbang bobot bukti empiris dan menentukan tingkat keterikatan suatu kesimpulan faktual dengan ketersediaan dukungan data tekstual/kuantitatif.",
+      "dampak_profesional": "Kunci utama untuk Data-Driven Decision Making. Mencegah perusahaan melompat pada kesimpulan reaktif yang prematur. Sangat dibutuhkan pada peran Data Analyst dan Financial Controller.",
+      "rekomendasi_pengembangan": "Hindari ekstrapolasi data yang berlebihan (over-generalization). Patuhi batasan kausalitas empiris; jika data hanya menunjukkan korelasi, jangan laporkan hal tersebut sebagai hubungan sebab-akibat."
+    },
+    "Evaluation of Arguments": {
+      "judul_dimensi": "Evaluation of Arguments (Evaluasi Argumen Strategis)",
+      "deskripsi_umum": "Kemampuan tingkat tinggi dalam memilah, menimbang, dan membedakan antara argumen yang kuat (relevan & logis) dan argumen yang lemah (irisan isu atau bersifat emosional) terhadap suatu permasalahan organisasi.",
+      "dampak_profesional": "Kompetensi puncak seorang negosiator, pengacara, dan Chief Executive. Individu ini mampu memotong distorsi retorika kompetitor atau vendor, serta memenangkan perdebatan dewan direksi dengan pemaparan yang tidak terbantahkan secara rasional.",
+      "rekomendasi_pengembangan": "Saat berhadapan dengan konflik strategis, pisahkan 'siapa' yang berbicara dari 'apa' yang dibicarakan. Latih diri Anda untuk mendeteksi logical fallacies (kesesatan berpikir) dalam setiap memo bisnis yang Anda evaluasi."
+    }
+  },
+  "norma_kategorisasi_global": [
+    {
+      "rentang_cti": "86% - 100%",
+      "rentang_t_score": "T ≥ 63",
+      "kategori_kognitif": "Sangat Tinggi (Superior)",
+      "label_status": "EXECUTIVE ELITE FIT",
+      "deskripsi_profil": "Arsitektur kognitif berada pada persentil elit. Individu memiliki ketajaman analitis yang luar biasa, mampu mengurai kompleksitas masalah (unstructured problems), sangat objektif, dan kebal terhadap disinformasi serta bias kognitif.",
+      "rekomendasi_rekrutmen": "SANGAT DIREKOMENDASIKAN (HIGHLY RECOMMENDED). Kandidat sempurna untuk peran C-Level, Konsultan Strategi Senior, Kepala Auditor, atau Lead Data Scientist."
+    },
+    {
+      "rentang_cti": "72% - 85%",
+      "rentang_t_score": "55 ≤ T < 63",
+      "kategori_kognitif": "Tinggi (Advanced)",
+      "label_status": "MANAGERIAL & ANALYST FIT",
+      "deskripsi_profil": "Memiliki landasan pemikiran kritis yang solid. Mampu mengevaluasi argumen secara komprehensif, menguji asumsi dasar dengan baik, dan mengeksekusi strategi berbasis data empiris secara konsisten.",
+      "rekomendasi_rekrutmen": "DIREKOMENDASIKAN (RECOMMENDED). Memenuhi ambang batas untuk posisi Manajerial Strategis, Legal Counsel, Financial Analyst, maupun Software Engineer tingkat menengah hingga atas."
+    },
+    {
+      "rentang_cti": "56% - 71%",
+      "rentang_t_score": "47 ≤ T < 55",
+      "kategori_kognitif": "Sedang (Average)",
+      "label_status": "OPERATIONAL SPECIALIST FIT",
+      "deskripsi_profil": "Mampu melakukan penalaran logis standar dan mengikuti SOP dengan akurat. Namun, pada skenario yang penuh dengan ambiguitas (VUCA), kandidat masih rentan terkecoh oleh anggapan terselubung atau bias konfirmasi ringan.",
+      "rekomendasi_rekrutmen": "DIPERTIMBANGKAN DENGAN CATATAN (CONDITIONAL). Memenuhi ambang batas kelayakan untuk posisi Staf Operasional, Administrator, dan Spesialis Eksekusi lapangan."
+    },
+    {
+      "rentang_cti": "40% - 55%",
+      "rentang_t_score": "39 ≤ T < 47",
+      "kategori_kognitif": "Rendah (Below Average)",
+      "label_status": "HIGH RISK FOR ANALYTICAL ROLE",
+      "deskripsi_profil": "Gaya pemecahan masalah cenderung didikte oleh opini, emosi, atau asumsi pribadi ketimbang fakta empiris. Sering kali mengalami kesulitan membedakan antara informasi yang valid dan data yang cacat logika.",
+      "rekomendasi_rekrutmen": "TIDAK DIREKOMENDASIKAN (NOT RECOMMENDED) untuk peran manajerial atau penentu keputusan. Berisiko tinggi melakukan kesalahan fatal jika diberikan wewenang merancang strategi korporat."
+    },
+    {
+      "rentang_cti": "0% - 39%",
+      "rentang_t_score": "T < 39",
+      "kategori_kognitif": "Sangat Rendah (Low)",
+      "label_status": "COGNITIVE ALARM",
+      "deskripsi_profil": "Kapasitas penalaran logis deskriptif sangat lemah. Gagal mendeteksi jebakan argumen yang kasatmata dan tidak mampu memisahkan preferensi pribadi dari teks objektif.",
+      "rekomendasi_rekrutmen": "SANGAT TIDAK DIREKOMENDASIKAN (CRITICAL REJECT). Individu ini berisiko sangat tinggi membuat keputusan destruktif yang berlandaskan misinformasi kronis bagi organisasi."
+    }
+  ],
+  "protokol_aplikasi_organisasional": {
+    "cut_off_strategis": {
+      "posisi": "Manajerial Strategis / Analis Senior / C-Level Executive",
+      "ambang_batas_cti": "≥ 72%",
+      "tindakan": "Passthrough: Kandidat memenuhi kualitas kognitif premium untuk merancang kebijakan bisnis yang kompleks."
+    },
+    "cut_off_operasional": {
+      "posisi": "Staf Operasional / Analis Junior / Spesialis Lapangan",
+      "ambang_batas_cti": "≥ 56%",
+      "tindakan": "Passthrough: Kandidat memiliki penalaran logika dasar yang cukup aman untuk mengeksekusi operasional sesuai SOP."
+    }
+  }
+}
