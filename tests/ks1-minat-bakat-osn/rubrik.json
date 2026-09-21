@@ -11,7 +11,7 @@
         "fokus": "Kecepatan & ketepatan operasional angka dan manipulasi persamaan aljabar."
       },
       "LOG": {
-        "nama": "Logika Deduktif & Formal",
+        "nama": "Logika Deductif & Formal",
         "fokus": "Penalaran alur silogisme dan validitas kesimpulan dari premis."
       },
       "PAT": {
@@ -40,11 +40,10 @@
       }
     },
     "kategorisasi_skor_modul": [
-      { "min": 80.0, "max": 100.0, "label": "Sangat Tinggi" },
-      { "min": 70.0, "max": 79.9, "label": "Tinggi" },
-      { "min": 55.0, "max": 69.9, "label": "Sedang" },
-      { "min": 40.0, "max": 54.9, "label": "Cukup" },
-      { "min": 0.0, "max": 39.9, "label": "Kurang" }
+      { "min": 80.0, "max": 100.0, "label": "Sangat Tinggi (Superior)" },
+      { "min": 60.0, "max": 79.9,  "label": "Tinggi (Competent)" },
+      { "min": 40.0, "max": 59.9,  "label": "Cukup / Sedang (Moderate Limit)" },
+      { "min": 0.0,  "max": 39.9,  "label": "Kurang (Low Readiness)" }
     ],
     "catatan_analisis_submodul": {
       "ALG": {
@@ -136,9 +135,9 @@
         { "min": 130, "max": 160, "label": "Sangat Superior / Genius", "deskripsi": "Kapasitas kognitif murni sangat tinggi; sangat siap menaklukkan penalaran rumit OSN." },
         { "min": 120, "max": 129, "label": "Superior", "deskripsi": "Kapasitas kognitif di atas rata-rata tinggi; daya tangkap logika sangat cepat." },
         { "min": 110, "max": 119, "label": "Rata-Rata Tinggi (High Average)", "deskripsi": "Kapasitas penalaran logis baik; mampu mengikuti alur pembinaan sains." },
-        { "min": 90, "max": 109, "label": "Rata-Rata (Average)", "deskripsi": "Kapasitas kognitif standar harian; membutuhkan matrikulasi ekstra untuk kompetisi." },
-        { "min": 80, "max": 89, "label": "Rata-Rata Rendah (Low Average)", "deskripsi": "Pemrosesan logika agak lambat; butuh pendampingan konsep secara perlahan." },
-        { "min": 0, "max": 79, "label": "Batas Bawah (Borderline)", "deskripsi": "Kapasitas kognitif belum siap untuk beban kompetisi sains." }
+        { "min": 90,  "max": 109, "label": "Rata-Rata (Average)", "deskripsi": "Kapasitas kognitif standar harian; membutuhkan matrikulasi ekstra untuk kompetisi." },
+        { "min": 80,  "max": 89,  "label": "Rata-Rata Rendah (Low Average)", "deskripsi": "Pemrosesan logika agak lambat; butuh pendampingan konsep secara perlahan." },
+        { "min": 0,   "max": 79,  "label": "Batas Bawah (Borderline)", "deskripsi": "Kapasitas kognitif belum siap untuk beban kompetisi sains." }
       ]
     }
   },
@@ -162,7 +161,7 @@
       "Biologi": { "MIN_BIO": 0.60, "MIN_KIM": 0.30, "MIN_GEO": 0.05, "MIN_AI": 0.05 },
       "Informatika": { "MIN_INF": 0.55, "MIN_MTK": 0.30, "MIN_AI": 0.15 },
       "Astronomi": { "MIN_AST": 0.40, "MIN_FIS": 0.35, "MIN_MTK": 0.25 },
-      "Kebumian": { "MIN_KBM": 0.50, "MIN_FIS": 0.20, "MIN_MTK": 0.15, "MIN_KIM": 0.15 },
+      "Kebumian": { "MIN_KBM": 0.50, "MIN_FIS": 0.20, "MIN_KIM": 0.15, "MIN_MTK": 0.15 },
       "Ekonomi": { "MIN_EKO": 0.50, "MIN_AI": 0.25, "MIN_MTK": 0.15, "MIN_GEO": 0.10 },
       "Geografi": { "MIN_GEO": 0.55, "MIN_KBM": 0.25, "MIN_EKO": 0.20 },
       "AI & Data Science": { "MIN_AI": 0.55, "MIN_INF": 0.30, "MIN_MTK": 0.15 }
@@ -172,29 +171,25 @@
         "min": 80.0,
         "max": 100.0,
         "label": "Sangat Tinggi (Strong Fit)",
-        "deskripsi": "Memiliki antusiasme konsep yang pekat, sangat nyaman dengan alur berpikir bidang, dan tahan eksplorasi mandiri.",
-        "implikasi_motivasi": "Memiliki intrinsic motivation yang sangat tinggi; tidak mudah bosan saat menghadapi materi tebal."
+        "deskripsi": "Antusiasme pekat, sangat nyaman dengan alur berpikir, dan tahan eksplorasi mandiri."
       },
       {
         "min": 65.0,
         "max": 79.9,
         "label": "Tinggi (Moderate Fit)",
-        "deskripsi": "Tertarik pada bidang utama dan nyaman dengan mayoritas disiplin ilmu irisannya.",
-        "implikasi_motivasi": "Berpotensi menjaga konsistensi belajar jika diberikan arahan pembinaan yang jelas."
+        "deskripsi": "Tertarik pada bidang utama dan nyaman dengan disiplin ilmu irisannya."
       },
       {
         "min": 50.0,
         "max": 64.9,
         "label": "Sedang / Cukup (Conditional Fit)",
-        "deskripsi": "Suka pada aspek populer/permukaan bidang, namun kurang nyaman pada cabang ilmu pendukungnya.",
-        "implikasi_motivasi": "Rentan mengalami kejenuhan (de-motivation) jika materi pembinaan mulai berfokus pada hitungan rumit."
+        "deskripsi": "Suka aspek permukaan, namun kurang nyaman pada cabang ilmu pendukungnya (rentan jenuh)."
       },
       {
         "min": 0.0,
         "max": 49.9,
         "label": "Rendah (Low Fit)",
-        "deskripsi": "Memiliki resistensi atau tidak menemukan daya tarik pada alur berpikir dan materi dasar bidang tersebut.",
-        "implikasi_motivasi": "Sangat tidak disarankan; memaksakan pembinaan akan memicu penolakan belajar secara pasif."
+        "deskripsi": "Memiliki resistensi atau tidak menemukan daya tarik pada alur berpikir bidang ini."
       }
     ],
     "klaster_profil_diagnostik": {
@@ -223,40 +218,27 @@
       {
         "min": 80.0,
         "max": 100.0,
-        "intimidasi_min": 4.0,
-        "label": "Sangat Siap (High Grit & Low Anxiety)",
         "status_mental": "FIT (HIGH)",
-        "deskripsi": "Prioritas Utama Investasi (ROI Tinggi): Siswa memiliki daya juang tinggi, mandiri, dan tahan tekanan. Sangat layak dialokasikan anggaran pembinaan eksternal/intensif."
+        "deskripsi": "Sangat siap menghadapi tekanan; stamina mental dan daya juang tinggi."
       },
       {
         "min": 65.0,
         "max": 79.9,
-        "intimidasi_min": 3.0,
-        "label": "Siap (Moderate Grit)",
         "status_mental": "FIT (MODERATE)",
-        "deskripsi": "Layak Diberikan Pembinaan: Memiliki kesiapan mental yang stabil. Mampu mengikuti alur modul pelatihan sekolah dengan bimbingan rutin."
-      },
-      {
-        "min": 50.0,
-        "max": 64.9,
-        "intimidasi_min": 2.5,
-        "label": "Rentan (Conditional Fit)",
-        "status_mental": "FIT (BORDERLINE)",
-        "deskripsi": "Perlu Pembimbingan Mental: Siswa mudah minder saat materi sulit. Membutuhkan mentoring pembiasaan soal secara bertahap sebelum masuk ke level kompetisi."
+        "deskripsi": "Cukup nyaman dengan rutinitas latihan soal dan analisis studi kasus."
       },
       {
         "min": 0.0,
-        "max": 49.9,
-        "intimidasi_min": 0.0,
-        "label": "Sangat Rentan (High Intimidation / Burnout)",
-        "status_mental": "BURNOUT RISK",
-        "deskripsi": "TIDAK DIREKOMENDASIKAN: Siswa mengalami ketakutan/frustrasi tinggi terhadap karakter bidang. Menghamburkan anggaran sekolah jika dipaksa ikut pembinaan intensif."
+        "max": 64.9,
+        "status_mental": "FIT (BORDERLINE)",
+        "deskripsi": "Berada di batas minimum resiliensi mental. Butuh dorongan ekstra agar tidak minder."
       }
     ],
     "warning_tag": {
       "syarat": "Indeks Intimidasi < 3.0",
+      "status_mental": "RISK OF OSN BURNOUT",
       "penanda": "[WARNING: RISK OF OSN BURNOUT]",
-      "diagnostik": "Siswa merasa sangat terintimidasi atau panik oleh tingkat kesulitan soal OSN bidang ini. Membutuhkan pendampingan mental khusus jika dipaksa masuk pelatihan intensif."
+      "deskripsi": "Terintimidasi oleh tingkat kesulitan soal. Rentan panik dan burnout jika dipaksa ikut pembinaan intensif."
     }
   },
   "proyeksi_karir": {
