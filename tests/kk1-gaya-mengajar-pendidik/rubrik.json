@@ -1,0 +1,105 @@
+{
+  "kode_tes": "KK1",
+  "rubrik_deskripsi": {
+    "Pakar": {
+      "judul": "Gaya Mengajar Pakar (Expert)",
+      "deskripsi": "Pendidik dengan kecenderungan Pakar berfokus penuh pada penguasaan materi, kedalaman keilmuan, serta transmisi pengetahuan yang akurat dan berstandar tinggi. Anda menempatkan diri sebagai sumber informasi utama dan memastikan bahwa setiap konsep disampaikan secara komprehensif tanpa mengabaikan fakta-fakta penting.",
+      "kelebihan": [
+        "Menjamin akurasi ilmiah dan kedalaman materi yang diajarkan.",
+        "Mampu memberikan penjelasan terstruktur untuk konsep-konsep yang rumit.",
+        "Membangun kredibilitas profesional yang tinggi di mata siswa dan institusi."
+      ],
+      "potensi_risiko": [
+        "Berisiko membuat kelas berpusat pada guru (teacher-centered) sehingga siswa menjadi pasif.",
+        "Siswa yang memiliki kemampuan awal rendah mungkin merasa kewalahan atau terintimidasi oleh kompleksitas materi.",
+        "Berpotensi mengabaikan kebutuhan perkembangan emosional atau gaya belajar individual siswa."
+      ],
+      "rekomendasi": "Gunakan pendekatan 'Chunking' (memecah materi kompleks menjadi bagian-bagian kecil) dan selingi ceramah dengan pertanyaan pemantik diskusi. Dorong siswa untuk mengaitkan teori dengan konteks kehidupan sehari-hari.",
+      "metode_ajar_disarankan": [
+        "Problem-Based Learning (PBL)",
+        "Diskusi Studi Kasus",
+        "Kuliah Interaktif & Analisis Literatur"
+      ]
+    },
+    "Otoritas Formal": {
+      "judul": "Gaya Mengajar Otoritas Formal (Formal Authority)",
+      "deskripsi": "Pendidik dengan gaya Otoritas Formal mengutamakan struktur, tata tertib, standar baku, dan alur pembelajaran yang jelas. Anda mengelola kelas dengan kontrol yang kuat, memastikan setiap aturan dipatuhi, serta memberikan ekspektasi prosedur pembelajaran dan umpan balik yang terukur.",
+      "kelebihan": [
+        "Menciptakan lingkungan belajar yang sangat teratur, kondusif, dan bebas dari gangguan.",
+        "Menanamkan kedisiplinan, tanggung jawab, dan manajemen waktu yang baik pada siswa.",
+        "Sangat efektif untuk mengondisikan kelas besar atau materi yang membutuhkan kepatuhan prosedur ketat."
+      ],
+      "potensi_risiko": [
+        "Kekakuan aturan dapat mematikan kreativitas, fleksibilitas, dan keberanian siswa dalam bereksperimen.",
+        "Suasana kelas berisiko menjadi tegang jika kontrol diterapkan secara berlebihan tanpa kehangatan.",
+        "Siswa cenderung belajar karena takut pada sanksi ketimbang dorongan intrinsik."
+      ],
+      "rekomendasi": "Imbangi ketegasan aturan dengan pendekatan empati dan fleksibilitas terukur. Berikan penjelasan rasional di balik setiap aturan agar siswa memahami makna kedisiplinan tersebut.",
+      "metode_ajar_disarankan": [
+        "Direct Instruction (Pengajaran Langsung)",
+        "Drill & Practice (Latihan Terstruktur)",
+        "Simulasi Prosedural & Demonstrasi Operasional"
+      ]
+    },
+    "Model Personal": {
+      "judul": "Gaya Mengajar Model Personal (Personal Model)",
+      "deskripsi": "Pendidik dengan gaya Model Personal mengajar melalui pendekatan 'Learning by Example' (memberi teladan). Anda memandu siswa dengan cara mendemonstrasikan secara langsung langkah-langkah kerja, membagikan pengalaman praktis, serta mendorong siswa untuk mengamati, meniru, dan mempraktikkannya.",
+      "kelebihan": [
+        "Memberikan gambaran konkret dan aplikasi nyata dari konsep yang dipelajari.",
+        "Mempermudah siswa memahami keterampilan psikomotorik atau teknis secara cepat.",
+        "Membangun hubungan mentoring yang erat melalui pembimbingan langsung."
+      ],
+      "potensi_risiko": [
+        "Siswa berisiko menjadi 'fotokopi' guru dan takut mencoba cara alternatif di luar yang dicontohkan.",
+        "Dapat memicu ketergantungan siswa pada contoh yang diberikan sebelum berani mencoba sendiri.",
+        "Membutuhkan energi dan waktu ekstra dari guru untuk melakukan demonstrasi berulang."
+      ],
+      "rekomendasi": "Setelah memberikan demonstrasi dasar, beri ruang bagi siswa untuk memvariasikan atau mengoreksi pendekatan tersebut sesuai dengan gaya kreatif mereka sendiri.",
+      "metode_ajar_disarankan": [
+        "Project-Based Learning (PjBL)",
+        "Praktikum Laboratorium / Studio",
+        "Coaching & Mentoring Praktis"
+      ]
+    },
+    "Fasilitator": {
+      "judul": "Gaya Mengajar Fasilitator (Facilitator)",
+      "deskripsi": "Pendidik dengan gaya Fasilitator berfokus pada pembelajaran yang berpusat pada siswa (student-centered). Anda bertindak sebagai pembimbing yang merangsang pemikiran kritis, mengajukan pertanyaan eksploratif, serta mendorong kolaborasi dan pemecahan masalah secara mandiri.",
+      "kelebihan": [
+        "Mengembangkan keterampilan berpikir tingkat tinggi (HOTS), analisis kritis, dan pemecahan masalah.",
+        "Meningkatkan motivasi intrinsik, rasa percaya diri, dan keterlibatan aktif siswa.",
+        "Menciptakan iklim kelas yang inklusif, demokratis, dan terbuka terhadap gagasan baru."
+      ],
+      "potensi_risiko": [
+        "Membutuhkan waktu pembelajaran yang relatif lebih lama dibanding metode langsung.",
+        "Siswa yang terbiasa disuapi informasi mungkin merasa bingung atau cemas tanpa instruksi rinci.",
+        "Berisiko melebar dari alur kurikulum jika diskusi tidak diarahkan secara efektif."
+      ],
+      "rekomendasi": "Sediakan kerangka kerja (scaffolding) atau petunjuk awal yang jelas sebelum melepas siswa ke dalam diskusi atau pemecahan masalah yang kompleks.",
+      "metode_ajar_disarankan": [
+        "Inquiry-Based Learning",
+        "Debat & Diskusi Kelompok Interaktif",
+        "Small Group Problem Solving"
+      ]
+    },
+    "Delegator": {
+      "judul": "Gaya Mengajar Delegator (Delegator)",
+      "deskripsi": "Pendidik dengan gaya Delegator memberikan otonomi dan kebebasan penuh kepada siswa untuk merancang, mengelola, dan mengevaluasi kegiatan belajar mereka secara independen. Anda memosisikan diri sebagai konsultan eksternal yang baru memberi masukan saat diminta.",
+      "kelebihan": [
+        "Sangat efektif dalam membentuk kemandirian, otonomi belajar, dan jiwa kepemimpinan siswa.",
+        "Mendorong kreativitas dan kapabilitas siswa dalam mengelola proyek kompleks secara otentik.",
+        "Mempersiapkan siswa menghadapi dunia kerja atau jenjang pendidikan tinggi yang menuntut inisiatif tinggi."
+      ],
+      "potensi_risiko": [
+        "Siswa yang belum memiliki regulasi diri tinggi berisiko kehilangan arah atau gagal menyelesaikan tugas.",
+        "Guru dapat dipersepsikan pasif atau kurang bertanggung jawab jika melepas siswa terlalu dini.",
+        "Hasil kerja siswa bisa sangat bervariasi dari segi kualitas jika standar tidak dikawal."
+      ],
+      "rekomendasi": "Lakukan evaluasi berkala (*check-in milestone*) secara terjadwal untuk memantau kemajuan proyek tanpa mengurangi kebebasan merancang milik siswa.",
+      "metode_ajar_disarankan": [
+        "Independent Study / Riset Mandiri",
+        "Proyek Kolaboratif Jangka Panjang",
+        "Self-Directed Learning Projects"
+      ]
+    }
+  }
+}
