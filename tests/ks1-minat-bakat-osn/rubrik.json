@@ -1,0 +1,404 @@
+{
+  "metadata": {
+    "nama_produk": "OSN Talent Mapping (OTM) Test",
+    "versi": "2.0 - Final Strict Match",
+    "deskripsi": "Rubrik interpretasi data untuk Auto-Generated Laporan Hasil Asesmen berdasarkan Pedoman Operasional KS1-A, KS1-B, dan KS1-C."
+  },
+  "pilar1_kognitif": {
+    "daftar_modul": {
+      "NUM": {
+        "nama": "Numerik & Manipulasi Aljabar",
+        "fokus": "Kecepatan & ketepatan operasional angka dan manipulasi persamaan aljabar."
+      },
+      "LOG": {
+        "nama": "Logika Deduktif & Formal",
+        "fokus": "Penalaran alur silogisme dan validitas kesimpulan dari premis."
+      },
+      "PAT": {
+        "nama": "Pattern Recognition & Abstraksi",
+        "fokus": "Ekstraksi aturan implisit dari data visual/simbolik dan deret non-verbal."
+      },
+      "SPA": {
+        "nama": "Visual-Spasial & Proyeksi 3D",
+        "fokus": "Rotasi mental objek 3D dan kesadaran orientasi ruang."
+      },
+      "DAT": {
+        "nama": "Data Interpretation & Graph Analysis",
+        "fokus": "Ekstraksi data kuantitatif dari grafik, tabel, dan tren statistik."
+      },
+      "ALG": {
+        "nama": "Problem Decomposition & Algoritmik",
+        "fokus": "Pemecahan masalah bertahap (step-by-step) dan pelacakan alur logika."
+      },
+      "SAI": {
+        "nama": "Literasi Konseptual Sains & Proses",
+        "fokus": "Penalaran sebab-akibat fenomena alam dan analisis variabel eksperimen."
+      },
+      "EKO": {
+        "nama": "Spasial-Ekologis & Relasi Wilayah",
+        "fokus": "Analisis interaksi antarwilayah dan interpretasi peta tematik."
+      }
+    },
+    "kategorisasi_skor_modul": [
+      { "min": 80.0, "max": 100.0, "label": "Sangat Tinggi" },
+      { "min": 70.0, "max": 79.9, "label": "Tinggi" },
+      { "min": 55.0, "max": 69.9, "label": "Sedang" },
+      { "min": 40.0, "max": 54.9, "label": "Cukup" },
+      { "min": 0.0, "max": 39.9, "label": "Kurang" }
+    ],
+    "catatan_analisis_submodul": {
+      "ALG": {
+        "Sangat Tinggi": "Sangat cepat dan presisi melacak alur logika bertahap.",
+        "Tinggi": "Terampil melacak alur prosedur dan mengurai masalah bertahap.",
+        "Sedang": "Mampu melacak logika sederhana, namun butuh efisiensi waktu.",
+        "Cukup": "Kurang efisien dalam menelusuri instruksi bertahap yang panjang.",
+        "Kurang": "Kewalahan dalam melacak prosedur dan urutan langkah."
+      },
+      "LOG": {
+        "Sangat Tinggi": "Sangat kuat dalam silogisme dan evaluasi kebenaran premis.",
+        "Tinggi": "Mampu menganalisis alur logika deduktif dan argumen formal.",
+        "Sedang": "Cukup memahami silogisme dasar, butuh ketelitian pada negasi.",
+        "Cukup": "Rentan terkecoh oleh argumen bersyarat yang kompleks.",
+        "Kurang": "Sering terkecoh oleh penalaran premis yang bias."
+      },
+      "PAT": {
+        "Sangat Tinggi": "Unggul dalam mengekstraksi aturan dari pola simbolik/visual.",
+        "Tinggi": "Cepat mengenali deret pola geometris terstruktur.",
+        "Sedang": "Mampu membaca pola visual umum, butuh latihan abstraksi rumit.",
+        "Cukup": "Lambat menangkap aturan implisit dari perubahan gambar.",
+        "Kurang": "Lambat dalam menemukan pola tersembunyi dari deret gambar."
+      },
+      "DAT": {
+        "Sangat Tinggi": "Sangat tajam membaca tren grafik dan data kuantitatif.",
+        "Tinggi": "Akurat dalam menterjemahkan data tabel dan grafik dua sumbu.",
+        "Sedang": "Mampu membaca data kuantitatif, namun butuh efisiensi waktu.",
+        "Cukup": "Kesulitan mengekstraksi informasi dari data tabel silang.",
+        "Kurang": "Lambat dan tidak teliti membaca tren grafik kuantitatif."
+      },
+      "NUM": {
+        "Sangat Tinggi": "Sangat tangkas dalam manipulasi angka dan persamaan aljabar.",
+        "Tinggi": "Cepat dan akurat mengoperasikan variabel dan aljabar dasar.",
+        "Sedang": "Mampu memanipulasi variabel dasar, butuh latihan soal rumit.",
+        "Cukup": "Kurang teliti pada operasi persamaan aljabar yang panjang.",
+        "Kurang": "Lambat dan sering keliru dalam operasi numerik/aljabar."
+      },
+      "SAI": {
+        "Sangat Tinggi": "Paham kuat akan sebab-akibat fenomena alam dan variabel eksperimen.",
+        "Tinggi": "Mampu mengidentifikasi hubungan sebab-akibat proses sains.",
+        "Sedang": "Cukup memahami konsep sains dasar, butuh penguatan analisis hipotesis.",
+        "Cukup": "Lemah dalam mengidentifikasi variabel eksperimen fenomena alam.",
+        "Kurang": "Kesulitan memahami logika pembuktian dan variabel sains."
+      },
+      "EKO": {
+        "Sangat Tinggi": "Sangat peka terhadap dinamika keruangan dan relasi antarwilayah.",
+        "Tinggi": "Terampil membaca peta tematik dan keterkaitan tata ruang.",
+        "Sedang": "Cukup peka membaca distribusi wilayah, butuh penguatan peta kontur.",
+        "Cukup": "Kurang peka terhadap pembacaan peta tematik dan batas zona.",
+        "Kurang": "Kesulitan menganalisis pola keruangan dan peta wilayah."
+      },
+      "SPA": {
+        "Sangat Tinggi": "Sangat presisi melakukan rotasi mental objek 3D dalam bayangan.",
+        "Tinggi": "Mampu memvisualisasikan rotasi bentuk 3D dan proyeksi ruang.",
+        "Sedang": "Cukup mampu membayangkan proyeksi ruang sederhana.",
+        "Cukup": "Lambat melakukan bayangan rotasi mental objek 3D.",
+        "Kurang": "Kesulitan melakukan rotasi mental objek 3D secara presisi."
+      }
+    },
+    "gatekeeper_dan_rekomendasi_bidang": {
+      "threshold_pass": 60.0,
+      "pembobotan_modul": {
+        "Matematika": { "LOG": 0.50, "NUM": 0.50 },
+        "Fisika": { "NUM": 0.40, "LOG": 0.35, "SAI": 0.25 },
+        "Kimia": { "SAI": 0.40, "NUM": 0.30, "DAT": 0.30 },
+        "Biologi": { "SAI": 0.45, "DAT": 0.35, "PAT": 0.20 },
+        "Informatika": { "ALG": 0.45, "LOG": 0.35, "PAT": 0.20 },
+        "Astronomi": { "NUM": 0.40, "SPA": 0.35, "LOG": 0.25 },
+        "Kebumian": { "SPA": 0.30, "SAI": 0.30, "EKO": 0.25, "DAT": 0.15 },
+        "Ekonomi": { "DAT": 0.40, "NUM": 0.35, "LOG": 0.25 },
+        "Geografi": { "EKO": 0.35, "SPA": 0.25, "DAT": 0.20, "SAI": 0.20 },
+        "AI & Data Science": { "DAT": 0.40, "ALG": 0.35, "LOG": 0.25 }
+      },
+      "teks_status": {
+        "PASS": {
+          "label": "PASS",
+          "rekomendasi_top3": "Rekomendasi Utama — Memenuhi ambang batas kognitif minimum OSN.",
+          "rekomendasi_alt": "Rekomendasi Alternatif — Lolos batas minimum kognitif."
+        },
+        "LOCKED": {
+          "label": "LOCKED",
+          "rekomendasi_default": "Perlu Validasi Lanjutan / Kurang Direkomendasikan — Terkunci dari Top 1 karena kapasitas kognitif di bawah batas kelayakan minimum (<60)."
+        }
+      }
+    },
+    "norma_iq_apaca_otm": {
+      "rentang_skala": "0 - 160",
+      "kategori": [
+        { "min": 130, "max": 160, "label": "Sangat Superior / Genius", "deskripsi": "Kapasitas kognitif murni sangat tinggi; sangat siap menaklukkan penalaran rumit OSN." },
+        { "min": 120, "max": 129, "label": "Superior", "deskripsi": "Kapasitas kognitif di atas rata-rata tinggi; daya tangkap logika sangat cepat." },
+        { "min": 110, "max": 119, "label": "Rata-Rata Tinggi (High Average)", "deskripsi": "Kapasitas penalaran logis baik; mampu mengikuti alur pembinaan sains." },
+        { "min": 90, "max": 109, "label": "Rata-Rata (Average)", "deskripsi": "Kapasitas kognitif standar harian; membutuhkan matrikulasi ekstra untuk kompetisi." },
+        { "min": 80, "max": 89, "label": "Rata-Rata Rendah (Low Average)", "deskripsi": "Pemrosesan logika agak lambat; butuh pendampingan konsep secara perlahan." },
+        { "min": 0, "max": 79, "label": "Batas Bawah (Borderline)", "deskripsi": "Kapasitas kognitif belum siap untuk beban kompetisi sains." }
+      ]
+    }
+  },
+  "pilar2_minat": {
+    "daftar_dimensi": {
+      "MIN_MTK": "Abstrak & Pembuktian Logika",
+      "MIN_FIS": "Model Matematis & Fenomena Alam",
+      "MIN_KIM": "Dunia Mikro & Reaksi Zat",
+      "MIN_BIO": "Sistem Kehidupan & Taksonomi",
+      "MIN_INF": "Algoritma & Prosedural",
+      "MIN_AST": "Fisika Langit & Skala Kosmik",
+      "MIN_EKO": "Model Perilaku & Data Keuangan",
+      "MIN_KBM": "Sistem Bumi & Geologi",
+      "MIN_GEO": "Keruangan & Manusia-Lingkungan",
+      "MIN_AI": "Data Science & Machine Learning"
+    },
+    "matriks_irisan_pembobotan": {
+      "Matematika": { "MIN_MTK": 0.70, "MIN_INF": 0.15, "MIN_FIS": 0.15 },
+      "Fisika": { "MIN_FIS": 0.60, "MIN_MTK": 0.20, "MIN_AST": 0.20 },
+      "Kimia": { "MIN_KIM": 0.55, "MIN_BIO": 0.25, "MIN_FIS": 0.15, "MIN_MTK": 0.05 },
+      "Biologi": { "MIN_BIO": 0.60, "MIN_KIM": 0.30, "MIN_GEO": 0.05, "MIN_AI": 0.05 },
+      "Informatika": { "MIN_INF": 0.55, "MIN_MTK": 0.30, "MIN_AI": 0.15 },
+      "Astronomi": { "MIN_AST": 0.40, "MIN_FIS": 0.35, "MIN_MTK": 0.25 },
+      "Kebumian": { "MIN_KBM": 0.50, "MIN_FIS": 0.20, "MIN_MTK": 0.15, "MIN_KIM": 0.15 },
+      "Ekonomi": { "MIN_EKO": 0.50, "MIN_AI": 0.25, "MIN_MTK": 0.15, "MIN_GEO": 0.10 },
+      "Geografi": { "MIN_GEO": 0.55, "MIN_KBM": 0.25, "MIN_EKO": 0.20 },
+      "AI & Data Science": { "MIN_AI": 0.55, "MIN_INF": 0.30, "MIN_MTK": 0.15 }
+    },
+    "kategorisasi_skor_minat": [
+      {
+        "min": 80.0,
+        "max": 100.0,
+        "label": "Sangat Tinggi (Strong Fit)",
+        "deskripsi": "Memiliki antusiasme konsep yang pekat, sangat nyaman dengan alur berpikir bidang, dan tahan eksplorasi mandiri.",
+        "implikasi_motivasi": "Memiliki intrinsic motivation yang sangat tinggi; tidak mudah bosan saat menghadapi materi tebal."
+      },
+      {
+        "min": 65.0,
+        "max": 79.9,
+        "label": "Tinggi (Moderate Fit)",
+        "deskripsi": "Tertarik pada bidang utama dan nyaman dengan mayoritas disiplin ilmu irisannya.",
+        "implikasi_motivasi": "Berpotensi menjaga konsistensi belajar jika diberikan arahan pembinaan yang jelas."
+      },
+      {
+        "min": 50.0,
+        "max": 64.9,
+        "label": "Sedang / Cukup (Conditional Fit)",
+        "deskripsi": "Suka pada aspek populer/permukaan bidang, namun kurang nyaman pada cabang ilmu pendukungnya.",
+        "implikasi_motivasi": "Rentan mengalami kejenuhan (de-motivation) jika materi pembinaan mulai berfokus pada hitungan rumit."
+      },
+      {
+        "min": 0.0,
+        "max": 49.9,
+        "label": "Rendah (Low Fit)",
+        "deskripsi": "Memiliki resistensi atau tidak menemukan daya tarik pada alur berpikir dan materi dasar bidang tersebut.",
+        "implikasi_motivasi": "Sangat tidak disarankan; memaksakan pembinaan akan memicu penolakan belajar secara pasif."
+      }
+    ],
+    "klaster_profil_diagnostik": {
+      "Genuine Interest": {
+        "label": "Genuine Fit",
+        "syarat": "Minat Murni >= 65.0 dan Minat Terbobot >= 65.0 (Sama-sama Tinggi)",
+        "diagnostik": "Antusiasme pada bidang utama sejalan dengan kenyamanan alat berpikir pada ilmu irisannya.",
+        "tindakan_konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
+      },
+      "Visual / Surface Fan": {
+        "label": "False Interest (Terdistorsi Rendah)",
+        "syarat": "Minat Murni >= 75.0 tetapi Minat Terbobot < 65.0 (Anjlok karena Irisan Hitungan)",
+        "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi fisika/matematika pendukungnya.",
+        "tindakan_konseling": "Guru pembina harus memberikan gambaran soal hitungan asli sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
+      },
+      "Cross-Disciplinary Synergy": {
+        "label": "Terangkat Irisan Keilmuan",
+        "syarat": "Minat Murni < 65.0 tetapi Minat Terbobot > Minat Murni (Naik akibat Irisan)",
+        "diagnostik": "Minat murni bidang di level sedang, namun terangkat signifikan oleh tingginya antusiasme pada cabang ilmu irisannya.",
+        "tindakan_konseling": "Siswa bisa diarahkan ke bidang ini dengan fokus keunggulan pada cabang ilmu irisan pendukungnya yang bernilai tinggi."
+      }
+    }
+  },
+  "pilar3_resiliensi": {
+    "kategori": [
+      {
+        "min": 80.0,
+        "max": 100.0,
+        "intimidasi_min": 4.0,
+        "label": "Sangat Siap (High Grit & Low Anxiety)",
+        "status_mental": "FIT (HIGH)",
+        "deskripsi": "Prioritas Utama Investasi (ROI Tinggi): Siswa memiliki daya juang tinggi, mandiri, dan tahan tekanan. Sangat layak dialokasikan anggaran pembinaan eksternal/intensif."
+      },
+      {
+        "min": 65.0,
+        "max": 79.9,
+        "intimidasi_min": 3.0,
+        "label": "Siap (Moderate Grit)",
+        "status_mental": "FIT (MODERATE)",
+        "deskripsi": "Layak Diberikan Pembinaan: Memiliki kesiapan mental yang stabil. Mampu mengikuti alur modul pelatihan sekolah dengan bimbingan rutin."
+      },
+      {
+        "min": 50.0,
+        "max": 64.9,
+        "intimidasi_min": 2.5,
+        "label": "Rentan (Conditional Fit)",
+        "status_mental": "FIT (BORDERLINE)",
+        "deskripsi": "Perlu Pembimbingan Mental: Siswa mudah minder saat materi sulit. Membutuhkan mentoring pembiasaan soal secara bertahap sebelum masuk ke level kompetisi."
+      },
+      {
+        "min": 0.0,
+        "max": 49.9,
+        "intimidasi_min": 0.0,
+        "label": "Sangat Rentan (High Intimidation / Burnout)",
+        "status_mental": "BURNOUT RISK",
+        "deskripsi": "TIDAK DIREKOMENDASIKAN: Siswa mengalami ketakutan/frustrasi tinggi terhadap karakter bidang. Menghamburkan anggaran sekolah jika dipaksa ikut pembinaan intensif."
+      }
+    ],
+    "warning_tag": {
+      "syarat": "Indeks Intimidasi < 3.0",
+      "penanda": "[WARNING: RISK OF OSN BURNOUT]",
+      "diagnostik": "Siswa merasa sangat terintimidasi atau panik oleh tingkat kesulitan soal OSN bidang ini. Membutuhkan pendampingan mental khusus jika dipaksa masuk pelatihan intensif."
+    }
+  },
+  "proyeksi_karir": {
+    "Informatika": {
+      "kuliah": [
+        "Teknik Informatika / Computer Science",
+        "Sistem Informasi & Keamanan Siber",
+        "Software Engineering",
+        "Rekayasa Perangkat Lunak & Sistem Terdistribusi"
+      ],
+      "karir": [
+        "Software Engineer / Systems Architect",
+        "Cybersecurity Analyst / Cryptographer",
+        "Full Stack Developer",
+        "DevOps & Cloud Systems Engineer"
+      ]
+    },
+    "AI & Data Science": {
+      "kuliah": [
+        "Artificial Intelligence & Data Science",
+        "Sains Data & Statistik Komputasi",
+        "Teknologi Informasi & Machine Learning",
+        "Matematika Komputasi & AI"
+      ],
+      "karir": [
+        "AI / Machine Learning Specialist",
+        "Data Scientist & Business Intelligence Analyst",
+        "NLP / Computer Vision Engineer",
+        "Big Data Architect"
+      ]
+    },
+    "Matematika": {
+      "kuliah": [
+        "Matematika Murni / Applied Mathematics",
+        "Ilmu Aktuaria",
+        "Statistika & Analisis Data",
+        "Matematika Komputasi & Keuangan"
+      ],
+      "karir": [
+        "Aktuaris / Risk Management Analyst",
+        "Quantitative Researcher / Financial Modeler",
+        "Data Scientist",
+        "Cryptography & Security Specialist"
+      ]
+    },
+    "Fisika": {
+      "kuliah": [
+        "Fisika Murni / Theoretical Physics",
+        "Teknik Dirgantara / Aerospace Engineering",
+        "Fisika Teknik & Instrumentasi",
+        "Teknik Elektro & Mekatronika"
+      ],
+      "karir": [
+        "Research Scientist / R&D Specialist",
+        "Aerospace / Avionics Engineer",
+        "Robotics & Automation Engineer",
+        "Geophysicist / Renewable Energy Specialist"
+      ]
+    },
+    "Kimia": {
+      "kuliah": [
+        "Kimia Murni / Applied Chemistry",
+        "Teknik Kimia / Chemical Engineering",
+        "Farmasi & Teknologi Obat",
+        "Ilmu Material & Nanoteknologi"
+      ],
+      "karir": [
+        "Chemical Engineer / Process Engineer",
+        "R&D Scientist (Pharmaceutical & Materials)",
+        "Quality Control & Assurance Manager",
+        "Petrochemical / Renewable Material Specialist"
+      ]
+    },
+    "Biologi": {
+      "kuliah": [
+        "Bioteknologi & Rekayasa Hayati",
+        "Pendidikan Dokter / Kedokteran",
+        "Biomedis & Bioinformatika",
+        "Ilmu Kelautan & Ekologi"
+      ],
+      "karir": [
+        "Bioinformatics Specialist",
+        "Medical Doctor / Clinical Researcher",
+        "Geneticist / Genetic Engineer",
+        "Environmental & Conservation Scientist"
+      ]
+    },
+    "Astronomi": {
+      "kuliah": [
+        "Astrofisika & Ilmu Angkasa",
+        "Fisika Teoretis & Kosmologi",
+        "Teknik Satelit & Dirgantara",
+        "Sains Data Astronomi"
+      ],
+      "karir": [
+        "Astronomer / Astrophysicist",
+        "Satellite Systems Engineer",
+        "Space Mission Analyst / Researcher",
+        "Data Processing Specialist for Observatories"
+      ]
+    },
+    "Kebumian": {
+      "kuliah": [
+        "Teknik Geologi",
+        "Teknik Geofisika",
+        "Meteorologi & Klimatologi",
+        "Oseanografi"
+      ],
+      "karir": [
+        "Geologist / Exploration Specialist",
+        "Seismologist & Disaster Risk Analyst",
+        "Meteorologist / Climate Change Consultant",
+        "Oceanographic Data Specialist"
+      ]
+    },
+    "Ekonomi": {
+      "kuliah": [
+        "Ilmu Ekonomi & Studi Pembangunan",
+        "Akuntansi & Auditing",
+        "Manajemen Keuangan & Perbankan",
+        "Ekonometri & Sains Data Bisnis"
+      ],
+      "karir": [
+        "Financial Analyst / Portfolio Manager",
+        "Investment Banker / Equity Analyst",
+        "Corporate Economist",
+        "Management & Strategy Consultant"
+      ]
+    },
+    "Geografi": {
+      "kuliah": [
+        "Perencanaan Wilayah & Kota (PWK / Urban Planning)",
+        "Geografi & Sains Informasi Geografis (SIG)",
+        "Penginderaan Jauh (Remote Sensing)",
+        "Ilmu Lingkungan & Pembangunan Berkelanjutan"
+      ],
+      "karir": [
+        "Urban & Regional Planner",
+        "GIS Analyst / Spatial Data Scientist",
+        "Remote Sensing Specialist",
+        "Environmental Impact Consultant (AMDAL)"
+      ]
+    }
+  }
+}
