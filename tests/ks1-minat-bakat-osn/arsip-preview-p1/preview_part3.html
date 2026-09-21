@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Part 3: Modul PAT (OSN Aptitude)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #f8fafc; color: #0f172a; padding: 30px 16px; }
+    .container { max-width: 820px; margin: 0 auto; }
+    .header-bar { background: linear-gradient(135deg, #065f46 0%, #047857 100%); color: #ffffff; padding: 24px 28px; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
+    .header-bar h1 { font-size: 1.35rem; color: #34d399; margin-bottom: 6px; }
+    .header-bar p { font-size: 0.88rem; color: #a7f3d0; line-height: 1.5; }
+    .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .meta-tag { display: inline-block; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; text-transform: uppercase; }
+    .question-prompt { font-size: 0.98rem; font-weight: 600; line-height: 1.6; color: #1e293b; margin-bottom: 20px; text-align: justify; }
+    .stimulus-container { background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 18px; display: flex; justify-content: center; align-items: center; margin-bottom: 22px; }
+    .stimulus-container svg { max-width: 100%; height: auto; }
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .options-grid { grid-template-columns: 1fr; } }
+    .option-btn { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 500; cursor: default; }
+    .option-code { font-weight: 800; background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 6px; font-size: 0.82rem; }
+    .correct-answer { background: #dcfce7; color: #166534; font-size: 0.8rem; padding: 6px 12px; border-radius: 6px; font-weight: 700; margin-top: 14px; display: inline-block; border: 1px solid #bbf7d0; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-bar">
+      <h1>🌀 Quality Control — Preview Part 3: Modul PAT</h1>
+      <p>Modul Pattern Recognition & Abstraksi (4 Soal). Memeriksa logika abstraksi visual, ekstraksi aturan transformasi ganda, simulasi lintasan melingkar, dan ekstraksi elemen biner.</p>
+    </div>
+    <div id="questions-wrapper"></div>
+  </div>
+
+  <script>
+    const dataPart3 = {
+      "questions": [
+        {
+          "id": 9,
+          "module_code": "PAT",
+          "prompt": "Dua bentuk visual awal digabungkan berdasarkan aturan penggabungan logika (XOR): 'Garis atau elemen yang saling bertumpukan di posisi yang sama akan terhapus (menjadi hilang), sedangkan garis yang tidak bertumpukan akan dipertahankan'. Berdasarkan aturan abstraksi tersebut, manakah bentuk hasil penggabungan yang tepat untuk Gambar X dan Gambar Y?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 150' width='100%' height='150'><rect width='500' height='150' fill='#ffffff'/><g transform='translate(20,20)'><rect x='0' y='0' width='90' height='90' fill='#f8fafc' stroke='#94a3b8' stroke-width='2'/><line x1='0' y1='0' x2='90' y2='90' stroke='#1e293b' stroke-width='4'/><line x1='0' y1='0' x2='90' y2='0' stroke='#1e293b' stroke-width='4'/><line x1='0' y1='0' x2='0' y2='90' stroke='#1e293b' stroke-width='4'/><text x='45' y='112' font-size='12' font-weight='bold' fill='#475569' text-anchor='middle'>Gambar X</text></g><text x='135' y='75' font-size='24' font-weight='bold' fill='#64748b' text-anchor='middle'>+</text><g transform='translate(160,20)'><rect x='0' y='0' width='90' height='90' fill='#f8fafc' stroke='#94a3b8' stroke-width='2'/><line x1='0' y1='0' x2='90' y2='90' stroke='#1e293b' stroke-width='4'/><line x1='0' y1='0' x2='90' y2='0' stroke='#1e293b' stroke-width='4'/><line x1='90' y1='0' x2='90' y2='90' stroke='#1e293b' stroke-width='4'/><text x='45' y='112' font-size='12' font-weight='bold' fill='#475569' text-anchor='middle'>Gambar Y</text></g><text x='275' y='75' font-size='24' font-weight='bold' fill='#64748b' text-anchor='middle'>=</text><g transform='translate(300,20)'><rect x='0' y='0' width='90' height='90' fill='#fef2f2' stroke='#ef4444' stroke-width='2' stroke-dasharray='4'/><text x='45' y='55' font-size='28' font-weight='bold' fill='#ef4444' text-anchor='middle'>?</text><text x='45' y='112' font-size='12' font-weight='bold' fill='#ef4444' text-anchor='middle'>Hasil</text></g></svg>",
+          "options": [
+            { "code": "A", "label": "Garis vertikal kiri dan garis vertikal kanan" },
+            { "code": "B", "label": "Garis diagonal dan garis horizontal atas" },
+            { "code": "C", "label": "Garis vertikal kiri, garis vertikal kanan, dan garis diagonal" },
+            { "code": "D", "label": "Garis horizontal atas saja" }
+          ],
+          "correct_answer": "A"
+        },
+        {
+          "id": 10,
+          "module_code": "PAT",
+          "prompt": "Perhatikan transformasi deret gambar di bawah ini. Terdapat dua aturan perubahan simultan yang berlaku: (1) Jarum petunjuk memutar 45 derajat searah jarum jam di setiap langkah. (2) Objek titik hitam bertambah 1 buah di setiap langkah dengan pola selang-seling (dalam-luar-dalam-luar). Berdasarkan aturan tersebut, gambar manakah yang tepat untuk mengisi Posisi 4 (?)",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 140' width='100%' height='140'><rect width='480' height='140' fill='#ffffff'/><g transform='translate(10,10)'><rect x='0' y='0' width='80' height='80' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><circle cx='40' cy='40' r='25' fill='none' stroke='#1e293b' stroke-width='2'/><line x1='40' y1='40' x2='40' y2='18' stroke='#2563eb' stroke-width='4'/><circle cx='40' cy='30' r='4' fill='#1e293b'/><text x='40' y='102' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Posisi 1</text></g><g transform='translate(115,10)'><rect x='0' y='0' width='80' height='80' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><circle cx='40' cy='40' r='25' fill='none' stroke='#1e293b' stroke-width='2'/><line x1='40' y1='40' x2='55' y2='25' stroke='#2563eb' stroke-width='4'/><circle cx='40' cy='30' r='4' fill='#1e293b'/><circle cx='10' cy='40' r='4' fill='#1e293b'/><text x='40' y='102' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Posisi 2</text></g><g transform='translate(220,10)'><rect x='0' y='0' width='80' height='80' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><circle cx='40' cy='40' r='25' fill='none' stroke='#1e293b' stroke-width='2'/><line x1='40' y1='40' x2='62' y2='40' stroke='#2563eb' stroke-width='4'/><circle cx='40' cy='30' r='4' fill='#1e293b'/><circle cx='10' cy='40' r='4' fill='#1e293b'/><circle cx='40' cy='50' r='4' fill='#1e293b'/><text x='40' y='102' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Posisi 3</text></g><g transform='translate(325,10)'><rect x='0' y='0' width='80' height='80' fill='#fef2f2' stroke='#ef4444' stroke-width='2' stroke-dasharray='4'/><text x='40' y='50' font-size='24' font-weight='bold' fill='#ef4444' text-anchor='middle'>?</text><text x='40' y='102' font-size='11' font-weight='bold' fill='#ef4444' text-anchor='middle'>Posisi 4</text></g></svg>",
+          "options": [
+            { "code": "A", "label": "Jarum menunjuk Kanan-Bawah (135°), 2 titik di dalam & 2 titik di luar" },
+            { "code": "B", "label": "Jarum menunjuk Bawah (180°), 3 titik di dalam & 1 titik di luar" },
+            { "code": "C", "label": "Jarum menunjuk Kanan-Bawah (135°), 3 titik di dalam & 1 titik di luar" },
+            { "code": "D", "label": "Jarum menunjuk Bawah (180°), 2 titik di dalam & 2 titik di luar" }
+          ],
+          "correct_answer": "A"
+        },
+        {
+          "id": 11,
+          "module_code": "PAT",
+          "prompt": "Dua objek bergerak mengelilingi 8 petak pinggir grid 3x3: Objek Lingkaran Hitam (●) bergerak 1 petak searah jarum jam di setiap langkah. Objek Segitiga Merah (▲) bergerak 2 petak berlawanan arah jarum jam di setiap langkah. Jika posisi awal pada Langkah 1 ditunjukkan seperti gambar, di petak manakah kedua objek tersebut berada pada Langkah 4?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 160' width='100%' height='160'><rect width='500' height='160' fill='#ffffff'/><g transform='translate(10,10)'><text x='45' y='-2' font-size='10' font-weight='bold' fill='#64748b' text-anchor='middle'>Langkah 1</text><rect x='0' y='10' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><line x1='30' y1='10' x2='30' y2='100' stroke='#cbd5e1'/><line x1='60' y1='10' x2='60' y2='100' stroke='#cbd5e1'/><line x1='0' y1='40' x2='90' y2='40' stroke='#cbd5e1'/><line x1='0' y1='70' x2='90' y2='70' stroke='#cbd5e1'/><circle cx='15' cy='25' r='8' fill='#1e293b'/><polygon points='75,75 83,90 67,90' fill='#ef4444'/></g><g transform='translate(130,10)'><text x='45' y='-2' font-size='10' font-weight='bold' fill='#64748b' text-anchor='middle'>Langkah 2</text><rect x='0' y='10' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><line x1='30' y1='10' x2='30' y2='100' stroke='#cbd5e1'/><line x1='60' y1='10' x2='60' y2='100' stroke='#cbd5e1'/><line x1='0' y1='40' x2='90' y2='40' stroke='#cbd5e1'/><line x1='0' y1='70' x2='90' y2='70' stroke='#cbd5e1'/><circle cx='45' cy='25' r='8' fill='#1e293b'/><polygon points='75,15 83,30 67,30' fill='#ef4444'/></g><g transform='translate(250,10)'><text x='45' y='-2' font-size='10' font-weight='bold' fill='#64748b' text-anchor='middle'>Langkah 3</text><rect x='0' y='10' width='90' height='90' fill='#f8fafc' stroke='#cbd5e1' stroke-width='2'/><line x1='30' y1='10' x2='30' y2='100' stroke='#cbd5e1'/><line x1='60' y1='10' x2='60' y2='100' stroke='#cbd5e1'/><line x1='0' y1='40' x2='90' y2='40' stroke='#cbd5e1'/><line x1='0' y1='70' x2='90' y2='70' stroke='#cbd5e1'/><circle cx='75' cy='25' r='8' fill='#1e293b'/><polygon points='15,15 23,30 7,30' fill='#ef4444'/></g><g transform='translate(370,10)'><text x='45' y='-2' font-size='10' font-weight='bold' fill='#ef4444' text-anchor='middle'>Langkah 4</text><rect x='0' y='10' width='90' height='90' fill='#fef2f2' stroke='#ef4444' stroke-width='2' stroke-dasharray='4'/><text x='45' y='60' font-size='24' font-weight='bold' fill='#ef4444' text-anchor='middle'>?</text></g></svg>",
+          "options": [
+            { "code": "A", "label": "Lingkaran di Kanan-Atas, Segitiga di Kiri-Atas" },
+            { "code": "B", "label": "Lingkaran di Kanan-Tengah, Segitiga di Kiri-Bawah" },
+            { "code": "C", "label": "Lingkaran di Kanan-Bawah, Segitiga di Tengah-Bawah" },
+            { "code": "D", "label": "Lingkaran di Tengah-Kanan, Segitiga di Tengah-Kiri" }
+          ],
+          "correct_answer": "B"
+        },
+        {
+          "id": 12,
+          "module_code": "PAT",
+          "prompt": "Perhatikan deret pola pecahan persegi di bawah ini. Setiap tahapan mengalami pengurangan elemen secara konsisten menurut aturan simetri lipat horizontal. Berdasarkan abstraksi pola pengurangan tersebut, manakah opsi yang merupakan bentuk utuh pada Tahap 4?",
+          "visual_stimulus": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 130' width='100%' height='130'><rect width='480' height='130' fill='#ffffff'/><g transform='translate(10,10)'><rect x='0' y='0' width='80' height='80' fill='#1e293b'/><circle cx='20' cy='20' r='10' fill='#38bdf8'/><circle cx='60' cy='20' r='10' fill='#38bdf8'/><circle cx='20' cy='60' r='10' fill='#38bdf8'/><circle cx='60' cy='60' r='10' fill='#38bdf8'/><text x='40' y='102' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Tahap 1</text></g><g transform='translate(125,10)'><rect x='0' y='0' width='80' height='80' fill='#1e293b'/><circle cx='20' cy='20' r='10' fill='#38bdf8'/><circle cx='60' cy='20' r='10' fill='#38bdf8'/><circle cx='20' cy='60' r='10' fill='#f8fafc'/><circle cx='60' cy='60' r='10' fill='#f8fafc'/><text x='40' y='102' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Tahap 2</text></g><g transform='translate(240,10)'><rect x='0' y='0' width='80' height='80' fill='#1e293b'/><circle cx='20' cy='20' r='10' fill='#38bdf8'/><circle cx='60' cy='20' r='10' fill='#f8fafc'/><circle cx='20' cy='60' r='10' fill='#f8fafc'/><circle cx='60' cy='60' r='10' fill='#f8fafc'/><text x='40' y='102' font-size='11' font-weight='bold' fill='#64748b' text-anchor='middle'>Tahap 3</text></g><g transform='translate(355,10)'><rect x='0' y='0' width='80' height='80' fill='#fef2f2' stroke='#ef4444' stroke-width='2' stroke-dasharray='4'/><text x='40' y='50' font-size='24' font-weight='bold' fill='#ef4444' text-anchor='middle'>?</text><text x='40' y='102' font-size='11' font-weight='bold' fill='#ef4444' text-anchor='middle'>Tahap 4</text></g></svg>",
+          "options": [
+            { "code": "A", "label": "Persegi hitam dengan 1 lingkaran biru di kiri-bawah" },
+            { "code": "B", "label": "Persegi hitam tanpa ada lingkaran biru sama sekali (semua putih)" },
+            { "code": "C", "label": "Persegi hitam dengan 2 lingkaran biru di bagian kanan" },
+            { "code": "D", "label": "Persegi hitam dengan 1 lingkaran biru di kanan-atas" }
+          ],
+          "correct_answer": "B"
+        }
+      ]
+    };
+
+    const wrapper = document.getElementById("questions-wrapper");
+    dataPart3.questions.forEach(q => {
+      const card = document.createElement("div");
+      card.className = "card";
+      const optsHTML = q.options.map(opt => `<div class="option-btn"><span class="option-code">${opt.code}</span><span>${opt.label}</span></div>`).join("");
+      card.innerHTML = `
+        <span class="meta-tag">Soal ${q.id} — [${q.module_code}]</span>
+        <div class="question-prompt">${q.prompt}</div>
+        <div class="stimulus-container">${q.visual_stimulus}</div>
+        <div class="options-grid">${optsHTML}</div>
+        <div class="correct-answer">Kunci Jawaban: ${q.correct_answer}</div>
+      `;
+      wrapper.appendChild(card);
+    });
+  </script>
+</body>
+</html>
