@@ -70,7 +70,7 @@
       "judul": "Human, Experiential & Applied Resources (Sumber Manusia & Praktik Langsung)",
       "deskripsi": "Berfokus pada pembuktian praktis lewat latihan soal, analisis kasus dunia nyata, interaksi sosial teman/tutor, dan eksperimen fisik."
     }
-  ],
+  },
   "detail_artefak_media": {
     "Textbook": {
       "nama_resmi": "Textbook / Modul Teks Terstruktur",
@@ -119,7 +119,7 @@
       "kategori": "Digital, Interactive & Generative",
       "deskripsi_kognitif": "Interaksi dialogis adaptif, eksplorasi pertanyaan tanpa batas, dan umpan balik kustom sesuai kecepatan berpikir pribadi.",
       "panduan_orang_tua": "Jika RPI Tinggi: Fasilitasi akses ke gawai dan platform AI edukasi, serta bimbing anak membuat prompt tanya jawab yang kritis. Jika Low/Avoided: Dampingi belajar dengan interaksi manusia langsung (tutor/orang tua).",
-      "panduan_sekolah": "Ajarkan etika penggunaan AI sebagai mitra berpikir (thinking partner), san bukan alat penyalin jawaban instan."
+      "panduan_sekolah": "Ajarkan etika penggunaan AI sebagai mitra berpikir (thinking partner), dan bukan alat penyalin jawaban instan."
     },
     "Internet": {
       "nama_resmi": "Internet / Penelusuran Web & Forum Terbuka",
@@ -132,7 +132,7 @@
       "nama_resmi": "Simulation / Virtual Lab & Gim Edukasi",
       "kategori": "Digital, Interactive & Generative",
       "deskripsi_kognitif": "Uji coba parameter variabel secara digital dalam ruang aman untuk memahami dampak sebab-akibat sistem rumit.",
-      "panduan_orang_tua": "Jika RPI Tinggi: Dukun penggunaan software simulasi digital (seperti PhET Interactive) atau gim strategi edukatif. Jika Low/Avoided: Beralih ke contoh kasus nyata atau eksperimen alat fisik.",
+      "panduan_orang_tua": "Jika RPI Tinggi: Dukung penggunaan software simulasi digital (seperti PhET Interactive) atau gim strategi edukatif. Jika Low/Avoided: Beralih ke contoh kasus nyata atau eksperimen alat fisik.",
       "panduan_sekolah": "Integrasikan laboratorium virtual sebelum mengajak siswa masuk ke laboratorium fisik yang kompleks."
     },
     "Practice Questions": {
@@ -168,7 +168,7 @@
       "kategori": "Human, Experiential & Applied",
       "deskripsi_kognitif": "Kinestetik-taktil lewat manipulasi benda fisik, alat laboratorium nyata, dan peragaan mekanis secara langsung.",
       "panduan_orang_tua": "Jika RPI Tinggi: Sediakan kit eksperimen sains, alat peraga fisik, atau ajak anak melakukan aktivitas praktek tangan di rumah. Jika Low/Avoided: Gunakan media visual/simulasi digital sebagai pengganti praktikum rumit.",
-      "panduan_sekolah": "Perbanyak Sesi praktikum laboratorium fisik dan demonstrasi alat nyata di dalam kelas."
+      "panduan_sekolah": "Perbanyak sesi praktikum laboratorium fisik dan demonstrasi alat nyata di dalam kelas."
     }
   },
   "pola_kombinasi_resource_stack": [
@@ -180,7 +180,7 @@
     },
     {
       "nama_pola": "Classical Textual & Theoretical Scholar (Pembelajar Teks & Teori Klasik)",
-      "kategori": "Textbook ≥ 75% DAN Diagram ≥ 75% DAN Lecture ≥ 65% DAN AI ≤ 35%",
+      "kriteria": "Textbook ≥ 75% DAN Diagram ≥ 75% DAN Lecture ≥ 65% DAN AI ≤ 35%",
       "analisis_klinis": "Siswa memiliki ketahanan kognitif yang sangat tinggi terhadap media tenang berstruktur rapi (buku modul, peta konsep, dan ceramah guru). Penggunaan gawai digital berlebih justru berisiko memecah konsentrasi belajarnya.",
       "rekomendasi_stack": "Membaca bab modul cetak & stabilo poin inti (25 menit) ➔ Menggambar Diagram/Peta Konsep buatan sendiri (15 menit) ➔ Menuntaskan latihan soal pilihan di buku."
     },
