@@ -1,1 +1,267 @@
-d
+{
+  "test_info": {
+    "kode": "KU6",
+    "nama_resmi": "APACA Work Personality & Core Motivation Inventory (WPCM - Enneagram Model)",
+    "nama_singkat": "Work Personality & Core Motivation Inventory",
+    "versi": "Versi Work 1.0 / 2026",
+    "token_ujian": "ENNEA2026",
+    "token_master": "PatsTestingKU6",
+    "durasi_menit": 20,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "options": [
+        { "code": "A", "type": 1, "label": "Saat tenggat waktu mendesak, saya memilih mengaudit ulang laporan sampai sempurna demi menjaga standar etika dan kualitas kerja tanpa cela." },
+        { "code": "B", "type": 2, "label": "Saat tenggat waktu mendesak, saya memilih mengalihkan fokus untuk mendampingi rekan tim yang kelelahan agar kondisi emosional mereka tetap terjaga." }
+      ]
+    },
+    {
+      "id": 2,
+      "options": [
+        { "code": "A", "type": 2, "label": "Saya merasa sangat berarti ketika kehadiran dan dukungan pribadi saya diapresiasi secara tulus oleh anggota tim." },
+        { "code": "B", "type": 3, "label": "Saya merasa sangat berarti ketika berhasil mengeksekusi proyek besar yang mendongkrak reputasi dan pencapaian KPI saya." }
+      ]
+    },
+    {
+      "id": 3,
+      "options": [
+        { "code": "A", "type": 3, "label": "Dalam persaingan kerja yang ketat, saya terdorong memangkas proses yang tidak efisien demi memastikan kemenangan target tim." },
+        { "code": "B", "type": 4, "label": "Dalam persaingan kerja yang ketat, saya terdorong merancang gagasan otentik yang mencerminkan identitas dan idealisme karya saya." }
+      ]
+    },
+    {
+      "id": 4,
+      "options": [
+        { "code": "A", "type": 4, "label": "Saya sangat menghindari situasi di mana karya atau kontribusi spesifik saya disamaratakan dengan standar umum yang pas-pasan." },
+        { "code": "B", "type": 5, "label": "Saya sangat menghindari situasi di mana saya dipaksa mengambil keputusan tanpa didukung data dan analisis objektif yang memadai." }
+      ]
+    },
+    {
+      "id": 5,
+      "options": [
+        { "code": "A", "type": 5, "label": "Ketika krisis melanda, reaksi pertama saya adalah menarik diri untuk menganalisis data, peta masalah, dan kecukupan sumber daya." },
+        { "code": "B", "type": 6, "label": "Ketika krisis melanda, reaksi pertama saya adalah menguji prosedur mitigasi risiko dan memastikan kejelasan komando keamanan tim." }
+      ]
+    },
+    {
+      "id": 6,
+      "options": [
+        { "code": "A", "type": 6, "label": "Saya bekerja paling optimal saat organisasi memberikan kejelasan struktur, petunjuk operasional, dan kepastian perlindungan." },
+        { "code": "B", "type": 7, "label": "Saya bekerja paling optimal saat organisasi memberikan ruang eksplorasi yang dinamis, penuh peluang, dan bebas dari aturan kaku." }
+      ]
+    },
+    {
+      "id": 7,
+      "options": [
+        { "code": "A", "type": 7, "label": "Menghadapi perubahan arah bisnis, saya bersemangat karena melihat deretan ide inovatif baru yang menarik untuk dicoba." },
+        { "code": "B", "type": 8, "label": "Menghadapi perubahan arah bisnis, saya bersemangat karena berkesempatan mengambil alih kendali dan memimpin eksekusi lapangan." }
+      ]
+    },
+    {
+      "id": 8,
+      "options": [
+        { "code": "A", "type": 8, "label": "Saat menghadapi intimidasi atau hambatan besar, saya memilih tampil tegas dan konfrontatif demi membela posisi tim." },
+        { "code": "B", "type": 9, "label": "Saat menghadapi intimidasi atau hambatan besar, saya memilih bersikap tenang dan meredam ketegangan agar tidak memicu bentrok terbuka." }
+      ]
+    },
+    {
+      "id": 9,
+      "options": [
+        { "code": "A", "type": 9, "label": "Lingkungan kerja ideal bagi saya adalah yang harmonis, minim gesekan politik, dan mendukung ritme kerja yang stabil." },
+        { "code": "B", "type": 1, "label": "Lingkungan kerja ideal bagi saya adalah yang memiliki kepatuhan tinggi pada prosedur, tertib, dan mengutamakan integritas." }
+      ]
+    },
+    {
+      "id": 10,
+      "options": [
+        { "code": "A", "type": 1, "label": "Kekhawatiran terbesar saya dalam proyek adalah munculnya kekeliruan fatal akibat kecerobohan atau pelanggaran standar baku." },
+        { "code": "B", "type": 3, "label": "Kekhawatiran terbesar saya dalam proyek adalah mengalami kegagalan eksekusi yang merusak citra profesionalitas di mata manajemen." }
+      ]
+    },
+    {
+      "id": 11,
+      "options": [
+        { "code": "A", "type": 2, "label": "Saya rela mengorbankan waktu pribadi demi memastikan rekan kerja memperoleh bantuan emosional dan fasilitas yang mereka butuhkan." },
+        { "code": "B", "type": 4, "label": "Saya menjaga jarak dari kesibukan kelompok demi mematangkan konsep karya yang memiliki keunikan dan nilai estetika mendalam." }
+      ]
+    },
+    {
+      "id": 12,
+      "options": [
+        { "code": "A", "type": 3, "label": "Pendorong kinerja utama saya adalah keinginan meraih panggung keberhasilan dan diakui sebagai eksekutor yang sangat produktif." },
+        { "code": "B", "type": 5, "label": "Pendorong kinerja utama saya adalah keinginan menguasai kepakaran teknis dan dipandang sebagai pakar yang sangat independen." }
+      ]
+    },
+    {
+      "id": 13,
+      "options": [
+        { "code": "A", "type": 4, "label": "Saya lebih tertekan jika harus mengerjakan tugas seragam tanpa ada ruang untuk mengekspresikan karakter personal saya." },
+        { "code": "B", "type": 6, "label": "Saya lebih tertekan jika diminta bertindak tanpa arahan jelas dan harus menanggung potensi kegagalan sistem sendirian." }
+      ]
+    },
+    {
+      "id": 14,
+      "options": [
+        { "code": "A", "type": 5, "label": "Saya menghemat energi interaksi sosial agar konsentrasi saya tidak terpecah dalam menyelesaikan riset dan analisis data." },
+        { "code": "B", "type": 7, "label": "Saya antusias membuka jejaring dan mencari kesibukan baru agar hari-hari kerja tidak terasa membosankan dan monoton." }
+      ]
+    },
+    {
+      "id": 15,
+      "options": [
+        { "code": "A", "type": 6, "label": "Sebelum melangkah, saya selalu memetakan potensi risiko terburuk dan menyiapkan skenario penanganan yang matang." },
+        { "code": "B", "type": 8, "label": "Sebelum melangkah, saya selalu memastikan bahwa saya memegang kewenangan penuh dan tidak dapat dikendalikan pihak lain." }
+      ]
+    },
+    {
+      "id": 16,
+      "options": [
+        { "code": "A", "type": 7, "label": "Saya cepat frustrasi jika terjebak dalam proses birokrasi kaku yang membatasi ide-ide segar dan pergerakan fleksibel." },
+        { "code": "B", "type": 9, "label": "Saya cepat frustrasi jika tersedot ke dalam perselisihan antar-divisi yang merusak suasana kekeluargaan dan kedamaian tim." }
+      ]
+    },
+    {
+      "id": 17,
+      "options": [
+        { "code": "A", "type": 8, "label": "Prinsip kerja saya adalah mengambil keputusan secara mandiri, lugas, dan pantang terlihat lemah di depan pihak lawan." },
+        { "code": "B", "type": 1, "label": "Prinsip kerja saya adalah menegakkan kebenaran, memperbaiki ketidaksesuaian, dan patuh pada nilai-nilai moral yang baku." }
+      ]
+    },
+    {
+      "id": 18,
+      "options": [
+        { "code": "A", "type": 9, "label": "Dalam perdebatan tim, saya berperan menyelaraskan berbagai sudut pandang yang berbeda agar tercipta kesepakatan bersama." },
+        { "code": "B", "type": 2, "label": "Dalam perdebatan tim, saya berperan memberikan perhatian pada perasaan tiap anggota agar tidak ada yang merasa tersisih." }
+      ]
+    },
+    {
+      "id": 19,
+      "options": [
+        { "code": "A", "type": 1, "label": "Nilai kepemimpinan tertinggi bagi saya adalah konsistensi pada aturan, keadilan, serta dorongan perbaikan tanpa kompromi." },
+        { "code": "B", "type": 5, "label": "Nilai kepemimpinan tertinggi bagi saya adalah kedalaman wawasan, objektif berbasis data, dan pemikiran rasional yang tenang." }
+      ]
+    },
+    {
+      "id": 20,
+      "options": [
+        { "code": "A", "type": 2, "label": "Hal yang paling melukai saya di tempat kerja adalah jika kepedulian dan bantuan yang saya berikan dianggap tidak berharga." },
+        { "code": "B", "type": 6, "label": "Hal yang paling melukai saya di tempat kerja adalah jika kepercayaan saya dikhianati dan organisasi kehilangan stabilitasnya." }
+      ]
+    },
+    {
+      "id": 21,
+      "options": [
+        { "code": "A", "type": 3, "label": "Saya mudah terpacu ketika diberi target tinggi yang menantang kompetensi dan efisiensi kerja saya secara langsung." },
+        { "code": "B", "type": 7, "label": "Saya mudah terpacu ketika diberi ruang kebebasan untuk menginisiasi proyek-proyek kreatif yang kaya variasi baru." }
+      ]
+    },
+    {
+      "id": 22,
+      "options": [
+        { "code": "A", "type": 4, "label": "Saya menghargai tempat kerja yang mengizinkan saya menuangkan nuansa emosi dan orisinalitas dalam setiap karya." },
+        { "code": "B", "type": 8, "label": "Saya menghargai tempat kerja yang memberi saya wewenang penuh untuk mengeksekusi strategi tanpa intervensi berlebih." }
+      ]
+    },
+    {
+      "id": 23,
+      "options": [
+        { "code": "A", "type": 5, "label": "Saya membatasi tuntutan emosional dari lingkungan kerja demi menjaga objektivitas analisis dan efisiensi pemikiran." },
+        { "code": "B", "type": 9, "label": "Saya mengalah pada tuntutan lingkungan kerja demi menjaga ritme kolaborasi yang lancar dan situasi bebas konflik." }
+      ]
+    },
+    {
+      "id": 24,
+      "options": [
+        { "code": "A", "type": 6, "label": "Kekuatan utama saya adalah kesetiaan pada tim, kecermatan menguji keandalan sistem, serta kepatuhan pada panduan." },
+        { "code": "B", "type": 1, "label": "Kekuatan utama saya adalah kedisiplinan diri, dorongan koreksi kualitas secara terus-menerus, serta integritas etika." }
+      ]
+    },
+    {
+      "id": 25,
+      "options": [
+        { "code": "A", "type": 7, "label": "Saat menghadapi situasi menekan, saya memilih mengalihkan fokus pada peluang-peluang baru yang lebih menjanjikan gairah." },
+        { "code": "B", "type": 2, "label": "Saat menghadapi situasi menekan, saya memilih mendekatkan diri pada rekan kerja dan memberikan dukungan moral yang nyata." }
+      ]
+    },
+    {
+      "id": 26,
+      "options": [
+        { "code": "A", "type": 8, "label": "Saya tidak ragu mengambil risiko berat dan memimpin dari depan ketika tim kehilangan arah saat krisis eksekusi." },
+        { "code": "B", "type": 3, "label": "Saya tidak ragu beradaptasi cepat dan mengubah taktik kerja agar hasil akhir target dapat tercapai tepat waktu." }
+      ]
+    },
+    {
+      "id": 27,
+      "options": [
+        { "code": "A", "type": 9, "label": "Saya cemas jika tindakan agresif yang saya ambil dapat merusak iklim kerja sama dan kenyamanan organisasi." },
+        { "code": "B", "type": 4, "label": "Saya cemas jika karya yang saya hasilkan terasa dangkal, biasa saja, dan tidak memiliki makna mendalam." }
+      ]
+    },
+    {
+      "id": 28,
+      "options": [
+        { "code": "A", "type": 1, "label": "Saya merasa bertanggung jawab secara personal untuk memperbaiki setiap prosedur yang kacau dan tidak efisien." },
+        { "code": "B", "type": 7, "label": "Saya merasa bertanggung jawab secara personal untuk menghidupkan suasana kerja yang menyenangkan dan penuh opsi optimis." }
+      ]
+    },
+    {
+      "id": 29,
+      "options": [
+        { "code": "A", "type": 2, "label": "Motivasi terkuat saya adalah membimbing dan memastikan seluruh anggota tim mendapatkan fasilitas pendukung terbaik." },
+        { "code": "B", "type": 5, "label": "Motivasi terkuat saya adalah mendalami ilmu pengetahuan teknis agar menjadi sumber data terpercaya bagi organisasi." }
+      ]
+    },
+    {
+      "id": 30,
+      "options": [
+        { "code": "A", "type": 3, "label": "Saya terdorong untuk senantiasa menampilkan citra profesional yang unggul dan menjadi percontohan prestasi." },
+        { "code": "B", "type": 6, "label": "Saya terdorong untuk senantiasa menguji tingkat keamanan proyek dan memperkuat loyalitas terhadap kelompok kerja." }
+      ]
+    },
+    {
+      "id": 31,
+      "options": [
+        { "code": "A", "type": 4, "label": "Saya membutuhkan pengakuan atas nilai kedalaman rasa dan keunikan estetika yang saya curahkan dalam pekerjaan." },
+        { "code": "B", "type": 9, "label": "Saya membutuhkan kepastian bahwa alur pengerjaan tugas harian dapat berlangsung damai tanpa kejutan konflik." }
+      ]
+    },
+    {
+      "id": 32,
+      "options": [
+        { "code": "A", "type": 5, "label": "Saya menolak mengambil tindakan yang terburu-buru sebelum memiliki pemahaman fakta dan logika matematika yang lengkap." },
+        { "code": "B", "type": 8, "label": "Saya menolak untuk tunduk pada keputusan orang lain jika keputusan tersebut merugikan wewenang dan otonomi saya." }
+      ]
+    },
+    {
+      "id": 33,
+      "options": [
+        { "code": "A", "type": 6, "label": "Sikap waspada saya muncul karena ingin memastikan seluruh anggota tim terlindungi dari skenario bahaya di masa depan." },
+        { "code": "B", "type": 2, "label": "Sikap peduli saya muncul karena ingin memastikan seluruh anggota tim merasa diterima, dikasihi, dan diayomi." }
+      ]
+    },
+    {
+      "id": 34,
+      "options": [
+        { "code": "A", "type": 7, "label": "Saya menolak keterikatan pada satu metode lama dan selalu mendorong eksperimen gagasan baru yang progresif." },
+        { "code": "B", "type": 3, "label": "Saya menolak cara kerja yang berbelit-belit dan selalu mendorong fokus penuh pada indikator hasil riil." }
+      ]
+    },
+    {
+      "id": 35,
+      "options": [
+        { "code": "A", "type": 8, "label": "Saya bangga dikenal sebagai sosok pemimpin yang tangguh, tidak gampang diintimidasi, dan berani pasang badan." },
+        { "code": "B", "type": 4, "label": "Saya bangga dikenal sebagai sosok profesional yang memiliki kedalaman rasa, kreatif, dan otentik dalam berkarya." }
+      ]
+    },
+    {
+      "id": 36,
+      "options": [
+        { "code": "A", "type": 9, "label": "Saya memilih mendengarkan seluruh aspirasi anggota kelompok secara sabar sebelum memutuskan langkah bersama." },
+        { "code": "B", "type": 6, "label": "Saya memilih mengonfirmasi seluruh instruksi pimpinan secara detail sebelum mendistribusikan tugas kepada tim." }
+      ]
+    }
+  ]
+}
