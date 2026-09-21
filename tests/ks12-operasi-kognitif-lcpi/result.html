@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KS12 APACA Learning Cognitive Process Inventory (LCPI)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean Neutral White Futurism Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #0284c7; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-advanced { background: linear-gradient(135deg, #059669, #10b981); }
+    .badge-proficient { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+    .badge-developing { background: linear-gradient(135deg, #d97706, #fbbf24); }
+    .badge-constrained { background: linear-gradient(135deg, #ea580c, #f97316); }
+    .badge-impaired { background: linear-gradient(135deg, #dc2626, #f87171); }
+
+    .chart-box { 
+      width: 100%; 
+      max-width: 680px; 
+      margin: 24px auto; 
+      padding: 24px; 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.06);
+    }
+
+    .global-score-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .global-score-number {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: #0284c7;
+      line-height: 1;
+      margin: 6px 0;
+      font-family: monospace, sans-serif;
+    }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      padding: 20px;
+      background-color: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .dimensi-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.08);
+    }
+
+    .dimensi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .bottleneck-card {
+      background-color: #ffffff;
+      border: 1px solid #fca5a5;
+      border-left: 6px solid #dc2626;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.04);
+    }
+
+    .list-custom {
+      margin-left: 20px;
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS12_LCPI_Arsitektur_Kognitif.pdf')" class="btn-primary" style="width: auto; background-color: #0284c7;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN ARSITEKTUR PEMROSESAN KOGNITIF (LCPI)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS12 - APACA Learning Cognitive Process Inventory (LCPI)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Indeks CPI Global -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN COGNITIVE PROCESSING INDEX (OVERALL CPI)</div>
+        
+        <div class="global-score-card">
+          <div style="flex: 1; text-align: center; border-right: 2px solid #bae6fd; padding-right: 20px;">
+            <div style="font-size: 0.82rem; color: #0369a1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Cognitive Processing Index</div>
+            <div id="r-cpi-index" class="global-score-number">0%</div>
+            <div id="r-cpi-badge" class="badge-status badge-developing">BERKEMBANG</div>
+          </div>
+          <div style="flex: 2; padding-left: 8px;">
+            <h4 id="r-global-kategori" style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 1.15rem;">-</h4>
+            <p id="r-global-deskripsi" style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin-bottom: 8px;">-</p>
+            <p style="font-size: 0.85rem; color: #475569; margin: 0;"><strong>Dampak Pembelajaran:</strong> <span id="r-global-dampak">-</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Radar Chart Visualisasi 9 Sumbu Kognitif -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI ARSITEKTUR KOGNITIF (9 DIMENSI)</div>
+        <p class="report-paragraph" style="text-align: center; font-size: 0.88rem; color: #64748b; margin-bottom: 12px;">
+          Grafik Radar Futuristik berikut memetakan kekuatan serta kapasitas fungsional operasi mental internal Anda saat menyerap materi:
+        </p>
+        <div class="chart-box">
+          <canvas id="lcpiRadarChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Section III: Matriks Analisis Cognitive Bottleneck -->
+      <div class="report-section">
+        <div class="report-section-title">III. ANALISIS COGNITIVE BOTTLENECK (TITIK HAMBATAN FUNGSIONAL)</div>
+        <div id="bottleneck-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section IV: Tabulasi & Evaluasi Rinci 9 Dimensi Kognitif -->
+      <div class="report-section">
+        <div class="report-section-title">IV. EVALUASI OPERASI MENTAL PER DIMENSI KOGNITIF</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Proses Kognitif</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Kapasitas Kognitif</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+
+        <div id="dimension-cards-container" style="margin-top: 24px;">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section V: Panduan Manajemen Beban Kognitif -->
+      <div class="report-section">
+        <div class="report-section-title">V. REKOMENDASI MANAJEMEN BEBAN KOGNITIF (COGNITIVE LOAD)</div>
+        <div id="cognitive-load-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KS12
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS12");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi via Engine KS12
+        const result = KS12_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS12_Scoring.sendRekapToGAS === "function") {
+          KS12_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Ringkasan Skor Global
+        const cpi = result.cpiIndex || 0;
+        document.getElementById("r-cpi-index").innerText = `${cpi}%`;
+        
+        const norm = result.globalNorm || {};
+        document.getElementById("r-global-kategori").innerText = norm.kategori || "-";
+        document.getElementById("r-global-deskripsi").innerText = norm.deskripsi_kondisi || "-";
+        document.getElementById("r-global-dampak").innerText = norm.dampak_akademik || "-";
+
+        const badgeElem = document.getElementById("r-cpi-badge");
+        badgeElem.innerText = norm.label_status || "BERKEMBANG";
+        badgeElem.className = "badge-status " + (
+          norm.label_status === "OTOMATIS & EFISIEN" ? "badge-advanced" :
+          norm.label_status === "MAHIR" ? "badge-proficient" :
+          norm.label_status === "BERKEMBANG" ? "badge-developing" :
+          norm.label_status === "HAMBATAN KOGNITIF" ? "badge-constrained" : "badge-impaired"
+        );
+
+        // 6. Render Visual Radar Chart Futuristik 9 Dimensi
+        const labels = [];
+        const dataValues = [];
+
+        result.dimensionRows.forEach(row => {
+          labels.push(row.dimensi);
+          dataValues.push(row.percentage);
+        });
+
+        const ctx = document.getElementById('lcpiRadarChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Kapasitas Pemrosesan Kognitif (%)',
+              data: dataValues,
+              backgroundColor: 'rgba(2, 132, 199, 0.18)',
+              borderColor: '#0284c7',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#0369a1',
+              pointBorderColor: '#ffffff',
+              pointHoverBackgroundColor: '#ffffff',
+              pointHoverBorderColor: '#0369a1',
+              pointRadius: 4.5
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#e2e8f0' },
+                grid: { color: '#f1f5f9' },
+                pointLabels: {
+                  font: { size: 11, weight: '700' },
+                  color: '#0f172a'
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { stepSize: 20, display: false }
+              }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+
+        // 7. Render Matriks Cognitive Bottleneck
+        const bottleneckContainer = document.getElementById("bottleneck-container");
+        bottleneckContainer.innerHTML = "";
+
+        if (result.detectedBottlenecks && result.detectedBottlenecks.length > 0) {
+          result.detectedBottlenecks.forEach(b => {
+            bottleneckContainer.innerHTML += `
+              <div class="bottleneck-card">
+                <h4 style="color: #991b1b; margin-top: 0; margin-bottom: 6px; font-size: 1rem;">⚠️ BOTTLENECK DETECTED: ${b.nama_pola}</h4>
+                <p style="font-size: 0.88rem; color: #475569; margin-bottom: 8px; line-height: 1.5;">${b.analisis_klinis}</p>
+                <div style="font-size: 0.85rem; color: #0284c7; background: #f0f9ff; padding: 10px 14px; border-radius: 6px; border: 1px solid #bae6fd;">
+                  <strong>Rekomendasi Penyesuaian Instruksional:</strong> ${b.rekomendasi_instruksional}
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          bottleneckContainer.innerHTML = `
+            <div style="background-color: #ffffff; border: 1px solid #86efac; border-left: 6px solid #16a34a; padding: 16px 20px; border-radius: 8px; color: #166534; font-size: 0.9rem;">
+              ✅ <strong>Sistem Kognitif Seimbang:</strong> Tidak terdeteksi adanya penyumbatan fungsional (*cognitive bottleneck*) yang kritis pada alur pemrosesan otak Anda.
+            </div>
+          `;
+        }
+
+        // 8. Render Tabulasi Tabel Dimensi & Kartu Detail
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        result.dimensionRows.forEach(row => {
+          // Table Row
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+            <td>${row.rs} / 48</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td><span style="font-weight:700; color:${row.percentage >= 61 ? '#059669' : row.percentage >= 41 ? '#d97706' : '#dc2626'};">${row.level.split(' ')[0]}</span></td>
+          `;
+          tbody.appendChild(tr);
+
+          // Card Detail
+          const card = document.createElement("div");
+          card.className = "dimensi-card";
+          card.innerHTML = `
+            <div class="dimensi-header">
+              <div style="font-weight: 800; color: #0f172a; font-size: 1rem;">${row.judul_dimensi}</div>
+              <div style="font-weight:700; font-size:0.88rem; color: #0284c7;">Indeks: ${row.percentage}% (${row.kondisi})</div>
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; margin-bottom: 8px; line-height: 1.5;">${row.operasi_mental}</p>
+            <div style="font-size: 0.85rem; color: #475569; margin-bottom: 8px;"><strong>Dampak Pembelajaran:</strong> ${row.dampak_akademik}</div>
+            <div style="font-size: 0.85rem; color: #0369a1; background: #f0f9ff; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #0284c7;">
+              <strong>Saran Mitigasi Kognitif:</strong> ${row.mitigasi_kognitif}
+            </div>
+          `;
+          cardsContainer.appendChild(card);
+        });
+
+        // 9. Render Rekomendasi Beban Kognitif
+        const cogContainer = document.getElementById("cognitive-load-container");
+        const cogData = rubrikData.rekomendasi_manajemen_beban_kognitif || {};
+
+        let panduanSiswaList = "";
+        (cogData.panduan_siswa || []).forEach(item => {
+          panduanSiswaList += `<li>${item}</li>`;
+        });
+
+        let panduanGuruList = "";
+        (cogData.panduan_guru_ortu || []).forEach(item => {
+          panduanGuruList += `<li>${item}</li>`;
+        });
+
+        cogContainer.innerHTML = `
+          <div style="background-color: #ffffff; border: 1px solid #e2e8f0; padding: 20px 24px; border-radius: 10px;">
+            <p style="font-size: 0.9rem; color: #334155; font-weight: 600; margin-bottom: 12px;">${cogData.prinsip_dasar || ''}</p>
+            
+            <h5 style="color: #0284c7; margin-bottom: 6px; font-size: 0.95rem;">Panduan Belajar untuk Siswa:</h5>
+            <ul class="list-custom" style="margin-bottom: 16px;">
+              ${panduanSiswaList}
+            </ul>
+
+            <h5 style="color: #0369a1; margin-bottom: 6px; font-size: 0.95rem;">Panduan Pendampingan untuk Guru & Orang Tua:</h5>
+            <ul class="list-custom" style="margin-bottom: 0;">
+              ${panduanGuruList}
+            </ul>
+          </div>
+        `;
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS12:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan LCPI.");
+      }
+    });
+  </script>
+</body>
+</html>
