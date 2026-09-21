@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KS11 APACA Learning Strategy Inventory (LSI)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Clean, Bright White Background styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #ffffff; font-weight: 700; color: #0f172a; border-bottom: 2px solid #94a3b8; }
+
+    .badge-status {
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      color: #ffffff;
+      display: inline-block;
+    }
+
+    .badge-optimal { background-color: #059669; }
+    .badge-kompeten { background-color: #0284c7; }
+    .badge-berkembang { background-color: #d97706; }
+    .badge-bantuan { background-color: #f97316; }
+    .badge-kritis { background-color: #dc2626; }
+
+    .chart-box { 
+      width: 100%; 
+      max-width: 650px; 
+      margin: 24px auto; 
+      padding: 24px; 
+      background: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .global-score-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .global-score-number {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #1e293b;
+      line-height: 1;
+      margin: 6px 0;
+    }
+
+    .dimensi-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .dimensi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .bottleneck-card {
+      background-color: #ffffff;
+      border: 1px solid #fca5a5;
+      border-left: 6px solid #dc2626;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 16px;
+    }
+
+    .alert-coaching {
+      background-color: #ffffff;
+      border: 1px solid #fcd34d;
+      border-left: 6px solid #d97706;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    .list-custom {
+      margin-left: 20px;
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KS11_LSI_Learning_Strategy.pdf')" class="btn-primary" style="width: auto; background-color: #059669;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN REGULASI BELAJAR MANDIRI (LSI)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Sekolah / Kampus</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KS11 - APACA Learning Strategy Inventory (LSI)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Ringkasan Indeks Global SRLI -->
+      <div class="report-section">
+        <div class="report-section-title">I. RINGKASAN INDEKS REGULASI BELAJAR MANDIRI (OVERALL SRLI)</div>
+        
+        <div class="global-score-card">
+          <div style="flex: 1; text-align: center; border-right: 2px solid #f1f5f9; padding-right: 20px;">
+            <div style="font-size: 0.85rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Self-Regulated Learning Index</div>
+            <div id="r-srli-index" class="global-score-number">0%</div>
+            <div id="r-srli-badge" class="badge-status badge-berkembang">BERKEMBANG</div>
+          </div>
+          <div style="flex: 2; padding-left: 8px;">
+            <h4 id="r-global-kategori" style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 1.15rem;">-</h4>
+            <p id="r-global-deskripsi" style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin-bottom: 8px;">-</p>
+            <p style="font-size: 0.85rem; color: #475569; margin: 0;"><strong>Dampak Akademik:</strong> <span id="r-global-dampak">-</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Radar Chart Visualisasi 8 Dimensi SRL -->
+      <div class="report-section">
+        <div class="report-section-title">II. VISUALISASI PROFIL GELOMBANG SIKLUS REGULASI (8 DIMENSI)</div>
+        <p class="report-paragraph" style="text-align: center; font-size: 0.88rem; color: #64748b; margin-bottom: 12px;">
+          Grafik Radar berikut menampilkan keseimbangan fungsi eksekutif dan metakognitif Anda dalam memimpin siklus belajar mandiri:
+        </p>
+        <div class="chart-box">
+          <canvas id="srlRadarChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Section III: Matriks Identifikasi Bottleneck (Titik Kebocoran) -->
+      <div class="report-section">
+        <div class="report-section-title">III. MATRIKS IDENTIFIKASI BOTTLENECK (HAMBATAN EKSKUTIF)</div>
+        <div id="bottleneck-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section IV: Tabulasi Profil & Evaluasi 8 Dimensi SRL -->
+      <div class="report-section">
+        <div class="report-section-title">IV. EVALUASI RINCI 8 DIMENSI KAPASITAS REGULASI BELAJAR</div>
+        
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Utama SRL</th>
+              <th>Skor Mentah (RS)</th>
+              <th>Indeks Dimensi (%)</th>
+              <th>Kapasitas Dimensi</th>
+            </tr>
+          </thead>
+          <tbody id="score-table-body">
+            <!-- Render via JavaScript -->
+          </tbody>
+        </table>
+
+        <div id="dimension-cards-container" style="margin-top: 24px;">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Section V: Protokol Coaching Eksekutif & Tindakan Lanjutan -->
+      <div class="report-section">
+        <div class="report-section-title">V. PROTOKOL EXECUTIVE FUNCTION COACHING & REKOMENDASI</div>
+        <div id="coaching-protocol-container">
+          <!-- Render via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KS11
+      const rawAnswers = sessionStorage.getItem("pats_answers_KS11");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi
+        const result = KS11_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KS11_Scoring.sendRekapToGAS === "function") {
+          KS11_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Ringkasan Skor Global
+        const srli = result.srliIndex || 0;
+        document.getElementById("r-srli-index").innerText = `${srli}%`;
+        
+        const norm = result.globalNorm || {};
+        document.getElementById("r-global-kategori").innerText = norm.kategori || "-";
+        document.getElementById("r-global-deskripsi").innerText = norm.deskripsi_kondisi || "-";
+        document.getElementById("r-global-dampak").innerText = norm.dampak_akademik || "-";
+
+        const badgeElem = document.getElementById("r-srli-badge");
+        badgeElem.innerText = norm.label_status || "BERKEMBANG";
+        badgeElem.className = "badge-status " + (
+          norm.label_status === "OPTIMAL" ? "badge-optimal" :
+          norm.label_status === "KOMPETEN" ? "badge-kompeten" :
+          norm.label_status === "BERKEMBANG" ? "badge-berkembang" :
+          norm.label_status === "MEMBUTUHKAN BANTUAN" ? "badge-bantuan" : "badge-kritis"
+        );
+
+        // 6. Render Visual Radar Chart 8 Dimensi
+        const labels = [];
+        const dataValues = [];
+
+        result.dimensionRows.forEach(row => {
+          labels.push(row.dimensi);
+          dataValues.push(row.percentage);
+        });
+
+        const ctx = document.getElementById('srlRadarChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'radar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Kapasitas Regulasi (%)',
+              data: dataValues,
+              backgroundColor: 'rgba(37, 99, 235, 0.18)',
+              borderColor: '#2563eb',
+              borderWidth: 2.5,
+              pointBackgroundColor: '#1d4ed8',
+              pointBorderColor: '#ffffff',
+              pointHoverBackgroundColor: '#ffffff',
+              pointHoverBorderColor: '#1d4ed8',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              r: {
+                angleLines: { color: '#e2e8f0' },
+                grid: { color: '#f1f5f9' },
+                pointLabels: {
+                  font: { size: 11, weight: '700' },
+                  color: '#0f172a'
+                },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { stepSize: 20, display: false }
+              }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+
+        // 7. Render Matriks Identifikasi Bottleneck
+        const bottleneckContainer = document.getElementById("bottleneck-container");
+        bottleneckContainer.innerHTML = "";
+
+        if (result.detectedBottlenecks && result.detectedBottlenecks.length > 0) {
+          result.detectedBottlenecks.forEach(b => {
+            bottleneckContainer.innerHTML += `
+              <div class="bottleneck-card">
+                <h4 style="color: #991b1b; margin-top: 0; margin-bottom: 6px; font-size: 1rem;">⚠️ TERDETEKSI: ${b.nama_pola}</h4>
+                <p style="font-size: 0.88rem; color: #475569; margin-bottom: 8px; line-height: 1.5;">${b.analisis_klinis}</p>
+                <div style="font-size: 0.85rem; color: #0284c7; background: #f0f9ff; padding: 10px 14px; border-radius: 6px;">
+                  <strong>Rekomendasi Khusus Bottleneck:</strong> ${b.rekomendasi_khusus}
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          bottleneckContainer.innerHTML = `
+            <div style="background-color: #ffffff; border: 1px solid #86efac; border-left: 6px solid #16a34a; padding: 16px 20px; border-radius: 8px; color: #166534; font-size: 0.9rem;">
+              ✅ <strong>Siklus Regulasi Harmonis:</strong> Tidak ditemukan ketimpangan kritis (bottleneck masif) pada siklus regulasi belajar Anda. Pertahankan ritme kerja kognitif ini!
+            </div>
+          `;
+        }
+
+        // 8. Render Tabulasi Tabel Dimensi & Kartu Rinci
+        const tbody = document.getElementById("score-table-body");
+        tbody.innerHTML = "";
+
+        const cardsContainer = document.getElementById("dimension-cards-container");
+        cardsContainer.innerHTML = "";
+
+        result.dimensionRows.forEach(row => {
+          // Table Row
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${row.dimensi}</td>
+            <td>${row.rs} / 48</td>
+            <td><strong>${row.percentage}%</strong></td>
+            <td><span style="font-weight:700; color:${row.percentage >= 61 ? '#059669' : row.percentage >= 41 ? '#d97706' : '#dc2626'};">${row.level.split(' ')[0]}</span></td>
+          `;
+          tbody.appendChild(tr);
+
+          // Card Detail
+          const card = document.createElement("div");
+          card.className = "dimensi-card";
+          card.innerHTML = `
+            <div class="dimensi-header">
+              <div style="font-weight: 800; color: #0f172a; font-size: 1rem;">${row.judul_dimensi}</div>
+              <div style="font-weight:700; font-size:0.88rem; color: #2563eb;">Skor: ${row.percentage}% (${row.kondisi})</div>
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; margin-bottom: 8px; line-height: 1.5;">${row.karakteristik}</p>
+            <div style="font-size: 0.85rem; color: #475569; margin-bottom: 8px;"><strong>Dampak Akademik:</strong> ${row.dampak_akademik}</div>
+            <div style="font-size: 0.85rem; color: #0284c7; background: #f8fafc; padding: 10px 14px; border-radius: 6px; border-left: 4px solid #0284c7;">
+              <strong>Saran Taktis Pengembangan:</strong> ${row.rekomendasi_taktis}
+            </div>
+          `;
+          cardsContainer.appendChild(card);
+        });
+
+        // 9. Render Protokol Coaching Eksekutif
+        const coachingContainer = document.getElementById("coaching-protocol-container");
+        coachingContainer.innerHTML = "";
+
+        const flags = result.coachingFlags;
+        const protoData = rubrikData.protokol_coaching_eksekutif || {};
+
+        let alertCount = 0;
+
+        if (flags.needExecutionCoaching) {
+          alertCount++;
+          coachingContainer.innerHTML += `
+            <div class="alert-coaching">
+              <h4 style="color: #b45309; margin-top: 0; margin-bottom: 6px;">🎯 PERLU WADAH PENDAMPINGAN EKSKUSI (EKSEKUSI: ${flags.execPct}%)</h4>
+              <p style="font-size: 0.88rem; color: #78350f; margin: 0; line-height: 1.5;">${protoData.cut_off_execution}</p>
+            </div>
+          `;
+        }
+
+        if (flags.needMonitoringCoaching) {
+          alertCount++;
+          coachingContainer.innerHTML += `
+            <div class="alert-coaching" style="border-color: #60a5fa; border-left-color: #2563eb;">
+              <h4 style="color: #1e40af; margin-top: 0; margin-bottom: 6px;">🔍 PERLU LATIHAN METAKOGNITIF (PEMANTAUAN: ${flags.monPct}%)</h4>
+              <p style="font-size: 0.88rem; color: #1e3a8a; margin: 0; line-height: 1.5;">${protoData.cut_off_monitoring}</p>
+            </div>
+          `;
+        }
+
+        coachingContainer.innerHTML += `
+          <div style="background-color: #ffffff; border: 1px solid #e2e8f0; padding: 18px 22px; border-radius: 8px; margin-top: 12px;">
+            <h4 style="margin-top: 0; margin-bottom: 8px; color: #0f172a; font-size: 0.95rem;">Langkah Umum Intervensi Mandiri & Sekolah:</h4>
+            <ul class="list-custom">
+              <li><strong>Rekomendasi Utama:</strong> ${norm.tindakan_lanjutan || '-'}</li>
+              <li><strong>Persyaratan Kelas Akselerasi / Mandiri:</strong> Wajib memenuhi syarat minimal skor Eksekusi dan Pemantauan Diri ($P_{\\text{dim}} \\ge 65\\%$).</li>
+            </ul>
+          </div>
+        `;
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KS11:", err);
+        alert("Terjadi kesalahan saat memuat file data pendukung laporan LSI.");
+      }
+    });
+  </script>
+</body>
+</html>
