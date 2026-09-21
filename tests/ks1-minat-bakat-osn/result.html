@@ -204,14 +204,14 @@
           <p id="r-iq-desc" style="font-size: 0.88rem; line-height: 1.5; margin: 0; opacity: 0.9;">-</p>
         </div>
         <div class="iq-badge-box">
-          <div id="r-iq-score" class="iq-score-display">128</div>
+          <div id="r-iq-score" class="iq-score-display">0</div>
           <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; color: #e2e8f0;">IQ APACA OTM</div>
         </div>
       </div>
 
-      <!-- Section I: Ringkasan Top 3 Bidang Rekomendasi Utama -->
+      <!-- Section I: Ringkasan 10 Bidang Rekomendasi Utama -->
       <div class="report-section">
-        <div class="report-section-title">I. RINGKASAN TOP 3 BIDANG REKOMENDASI UTAMA</div>
+        <div class="report-section-title">I. RINGKASAN REKOMENDASI 10 BIDANG OSN</div>
         
         <table class="report-table">
           <thead>
@@ -257,12 +257,30 @@
             <!-- Rendered via JS -->
           </tbody>
         </table>
+
+        <!-- Tabel Tambahan: Gatekeeper Kognitif -->
+        <h4 style="margin-top: 24px; color: #4f46e5; font-size: 0.95rem;">Rekapitulasi Kapasitas Kognitif & Gatekeeper OSN</h4>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Bidang OSN</th>
+              <th>Skor Bakat (Pilar I)</th>
+              <th>Kategori Kognitif</th>
+              <th>Status Gatekeeper (≥ 60)</th>
+              <th style="text-align: left;">Implikasi Akademis</th>
+            </tr>
+          </thead>
+          <tbody id="table-pilar1-gatekeeper">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
       </div>
 
       <!-- Section IV: Pilar II - Analisis Minat Lintas Disiplin -->
       <div class="report-section">
         <div class="report-section-title">IV. PILAR II: MINAT KEILMUAN & ASYMMETRIC CROSS-FIELD MAPPING ($S_{Minat}$)</div>
         
+        <!-- Tabel Minat & Implikasi Motivasi -->
         <table class="report-table">
           <thead>
             <tr>
@@ -270,10 +288,26 @@
               <th>Minat Murni Dominan</th>
               <th>Minat Terbobot ($S_{Minat}$)</th>
               <th>Klaster Profil Minat</th>
-              <th style="text-align: left;">Diagnostik Keilmuan</th>
+              <th style="text-align: left;">Implikasi Motivasi Belajar OSN</th>
             </tr>
           </thead>
           <tbody id="pilar2-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+
+        <!-- Tabel Tambahan: Analisis Klaster Diagnostik (Bakat vs Minat) -->
+        <h4 style="margin-top: 24px; color: #0891b2; font-size: 0.95rem;">Analisis Klaster Profil Diagnostik (Bakat vs Minat)</h4>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th style="text-align: left; width: 20%;">Klaster Diagnostik</th>
+              <th style="text-align: left; width: 20%;">Bidang Terkait</th>
+              <th style="text-align: left; width: 30%;">Informasi Diagnostik</th>
+              <th style="text-align: left; width: 30%;">Tindakan Konseling</th>
+            </tr>
+          </thead>
+          <tbody id="table-pilar2-klaster">
             <!-- Rendered via JS -->
           </tbody>
         </table>
@@ -386,6 +420,11 @@
         document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "OTM-2026-REG";
         document.getElementById("r-kelas").innerText = user.kelas_jurusan || user.jenis_kelamin || "X / MIPA";
         document.getElementById("r-instansi").innerText = user.asal_instansi || user.sekolah || "SMA Negeri";
+        
+        if(user.test_info) {
+           document.getElementById("r-psikolog-nama").innerText = user.test_info.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
+           document.getElementById("r-psikolog-sipp").innerText = "SIPP: " + (user.test_info.SIPP || "2026-0819-PSI-01");
+        }
       }
       document.getElementById("r-tanggal").innerText = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -405,42 +444,47 @@
         const p1Data = JSON.parse(sessionStorage.getItem("pats_pilar1_results") || "{}");
         const p2Data = JSON.parse(sessionStorage.getItem("pats_pilar2_results") || "{}");
         const p3Data = JSON.parse(sessionStorage.getItem("pats_pilar3_results") || "{}");
+        const allRanking = evaluation.all_fields_ranking || [];
 
-        // 4. Render Hero IQ APACA OTM
-        const iqRes = evaluation.iq_summary;
-        document.getElementById("r-iq-score").innerText = iqRes.iq_score || 0;
-        document.getElementById("r-iq-category").innerText = iqRes.category || "-";
+        // 4. Render Hero IQ APACA OTM (Perbaikan Bug 0)
+        let estimasiIQ = 0;
+        if (p1Data && p1Data.estimasi_iq) estimasiIQ = p1Data.estimasi_iq;
+        else if (evaluation.iq_summary && evaluation.iq_summary.iq_score) estimasiIQ = evaluation.iq_summary.iq_score;
         
-        const iqCategoryObj = (rubrikData.pilar1_kognitif.norma_iq_apaca_otm.kategori || []).find(k => k.label === iqRes.category);
+        document.getElementById("r-iq-score").innerText = estimasiIQ || "PROSES";
+        
+        let iqCategoryLabel = evaluation.iq_summary ? evaluation.iq_summary.category : "-";
+        document.getElementById("r-iq-category").innerText = iqCategoryLabel;
+        
+        const iqCategoryObj = (rubrikData.pilar1_kognitif?.norma_iq_apaca_otm?.kategori || []).find(k => k.label === iqCategoryLabel);
         document.getElementById("r-iq-desc").innerText = iqCategoryObj ? iqCategoryObj.deskripsi : "Kapasitas kognitif murni dalam menyelesaikan tugas penalaran sains.";
 
-        // 5. Render Top 3 Table
+        // 5. Render 10 Bidang ke Tabel Rekomendasi Utama
         const top3Body = document.getElementById("top-3-table-body");
         top3Body.innerHTML = "";
 
-        const top3List = [evaluation.top_recommendation, evaluation.secondary_recommendation, evaluation.tertiary_recommendation];
-        const rankLabels = ["TOP 1", "TOP 2", "TOP 3"];
-
-        top3List.forEach((rec, idx) => {
-          if (!rec) return;
+        allRanking.forEach((rec, idx) => {
           const tr = document.createElement("tr");
           const gateBadge = rec.gatekeeper_status === "PASS" ? 
             `<span class="badge-status badge-pass">PASS</span>` : 
             `<span class="badge-status badge-locked">LOCKED</span>`;
+            
+          const rankStatus = idx < 3 ? 
+            `<span style="font-weight: 700; color: #059669;">DIREKOMENDASIKAN (TOP ${idx+1})</span>` : 
+            `<span style="font-weight: 500; color: #64748b;">TIDAK PRIORITAS</span>`;
 
           tr.innerHTML = `
-            <td><strong>${rankLabels[idx]}</strong></td>
+            <td><strong>${idx + 1}</strong></td>
             <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
             <td><strong>${rec.skor_total}</strong></td>
             <td>${gateBadge}</td>
             <td>${rec.indeks_intimidasi.toFixed(2)}</td>
-            <td style="font-weight: 700; color: #059669;">${rec.status_rekomendasi}</td>
+            <td>${rankStatus}</td>
           `;
           top3Body.appendChild(tr);
         });
 
         // 6. Render Chart.js Combined 3 Pilar
-        const allRanking = evaluation.all_fields_ranking;
         const chartLabels = allRanking.map(r => r.bidang);
         const p1Scores = allRanking.map(r => r.skor_pilar1_bakat);
         const p2Scores = allRanking.map(r => r.skor_pilar2_minat);
@@ -470,14 +514,14 @@
 
         Object.keys(modScores).forEach(code => {
           const m = modScores[code];
-          const modCfg = rubrikData.pilar1_kognitif.daftar_modul[code] || {};
+          const modCfg = rubrikData.pilar1_kognitif?.daftar_modul?.[code] || {};
           let catLabel = "Sedang";
           if (m.final_score >= 80) catLabel = "Sangat Tinggi";
           else if (m.final_score >= 60) catLabel = "Tinggi";
           else if (m.final_score >= 40) catLabel = "Cukup";
           else catLabel = "Kurang";
 
-          const notesObj = rubrikData.pilar1_kognitif.catatan_analisis_submodul[code] || {};
+          const notesObj = rubrikData.pilar1_kognitif?.catatan_analisis_submodul?.[code] || {};
           const noteText = notesObj[catLabel] || modCfg.fokus || "-";
 
           const tr = document.createElement("tr");
@@ -492,23 +536,114 @@
           p1Body.appendChild(tr);
         });
 
-        // 8. Render Pilar II Table
+        // 7b. Render Tabel Tambahan: Gatekeeper Kognitif OSN
+        const tbodyGatekeeper = document.getElementById("table-pilar1-gatekeeper");
+        tbodyGatekeeper.innerHTML = "";
+        
+        allRanking.forEach(rec => {
+          const skorBakat = rec.skor_pilar1_bakat;
+          const isLolos = skorBakat >= 60;
+          const statusBadge = isLolos
+            ? `<span class="badge-status badge-pass">LOLOS GATEKEEPER</span>`
+            : `<span class="badge-status badge-locked">GUGUR</span>`;
+          
+          let catKognitif = "Kurang";
+          if (skorBakat >= 80) catKognitif = "Sangat Tinggi";
+          else if (skorBakat >= 60) catKognitif = "Tinggi";
+          else if (skorBakat >= 40) catKognitif = "Cukup";
+
+          // Cari data dari rubrik
+          let rubrikBidang = {};
+          if(rubrikData.bidang_osn) {
+             const key = Object.keys(rubrikData.bidang_osn).find(k => rubrikData.bidang_osn[k].nama_bidang === rec.bidang);
+             rubrikBidang = key ? rubrikData.bidang_osn[key] : (rubrikData.bidang_osn[rec.bidang] || {});
+          }
+          const implikasiAkademis = rubrikBidang.implikasi_akademis || "-";
+
+          tbodyGatekeeper.innerHTML += `
+            <tr>
+              <td style="font-weight: 700; text-align: left; color:#1e3a8a;">${rec.bidang}</td>
+              <td><strong>${skorBakat}</strong></td>
+              <td>${catKognitif}</td>
+              <td>${statusBadge}</td>
+              <td style="text-align: left; font-size: 0.82rem;">${implikasiAkademis}</td>
+            </tr>
+          `;
+        });
+
+        // 8. Render Pilar II Table (Tabel Minat)
         const p2Body = document.getElementById("pilar2-table-body");
         p2Body.innerHTML = "";
-        const p2Eval = p2Data.weighted_evaluations || {};
         const p2Pure = p2Data.pure_scores || {};
+        
+        // 8b. Persiapan pengelompokan Klaster
+        const klasterGroup = {
+          "Genuine Interest": [],
+          "Surface Fan": [],
+          "Cross-Disciplinary Synergy": []
+        };
 
-        Object.keys(p2Eval).forEach(field => {
-          const ev = p2Eval[field];
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td style="text-align: left; font-weight: 600;">${field}</td>
-            <td>${p2Pure["MIN_" + field] || 70} pts</td>
-            <td><strong>${ev.score}</strong></td>
-            <td><span class="tag-pill">${ev.category}</span></td>
-            <td style="text-align: left; font-size: 0.82rem;">${ev.description}</td>
-          `;
-          p2Body.appendChild(tr);
+        allRanking.forEach(rec => {
+           const skorBakat = rec.skor_pilar1_bakat;
+           const skorMinat = rec.skor_pilar2_minat;
+           
+           let catMinat = "Rendah";
+           if (skorMinat >= 80) catMinat = "Sangat Tinggi";
+           else if (skorMinat >= 60) catMinat = "Tinggi";
+           else if (skorMinat >= 40) catMinat = "Sedang";
+           
+           let rubrikBidang = {};
+           if(rubrikData.bidang_osn) {
+              const key = Object.keys(rubrikData.bidang_osn).find(k => rubrikData.bidang_osn[k].nama_bidang === rec.bidang);
+              rubrikBidang = key ? rubrikData.bidang_osn[key] : (rubrikData.bidang_osn[rec.bidang] || {});
+           }
+           const implikasiMotivasi = rubrikBidang.implikasi_motivasi || "-";
+           const pureScore = p2Pure["MIN_" + rec.bidang] || p2Pure[rec.bidang] || 70;
+
+           p2Body.innerHTML += `
+            <tr>
+              <td style="text-align: left; font-weight: 600;">${rec.bidang}</td>
+              <td>${pureScore} pts</td>
+              <td><strong>${skorMinat}</strong></td>
+              <td><span class="tag-pill">${catMinat}</span></td>
+              <td style="text-align: left; font-size: 0.82rem;">${implikasiMotivasi}</td>
+            </tr>
+           `;
+
+           // Tentukan Klaster
+           let klaster = "";
+           if (skorBakat >= 60 && skorMinat >= 60) klaster = "Genuine Interest";
+           else if (skorBakat < 60 && skorMinat >= 60) klaster = "Surface Fan";
+           else if (skorBakat >= 60 && skorMinat < 60) klaster = "Cross-Disciplinary Synergy";
+           else klaster = "Lainnya";
+           
+           if(klasterGroup[klaster]) klasterGroup[klaster].push(rec.bidang);
+        });
+
+        // 8c. Render Tabel Analisis Klaster Diagnostik
+        const tbodyKlaster = document.getElementById("table-pilar2-klaster");
+        tbodyKlaster.innerHTML = "";
+        const dataKlasterRubrik = rubrikData.klaster_diagnostik || {};
+        const urutanKlaster = ["Genuine Interest", "Surface Fan", "Cross-Disciplinary Synergy"];
+
+        urutanKlaster.forEach(namaKlaster => {
+          const bidangTerkait = klasterGroup[namaKlaster];
+          if (bidangTerkait && bidangTerkait.length > 0) {
+            const infoKlaster = dataKlasterRubrik[namaKlaster] || {};
+            const teksDiag = infoKlaster.diagnostik || infoKlaster.informasi_diagnostik || "-";
+            const teksKons = infoKlaster.konseling || infoKlaster.tindakan_konseling || "-";
+            
+            tbodyKlaster.innerHTML += `
+              <tr>
+                <td style="font-weight: 800; color: #0f172a; text-align: left;">${namaKlaster}</td>
+                <td style="text-align: left;">
+                  ${bidangTerkait.map(b => `<span class="tag-pill" style="margin-bottom:4px;">${b}</span>`).join(" ")}
+                </td>
+                <td style="text-align: left; font-size: 0.82rem;">${teksDiag}</td>
+                <td style="text-align: left; font-size: 0.82rem;">${teksKons}</td>
+              </tr>
+            `;
+          }
         });
 
         // 9. Render Pilar III Table
@@ -516,21 +651,24 @@
         p3Body.innerHTML = "";
         const p3Eval = p3Data.field_results || {};
 
-        Object.keys(p3Eval).forEach(code => {
-          const res = p3Eval[code];
-          const tr = document.createElement("tr");
-          const warnBadge = res.warning_tag ? 
-            `<span class="badge-status badge-warning">[WARNING: RISK OF BURNOUT]</span>` : 
+        allRanking.forEach(rec => {
+          // Cari result Pilar 3 yang sesuai dengan namanya
+          const resKey = Object.keys(p3Eval).find(k => p3Eval[k].field_name === rec.bidang || k === rec.bidang);
+          const res = resKey ? p3Eval[resKey] : { score_pilar3: rec.skor_pilar3_persona, intimidation_index: rec.indeks_intimidasi, evaluasi: "-" };
+          
+          const warnBadge = (res.warning_tag || res.intimidation_index > 3) ? 
+            `<span class="badge-status badge-warning">[WARNING: BURNOUT]</span>` : 
             `<span class="badge-status badge-pass">FIT</span>`;
 
-          tr.innerHTML = `
-            <td style="text-align: left; font-weight: 600;">${res.field_name}</td>
-            <td><strong>${res.score_pilar3}</strong></td>
-            <td>${res.intimidation_index.toFixed(2)}</td>
-            <td>${warnBadge}</td>
-            <td style="text-align: left; font-size: 0.82rem;">${res.evaluasi}</td>
+          p3Body.innerHTML += `
+            <tr>
+              <td style="text-align: left; font-weight: 600;">${rec.bidang}</td>
+              <td><strong>${res.score_pilar3}</strong></td>
+              <td>${res.intimidation_index.toFixed(2)}</td>
+              <td>${warnBadge}</td>
+              <td style="text-align: left; font-size: 0.82rem;">${res.evaluasi}</td>
+            </tr>
           `;
-          p3Body.appendChild(tr);
         });
 
         // 10. Render Kuadran & Career Projections
@@ -541,9 +679,13 @@
         const careerContainer = document.getElementById("career-projection-container");
         careerContainer.innerHTML = "";
 
+        const top3List = allRanking.slice(0, 3);
         top3List.forEach(rec => {
           if (!rec) return;
-          const proj = rubrikData.proyeksi_karir[rec.bidang] || { kuliah: [], karir: [] };
+          // Cari key bidang_osn dari rubrik
+          const bKey = Object.keys(rubrikData.bidang_osn || {}).find(k => rubrikData.bidang_osn[k].nama_bidang === rec.bidang) || rec.bidang;
+          const proj = rubrikData.proyeksi_karir ? (rubrikData.proyeksi_karir[bKey] || rubrikData.proyeksi_karir[rec.bidang] || { kuliah: [], karir: [] }) : { kuliah: [], karir: [] };
+          
           const box = document.createElement("div");
           box.className = "info-box";
           box.innerHTML = `
@@ -561,7 +703,7 @@
 
       } catch (err) {
         console.error("Gagal memuat data Laporan OTM:", err);
-        alert("Terjadi kesalahan saat menyusun berkas Laporan OTM.");
+        alert("Terjadi kesalahan saat menyusun berkas Laporan OTM. Pastikan Anda telah menyelesaikan ketiga pilar.");
       }
     });
   </script>
