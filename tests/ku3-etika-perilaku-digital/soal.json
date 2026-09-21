@@ -1,0 +1,471 @@
+{
+  "test_info": {
+    "kode": "KU3",
+    "nama_resmi": "APACA Youth Digital Behavior & Literacy Inventory (ADLIT-Y)",
+    "nama_singkat": "Youth Digital Behavior Literacy Test",
+    "versi": "Versi Youth 1.0 / 2026",
+    "token_ujian": "ADLIT2026",
+    "token_master": "PatsTestingKU3",
+    "durasi_menit": 25,
+    "psikolog_pj": "Tim Asesmen APACA",
+    "SIPP": "-"
+  },
+  "options_likert": [
+    { "label": "Sangat Tidak Sesuai", "value": 1 },
+    { "label": "Tidak Sesuai", "value": 2 },
+    { "label": "Sesuai", "value": 3 },
+    { "label": "Sangat Sesuai", "value": 4 }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "type": "case_study",
+      "dimensi": "Etika & Etiket Digital",
+      "sub_dimensi": "Kesantunan Berbahasa",
+      "pertanyaan": "Saat bermain game online bersama teman-teman, timmu mengalami kekalahan. Salah satu temanmu emosi dan mulai mengetik kata-kata kasar di kolom chat room. Apa yang sebaiknya kamu lakukan?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengingatkannya dengan sopan agar tetap tenang dan tidak mengetik kata kasar di chat room.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Mendiamkan saja dan memilih berpura-pura tidak membaca obrolan tersebut.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Ikut meluapkan emosi dan mengetik kata-kata ejekan kepada tim lawan.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "case_study",
+      "dimensi": "Etika & Etiket Digital",
+      "sub_dimensi": "Respons Anti-Cyberbullying",
+      "pertanyaan": "Di grup chat WhatsApp kelas, ada salah satu teman yang mengunggah foto konyol temanmu yang lain tanpa izin, lalu menjadikannya bahan lelucon hingga teman tersebut merasa sedih. Sikapmu adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengirimkan pesan pribadi untuk menyemangati teman yang disedihkan, serta meminta pembuat lelucon menghapus foto tersebut dari grup.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Tidak ikut tertawa dan memilih langsung keluar dari obrolan grup kelas.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Ikut tertawa dan membagikan ulang foto lucu tersebut ke grup obrolan lainnya.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "case_study",
+      "dimensi": "Etika & Etiket Digital",
+      "sub_dimensi": "Izin Berbagi Konten",
+      "pertanyaan": "Kamu mengambil foto bersama teman-teman saat kegiatan piknik sekolah dan ingin mengunggahnya ke akun media sosial milikmu. Langkah yang paling tepat adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Meminta izin terlebih dahulu kepada teman-teman yang ada di foto sebelum mengunggahnya ke media sosial.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Langsung mengunggahnya, tetapi akan menghapusnya jika nanti ada teman yang merasa tidak suka.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Mengunggah foto tersebut langsung tanpa meminta izin karena menganggap itu foto bersama.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "case_study",
+      "dimensi": "Etika & Etiket Digital",
+      "sub_dimensi": "Penghargaan Karya Orang Lain",
+      "pertanyaan": "Kamu menemukan gambar ilustrasi yang sangat bagus karya orang lain di internet untuk dijadikan sampul tugas sekolahmu. Tindakan yang benar adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Menggunakan gambar tersebut sambil menyantumkan nama pembuat atau sumber asli gambar secara jelas.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Mengedit sedikit warna gambar tersebut sebelum menggunakannya agar terlihat berbeda.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Mengunduh dan mengakui gambar tersebut sebagai buatanmu sendiri di depan guru.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "case_study",
+      "dimensi": "Etika & Etiket Digital",
+      "sub_dimensi": "Kesantunan Kolom Komentar",
+      "pertanyaan": "Kamu melihat postingan video teman sekolahmu di TikTok/YouTube yang menurutmu penampilannya kurang bagus. Apa yang kamu lakukan?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Memberikan saran yang membangun secara pribadi melalui pesan singkat, atau memilih diam jika tidak bisa berkata baik.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Mengirimkan emoji tertawa di kolom komentar publik video tersebut.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Menuliskan komentar ejekan agar dia merasa malu dan tidak mengunggah video lagi.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "case_study",
+      "dimensi": "Berpikir Kritis Informasi",
+      "sub_dimensi": "Verifikasi Berita Berantai",
+      "pertanyaan": "Kamu menerima pesan berantai di grup keluarga yang berisikan kabar bahwa 'sekolah akan diliburkan selama sebulan mulai besok'. Langkah awal yang kamu lakukan adalah:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Memeriksa kebenaran kabar tersebut ke pengumuman resmi sekolah atau menanyakannya langsung kepada wali kelas.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Menunggu teman lain membicarakan kabar tersebut sebelum mempercayainya.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Langsung membagikan kabar gembira tersebut ke semua grup teman sekolahmu.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "case_study",
+      "dimensi": "Berpikir Kritis Informasi",
+      "sub_dimensi": "Kewaspadaan Penipuan / Hoaks",
+      "pertanyaan": "Di media sosial, muncul iklan yang menyatakan kamu mendapatkan hadiah berupa gawai (smartphone) gratis hanya dengan mengeklik tautan (link) dan mengisi data pribadi. Sikapmu:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Mengabaikan dan menutup tautan tersebut karena sadar itu adalah bentuk penipuan (phishing).",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Menanyakan terlebih dahulu kepada teman apakah mereka pernah mencoba mengeklik tautan itu.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Segera mengeklik tautan dan memasukkan data pribadi agar tidak ketinggalan hadiah.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "case_study",
+      "dimensi": "Berpikir Kritis Informasi",
+      "sub_dimensi": "Analisis Sumber Informasi",
+      "pertanyaan": "Kamu membaca berita heboh di situs web yang nama websitunya aneh dan banyak tampilkan iklan vulgar. Berita tersebut mengklaim ada penyanyi favoritmu yang ditangkap polisi. Bagaimana tindakanmu?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Ragu pada berita tersebut dan mencari informasi pembanding di media berita tepercaya atau akun resmi penyanyi.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Mempercayainya sedikit dan menceritakannya ke teman sebagai gosip.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Langsung memercayai berita tersebut dan marah-marah di media sosial.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "case_study",
+      "dimensi": "Berpikir Kritis Informasi",
+      "sub_dimensi": "Kewaspadaan Umpan Klik (Clickbait)",
+      "pertanyaan": "Judul sebuah video di YouTube sangat heboh dan membuat penasaran, tetapi saat ditonton isinya sama sekali berbeda dengan judulnya. Apa yang kamu pahami dari kejadian ini?",
+      "options": [
+        {
+          "code": "A",
+          "label": "Memahami bahwa pembuat video sengaja membuat judul umpan (clickbait) demi mendapatkan banyak penonton.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Menganggap pembuat video hanya salah mengetik judul.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Tetap membagikan video tersebut ke teman-teman karena judulnya sangat menarik.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "case_study",
+      "dimensi": "Berpikir Kritis Informasi",
+      "sub_dimensi": "Potongan Video Adu Domba",
+      "pertanyaan": "Kamu melihat potongan video pendek berisi rekaman pembicaraan gurumu yang terkesan marah pada murid. Video tersebut ternyata sudah dipotong-potong dari durasi aslinya. Sikapmu:",
+      "options": [
+        {
+          "code": "A",
+          "label": "Tidak ikut menyebarkan video tersebut karena tahu video potongan sering kali menyesatkan konteks asli.",
+          "point": 4
+        },
+        {
+          "code": "B",
+          "label": "Menontonnya saja tanpa ikut berkomentar apa-apa.",
+          "point": 2
+        },
+        {
+          "code": "C",
+          "label": "Menyebarkan potongan video tersebut ke grup sekolah agar guru mendapat teguran.",
+          "point": 1
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Perlindungan Kata Sandi",
+      "pertanyaan": "Saya selalu menjaga kerahasiaan kata sandi (password) akun gawai saya dan tidak memberitahukannya kepada siapa pun, termasuk teman dekat."
+    },
+    {
+      "id": 12,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Privasi Data Diri",
+      "pertanyaan": "Saya meminta izin kepada orang tua sebelum mengunduh atau memasang aplikasi dan game baru di gawai."
+    },
+    {
+      "id": 13,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Privasi Data Diri",
+      "pertanyaan": "Saya tidak pernah mencantumkan alamat rumah lengkap, nomor telepon pribadi, atau nama sekolah di profil media sosial saya."
+    },
+    {
+      "id": 14,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Kewaspadaan Orang Asing",
+      "pertanyaan": "Saya menolak atau memblokir permintaan pertemanan dari orang tak dikenal di media sosial atau game online."
+    },
+    {
+      "id": 15,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Keamanan Perangkat",
+      "pertanyaan": "Saya mengunci gawai saya menggunakan kata sandi, PIN, atau pola agar tidak mudah dibuka oleh orang lain."
+    },
+    {
+      "id": 16,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Proteksi Konten",
+      "pertanyaan": "Saya segera menutup dan melaporkan iklan atau situs web yang muncul tiba-tiba jika menampilkan gambar/video yang tidak pantas."
+    },
+    {
+      "id": 17,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Kewaspadaan Penipuan",
+      "pertanyaan": "Saya tidak pernah mengeklik tautan (link) asing dari pesan tidak dikenal yang menjanjikan hadiah uang atau diamond game gratis."
+    },
+    {
+      "id": 18,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Pengaturan Privasi Akun",
+      "pertanyaan": "Saya memastikan pengaturan akun media sosial saya dalam mode privat (private account) agar hanya teman terdekat yang bisa melihat postingan saya."
+    },
+    {
+      "id": 19,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Privasi Lokasi",
+      "pertanyaan": "Saya selalu mematikan fitur bagikan lokasi langsung (live location) saat mengunggah foto atau video di internet."
+    },
+    {
+      "id": 20,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Kewaspadaan Orang Asing",
+      "pertanyaan": "Saya menolak ajakan untuk bertemu secara langsung di dunia nyata dari orang yang hanya saya kenal lewat internet."
+    },
+    {
+      "id": 21,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Keamanan Jaringan",
+      "pertanyaan": "Saya berhati-hati dan menanyakan keamanannya terlebih dahulu sebelum menyambungkan gawai ke koneksi Wi-Fi umum gratis."
+    },
+    {
+      "id": 22,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Keamanan Perangkat",
+      "pertanyaan": "Saya selalu keluar (log out) dari akun pribadi setelah selesai menggunakan komputer sekolah atau komputer milik orang lain."
+    },
+    {
+      "id": 23,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Proteksi Diri",
+      "pertanyaan": "Saya segera memberi tahu orang tua atau guru jika ada orang tidak dikenal yang mengirimkan pesan mencurigakan atau mengganggu."
+    },
+    {
+      "id": 24,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Privasi Data Diri",
+      "pertanyaan": "Saya tidak pernah mengunggah foto dokumen pribadi seperti kartu siswa, kartu keluarga, atau rapor ke media sosial."
+    },
+    {
+      "id": 25,
+      "type": "likert",
+      "dimensi": "Keamanan & Privasi",
+      "sub_dimensi": "Keamanan Perangkat",
+      "pertanyaan": "Saya memperbarui sistem dan aplikasi di gawai saya agar terhindar dari ancaman virus atau peretasan."
+    },
+    {
+      "id": 26,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Dorongan Kompulsif",
+      "pertanyaan": "Saya merasa gelisah dan bingung jika dalam sehari tidak memegang atau memeriksa gawai saya."
+    },
+    {
+      "id": 27,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Kehilangan Kontrol Waktu",
+      "pertanyaan": "Saya sering lupa waktu dan bermain gawai hingga larut malam melebihi jam tidur biasa."
+    },
+    {
+      "id": 28,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Reaksi Emosional Pembatasan",
+      "pertanyaan": "Saya merasa sangat marah atau mengamuk ketika orang tua mengambil atau membatasi waktu main gawai saya."
+    },
+    {
+      "id": 29,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Gangguan Belajar",
+      "pertanyaan": "Saya sering menunda-nunda mengerjakan tugas sekolah demi melanjutkan bermain game atau menonton video di gawai."
+    },
+    {
+      "id": 30,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Preokupasi Mental",
+      "pertanyaan": "Pikiran saya selalu tertuju pada game atau media sosial bahkan saat sedang belajar di kelas atau beribadah."
+    },
+    {
+      "id": 31,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Isolasi Sosial",
+      "pertanyaan": "Saya lebih suka mengurung diri di kamar sambil bermain gawai daripada mengobrol atau bermain bersama keluarga dan teman."
+    },
+    {
+      "id": 32,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Gangguan Fisik & Tidur",
+      "pertanyaan": "Saya sering merasa lelah dan mengantuk saat sekolah di pagi hari karena kurang tidur akibat menggunakan gawai."
+    },
+    {
+      "id": 33,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Penggunaan Tersembunyi",
+      "pertanyaan": "Saya sering diam-diam bermain gawai di bawah selimut atau saat orang tua sudah tertidur."
+    },
+    {
+      "id": 34,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Gangguan Performa Akademik",
+      "pertanyaan": "Nilai ujian atau prestasi sekolah saya mengalami penurunan akibat terlalu banyak menghabiskan waktu bermain gawai."
+    },
+    {
+      "id": 35,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Kehilangan Minat Aktivitas Lain",
+      "pertanyaan": "Saya merasa cepat bosan dan tidak bersemangat jika diajak melakukan kegiatan tanpa membawa gawai."
+    },
+    {
+      "id": 36,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Keterikatan Saat Makan",
+      "pertanyaan": "Saya tidak bisa makan dengan tenang jika tidak sambil menatap layar gawai atau menonton video."
+    },
+    {
+      "id": 37,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Kesulitan Menghentikan Sesi",
+      "pertanyaan": "Saya selalu berjanji 'main 5 menit lagi', tetapi kenyataannya tetap bermain gawai hingga berjam-jam kemudian."
+    },
+    {
+      "id": 38,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Ketergantungan Internet",
+      "pertanyaan": "Saya merasa hampa dan tidak tahu harus berbuat apa saat koneksi internet terputus atau mati lampu."
+    },
+    {
+      "id": 39,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Pengabaian Komunikasi Langsung",
+      "pertanyaan": "Saya sering tidak mendengar panggilan orang tua atau orang lain karena terlalu fokus menatap layar gawai."
+    },
+    {
+      "id": 40,
+      "type": "likert",
+      "dimensi": "Screening Adiksi Screen-Time",
+      "sub_dimensi": "Ketidakjujuran Durasi",
+      "pertanyaan": "Saya pernah berbohong kepada orang tua mengenai durasi waktu yang sudah saya gunakan untuk bermain gawai."
+    }
+  ]
+}
