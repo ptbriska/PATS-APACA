@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Hasil Asesmen - KU8 APACA ALSA (Leadership Profile)</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/print-pdf.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    /* Modern Futurism Clean White Styling */
+    body { 
+      background-color: #ffffff !important; 
+      color: #0f172a; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .report-paper { 
+      background-color: #ffffff; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 40px; 
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* HERO LEADERSHIP PROFILE CARD */
+    .alsa-hero-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 32px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 20px 0 28px 0;
+      box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.3);
+      border-left: 6px solid #0284c7;
+    }
+
+    @media (max-width: 768px) {
+      .alsa-hero-card { flex-direction: column; text-align: center; }
+    }
+
+    .alsa-score-display {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      line-height: 1;
+      font-family: monospace, sans-serif;
+      color: #38bdf8;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* CHARTS CONTAINER GRID */
+    .chart-grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 900px) {
+      .chart-grid-two { grid-template-columns: 1fr; }
+    }
+
+    .chart-box-alsa {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .info-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+
+    /* SCORE TABULATION TABLE */
+    .score-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+    .score-table th, .score-table td { border: 1px solid #cbd5e1; padding: 10px 12px; text-align: center; }
+    .score-table th { background-color: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #0284c7; }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .pill-role-model { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .pill-proficient { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+    .pill-capable { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+    .pill-developing { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <div class="no-print" style="background-color: #0f172a; border-bottom: 1px solid #334155; padding: 16px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../../index.html" class="btn-primary" style="width: auto; background-color: #475569; text-decoration: none;">&larr; Kembali ke Portal</a>
+      <button onclick="PATS_PDF.exportToPDF('report-paper', 'Laporan_KU8_ALSA_Leadership_Profil.pdf')" class="btn-primary" style="width: auto; background-color: #0284c7;">Cetak Laporan Lengkap</button>
+    </div>
+  </div>
+
+  <main class="container" style="padding: 40px 0;">
+    <div id="report-paper" class="report-paper">
+      
+      <!-- Kop Laporan Resmi -->
+      <div class="report-header">
+        <img id="kop-logo" class="instansi-logo" alt="Logo Instansi">
+        <div class="instansi-info">
+          <h2 id="kop-instansi-nama">APACA CONSULTING</h2>
+          <div id="kop-instansi-sub" class="sub-title">Psychometric & Educational Assessment Center</div>
+          <div id="kop-instansi-alamat" class="address">Makassar, Sulawesi Selatan</div>
+        </div>
+      </div>
+
+      <!-- Judul Laporan -->
+      <div class="report-title">
+        <h3 id="r-judul-tes">LAPORAN HASIL ASESMEN LEADERSHIP & SOFT SKILLS ASSESSMENT (ALSA)</h3>
+      </div>
+
+      <!-- Biodata Peserta -->
+      <table class="report-biodata">
+        <tr>
+          <td class="label">Nama Peserta / Siswa</td>
+          <td>: <span id="r-nama">-</span></td>
+          <td class="label">Kode Akses / Sesi</td>
+          <td>: <span id="r-kode">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Kelamin</td>
+          <td>: <span id="r-jk">-</span></td>
+          <td class="label">Asal Instansi</td>
+          <td>: <span id="r-instansi">-</span></td>
+        </tr>
+        <tr>
+          <td class="label">Wilayah Domisili</td>
+          <td>: <span id="r-daerah">-</span></td>
+          <td class="label">Instrumen Diagnostik</td>
+          <td>: <span id="r-instrumen">KU8 - APACA Leadership & Soft Skills Assessment (ALSA)</span></td>
+        </tr>
+      </table>
+
+      <!-- Section I: Hero Leadership Card -->
+      <div class="report-section">
+        <div class="alsa-hero-card">
+          <div style="flex: 1;">
+            <div style="font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#38bdf8; margin-bottom:4px;">Indeks Kesiapan Kepemimpinan (Leadership Readiness Index)</div>
+            <h2 id="r-hero-title" style="margin: 0 0 8px 0; font-size: 1.5rem; color: #ffffff;">Proficient (Tinggi)</h2>
+            <p id="r-hero-desc" style="font-size: 0.88rem; line-height: 1.6; margin: 0; opacity: 0.9;">-</p>
+          </div>
+          <div style="text-align: center; min-width: 150px;">
+            <div id="r-hero-score" class="alsa-score-display">162</div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; opacity: 0.8;">Skor Kumulatif (T: <span id="r-hero-tscore">58</span>)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section II: Visualisasi Grafik Profil Kompetensi -->
+      <div class="report-section">
+        <div class="report-section-title">I. VISUALISASI PROFIL 5 DIMENSI KEPEMIMPINAN</div>
+        <div class="chart-grid-two">
+          <div class="chart-box-alsa">
+            <h5 style="margin:0 0 12px 0; text-align:center; color:#0284c7; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px;">Peta Radar Keseimbangan Manajerial</h5>
+            <canvas id="alsaRadarChart"></canvas>
+          </div>
+          <div class="chart-box-alsa">
+            <h5 style="margin:0 0 12px 0; text-align:center; color:#0f172a; font-size:0.88rem; text-transform:uppercase; letter-spacing:0.5px;">Grafik Batang Skor Mentah vs Standar Baku</h5>
+            <canvas id="alsaBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section III: Tabulasi Skor 5 Dimensi Utama -->
+      <div class="report-section">
+        <div class="report-section-title">II. TABULASI SKOR 5 DIMENSI KEPEMIMPINAN TAKTIS</div>
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Dimensi Kompetensi ALSA</th>
+              <th>Skor Mentah (10-40)</th>
+              <th>T-Score Standard</th>
+              <th>Persentase Capaian</th>
+              <th>Kategori Kesiapan</th>
+            </tr>
+          </thead>
+          <tbody id="alsa-table-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section IV: Rincian Analisis Diagnostik per Dimensi -->
+      <div class="report-section">
+        <div class="report-section-title">III. ANALISIS DIAGNOSTIK & DESKRIPSI PERILAKU TAKTIS</div>
+        
+        <div class="info-box" style="border-left: 5px solid #0284c7;">
+          <h5 style="margin:0 0 6px 0; color:#0284c7; font-size:0.95rem;">🎯 Decision Making (Pengambilan Keputusan)</h5>
+          <p id="r-desc-dm" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#0369a1; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-dm" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #16a34a;">
+          <h5 style="margin:0 0 6px 0; color:#16a34a; font-size:0.95rem;">⏱️ Time Management (Manajemen Waktu & Prioritas)</h5>
+          <p id="r-desc-tm" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#15803d; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-tm" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #7c3aed;">
+          <h5 style="margin:0 0 6px 0; color:#7c3aed; font-size:0.95rem;">🤝 Teamwork (Kerja Sama & Sinergi Tim)</h5>
+          <p id="r-desc-tw" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#6d28d9; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-tw" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #ea580c;">
+          <h5 style="margin:0 0 6px 0; color:#ea580c; font-size:0.95rem;">👑 Situational Leadership (Kepemimpinan Situasional)</h5>
+          <p id="r-desc-sl" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#c2410c; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-sl" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+
+        <div class="info-box" style="border-left: 5px solid #dc2626;">
+          <h5 style="margin:0 0 6px 0; color:#dc2626; font-size:0.95rem;">🕊️ Conflict Resolution (Resolusi Konflik)</h5>
+          <p id="r-desc-cr" style="font-size:0.88rem; color:#334155; margin:0 0 6px 0; line-height:1.5;">-</p>
+          <div style="font-size:0.82rem; color:#b91c1c; font-weight:600;">💡 Saran Rekomendasi: <span id="r-rec-cr" style="font-weight:400; color:#475569;">-</span></div>
+        </div>
+      </div>
+
+      <!-- Section V: Panduan Aplikasi Rujukan Lembaga -->
+      <div class="report-section">
+        <div class="report-section-title">IV. REKOMENDASI PENGGUNAAN RUJUKAN MANAJERIAL</div>
+        <div class="info-box" style="background:#f8fafc; border-color:#cbd5e1;">
+          <h5 style="margin:0 0 8px 0; color:#0f172a; font-size:0.92rem;">📌 Petunjuk Rekomendasi Posisi Organisasi:</h5>
+          <p id="r-panduan-lembaga" style="font-size:0.88rem; color:#334155; margin:0; line-height:1.6;">-</p>
+        </div>
+      </div>
+
+      <!-- Tanda Tangan Psikolog Penanggung Jawab -->
+      <div class="report-footer-sign">
+        <div class="sign-box">
+          <p>Psikolog Penanggung Jawab,</p>
+          <div class="sign-space"></div>
+          <p id="r-psikolog-nama" style="font-weight: 700; text-decoration: underline;">Dra. Fitriani Rahayu, M.Psi., Psikolog</p>
+          <p id="r-psikolog-sipp" style="font-size: 0.75rem; color: #64748b;">SIPP: 2026-0819-PSI-01</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../../config.js"></script>
+  <script src="../../assets/js/auth.js"></script>
+  <script src="../../assets/js/pdf-exporter.js"></script>
+  <script src="scoring.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Kop Laporan
+      if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
+        const org = PATS_CONFIG.organization;
+        document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
+        document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
+        document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+        const logoElem = document.getElementById("kop-logo");
+        logoElem.src = org.logoUrl || "../../logo.png";
+        logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+      }
+
+      // 2. Data Peserta
+      const user = PATS_AUTH.getSession();
+      if (user) {
+        document.getElementById("r-nama").innerText = user.nama_lengkap || "-";
+        document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "-";
+        document.getElementById("r-jk").innerText = user.jenis_kelamin || "-";
+        document.getElementById("r-instansi").innerText = user.asal_instansi || "Umum";
+        
+        let daerahText = "Umum";
+        if (user.asal_kabupaten || user.asal_provinsi) {
+          daerahText = `${user.asal_kabupaten || ''}, ${user.asal_provinsi || ''}`.replace(/^,\s*|\s*,\s*$/g, '');
+        } else if (user.asal_daerah) {
+          daerahText = user.asal_daerah;
+        }
+        document.getElementById("r-daerah").innerText = daerahText;
+      }
+
+      // 3. Muat Data Jawaban, Soal, dan Rubrik KU8
+      const rawAnswers = sessionStorage.getItem("pats_answers_KU8");
+      const answers = rawAnswers ? JSON.parse(rawAnswers) : {};
+
+      try {
+        const [resSoal, resRubrik] = await Promise.all([
+          fetch("soal.json"),
+          fetch("rubrik.json")
+        ]);
+
+        const soalData = await resSoal.json();
+        const rubrikData = await resRubrik.json();
+
+        // 4. Hitung Evaluasi Engine KU8
+        const result = KU8_Scoring.evaluate(answers, soalData, rubrikData);
+
+        if (result.isInvalid) {
+          alert(result.message);
+          return;
+        }
+
+        if (user && typeof KU8_Scoring.sendRekapToGAS === "function") {
+          KU8_Scoring.sendRekapToGAS(answers, user, result);
+        }
+
+        // 5. Render Hero Leadership Card
+        document.getElementById("r-hero-score").innerText = `${result.totalRawScore}/200`;
+        document.getElementById("r-hero-tscore").innerText = result.totalTScore;
+        document.getElementById("r-hero-title").innerText = result.globalCategory;
+        document.getElementById("r-hero-desc").innerText = result.globalRec;
+
+        // 6. Render Chart.js (Radar & Bar Chart)
+        const dimLabels = ['Decision Making', 'Time Management', 'Teamwork', 'Situational Leadership', 'Conflict Resolution'];
+        const dimKeys = ['Decision_Making', 'Time_Management', 'Teamwork', 'Situational_Leadership', 'Conflict_Resolution'];
+        const scoreArr = dimKeys.map(k => result.dimScores[k] || 0);
+
+        // Radar Chart
+        new Chart(document.getElementById('alsaRadarChart').getContext('2d'), {
+          type: 'radar',
+          data: {
+            labels: dimLabels,
+            datasets: [{
+              label: 'Skor Kompetensi ALSA',
+              data: scoreArr,
+              backgroundColor: 'rgba(2, 132, 199, 0.2)',
+              borderColor: '#0284c7',
+              borderWidth: 2,
+              pointBackgroundColor: '#0284c7',
+              pointRadius: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { r: { beginAtZero: true, min: 10, max: 40, ticks: { stepSize: 10 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // Bar Chart
+        new Chart(document.getElementById('alsaBarChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: dimLabels,
+            datasets: [{
+              label: 'Skor Mentah (10-40)',
+              data: scoreArr,
+              backgroundColor: ['#0284c7', '#16a34a', '#7c3aed', '#ea580c', '#dc2626'],
+              borderRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: { y: { beginAtZero: true, min: 10, max: 40, ticks: { stepSize: 5 } } },
+            plugins: { legend: { display: false } }
+          }
+        });
+
+        // 7. Render Tabulasi Tabel 5 Dimensi
+        const tbody = document.getElementById("alsa-table-body");
+        tbody.innerHTML = "";
+
+        dimKeys.forEach((key, idx) => {
+          const rs = result.dimScores[key];
+          const ts = result.dimTScores[key];
+          const pct = Math.round((rs / 40) * 100);
+          const det = result.dimDetails[key];
+
+          let badgeClass = "pill-capable";
+          if (rs >= 35) badgeClass = "pill-role-model";
+          else if (rs >= 29) badgeClass = "pill-proficient";
+          else if (rs >= 23) badgeClass = "pill-capable";
+          else badgeClass = "pill-developing";
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: left; font-weight: 600; color: #0f172a;">${dimLabels[idx]}</td>
+            <td><strong>${rs}</strong> / 40</td>
+            <td><strong>T-${ts}</strong></td>
+            <td>${pct}%</td>
+            <td><span class="tag-pill ${badgeClass}">${det.kategori || 'Capable'}</span></td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // 8. Render Rincian Analisis Diagnostik per Dimensi
+        document.getElementById("r-desc-dm").innerText = result.dimDetails.Decision_Making.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-dm").innerText = result.dimDetails.Decision_Making.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-tm").innerText = result.dimDetails.Time_Management.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-tm").innerText = result.dimDetails.Time_Management.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-tw").innerText = result.dimDetails.Teamwork.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-tw").innerText = result.dimDetails.Teamwork.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-sl").innerText = result.dimDetails.Situational_Leadership.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-sl").innerText = result.dimDetails.Situational_Leadership.saran_pengembangan || "-";
+
+        document.getElementById("r-desc-cr").innerText = result.dimDetails.Conflict_Resolution.deskripsi_perilaku || "-";
+        document.getElementById("r-rec-cr").innerText = result.dimDetails.Conflict_Resolution.saran_pengembangan || "-";
+
+        // 9. Panduan Rujukan Lembaga
+        document.getElementById("r-panduan-lembaga").innerText = `${result.globalRec} Hasil tes ini dapat digunakan oleh sekolah (OSIS/MPK), perguruan tinggi (BEM/HIMA), maupun dunia bisnis sebagai pertimbangan penempatan posisi kepemimpinan.`;
+
+      } catch (err) {
+        console.error("Gagal memuat data laporan KU8:", err);
+        alert("Terjadi kesalahan saat memuat berkas data pendukung laporan ALSA.");
+      }
+    });
+  </script>
+</body>
+</html>
