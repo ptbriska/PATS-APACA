@@ -1,17 +1,20 @@
 /* ==========================================================================
    PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (assets/css/print-pdf.css)
+   Optimized for html2pdf.js & Precision A4 Page Boundary
    ========================================================================== */
 
-/* Structure Container Laporan */
-.report-paper {
+/* Structure Container Laporan (Presisi Ukuran A4: 794px) */
+.report-paper,
+#report-paper {
   background-color: #ffffff;
-  padding: 40px;
-  max-width: 800px;
+  padding: 24px 32px;
+  width: 794px !important;
+  max-width: 794px !important;
   margin: 0 auto;
   color: #111827;
   font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-  box-sizing: border-box;
+  line-height: 1.45;
+  box-sizing: border-box !important;
 }
 
 /* ==========================================================================
@@ -23,25 +26,23 @@
   gap: 16px;
   border-bottom: 3px double #1e293b;
   padding-bottom: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
-/* Logo Instansi di Kop Surat */
 .report-header .instansi-logo {
-  width: 75px;
+  width: 70px;
   height: auto;
-  max-height: 75px;
+  max-height: 70px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-/* Informasi Instansi & Alamat */
 .report-header .instansi-info {
   flex-grow: 1;
 }
 
 .report-header .instansi-info h2 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #0f172a;
@@ -51,26 +52,26 @@
 }
 
 .report-header .instansi-info .sub-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #334155;
   margin-bottom: 4px;
 }
 
 .report-header .instansi-info .address {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: #475569;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 /* Judul Laporan Ujian */
 .report-title {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .report-title h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -82,13 +83,15 @@
 .report-biodata {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 24px;
-  font-size: 0.875rem;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  table-layout: fixed;
 }
 
 .report-biodata td {
-  padding: 5px 6px;
+  padding: 4px 6px;
   vertical-align: top;
+  word-wrap: break-word;
 }
 
 .report-biodata td.label {
@@ -97,33 +100,64 @@
   color: #334155;
 }
 
+/* ==========================================================================
+   STYLING TABEL DATA LAPORAN (PENAMBAHAN PENGUNCIAN LEBAR)
+   ========================================================================== */
+.report-table, 
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important; /* Mengunci tabel agar tidak melar keluar A4 */
+  margin-bottom: 16px !important;
+  font-size: 0.82rem !important;
+}
+
+.report-table th, 
+.report-table td,
+table th,
+table td {
+  padding: 6px 8px !important;
+  vertical-align: middle !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important; /* Memutus kalimat panjang agar tidak melebar */
+  border: 1px solid #cbd5e1;
+}
+
+.report-table th,
+table th {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  text-align: center;
+}
+
 /* Box Naratif Laporan Psikolog */
 .report-section {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .report-section-title {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   background-color: #f1f5f9;
   padding: 6px 10px;
   border-left: 4px solid #2563eb;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #0f172a;
   text-transform: uppercase;
 }
 
 .report-paragraph {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-align: justify;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #1e293b;
 }
 
 .report-list {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-left: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .report-list li {
@@ -132,26 +166,27 @@
 
 /* Footer & Tanda Tangan */
 .report-footer-sign {
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   justify-content: flex-end;
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
 }
 
 .sign-box {
   text-align: center;
-  width: 240px;
-  font-size: 0.875rem;
+  width: 220px;
+  font-size: 0.85rem;
 }
 
 .sign-space {
-  height: 65px;
+  height: 55px;
 }
 
 /* ==========================================================================
-   STYLING MEDIA PRINT & HTML2PDF (OPTIMISASI PENGUNCIAN HALAMAN)
+   STYLING MEDIA PRINT & HTML2PDF (PENGATURAN PEMBATAS HALAMAN)
    ========================================================================== */
 @media print {
-  /* Sembunyikan elemen Web UI yang tidak perlu di cetakan */
   .portal-header,
   .portal-footer,
   .btn-primary,
@@ -167,41 +202,37 @@
     padding: 0 !important;
   }
 
-  .report-paper {
+  .report-paper,
+  #report-paper {
     padding: 0 !important;
     margin: 0 !important;
+    width: 100% !important;
     max-width: 100% !important;
     box-shadow: none !important;
     border: none !important;
   }
 
-  /* Pengaturan Batas Halaman A4 Presisi */
   @page {
     size: A4 portrait;
-    margin: 1.2cm;
+    margin: 1cm;
   }
 
-  /* CEGAH ELEMEN TERPOTONG DI TENGAH HALAMAN (Mencegah Blank Page) */
-  .report-section,
-  .report-table,
-  .report-header,
-  .report-biodata,
+  /* Kunci pemotongan hanya pada elemen kecil, BUKAN seluruh tabel */
+  .report-section-title,
   .hero-card-otm,
   .info-box,
   .report-footer-sign,
-  tr, blockquote {
+  tr {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
 
-  /* Mencegah Judul Seksi Terpisah dengan Isinya */
   .report-section-title {
     page-break-after: avoid !important;
     break-after: avoid !important;
   }
 }
 
-/* Class Pembatas Halaman Manual jika Diperlukan */
 .page-break,
 .html2pdf__page-break {
   page-break-before: always !important;
