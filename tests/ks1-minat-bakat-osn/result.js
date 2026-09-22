@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - REPORT GENERATOR ENGINE (OPTIMIZED RESULT.JS v4.0 - FIXED)
+   PATS PORTAL - REPORT GENERATOR ENGINE (OPTIMIZED RESULT.JS v4.1 - FIXED)
    Mengintegrasikan Total_Scoring dengan 11 Komponen Komprehensif rubrik.json
    ========================================================================== */
 
@@ -73,6 +73,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const allRanking = evaluation.all_fields_ranking || [];
+    // Deklarasi global top1Field di level fungsi utama agar tidak duplikat
+    const top1Field = evaluation.top_recommendation?.bidang || "bidang utama";
 
     // =========================================================================
     // BAGIAN III: ANALISA PILAR I - IQ APACA OTM & SUB-MODUL KOGNITIF
@@ -415,12 +417,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // BAGIAN VIII: MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (INVESTABILITY INDEX)
     // =========================================================================
     const roiRubrikDef = rubrikData.bagian_08_matriks_kelayakan_roi?.kuadran_definition || {};
-    const top1Field = evaluation.top_recommendation?.bidang || "";
 
     const quadrantFieldsMap = { I: [], II: [], III: [], IV: [] };
 
     allRanking.forEach(rec => {
-      // PERBAIKAN RUMUS: Menggunakan S-Total (skor_total >= 60.0)
+      // Menggunakan rumus S-Total (skor_total >= 60.0)
       const isPassTotal = rec.skor_total >= 60.0;
       const isFit = rec.indeks_intimidasi >= 3.0;
 
@@ -516,9 +517,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // BAGIAN X: PANDUAN REKOMENDASI AKSI STRATEGIS
     // =========================================================================
     const panduanAksi = rubrikData.bagian_10_panduan_aksi?.rekomendasi || {};
-    const top1Field = evaluation.top_recommendation?.bidang || "bidang utama";
 
-    // Helper untuk merender array/string menjadi bullet list HTML yang rapi
+    // Helper merender array/string menjadi bullet list HTML
     const renderBulletList = (dataInput, placeholderField) => {
       if (!dataInput) return "-";
       
