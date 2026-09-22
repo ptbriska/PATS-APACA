@@ -60,7 +60,7 @@ const PATS_PDF = {
         return { canvas, img };
       });
 
-      // 2. Setting html2pdf (Tanpa windowWidth, gunakan onclone untuk memadatkan kanan)
+      // 2. Setting html2pdf dengan logika kompresi onclone
       const opt = {
         margin:       [10, 10, 10, 10], 
         filename:     fileName,
@@ -73,18 +73,43 @@ const PATS_PDF = {
           onclone: (clonedDoc) => {
             const target = clonedDoc.getElementById(elementId);
             if (target) {
-              // Paksa wadah berukuran A4 (794px) dan tempel ke kiri (margin 0)
-              target.style.width = '794px';
-              target.style.maxWidth = '794px';
-              target.style.margin = '0'; 
+              // Kunci kontainer utama ke lebar kertas A4
+              target.style.setProperty('width', '794px', 'important');
+              target.style.setProperty('max-width', '794px', 'important');
+              target.style.setProperty('margin', '0', 'important');
+              target.style.setProperty('padding', '20px', 'important');
+              target.style.setProperty('box-sizing', 'border-box', 'important');
 
-              // Paksa semua tabel di dalamnya menyesuaikan batas 794px
+              // Taklukkan semua tabel agar tidak bisa meluber
               const tables = target.querySelectorAll('table');
               tables.forEach(t => {
-                t.style.width = '100%';
-                t.style.maxWidth = '100%';
-                t.style.tableLayout = 'fixed';
-                t.style.wordWrap = 'break-word';
+                t.style.setProperty('width', '100%', 'important');
+                t.style.setProperty('max-width', '100%', 'important');
+                t.style.setProperty('table-layout', 'fixed', 'important');
+                t.style.setProperty('box-sizing', 'border-box', 'important');
+                
+                // Jika tabel dibungkus div (misal .table-responsive), bebaskan ukurannya
+                let parent = t.parentElement;
+                if (parent) {
+                  parent.style.setProperty('width', '100%', 'important');
+                  parent.style.setProperty('max-width', '100%', 'important');
+                  parent.style.setProperty('overflow', 'hidden', 'important');
+                  parent.style.setProperty('box-sizing', 'border-box', 'important');
+                }
+              });
+
+              // Paksa isi tabel melipat ke bawah dan cabut lebar absolutnya
+              const cells = target.querySelectorAll('th, td');
+              cells.forEach(c => {
+                c.style.removeProperty('width'); 
+                c.style.removeProperty('min-width');
+                c.removeAttribute('width');
+                
+                c.style.setProperty('word-wrap', 'break-word', 'important');
+                c.style.setProperty('overflow-wrap', 'break-word', 'important');
+                c.style.setProperty('word-break', 'break-word', 'important');
+                c.style.setProperty('white-space', 'normal', 'important');
+                c.style.setProperty('box-sizing', 'border-box', 'important');
               });
             }
           }
