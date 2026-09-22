@@ -1,83 +1,21 @@
 /* ==========================================================================
-   PATS PORTAL - CLEAN DISPLAY & PRINT STYLESHEET
+   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (assets/css/print-pdf.css)
    ========================================================================== */
 
-/* --- 1. TAMPILAN UTAMA LAYAR WEB (result.html) --- */
-#report-paper,
+/* Structure Container Laporan */
 .report-paper {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 36px;
-  max-width: 1080px;
-  width: 100%;
+  padding: 40px;
+  max-width: 800px;
   margin: 0 auto;
-  box-sizing: border-box;
-  color: #0f172a;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #111827;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
 }
 
-/* Layout Tabel Web Modern & Fleksibel */
-.report-table,
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0 24px 0;
-  font-size: 0.88rem;
-  table-layout: auto !important; /* Mencegah kolom terhimpit paksa */
-}
-
-.report-table th, 
-.report-table td,
-table th,
-table td {
-  border: 1px solid #cbd5e1;
-  padding: 10px 10px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.report-table th,
-table th {
-  background-color: #f8fafc;
-  font-weight: 700;
-  color: #0f172a;
-  border-bottom: 2px solid #2563eb;
-}
-
-/* Kolom Teks Deskripsi Panjang Otomatis Rata Kiri & Luas */
-.report-table td:last-child,
-table td:last-child {
-  text-align: left;
-  min-width: 240px;
-}
-
-/* BADGE STATUS: Dilarang Memotong Kata di Tengah Huruf */
-.badge-status, 
-.tag-pill,
-[class*="badge-"] {
-  display: inline-block !important;
-  white-space: nowrap !important; /* KUNCI: Mencegah 'PENDAMPINGAN' terbelah */
-  padding: 6px 12px !important;
-  border-radius: 20px !important;
-  font-weight: 700 !important;
-  font-size: 0.72rem !important;
-  line-height: 1.2 !important;
-  text-align: center !important;
-  box-sizing: border-box !important;
-}
-
-.badge-pass { background: #dcfce7 !important; color: #15803d !important; border: 1px solid #86efac !important; }
-.badge-locked { background: #fef2f2 !important; color: #b91c1c !important; border: 1px solid #fca5a5 !important; }
-.badge-warning { background: #fff7ed !important; color: #c2410c !important; border: 1px solid #fdba74 !important; }
-
-.tag-pill {
-  background: #eff6ff !important;
-  border: 1px solid #bfdbfe !important;
-  color: #1e40af !important;
-}
-
-/* Header & Seksi Laporan */
+/* ==========================================================================
+   KOP SURAT RESMI (HEADER LAPORAN)
+   ========================================================================== */
 .report-header {
   display: flex;
   align-items: center;
@@ -87,6 +25,7 @@ table td:last-child {
   margin-bottom: 24px;
 }
 
+/* Logo Instansi di Kop Surat */
 .report-header .instansi-logo {
   width: 75px;
   height: auto;
@@ -95,6 +34,7 @@ table td:last-child {
   flex-shrink: 0;
 }
 
+/* Informasi Instansi & Alamat */
 .report-header .instansi-info {
   flex-grow: 1;
 }
@@ -104,30 +44,116 @@ table td:last-child {
   font-weight: 800;
   text-transform: uppercase;
   color: #0f172a;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
   margin-bottom: 2px;
 }
 
+.report-header .instansi-info .sub-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.report-header .instansi-info .address {
+  font-size: 0.78rem;
+  color: #475569;
+  line-height: 1.35;
+}
+
+/* Judul Laporan Ujian */
+.report-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.report-title h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: underline;
+  color: #0f172a;
+}
+
+/* Tabel Biodata Peserta */
+.report-biodata {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+}
+
+.report-biodata td {
+  padding: 5px 6px;
+  vertical-align: top;
+}
+
+.report-biodata td.label {
+  font-weight: 600;
+  width: 22%;
+  color: #334155;
+}
+
+/* Box Naratif Laporan Psikolog */
 .report-section {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .report-section-title {
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 700;
   background-color: #f1f5f9;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-left: 4px solid #2563eb;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   color: #0f172a;
   text-transform: uppercase;
 }
 
-/* --- 2. ISOLASI TOTAL CETAK / PRINT MEDIA --- */
+.report-paragraph {
+  font-size: 0.9rem;
+  text-align: justify;
+  margin-bottom: 12px;
+  color: #1e293b;
+}
+
+.report-list {
+  font-size: 0.9rem;
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.report-list li {
+  margin-bottom: 4px;
+}
+
+/* Footer & Tanda Tangan */
+.report-footer-sign {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sign-box {
+  text-align: center;
+  width: 240px;
+  font-size: 0.875rem;
+}
+
+.sign-space {
+  height: 65px;
+}
+
+/* ==========================================================================
+   STYLING MEDIA PRINT (Pengaturan saat di-Ctrl+P / Simpan PDF)
+   ========================================================================== */
 @media print {
+  /* Sembunyikan elemen Web UI yang tidak perlu di cetakan */
   .portal-header,
   .portal-footer,
   .btn-primary,
-  .top-nav,
   .no-print {
     display: none !important;
   }
@@ -135,28 +161,22 @@ table td:last-child {
   body {
     background-color: #ffffff !important;
     color: #000000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
-  #report-paper,
   .report-paper {
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    box-shadow: none;
   }
 
+  /* Pengaturan Batas Halaman A4 */
   @page {
-    size: A4 portrait;
-    margin: 1cm;
+    size: A4;
+    margin: 1.2cm;
   }
 
-  .report-section,
-  .report-table,
-  tr {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
+  .page-break {
+    page-break-before: always;
   }
 }
