@@ -94,8 +94,14 @@
 /* Section Box */
 .report-section {
   margin-bottom: 20px;
-  break-inside: avoid;
-  page-break-inside: avoid;
+  /* FIX: break-inside / page-break-inside: avoid removed from here.
+     A section (e.g. "09 Proyeksi Program Studi & Karier Masa Depan")
+     can contain several cards and end up taller than one A4 page.
+     Marking the WHOLE section "avoid" made html2pdf push it entirely
+     onto the next page, leaving a large blank gap at the bottom of the
+     previous page (the bug in your screenshot). Use the new
+     .avoid-break class below on each individual card/row instead, so
+     the section can still split cleanly *between* cards. */
 }
 
 .report-section-title {
@@ -107,6 +113,10 @@
   margin-bottom: 10px;
   color: #0f172a;
   text-transform: uppercase;
+  /* Keep the title glued to whatever content comes right after it, so
+     it never ends up alone at the very bottom of a page. */
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 .report-paragraph {
@@ -114,6 +124,15 @@
   text-align: justify;
   margin-bottom: 10px;
   color: #1e293b;
+}
+
+/* Add this class to small, single blocks that must stay in one piece
+   across a page break — e.g. each individual "Proyeksi Bidang ..."
+   card, or a single row-group. Do NOT put it on the big wrapping
+   .report-section itself, only on things guaranteed to fit on one page. */
+.avoid-break {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 /* Footer Sign */
