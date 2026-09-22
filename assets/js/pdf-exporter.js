@@ -1,7 +1,3 @@
-/* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (THE "ONCLONE" METHOD - ZERO OFFSET FIX)
-   ========================================================================== */
-
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
 const PATS_PDF = {
@@ -37,85 +33,51 @@ const PATS_PDF = {
   async autoArchiveToDrive(elementId = "report-paper") {
     try {
       await this.ensureDependencies();
-      console.log("[DRIVE ARCHIVE]: Memulai pembuatan PDF...");
-
+      
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
       const element = document.getElementById(elementId);
+      
+      if (!element) return;
 
-      if (!element) throw new Error("Elemen report tidak ditemukan.");
-
-      // 1. SIMPAN GAMBAR CHART
-      const canvasElements = Array.from(element.querySelectorAll("canvas"));
-      const canvasData = canvasElements.map(c => {
-        return {
-          dataUrl: c.toDataURL('image/png', 1.0),
-          width: c.offsetWidth,
-          height: c.offsetHeight,
-          cssText: c.style.cssText
-        };
+      // 1. Simpan Style Asli & Ubah Canvas ke Gambar (Untuk Chart)
+      const origStyle = element.getAttribute("style") || "";
+      const canvases = Array.from(element.querySelectorAll("canvas"));
+      const canvasReplacements = canvases.map(canvas => {
+        const img = document.createElement("img");
+        img.src = canvas.toDataURL("image/png", 1.0);
+        img.style.width = canvas.offsetWidth + "px";
+        img.style.height = canvas.offsetHeight + "px";
+        canvas.parentNode.replaceChild(img, canvas);
+        return { canvas, img };
       });
 
-      // 2. KONFIGURASI HTML2PDF
+      // 2. Kunci Container TEPAT di Ukuran A4 (794px) agar tidak terpotong
+      element.style.setProperty("width", "794px", "important");
+      element.style.setProperty("max-width", "794px", "important");
+      element.style.setProperty("margin", "0 auto", "important");
+
+      // 3. Konfigurasi Standar
       const opt = {
-        margin:       [10, 10, 10, 10], 
+        margin:       10, // Margin aman 10mm
         filename:     fileName,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { 
-          scale: 2, 
-          useCORS: true,
-          logging: false,
-          windowWidth: 1024,
-          x: 0, // Kunci kamera di titik paling kiri
-          y: 0, // Kunci kamera di titik paling atas
-          scrollX: 0,
-          scrollY: 0,
-          onclone: (clonedDoc) => {
-            const clonedTarget = clonedDoc.getElementById(elementId);
-            if (!clonedTarget) return;
-
-            // PERBAIKAN FATAL: Buang semua margin tengah agar elemen nempel di titik 0,0
-            clonedDoc.body.style.margin = '0';
-            clonedDoc.body.style.padding = '0';
-            clonedDoc.documentElement.style.margin = '0';
-            clonedDoc.documentElement.style.padding = '0';
-
-            clonedTarget.style.margin = '0'; // Rata Kiri Mutlak (Menghindari Cut-Off)
-            clonedTarget.style.padding = '20px';
-            clonedTarget.style.width = '1000px'; // Paksa jadi lebar desktop agar tabel muat lega
-            clonedTarget.style.maxWidth = '1000px';
-            clonedTarget.style.position = 'relative';
-            clonedTarget.style.left = '0';
-            clonedTarget.style.top = '0';
-
-            // Ganti canvas dengan gambar
-            const clonedCanvases = Array.from(clonedTarget.querySelectorAll("canvas"));
-            clonedCanvases.forEach((c, index) => {
-              if (canvasData[index]) {
-                const img = clonedDoc.createElement('img');
-                img.src = canvasData[index].dataUrl;
-                img.style.cssText = canvasData[index].cssText;
-                img.style.width = canvasData[index].width + 'px';
-                img.style.height = canvasData[index].height + 'px';
-                img.style.display = 'block';
-                c.parentNode.replaceChild(img, c);
-              }
-            });
-          }
-        },
+        html2canvas:  { scale: 2, useCORS: true }, // Tanpa setting windowWidth
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { 
-          mode: ['css', 'legacy'], 
-          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title', 'h1', 'h2', 'h3', 'h4', 'h5'] 
-        }
+        pagebreak:    { mode: 'css', avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title'] }
       };
 
-      // 3. EKSEKUSI RENDER
+      // 4. Render ke PDF
       const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-      // 4. UPLOAD KE GOOGLE DRIVE
-      console.log("[DRIVE ARCHIVE]: Mengirim ke server...");
+      // 5. Kembalikan DOM Seketika
+      element.setAttribute("style", origStyle);
+      canvasReplacements.forEach(({ canvas, img }) => {
+        img.parentNode.replaceChild(canvas, img);
+      });
+
+      // 6. Upload
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -129,7 +91,6 @@ const PATS_PDF = {
       });
 
       sessionStorage.setItem("pats_pdf_drive_archived", "true");
-      console.log(`[DRIVE ARCHIVE SUCCESS]: File PDF tersimpan utuh.`);
 
     } catch (error) {
       console.error("[DRIVE ARCHIVE ERROR]:", error);
