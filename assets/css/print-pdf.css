@@ -1,156 +1,150 @@
 /* ==========================================================================
-   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (FIXED A4 BOUNDARY)
+   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (RESTORED & ISOLATED)
    ========================================================================== */
 
-/* Kunci Lebar Kontainer Laporan Presisi A4 (Maksimal 740px agar tidak terpotong) */
+/* --------------------------------------------------------------------------
+   1. TAMPILAN LAYAR WEB NORMAL (result.html)
+   -------------------------------------------------------------------------- */
 .report-paper,
 #report-paper {
-  background-color: #ffffff !important;
-  padding: 20px 24px !important;
-  width: 740px !important;
-  max-width: 740px !important;
-  margin: 0 auto !important;
-  color: #111827 !important;
-  font-family: system-ui, -apple-system, sans-serif !important;
-  line-height: 1.4 !important;
-  box-sizing: border-box !important;
-  overflow: hidden !important;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  color: #0f172a;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Header Kop Surat */
-.report-header {
-  display: flex !important;
-  align-items: center !important;
-  gap: 14px !important;
-  border-bottom: 3px double #1e293b !important;
-  padding-bottom: 10px !important;
-  margin-bottom: 16px !important;
-}
-
-.report-header .instansi-logo {
-  width: 65px !important;
-  height: auto !important;
-  max-height: 65px !important;
-  object-fit: contain !important;
-  flex-shrink: 0 !important;
-}
-
-.report-header .instansi-info {
-  flex-grow: 1 !important;
-}
-
-.report-header .instansi-info h2 {
-  font-size: 1.15rem !important;
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  color: #0f172a !important;
-  margin-bottom: 2px !important;
-}
-
-.report-header .instansi-info .sub-title {
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  color: #334155 !important;
-}
-
-.report-header .instansi-info .address {
-  font-size: 0.72rem !important;
-  color: #475569 !important;
-}
-
-.report-title {
-  text-align: center !important;
-  margin-bottom: 16px !important;
-}
-
-.report-title h3 {
-  font-size: 1.05rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  text-decoration: underline !important;
-  color: #0f172a !important;
-}
-
-/* KUNCI TABEL: Mencegah Tabel Melar Keluar Kertas */
-.report-table, 
+/* Tabel Layar: Layout Otomatis Supaya Kolom Proporsional */
+.report-table,
 table {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  table-layout: fixed !important;
-  margin-bottom: 14px !important;
-  font-size: 0.78rem !important;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px 0;
+  font-size: 0.88rem;
+  table-layout: auto !important; /* Biarkan kolom deskripsi melebar alami */
 }
 
 .report-table th, 
 .report-table td,
 table th,
 table td {
-  padding: 5px 6px !important;
-  vertical-align: middle !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-  border: 1px solid #cbd5e1 !important;
+  border: 1px solid #cbd5e1;
+  padding: 10px 12px;
+  text-align: center;
+  vertical-align: middle;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .report-table th,
 table th {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-  font-weight: 700 !important;
-  text-align: center !important;
+  background-color: #f8fafc;
+  font-weight: 700;
+  color: #0f172a;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* PERBAIKAN BADGE: Teks badge tidak akan meluber atau menimpa kolom lain */
+.badge-status, 
+.tag-pill {
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal !important; /* Mengizinkan teks badge turun baris */
+  word-break: break-word;
+  line-height: 1.3;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.badge-pass { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.badge-locked { background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; }
+.badge-warning { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+.tag-pill {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 0.8rem;
+}
+
+/* Header Kop Surat & Section */
+.report-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 3px double #1e293b;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.report-header .instansi-logo {
+  width: 75px;
+  height: auto;
+  max-height: 75px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.report-header .instansi-info {
+  flex-grow: 1;
+}
+
+.report-header .instansi-info h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0f172a;
+  margin-bottom: 2px;
 }
 
 .report-section {
-  margin-bottom: 16px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  margin-bottom: 28px;
 }
 
 .report-section-title {
-  font-size: 0.85rem !important;
-  font-weight: 700 !important;
-  background-color: #f1f5f9 !important;
-  padding: 5px 8px !important;
-  border-left: 4px solid #2563eb !important;
-  margin-bottom: 8px !important;
-  color: #0f172a !important;
-  text-transform: uppercase !important;
+  font-size: 0.95rem;
+  font-weight: 800;
+  background-color: #f1f5f9;
+  padding: 8px 12px;
+  border-left: 4px solid #2563eb;
+  margin-bottom: 14px;
+  color: #0f172a;
+  text-transform: uppercase;
 }
 
-.report-footer-sign {
-  margin-top: 24px !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  page-break-inside: avoid !important;
-  break-inside: avoid !important;
-}
-
-.sign-box {
-  text-align: center !important;
-  width: 200px !important;
-  font-size: 0.8rem !important;
-}
-
-.sign-space {
-  height: 50px !important;
-}
-
-/* ATURAN CETAK / PRINT MEDIA */
+/* --------------------------------------------------------------------------
+   2. KHUSUS CETAK & PDF (ISOLATED IN MEDIA PRINT)
+   -------------------------------------------------------------------------- */
 @media print {
-  .portal-header, .portal-footer, .btn-primary, .top-nav, .no-print {
+  .portal-header,
+  .portal-footer,
+  .btn-primary,
+  .top-nav,
+  .no-print {
     display: none !important;
   }
 
   body {
     background-color: #ffffff !important;
+    color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
+  .report-paper,
   #report-paper {
     padding: 0 !important;
     margin: 0 !important;
-    width: 100% !important;
     max-width: 100% !important;
     box-shadow: none !important;
     border: none !important;
@@ -161,13 +155,13 @@ table th {
     margin: 1cm;
   }
 
-  .report-section-title, .hero-card-otm, .info-box, .report-footer-sign, tr {
+  .report-section,
+  .report-table,
+  .hero-card-otm,
+  .info-box,
+  .report-footer-sign,
+  tr {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
-}
-
-.page-break, .html2pdf__page-break {
-  page-break-before: always !important;
-  break-before: page !important;
 }
