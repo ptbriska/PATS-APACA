@@ -296,20 +296,28 @@
     "deskripsi": "Pemetaan daya tahan mental siswa dan level kecemasan terhadap kesulitan materi riil OSN."
   },
 
-  "bagian_06_analisa_bakat_vs_minat": {
-    "judul": "VI. ANALISA BAKAT VS MINAT",
-    "klaster_diagnostik": {
-      "Genuine Interest": {
-        "diagnostik": "Antusiasme pada bidang utama sejalan dengan tingginya kenyamanan alat berpikir pada ilmu irisannya. (Minat Murni & Terbobot Sama-sama Tinggi)",
-        "konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
+  "bagian_05_pilar3_resiliensi": {
+    "judul": "V. ANALISA PILAR III: RESILIENSI MENTAL & SCIENCE COMFORT MAPPING (S-PERSONA)",
+    "kategori_resiliensi": {
+      "Sangat Siap": {
+        "status_badge": "FIT (HIGH)",
+        "label": "Sangat Siap (High Grit & Low Anxiety)",
+        "implikasi": "Prioritas Utama Investasi (ROI Tinggi): Siswa memiliki daya juang tinggi, mandiri, dan tahan tekanan. Sangat layak dialokasikan anggaran pembinaan eksternal/intensif."
       },
-      "Surface Fan": {
-        "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi pendukungnya (Nilai Murni Tinggi, tapi Anjlok saat Dibobotkan dengan Irisan).",
-        "konseling": "Guru pembina harus memberikan gambaran soal hitungan asli (komputasi/fisika/dsb) sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
+      "Siap": {
+        "status_badge": "FIT (MODERATE)",
+        "label": "Siap (Moderate Grit)",
+        "implikasi": "Layak Diberikan Pembinaan: Memiliki kesiapan mental yang stabil. Mampu mengikuti alur modul pelatihan sekolah dengan bimbingan rutin."
       },
-      "Cross-Disciplinary Synergy": {
-        "diagnostik": "Minat murni bidang utama di level sedang, namun terangkat signifikan oleh tingginya antusiasme siswa pada cabang ilmu irisannya.",
-        "konseling": "Siswa dapat diarahkan untuk mendalami bidang ini dengan titik ungkit (leverage) pada cabang ilmu pendukung yang sangat ia kuasai."
+      "Rentan": {
+        "status_badge": "FIT (BORDERLINE)",
+        "label": "Rentan (Conditional Fit)",
+        "implikasi": "Perlu Pembimbingan Mental: Siswa mudah minder saat materi sulit. Membutuhkan mentoring pembiasaan soal secara bertahap sebelum masuk ke level kompetisi."
+      },
+      "Sangat Rentan": {
+        "status_badge": "[WARNING: BURNOUT]",
+        "label": "Sangat Rentan (High Intimidation / Burnout)",
+        "implikasi": "TIDAK DIREKOMENDASIKAN: Siswa mengalami ketakutan/frustrasi tinggi terhadap karakter bidang. Menghamburkan anggaran sekolah jika dipaksa ikut pembinaan intensif."
       }
     }
   },
