@@ -1,33 +1,46 @@
 /* ==========================================================================
-   PATS PORTAL - REPORT GENERATOR ENGINE (FIXED RESULT.JS)
+   PATS PORTAL - REPORT GENERATOR ENGINE (OPTIMIZED RESULT.JS v4.0)
+   Mengintegrasikan Total_Scoring dengan 11 Komponen Komprehensif rubrik.json
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Helper aman untuk set innerText/innerHTML
+  const setElemText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = text;
+  };
+  const setElemHTML = (id, html) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+  };
+
   // 1. Setup Kop Laporan
   if (typeof PATS_CONFIG !== "undefined" && PATS_CONFIG.organization) {
     const org = PATS_CONFIG.organization;
-    document.getElementById("kop-instansi-nama").innerText = org.name || "APACA CONSULTING";
-    document.getElementById("kop-instansi-sub").innerText = org.subTitle || "Psychometric & Educational Assessment Center";
-    document.getElementById("kop-instansi-alamat").innerText = org.address || "Makassar, Sulawesi Selatan";
+    setElemText("kop-instansi-nama", org.name || "APACA CONSULTING");
+    setElemText("kop-instansi-sub", org.subTitle || "Psychometric & Educational Assessment Center");
+    setElemText("kop-instansi-alamat", org.address || "Makassar, Sulawesi Selatan");
     const logoElem = document.getElementById("kop-logo");
-    logoElem.src = org.logoUrl || "../../logo.png";
-    logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+    if (logoElem) {
+      logoElem.src = org.logoUrl || "../../logo.png";
+      logoElem.onerror = () => { logoElem.src = "../../assets/images/logo.png"; };
+    }
   }
 
   // 2. Setup Biodata Peserta
   const user = PATS_AUTH.getSession();
   if (user) {
-    document.getElementById("r-nama").innerText = user.nama_lengkap || "Siswa OTM";
-    document.getElementById("r-kode").innerText = user.kode_akses || user.kode_kegiatan || "OTM-2026-REG";
-    document.getElementById("r-kelas").innerText = user.kelas_jurusan || user.jenis_kelamin || "X / MIPA";
-    document.getElementById("r-instansi").innerText = user.asal_instansi || user.sekolah || "SMA Negeri";
+    setElemText("r-nama", user.nama_lengkap || "Siswa OTM");
+    setElemText("r-kode", user.kode_akses || user.kode_kegiatan || "OTM-2026-REG");
+    setElemText("r-kelas", user.kelas_jurusan || user.jenis_kelamin || "X / MIPA");
+    setElemText("r-instansi", user.asal_instansi || user.sekolah || "SMA Negeri");
     
     if (user.test_info) {
-      document.getElementById("r-psikolog-nama").innerText = user.test_info.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog";
-      document.getElementById("r-psikolog-sipp").innerText = "SIPP: " + (user.test_info.SIPP || "2026-0819-PSI-01");
+      setElemText("r-psikolog-nama", user.test_info.psikolog_pj || "Dra. Fitriani Rahayu, M.Psi., Psikolog");
+      setElemText("r-psikolog-sipp", "SIPP: " + (user.test_info.SIPP || "2026-0819-PSI-01"));
     }
   }
-  document.getElementById("r-tanggal").innerText = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+  setElemText("r-tanggal", new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }));
 
   // 3. Ambil Data Murni dari Session Storage & Total Scoring Engine
   const p1Data = JSON.parse(sessionStorage.getItem("pats_pilar1_results") || "{}");
@@ -47,7 +60,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const allRanking = evaluation.all_fields_ranking || [];
 
-    // 4. Kalkulasi & Render IQ APACA OTM Presisi dari Pilar I
+    // =========================================================================
+    // BAGIAN III: ANALISA PILAR I - IQ APACA OTM & SUB-MODUL KOGNITIF
+    // =========================================================================
     let estimasiIQ = 0;
     let iqCategoryLabel = "-";
 
@@ -60,50 +75,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       iqCategoryLabel = evaluation.iq_summary.category;
     }
 
-    document.getElementById("r-iq-score").innerText = estimasiIQ > 0 ? estimasiIQ : "0";
-    document.getElementById("r-iq-category").innerText = iqCategoryLabel;
+    setElemText("r-iq-score", estimasiIQ > 0 ? estimasiIQ : "0");
+    setElemText("r-iq-category", iqCategoryLabel);
 
-    // Normalisasi pencarian deskripsi IQ baik format Array maupun Objek
-    const iqRawNorma = rubrikData.pilar1_kognitif?.norma_iq_apaca_otm;
-    const iqNormaList = Array.isArray(iqRawNorma) ? iqRawNorma : (iqRawNorma?.kategori || []);
+    const iqNormaList = rubrikData.bagian_03_pilar1_bakat_kognitif?.norma_iq || [];
     const iqObj = iqNormaList.find(k => k.label === iqCategoryLabel);
-    document.getElementById("r-iq-desc").innerText = iqObj?.deskripsi || "Kapasitas kognitif murni dalam menyelesaikan tugas penalaran sains.";
+    setElemText("r-iq-desc", iqObj?.deskripsi || "Kapasitas kognitif murni dalam menyelesaikan tugas penalaran sains.");
 
-    // 5. Render Ringkasan 10 Bidang (Tabel I)
-    document.getElementById("top-3-table-body").innerHTML = allRanking.map((rec, idx) => `
-      <tr>
-        <td><strong>${idx + 1}</strong></td>
-        <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
-        <td><strong>${rec.skor_total}</strong></td>
-        <td><span class="badge-status ${rec.gatekeeper_status === 'PASS' ? 'badge-pass' : 'badge-locked'}">${rec.gatekeeper_status}</span></td>
-        <td>${rec.indeks_intimidasi.toFixed(2)}</td>
-        <td>${idx < 3 ? `<span style="font-weight: 700; color: #059669;">DIREKOMENDASIKAN (TOP ${idx + 1})</span>` : `<span style="font-weight: 500; color: #64748b;">TIDAK PRIORITAS</span>`}</td>
-      </tr>
-    `).join("");
-
-    // 6. Render Chart.js Combined 3 Pilar (Section II)
-    new Chart(document.getElementById('chartOTM').getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: allRanking.map(r => r.bidang),
-        datasets: [
-          { label: 'Pilar I: Bakat (50%)', data: allRanking.map(r => r.skor_pilar1_bakat), backgroundColor: '#2563eb' },
-          { label: 'Pilar II: Minat (30%)', data: allRanking.map(r => r.skor_pilar2_minat), backgroundColor: '#059669' },
-          { label: 'Pilar III: Comfort (20%)', data: allRanking.map(r => r.skor_pilar3_persona), backgroundColor: '#d97706' }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: { y: { suggestedMin: 0, suggestedMax: 100 } }
-      }
-    });
-
-    // 7. Render Pilar I Sub-Modul Table (Section III)
+    // Tabel Sub-Modul Kognitif
     const modScores = p1Data.module_scores || {};
-    document.getElementById("pilar1-table-body").innerHTML = Object.keys(modScores).map(code => {
+    const daftarModulRubrik = rubrikData.bagian_03_pilar1_bakat_kognitif?.daftar_modul || {};
+    const catatanModulRubrik = rubrikData.bagian_03_pilar1_bakat_kognitif?.matriks_catatan_modul || {};
+
+    setElemHTML("pilar1-table-body", Object.keys(modScores).map(code => {
       const m = modScores[code];
-      const modCfg = rubrikData.pilar1_kognitif?.daftar_modul?.[code] || {};
+      const modCfg = daftarModulRubrik[code] || {};
       
       let catLabel = "Sedang";
       if (m.final_score >= 80) catLabel = "Sangat Tinggi";
@@ -111,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       else if (m.final_score >= 40) catLabel = "Sedang";
       else catLabel = "Kurang";
 
-      const notesObj = rubrikData.pilar1_kognitif?.catatan_analisis_submodul?.[code] || {};
+      const notesObj = catatanModulRubrik[code] || {};
       const noteText = notesObj[catLabel] || notesObj["Cukup"] || modCfg.fokus || "-";
 
       return `
@@ -124,10 +110,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           <td style="text-align: left; font-size: 0.82rem;">${noteText}</td>
         </tr>
       `;
-    }).join("");
+    }).join(""));
 
-    // 7b. Render Tabel Gatekeeper Kognitif OSN
-    document.getElementById("table-pilar1-gatekeeper").innerHTML = allRanking.map(rec => {
+    // Tabel Rekapitulasi Gatekeeper Kognitif OSN
+    const implikasiAkademisMap = rubrikData.bagian_03_pilar1_bakat_kognitif?.implikasi_akademis_gatekeeper || {};
+    setElemHTML("table-pilar1-gatekeeper", allRanking.map(rec => {
       const skorBakat = rec.skor_pilar1_bakat;
       const isLolos = skorBakat >= 60;
       const statusBadge = isLolos
@@ -139,28 +126,67 @@ document.addEventListener("DOMContentLoaded", async () => {
       else if (skorBakat >= 60) catKognitif = "Tinggi";
       else if (skorBakat >= 40) catKognitif = "Cukup";
 
-      const bData = rubrikData.bidang_osn?.[rec.bidang] || {};
-
       return `
         <tr>
           <td style="font-weight: 700; text-align: left; color:#1e3a8a;">${rec.bidang}</td>
           <td><strong>${skorBakat}</strong></td>
           <td>${catKognitif}</td>
           <td>${statusBadge}</td>
-          <td style="text-align: left; font-size: 0.82rem;">${bData.implikasi_akademis || "-"}</td>
+          <td style="text-align: left; font-size: 0.82rem;">${implikasiAkademisMap[rec.bidang] || "-"}</td>
         </tr>
       `;
-    }).join("");
+    }).join(""));
 
-    // 8. Render Pilar II Table (Minat) (Section IV)
+    // =========================================================================
+    // BAGIAN I: RINGKASAN REKOMENDASI 10 BIDANG OSN
+    // =========================================================================
+    setElemHTML("top-3-table-body", allRanking.map((rec, idx) => `
+      <tr>
+        <td><strong>${idx + 1}</strong></td>
+        <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
+        <td><strong>${rec.skor_total}</strong></td>
+        <td><span class="badge-status ${rec.gatekeeper_status === 'PASS' ? 'badge-pass' : 'badge-locked'}">${rec.gatekeeper_status}</span></td>
+        <td>${rec.indeks_intimidasi.toFixed(2)}</td>
+        <td>${idx < 3 ? `<span style="font-weight: 700; color: #059669;">DIREKOMENDASIKAN (TOP ${idx + 1})</span>` : `<span style="font-weight: 500; color: #64748b;">TIDAK PRIORITAS</span>`}</td>
+      </tr>
+    `).join(""));
+
+    // =========================================================================
+    // BAGIAN II: VISUALISASI PROFIL COMBINED 3 PILAR
+    // =========================================================================
+    const chartCanvas = document.getElementById('chartOTM');
+    if (chartCanvas) {
+      new Chart(chartCanvas.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: allRanking.map(r => r.bidang),
+          datasets: [
+            { label: 'Pilar I: Bakat (50%)', data: allRanking.map(r => r.skor_pilar1_bakat), backgroundColor: '#2563eb' },
+            { label: 'Pilar II: Minat (30%)', data: allRanking.map(r => r.skor_pilar2_minat), backgroundColor: '#059669' },
+            { label: 'Pilar III: Comfort (20%)', data: allRanking.map(r => r.skor_pilar3_persona), backgroundColor: '#d97706' }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { suggestedMin: 0, suggestedMax: 100 } }
+        }
+      });
+    }
+
+    // =========================================================================
+    // BAGIAN IV: ANALISA PILAR II - MINAT KEILMUAN
+    // =========================================================================
     const p2Pure = p2Data.pure_scores || {};
+    const implikasiMotivasiMap = rubrikData.bagian_04_pilar2_minat_keilmuan?.implikasi_motivasi || {};
+    
     const klasterGroup = {
       "Genuine Interest": [],
       "Surface Fan": [],
       "Cross-Disciplinary Synergy": []
     };
 
-    document.getElementById("pilar2-table-body").innerHTML = allRanking.map(rec => {
+    setElemHTML("pilar2-table-body", allRanking.map(rec => {
       const skorBakat = rec.skor_pilar1_bakat;
       const skorMinat = rec.skor_pilar2_minat;
       
@@ -169,7 +195,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       else if (skorMinat >= 60) catMinat = "Tinggi";
       else if (skorMinat >= 40) catMinat = "Sedang";
       
-      const bData = rubrikData.bidang_osn?.[rec.bidang] || {};
       const pureScore = p2Pure["MIN_" + rec.field_code] || p2Pure[rec.bidang] || 70;
 
       let klaster = "";
@@ -185,36 +210,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           <td>${pureScore} pts</td>
           <td><strong>${skorMinat}</strong></td>
           <td><span class="tag-pill">${catMinat}</span></td>
-          <td style="text-align: left; font-size: 0.82rem;">${bData.implikasi_motivasi || "-"}</td>
+          <td style="text-align: left; font-size: 0.82rem;">${implikasiMotivasiMap[rec.bidang] || "-"}</td>
         </tr>
       `;
-    }).join("");
+    }).join(""));
 
-    // 8b. Render Tabel Analisis Klaster Diagnostik
-    const dataKlasterRubrik = rubrikData.klaster_diagnostik || {};
-    const urutanKlaster = ["Genuine Interest", "Surface Fan", "Cross-Disciplinary Synergy"];
-
-    document.getElementById("table-pilar2-klaster").innerHTML = urutanKlaster.map(namaKlaster => {
-      const bidangTerkait = klasterGroup[namaKlaster];
-      if (!bidangTerkait || bidangTerkait.length === 0) return "";
-
-      const infoKlaster = dataKlasterRubrik[namaKlaster] || {};
-
-      return `
-        <tr>
-          <td style="font-weight: 800; color: #0f172a; text-align: left;">${namaKlaster}</td>
-          <td style="text-align: left;">
-            ${bidangTerkait.map(b => `<span class="tag-pill" style="margin-bottom:4px;">${b}</span>`).join(" ")}
-          </td>
-          <td style="text-align: left; font-size: 0.82rem;">${infoKlaster.diagnostik || infoKlaster.informasi_diagnostik || "-"}</td>
-          <td style="text-align: left; font-size: 0.82rem;">${infoKlaster.konseling || infoKlaster.tindakan_konseling || "-"}</td>
-        </tr>
-      `;
-    }).join("");
-
-    // 9. Render Pilar III Table (Section V)
+    // =========================================================================
+    // BAGIAN V: ANALISA PILAR III - RESILIENSI MENTAL & SCIENCE COMFORT
+    // =========================================================================
     const p3Eval = p3Data.field_results || {};
-    document.getElementById("pilar3-table-body").innerHTML = allRanking.map(rec => {
+    setElemHTML("pilar3-table-body", allRanking.map(rec => {
       const resKey = Object.keys(p3Eval).find(k => p3Eval[k].field_name === rec.bidang || k === rec.bidang || k === rec.field_code);
       const res = resKey ? p3Eval[resKey] : { score_pilar3: rec.skor_pilar3_persona, intimidation_index: rec.indeks_intimidasi, evaluasi: "-" };
       
@@ -232,39 +237,115 @@ document.addEventListener("DOMContentLoaded", async () => {
           <td style="text-align: left; font-size: 0.82rem;">${res.evaluasi}</td>
         </tr>
       `;
-    }).join("");
+    }).join(""));
 
-    // 10. Render Kuadran & Career Projections (Section VI & VII)
+    // =========================================================================
+    // BAGIAN VI: ANALISA BAKAT VS MINAT (KLASTER DIAGNOSTIK)
+    // =========================================================================
+    const dataKlasterRubrik = rubrikData.bagian_06_analisa_bakat_vs_minat?.klaster_diagnostik || {};
+    const urutanKlaster = ["Genuine Interest", "Surface Fan", "Cross-Disciplinary Synergy"];
+
+    setElemHTML("table-pilar2-klaster", urutanKlaster.map(namaKlaster => {
+      const bidangTerkait = klasterGroup[namaKlaster];
+      if (!bidangTerkait || bidangTerkait.length === 0) return "";
+
+      const infoKlaster = dataKlasterRubrik[namaKlaster] || {};
+
+      return `
+        <tr>
+          <td style="font-weight: 800; color: #0f172a; text-align: left;">${namaKlaster}</td>
+          <td style="text-align: left;">
+            ${bidangTerkait.map(b => `<span class="tag-pill" style="margin-bottom:4px;">${b}</span>`).join(" ")}
+          </td>
+          <td style="text-align: left; font-size: 0.82rem;">${infoKlaster.diagnostik || "-"}</td>
+          <td style="text-align: left; font-size: 0.82rem;">${infoKlaster.konseling || "-"}</td>
+        </tr>
+      `;
+    }).join(""));
+
+    // =========================================================================
+    // BAGIAN VII: ANALISA KARAKTER KEILMUAN SISWA (SINERGI KOGNITIF)
+    // =========================================================================
+    const sinergiMap = rubrikData.bagian_07_karakter_keilmuan?.sinergi_kognitif || {};
+    setElemHTML("table-karakter-keilmuan", allRanking.slice(0, 5).map(rec => `
+      <tr>
+        <td style="font-weight: 700; text-align: left; color:#1e3a8a;">${rec.bidang}</td>
+        <td style="text-align: left; font-size: 0.85rem; line-height: 1.5;">${sinergiMap[rec.bidang] || "-"}</td>
+      </tr>
+    `).join(""));
+
+    // =========================================================================
+    // BAGIAN VIII: MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (ROI INDEX)
+    // =========================================================================
     const top1Field = evaluation.top_recommendation?.bidang || "Matematika";
-    document.getElementById("kuadran-summary-container").innerHTML = `
-      <strong>Top Bidang Siswa: ${top1Field}</strong> berada di <strong>KUADRAN I (High Priority / High ROI)</strong>. Siswa memiliki gabungan Bakat Kognitif murni yang lolos batas minimum (PASS) serta Indeks Intimidasi yang stabil (FIT). Sangat layak dialokasikan anggaran pelatihan eksternal penuh (100% Full Grant).
-    `;
+    const top1Data = allRanking[0] || {};
+    const isPassTop1 = top1Data.skor_pilar1_bakat >= 60;
+    const isFitTop1 = top1Data.indeks_intimidasi >= 3.0;
 
-    const careerContainer = document.getElementById("career-projection-container");
-    const top3List = allRanking.slice(0, 3);
+    const kuadranRubrik = rubrikData.bagian_08_matriks_kelayakan_roi?.kuadran || {};
+    let activeKuadranKey = "Kuadran_IV";
+    if (isPassTop1 && isFitTop1) activeKuadranKey = "Kuadran_I";
+    else if (isPassTop1 && !isFitTop1) activeKuadranKey = "Kuadran_II";
+    else if (!isPassTop1 && isFitTop1) activeKuadranKey = "Kuadran_III";
 
-    careerContainer.innerHTML = top3List.map(rec => {
+    const activeKuadran = kuadranRubrik[activeKuadranKey] || {};
+
+    setElemHTML("kuadran-summary-container", `
+      <div style="margin-bottom: 8px;">
+        <strong style="color:#1e3a8a; font-size: 1rem;">${activeKuadran.label || "KUADRAN I"}</strong> 
+        <span style="font-size:0.82rem; color:#64748b;">(Top Bidang Siswa: ${top1Field})</span>
+      </div>
+      <div style="font-size:0.88rem; color:#334155; line-height:1.6; margin-bottom: 6px;">
+        ${activeKuadran.deskripsi || ""}
+      </div>
+      <div style="font-size:0.85rem; font-weight:700; color:#059669;">
+        💡 Rekomendasi Alokasi Anggaran: ${activeKuadran.saran_alokasi || ""}
+      </div>
+    `);
+
+    // =========================================================================
+    // BAGIAN IX: PROYEKSI PROGRAM STUDI & KARIER MASA DEPAN
+    // =========================================================================
+    const proyeksiMap = rubrikData.bagian_09_proyeksi_studi_karier?.data_proyeksi || {};
+    setElemHTML("career-projection-container", allRanking.slice(0, 3).map(rec => {
       if (!rec) return "";
-      
-      // Fallback baca proyeksi_karir terpisah atau menyatu di bidang_osn
-      const bData = rubrikData.bidang_osn?.[rec.bidang] || {};
-      const projData = rubrikData.proyeksi_karir?.[rec.bidang] || {};
-      const listKuliah = bData.kuliah || projData.kuliah || [];
-      const listKarir = bData.karir || projData.karir || [];
+      const pInfo = proyeksiMap[rec.bidang] || { kuliah: [], karir: [] };
 
       return `
         <div class="info-box">
           <h5 style="margin:0 0 8px 0; color:#1e3a8a; font-size:0.95rem;">🎯 Proyeksi Bidang ${rec.bidang}</h5>
-          <div style="font-size:0.85rem; margin-bottom:6px;"><strong>Proyeksi Program Studi:</strong> ${listKuliah.join(", ")}</div>
-          <div style="font-size:0.85rem;"><strong>Proyeksi Karir Masa Depan:</strong> ${listKarir.join(", ")}</div>
+          <div style="font-size:0.85rem; margin-bottom:6px;"><strong>Proyeksi Program Studi:</strong> ${(pInfo.kuliah || []).join(", ")}</div>
+          <div style="font-size:0.85rem;"><strong>Proyeksi Karir Masa Depan:</strong> ${(pInfo.karir || []).join(", ")}</div>
         </div>
       `;
-    }).join("");
+    }).join(""));
 
-    // 11. Render Action Guidance (Section VIII)
-    document.getElementById("rec-guru").innerText = `Fokuskan pembinaan siswa pada bidang ${top1Field}. Alokasikan pelatih eksternal dan modul intensif. Hindari memaksakan siswa pada bidang yang berstatus LOCKED atau memicu Warning Tag Burnout.`;
-    document.getElementById("rec-siswa").innerText = `Pertahankan disiplin belajar pada bidang ${top1Field}. Jangan ragu untuk memperdalam alur penalaran dan terus berlatih soal tingkat lanjut.`;
-    document.getElementById("rec-ortu").innerText = `Fasilitasi minat dan daya juang putra/putri Anda di bidang ${top1Field}. Berikan dukungan moral dan sarana belajar yang kondusif.`;
+    // =========================================================================
+    // BAGIAN X: PANDUAN REKOMENDASI AKSI STRATEGIS
+    // =========================================================================
+    const panduanAksi = rubrikData.bagian_10_panduan_aksi?.rekomendasi || {};
+    setElemText("rec-guru", (panduanAksi.guru || "").replace("bidang prioritas utama", `bidang ${top1Field}`));
+    setElemText("rec-siswa", (panduanAksi.siswa || "").replace("bidang rekomendasi puncakmu", `bidang ${top1Field}`));
+    setElemText("rec-ortu", (panduanAksi.ortu || "").replace("bidang Anda", `bidang ${top1Field}`));
+
+    // =========================================================================
+    // BAGIAN XI: STRATEGI PEMBINAAN KONKRET
+    // =========================================================================
+    const strategiRubrik = rubrikData.bagian_11_strategi_pembinaan || {};
+    setElemHTML("strategi-pembinaan-container", `
+      <div class="info-box" style="margin-bottom:10px;">
+        <strong style="color:#1e3a8a;">${strategiRubrik.fase_1_matrikulasi?.tahap || "Fase 1"}</strong>
+        <p style="font-size:0.88rem; margin:4px 0 0 0; color:#334155;">${strategiRubrik.fase_1_matrikulasi?.teks || ""}</p>
+      </div>
+      <div class="info-box" style="margin-bottom:10px;">
+        <strong style="color:#059669;">${strategiRubrik.fase_2_drill?.tahap || "Fase 2"}</strong>
+        <p style="font-size:0.88rem; margin:4px 0 0 0; color:#334155;">${strategiRubrik.fase_2_drill?.teks || ""}</p>
+      </div>
+      <div class="info-box">
+        <strong style="color:#d97706;">${strategiRubrik.fase_3_evaluasi?.tahap || "Fase 3"}</strong>
+        <p style="font-size:0.88rem; margin:4px 0 0 0; color:#334155;">${strategiRubrik.fase_3_evaluasi?.teks || ""}</p>
+      </div>
+    `);
 
   } catch (err) {
     console.error("Gagal memuat data Laporan OTM:", err);
