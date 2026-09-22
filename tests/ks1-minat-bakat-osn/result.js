@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     `).join(""));
 
     // =========================================================================
-    // BAGIAN VIII: MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (ROI INDEX)
+    // BAGIAN VIII: MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (INVESTABILITY INDEX)
     // =========================================================================
     const roiRubrikDef = rubrikData.bagian_08_matriks_kelayakan_roi?.kuadran_definition || {};
     const top1Field = evaluation.top_recommendation?.bidang || "";
@@ -420,12 +420,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const quadrantFieldsMap = { I: [], II: [], III: [], IV: [] };
 
     allRanking.forEach(rec => {
-      const isPass = rec.skor_pilar1_bakat >= 60.0;
+      // PERBAIKAN RUMUS: Menggunakan S-Total (skor_total >= 60.0)
+      const isPassTotal = rec.skor_total >= 60.0;
       const isFit = rec.indeks_intimidasi >= 3.0;
 
-      if (isPass && isFit) quadrantFieldsMap.I.push(rec);
-      else if (isPass && !isFit) quadrantFieldsMap.II.push(rec);
-      else if (!isPass && isFit) quadrantFieldsMap.III.push(rec);
+      if (isPassTotal && isFit) quadrantFieldsMap.I.push(rec);
+      else if (isPassTotal && !isFit) quadrantFieldsMap.II.push(rec);
+      else if (!isPassTotal && isFit) quadrantFieldsMap.III.push(rec);
       else quadrantFieldsMap.IV.push(rec);
     });
 
