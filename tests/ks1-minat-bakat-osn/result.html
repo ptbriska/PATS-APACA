@@ -587,14 +587,76 @@
       <div class="report-section">
         <div class="report-section-header">
           <span class="sec-num">08</span>
-          <h4 class="sec-title">MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (ROI INDEX)</h4>
+          <h4 class="sec-title">MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (INVESTABILITY INDEX)</h4>
         </div>
+
+        <!-- A. KOORDINAT MATRIKS INVESTASI BELAJAR (KARTESIUS 2x2) -->
+        <h5 style="margin: 0 0 12px 0; color: var(--accent-blue); font-size: 0.9rem;">
+          A. Koordinat Matriks Investasi Belajar & Plotting Bidang Siswa
+        </h5>
         
-        <div class="info-box" style="border-left: 5px solid var(--accent-blue);">
-          <div id="kuadran-summary-container">
-            <!-- Rendered via JS -->
+        <div style="background: #ffffff; border: 1px solid var(--border-slate); border-radius: 16px; padding: 20px; margin-bottom: 24px;">
+          <!-- Grid Header Sumbu Kognitif -->
+          <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 12px; margin-bottom: 12px; text-align: center; font-weight: 700; font-size: 0.8rem;">
+            <div></div>
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; padding: 8px; border-radius: 8px;">
+              Skor Bakat Kognitif PASS (S-Bakat ≥ 60,0)
+            </div>
+            <div style="background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; padding: 8px; border-radius: 8px;">
+              Skor Bakat Kognitif LOCKED (S-Bakat &lt; 60,0)
+            </div>
+          </div>
+
+          <!-- Baris 1: Resiliensi FIT -->
+          <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; text-align: center;">
+              Indeks Resiliensi FIT<br>(Indeks Intimidasi ≥ 3,0)
+            </div>
+            <!-- Cell Kuadran I -->
+            <div id="quadrant-cell-I" style="border: 2px solid #bbf7d0; background: #f6fef9; border-radius: 10px; padding: 14px; min-height: 120px;">
+              <!-- Dynamic Content -->
+            </div>
+            <!-- Cell Kuadran III -->
+            <div id="quadrant-cell-III" style="border: 2px solid #fed7aa; background: #fffcf5; border-radius: 10px; padding: 14px; min-height: 120px;">
+              <!-- Dynamic Content -->
+            </div>
+          </div>
+
+          <!-- Baris 2: Resiliensi RENTAN -->
+          <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 12px;">
+            <div style="background: #fff7ed; border: 1px solid #fed7aa; color: #c2410c; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; text-align: center;">
+              Indeks Resiliensi RENTAN<br>(Indeks Intimidasi &lt; 3,0)
+            </div>
+            <!-- Cell Kuadran II -->
+            <div id="quadrant-cell-II" style="border: 2px solid #bfdbfe; background: #f8fafc; border-radius: 10px; padding: 14px; min-height: 120px;">
+              <!-- Dynamic Content -->
+            </div>
+            <!-- Cell Kuadran IV -->
+            <div id="quadrant-cell-IV" style="border: 2px solid #fecaca; background: #fff5f5; border-radius: 10px; padding: 14px; min-height: 120px;">
+              <!-- Dynamic Content -->
+            </div>
           </div>
         </div>
+
+        <!-- B. TABEL MATRIKS TINDAKAN MANAJEMEN -->
+        <h5 style="margin: 0 0 12px 0; color: var(--accent-blue); font-size: 0.9rem;">
+          B. Tabel Matriks Keputusan & Tindakan Manajemen Sekolah
+        </h5>
+
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th style="width: 5%;">K</th>
+              <th style="width: 18%;">Kombinasi Sumbu</th>
+              <th style="width: 18%;">Status Kelayakan Pembinaan</th>
+              <th style="text-align: left; width: 27%;">Deskripsi Profil Siswa</th>
+              <th style="text-align: left; width: 32%;">Implikasi Strategis & Alokasi Anggaran Sekolah</th>
+            </tr>
+          </thead>
+          <tbody id="table-matriks-roi-body">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
       </div>
 
       <!-- ========================================================================= -->
