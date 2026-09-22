@@ -49,7 +49,13 @@ const PATS_PDF = {
         scrollX: 0
       },
       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['css', 'legacy'], avoid: ['tr', '.report-section', '.sign-box', '.chart-box'] }
+      // FIX: '.report-section' removed from "avoid". A section can hold several
+      // cards and end up taller than one page — forcing the WHOLE section to
+      // avoid breaking pushes it entirely onto the next page and leaves a big
+      // blank gap at the bottom of the previous page. Put the new ".avoid-break"
+      // class on individual small blocks (one card / one row-group) in your
+      // HTML instead, so the section itself can still split between them.
+      pagebreak:    { mode: ['css', 'legacy'], avoid: ['tr', '.avoid-break', '.sign-box', '.chart-box'] }
     };
 
     if (typeof html2pdf !== 'undefined') {
@@ -96,7 +102,8 @@ const PATS_PDF = {
           scrollX: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { mode: ['css', 'legacy'], avoid: ['tr', '.report-section', '.sign-box', '.chart-box'] }
+        // Same fix as exportToPDF() above.
+        pagebreak:    { mode: ['css', 'legacy'], avoid: ['tr', '.avoid-break', '.sign-box', '.chart-box'] }
       };
 
       const pdfBase64Uri = await html2pdf().set(options).from(element).outputPdf('datauristring');
