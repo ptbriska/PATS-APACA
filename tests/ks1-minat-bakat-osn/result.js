@@ -257,16 +257,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     const p2Pure = p2Data.pure_scores || {};
     const p2BidangRubrik = rubrikData.bagian_04_pilar2_minat_keilmuan?.bidang || {};
 
-    const klasterGroup = {
-      "Genuine Interest": [],
-      "Surface Fan": [],
-      "Cross-Disciplinary Synergy": []
+    const fieldToMinCodeMap = {
+      "Matematika": "MIN_MTK",
+      "Fisika": "MIN_FIS",
+      "Kimia": "MIN_KIM",
+      "Biologi": "MIN_BIO",
+      "Informatika": "MIN_INF",
+      "Astronomi": "MIN_AST",
+      "Kebumian": "MIN_KBM",
+      "Ekonomi": "MIN_EKO",
+      "Geografi": "MIN_GEO",
+      "AI & Data Science": "MIN_AI"
     };
 
     setElemHTML("pilar2-table-body", allRanking.map(rec => {
-      const skorBakat = rec.skor_pilar1_bakat;
-      const skorMinat = rec.skor_pilar2_minat;
+      const skorMinat = rec.skor_pilar2_minat || 0;
       
+      // Lookup nilai Minat Murni yang presisi dari p2Pure
+      const minCode = fieldToMinCodeMap[rec.bidang] || rec.field_code || rec.bidang;
+      const pureScore = p2Pure[minCode] !== undefined ? p2Pure[minCode] : (p2Pure[rec.bidang] || 0);
+
       let fitKey = "Rendah";
       let badgeClass = "badge-fit-rendah";
       
@@ -285,23 +295,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         badgeClass = "badge-fit-rendah";        // Merah
       }
 
-      // Ambil narasi kustom khusus untuk bidang ini dan level fit ini
+      // Ambil narasi kustom khusus untuk bidang ini dan level fit ini dari rubrik
       const bidangDict = p2BidangRubrik[rec.bidang] || {};
       const infoFit = bidangDict[fitKey] || {};
-      const pureScore = p2Pure["MIN_" + rec.field_code] || p2Pure[rec.bidang] || 70;
-
-      // Pengelompokan Klaster Diagnostik (untuk Bab VI)
-      let klaster = "";
-      if (skorBakat >= 60.0 && skorMinat >= 60.0) klaster = "Genuine Interest";
-      else if (skorBakat < 60.0 && skorMinat >= 60.0) klaster = "Surface Fan";
-      else if (skorBakat >= 60.0 && skorMinat < 60.0) klaster = "Cross-Disciplinary Synergy";
-      
-      if (klasterGroup[klaster]) klasterGroup[klaster].push(rec.bidang);
 
       return `
         <tr>
           <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
-          <td>${pureScore} pts</td>
+          <td>${Number(pureScore).toFixed(1)} pts</td>
           <td><strong>${skorMinat}</strong></td>
           <td><span class="badge-status ${badgeClass}">${infoFit.label || fitKey}</span></td>
           <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${infoFit.deskripsi || "-"}</td>
@@ -360,6 +361,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const p2PureScores = p2Data.pure_scores || {};
     const profilRubrik = rubrikData.bagian_06_analisa_false_interest?.profil_diagnostik || {};
 
+    const fieldToMinCodeMap = {
+      "Matematika": "MIN_MTK",
+      "Fisika": "MIN_FIS",
+      "Kimia": "MIN_KIM",
+      "Biologi": "MIN_BIO",
+      "Informatika": "MIN_INF",
+      "Astronomi": "MIN_AST",
+      "Kebumian": "MIN_KBM",
+      "Ekonomi": "MIN_EKO",
+      "Geografi": "MIN_GEO",
+      "AI & Data Science": "MIN_AI"
+    };
+
     const profilGroup = {
       "Genuine Interest": [],
       "Surface Fan": [],
@@ -367,8 +381,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     allRanking.forEach(rec => {
-      // Ambil Skor Minat Murni (MIN_j) dan Skor Minat Terbobot (S_Minat)
-      const pureScore = p2PureScores["MIN_" + rec.field_code] || p2PureScores[rec.bidang] || 0;
+      // Lookup nilai Minat Murni (MIN_j) yang presisi dari p2PureScores
+      const minCode = fieldToMinCodeMap[rec.bidang] || rec.field_code || rec.bidang;
+      const pureScore = p2PureScores[minCode] !== undefined ? p2PureScores[minCode] : (p2PureScores[rec.bidang] || 0);
       const weightedScore = rec.skor_pilar2_minat || 0;
 
       // Logika Diagnostik False Interest (Sesuai Pedoman Manual Book KS1-B)
