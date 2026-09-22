@@ -7,7 +7,13 @@
 
   "bagian_01_ringkasan_rekomendasi": {
     "judul": "I. RINGKASAN REKOMENDASI 10 BIDANG OSN",
-    "deskripsi": "Tabel peringkat akumulasi akhir dari integrasi ketiga pilar."
+    "deskripsi": "Tabel peringkat akumulasi akhir dari integrasi ketiga pilar.",
+    "tindakan_konseling": {
+      "utama": "Pilihan Utama: Siswa sangat disarankan memilih salah satu dari 3 bidang ini karena kapasitas kognitif, minat irisan, dan resiliensinya saling menguatkan.",
+      "alternatif": "Opsi Cadangan: Dapat dipilih jika kuota Top 1–3 di sekolah sudah penuh; siswa secara kognitif sanggup namun minat/comfort-nya di level sedang.",
+      "pendampingan": "Perlu Mentoring: Kognitif memenuhi syarat, namun terintimidasi (soal rumit). Wajib mendapat pendampingan psikologis jika dipilih.",
+      "locked": "Dilarang Dipilih: Sistem mengunci bidang ini untuk menghindari kesalahan fatal (siswa akan sangat kesulitan mengejar materi OSN)."
+    }
   },
 
   "bagian_02_visualisasi_profil": {
