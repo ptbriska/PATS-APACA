@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PATS PORTAL - PDF EXPORTER (CLEAN & STABLE METHOD)
+   ========================================================================== */
+
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
 const PATS_PDF = {
@@ -27,57 +31,64 @@ const PATS_PDF = {
   },
 
   exportToPDF() {
-    window.print();
+    window.print(); // Tombol user tetap pakai bawaan browser (Ctrl+P)
   },
 
   async autoArchiveToDrive(elementId = "report-paper") {
     try {
       await this.ensureDependencies();
-      
+      console.log("[DRIVE ARCHIVE]: Memulai pembuatan PDF...");
+
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
       const element = document.getElementById(elementId);
-      
+
       if (!element) return;
 
-      // 1. Simpan Style Asli & Ubah Canvas ke Gambar (Untuk Chart)
-      const origStyle = element.getAttribute("style") || "";
-      const canvases = Array.from(element.querySelectorAll("canvas"));
-      const canvasReplacements = canvases.map(canvas => {
+      // SOLUSI BLANK PUTIH: Paksa browser scroll ke paling atas sebelum memotret
+      window.scrollTo(0, 0);
+
+      // 1. Ubah Chart (Canvas) jadi Gambar agar tidak hilang di PDF
+      const originalCanvases = Array.from(element.querySelectorAll("canvas"));
+      const canvasReplacements = originalCanvases.map(canvas => {
         const img = document.createElement("img");
         img.src = canvas.toDataURL("image/png", 1.0);
-        img.style.width = canvas.offsetWidth + "px";
-        img.style.height = canvas.offsetHeight + "px";
+        img.style.width = canvas.style.width || (canvas.offsetWidth + "px");
+        img.style.height = canvas.style.height || (canvas.offsetHeight + "px");
+        img.style.maxWidth = "100%";
+        img.style.display = "block";
         canvas.parentNode.replaceChild(img, canvas);
         return { canvas, img };
       });
 
-      // 2. Kunci Container TEPAT di Ukuran A4 (794px) agar tidak terpotong
-      element.style.setProperty("width", "794px", "important");
-      element.style.setProperty("max-width", "794px", "important");
-      element.style.setProperty("margin", "0 auto", "important");
-
-      // 3. Konfigurasi Standar
+      // 2. Setting html2pdf standar murni (tanpa manipulasi ukuran)
       const opt = {
-        margin:       10, // Margin aman 10mm
+        margin:       [10, 10, 10, 10], 
         filename:     fileName,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true }, // Tanpa setting windowWidth
+        html2canvas:  { 
+          scale: 2, 
+          useCORS: true,
+          logging: false,
+          scrollY: 0 // Pastikan kamera mengunci di koordinat paling atas
+        },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { mode: 'css', avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title'] }
+        pagebreak:    { 
+          mode: ['css', 'legacy'], 
+          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title'] 
+        }
       };
 
-      // 4. Render ke PDF
+      // 3. Render ke PDF
       const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-      // 5. Kembalikan DOM Seketika
-      element.setAttribute("style", origStyle);
+      // 4. Kembalikan Grafik Canvas ke web
       canvasReplacements.forEach(({ canvas, img }) => {
         img.parentNode.replaceChild(canvas, img);
       });
 
-      // 6. Upload
+      // 5. Kirim data ke Google Drive
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -91,6 +102,7 @@ const PATS_PDF = {
       });
 
       sessionStorage.setItem("pats_pdf_drive_archived", "true");
+      console.log(`[DRIVE ARCHIVE SUCCESS]: File PDF tersimpan utuh.`);
 
     } catch (error) {
       console.error("[DRIVE ARCHIVE ERROR]:", error);
@@ -101,5 +113,5 @@ const PATS_PDF = {
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 3500); 
+  }, 3000);
 });
