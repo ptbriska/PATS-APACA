@@ -1,12 +1,17 @@
 /* ==========================================================================
    PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
+   (assets/js/pdf-exporter.js)
    ========================================================================== */
 
-if (typeof REKAP_GAS_ENDPOINT === "undefined") {
-  var REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
-}
+// Gunakan nama variabel internal agar tidak bentrok deklarasi const di file lain
+const PDF_GAS_URL = (typeof REKAP_GAS_ENDPOINT !== "undefined") 
+  ? REKAP_GAS_ENDPOINT 
+  : "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
 const PATS_PDF = {
+  /**
+   * Helper penamaan berkas: (Kode Tes)_(Nama)_(Instansi)_(Timestamp)
+   */
   generateStandardFileName(user = {}) {
     const rawKode = user.kode_modul || user.kode_akses || user.kode_kegiatan || "TES";
     const rawNama = user.nama_lengkap || user.nama || "Siswa";
@@ -77,7 +82,7 @@ const PATS_PDF = {
 
   async autoArchiveToDrive(elementId = "report-paper") {
     if (sessionStorage.getItem("pats_pdf_drive_archived") === "true") {
-      console.log("[DRIVE ARCHIVE]: PDF laporan tes ini sudah diarsip ke Google Drive sebelumnya.");
+      console.log("[DRIVE ARCHIVE]: PDF laporan tes ini sudah diarsip ke Google Drive.");
       return;
     }
 
@@ -101,7 +106,7 @@ const PATS_PDF = {
       const pdfBase64 = await html2pdf().set(options).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64.split(',')[1];
 
-      await fetch(REKAP_GAS_ENDPOINT, {
+      await fetch(PDF_GAS_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
