@@ -234,13 +234,8 @@ tr,
 .report-section, 
 .chart-box, 
 .sign-box, 
-.report-section-title {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-}
-
-/* Pastikan sel tabel ikut patuh */
-td, th {
+.report-section-title,
+h1, h2, h3, h4, h5 {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
 }
