@@ -228,3 +228,20 @@ body.pagedjs-printing #pagedjs-render-target {
     page-break-before: always;
   }
 }
+
+/* INSTRUKSI KETAT ANTI-TERBELAH UNTUK HTML2PDF */
+tr, 
+.report-section, 
+.chart-box, 
+.sign-box, 
+.report-section-title,
+h1, h2, h3, h4, h5 {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+/* Pastikan lebar container wajar agar tidak ter-crop di sisi kanan */
+.report-paper {
+    max-width: 800px !important; 
+    margin: 0 auto;
+}
