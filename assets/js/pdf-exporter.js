@@ -1,33 +1,54 @@
 /* ==========================================================================
    PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
-   Paged.js edition - real CSS Paged Media pagination instead of the
-   image-slicing approach in html2pdf.js.
-
-   Requires (add to your HTML <head>/<body>, in this order):
-     <script>window.PagedConfig = { auto: false };</script>
-     <script src="https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-     <script src="assets/js/pdf-exporter.js"></script>
-
-   html2canvas + jsPDF are only used to turn Paged.js's already-correct
-   page boxes into PDF bytes for the silent Drive archive (no user
-   gesture available there, so a print dialog isn't possible). The
-   user-facing "Export" button uses the browser's real print engine via
-   Paged.js + window.print(), which is far more reliable than either.
+   Paged.js edition with Auto-Dependency Injector
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
-// Every stylesheet the report's layout/print rules depend on. Paged.js
-// does NOT automatically inherit the page's existing <link> tags - list
-// them explicitly here (order matters, same as <link> tags would).
 const PATS_PDF_STYLESHEETS = [
   "assets/css/print-pdf.css"
 ];
 
+// 1. SET KONFIGURASI PAGED.JS DI AWAL SKRIP
+window.PagedConfig = window.PagedConfig || { auto: false };
+
 const PATS_PDF = {
   _pagedPreviewer: null,
+  _dependenciesLoadedPromise: null,
+
+  // Helper untuk inject tag <script> secara otomatis ke HTML
+  _loadScript(src) {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        resolve();
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error(`Gagal memuat script: ${src}`));
+      document.head.appendChild(script);
+    });
+  },
+
+  // Mengunduh semua library CDN jika belum ada di HTML
+  async ensureDependencies() {
+    if (this._dependenciesLoadedPromise) return this._dependenciesLoadedPromise;
+
+    this._dependenciesLoadedPromise = (async () => {
+      const scripts = [
+        "https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js",
+        "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
+        "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
+      ];
+
+      for (const src of scripts) {
+        await this._loadScript(src);
+      }
+    })();
+
+    return this._dependenciesLoadedPromise;
+  },
 
   generateStandardFileName(user = {}) {
     const rawKode = user.kode_modul || user.kode_akses || user.kode_kegiatan || "TES";
@@ -46,20 +67,15 @@ const PATS_PDF = {
     window.print();
   },
 
-  // Runs Paged.js against #report-paper and renders real A4 page boxes
-  // into #pagedjs-render-target. Returns that target element plus the
-  // Paged.js "flow" result (flow.total = page count).
   async _paginate(elementId) {
+    await this.ensureDependencies();
+
     if (typeof Paged === "undefined") {
-      throw new Error("Paged.js belum ter-load (cek urutan <script> di HTML).");
+      throw new Error("Paged.js gagal diunduh dari CDN.");
     }
     const source = document.getElementById(elementId);
     if (!source) throw new Error(`Elemen #${elementId} tidak ditemukan.`);
 
-    // <canvas> content (e.g. a Chart.js bar chart) is drawn pixels, not
-    // DOM/HTML, so it doesn't survive cloning. Snapshot every live
-    // canvas into a static <img> on a CLONE before handing it to
-    // Paged.js, so charts show up correctly on the paginated pages.
     const clone = source.cloneNode(true);
     const liveCanvases = source.querySelectorAll("canvas");
     const clonedCanvases = clone.querySelectorAll("canvas");
@@ -75,7 +91,6 @@ const PATS_PDF = {
       clonedCanvas.replaceWith(img);
     });
 
-    // Fresh previewer every run, so re-exporting after data changes works.
     this._pagedPreviewer = new Paged.Previewer();
 
     let renderTarget = document.getElementById("pagedjs-render-target");
@@ -90,9 +105,6 @@ const PATS_PDF = {
     return { flow, renderTarget };
   },
 
-  // User-facing export: paginate with Paged.js, then hand off to the
-  // browser's own print engine (real pagination, not a guess) so the
-  // person picks "Save as PDF" from the native print dialog.
   async exportToPDF(elementId = "report-paper") {
     const triggerBtn = typeof event !== "undefined" && event && event.target ? event.target : null;
     let originalText = "";
@@ -110,8 +122,6 @@ const PATS_PDF = {
 
       document.body.classList.add("pagedjs-printing");
 
-      // Browsers default the print dialog's "Save as" filename to
-      // document.title - swap it in for the duration of the print.
       const originalTitle = document.title;
       document.title = fileName.replace(/\.pdf$/i, "");
 
@@ -123,11 +133,11 @@ const PATS_PDF = {
         window.removeEventListener("afterprint", cleanup);
       };
       window.addEventListener("afterprint", cleanup);
-      setTimeout(cleanup, 5000); // fallback: not every browser fires afterprint reliably
+      setTimeout(cleanup, 5000);
 
     } catch (err) {
       console.error("Gagal export PDF:", err);
-      this.printReport(); // fall back to a plain print of the live page
+      this.printReport();
     } finally {
       if (triggerBtn) {
         triggerBtn.innerText = originalText;
@@ -136,19 +146,9 @@ const PATS_PDF = {
     }
   },
 
-  // Silent background archive: no user gesture is available here, so a
-  // print dialog can't be triggered. Instead, screenshot each already
-  // correctly-paginated Paged.js page box and stack them into one PDF
-  // with jsPDF. Since Paged.js has already solved pagination, each page
-  // box holds exactly one A4 page's worth of content - no cut-point
-  // guessing, no orphaned headings, nothing left to tune.
   async autoArchiveToDrive(elementId = "report-paper") {
-    if (typeof html2canvas === "undefined" || typeof window.jspdf === "undefined") {
-      console.warn("[DRIVE ARCHIVE]: html2canvas / jsPDF belum ter-load, archive dilewati.");
-      return;
-    }
-
     try {
+      await this.ensureDependencies();
       console.log("[DRIVE ARCHIVE]: Memproses konversi PDF...");
 
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
@@ -165,7 +165,7 @@ const PATS_PDF = {
         const canvas = await html2canvas(pages[i], { scale: 1.5, useCORS: true, logging: false });
         const imgData = canvas.toDataURL("image/jpeg", 0.85);
         if (i > 0) pdf.addPage();
-        pdf.addImage(imgData, "JPEG", 0, 0, 210, 297); // full A4 bleed; @page margin is already baked into each page box
+        pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
       }
 
       const cleanBase64 = pdf.output("datauristring").split(",")[1];
@@ -191,8 +191,11 @@ const PATS_PDF = {
   }
 };
 
+// Pre-load library secara diam-diam di background begitu halaman selesai dibuka
 document.addEventListener("DOMContentLoaded", () => {
+  PATS_PDF.ensureDependencies();
+
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 3000);
+  }, 3500);
 });
