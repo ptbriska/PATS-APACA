@@ -1,6 +1,6 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (ULTIMATE ISOLATION)
-   Perbaikan Resolusi & Tata Letak Identik dengan Native Print (Ctrl+P)
+   PATS PORTAL - PDF EXPORTER (ULTIMATE ISOLATION + FIT TO PAGE)
+   Memperbaiki Grafik Blank & Tabel Menyempit agar 100% Identik Native Print
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -18,7 +18,6 @@ const PATS_PDF = {
     return `${cleanStr(rawKode)}_${cleanStr(rawNama)}_${cleanStr(rawInstansi)}_${timestamp}.pdf`;
   },
 
-  // Tombol Export milik user (Cetak Native Ctrl+P)
   exportToPDF() {
     window.print();
   },
@@ -32,24 +31,34 @@ const PATS_PDF = {
       const source = document.getElementById(elementId);
       if (!source) throw new Error("Elemen report tidak ditemukan.");
 
+      // 1. Kloning HTML dan bekukan Chart.js menjadi gambar absolut (Mencegah Grafik Blank)
       const clone = source.cloneNode(true);
       const liveCanvases = source.querySelectorAll("canvas");
       const clonedCanvases = clone.querySelectorAll("canvas");
+      
       liveCanvases.forEach((liveCanvas, i) => {
         if(clonedCanvases[i]) {
             const img = document.createElement("img");
-            img.src = liveCanvas.toDataURL("image/png");
+            // Paksa latar belakang putih saat render canvas ke base64
+            img.src = liveCanvas.toDataURL("image/png", 1.0);
+            
+            // Aturan ketat agar gambar tidak collapse di dalam Paged.js
             img.style.cssText = clonedCanvases[i].style.cssText;
-            img.width = liveCanvas.width;
-            img.height = liveCanvas.height;
+            img.style.width = "100%";
+            img.style.maxWidth = liveCanvas.width + "px";
+            img.style.height = "auto";
+            img.style.display = "block";
+            img.style.margin = "0 auto";
+            
             clonedCanvases[i].replaceWith(img);
         }
       });
 
+      // 2. Ambil semua CSS asli
       const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => l.href).filter(Boolean);
       const styles = Array.from(document.querySelectorAll('style')).map(s => s.innerHTML);
 
-      // BUKA VIEWPORT LEBAR (1200px) agar layout terbaca sebagai Desktop, bukan HP
+      // 3. Setup Iframe
       const iframe = document.createElement("iframe");
       iframe.style.position = "fixed";
       iframe.style.right = "0";
@@ -76,7 +85,7 @@ const PATS_PDF = {
         window.addEventListener('message', listener);
       });
 
-      // HTML Iframe dengan pengaturan persis seperti Native Print
+      // 4. HTML Iframe (Trik "Fit to Page")
       const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -91,10 +100,12 @@ const PATS_PDF = {
           <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\/script>
           
           <style>
-            /* 1. Atur Ukuran Kertas dan Margin Mirip Ctrl+P Browser */
+            /* SCALING TRICK: Buat ukuran kertas Paged.js 20% lebih besar dari A4.
+               Ini memberi ruang luas untuk tabel agar tidak menyempit/terpotong. 
+               Nanti jsPDF akan menciutkannya kembali ke A4 persis seperti fitur "Fit to Page" browser. */
             @page {
-              size: A4;
-              margin: 12mm 15mm;
+              size: 252mm 356mm; 
+              margin: 15mm;
             }
 
             body { 
@@ -104,7 +115,6 @@ const PATS_PDF = {
               font-family: system-ui, -apple-system, sans-serif;
             }
 
-            /* 2. Bebaskan Lebar Kontainer */
             .report-paper { 
               margin: 0 auto !important; 
               width: 100% !important; 
@@ -113,19 +123,21 @@ const PATS_PDF = {
               box-shadow: none !important;
             }
 
-            /* 3. Kembalikan Sifat Tabel Natural (Hapus Aturan Paksa Sebelumnya) */
+            /* Hapus paksaan break pada tabel agar kolom bernapas lega */
             table { 
               width: 100% !important; 
-              table-layout: auto !important; 
               border-collapse: collapse; 
             }
             th, td { 
               word-wrap: normal !important; 
-              word-break: normal !important; 
-              overflow-wrap: normal !important;
             }
 
-            /* 4. Sembunyikan Elemen Web UI */
+            /* Cegah gambar/grafik terbelah di batas kertas */
+            img, .chart-box {
+              page-break-inside: avoid !important;
+              break-inside: avoid !important;
+            }
+
             .portal-header, .portal-footer, .btn-primary, .no-print { display: none !important; }
           </style>
         </head>
@@ -136,6 +148,7 @@ const PATS_PDF = {
           <script>
             window.onload = async function() {
               try {
+                // Beri waktu lebih agar aset, font, dan ukuran kontainer terbaca sempurna
                 await new Promise(r => setTimeout(r, 1500));
                 
                 const sourceHtml = document.getElementById("source-content").innerHTML;
@@ -147,17 +160,20 @@ const PATS_PDF = {
                 const pages = target.querySelectorAll(".pagedjs_page");
                 if (!pages || pages.length === 0) throw new Error("Paged.js gagal membagi halaman.");
                 
+                // Siapkan dokumen akhir tetap berukuran A4 murni
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
                 
-                // Gunakan Scale 2 agar teks tajam dan tidak pecah
                 for (let i = 0; i < pages.length; i++) {
                   const canvas = await window.html2canvas(pages[i], { 
                     scale: 2, 
                     useCORS: true, 
-                    logging: false 
+                    logging: false,
+                    backgroundColor: "#ffffff"
                   });
+                  
                   if (i > 0) pdf.addPage();
+                  // Ajaibnya di sini: Gambar kertas besar (252x356) dipaksa masuk ke bingkai A4 (210x297)
                   pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, 210, 297);
                 }
                 
@@ -202,7 +218,8 @@ const PATS_PDF = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Waktu tunggu dinaikkan ke 3.5 detik untuk memastikan animasi Chart.js selesai 100% sebelum difoto
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 2000);
+  }, 3500);
 });
