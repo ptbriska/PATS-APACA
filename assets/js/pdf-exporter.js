@@ -23,6 +23,9 @@ const PATS_PDF = {
   },
 
   getCanvasOptions(elementId, isLowRes = false) {
+    // Kunci posisi scroll sebelum ekspor
+    window.scrollTo(0, 0);
+
     return {
       margin:       [8, 8, 8, 8],
       image:        { type: 'jpeg', quality: isLowRes ? 0.85 : 0.98 },
@@ -30,35 +33,59 @@ const PATS_PDF = {
         scale: isLowRes ? 1.5 : 2, 
         useCORS: true, 
         logging: false,
-        windowWidth: 800, // Menyamakan ukuran viewport browser virtual
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 1024,
         onclone: (clonedDoc) => {
+          // 1. Konversi seluruh Canvas (Chart) asli ke Image di dokumen Kloning
+          const origCanvases = document.getElementById(elementId).querySelectorAll('canvas');
+          const clonedCanvases = clonedDoc.getElementById(elementId).querySelectorAll('canvas');
+
+          origCanvases.forEach((origCanvas, idx) => {
+            if (clonedCanvases[idx]) {
+              const img = clonedDoc.createElement('img');
+              img.src = origCanvas.toDataURL('image/png');
+              img.style.cssText = origCanvas.style.cssText;
+              img.style.width = '100%';
+              img.style.height = 'auto';
+              img.style.display = 'block';
+              clonedCanvases[idx].parentNode.replaceChild(img, clonedCanvases[idx]);
+            }
+          });
+
+          // 2. Normalisasi tata letak Root & Body
           const clonedEl = clonedDoc.getElementById(elementId);
           
-          // Reset total gaya pembungkus & body ke rata kiri penuh (0,0)
+          clonedDoc.documentElement.style.margin = "0";
+          clonedDoc.documentElement.style.padding = "0";
           clonedDoc.body.style.margin = "0";
           clonedDoc.body.style.padding = "0";
-          clonedDoc.body.style.width = "800px";
-          clonedDoc.body.style.display = "block";
-          clonedDoc.body.style.textAlign = "left";
+          clonedDoc.body.style.width = "794px";
+          clonedDoc.body.style.minWidth = "794px";
 
           if (clonedEl) {
-            if (clonedEl.parentElement) {
-              clonedEl.parentElement.style.margin = "0";
-              clonedEl.parentElement.style.padding = "0";
-              clonedEl.parentElement.style.display = "block";
-              clonedEl.parentElement.style.textAlign = "left";
+            let parent = clonedEl.parentElement;
+            while (parent && parent !== clonedDoc.body) {
+              parent.style.margin = "0";
+              parent.style.padding = "0";
+              parent.style.transform = "none";
+              parent.style.display = "block";
+              parent = parent.parentElement;
             }
-            clonedEl.style.margin = "0";
-            clonedEl.style.padding = "16px";
-            clonedEl.style.width = "760px";
-            clonedEl.style.position = "static";
+
+            clonedEl.style.margin = "0 auto";
+            clonedEl.style.padding = "24px";
+            clonedEl.style.width = "794px";
+            clonedEl.style.boxSizing = "border-box";
             clonedEl.style.transform = "none";
-            clonedEl.style.float = "none";
+            clonedEl.style.position = "relative";
+            clonedEl.style.left = "0";
+            clonedEl.style.top = "0";
           }
         }
       },
       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['css', 'legacy'] }
+      pagebreak:    { mode: ['css', 'legacy'], avoid: ['.report-section', '.chart-box', '.sign-box', 'tr'] }
     };
   },
 
@@ -141,7 +168,8 @@ const PATS_PDF = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Ditambah menjadi 3.5 detik agar rendering grafik/chart selesai sempurna sebelum di-arsip
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 3000);
+  }, 3500);
 });
