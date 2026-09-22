@@ -588,36 +588,46 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 /* ==========================================================================
-   PATS PORTAL - AUTO ARCHIVE ENGINE (GOOGLE SPREADSHEET REKAP)
-   Tempelkan potongan kode ini di bagian PALING BAWAH file result.js
+   PATS PORTAL - AUTOMATED REKAP SYSTEM (UNIFIED FORMAT_C ADAPTER)
    ========================================================================== */
 
 const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
-(function initAutoArchiveOTM() {
+(function initAutoArchiveFORMAT_C() {
   async function sendToSpreadsheet() {
-    // 1. Cegah pengiriman ganda pada saat refresh halaman
     if (sessionStorage.getItem("pats_archived_success")) {
       console.log("[AUTO-ARCHIVE]: Data rekap siswa ini sudah tersimpan di Spreadsheet.");
       return;
     }
 
     try {
-      // 2. Ambil Sesi User & Evaluasi Master OTM
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : null;
       const evaluation = typeof Total_Scoring !== "undefined" ? Total_Scoring.loadAndEvaluateFromSession() : null;
 
-      if (!user || !evaluation || evaluation.isInvalid || !evaluation.top_recommendation) {
-        console.warn("[AUTO-ARCHIVE]: Data belum lengkap, pengarsipan dibatalkan.");
+      if (!user || !evaluation || evaluation.isInvalid) {
+        console.warn("[AUTO-ARCHIVE]: Data sesi belum lengkap, pengarsipan dibatalkan.");
         return;
       }
 
-      const top1 = evaluation.top_recommendation;
-      const isPassGatekeeper = top1.gatekeeper_status === "PASS";
-      const isPassTotal = top1.skor_total >= 60.0 && isPassGatekeeper;
-      const isFit = top1.indeks_intimidasi >= 3.00 && !top1.warning_tag;
+      const top1 = evaluation.top_recommendation || {};
+      const top2 = evaluation.secondary_recommendation || {};
+      const iqSum = evaluation.iq_summary || {};
+      const allRanking = evaluation.all_fields_ranking || [];
 
-      // 3. Logika Pemetaan Kuadran Kelayakan & Status Decision Dashboard
+      // Helper Format Desimal Indonesia (77.35 -> "77,35")
+      const fmt = (val) => Number(val || 0).toFixed(2).replace('.', ',');
+
+      // Peta Skor 10 Bidang OSN & AI (Format Desimal Koma)
+      const scoreMap = {};
+      allRanking.forEach(r => {
+        scoreMap[r.bidang] = fmt(r.skor_total);
+      });
+
+      // Evaluasi Kuadran & Status Decision Dashboard
+      const isPassGatekeeper = top1.gatekeeper_status === "PASS";
+      const isPassTotal = (top1.skor_total || 0) >= 60.0 && isPassGatekeeper;
+      const isFit = (top1.indeks_intimidasi || 0) >= 3.00 && !top1.warning_tag;
+
       let kuadran = "KUADRAN I";
       let decisionStatus = "High Priority (High ROI)";
 
@@ -635,25 +645,50 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
         decisionStatus = "High Risk / Low ROI";
       }
 
-      // Helper Format Angka Komma Indonesia (Contoh: 77,35)
-      const fmt = (val) => Number(val || 0).toFixed(2).replace('.', ',');
-
-      // 4. Susun Payload Data Sesuai Format Kolom Spreadsheet
       const payload = {
-        nama_siswa: user.nama_lengkap || "Siswa OTM",
-        bidang_top1: top1.bidang,
-        skor_bakat: fmt(top1.skor_pilar1_bakat),
-        skor_minat: fmt(top1.skor_pilar2_minat),
-        skor_comfort: fmt(top1.skor_pilar3_persona),
-        skor_total: fmt(top1.skor_total),
-        status_gatekeeper: isPassGatekeeper ? "PASS" : "LOCKED",
-        indeks_intimidasi: `${fmt(top1.indeks_intimidasi)} (${isFit ? 'FIT' : 'BURNOUT'})`,
+        test_code: "KS1",
+        kode_modul: "KS1",
+        timestamp: new Date().toISOString(),
+        kode_akses: user.kode_akses || user.kode_kegiatan || "OTM-2026-REG",
+        nama_lengkap: user.nama_lengkap || "Siswa OTM",
+        asal_instansi: user.asal_instansi || user.sekolah || "SMA Negeri",
+        daerah: user.kelas_jurusan || user.jenis_kelamin || "-",
+        
+        // Data IQ APACA OTM
+        iq_score: iqSum.iq_score || 0,
+        iq_category: iqSum.category || "-",
+
+        // Field Rekomendasi Top 1 & Dashboard
+        top_1_bidang: top1.bidang || "-",
+        top_1_skor_bakat: fmt(top1.skor_pilar1_bakat),
+        top_1_skor_minat: fmt(top1.skor_pilar2_minat),
+        top_1_skor_comfort: fmt(top1.skor_pilar3_persona),
+        top_1_score: fmt(top1.skor_total),
+        top_1_status: isPassGatekeeper ? "PASS" : "LOCKED",
+        top_1_indeks_intimidasi: `${fmt(top1.indeks_intimidasi)} (${isFit ? 'FIT' : 'BURNOUT'})`,
+        top_1_warning_tag: top1.warning_tag ? "WARNING (BURNOUT)" : "FIT",
         pemetaan_kuadran: kuadran,
         status_decision: decisionStatus,
-        timestamp: new Date().toLocaleString('id-ID')
+
+        // Field Rekomendasi Top 2
+        top_2_bidang: top2.bidang || "-",
+        top_2_score: fmt(top2.skor_total),
+
+        // Rincian Skor 10 Bidang Individual
+        SCORE_MATEMATIKA: scoreMap["Matematika"] || "0,00",
+        SCORE_FISIKA: scoreMap["Fisika"] || "0,00",
+        SCORE_KIMIA: scoreMap["Kimia"] || "0,00",
+        SCORE_BIOLOGI: scoreMap["Biologi"] || "0,00",
+        SCORE_INFORMATIKA: scoreMap["Informatika"] || "0,00",
+        SCORE_ASTRONOMI: scoreMap["Astronomi"] || "0,00",
+        SCORE_KEBUMIAN: scoreMap["Kebumian"] || "0,00",
+        SCORE_EKONOMI: scoreMap["Ekonomi"] || "0,00",
+        SCORE_GEOGRAFI: scoreMap["Geografi"] || "0,00",
+        SCORE_AI_DATA_SCIENCE: scoreMap["AI & Data Science"] || "0,00",
+
+        full_json_dump: JSON.stringify(evaluation)
       };
 
-      // 5. Kirim HTTP POST ke Google Apps Script
       await fetch(REKAP_GAS_ENDPOINT, {
         method: "POST",
         mode: "no-cors",
@@ -661,16 +696,14 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
         body: JSON.stringify(payload)
       });
 
-      // Tandai sukses agar tidak terkirim dua kali saat F5/refresh
       sessionStorage.setItem("pats_archived_success", "true");
-      console.log("[AUTO-ARCHIVE SUCCESS]: Data rekap berhasil dikirim ke Spreadsheet.", payload);
+      console.log("[AUTO-ARCHIVE SUCCESS]: Rekap gabungan tersimpan di Spreadsheet.", payload);
 
     } catch (err) {
-      console.error("[AUTO-ARCHIVE ERROR]: Gagal mengirim data ke Spreadsheet:", err);
+      console.error("[AUTO-ARCHIVE ERROR]: Gagal mengirim data ke GAS:", err);
     }
   }
 
-  // Jalankan otomatis 1 detik setelah halaman result dimuat
   window.addEventListener("load", () => {
     setTimeout(sendToSpreadsheet, 1000);
   });
