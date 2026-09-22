@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
+   PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY (FIXED A4 RENDER)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -37,13 +37,21 @@ const PATS_PDF = {
     const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
     const fileName = this.generateStandardFileName(user);
 
+    // Konfigurasi Presisi A4 Tanpa 'avoid-all' untuk Mencegah Halaman Kosong
     const options = {
-      margin:       [10, 10, 10, 10],
+      margin:       [8, 8, 8, 8],
       filename:     fileName,
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true, letterRendering: true, logging: false },
+      html2canvas:  { 
+        scale: 2, 
+        useCORS: true, 
+        logging: false,
+        windowWidth: 800, // Mengunci lebar render canvas persis skala A4
+        scrollX: 0,
+        scrollY: 0
+      },
       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+      pagebreak:    { mode: ['css', 'legacy'] } // LEPAS 'avoid-all'
     };
 
     if (typeof html2pdf !== 'undefined') {
@@ -71,32 +79,32 @@ const PATS_PDF = {
 
   async autoArchiveToDrive(elementId = "report-paper") {
     const element = document.getElementById(elementId);
-    if (!element || typeof html2pdf === 'undefined') {
-      console.warn("[DRIVE ARCHIVE]: Elemen laporan atau html2pdf belum siap.");
-      return;
-    }
+    if (!element || typeof html2pdf === 'undefined') return;
 
     try {
-      console.log("[DRIVE ARCHIVE]: Memproses konversi PDF...");
+      console.log("[DRIVE ARCHIVE]: Memulai konversi PDF presisi...");
 
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
 
       const options = {
-        margin:       [10, 10, 10, 10],
-        image:        { type: 'jpeg', quality: 0.8 },
-        html2canvas:  { scale: 1.5, useCORS: true, logging: false },
+        margin:       [8, 8, 8, 8],
+        image:        { type: 'jpeg', quality: 0.85 },
+        html2canvas:  { 
+          scale: 1.5, 
+          useCORS: true, 
+          logging: false,
+          windowWidth: 800, // Mengunci lebar render canvas persis skala A4
+          scrollX: 0,
+          scrollY: 0
+        },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak:    { mode: ['css', 'legacy'] }
       };
 
-      // Generate PDF Data URI
       const pdfBase64Uri = await html2pdf().set(options).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-      console.log("[DRIVE ARCHIVE]: Mengirim berkas ke Google Drive via GAS...");
-
-      // Menggunakan text/plain agar tidak memicu CORS Preflight Block dari browser
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -110,16 +118,15 @@ const PATS_PDF = {
       });
 
       sessionStorage.setItem("pats_pdf_drive_archived", "true");
-      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} berhasil dikirim ke Apps Script!`);
+      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} tersimpan rapi di Google Drive.`);
 
     } catch (err) {
-      console.error("[DRIVE ARCHIVE ERROR]: Gagal mengarsip ke Drive:", err);
+      console.error("[DRIVE ARCHIVE ERROR]:", err);
     }
   }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Beri jeda 3 detik agar grafik Chart.js & DOM selesai terisi sempurna sebelum dijadikan PDF
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
   }, 3000);
