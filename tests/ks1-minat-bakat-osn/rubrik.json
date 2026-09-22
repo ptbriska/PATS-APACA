@@ -317,18 +317,24 @@
     }
   },
 
-  "bagian_06_analisa_bakat_vs_minat": {
-    "judul": "VI. ANALISA BAKAT VS MINAT",
-    "klaster_diagnostik": {
+  "bagian_06_analisa_false_interest": {
+    "judul": "VI. ANALISA FALSE INTEREST (PROFIL MINAT MURNI VS MINAT TERBOBOT)",
+    "profil_diagnostik": {
       "Genuine Interest": {
-        "diagnostik": "Antusiasme pada bidang utama sejalan dengan tingginya kenyamanan alat berpikir pada ilmu irisannya. (Minat Murni & Terbobot Sama-sama Tinggi)",
+        "label": "Genuine Interest",
+        "sub_label": "Minat Murni & Terbobot Sama-Sama Tinggi",
+        "diagnostik": "Antusiasme pada bidang utama sejalan dengan tingginya kenyamanan alat berpikir pada ilmu irisannya. (Minat Murni ≥ 65 & Terbobot ≥ 65)",
         "konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
       },
       "Surface Fan": {
-        "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi pendukungnya (Nilai Murni Tinggi, tapi Anjlok saat Dibobotkan dengan Irisan).",
-        "konseling": "Guru pembina harus memberikan gambaran soal hitungan asli (komputasi/fisika/dsb) sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
+        "label": "Surface Fan / Visual Interest",
+        "sub_label": "Minat Murni Tinggi, Skor Terbobot Anjlok",
+        "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi pendukungnya. Terdeteksi jebakan False Interest.",
+        "konseling": "Guru pembina harus memberikan gambaran soal hitungan fisika/komputasi asli sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
       },
       "Cross-Disciplinary Synergy": {
+        "label": "Cross-Disciplinary Synergy",
+        "sub_label": "Minat Murni Sedang, Skor Terbobot Naik",
         "diagnostik": "Minat murni bidang utama di level sedang, namun terangkat signifikan oleh tingginya antusiasme siswa pada cabang ilmu irisannya.",
         "konseling": "Siswa dapat diarahkan untuk mendalami bidang ini dengan titik ungkit (leverage) pada cabang ilmu pendukung yang sangat ia kuasai."
       }
