@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (FINAL STABLE - EXTREME TABLE COMPRESSION)
+   PATS PORTAL - PDF EXPORTER (ULTIMATE STABLE - COMPRESSION & ANTI-SLICE)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -60,7 +60,7 @@ const PATS_PDF = {
         return { canvas, img };
       });
 
-      // 2. Setting html2pdf dengan kompresi ekstrem pada tabel
+      // 2. Setting html2pdf dengan Anti-Slice Grouping
       const opt = {
         margin:       [10, 10, 10, 10], 
         filename:     fileName,
@@ -73,13 +73,14 @@ const PATS_PDF = {
           onclone: (clonedDoc) => {
             const target = clonedDoc.getElementById(elementId);
             if (target) {
-              // Kunci kontainer utama
+              // A. Kunci kontainer utama
               target.style.setProperty('width', '794px', 'important');
               target.style.setProperty('max-width', '794px', 'important');
               target.style.setProperty('margin', '0', 'important');
               target.style.setProperty('padding', '20px', 'important');
               target.style.setProperty('box-sizing', 'border-box', 'important');
 
+              // B. Kompresi Ekstrem Tabel
               const tables = target.querySelectorAll('table');
               tables.forEach(t => {
                 t.style.setProperty('width', '100%', 'important');
@@ -96,20 +97,33 @@ const PATS_PDF = {
                 }
               });
 
-              // JURUS PAMUNGKAS: Paksa kecilkan teks dan padding agar pasti muat
               const cells = target.querySelectorAll('th, td');
               cells.forEach(c => {
                 c.style.removeProperty('width'); 
                 c.style.removeProperty('min-width');
                 c.removeAttribute('width');
                 
-                c.style.setProperty('padding', '4px 2px', 'important'); // Padatkan ruang kosong
-                c.style.setProperty('font-size', '9px', 'important'); // Teks dikecilkan
+                c.style.setProperty('padding', '4px 2px', 'important'); 
+                c.style.setProperty('font-size', '9px', 'important'); 
                 c.style.setProperty('word-wrap', 'break-word', 'important');
-                c.style.setProperty('overflow-wrap', 'anywhere', 'important'); // Paksa potong teks yang tidak bisa dibreak
+                c.style.setProperty('overflow-wrap', 'anywhere', 'important'); 
                 c.style.setProperty('word-break', 'break-word', 'important');
                 c.style.setProperty('white-space', 'normal', 'important');
                 c.style.setProperty('box-sizing', 'border-box', 'important');
+              });
+
+              // C. JURUS ANTI-SLICE: Ikat Judul dengan Kontennya
+              const titles = target.querySelectorAll('.report-section-title');
+              titles.forEach(title => {
+                const content = title.nextElementSibling;
+                // Hanya diikat jika kontennya bukan tabel (agar tabel panjang tetap bisa dipotong wajar jika perlu)
+                if (content && content.tagName !== 'TABLE' && !content.querySelector('table')) {
+                  const wrapper = clonedDoc.createElement('div');
+                  wrapper.className = 'anti-slice-group';
+                  title.parentNode.insertBefore(wrapper, title);
+                  wrapper.appendChild(title);
+                  wrapper.appendChild(content);
+                }
               });
             }
           }
@@ -117,7 +131,8 @@ const PATS_PDF = {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
           mode: ['css', 'legacy'], 
-          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title'] 
+          // Hapus .report-section dari sini. Ganti dengan grup khusus yang kita buat di JS.
+          avoid: ['tr', '.chart-box', '.sign-box', '.anti-slice-group'] 
         }
       };
 
