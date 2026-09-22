@@ -516,9 +516,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     // BAGIAN X: PANDUAN REKOMENDASI AKSI STRATEGIS
     // =========================================================================
     const panduanAksi = rubrikData.bagian_10_panduan_aksi?.rekomendasi || {};
-    setElemText("rec-guru", (panduanAksi.guru || "").replace("bidang prioritas utama", `bidang ${top1Field}`));
-    setElemText("rec-siswa", (panduanAksi.siswa || "").replace("bidang rekomendasi puncakmu", `bidang ${top1Field}`));
-    setElemText("rec-ortu", (panduanAksi.ortu || "").replace("bidang Anda", `bidang ${top1Field}`));
+    const top1Field = evaluation.top_recommendation?.bidang || "bidang utama";
+
+    // Helper untuk merender array/string menjadi bullet list HTML yang rapi
+    const renderBulletList = (dataInput, placeholderField) => {
+      if (!dataInput) return "-";
+      
+      const items = Array.isArray(dataInput) ? dataInput : [dataInput];
+      const listHTML = items.map(text => {
+        const cleanedText = text.replace(/\[BIDANG_UTAMA\]/g, `<strong>${placeholderField}</strong>`);
+        return `<li style="margin-bottom: 6px;">${cleanedText}</li>`;
+      }).join("");
+
+      return `<ul style="margin: 4px 0 0 18px; padding: 0; font-size: 0.85rem; color: #334155; line-height: 1.5;">${listHTML}</ul>`;
+    };
+
+    setElemHTML("rec-guru", renderBulletList(panduanAksi.guru, top1Field));
+    setElemHTML("rec-siswa", renderBulletList(panduanAksi.siswa, top1Field));
+    setElemHTML("rec-ortu", renderBulletList(panduanAksi.ortu, top1Field));
 
     // =========================================================================
     // BAGIAN XI: STRATEGI PEMBINAAN KONKRET
