@@ -1,6 +1,6 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (FINAL HIGH STABILITY)
-   Solusi: html2pdf.js dengan Desktop Windowing & Anti-Terbelah
+   PATS PORTAL - PDF EXPORTER (THE CLONE METHOD)
+   Solusi 100% Bebas Distorsi Web & Bebas Potongan Samping
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -32,7 +32,7 @@ const PATS_PDF = {
   },
 
   exportToPDF() {
-    window.print(); // Tetap gunakan Native Print Ctrl+P untuk sisi pengguna
+    window.print(); 
   },
 
   async autoArchiveToDrive(elementId = "report-paper") {
@@ -42,36 +42,60 @@ const PATS_PDF = {
       
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
-      const element = document.getElementById(elementId);
+      const originalElement = document.getElementById(elementId);
       
-      if (!element) throw new Error("Elemen report tidak ditemukan.");
+      if (!originalElement) throw new Error("Elemen report tidak ditemukan.");
 
-      // 1. BEKUKAN CANVAS (CHART.JS) MENJADI GAMBAR AGAR TIDAK BLANK
-      const originalCanvases = [];
-      const canvases = element.querySelectorAll("canvas");
-      canvases.forEach(canvas => {
-        const img = document.createElement('img');
-        img.src = canvas.toDataURL('image/png', 1.0);
-        img.style.width = canvas.style.width || canvas.width + 'px';
-        img.style.height = canvas.style.height || canvas.height + 'px';
-        img.style.maxWidth = '100%';
-        
-        originalCanvases.push({ parent: canvas.parentNode, canvas: canvas, img: img });
-        canvas.parentNode.replaceChild(img, canvas);
+      // 1. BUAT KOTAK KLONING RAHASIA DI POJOK KIRI ATAS (KOORDINAT 0,0)
+      const container = document.createElement('div');
+      container.style.position = 'absolute';
+      container.style.top = '0';
+      container.style.left = '0';
+      container.style.width = '800px'; // Lebar absolut setara kertas A4 Potrait
+      container.style.zIndex = '-9999';
+      container.style.backgroundColor = '#ffffff';
+
+      // 2. KLONING ELEMEN ASLI KE DALAM KOTAK RAHASIA
+      const clone = originalElement.cloneNode(true);
+      
+      // Hapus margin auto agar menempel ke sisi kiri kotak rahasia
+      clone.style.margin = '0';
+      clone.style.maxWidth = '100%';
+      clone.style.width = '100%';
+      clone.style.boxShadow = 'none';
+
+      // 3. BEKUKAN CANVAS MENJADI GAMBAR PADA ELEMEN KLONING (Agar Chart Muncul)
+      const origCanvases = originalElement.querySelectorAll('canvas');
+      const cloneCanvases = clone.querySelectorAll('canvas');
+      
+      origCanvases.forEach((canvas, i) => {
+        if(cloneCanvases[i]) {
+          const img = document.createElement('img');
+          img.src = canvas.toDataURL('image/png', 1.0);
+          img.style.cssText = cloneCanvases[i].style.cssText;
+          img.style.width = canvas.offsetWidth + 'px';
+          img.style.height = canvas.offsetHeight + 'px';
+          cloneCanvases[i].replaceWith(img);
+        }
       });
 
-      // 2. KONFIGURASI HTML2PDF
+      // Masukkan kloning ke body
+      container.appendChild(clone);
+      document.body.appendChild(container);
+
+      // 4. KONFIGURASI HTML2PDF (Fokus membidik kotak rahasia)
       const opt = {
-        margin:       [10, 10, 10, 10], // Margin atas, kiri, bawah, kanan (mm)
+        margin:       [10, 10, 10, 10],
         filename:     fileName,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { 
           scale: 2, 
           useCORS: true,
           logging: false,
-          windowWidth: 1024, // Memaksa html2canvas mengambil layout versi Desktop (menghindari tabel terpotong)
-          scrollY: 0,
-          scrollX: 0
+          x: 0,           // Kunci ke sumbu X = 0
+          y: 0,           // Kunci ke sumbu Y = 0
+          scrollX: 0,
+          scrollY: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
@@ -80,16 +104,14 @@ const PATS_PDF = {
         }
       };
 
-      // 3. EKSEKUSI RENDER & AMBIL BASE64
-      const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
-      const cleanBase64 = pdfBase64Uri.split(',')[1]; // <-- PERBAIKAN: Variabel yang hilang
+      // 5. RENDER DARI ELEMEN KLONING
+      const pdfBase64Uri = await html2pdf().set(opt).from(container).outputPdf('datauristring');
+      const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-      // 4. KEMBALIKAN CANVAS KE BENTUK ASLI (Sangat Cepat, Layar Tidak Berkedip)
-      originalCanvases.forEach(item => {
-        item.parent.replaceChild(item.canvas, item.img);
-      });
+      // 6. HAPUS KOTAK RAHASIA (Selesai, web utama sama sekali tidak tersentuh dari awal)
+      document.body.removeChild(container);
 
-      // 5. UPLOAD KE GOOGLE DRIVE
+      // 7. UPLOAD KE GOOGLE DRIVE
       console.log("[DRIVE ARCHIVE]: Mengirim ke server...");
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
@@ -108,6 +130,9 @@ const PATS_PDF = {
 
     } catch (error) {
       console.error("[DRIVE ARCHIVE ERROR]:", error);
+      // Bersihkan jika gagal di tengah jalan
+      const leftover = document.querySelector('div[style*="width: 800px"][style*="z-index: -9999"]');
+      if (leftover) leftover.remove();
     }
   }
 };
@@ -115,5 +140,5 @@ const PATS_PDF = {
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 3500); // Waktu cukup untuk memastikan grafik selesai digambar sebelum diekspor
+  }, 3500); 
 });
