@@ -465,19 +465,136 @@
     }
   },
 
-  "bagian_11_strategi_pembinaan": {
-    "judul": "XI. STRATEGI PEMBINAAN KONKRET",
-    "fase_1_matrikulasi": {
-      "tahap": "Fase 1: Matrikulasi Konsep Dasar (0-3 Bulan)",
-      "teks": "Fokuskan 30% awal waktu belajar pada pembenahan materi pondasi sekolah (Advanced High School Level) sebelum menyentuh soal seleksi provinsi/nasional."
+  "bagian_11_roadmap_8_bulan": {
+    "Matematika": {
+      "karakter": "Full Calculation, Logical Rigor & Mathematical Proof",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Aljabar & Teori Bilangan Dasar", "materi": "Persamaan polinomial, fungsional dasar, keterbagian, aritmetika modular.", "target_soal": "150 Soal OSN-K & AIME", "target_to": "1x TO Diagnostik", "todo": "Mulai membuat Buku Error Log khusus trik manipulasi aljabar." },
+        { "bulan": 2, "fokus": "Kombinatorika & Geometri Euclidean", "materi": "Prinsip Inklusi-Eksklusi, Pigeonhole Principle, kesebangunan & lingkaran.", "target_soal": "180 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Latih ketelitian menggambar konstruksi geometri tanpa alat bantu rumit." },
+        { "bulan": 3, "fokus": "Drill Penguasaan OSN-K (Kecepatan)", "materi": "Penyelesaian cepat 20 soal isian singkat OSN-K dari archive 10 tahun terakhir.", "target_soal": "250 Soal OSN-K", "target_to": "2x TO Kecepatan (2 Jam)", "todo": "Targetkan skor OSN-K aman di atas 70% sebelum masuk materi OSN-P." },
+        { "bulan": 4, "fokus": "Pengenalan Proof & Rigor OSN-P", "materi": "Metode pembuktian kontradiksi, induksi matematika, ketaksamaan AM-GM/Cauchy.", "target_soal": "120 Soal Proof OSN-P", "target_to": "1x TO Essay", "todo": "Latih penulisan argumen pembuktian secara sistematis dan rapi." },
+        { "bulan": 5, "fokus": "Geometri Lanjut & Kombinatorika Kompleks", "materi": "Power of a Point, Ceva/Menelaus, Recurrence Relation, Double Counting.", "target_soal": "150 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Bedah soal OSN-P 5 tahun terakhir, pahami pemotongan skor per step." },
+        { "bulan": 6, "fokus": "Simulasi Intensif OSN-P (Stamina Fokus)", "materi": "Set soal essay panjang durasi 3,5 jam (4-5 soal proof per set).", "target_soal": "100 Soal HOTS / AIME / USAMO", "target_to": "2x TO Simulasi Full Day", "todo": "Evaluasi waktu pengerjaan: maksimal 45 menit per nomor essay." },
+        { "bulan": 7, "fokus": "Soal Level OSN-N / IMO Shortlist", "materi": "Ketaksamaan tingkat lanjut, Teori Graf, Geometri Analitik/Kompleks.", "target_soal": "80 Soal Level Nasional", "target_to": "3x TO Karantina", "todo": "Diskusikan alternatif cara penyelesaian cepat dengan pelatih/medalis." },
+        { "bulan": 8, "fokus": "Peak Performance & Conditioning", "materi": "Review Buku Error Log, pemantapan konsep kunci, simulasi rileks.", "target_soal": "50 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Jaga pola tidur dan mental percaya diri. Hentikan drill berat H-3." }
+      ]
     },
-    "fase_2_drill": {
-      "tahap": "Fase 2: Intensitas Drill Terukur (Progressive Exposure)",
-      "teks": "Gunakan teknik paparan bertahap. Mulai dengan bank soal OSN tingkat Kabupaten/Kota. Hindari melempar soal tingkat Nasional di bulan pertama untuk menjaga mental pantang menyerah (Grit) siswa."
+    "Fisika": {
+      "karakter": "Heavy Mathematical Tools & Physical Intuition",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Matematika Fisika & Mekanika Dasar", "materi": "Vektor, kalkulus diferensial-integral, kinematika 1D/2D, hukum Newton.", "target_soal": "120 Soal Irodov/Halliday", "target_to": "1x TO Diagnostik", "todo": "Kuasai kalkulus dasar sebagai alat utama memecahkan persamaan gerak." },
+        { "bulan": 2, "fokus": "Dinamika Benda Tegar & Usaha-Energi", "materi": "Momen inersia, torsi, momentum sudut, hukum kekekalan energi-momentum.", "target_soal": "150 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Latih visualisasi diagram gaya bebas (Free Body Diagram) dengan presisi." },
+        { "bulan": 3, "fokus": "Fluida, Getaran, & Gelombang", "materi": "Hidrostatika/dinamika, Gerak Harmonik Sederhana (GHS), gelombang bunyi.", "target_soal": "200 Soal OSN-K", "target_to": "2x TO Kecepatan", "todo": "Kuasai persamaan diferensial GHS sederhana untuk mencari frekuensi." },
+        { "bulan": 4, "fokus": "Termofisika & Listrik Magnet Dasar", "materi": "Hukum Termodinamika, gas ideal, hukum Coulomb, medan/potensial listrik.", "target_soal": "120 Soal OSN-P", "target_to": "1x TO Essay", "todo": "Hubungkan konsep elektrostatika dengan konsep gravitasi Newtonian." },
+        { "bulan": 5, "fokus": "Rangkaian DC/AC & Induksi Elektromagnetik", "materi": "Hukum Kirchhoff, Hukum Faraday, Lenz, induktansi, rangkaian RLC.", "target_soal": "140 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Latih manipulasi matematika pada persamaan integral lintasan." },
+        { "bulan": 6, "fokus": "Optika & Fisika Modern (Level OSN-P)", "materi": "Optika fisis/geometris, relativitas khusus, fisika kuantum dasar.", "target_soal": "100 Soal HOTS / Irodov", "target_to": "2x TO Simulasi Full Day", "todo": "Simulasikan pengerjaan soal essay fisika 4 jam tanpa kalkulator otomatis." },
+        { "bulan": 7, "fokus": "Drill Soal Kompleks OSN-N / IPhO", "materi": "Sistem multi-benda, perambatan gelombang kompleks, termodinamika lanjut.", "target_soal": "80 Soal Level Nasional", "target_to": "3x TO Karantina", "todo": "Fokus pada efisiensi penalaran sebelum melangkah ke aljabar rumit." },
+        { "bulan": 8, "fokus": "Review Rumus & Mental Conditioning", "materi": "Pemeriksaan Error Log, penegasan kondisi batas (boundary conditions).", "target_soal": "50 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Pastikan fisik bugar dan tidak ada kebingungan rumus dasar." }
+      ]
     },
-    "fase_3_evaluasi": {
-      "tahap": "Fase 3: Evaluasi Berbasis Proses (Tracing Logic)",
-      "teks": "Nilai perkembangan siswa dari caranya mengurai masalah (problem decomposition), bukan sekadar dari persentase jawaban akhirnya yang benar. Ajarkan siswa membedah kesalahan logika mereka sendiri."
+    "Biologi": {
+      "karakter": "Heavy Reading Literature, Graph Analysis & Practical Logic",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Materi Utama: Biologi Sel & Molekuler", "materi": "Struktur organel, membran sel, respirasi seluler, fotosintesis, dogma sentral.", "target_soal": "100 Soal + Baca 5 Bab Campbell", "target_to": "1x TO Diagnostik", "todo": "Wajib membaca Campbell Biology minimal 20 halaman per hari." },
+        { "bulan": 2, "fokus": "Genetika Mendelian & Genetika Populasi", "materi": "Persilangan, peta kromosom, hukum Hardy-Weinberg, mutasi, bioteknologi.", "target_soal": "150 Soal Hitungan Genetika", "target_to": "1x TO Evaluasi", "todo": "Kuasai logika matematika genetika populasi dan silsilah keluarga (pedigree)." },
+        { "bulan": 3, "fokus": "Anatomi & Fisiologi Tumbuhan (Anfisbang)", "materi": "Jaringan tumbuhan, transpor air/hara, hormon tumbuhan, fotosintesis C3/C4/CAM.", "target_soal": "200 Soal OSN-K / IBO", "target_to": "2x TO Kecepatan", "todo": "Buat bagan perbandingan struktur akar, batang, dan daun dikotil/monokotil." },
+        { "bulan": 4, "fokus": "Anatomi & Fisiologi Hewan/Manusia", "materi": "Sistem saraf, endokrin, sirkulasi, ekskresi, imunitas, dan reproduksi.", "target_soal": "180 Soal OSN-K/P", "target_to": "1x TO Analisis Data", "todo": "Fokus memahami mekanisme umpan balik (feedback loop) hormonal." },
+        { "bulan": 5, "fokus": "Etologi, Ekologi, & Evolusi", "materi": "Perilaku hewan, dinamika populasi, jaring makanan, filogeni, dan spesiasi.", "target_soal": "150 Soal Analisis Grafik", "target_to": "2x TO Analisis Data", "todo": "Latih cara membaca dan menginterpretasi grafik hasil eksperimen laboratorium." },
+        { "bulan": 6, "fokus": "Biosistematika & Drill Soal Tipe IBO", "materi": "Kladogram, taksonomi domain/kingdom, soal interpretasi tabel eksperimen.", "target_soal": "120 Soal Tipe IBO / True-False", "target_to": "2x TO Simulasi Full Day", "todo": "Latih kecepatan analisis soal tipe Benar/Salah bernilai poin minus." },
+        { "bulan": 7, "fokus": "Praktikum Virtual & Analisis Studi Kasus", "materi": "Teknik ELISA, PCR, elektroforesis, diseksi, kuncinya analisis data jurnal.", "target_soal": "100 Soal Studi Jurnal", "target_to": "3x TO Karantina", "todo": "Pahami prinsip kerja alat-alat laboratorium biologi molekuler modern." },
+        { "bulan": 8, "fokus": "Final Memory Refresh & Mindmapping", "materi": "Review poin-poin krusial Campbell dan rangkuman Error Log.", "target_soal": "60 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Jaga kesehatan mata dan stamina membaca paragraf soal yang panjang." }
+      ]
+    },
+    "Kimia": {
+      "karakter": "Balanced Calculation & Conceptual Chemical Mechanics",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Stokiometri & Struktur Atom", "materi": "Mol, pereaksi pembatas, mekanika kuantum atom, konfigurasi elektron.", "target_soal": "130 Soal Dasar Chang/Zumdahl", "target_to": "1x TO Diagnostik", "todo": "Mantapkan perhitungan stoikiometri tanpa kesalahan pembulatan." },
+        { "bulan": 2, "fokus": "Ikatan Kimia & Termokimia", "materi": "Hibridisasi, teori VSEPR, gaya antarmolekul, entalpi, Hukum Hess.", "target_soal": "150 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Latih kemampuan menggambarkan bentuk molekul 3D dan kepolaran." },
+        { "bulan": 3, "fokus": "Energetika & Kinetika Kimia", "materi": "Entropi, energi bebas Gibbs, orde reaksi, mekanisme reaksi, persamaan Arrhenius.", "target_soal": "200 Soal OSN-K", "target_to": "2x TO Kecepatan", "todo": "Kuasai grafik kinetika dan penentuan orde reaksi dari data eksperimen." },
+        { "bulan": 4, "fokus": "Kesetimbangan Kimia & Asam-Basa", "materi": "Kc/Kp, larutan penyangga, hidrolisis, titrasi, Ksp, kesetimbangan kompleks.", "target_soal": "140 Soal OSN-P", "target_to": "1x TO Essay", "todo": "Kuasai kalkulasi pH sistem penyangga poliprotik yang kompleks." },
+        { "bulan": 5, "fokus": "Elektrokimia & Kimia Anorganik", "materi": "Sel volta/elektrolisis, persamaan Nernst, kimia unsur transisi, kompleks.", "target_soal": "130 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Hafalkan warna-warna khas endapan dan kompleks logam transisi." },
+        { "bulan": 6, "fokus": "Kimia Organik Dasar s/d Lanjut", "materi": "Nomenklatur, stereokimia (R/S, E/Z), reaksi substitusi (SN1/SN2), adisi, eliminasi.", "target_soal": "110 Soal Organik Clayden", "target_to": "2x TO Simulasi Full Day", "todo": "Pahami mekanisme dorongan panah elektron (arrow-pushing mechanism)." },
+        { "bulan": 7, "fokus": "Elusidasi Struktur & Biokimia", "materi": "Spektroskopi (NMR, IR, MS), karbohidrat, protein, lipid, asam nukleat.", "target_soal": "90 Soal OSN-N / IChO", "target_to": "3x TO Karantina", "todo": "Latih deduksi struktur organik berdasarkan data puncak spektroskopi." },
+        { "bulan": 8, "fokus": "Review Reaksi Organik & Formula", "materi": "Matriks reaksi organik, review kalkulasi Ksp dan elektrokimia.", "target_soal": "50 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Istirahat cukup dan siapkan mental tenang untuk pengerjaan essay." }
+      ]
+    },
+    "Informatika": {
+      "karakter": "Problem Decomposition, Algorithmic Logic & Competitive Programming",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Pemrograman Dasar C++ & Logika Matematika", "materi": "Sintaks C++, tipe data, percabangan, perulangan, fungsi, logika boolean.", "target_soal": "100 Problem TLX TOKI Basic", "target_to": "1x TO Diagnostik", "todo": "Kuasai penuh bahasa C++ dasar dan penyelesaian masalah sederhana." },
+        { "bulan": 2, "fokus": "Struktur Data Dasar & Kompleksitas Algorithm", "materi": "Array, Vector, Stack, Queue, Kompleksitas Waktu O(N) & Ruang.", "target_soal": "120 Problem TLX / Codeforces", "target_to": "1x TO Evaluasi", "todo": "Selalu hitung batas waktu execution time (1 detik = ~10^8 operasi)." },
+        { "bulan": 3, "fokus": "Pengurutan, Pencarian, & Math for CP", "materi": "Binary Search, Sorting, Teori Bilangan (GCD, FPB, Sieve of Eratosthenes).", "target_soal": "150 Problem OSN-K / TLX", "target_to": "2x TO Kecepatan Analitis", "todo": "Selesaikan seluruh archive soal analitis logika OSN-K tahun lalu." },
+        { "bulan": 4, "fokus": "Rekursi, Complete Search, & Greedy", "materi": "Fungsi rekursif, backtracking, Brute Force terstruktur, algoritma Greedy.", "target_soal": "100 Problem CP Medium", "target_to": "1x TO Coding Contest", "todo": "Latih kemampuan memecahkan masalah dengan pendekatan kontradiksi Greedy." },
+        { "bulan": 5, "fokus": "Dynamic Programming (DP) Dasar s/d Lanjut", "materi": "Memoization, Tabulation, Knapsack, Longest Common Subsequence (LCS).", "target_soal": "80 Problem DP TLX", "target_to": "2x TO Coding Contest", "todo": "Latih identifikasi State DP dan formulasi hubungan rekurensi." },
+        { "bulan": 6, "fokus": "Teori Graf & Algoritma Lintasan Terpendek", "materi": "Representation (Adj List), BFS, DFS, Dijkstra, Minimum Spanning Tree.", "target_soal": "80 Problem Graf TLX", "target_to": "2x TO Simulasi Contest (5 Jam)", "todo": "Simulasikan contest 5 jam dengan 3 soal subtask bergaya OSN-P." },
+        { "bulan": 7, "fokus": "Struktur Data Lanjut & Strategi Subtask", "materi": "Segment Tree, Disjoint Set Union (DSU), optimasi skor subtask contest.", "target_soal": "60 Problem OSN-N / IOI", "target_to": "3x TO Karantina Contest", "todo": "Kuasai teknik mengamankan poin parsial (subtask mining) saat buntu." },
+        { "bulan": 8, "fokus": "Debugging Speed & Code Template Polish", "materi": "Pemeriksaan Edge Case (N=1, nilai negatif, overflow integer 64-bit).", "target_soal": "40 Problem Refreshing", "target_to": "2x TO Final Readiness", "todo": "Jaga stamina tangan dan pikiran. Hentikan koding berat H-2 contest." }
+      ]
+    },
+    "Astronomi": {
+      "karakter": "Astro-Physics Calculations, Geometry Spherical & Observational Data",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Matematika Astronomi & Bola Langit Dasar", "materi": "Trigonometri bola dasar, tata koordinat horizon, ekuator, dan ekliptika.", "target_soal": "110 Soal Dasar Carroll/Karttunen", "target_to": "1x TO Diagnostik", "todo": "Visualisasikan pergerakan harian benda langit dengan diagram bola langit." },
+        { "bulan": 2, "fokus": "Mekanika Benda Langit & Hukum Kepler/Newton", "materi": "Hukum Kepler I-III, orbit elips, kecepatan lepas, hukum gravitasi umum.", "target_soal": "140 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Kuasai transformasi koordinat dan perhitungan waktu sideris/matahari." },
+        { "bulan": 3, "fokus": "Radiasi Benda Langit & Fotometri", "materi": "Fluks, luminositas, hukum Planck/Wien/Stefan-Boltzmann, magnitudo.", "target_soal": "180 Soal OSN-K", "target_to": "2x TO Kecepatan", "todo": "Kuasai rumus sistem magnitudo panggul dan paralaks jarak parsec." },
+        { "bulan": 4, "fokus": "Astrofisika Bintang & Spektroskopi", "materi": "Klasifikasi spektral, diagram HR, deret utama, struktur dalam bintang.", "target_soal": "120 Soal OSN-P", "target_to": "1x TO Essay", "todo": "Pahami lintasan evolusi bintang massa tinggi vs massa rendah pada diagram HR." },
+        { "bulan": 5, "fokus": "Sistem Tata Surya & Galaksi", "materi": "Fisika planet, satelit, pasang surut, rotasi galaksi, materi gelap (dark matter).", "target_soal": "130 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Latih kalkulasi periode orbit biner dan massa sistem bintang ganda." },
+        { "bulan": 6, "fokus": "Kosmologi Dasar & Pengolahan Data", "materi": "Hukum Hubble, ekspansi alam semesta, redshift, analisis data observasi.", "target_soal": "100 Soal HOTS / IOAA", "target_to": "2x TO Simulasi Full Day", "todo": "Latih efisiensi kalkulator ilmiah (scientific calculator) tanpa salah tekan." },
+        { "bulan": 7, "fokus": "Drill Instrumentasi Astronomi & IOAA Level", "materi": "Teleskop, optik instrumen, detektor CCD, analisis data gambar astronomi.", "target_soal": "80 Soal Level IOAA", "target_to": "3x TO Karantina", "todo": "Pahami teknik plotting data analisis astronomi dan kalkulasi ralat." },
+        { "bulan": 8, "fokus": "Review Konstanta Astronomi & Mental Prep", "materi": "Hafalkan konstanta astronomi kunci, review Error Log hitungan.", "target_soal": "50 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Pastikan baterai kalkulator cadangan siap dan fisik bugar." }
+      ]
+    },
+    "Kebumian": {
+      "karakter": "Interdisciplinary Earth System, Map Reading & Text-Graphic Synthesis",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Geologi Fisik & Mineralogi", "materi": "Kristalografi, sifat fisik mineral, batuan beku, sedimen, dan metamorf.", "target_soal": "120 Soal + Baca Tarbuck Ch 1-6", "target_to": "1x TO Diagnostik", "todo": "Kuasai siklus batuan dan identifikasi mineral dari tabel sifat fisik." },
+        { "bulan": 2, "fokus": "Tektonik Lempeng & Geologi Struktur", "materi": "Batas lempeng, struktur lipatan, patahan (fault), gempa bumi, seismologi.", "target_soal": "150 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Latih pembacaan diagram blok geologi dan kurva gelombang seismik P-S." },
+        { "bulan": 3, "fokus": "Meteorologi & Klimatologi", "materi": "Struktur atmosfer, radiasi, kelembaban, angin, sirkulasi global, cuaca ekstrem.", "target_soal": "200 Soal OSN-K", "target_to": "2x TO Kecepatan", "todo": "Kuasai diagram psikrometrik dan perhitungan suhu adiabatik basah/kering." },
+        { "bulan": 4, "fokus": "Oseanografi Fisika & Kimia", "materi": "Topografi dasar laut, sifat air laut, gelombang laut, pasang surut, arus.", "target_soal": "130 Soal OSN-P", "target_to": "1x TO Essay", "todo": "Pahami sirkulasi termohalin global dan dinamika zona ekman." },
+        { "bulan": 5, "fokus": "Astronomi Kebumian & Geofisika", "materi": "Presesi/nutasi bumi, sistem penanggalan, gravitasi bumi, kemagnetan purba.", "target_soal": "130 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Hubungkan dampak perubahan siklus Milankovitch terhadap iklim purba." },
+        { "bulan": 6, "fokus": "Peta Topografi & Geologi (Pratice Test)", "materi": "Kontur, strike/dip, penampang geologi, interpretasi citra satelit.", "target_soal": "100 Soal Peta & Gambar", "target_to": "2x TO Simulasi Full Day", "todo": "Latih membuat rekonstruksi penampang geologi dari peta kontur." },
+        { "bulan": 7, "fokus": "Drill Studi Kasus Bencana & IESO Level", "materi": "Mitigasi bencana, perubahan iklim, geologi minyak bumi, hidrogeologi.", "target_soal": "80 Soal Level IESO", "target_to": "3x TO Karantina", "todo": "Pahami hubungan interaksi 4 geosfer (Atmosfer, Hidrosfer, Litosfer, Biosfer)." },
+        { "bulan": 8, "fokus": "Memory Refresh & Visual Diagram Review", "materi": "Review peta geologi Indonesia, tabel mineral, dan grafik atmosfer.", "target_soal": "60 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Jaga konsentrasi dan stamina fisik menjelang hari pengerjaan." }
+      ]
+    },
+    "Ekonomi": {
+      "karakter": "Micro-Macro Economic Logic, Graphic Curves & Accounting Precision",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Mikroekonomi: Permintaan, Penawaran, & Elastisitas", "materi": "Konsep kelangkaan, kurva elastisitas, keseimbangan pasar, intervensi pemerintah.", "target_soal": "130 Soal Mankiw Micro", "target_to": "1x TO Diagnostik", "todo": "Kuasai pergeseran (shift) vs pergerakan sepanjang kurva (along the curve)." },
+        { "bulan": 2, "fokus": "Teori Perilaku Konsumen & Produsen", "materi": "Utilitas kardinal/ordinal, indifferens, isocost/isoquant, fungsi produksi.", "target_soal": "160 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Latih fungsi matematis turunan (MR=MC, MUx/Px = MUy/Py) untuk maksimisasi." },
+        { "bulan": 3, "fokus": "Struktur Pasar & Makroekonomi Dasar", "materi": "Pasar persaingan sempurna, monopoli, oligopoli, PDB/PNB, inflasi, pengangguran.", "target_soal": "200 Soal OSN-K", "target_to": "2x TO Kecepatan", "todo": "Bandingkan efisiensi pasar persaingan sempurna vs monopoli secara grafis." },
+        { "bulan": 4, "fokus": "Kebijakan Fiskal, Moneter, & Perbankan", "materi": "Bank sentral, jumlah uang beredar, kurva IS-LM, APBN/APBD, multiplier effect.", "target_soal": "140 Soal OSN-P", "target_to": "1x TO Essay", "todo": "Pahami mekanisme transmisi kebijakan moneter terhadap tingkat suku bunga." },
+        { "bulan": 5, "fokus": "Perdagangan Internasional & Ekonomi Pembangunan", "materi": "Keunggulan komparatif/absolut, tarif/kuota, neraca pembayaran, valas.", "target_soal": "130 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Hitung dampak kebijakan kuota impor terhadap surplus konsumen/produsen." },
+        { "bulan": 6, "fokus": "Akuntansi Perusahaan Jasa & Dagang", "materi": "Jurnal umum, buku besar, jurnal penyesuaian (AJP), laporan keuangan, closing.", "target_soal": "100 Siklus Akuntansi", "target_to": "2x TO Simulasi Full Day", "todo": "Latih ketelitian jurnal penyesuaian (beban dibayar di muka, pendapatan diterima di muka)." },
+        { "bulan": 7, "fokus": "Akuntansi Lanjut & Case Study IEO", "materi": "Akuntansi perusahaan manufaktur, finansial bisnis, studi kasus IEO.", "target_soal": "80 Soal Tipe IEO / Essay", "target_to": "3x TO Karantina", "todo": "Latih kecepatan membaca dan menyelesaikan soal kasus bisnis panjang." },
+        { "bulan": 8, "fokus": "Review Kurva Ekonomi & Siklus Akuntansi", "materi": "Review seluruh kurva mikro-makro dan rekap jurnal akuntansi.", "target_soal": "50 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Pastikan ketenangan mental dan ketelitian hitungan angka akuntansi." }
+      ]
+    },
+    "Geografi": {
+      "karakter": "Spatial Analysis, Geographic Information Systems & Human-Environment Synthesis",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Geografi Fisik & Geomorfologi", "materi": "Pengantar geografi, konsep spasial, proses endogen/eksogen, bentuk lahan.", "target_soal": "120 Soal + Baca Knox/Marston", "target_to": "1x TO Diagnostik", "todo": "Pahami 10 konsep esensial geografi dan penerapannya pada fenomena alam." },
+        { "bulan": 2, "fokus": "Klimatologi & Hidrologi Spasial", "materi": "Klasifikasi iklim (Koppen/Junghuhn), siklus hidrologi, pengelolaan daerah aliran sungai.", "target_soal": "150 Soal OSN-K", "target_to": "1x TO Evaluasi", "todo": "Latih interpretasi peta pola iklim dan grafik curah hujan bulanan." },
+        { "bulan": 3, "fokus": "Geografi Manusia & Demografi", "materi": "Dinamika penduduk, migrasi, piramida penduduk, ketenagakerjaan, proyeksi.", "target_soal": "200 Soal OSN-K", "target_to": "2x TO Kecepatan", "todo": "Kuasai formula angka beban ketergantungan (dependency ratio) dan pertumbuhan populasi." },
+        { "bulan": 4, "fokus": "Geografi Ekonomi, Pembangunan, & Kota", "materi": "Teori lokasi (Weber/Christaller), pola keruangan desa-kota, interaksi spasial.", "target_soal": "140 Soal OSN-P", "target_to": "1x TO Essay", "todo": "Latih analisis gravitasi interaksi wilayah dan model tempat sentral." },
+        { "bulan": 5, "fokus": "Kartografi, Penginderaan Jauh, & SIG", "materi": "Proyeksi peta, skala, interpretasi foto udara, citra satelit, analisis overlay SIG.", "target_soal": "130 Soal OSN-P", "target_to": "2x TO Essay", "todo": "Latih identifikasi objek pada citra inderaja berdasarkan 8 unsur interpretasi." },
+        { "bulan": 6, "fokus": "Geografi Lingkungan & Sumber Daya", "materi": "Pembangunan berkelanjutan (SDGs), AMDAL, ketahanan pangan, energi terbarukan.", "target_soal": "110 Soal Case Study", "target_to": "2x TO Simulasi Full Day", "todo": "Bedah isu-isu lingkungan global terkini (misal: banjir pesisir/deforestrasi)." },
+        { "bulan": 7, "fokus": "Drill Isu Regional, Budaya, & iGeo Level", "materi": "Geopolitik, geografi budaya, pariwisata berkelanjutan, soal studi peta iGeo.", "target_soal": "80 Soal Level iGeo", "target_to": "3x TO Karantina", "todo": "Latih penyusunan essay geografi dengan pendekatan keruangan, kelingkungan, kompleks wilayah." },
+        { "bulan": 8, "fokus": "Memory Refresh & Spatial Diagram Review", "materi": "Review peta tematik dunia, statistik demografi, dan istilah kunci geografi.", "target_soal": "60 Soal Refreshing", "target_to": "2x TO Final Readiness", "todo": "Jaga kesehatan fisik dan stamina menulis essay analisis panjang." }
+      ]
+    },
+    "AI & Data Science": {
+      "karakter": "Applied Math, Machine Learning Logic & Data Manipulation Skills",
+      "roadmap": [
+        { "bulan": 1, "fokus": "Matematika Fondasi Data Science & Python", "materi": "Aljabar matriks, kalkulus diferensial, probabilitas dasar, dasar bahasa Python.", "target_soal": "100 Problem Python/Math", "target_to": "1x TO Diagnostik", "todo": "Kuasai manipulasi matriks dan pemrosesan array dengan library NumPy/Pandas." },
+        { "bulan": 2, "fokus": "Eksplorasi Data (EDA) & Statistik Deskriptif", "materi": "Distribusi data, outlier, korelasi, visualisasi data (Matplotlib/Seaborn).", "target_soal": "120 Problem Data Analysis", "target_to": "1x TO Evaluasi", "todo": "Latih kepekaan membaca pola anomalies dan distorsi grafik statistik." },
+        { "bulan": 3, "fokus": "Supervised Learning: Regresi & Klasifikasi", "materi": "Linear/Logistic Regression, Decision Trees, K-Nearest Neighbors (KNN), metrics (Accuracy/F1).", "target_soal": "150 Problem ML Concept", "target_to": "2x TO Kecepatan Analitis", "todo": "Pahami perbedaan Trade-off Bias vs Variance (Overfitting vs Underfitting)." },
+        { "bulan": 4, "fokus": "Unsupervised Learning & Feature Engineering", "materi": "K-Means Clustering, PCA (Dimensionality Reduction), scaling, encoding categorical.", "target_soal": "120 Problem ML Modeling", "target_to": "1x TO Practical Contest", "todo": "Latih teknik ekstraksi fitur terbaik dari dataset berdimensi tinggi." },
+        { "bulan": 5, "fokus": "Pengenalan Neural Networks & Deep Learning", "materi": "Perceptron, fungsi aktivasi, Backpropagation, Dasar Convolutional Neural Networks (CNN).", "target_soal": "100 Problem Deep Learning", "target_to": "2x TO Practical Contest", "todo": "Pahami alur proses forward pass dan kalkulasi gradien eror." },
+        { "bulan": 6, "fokus": "Evaluasi Model, Validation, & Ensembling", "materi": "Cross-Validation, Hyperparameter Tuning (GridSearch), Random Forest, XGBoost.", "target_soal": "80 Problem Case Modeling", "target_to": "2x TO Simulasi Contest (5 Jam)", "todo": "Simulasikan kompetisi Data Science (Kaggle-style) dengan batas waktu ketat." },
+        { "bulan": 7, "fokus": "NLP / Computer Vision & Etika AI", "materi": "Pengolahan teks (Tokenization/TF-IDF), augmentasi gambar, AI Ethics/Bias.", "target_soal": "60 Problem Advanced AI", "target_to": "3x TO Karantina Contest", "todo": "Kuasai teknik interpretasi penjelasan keputusan model (Explainable AI)." },
+        { "bulan": 8, "fokus": "Model Optimization & Bug-Free Pipeline", "materi": "Review pipeline data, optimalisasi waktu eksekusi kode, review Error Log.", "target_soal": "40 Problem Refreshing", "target_to": "2x TO Final Readiness", "todo": "Pastikan struktur logika kode bersih dan pemahaman teori AI solid." }
+      ]
     }
   }
 }
