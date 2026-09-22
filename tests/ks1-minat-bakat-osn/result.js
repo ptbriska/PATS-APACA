@@ -586,3 +586,92 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("Terjadi kesalahan saat menyusun berkas Laporan OTM. Pastikan Anda telah menyelesaikan ketiga pilar.");
   }
 });
+
+/* ==========================================================================
+   PATS PORTAL - AUTO ARCHIVE ENGINE (GOOGLE SPREADSHEET REKAP)
+   Tempelkan potongan kode ini di bagian PALING BAWAH file result.js
+   ========================================================================== */
+
+const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
+
+(function initAutoArchiveOTM() {
+  async function sendToSpreadsheet() {
+    // 1. Cegah pengiriman ganda pada saat refresh halaman
+    if (sessionStorage.getItem("pats_archived_success")) {
+      console.log("[AUTO-ARCHIVE]: Data rekap siswa ini sudah tersimpan di Spreadsheet.");
+      return;
+    }
+
+    try {
+      // 2. Ambil Sesi User & Evaluasi Master OTM
+      const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : null;
+      const evaluation = typeof Total_Scoring !== "undefined" ? Total_Scoring.loadAndEvaluateFromSession() : null;
+
+      if (!user || !evaluation || evaluation.isInvalid || !evaluation.top_recommendation) {
+        console.warn("[AUTO-ARCHIVE]: Data belum lengkap, pengarsipan dibatalkan.");
+        return;
+      }
+
+      const top1 = evaluation.top_recommendation;
+      const isPassGatekeeper = top1.gatekeeper_status === "PASS";
+      const isPassTotal = top1.skor_total >= 60.0 && isPassGatekeeper;
+      const isFit = top1.indeks_intimidasi >= 3.00 && !top1.warning_tag;
+
+      // 3. Logika Pemetaan Kuadran Kelayakan & Status Decision Dashboard
+      let kuadran = "KUADRAN I";
+      let decisionStatus = "High Priority (High ROI)";
+
+      if (isPassTotal && isFit) {
+        kuadran = "KUADRAN I";
+        decisionStatus = "High Priority (High ROI)";
+      } else if (isPassTotal && !isFit) {
+        kuadran = "KUADRAN II";
+        decisionStatus = "Mental Mentoring Needed";
+      } else if (!isPassTotal && isFit) {
+        kuadran = "KUADRAN III";
+        decisionStatus = "Kuda Hitam / Matrikulasi";
+      } else {
+        kuadran = "KUADRAN IV";
+        decisionStatus = "High Risk / Low ROI";
+      }
+
+      // Helper Format Angka Komma Indonesia (Contoh: 77,35)
+      const fmt = (val) => Number(val || 0).toFixed(2).replace('.', ',');
+
+      // 4. Susun Payload Data Sesuai Format Kolom Spreadsheet
+      const payload = {
+        nama_siswa: user.nama_lengkap || "Siswa OTM",
+        bidang_top1: top1.bidang,
+        skor_bakat: fmt(top1.skor_pilar1_bakat),
+        skor_minat: fmt(top1.skor_pilar2_minat),
+        skor_comfort: fmt(top1.skor_pilar3_persona),
+        skor_total: fmt(top1.skor_total),
+        status_gatekeeper: isPassGatekeeper ? "PASS" : "LOCKED",
+        indeks_intimidasi: `${fmt(top1.indeks_intimidasi)} (${isFit ? 'FIT' : 'BURNOUT'})`,
+        pemetaan_kuadran: kuadran,
+        status_decision: decisionStatus,
+        timestamp: new Date().toLocaleString('id-ID')
+      };
+
+      // 5. Kirim HTTP POST ke Google Apps Script
+      await fetch(REKAP_GAS_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      // Tandai sukses agar tidak terkirim dua kali saat F5/refresh
+      sessionStorage.setItem("pats_archived_success", "true");
+      console.log("[AUTO-ARCHIVE SUCCESS]: Data rekap berhasil dikirim ke Spreadsheet.", payload);
+
+    } catch (err) {
+      console.error("[AUTO-ARCHIVE ERROR]: Gagal mengirim data ke Spreadsheet:", err);
+    }
+  }
+
+  // Jalankan otomatis 1 detik setelah halaman result dimuat
+  window.addEventListener("load", () => {
+    setTimeout(sendToSpreadsheet, 1000);
+  });
+})();
