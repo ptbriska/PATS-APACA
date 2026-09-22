@@ -1,22 +1,16 @@
 /* ==========================================================================
    PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
-   Paged.js edition with Auto-Dependency Injector
+   Paged.js edition (Auto-CSS & Auto-Dependency Injector)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
-const PATS_PDF_STYLESHEETS = [
-  "assets/css/print-pdf.css"
-];
-
-// 1. SET KONFIGURASI PAGED.JS DI AWAL SKRIP
 window.PagedConfig = window.PagedConfig || { auto: false };
 
 const PATS_PDF = {
   _pagedPreviewer: null,
   _dependenciesLoadedPromise: null,
 
-  // Helper untuk inject tag <script> secara otomatis ke HTML
   _loadScript(src) {
     return new Promise((resolve, reject) => {
       if (document.querySelector(`script[src="${src}"]`)) {
@@ -31,7 +25,6 @@ const PATS_PDF = {
     });
   },
 
-  // Mengunduh semua library CDN jika belum ada di HTML
   async ensureDependencies() {
     if (this._dependenciesLoadedPromise) return this._dependenciesLoadedPromise;
 
@@ -48,6 +41,20 @@ const PATS_PDF = {
     })();
 
     return this._dependenciesLoadedPromise;
+  },
+
+  // SOLUSI 404: Ambil URL Absolut seluruh CSS yang terpasang di DOM secara otomatis
+  _getAbsoluteStylesheets() {
+    const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+    const stylesheets = links
+      .map(link => link.href)
+      .filter(href => href && !href.includes('font-awesome'));
+    
+    // Fallback URL Absolut jika tidak ada tag <link> terdeteksi
+    if (stylesheets.length === 0) {
+      stylesheets.push(new URL("assets/css/print-pdf.css", document.baseURI).href);
+    }
+    return stylesheets;
   },
 
   generateStandardFileName(user = {}) {
@@ -76,6 +83,7 @@ const PATS_PDF = {
     const source = document.getElementById(elementId);
     if (!source) throw new Error(`Elemen #${elementId} tidak ditemukan.`);
 
+    // Snapshot Canvas (Chart.js) ke Image PNG
     const clone = source.cloneNode(true);
     const liveCanvases = source.querySelectorAll("canvas");
     const clonedCanvases = clone.querySelectorAll("canvas");
@@ -100,8 +108,23 @@ const PATS_PDF = {
       document.body.appendChild(renderTarget);
     }
     renderTarget.innerHTML = "";
+    
+    // Pastikan container memiliki ukuran di DOM agar getBoundingClientRect tidak error
+    renderTarget.style.display = "block";
+    renderTarget.style.position = "absolute";
+    renderTarget.style.left = "-9999px";
+    renderTarget.style.top = "0";
+    renderTarget.style.width = "210mm";
 
-    const flow = await this._pagedPreviewer.preview(clone.outerHTML, PATS_PDF_STYLESHEETS, renderTarget);
+    const stylesheets = this._getAbsoluteStylesheets();
+    const flow = await this._pagedPreviewer.preview(clone.outerHTML, stylesheets, renderTarget);
+
+    // Reset posisi container setelah selesai pagination
+    renderTarget.style.position = "";
+    renderTarget.style.left = "";
+    renderTarget.style.top = "";
+    renderTarget.style.width = "";
+
     return { flow, renderTarget };
   },
 
@@ -191,7 +214,6 @@ const PATS_PDF = {
   }
 };
 
-// Pre-load library secara diam-diam di background begitu halaman selesai dibuka
 document.addEventListener("DOMContentLoaded", () => {
   PATS_PDF.ensureDependencies();
 
