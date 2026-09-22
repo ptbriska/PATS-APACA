@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (CLEAN & STABLE METHOD)
+   PATS PORTAL - PDF EXPORTER (FINAL STABLE - ONCLONE COMPRESSION)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -47,7 +47,7 @@ const PATS_PDF = {
 
       window.scrollTo(0, 0);
 
-      // 1. Ubah Chart (Canvas) jadi Gambar
+      // 1. Ubah Chart jadi Gambar
       const originalCanvases = Array.from(element.querySelectorAll("canvas"));
       const canvasReplacements = originalCanvases.map(canvas => {
         const img = document.createElement("img");
@@ -60,7 +60,7 @@ const PATS_PDF = {
         return { canvas, img };
       });
 
-      // 2. Setting html2pdf dengan batas lebar (windowWidth)
+      // 2. Setting html2pdf (Tanpa windowWidth, gunakan onclone untuk memadatkan kanan)
       const opt = {
         margin:       [10, 10, 10, 10], 
         filename:     fileName,
@@ -70,7 +70,24 @@ const PATS_PDF = {
           useCORS: true,
           logging: false,
           scrollY: 0,
-          windowWidth: 794 // Memadatkan render layar agar pas dengan lebar ideal A4
+          onclone: (clonedDoc) => {
+            const target = clonedDoc.getElementById(elementId);
+            if (target) {
+              // Paksa wadah berukuran A4 (794px) dan tempel ke kiri (margin 0)
+              target.style.width = '794px';
+              target.style.maxWidth = '794px';
+              target.style.margin = '0'; 
+
+              // Paksa semua tabel di dalamnya menyesuaikan batas 794px
+              const tables = target.querySelectorAll('table');
+              tables.forEach(t => {
+                t.style.width = '100%';
+                t.style.maxWidth = '100%';
+                t.style.tableLayout = 'fixed';
+                t.style.wordWrap = 'break-word';
+              });
+            }
+          }
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
@@ -83,12 +100,12 @@ const PATS_PDF = {
       const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-      // 4. Kembalikan Grafik Canvas ke web
+      // 4. Kembalikan Grafik Canvas
       canvasReplacements.forEach(({ canvas, img }) => {
         img.parentNode.replaceChild(canvas, img);
       });
 
-      // 5. Kirim data ke Google Drive
+      // 5. Kirim data ke Drive
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
