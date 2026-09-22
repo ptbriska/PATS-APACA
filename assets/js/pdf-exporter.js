@@ -23,8 +23,9 @@ const PATS_PDF = {
   },
 
   getCanvasOptions(elementId, isLowRes = false) {
-    // Kunci posisi scroll sebelum ekspor
-    window.scrollTo(0, 0);
+    // Reset scroll posisi pengguna sejenak saat capturing
+    const currentX = window.scrollX;
+    const currentY = window.scrollY;
 
     return {
       margin:       [8, 8, 8, 8],
@@ -37,55 +38,51 @@ const PATS_PDF = {
         scrollY: 0,
         windowWidth: 1024,
         onclone: (clonedDoc) => {
-          // 1. Konversi seluruh Canvas (Chart) asli ke Image di dokumen Kloning
-          const origCanvases = document.getElementById(elementId).querySelectorAll('canvas');
-          const clonedCanvases = clonedDoc.getElementById(elementId).querySelectorAll('canvas');
-
-          origCanvases.forEach((origCanvas, idx) => {
-            if (clonedCanvases[idx]) {
-              const img = clonedDoc.createElement('img');
-              img.src = origCanvas.toDataURL('image/png');
-              img.style.cssText = origCanvas.style.cssText;
-              img.style.width = '100%';
-              img.style.height = 'auto';
-              img.style.display = 'block';
-              clonedCanvases[idx].parentNode.replaceChild(img, clonedCanvases[idx]);
-            }
-          });
-
-          // 2. Normalisasi tata letak Root & Body
+          // 1. Konversi elemen Chart/Canvas ke Gambar PNG di dokumen memori PDF
+          const origEl = document.getElementById(elementId);
           const clonedEl = clonedDoc.getElementById(elementId);
-          
-          clonedDoc.documentElement.style.margin = "0";
-          clonedDoc.documentElement.style.padding = "0";
-          clonedDoc.body.style.margin = "0";
-          clonedDoc.body.style.padding = "0";
-          clonedDoc.body.style.width = "794px";
-          clonedDoc.body.style.minWidth = "794px";
 
-          if (clonedEl) {
+          if (origEl && clonedEl) {
+            const origCanvases = origEl.querySelectorAll('canvas');
+            const clonedCanvases = clonedEl.querySelectorAll('canvas');
+
+            origCanvases.forEach((origCanvas, idx) => {
+              if (clonedCanvases[idx]) {
+                const img = clonedDoc.createElement('img');
+                img.src = origCanvas.toDataURL('image/png');
+                img.style.cssText = origCanvas.style.cssText;
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                img.style.display = 'block';
+                clonedCanvases[idx].parentNode.replaceChild(img, clonedCanvases[idx]);
+              }
+            });
+
+            // 2. PAKSA tata letak KHUSUS PDF di memori kloning (Web Asli Tidak Terpengaruh)
+            clonedDoc.body.style.margin = "0";
+            clonedDoc.body.style.padding = "0";
+            clonedDoc.body.style.width = "794px";
+
+            // Bersihkan margin auto induk di kloningan
             let parent = clonedEl.parentElement;
             while (parent && parent !== clonedDoc.body) {
               parent.style.margin = "0";
               parent.style.padding = "0";
-              parent.style.transform = "none";
               parent.style.display = "block";
               parent = parent.parentElement;
             }
 
-            clonedEl.style.margin = "0 auto";
-            clonedEl.style.padding = "24px";
-            clonedEl.style.width = "794px";
-            clonedEl.style.boxSizing = "border-box";
+            clonedEl.style.margin = "0";
+            clonedEl.style.padding = "20px";
+            clonedEl.style.width = "754px"; // Presisi lebar A4 dikurangi padding
+            clonedEl.style.maxWidth = "none";
             clonedEl.style.transform = "none";
-            clonedEl.style.position = "relative";
-            clonedEl.style.left = "0";
-            clonedEl.style.top = "0";
+            clonedEl.style.boxSizing = "border-box";
           }
         }
       },
       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['css', 'legacy'], avoid: ['.report-section', '.chart-box', '.sign-box', 'tr'] }
+      pagebreak:    { mode: ['css', 'legacy'], avoid: ['.report-section', '.sign-box', 'tr'] }
     };
   },
 
@@ -168,7 +165,6 @@ const PATS_PDF = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Ditambah menjadi 3.5 detik agar rendering grafik/chart selesai sempurna sebelum di-arsip
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
   }, 3500);
