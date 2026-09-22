@@ -1,6 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (WIDTH-LOCK & AUTO-WRAP METHOD)
-   Memperbaiki Tabel Terpotong di Kanan & Baris Terbelah
+   PATS PORTAL - PDF EXPORTER (CLEAN & STABLE METHOD)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -32,7 +31,7 @@ const PATS_PDF = {
   },
 
   exportToPDF() {
-    window.print();
+    window.print(); 
   },
 
   async autoArchiveToDrive(elementId = "report-paper") {
@@ -46,36 +45,22 @@ const PATS_PDF = {
 
       if (!element) return;
 
-      // 1. KUNCI SCROLL KE ATAS (Mencegah Blank Putih)
       window.scrollTo(0, 0);
 
-      // 2. SIMPAN STYLE ASLI UNTUK DIKEMBALIKAN NANTI
-      const originalElementStyle = element.style.cssText;
-      const tables = element.querySelectorAll('table');
-      const tableStyles = [];
-
-      // 3. UBAH CANVAS JADI GAMBAR & PAKSA UKURAN A4
+      // 1. Ubah Chart (Canvas) jadi Gambar
       const originalCanvases = Array.from(element.querySelectorAll("canvas"));
       const canvasReplacements = originalCanvases.map(canvas => {
         const img = document.createElement("img");
         img.src = canvas.toDataURL("image/png", 1.0);
-        img.style.cssText = canvas.style.cssText;
-        img.style.width = canvas.offsetWidth + "px";
-        img.style.height = canvas.offsetHeight + "px";
+        img.style.width = canvas.style.width || (canvas.offsetWidth + "px");
+        img.style.height = canvas.style.height || (canvas.offsetHeight + "px");
+        img.style.maxWidth = "100%";
+        img.style.display = "block";
         canvas.parentNode.replaceChild(img, canvas);
         return { canvas, img };
       });
 
-      // PAKSA ELEMEN MENJADI UKURAN KERTAS A4 (794px) AGAR TIDAK TERPOTONG DI KANAN
-      element.style.cssText += "width: 794px !important; max-width: 794px !important; margin: 0 !important; padding: 20px !important; box-sizing: border-box !important;";
-      
-      // PAKSA TABEL MENYESUAIKAN DIRI (WRAP TEXT)
-      tables.forEach(t => {
-        tableStyles.push(t.style.cssText);
-        t.style.cssText += "table-layout: fixed !important; width: 100% !important; word-wrap: break-word !important;";
-      });
-
-      // 4. KONFIGURASI HTML2PDF
+      // 2. Setting html2pdf dengan batas lebar (windowWidth)
       const opt = {
         margin:       [10, 10, 10, 10], 
         filename:     fileName,
@@ -85,26 +70,25 @@ const PATS_PDF = {
           useCORS: true,
           logging: false,
           scrollY: 0,
-          windowWidth: 794 // Sinkronisasi kamera dengan lebar elemen
+          windowWidth: 794 // Memadatkan render layar agar pas dengan lebar ideal A4
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
           mode: ['css', 'legacy'], 
-          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title', 'h2', 'h3'] 
+          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title'] 
         }
       };
 
-      // 5. RENDER PDF (Hanya butuh 1-2 detik)
+      // 3. Render ke PDF
       const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-      // 6. SEGERA KEMBALIKAN SEMUA STYLE KE KONDISI NORMAL SEBELUMNYA
-      element.style.cssText = originalElementStyle;
-      tables.forEach((t, i) => { t.style.cssText = tableStyles[i]; });
-      canvasReplacements.forEach(({ canvas, img }) => { img.parentNode.replaceChild(canvas, img); });
+      // 4. Kembalikan Grafik Canvas ke web
+      canvasReplacements.forEach(({ canvas, img }) => {
+        img.parentNode.replaceChild(canvas, img);
+      });
 
-      // 7. UPLOAD KE DRIVE
-      console.log("[DRIVE ARCHIVE]: Mengirim ke server...");
+      // 5. Kirim data ke Google Drive
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
