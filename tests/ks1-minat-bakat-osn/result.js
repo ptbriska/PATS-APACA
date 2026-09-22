@@ -255,8 +255,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // BAGIAN IV: ANALISA PILAR II - MINAT KEILMUAN
     // =========================================================================
     const p2Pure = p2Data.pure_scores || {};
-    const implikasiMotivasiMap = rubrikData.bagian_04_pilar2_minat_keilmuan?.implikasi_motivasi || {};
-    
+    const p2BidangRubrik = rubrikData.bagian_04_pilar2_minat_keilmuan?.bidang || {};
+
     const klasterGroup = {
       "Genuine Interest": [],
       "Surface Fan": [],
@@ -267,27 +267,45 @@ document.addEventListener("DOMContentLoaded", async () => {
       const skorBakat = rec.skor_pilar1_bakat;
       const skorMinat = rec.skor_pilar2_minat;
       
-      let catMinat = "Rendah";
-      if (skorMinat >= 80) catMinat = "Sangat Tinggi";
-      else if (skorMinat >= 60) catMinat = "Tinggi";
-      else if (skorMinat >= 40) catMinat = "Sedang";
+      let fitKey = "Rendah";
+      let badgeClass = "badge-fit-rendah";
       
+      // Evaluasi Kategori Fit Minat & Kelas Warna Badge
+      if (skorMinat >= 80.0) {
+        fitKey = "Sangat Tinggi";
+        badgeClass = "badge-fit-sangat-tinggi"; // Biru
+      } else if (skorMinat >= 65.0) {
+        fitKey = "Tinggi";
+        badgeClass = "badge-fit-tinggi";        // Hijau
+      } else if (skorMinat >= 50.0) {
+        fitKey = "Sedang";
+        badgeClass = "badge-fit-sedang";        // Kuning
+      } else {
+        fitKey = "Rendah";
+        badgeClass = "badge-fit-rendah";        // Merah
+      }
+
+      // Ambil narasi kustom khusus untuk bidang ini dan level fit ini
+      const bidangDict = p2BidangRubrik[rec.bidang] || {};
+      const infoFit = bidangDict[fitKey] || {};
       const pureScore = p2Pure["MIN_" + rec.field_code] || p2Pure[rec.bidang] || 70;
 
+      // Pengelompokan Klaster Diagnostik (untuk Bab VI)
       let klaster = "";
-      if (skorBakat >= 60 && skorMinat >= 60) klaster = "Genuine Interest";
-      else if (skorBakat < 60 && skorMinat >= 60) klaster = "Surface Fan";
-      else if (skorBakat >= 60 && skorMinat < 60) klaster = "Cross-Disciplinary Synergy";
+      if (skorBakat >= 60.0 && skorMinat >= 60.0) klaster = "Genuine Interest";
+      else if (skorBakat < 60.0 && skorMinat >= 60.0) klaster = "Surface Fan";
+      else if (skorBakat >= 60.0 && skorMinat < 60.0) klaster = "Cross-Disciplinary Synergy";
       
       if (klasterGroup[klaster]) klasterGroup[klaster].push(rec.bidang);
 
       return `
         <tr>
-          <td style="text-align: left; font-weight: 600;">${rec.bidang}</td>
+          <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
           <td>${pureScore} pts</td>
           <td><strong>${skorMinat}</strong></td>
-          <td><span class="tag-pill">${catMinat}</span></td>
-          <td style="text-align: left; font-size: 0.82rem;">${implikasiMotivasiMap[rec.bidang] || "-"}</td>
+          <td><span class="badge-status ${badgeClass}">${infoFit.label || fitKey}</span></td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${infoFit.deskripsi || "-"}</td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${infoFit.implikasi || "-"}</td>
         </tr>
       `;
     }).join(""));
