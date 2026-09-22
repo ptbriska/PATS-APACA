@@ -1,12 +1,12 @@
 /* ==========================================================================
-   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET
+   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (assets/css/print-pdf.css)
    ========================================================================== */
 
+/* Structure Container Laporan (Kembali Normal & Responsif untuk Web UI) */
 .report-paper {
   background-color: #ffffff;
-  padding: 30px;
-  width: 794px; /* Ukuran presisi A4 pada 96 DPI */
-  max-width: 100%;
+  padding: 40px;
+  max-width: 800px;
   margin: 0 auto;
   color: #111827;
   font-family: system-ui, -apple-system, sans-serif;
@@ -14,19 +14,16 @@
   box-sizing: border-box;
 }
 
-/* CEGAH ELEMEN TERPOTONG DI TENGAH HALAMAN (PAGE BREAK) */
-.report-section, 
-.report-header, 
-.report-title, 
-.report-biodata, 
-.sign-box,
-.chart-box,
-.report-card,
-canvas {
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
+/* Cegah tabel meluap keluar dari card web */
+.report-paper table {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
+/* ==========================================================================
+   KOP SURAT RESMI (HEADER LAPORAN)
+   ========================================================================== */
 .report-header {
   display: flex;
   align-items: center;
@@ -71,6 +68,7 @@ canvas {
   line-height: 1.35;
 }
 
+/* Judul Laporan Ujian */
 .report-title {
   text-align: center;
   margin-bottom: 24px;
@@ -85,6 +83,7 @@ canvas {
   color: #0f172a;
 }
 
+/* Tabel Biodata Peserta */
 .report-biodata {
   width: 100%;
   border-collapse: collapse;
@@ -103,6 +102,7 @@ canvas {
   color: #334155;
 }
 
+/* Box Naratif Laporan Psikolog */
 .report-section {
   margin-bottom: 24px;
 }
@@ -135,6 +135,7 @@ canvas {
   margin-bottom: 4px;
 }
 
+/* Footer & Tanda Tangan */
 .report-footer-sign {
   margin-top: 40px;
   display: flex;
@@ -151,6 +152,9 @@ canvas {
   height: 65px;
 }
 
+/* ==========================================================================
+   STYLING MEDIA PRINT (Pengaturan saat di-Ctrl+P / Simpan PDF)
+   ========================================================================== */
 @media print {
   .portal-header,
   .portal-footer,
@@ -178,5 +182,10 @@ canvas {
 
   .page-break {
     page-break-before: always;
+  }
+  
+  .report-section, .sign-box, canvas, tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 }
