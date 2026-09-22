@@ -66,18 +66,228 @@
   },
 
   "bagian_04_pilar2_minat_keilmuan": {
-    "judul": "IV. ANALISA PILAR II: MINAT KEILMUAN & ASYMMETRIC CROSS-FIELD",
-    "implikasi_motivasi": {
-      "Matematika": "Kenyamanan tinggi berlama-lama melakukan pembuktian rumus secara logis.",
-      "Fisika": "Rasa ingin tahu besar terhadap hukum alam semesta melalui bahasa kalkulus.",
-      "Kimia": "Eksplorasi eksperimental dan rasa penasaran terhadap struktur penyusun benda.",
-      "Biologi": "Antusiasme mendalam pada evolusi, ekosistem, dan siklus metabolisme makhluk hidup.",
-      "Informatika": "Sangat menyukai tantangan puzzle prosedural dan penulisan baris kode efisien.",
-      "Astronomi": "Ketertarikan besar pada pengamatan benda angkasa yang dipadukan fisika teoretis.",
-      "Kebumian": "Rasa ingin tahu sejarah pembentukan planet dan fenomena meteorologi/klimatologi.",
-      "Ekonomi": "Suka mengamati perilaku rasionalitas pasar, dinamika harga, dan data keuangan global.",
-      "Geografi": "Tertarik relasi manusia-lingkungan serta letak geografis memengaruhi pembangunan.",
-      "AI & Data Science": "Ambisi melatih model komputasi dan kecerdasan buatan dari data kompleks."
+    "judul": "IV. ANALISA PILAR II: MINAT KEILMUAN & ASYMMETRIC CROSS-FIELD (S-MINAT)",
+    "bidang": {
+      "Matematika": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Sangat antusias dengan manipulasi aljabar teoretis, kombinatorika, dan pembuktian logika tanpa angka.",
+          "implikasi": "Intrinsic motivation sangat pekat; tahan berjam-jam membedah pembuktian teorema rumit."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Nyaman dengan logika deduktif murni dan menyukai penyelesaian masalah persamaan terstruktur.",
+          "implikasi": "Konsisten mengikuti alur latihan soal selama diberikan kerangka pembuktian yang jelas."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Menyukai aplikasi logika matematika sederhana, namun cepat jenuh jika tidak ada angka pasti.",
+          "implikasi": "Rentan demotivasi saat pembinaan mulai masuk ke bab pembuktian teorema abstrak."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Resisten terhadap pembuktian simbolik dan merasa terbebankan oleh logika formal murni.",
+          "implikasi": "Sangat tidak disarankan; memaksakan pembinaan memicu penolakan belajar pasif."
+        }
+      },
+      "Fisika": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Sangat terpacu menerjemahkan fenomena gerak & mekanika alam ke dalam persamaan kalkulus.",
+          "implikasi": "Tahan menghadapi penurunan rumus yang panjang dan eksplorasi konsep fisika modern."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Tertarik pada hukum alam murni dan nyaman dengan pemodelan matematis tingkat menengah.",
+          "implikasi": " Mampu menjaga ritme belajar jika dibimbing sistematis dalam penguasaan kalkulus dasar."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Suka melihat fenomena fisika populer, namun kurang nyaman dengan kerumitan matematikanya.",
+          "implikasi": "Rentan jenuh (surface fan) ketika simulasi soal mulai didominasi manipulasi variabel."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Tidak menemukan daya tarik pada pemodelan kuantitatif fenomena alam dan analisis rumus.",
+          "implikasi": "Sangat berisiko burnout jika dipaksa mengikuti pelatihan intensif fisika terapan."
+        }
+      },
+      "Kimia": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Penasaran tinggi terhadap reaksi mikroskopis, pola tabel periodik, dan ketelitian stoikiometri.",
+          "implikasi": "Sangat menikmati analisis laboratorium, mekanisme reaksi organik, dan perhitungan presisi."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Nyaman dengan alur ikatan zat, termokimia dasar, dan interaksi materi skala molekuler.",
+          "implikasi": "Mampu mengikuti materi pembinaan intensif dengan pendampingan pada stoikiometri larutan."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Menyukai eksperimen visual zat, namun enggan mendalami perhitungan kesetimbangan kimia.",
+          "implikasi": "Butuh dorongan ekstra agar tidak minder saat masuk ke materi hitungan stoikiometri rumit."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Resisten terhadap nama senyawa, tata nama kimia, dan logika alur reaksi zat mikro.",
+          "implikasi": "Tidak disarankan; memaksakan pembinaan akan memicu kejenuhan belajar secara cepat."
+        }
+      },
+      "Biologi": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Antusiasme mendalam pada biokimia, genetika molekuler, taksonomi, dan fisiologi makhluk hidup.",
+          "implikasi": "Tahan membaca literasi sains tebal dan tekun menganalisis grafik eksperimen laboratorium."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Tertarik pada keanekaragaman hayati, ekosistem, dan alur proses anatomi-fisiologi.",
+          "implikasi": "Mampu menjaga konsistensi hafalan konsep dan analisis data eksperimen secara teratur."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Menyukai topik biologi populer (hewan/tumbuhan), namun malas membaca modul tebal biokimia.",
+          "implikasi": "Rentan mengalami penurunan motivasi saat dihadapkan pada analisis genetika kuantitatif."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Kewalahan dengan padatnya istilah ilmiah, klasifikasi taksonomi, dan alur metabolisme.",
+          "implikasi": "Sangat tidak disarankan; berisiko tinggi menolak hafalan dan analisis materi biologi."
+        }
+      },
+      "Informatika": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Sangat menyukai puzzle logika prosedural, penyusunan algoritma komputasi, dan debugging code.",
+          "implikasi": "Memiliki daya tahan tinggi dalam pemikiran komputasional mandiri dan logika berulang."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Tertarik pada pemecahan masalah step-by-step dan nyaman dengan matematika diskrit dasar.",
+          "implikasi": "Berpotensi besar berkembang pesat jika diberikan kurikulum pemrograman bertahap."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Tertarik pada pembuatan aplikasi/game, namun enggan mengurai logika algoritma abstrak.",
+          "implikasi": "Mudah menyerah jika soal meminta optimasi efisiensi langkah dan pelacakan alur rumit."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Resisten terhadap penalaran sistematis bertahap dan logika struktur data komputasi.",
+          "implikasi": "Sangat tidak cocok; memaksakan pembinaan akan memicu pusing dan rasa frustrasi."
+        }
+      },
+      "Astronomi": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Sangat antusias pada astrofisika, kosmologi, serta nyaman dengan kalkulasi fisika langit 3D.",
+          "implikasi": "Tahan eksplorasi skala ruang-waktu kosmik dan kalkulasi vektor gerak benda langit."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Takjub pada benda langit dan nyaman menerapkan hukum fisika-matematika pada skala kosmik.",
+          "implikasi": "Mampu mengikuti pembinaan intensif dengan penguatan berlanjut pada koordinat horizon."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Sangat menyukai gambar visual antariksa (surface fan), namun terkejut oleh beratnya hitungan fisika.",
+          "implikasi": "Terditeksi mengalami jebakan minat palsu; butuh penyesuaian ekspektasi materi asli OSN."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Tidak menemukan daya tarik pada logika matematika antariksa dan mekanika langit.",
+          "implikasi": "Dilarang dipilih; siswa akan sangat kesulitan mengejar materi pembinaan astronomi."
+        }
+      },
+      "Kebumian": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Peka pada sistem geologi bumi, dinamika iklim, oseanografi, dan rekonstruksi sejarah planet.",
+          "implikasi": "Sangat betah membaca peta kontur, analisis laboratorium mineral, dan studi kasus bumi."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Tertarik pada fenomena bencana alam, iklim, dan keterkaitan sains dasar kebumian.",
+          "implikasi": "Konsisten belajar selama diberikan integrasi materi geologi, fisika, dan kimia bumi yang seimbang."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Suka pada isu gunung api/gempa, namun kurang nyaman saat masuk ke hitungan fisika bumi.",
+          "implikasi": "Rentan jenuh saat pembinaan bergeser dari deskriptif batu ke analisis kuantitatif."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Resisten terhadap integrasi multidisiplin ilmu kebumian dan interpretasi peta geologi.",
+          "implikasi": "Sangat tidak disarankan; tidak memiliki daya tahan membaca modul sains kebumian."
+        }
+      },
+      "Ekonomi": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Antusias tinggi pada rasionalitas pasar, model kurva makro/mikro, dan statistik keuangan.",
+          "implikasi": "Tahan membaca grafik data pasar, jurnal ekonometri, dan analisis studi kasus bisnis."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Tertarik pada dinamika harga, kebijakan publik, dan perhitungan dasar akuntansi/keuangan.",
+          "implikasi": "Berpotensi menjaga ritme belajar jika dibimbing dalam interpretasi grafik kuantitatif."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Suka pada isu bisnis/uang harian, namun kurang nyaman dengan matematika kurva ekonomi.",
+          "implikasi": "Butuh pendampingan ekstra agar tidak merasa terbebankan oleh materi kalkulus ekonomi."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Tidak menyukai analisis perilaku konsumen, laporan keuangan, dan grafik tren pasar.",
+          "implikasi": "Tidak direkomendasikan; memaksakan pembinaan akan memicu penolakan materi pasif."
+        }
+      },
+      "Geografi": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Sangat peka pada analisis keruangan (spasial), tata kota, pemetaan SIG, dan dinamika populasi.",
+          "implikasi": "Sangat betah membaca peta tematik, citra satelit, dan studi kasus kewilayahan tebal."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Menyukai relasi manusia-lingkungan, bentang alam, dan isu pembangunan antarwilayah.",
+          "implikasi": "Mampu mengikuti pembinaan dengan baik melalui bimbingan peta topografi teratur."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Suka pada aspek budaya/wisata wilayah, namun kurang nyaman dengan analisis spasial kuantitatif.",
+          "implikasi": "Rentan jenuh saat materi pembinaan mulai berfokus pada Penginderaan Jauh dan SIG."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Resisten terhadap pembacaan peta, data kependudukan, dan pola keruangan lingkungan.",
+          "implikasi": "Sangat tidak disarankan untuk alokasi pembinaan kompetisi sains geografi."
+        }
+      },
+      "AI & Data Science": {
+        "Sangat Tinggi": {
+          "label": "Sangat Tinggi (Strong Fit)",
+          "deskripsi": "Ambisi tinggi melatih model kecerdasan buatan, statistik komputasi, dan pemrosesan data masif.",
+          "implikasi": "Intrinsic motivation sangat pekat dalam eksplorasi logika Machine Learning dan data."
+        },
+        "Tinggi": {
+          "label": "Tinggi (Moderate Fit)",
+          "deskripsi": "Tertarik pada visualisasi grafik data kompleks dan logika pemrograman machine learning dasar.",
+          "implikasi": "Siap mengikuti pembinaan intensif dengan penguatan berlanjut pada matematika data."
+        },
+        "Sedang": {
+          "label": "Sedang / Cukup (Conditional Fit)",
+          "deskripsi": "Tertarik pada konsep tren AI populer, namun kurang nyaman dengan matematika probabilitas data.",
+          "implikasi": "Rentan mengalami kelelahan mental ketika masuk ke aljabar linier pemodelan AI."
+        },
+        "Rendah": {
+          "label": "Rendah (Low Fit)",
+          "deskripsi": "Resisten terhadap ekstraksi tabel data masif, statistik, dan logika coding algoritma.",
+          "implikasi": "Sangat tidak disarankan; tidak memiliki landasan minat data sains yang memadai."
+        }
+      }
     }
   },
 
