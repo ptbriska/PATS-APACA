@@ -588,7 +588,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 /* ==========================================================================
-   PATS PORTAL - AUTOMATED REKAP SYSTEM (UNIFIED FORMAT_C ADAPTER)
+   PATS PORTAL - AUTOMATED REKAP SYSTEM (UNIFIED FORMAT_C ADAPTER + IQ FIX)
    ========================================================================== */
 
 const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -611,8 +611,19 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
 
       const top1 = evaluation.top_recommendation || {};
       const top2 = evaluation.secondary_recommendation || {};
-      const iqSum = evaluation.iq_summary || {};
       const allRanking = evaluation.all_fields_ranking || [];
+
+      // --- PERBAIKAN KALKULASI IQ SCORE & KATEGORI ---
+      let iqScore = evaluation.iq_summary?.iq_score || 0;
+      let iqCategory = evaluation.iq_summary?.category || "-";
+
+      // Jika iq_score masih 0, hitung langsung dari module_scores Pilar I
+      const p1Data = evaluation.pilar1_raw || JSON.parse(sessionStorage.getItem("pats_pilar1_results") || "{}");
+      if ((!iqScore || iqScore === 0) && p1Data.module_scores && typeof SCORING_PILAR1 !== "undefined") {
+        const calculatedIQ = SCORING_PILAR1.calculateIQScore(p1Data.module_scores);
+        iqScore = calculatedIQ.iq_score;
+        iqCategory = calculatedIQ.category;
+      }
 
       // Helper Format Desimal Indonesia (77.35 -> "77,35")
       const fmt = (val) => Number(val || 0).toFixed(2).replace('.', ',');
@@ -654,9 +665,9 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
         asal_instansi: user.asal_instansi || user.sekolah || "SMA Negeri",
         daerah: user.kelas_jurusan || user.jenis_kelamin || "-",
         
-        // Data IQ APACA OTM
-        iq_score: iqSum.iq_score || 0,
-        iq_category: iqSum.category || "-",
+        // Data IQ APACA OTM (Terkalkulasi)
+        iq_score: iqScore,
+        iq_category: iqCategory,
 
         // Field Rekomendasi Top 1 & Dashboard
         top_1_bidang: top1.bidang || "-",
@@ -697,7 +708,7 @@ const REKAP_GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0Y
       });
 
       sessionStorage.setItem("pats_archived_success", "true");
-      console.log("[AUTO-ARCHIVE SUCCESS]: Rekap gabungan tersimpan di Spreadsheet.", payload);
+      console.log("[AUTO-ARCHIVE SUCCESS]: Rekap gabungan + IQ tersimpan di Spreadsheet.", payload);
 
     } catch (err) {
       console.error("[AUTO-ARCHIVE ERROR]: Gagal mengirim data ke GAS:", err);
