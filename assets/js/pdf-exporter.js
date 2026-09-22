@@ -1,6 +1,6 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (BACK TO BASICS - HIGH STABILITY)
-   Solusi Final: html2pdf.js dengan Desktop Viewport Forcing
+   PATS PORTAL - PDF EXPORTER (FINAL HIGH STABILITY)
+   Solusi: html2pdf.js dengan Desktop Windowing & Anti-Terbelah
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -32,7 +32,7 @@ const PATS_PDF = {
   },
 
   exportToPDF() {
-    window.print();
+    window.print(); // Tetap gunakan Native Print Ctrl+P untuk sisi pengguna
   },
 
   async autoArchiveToDrive(elementId = "report-paper") {
@@ -55,54 +55,41 @@ const PATS_PDF = {
         img.style.width = canvas.style.width || canvas.width + 'px';
         img.style.height = canvas.style.height || canvas.height + 'px';
         img.style.maxWidth = '100%';
-        img.className = 'temp-canvas-img';
         
-        // Simpan referensi untuk dikembalikan nanti
         originalCanvases.push({ parent: canvas.parentNode, canvas: canvas, img: img });
         canvas.parentNode.replaceChild(img, canvas);
       });
 
-      // (Bagian pembekuan canvas tetap sama seperti kode Anda sebelumnya)
-
-      // 2. Kunci ukuran agar pas dengan A4 (800px adalah rasio ideal A4 potrait)
-      const originalMaxWidth = element.style.maxWidth;
-      const originalMargin = element.style.margin;
-      
-      element.style.maxWidth = '800px';
-      element.style.margin = '0 auto';
-
-      // 3. KONFIGURASI HTML2PDF (Fokus pada Anti-Terbelah)
+      // 2. KONFIGURASI HTML2PDF
       const opt = {
-        margin:       [10, 10, 10, 10], // Margin aman (mm)
+        margin:       [10, 10, 10, 10], // Margin atas, kiri, bawah, kanan (mm)
         filename:     fileName,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { 
-          scale: 2, // Resolusi tinggi
+          scale: 2, 
           useCORS: true,
           logging: false,
-          scrollY: 0
+          windowWidth: 1024, // Memaksa html2canvas mengambil layout versi Desktop (menghindari tabel terpotong)
+          scrollY: 0,
+          scrollX: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
-          mode: ['css', 'legacy'], // Menggunakan aturan CSS break-inside: avoid yang kita buat
+          mode: ['css', 'legacy'], 
           avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title', 'h2', 'h3'] 
         }
       };
 
-      // 4. EKSEKUSI RENDER
+      // 3. EKSEKUSI RENDER & AMBIL BASE64
       const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
-      
-      // 5. Kembalikan DOM
-      element.style.maxWidth = originalMaxWidth;
-      element.style.margin = originalMargin;
+      const cleanBase64 = pdfBase64Uri.split(',')[1]; // <-- PERBAIKAN: Variabel yang hilang
 
-      // (Lanjutkan ke proses Fetch Google Drive seperti biasa)
-      
+      // 4. KEMBALIKAN CANVAS KE BENTUK ASLI (Sangat Cepat, Layar Tidak Berkedip)
       originalCanvases.forEach(item => {
         item.parent.replaceChild(item.canvas, item.img);
       });
 
-      // 6. UPLOAD KE GOOGLE DRIVE
+      // 5. UPLOAD KE GOOGLE DRIVE
       console.log("[DRIVE ARCHIVE]: Mengirim ke server...");
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
@@ -128,5 +115,5 @@ const PATS_PDF = {
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 3500); // Tunggu chart.js render sempurna
+  }, 3500); // Waktu cukup untuk memastikan grafik selesai digambar sebelum diekspor
 });
