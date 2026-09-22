@@ -1,45 +1,11 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
-   Isolasi Iframe Murni (100% Aman dari Distorsi CSS & Bebas Error Layout)
+   PATS PORTAL - PDF EXPORTER (ULTIMATE ISOLATION)
+   100% Aman untuk Tampilan Web Utama. Tidak ada Library External yang bocor.
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
 const PATS_PDF = {
-  _dependenciesLoadedPromise: null,
-
-  _loadScript(src) {
-    return new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) return resolve();
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error(`Gagal memuat script: ${src}`));
-      document.head.appendChild(script);
-    });
-  },
-
-  async ensureDependencies() {
-    if (this._dependenciesLoadedPromise) return this._dependenciesLoadedPromise;
-    this._dependenciesLoadedPromise = (async () => {
-      // jsPDF tetap dimuat di halaman utama karena hanya bertugas membungkus gambar
-      await this._loadScript("https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js");
-    })();
-    return this._dependenciesLoadedPromise;
-  },
-
-  _getAbsoluteStylesheets() {
-    const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
-    const stylesheets = links
-      .map(link => link.href)
-      .filter(href => href && !href.includes('font-awesome'));
-    
-    if (stylesheets.length === 0) {
-      stylesheets.push(new URL("assets/css/print-pdf.css", document.baseURI).href);
-    }
-    return stylesheets;
-  },
-
   generateStandardFileName(user = {}) {
     const rawKode = user.kode_modul || user.kode_akses || user.kode_kegiatan || "TES";
     const rawNama = user.nama_lengkap || user.nama || "Siswa";
@@ -52,184 +18,170 @@ const PATS_PDF = {
     return `${cleanStr(rawKode)}_${cleanStr(rawNama)}_${cleanStr(rawInstansi)}_${timestamp}.pdf`;
   },
 
-  printReport() {
+  // Tombol Export milik user cukup memanggil print native (Paling rapi & aman)
+  exportToPDF() {
     window.print();
-  },
-
-  async _renderInSandbox(elementId, callback) {
-    await this.ensureDependencies();
-
-    const source = document.getElementById(elementId);
-    if (!source) throw new Error(`Elemen #${elementId} tidak ditemukan.`);
-
-    // 1. Buat Ruang Isolasi Iframe
-    const iframe = document.createElement("iframe");
-    iframe.id = "pats-pdf-sandbox";
-    iframe.style.position = "fixed";
-    iframe.style.left = "-10000px"; // Jauhkan dari layar agar tidak terlihat
-    iframe.style.top = "0";
-    iframe.style.width = "210mm";
-    iframe.style.height = "297mm";
-    iframe.style.border = "none";
-    document.body.appendChild(iframe);
-
-    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-    // 2. Bekukan Chart Canvas menjadi Gambar
-    const clone = source.cloneNode(true);
-    const liveCanvases = source.querySelectorAll("canvas");
-    const clonedCanvases = clone.querySelectorAll("canvas");
-    liveCanvases.forEach((liveCanvas, i) => {
-      const clonedCanvas = clonedCanvases[i];
-      if (!clonedCanvas) return;
-      const img = document.createElement("img");
-      img.src = liveCanvas.toDataURL("image/png");
-      img.style.cssText = clonedCanvas.style.cssText;
-      img.className = clonedCanvas.className;
-      img.width = liveCanvas.width;
-      img.height = liveCanvas.height;
-      clonedCanvas.replaceWith(img);
-    });
-
-    const stylesheets = this._getAbsoluteStylesheets();
-    const styleLinks = stylesheets.map(href => `<link rel="stylesheet" href="${href}">`).join("\n");
-
-    // 3. Suntik Library dan CSS khusus DI DALAM iframe saja
-    iframeDoc.open();
-    iframeDoc.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <script>window.PagedConfig = { auto: false };</script>
-        <script src="https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-        ${styleLinks}
-      </head>
-      <body style="margin:0; padding:0; background:#fff;">
-        <div id="pagedjs-render-target"></div>
-      </body>
-      </html>
-    `);
-    iframeDoc.close();
-
-    // 4. Tunggu Paged.js dan html2canvas menyala di dalam Iframe
-    await new Promise((resolve, reject) => {
-      let attempt = 0;
-      const check = setInterval(() => {
-        if (iframe.contentWindow && iframe.contentWindow.Paged && iframe.contentWindow.html2canvas) {
-          clearInterval(check);
-          resolve();
-        }
-        if (attempt++ > 150) { // Timeout 15 detik
-          clearInterval(check);
-          reject(new Error("Timeout memuat library Paged.js di dalam Sandbox."));
-        }
-      }, 100);
-    });
-
-    // Jeda sejenak agar CSS selesai merender ukuran
-    await new Promise(r => setTimeout(r, 1000));
-
-    const targetEl = iframeDoc.getElementById("pagedjs-render-target");
-    
-    // 5. EKSEKUSI UTAMA: Panggil Paged.js dari dalam window iframe (Mengatasi error null)
-    const previewer = new iframe.contentWindow.Paged.Previewer();
-    await previewer.preview(clone.outerHTML, stylesheets, targetEl);
-
-    try {
-      return await callback(iframe, iframeDoc, targetEl);
-    } finally {
-      // 6. Buang Iframe setelah selesai, kembalikan memori
-      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
-    }
-  },
-
-  async exportToPDF(elementId = "report-paper") {
-    const triggerBtn = typeof event !== "undefined" && event && event.target ? event.target : null;
-    let originalText = "";
-    if (triggerBtn) {
-      originalText = triggerBtn.innerText;
-      triggerBtn.innerText = "Memproses PDF...";
-      triggerBtn.disabled = true;
-    }
-
-    try {
-      const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
-      const fileName = this.generateStandardFileName(user);
-
-      await this._renderInSandbox(elementId, async (iframe) => {
-        const originalTitle = document.title;
-        document.title = fileName.replace(/\.pdf$/i, "");
-        
-        // Murni hanya mencetak dokumen Iframe, web utama tidak akan berkedip/melar
-        iframe.contentWindow.focus();
-        iframe.contentWindow.print();
-        
-        document.title = originalTitle;
-      });
-
-    } catch (err) {
-      console.error("Gagal export PDF:", err);
-      this.printReport();
-    } finally {
-      if (triggerBtn) {
-        triggerBtn.innerText = originalText;
-        triggerBtn.disabled = false;
-      }
-    }
   },
 
   async autoArchiveToDrive(elementId = "report-paper") {
     try {
-      console.log("[DRIVE ARCHIVE]: Memproses konversi PDF...");
+      console.log("[DRIVE ARCHIVE]: Memulai pembuatan PDF di ruang isolasi...");
+      
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
+      const source = document.getElementById(elementId);
+      if (!source) throw new Error("Elemen report tidak ditemukan.");
 
-      await this._renderInSandbox(elementId, async (iframe, iframeDoc, targetEl) => {
-        const pages = targetEl.querySelectorAll(".pagedjs_page");
-        if (!pages.length) throw new Error("Paged.js tidak menghasilkan halaman apa pun.");
-
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
-
-        for (let i = 0; i < pages.length; i++) {
-          // Panggil html2canvas milik Iframe agar akurasi pemotongan 100% sempurna
-          const canvas = await iframe.contentWindow.html2canvas(pages[i], { 
-            scale: 1.5, 
-            useCORS: true, 
-            logging: false 
-          });
-          const imgData = canvas.toDataURL("image/jpeg", 0.85);
-          if (i > 0) pdf.addPage();
-          pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
+      // 1. Kloning HTML dan bekukan Chart.js menjadi gambar
+      const clone = source.cloneNode(true);
+      const liveCanvases = source.querySelectorAll("canvas");
+      const clonedCanvases = clone.querySelectorAll("canvas");
+      liveCanvases.forEach((liveCanvas, i) => {
+        if(clonedCanvases[i]) {
+            const img = document.createElement("img");
+            img.src = liveCanvas.toDataURL("image/png");
+            img.style.cssText = clonedCanvases[i].style.cssText;
+            img.width = liveCanvas.width;
+            img.height = liveCanvas.height;
+            clonedCanvases[i].replaceWith(img);
         }
-
-        const cleanBase64 = pdf.output("datauristring").split(",")[1];
-
-        await fetch(GAS_PDF_DRIVE_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({
-            action: "save_pdf_to_drive",
-            kode_akses: user.kode_akses || user.kode_kegiatan || "TES",
-            nama_lengkap: user.nama_lengkap || user.nama || "Siswa",
-            filename: fileName,
-            pdf_base64: cleanBase64
-          })
-        });
-
-        sessionStorage.setItem("pats_pdf_drive_archived", "true");
-        console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} tersimpan utuh di Drive.`);
       });
 
-    } catch (err) {
-      console.error("[DRIVE ARCHIVE ERROR]:", err);
+      // 2. Ambil semua CSS dari web utama untuk dipakai di dalam iframe
+      const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => l.href).filter(Boolean);
+      const styles = Array.from(document.querySelectorAll('style')).map(s => s.innerHTML);
+
+      // 3. Buat Iframe Tersembunyi (Gunakan visibility: hidden agar getBoundingClientRect tidak error)
+      const iframe = document.createElement("iframe");
+      iframe.style.position = "fixed";
+      iframe.style.right = "0";
+      iframe.style.bottom = "0";
+      iframe.style.width = "210mm";
+      iframe.style.height = "297mm";
+      iframe.style.visibility = "hidden"; 
+      iframe.style.zIndex = "-9999";
+      iframe.style.border = "none";
+      document.body.appendChild(iframe);
+
+      const iframeDoc = iframe.contentWindow.document;
+
+      // 4. Siapkan penangkap sinyal dari dalam Iframe
+      const getPdfBase64 = new Promise((resolve, reject) => {
+        const listener = (event) => {
+          if (event.data && event.data.type === 'pdf_success') {
+            window.removeEventListener('message', listener);
+            resolve(event.data.base64);
+          } else if (event.data && event.data.type === 'pdf_error') {
+            window.removeEventListener('message', listener);
+            reject(event.data.error);
+          }
+        };
+        window.addEventListener('message', listener);
+      });
+
+      // 5. Tulis sistem mandiri murni di dalam Iframe
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          ${links.map(l => `<link rel="stylesheet" href="${l}">`).join('\n')}
+          ${styles.map(s => `<style>${s}</style>`).join('\n')}
+          
+          <!-- HANYA LOAD LIBRARY DI DALAM IFRAME -->
+          <script>window.PagedConfig = { auto: false };<\/script>
+          <script src="https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js"><\/script>
+          <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
+          <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\/script>
+          
+          <style>
+            body { margin: 0; padding: 0; background: #fff; }
+            .report-paper { margin: 0 auto !important; width: 100% !important; max-width: 100% !important; }
+            table { table-layout: fixed !important; width: 100% !important; }
+            th, td { word-wrap: break-word !important; }
+          </style>
+        </head>
+        <body>
+          <!-- Konten Mentah -->
+          <div id="source-content" style="display:none;">${clone.outerHTML}</div>
+          
+          <!-- Target Render Paged.js -->
+          <div id="render-target"></div>
+          
+          <script>
+            window.onload = async function() {
+              try {
+                // Jeda 1 detik menunggu font & CSS termuat sempurna agar layout akurat
+                await new Promise(r => setTimeout(r, 1000));
+                
+                const sourceHtml = document.getElementById("source-content").innerHTML;
+                const target = document.getElementById("render-target");
+                
+                // 1. Eksekusi Paginasi Paged.js
+                const previewer = new window.Paged.Previewer();
+                await previewer.preview(sourceHtml, [], target);
+                
+                const pages = target.querySelectorAll(".pagedjs_page");
+                if (!pages || pages.length === 0) throw new Error("Paged.js gagal membagi halaman.");
+                
+                // 2. Ekspor ke PDF dengan html2canvas + jsPDF
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+                
+                for (let i = 0; i < pages.length; i++) {
+                  const canvas = await window.html2canvas(pages[i], { scale: 1.5, useCORS: true, logging: false });
+                  if (i > 0) pdf.addPage();
+                  pdf.addImage(canvas.toDataURL("image/jpeg", 0.85), "JPEG", 0, 0, 210, 297);
+                }
+                
+                // 3. Kirim hasil Base64 ke halaman utama web
+                window.parent.postMessage({ type: 'pdf_success', base64: pdf.output("datauristring").split(",")[1] }, '*');
+              } catch (err) {
+                window.parent.postMessage({ type: 'pdf_error', error: err.toString() }, '*');
+              }
+            };
+          <\/script>
+        </body>
+        </html>
+      `;
+
+      iframeDoc.open();
+      iframeDoc.write(htmlContent);
+      iframeDoc.close();
+
+      // 6. Tunggu Iframe selesai bekerja
+      const cleanBase64 = await getPdfBase64;
+      
+      // 7. Hancurkan Iframe (Membersihkan Memori)
+      document.body.removeChild(iframe);
+
+      // 8. Upload PDF Base64 ke Google Drive
+      await fetch(GAS_PDF_DRIVE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          action: "save_pdf_to_drive",
+          kode_akses: user.kode_akses || user.kode_kegiatan || "TES",
+          nama_lengkap: user.nama_lengkap || user.nama || "Siswa",
+          filename: fileName,
+          pdf_base64: cleanBase64
+        })
+      });
+
+      sessionStorage.setItem("pats_pdf_drive_archived", "true");
+      console.log(`[DRIVE ARCHIVE SUCCESS]: File PDF tersimpan utuh.`);
+
+    } catch (error) {
+      console.error("[DRIVE ARCHIVE ERROR]:", error);
+      // Hapus iframe jika terjadi error di tengah jalan
+      const leftoverIframe = document.querySelector("iframe[style*='210mm']");
+      if (leftoverIframe) leftoverIframe.remove();
     }
   }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  PATS_PDF.ensureDependencies();
-  setTimeout(() => { PATS_PDF.autoArchiveToDrive("report-paper"); }, 3500);
+  setTimeout(() => {
+    PATS_PDF.autoArchiveToDrive("report-paper");
+  }, 2000);
 });
