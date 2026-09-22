@@ -1,21 +1,16 @@
 /* ==========================================================================
    PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
-   Paged.js Edition (Iframe Sandboxing - 100% Web UI Safe)
+   Isolasi Iframe Murni (100% Aman dari Distorsi CSS & Bebas Error Layout)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
-
-window.PagedConfig = window.PagedConfig || { auto: false };
 
 const PATS_PDF = {
   _dependenciesLoadedPromise: null,
 
   _loadScript(src) {
     return new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) {
-        resolve();
-        return;
-      }
+      if (document.querySelector(`script[src="${src}"]`)) return resolve();
       const script = document.createElement("script");
       script.src = src;
       script.onload = () => resolve();
@@ -26,19 +21,10 @@ const PATS_PDF = {
 
   async ensureDependencies() {
     if (this._dependenciesLoadedPromise) return this._dependenciesLoadedPromise;
-
     this._dependenciesLoadedPromise = (async () => {
-      const scripts = [
-        "https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js",
-        "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
-        "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
-      ];
-
-      for (const src of scripts) {
-        await this._loadScript(src);
-      }
+      // jsPDF tetap dimuat di halaman utama karena hanya bertugas membungkus gambar
+      await this._loadScript("https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js");
     })();
-
     return this._dependenciesLoadedPromise;
   },
 
@@ -60,7 +46,6 @@ const PATS_PDF = {
     const rawInstansi = user.asal_instansi || user.sekolah || "Instansi";
 
     const cleanStr = (str) => str.replace(/[^a-zA-Z0-9]/g, "_").replace(/_+/g, "_").trim();
-
     const now = new Date();
     const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
 
@@ -71,21 +56,17 @@ const PATS_PDF = {
     window.print();
   },
 
-  // MENJALANKAN PAGED.JS DI DALAM IFRAME TERISOLASI AGAR TAMPILAN WEB UTAMA TIDAK BERUBAH
   async _renderInSandbox(elementId, callback) {
     await this.ensureDependencies();
 
     const source = document.getElementById(elementId);
     if (!source) throw new Error(`Elemen #${elementId} tidak ditemukan.`);
 
-    // Simpan daftar style head utama sebelum Paged.js berjalan
-    const headStylesBefore = Array.from(document.querySelectorAll("head style, head link"));
-
-    // 1. Buat Iframe Tersembunyi (Sandbox)
+    // 1. Buat Ruang Isolasi Iframe
     const iframe = document.createElement("iframe");
     iframe.id = "pats-pdf-sandbox";
     iframe.style.position = "fixed";
-    iframe.style.left = "-9999px";
+    iframe.style.left = "-10000px"; // Jauhkan dari layar agar tidak terlihat
     iframe.style.top = "0";
     iframe.style.width = "210mm";
     iframe.style.height = "297mm";
@@ -94,7 +75,7 @@ const PATS_PDF = {
 
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-    // 2. Snapshot Canvas (Chart.js) ke PNG Image
+    // 2. Bekukan Chart Canvas menjadi Gambar
     const clone = source.cloneNode(true);
     const liveCanvases = source.querySelectorAll("canvas");
     const clonedCanvases = clone.querySelectorAll("canvas");
@@ -110,16 +91,19 @@ const PATS_PDF = {
       clonedCanvas.replaceWith(img);
     });
 
-    // 3. Tulis struktur HTML isolasi ke Iframe
     const stylesheets = this._getAbsoluteStylesheets();
     const styleLinks = stylesheets.map(href => `<link rel="stylesheet" href="${href}">`).join("\n");
 
+    // 3. Suntik Library dan CSS khusus DI DALAM iframe saja
     iframeDoc.open();
     iframeDoc.write(`
       <!DOCTYPE html>
       <html>
       <head>
         <meta charset="utf-8">
+        <script>window.PagedConfig = { auto: false };</script>
+        <script src="https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
         ${styleLinks}
       </head>
       <body style="margin:0; padding:0; background:#fff;">
@@ -129,28 +113,35 @@ const PATS_PDF = {
     `);
     iframeDoc.close();
 
-    await new Promise(r => setTimeout(r, 200));
-
-    // 4. Jalankan Paged.js ke target iframe
-    const targetEl = iframeDoc.getElementById("pagedjs-render-target");
-    const previewer = new window.Paged.Previewer();
-    await previewer.preview(clone.outerHTML, stylesheets, targetEl);
-
-    // 5. Bersihkan tag <style> Paged.js jika ada yang bocor ke head utama
-    const headStylesAfter = Array.from(document.querySelectorAll("head style"));
-    headStylesAfter.forEach(style => {
-      if (!headStylesBefore.includes(style)) {
-        style.remove();
-      }
+    // 4. Tunggu Paged.js dan html2canvas menyala di dalam Iframe
+    await new Promise((resolve, reject) => {
+      let attempt = 0;
+      const check = setInterval(() => {
+        if (iframe.contentWindow && iframe.contentWindow.Paged && iframe.contentWindow.html2canvas) {
+          clearInterval(check);
+          resolve();
+        }
+        if (attempt++ > 150) { // Timeout 15 detik
+          clearInterval(check);
+          reject(new Error("Timeout memuat library Paged.js di dalam Sandbox."));
+        }
+      }, 100);
     });
+
+    // Jeda sejenak agar CSS selesai merender ukuran
+    await new Promise(r => setTimeout(r, 1000));
+
+    const targetEl = iframeDoc.getElementById("pagedjs-render-target");
+    
+    // 5. EKSEKUSI UTAMA: Panggil Paged.js dari dalam window iframe (Mengatasi error null)
+    const previewer = new iframe.contentWindow.Paged.Previewer();
+    await previewer.preview(clone.outerHTML, stylesheets, targetEl);
 
     try {
       return await callback(iframe, iframeDoc, targetEl);
     } finally {
-      // Hapus iframe sandbox dari DOM setelah selesai
-      if (iframe.parentNode) {
-        iframe.parentNode.removeChild(iframe);
-      }
+      // 6. Buang Iframe setelah selesai, kembalikan memori
+      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
     }
   },
 
@@ -170,11 +161,11 @@ const PATS_PDF = {
       await this._renderInSandbox(elementId, async (iframe) => {
         const originalTitle = document.title;
         document.title = fileName.replace(/\.pdf$/i, "");
-
-        // Cetak khusus dari dokumen Iframe Sandbox
+        
+        // Murni hanya mencetak dokumen Iframe, web utama tidak akan berkedip/melar
         iframe.contentWindow.focus();
         iframe.contentWindow.print();
-
+        
         document.title = originalTitle;
       });
 
@@ -191,9 +182,7 @@ const PATS_PDF = {
 
   async autoArchiveToDrive(elementId = "report-paper") {
     try {
-      await this.ensureDependencies();
       console.log("[DRIVE ARCHIVE]: Memproses konversi PDF...");
-
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
 
@@ -205,7 +194,12 @@ const PATS_PDF = {
         const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
 
         for (let i = 0; i < pages.length; i++) {
-          const canvas = await html2canvas(pages[i], { scale: 1.5, useCORS: true, logging: false });
+          // Panggil html2canvas milik Iframe agar akurasi pemotongan 100% sempurna
+          const canvas = await iframe.contentWindow.html2canvas(pages[i], { 
+            scale: 1.5, 
+            useCORS: true, 
+            logging: false 
+          });
           const imgData = canvas.toDataURL("image/jpeg", 0.85);
           if (i > 0) pdf.addPage();
           pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
@@ -237,8 +231,5 @@ const PATS_PDF = {
 
 document.addEventListener("DOMContentLoaded", () => {
   PATS_PDF.ensureDependencies();
-
-  setTimeout(() => {
-    PATS_PDF.autoArchiveToDrive("report-paper");
-  }, 3500);
+  setTimeout(() => { PATS_PDF.autoArchiveToDrive("report-paper"); }, 3500);
 });
