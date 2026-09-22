@@ -5,6 +5,18 @@
     "deskripsi": "Rubrik interpretasi data untuk Auto-Generated Laporan Hasil Asesmen berdasarkan Pedoman Operasional KS1-A, KS1-B, dan KS1-C."
   },
   "pilar1_kognitif": {
+    "norma_iq_apaca_otm": {
+      "rentang_skala": "0 - 160",
+      "formula_kalkulasi": "Math.min(160, Math.max(0, Math.round(avg_module_score * 1.6)))",
+      "kategori": [
+        { "min": 130, "max": 160, "label": "Sangat Superior / Genius", "deskripsi": "Kapasitas kognitif murni sangat tinggi; sangat siap menaklukkan penalaran rumit OSN." },
+        { "min": 120, "max": 129, "label": "Superior", "deskripsi": "Kapasitas kognitif di atas rata-rata tinggi; daya tangkap logika sangat cepat." },
+        { "min": 110, "max": 119, "label": "Rata-Rata Tinggi", "deskripsi": "Kapasitas penalaran logis baik; mampu mengikuti alur pembinaan sains." },
+        { "min": 90,  "max": 109, "label": "Rata-Rata", "deskripsi": "Kapasitas kognitif standar harian; membutuhkan matrikulasi ekstra untuk kompetisi." },
+        { "min": 80,  "max": 89,  "label": "Rata-Rata Rendah", "deskripsi": "Pemrosesan logika agak lambat; butuh pendampingan konsep secara perlahan." },
+        { "min": 0,   "max": 79,  "label": "Batas Bawah", "deskripsi": "Kapasitas kognitif belum siap untuk beban kompetisi sains." }
+      ]
+    },
     "daftar_modul": {
       "NUM": {
         "nama": "Numerik & Manipulasi Aljabar",
@@ -128,18 +140,114 @@
           "rekomendasi_default": "Perlu Validasi Lanjutan / Kurang Direkomendasikan — Terkunci dari Top 1 karena kapasitas kognitif di bawah batas kelayakan minimum (<60)."
         }
       }
+    }
+  },
+  "kombinasi_total_rekomendasi": {
+    "bobot_pilar": {
+      "pilar1_bakat": 0.50,
+      "pilar2_minat": 0.30,
+      "pilar3_persona": 0.20
     },
-    "norma_iq_apaca_otm": {
-      "rentang_skala": "0 - 160",
-      "formula_kalkulasi": "Math.min(160, Math.max(0, Math.round(avg_module_score * 1.6)))",
-      "kategori": [
-        { "min": 130, "max": 160, "label": "Sangat Superior / Genius", "deskripsi": "Kapasitas kognitif murni sangat tinggi; sangat siap menaklukkan penalaran rumit OSN." },
-        { "min": 120, "max": 129, "label": "Superior", "deskripsi": "Kapasitas kognitif di atas rata-rata tinggi; daya tangkap logika sangat cepat." },
-        { "min": 110, "max": 119, "label": "Rata-Rata Tinggi", "deskripsi": "Kapasitas penalaran logis baik; mampu mengikuti alur pembinaan sains." },
-        { "min": 90,  "max": 109, "label": "Rata-Rata", "deskripsi": "Kapasitas kognitif standar harian; membutuhkan matrikulasi ekstra untuk kompetisi." },
-        { "min": 80,  "max": 89,  "label": "Rata-Rata Rendah", "deskripsi": "Pemrosesan logika agak lambat; butuh pendampingan konsep secara perlahan." },
-        { "min": 0,   "max": 79,  "label": "Batas Bawah", "deskripsi": "Kapasitas kognitif belum siap untuk beban kompetisi sains." }
-      ]
+    "pemetaan_kode_bidang_pilar3": {
+      "MTK": "Matematika",
+      "FIS": "Fisika",
+      "KIM": "Kimia",
+      "BIO": "Biologi",
+      "INF": "Informatika",
+      "AST": "Astronomi",
+      "KBM": "Kebumian",
+      "EKO": "Ekonomi",
+      "GEO": "Geografi",
+      "AI": "AI & Data Science"
+    },
+    "formula_skor_total": "S_Total = (Skor_Pilar1 * 0.50) + (Skor_Pilar2 * 0.30) + (Skor_Pilar3 * 0.20)",
+    "kategori_rekomendasi": [
+      {
+        "priority_level": 1,
+        "min_skor_total": 78.0,
+        "require_warning_tag_false": true,
+        "status_rekomendasi": "SANGAT DIREKOMENDASIKAN (PRIORITAS UTAMA)",
+        "deskripsi": "Memiliki kombinasi bakat kognitif, minat, dan daya juang mental pada tingkat optimal tanpa indikasi intimidasi."
+      },
+      {
+        "priority_level": 2,
+        "min_skor_total": 65.0,
+        "require_warning_tag_false": true,
+        "status_rekomendasi": "DIREKOMENDASIKAN (POTENSIAL)",
+        "deskripsi": "Potensial untuk dibina dengan kesiapan materi dan mental yang memadai."
+      },
+      {
+        "priority_level": 3,
+        "min_skor_total": 50.0,
+        "condition_type": "WARNING_TAG_TRUE",
+        "status_rekomendasi": "PERLU PENDAMPINGAN (RISK OF OSN BURNOUT)",
+        "deskripsi": "Memiliki potensi skor tetapi memperlihatkan indeks intimidasi tinggi (tertekan/panik terhadap soal)."
+      },
+      {
+        "priority_level": 3,
+        "min_skor_total": 50.0,
+        "condition_type": "REGULAR",
+        "status_rekomendasi": "PERLU PERTIMBANGAN",
+        "deskripsi": "Memenuhi batas kelayakan sedang, butuh penguatan kognitif atau pendorong motivasi."
+      },
+      {
+        "priority_level": 4,
+        "min_skor_total": 0.0,
+        "status_rekomendasi": "TIDAK DIREKOMENDASIKAN",
+        "deskripsi": "Skor total akumulatif berada di bawah ambang minimum kelayakan kompetisi."
+      }
+    ]
+  },
+  "bidang_osn": {
+    "Matematika": {
+      "nama_bidang": "Matematika",
+      "implikasi_akademis": "Kesiapan optimal dalam memecahkan soal kombinatorika, aljabar, teori bilangan, dan geometri.",
+      "implikasi_motivasi": "Kenyamanan tinggi untuk berlama-lama melakukan pembuktian rumus secara abstrak dan teoretis."
+    },
+    "Fisika": {
+      "nama_bidang": "Fisika",
+      "implikasi_akademis": "Kapasitas kuat dalam memformulasikan fenomena gerak, mekanika, dan termodinamika ke dalam persamaan matematis.",
+      "implikasi_motivasi": "Rasa ingin tahu besar terhadap bagaimana alam semesta bekerja melalui bahasa kalkulus dan hukum pasti."
+    },
+    "Kimia": {
+      "nama_bidang": "Kimia",
+      "implikasi_akademis": "Kemampuan baik dalam memahami ikatan zat, stoikiometri analitik, dan kinetika reaksi dalam skala mikro.",
+      "implikasi_motivasi": "Ketertarikan eksplorasi eksperimental dan rasa penasaran terhadap struktur penyusun benda dari sudut pandang partikel."
+    },
+    "Biologi": {
+      "nama_bidang": "Biologi",
+      "implikasi_akademis": "Daya hafal konseptual tinggi, dipadukan dengan pemahaman sistem kompleks dari anatomi, taksonomi, hingga genetika.",
+      "implikasi_motivasi": "Antusiasme mendalam mengenai evolusi, ekosistem, kehidupan mikroskopis, serta siklus metabolisme makhluk hidup."
+    },
+    "Informatika": {
+      "nama_bidang": "Informatika",
+      "implikasi_akademis": "Kecepatan adaptasi sangat tinggi dalam logika pemrograman, penyusunan algoritma komputasi, dan penyelesaian bug.",
+      "implikasi_motivasi": "Sangat menyukai tantangan puzzle prosedural, penulisan baris kode, dan efisiensi cara kerja komputer."
+    },
+    "Astronomi": {
+      "nama_bidang": "Astronomi",
+      "implikasi_akademis": "Ketajaman perhitungan mekanika benda langit (hukum Kepler/Newton) dan pemahaman konsep ruang-waktu.",
+      "implikasi_motivasi": "Ketertarikan besar pada pengamatan benda langit, skala kosmik, dan fenomena fisika di luar atmosfer bumi."
+    },
+    "Kebumian": {
+      "nama_bidang": "Kebumian",
+      "implikasi_akademis": "Mampu mengurai lapisan geologi bumi, dinamika atmosfer, samudra, serta siklus batuan dan bencana alam.",
+      "implikasi_motivasi": "Rasa ingin tahu terhadap sejarah pembentukan planet, formasi mineral, dan fenomena meteorologi/klimatologi."
+    },
+    "Ekonomi": {
+      "nama_bidang": "Ekonomi",
+      "implikasi_akademis": "Luwes menganalisis kurva makro/mikroekonomi, kebijakan fiskal moneter, serta hitungan dasar akuntansi.",
+      "implikasi_motivasi": "Suka mengamati perilaku pasar, analisis keuntungan/kerugian, dan dinamika keuangan masyarakat global."
+    },
+    "Geografi": {
+      "nama_bidang": "Geografi",
+      "implikasi_akademis": "Peka terhadap analisis spasial (keruangan), sebaran populasi, tata kota, serta interpretasi peta topografi dan cuaca.",
+      "implikasi_motivasi": "Tertarik pada relasi antara manusia dengan lingkungannya, serta bagaimana letak geografis memengaruhi kebudayaan dan pembangunan."
+    },
+    "AI & Data Science": {
+      "nama_bidang": "AI & Data Science",
+      "implikasi_akademis": "Logika tajam dalam mengolah dataset, mengenali pola statistik, serta pemahaman probabilitas algoritma machine learning.",
+      "implikasi_motivasi": "Ambisi untuk melatih model kecerdasan buatan, visualisasi data kompleks, dan teknologi prediksi masa depan."
     }
   },
   "pilar2_minat": {
@@ -208,58 +316,6 @@
       "konseling": "Siswa dapat diarahkan untuk mendalami bidang ini dengan titik ungkit (leverage) pada cabang ilmu pendukung yang sangat ia kuasai."
     }
   },
-  "bidang_osn": {
-    "Matematika": {
-      "nama_bidang": "Matematika",
-      "implikasi_akademis": "Kesiapan optimal dalam memecahkan soal kombinatorika, aljabar, teori bilangan, dan geometri.",
-      "implikasi_motivasi": "Kenyamanan tinggi untuk berlama-lama melakukan pembuktian rumus secara abstrak dan teoretis."
-    },
-    "Fisika": {
-      "nama_bidang": "Fisika",
-      "implikasi_akademis": "Kapasitas kuat dalam memformulasikan fenomena gerak, mekanika, dan termodinamika ke dalam persamaan matematis.",
-      "implikasi_motivasi": "Rasa ingin tahu besar terhadap bagaimana alam semesta bekerja melalui bahasa kalkulus dan hukum pasti."
-    },
-    "Kimia": {
-      "nama_bidang": "Kimia",
-      "implikasi_akademis": "Kemampuan baik dalam memahami ikatan zat, stoikiometri analitik, dan kinetika reaksi dalam skala mikro.",
-      "implikasi_motivasi": "Ketertarikan eksplorasi eksperimental dan rasa penasaran terhadap struktur penyusun benda dari sudut pandang partikel."
-    },
-    "Biologi": {
-      "nama_bidang": "Biologi",
-      "implikasi_akademis": "Daya hafal konseptual tinggi, dipadukan dengan pemahaman sistem kompleks dari anatomi, taksonomi, hingga genetika.",
-      "implikasi_motivasi": "Antusiasme mendalam mengenai evolusi, ekosistem, kehidupan mikroskopis, serta siklus metabolisme makhluk hidup."
-    },
-    "Informatika": {
-      "nama_bidang": "Informatika",
-      "implikasi_akademis": "Kecepatan adaptasi sangat tinggi dalam logika pemrograman, penyusunan algoritma komputasi, dan penyelesaian bug.",
-      "implikasi_motivasi": "Sangat menyukai tantangan puzzle prosedural, penulisan baris kode, dan efisiensi cara kerja komputer."
-    },
-    "Astronomi": {
-      "nama_bidang": "Astronomi",
-      "implikasi_akademis": "Ketajaman perhitungan mekanika benda langit (hukum Kepler/Newton) dan pemahaman konsep ruang-waktu.",
-      "implikasi_motivasi": "Ketertarikan besar pada pengamatan benda langit, skala kosmik, dan fenomena fisika di luar atmosfer bumi."
-    },
-    "Kebumian": {
-      "nama_bidang": "Kebumian",
-      "implikasi_akademis": "Mampu mengurai lapisan geologi bumi, dinamika atmosfer, samudra, serta siklus batuan dan bencana alam.",
-      "implikasi_motivasi": "Rasa ingin tahu terhadap sejarah pembentukan planet, formasi mineral, dan fenomena meteorologi/klimatologi."
-    },
-    "Ekonomi": {
-      "nama_bidang": "Ekonomi",
-      "implikasi_akademis": "Luwes menganalisis kurva makro/mikroekonomi, kebijakan fiskal moneter, serta hitungan dasar akuntansi.",
-      "implikasi_motivasi": "Suka mengamati perilaku pasar, analisis keuntungan/kerugian, dan dinamika keuangan masyarakat global."
-    },
-    "Geografi": {
-      "nama_bidang": "Geografi",
-      "implikasi_akademis": "Peka terhadap analisis spasial (keruangan), sebaran populasi, tata kota, serta interpretasi peta topografi dan cuaca.",
-      "implikasi_motivasi": "Tertarik pada relasi antara manusia dengan lingkungannya, serta bagaimana letak geografis memengaruhi kebudayaan dan pembangunan."
-    },
-    "AI & Data Science": {
-      "nama_bidang": "AI & Data Science",
-      "implikasi_akademis": "Logika tajam dalam mengolah dataset, mengenali pola statistik, serta pemahaman probabilitas algoritma machine learning.",
-      "implikasi_motivasi": "Ambisi untuk melatih model kecerdasan buatan, visualisasi data kompleks, dan teknologi prediksi masa depan."
-    }
-  },
   "pilar3_resiliensi": {
     "kategori": [
       {
@@ -287,62 +343,6 @@
       "penanda": "[WARNING: RISK OF OSN BURNOUT]",
       "deskripsi": "Terintimidasi oleh tingkat kesulitan soal. Rentan panik dan burnout jika dipaksa ikut pembinaan intensif."
     }
-  },
-  "kombinasi_total_rekomendasi": {
-    "bobot_pilar": {
-      "pilar1_bakat": 0.50,
-      "pilar2_minat": 0.30,
-      "pilar3_persona": 0.20
-    },
-    "pemetaan_kode_bidang_pilar3": {
-      "MTK": "Matematika",
-      "FIS": "Fisika",
-      "KIM": "Kimia",
-      "BIO": "Biologi",
-      "INF": "Informatika",
-      "AST": "Astronomi",
-      "KBM": "Kebumian",
-      "EKO": "Ekonomi",
-      "GEO": "Geografi",
-      "AI": "AI & Data Science"
-    },
-    "formula_skor_total": "S_Total = (Skor_Pilar1 * 0.50) + (Skor_Pilar2 * 0.30) + (Skor_Pilar3 * 0.20)",
-    "kategori_rekomendasi": [
-      {
-        "priority_level": 1,
-        "min_skor_total": 78.0,
-        "require_warning_tag_false": true,
-        "status_rekomendasi": "SANGAT DIREKOMENDASIKAN (PRIORITAS UTAMA)",
-        "deskripsi": "Memiliki kombinasi bakat kognitif, minat, dan daya juang mental pada tingkat optimal tanpa indikasi intimidasi."
-      },
-      {
-        "priority_level": 2,
-        "min_skor_total": 65.0,
-        "require_warning_tag_false": true,
-        "status_rekomendasi": "DIREKOMENDASIKAN (POTENSIAL)",
-        "deskripsi": "Potensial untuk dibina dengan kesiapan materi dan mental yang memadai."
-      },
-      {
-        "priority_level": 3,
-        "min_skor_total": 50.0,
-        "condition_type": "WARNING_TAG_TRUE",
-        "status_rekomendasi": "PERLU PENDAMPINGAN (RISK OF OSN BURNOUT)",
-        "deskripsi": "Memiliki potensi skor tetapi memperlihatkan indeks intimidasi tinggi (tertekan/panik terhadap soal)."
-      },
-      {
-        "priority_level": 3,
-        "min_skor_total": 50.0,
-        "condition_type": "REGULAR",
-        "status_rekomendasi": "PERLU PERTIMBANGAN",
-        "deskripsi": "Memenuhi batas kelayakan sedang, butuh penguatan kognitif atau pendorong motivasi."
-      },
-      {
-        "priority_level": 4,
-        "min_skor_total": 0.0,
-        "status_rekomendasi": "TIDAK DIREKOMENDASIKAN",
-        "deskripsi": "Skor total akumulatif berada di bawah ambang minimum kelayakan kompetisi."
-      }
-    ]
   },
   "proyeksi_karir": {
     "Informatika": {
