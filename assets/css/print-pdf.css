@@ -119,6 +119,19 @@
   page-break-after: avoid;
 }
 
+/* FIX (round 2): break-after on the title alone isn't always enough —
+   html2pdf can still drop the title's very next block (a chart, table,
+   or card) onto the next page while the title itself stays behind,
+   because that block is tall/unbreakable (.chart-box, .avoid-break...)
+   and doesn't fit in the space left under the title. Mirroring the
+   rule on the OTHER side — forbidding a break right BEFORE whatever
+   follows a title — closes that gap and reliably keeps every section
+   title glued to its first line of content. */
+.report-section-title + * {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
 .report-paragraph {
   font-size: 0.85rem;
   text-align: justify;
