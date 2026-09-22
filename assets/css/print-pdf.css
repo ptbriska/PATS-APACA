@@ -1,240 +1,157 @@
 /* ==========================================================================
-   PATS PORTAL - PRINT & PDF EXPORT STYLESHEET (assets/css/print-pdf.css)
-   Optimized for html2pdf.js & Precision A4 Page Boundary
+   PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
+   (FIXED LEFT-CLIPPING VIA ONCLONE HOOK)
    ========================================================================== */
 
-/* Structure Container Laporan (Presisi Ukuran A4: 794px) */
-.report-paper,
-#report-paper {
-  background-color: #ffffff;
-  padding: 24px 32px;
-  width: 794px !important;
-  max-width: 794px !important;
-  margin: 0 auto;
-  color: #111827;
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.45;
-  box-sizing: border-box !important;
-}
+const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
-/* ==========================================================================
-   KOP SURAT RESMI (HEADER LAPORAN)
-   ========================================================================== */
-.report-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  border-bottom: 3px double #1e293b;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-}
+const PATS_PDF = {
+  generateStandardFileName(user = {}) {
+    const rawKode = user.kode_modul || user.kode_akses || user.kode_kegiatan || "TES";
+    const rawNama = user.nama_lengkap || user.nama || "Siswa";
+    const rawInstansi = user.asal_instansi || user.sekolah || "Instansi";
 
-.report-header .instansi-logo {
-  width: 70px;
-  height: auto;
-  max-height: 70px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
+    const cleanStr = (str) => str.replace(/[^a-zA-Z0-9]/g, "_").replace(/_+/g, "_").trim();
 
-.report-header .instansi-info {
-  flex-grow: 1;
-}
+    const now = new Date();
+    const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
 
-.report-header .instansi-info h2 {
-  font-size: 1.2rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #0f172a;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-  margin-bottom: 2px;
-}
+    return `${cleanStr(rawKode)}_${cleanStr(rawNama)}_${cleanStr(rawInstansi)}_${timestamp}.pdf`;
+  },
 
-.report-header .instansi-info .sub-title {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 4px;
-}
+  printReport() {
+    window.print();
+  },
 
-.report-header .instansi-info .address {
-  font-size: 0.75rem;
-  color: #475569;
-  line-height: 1.3;
-}
+  exportToPDF(elementId = "report-paper") {
+    const element = document.getElementById(elementId);
+    if (!element) return;
 
-/* Judul Laporan Ujian */
-.report-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
+    const triggerBtn = event && event.target ? event.target : null;
+    let originalText = "";
+    if (triggerBtn) {
+      originalText = triggerBtn.innerText;
+      triggerBtn.innerText = "Memproses PDF...";
+      triggerBtn.disabled = true;
+    }
 
-.report-title h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  text-decoration: underline;
-  color: #0f172a;
-}
+    const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
+    const fileName = this.generateStandardFileName(user);
 
-/* Tabel Biodata Peserta */
-.report-biodata {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 0.85rem;
-  table-layout: fixed;
-}
+    const options = {
+      margin:       [8, 8, 8, 8],
+      filename:     fileName,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { 
+        scale: 2, 
+        useCORS: true, 
+        logging: false,
+        scrollX: 0,
+        scrollY: 0,
+        onclone: (clonedDoc) => {
+          // FIX KUNCI: Paksa elemen hasil clone berada tepat di posisi X=0 Y=0 (Tanpa Offset Centering)
+          const clonedEl = clonedDoc.getElementById(elementId);
+          if (clonedEl) {
+            clonedEl.style.margin = "0 auto";
+            clonedEl.style.position = "relative";
+            clonedEl.style.left = "0px";
+            clonedEl.style.top = "0px";
+            clonedEl.style.transform = "none";
+          }
+          clonedDoc.body.style.margin = "0";
+          clonedDoc.body.style.padding = "0";
+        }
+      },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak:    { mode: ['css', 'legacy'] }
+    };
 
-.report-biodata td {
-  padding: 4px 6px;
-  vertical-align: top;
-  word-wrap: break-word;
-}
+    if (typeof html2pdf !== 'undefined') {
+      html2pdf().set(options).from(element).save().then(() => {
+        if (triggerBtn) {
+          triggerBtn.innerText = originalText;
+          triggerBtn.disabled = false;
+        }
+      }).catch((err) => {
+        console.error("Gagal export PDF:", err);
+        if (triggerBtn) {
+          triggerBtn.innerText = originalText;
+          triggerBtn.disabled = false;
+        }
+        this.printReport();
+      });
+    } else {
+      if (triggerBtn) {
+        triggerBtn.innerText = originalText;
+        triggerBtn.disabled = false;
+      }
+      this.printReport();
+    }
+  },
 
-.report-biodata td.label {
-  font-weight: 600;
-  width: 22%;
-  color: #334155;
-}
+  async autoArchiveToDrive(elementId = "report-paper") {
+    const element = document.getElementById(elementId);
+    if (!element || typeof html2pdf === 'undefined') return;
 
-/* ==========================================================================
-   STYLING TABEL DATA LAPORAN (PENAMBAHAN PENGUNCIAN LEBAR)
-   ========================================================================== */
-.report-table, 
-table {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  table-layout: fixed !important; /* Mengunci tabel agar tidak melar keluar A4 */
-  margin-bottom: 16px !important;
-  font-size: 0.82rem !important;
-}
+    try {
+      console.log("[DRIVE ARCHIVE]: Memproses PDF dengan perbaikan margin kiri...");
 
-.report-table th, 
-.report-table td,
-table th,
-table td {
-  padding: 6px 8px !important;
-  vertical-align: middle !important;
-  word-wrap: break-word !important;
-  overflow-wrap: break-word !important; /* Memutus kalimat panjang agar tidak melebar */
-  border: 1px solid #cbd5e1;
-}
+      const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
+      const fileName = this.generateStandardFileName(user);
 
-.report-table th,
-table th {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-  font-weight: 700 !important;
-  text-align: center;
-}
+      const options = {
+        margin:       [8, 8, 8, 8],
+        image:        { type: 'jpeg', quality: 0.85 },
+        html2canvas:  { 
+          scale: 1.5, 
+          useCORS: true, 
+          logging: false,
+          scrollX: 0,
+          scrollY: 0,
+          onclone: (clonedDoc) => {
+            // FIX KUNCI: Paksa elemen hasil clone berada tepat di posisi X=0 Y=0
+            const clonedEl = clonedDoc.getElementById(elementId);
+            if (clonedEl) {
+              clonedEl.style.margin = "0 auto";
+              clonedEl.style.position = "relative";
+              clonedEl.style.left = "0px";
+              clonedEl.style.top = "0px";
+              clonedEl.style.transform = "none";
+            }
+            clonedDoc.body.style.margin = "0";
+            clonedDoc.body.style.padding = "0";
+          }
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['css', 'legacy'] }
+      };
 
-/* Box Naratif Laporan Psikolog */
-.report-section {
-  margin-bottom: 20px;
-}
+      const pdfBase64Uri = await html2pdf().set(options).from(element).outputPdf('datauristring');
+      const cleanBase64 = pdfBase64Uri.split(',')[1];
 
-.report-section-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  background-color: #f1f5f9;
-  padding: 6px 10px;
-  border-left: 4px solid #2563eb;
-  margin-bottom: 10px;
-  color: #0f172a;
-  text-transform: uppercase;
-}
+      await fetch(GAS_PDF_DRIVE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          action: "save_pdf_to_drive",
+          kode_akses: user.kode_akses || user.kode_kegiatan || "TES",
+          nama_lengkap: user.nama_lengkap || user.nama || "Siswa",
+          filename: fileName,
+          pdf_base64: cleanBase64
+        })
+      });
 
-.report-paragraph {
-  font-size: 0.85rem;
-  text-align: justify;
-  margin-bottom: 10px;
-  color: #1e293b;
-}
+      sessionStorage.setItem("pats_pdf_drive_archived", "true");
+      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} tersimpan utuh di Drive!`);
 
-.report-list {
-  font-size: 0.85rem;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-.report-list li {
-  margin-bottom: 4px;
-}
-
-/* Footer & Tanda Tangan */
-.report-footer-sign {
-  margin-top: 30px;
-  display: flex;
-  justify-content: flex-end;
-  page-break-inside: avoid !important;
-  break-inside: avoid !important;
-}
-
-.sign-box {
-  text-align: center;
-  width: 220px;
-  font-size: 0.85rem;
-}
-
-.sign-space {
-  height: 55px;
-}
-
-/* ==========================================================================
-   STYLING MEDIA PRINT & HTML2PDF (PENGATURAN PEMBATAS HALAMAN)
-   ========================================================================== */
-@media print {
-  .portal-header,
-  .portal-footer,
-  .btn-primary,
-  .top-nav,
-  .no-print {
-    display: none !important;
+    } catch (err) {
+      console.error("[DRIVE ARCHIVE ERROR]:", err);
+    }
   }
+};
 
-  body {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .report-paper,
-  #report-paper {
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
-  @page {
-    size: A4 portrait;
-    margin: 1cm;
-  }
-
-  /* Kunci pemotongan hanya pada elemen kecil, BUKAN seluruh tabel */
-  .report-section-title,
-  .hero-card-otm,
-  .info-box,
-  .report-footer-sign,
-  tr {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  .report-section-title {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-}
-
-.page-break,
-.html2pdf__page-break {
-  page-break-before: always !important;
-  break-before: page !important;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    PATS_PDF.autoArchiveToDrive("report-paper");
+  }, 3000);
+});
