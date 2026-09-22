@@ -444,11 +444,26 @@
   "bagian_10_panduan_aksi": {
     "judul": "X. PANDUAN REKOMENDASI AKSI STRATEGIS",
     "rekomendasi": {
-      "guru": "Fokuskan pembinaan siswa pada bidang prioritas utama. Alokasikan pelatih eksternal dan modul intensif. Hindari memaksakan siswa pada bidang yang berstatus LOCKED atau memicu Warning Tag Burnout.",
-      "siswa": "Pertahankan disiplin belajar pada bidang rekomendasi puncakmu. Jangan ragu untuk memperdalam alur penalaran dan terus berlatih soal tingkat lanjut.",
-      "ortu": "Fasilitasi minat dan daya juang putra/putri Anda. Berikan dukungan moral, kelonggaran waktu belajar, dan sarana yang kondusif."
+      "guru": [
+        "Prioritaskan alokasi slot pembinaan resmi sekolah pada [BIDANG_UTAMA] (Plot Kuadran I / Top 1). Hindari memaksakan siswa berpindah ke bidang berstatus LOCKED atau memicu Warning Tag Burnout.",
+        "Susun kurikulum matrikulasi terstruktur dari tingkat dasar hingga lanjutan (OSN-K ke OSN-P). Alokasikan modul latihan tingkat tinggi (HOTS) serta fasilitasi pelatih/mentoring eksternal.",
+        "Lakukan monitoring resiliensi mental secara berkala. Sediakan ruang konsultasi non-akademis untuk menjaga kestabilan emosi siswa di tengah jadwal pembinaan yang padat.",
+        "Berikan akomodasi akademis berupa dispensasi penugasan kelas reguler atau penyesuaian jadwal ujian susulan selama masa intensif karantina pembinaan OSN."
+      ],
+      "siswa": [
+        "Fokuskan energi belajar pada penguasaan konseptual mendalam dan alur penalaran di [BIDANG_UTAMA], bukan sekadar menghafal rumus atau pola soal instan.",
+        "Susun jadwal drill soal mandiri minimal 1–2 jam per hari. Gunakan metode Error-Log (buku analisis kesalahan) untuk mengevaluasi setiap soal yang gagal diselesaikan.",
+        "Latih stamina mental dengan melakukan simulasi pengerjaan soal berdurasi panjang (3–4 jam tanpa jeda) guna membangun ketahanan fokus saat ujian sesungguhnya.",
+        "Manfaatkan repositori soal olimpiade tingkat nasional/internasional, forum diskusi sains, serta literatur pendukung tingkat perguruan tinggi yang relevan."
+      ],
+      "ortu": [
+        "Sediakan fasilitas dan lingkungan belajar yang kondusif di rumah, termasuk ketersediaan bahan bacaan, modul latihan mandiri, dan akses internet yang stabil.",
+        "Berikan dukungan emosional penuh dan hindari memberikan tekanan target medali yang berlebihan agar anak tidak mengalami kecemasan performa (performance anxiety).",
+        "Menjaga keseimbangan gaya hidup anak dengan memantau pola makan, nutrisi otak, serta kecukupan waktu tidur (kualitas istirahat sama pentingnya dengan jam belajar).",
+        "Jalin komunikasi dan koordinasi aktif dengan Guru Pembina/Konselor sekolah untuk memantau grafik perkembangan belajar serta kondisi psikologis anak."
+      ]
     }
-  },
+  }
 
   "bagian_11_strategi_pembinaan": {
     "judul": "XI. STRATEGI PEMBINAAN KONKRET",
