@@ -536,23 +536,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     setElemHTML("rec-ortu", renderBulletList(panduanAksi.ortu, top1Field));
 
     // =========================================================================
-    // BAGIAN XI: STRATEGI PEMBINAAN KONKRET
+    // BAGIAN XI: ROADMAP PEMBINAAN STRATEGIS 8 BULAN (TAKTIK MEDALIS)
     // =========================================================================
-    const strategiRubrik = rubrikData.bagian_11_strategi_pembinaan || {};
-    setElemHTML("strategi-pembinaan-container", `
-      <div class="info-box" style="margin-bottom:10px;">
-        <strong style="color:#1e3a8a;">${strategiRubrik.fase_1_matrikulasi?.tahap || "Fase 1"}</strong>
-        <p style="font-size:0.88rem; margin:4px 0 0 0; color:#334155;">${strategiRubrik.fase_1_matrikulasi?.teks || ""}</p>
+    const roadmapMaster = rubrikData.bagian_11_roadmap_8_bulan || {};
+    const top1BidangNama = evaluation.top_recommendation?.bidang || "Matematika";
+    
+    // Ambil data roadmap spesifik bidang Top 1 (fallback ke Matematika jika tidak terdaftar)
+    const bidangRoadmapData = roadmapMaster[top1BidangNama] || roadmapMaster["Matematika"] || {};
+    const listBulan = bidangRoadmapData.roadmap || [];
+
+    // Render Info Header Karakter Bidang
+    setElemText("top1-bidang-title", `BIDANG PRIORITAS UTAMA: ${top1BidangNama.toUpperCase()}`);
+    setElemText("top1-bidang-karakter", `Metode pendekatan pembinaan disesuaikan dengan karakter bidang ${top1BidangNama}: "${bidangRoadmapData.karakter || 'Pendekatan Komprehensif Theory & Drill'}"`);
+
+    // Render 8 Kartu Bulan
+    const roadmapCardsHTML = listBulan.map(item => `
+      <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: 4px solid #2563eb; border-radius: 10px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <!-- Badge Bulan & Fokus -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="background: #1e3a8a; color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 12px; text-transform: uppercase;">BULAN ${item.bulan}</span>
+            <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 2px 8px; border-radius: 6px;">${item.target_to}</span>
+          </div>
+
+          <h5 style="margin: 0 0 6px 0; color: #0f172a; font-size: 0.92rem; font-weight: 700;">${item.fokus}</h5>
+          
+          <div style="font-size: 0.82rem; color: #475569; margin-bottom: 10px; line-height: 1.4;">
+            <strong>Materi Kunci:</strong> ${item.materi}
+          </div>
+        </div>
+
+        <div style="border-top: 1px dashed #e2e8f0; padding-top: 10px; margin-top: 8px;">
+          <!-- Target Metric Badges -->
+          <div style="font-size: 0.78rem; font-weight: 700; color: #059669; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+            🎯 Target Drill: ${item.target_soal}
+          </div>
+          <!-- Monthly To-Do -->
+          <div style="font-size: 0.78rem; color: #334155; background: #f8fafc; padding: 8px; border-radius: 6px; border-left: 3px solid #059669; line-height: 1.3;">
+            <strong>Monthly To-Do:</strong> ${item.todo}
+          </div>
+        </div>
       </div>
-      <div class="info-box" style="margin-bottom:10px;">
-        <strong style="color:#059669;">${strategiRubrik.fase_2_drill?.tahap || "Fase 2"}</strong>
-        <p style="font-size:0.88rem; margin:4px 0 0 0; color:#334155;">${strategiRubrik.fase_2_drill?.teks || ""}</p>
-      </div>
-      <div class="info-box">
-        <strong style="color:#d97706;">${strategiRubrik.fase_3_evaluasi?.tahap || "Fase 3"}</strong>
-        <p style="font-size:0.88rem; margin:4px 0 0 0; color:#334155;">${strategiRubrik.fase_3_evaluasi?.teks || ""}</p>
-      </div>
-    `);
+    `).join("");
+
+    setElemHTML("roadmap-8bulan-container", roadmapCardsHTML);
 
   } catch (err) {
     console.error("Gagal memuat data Laporan OTM:", err);
