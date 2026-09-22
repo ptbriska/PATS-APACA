@@ -354,31 +354,88 @@ document.addEventListener("DOMContentLoaded", async () => {
     // =========================================================================
     // BAGIAN VIII: MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (ROI INDEX)
     // =========================================================================
-    const top1Field = evaluation.top_recommendation?.bidang || "Matematika";
-    const top1Data = allRanking[0] || {};
-    const isPassTop1 = top1Data.skor_pilar1_bakat >= 60;
-    const isFitTop1 = top1Data.indeks_intimidasi >= 3.0;
+    const roiRubrikDef = rubrikData.bagian_08_matriks_kelayakan_roi?.kuadran_definition || {};
+    const top1Field = evaluation.top_recommendation?.bidang || "";
 
-    const kuadranRubrik = rubrikData.bagian_08_matriks_kelayakan_roi?.kuadran || {};
-    let activeKuadranKey = "Kuadran_IV";
-    if (isPassTop1 && isFitTop1) activeKuadranKey = "Kuadran_I";
-    else if (isPassTop1 && !isFitTop1) activeKuadranKey = "Kuadran_II";
-    else if (!isPassTop1 && isFitTop1) activeKuadranKey = "Kuadran_III";
+    // 1. Kelompokkan 10 Bidang ke Dalam 4 Kuadran
+    const quadrantFieldsMap = { I: [], II: [], III: [], IV: [] };
 
-    const activeKuadran = kuadranRubrik[activeKuadranKey] || {};
+    allRanking.forEach(rec => {
+      const isPass = rec.skor_pilar1_bakat >= 60.0;
+      const isFit = rec.indeks_intimidasi >= 3.0;
 
-    setElemHTML("kuadran-summary-container", `
-      <div style="margin-bottom: 8px;">
-        <strong style="color:#1e3a8a; font-size: 1rem;">${activeKuadran.label || "KUADRAN I"}</strong> 
-        <span style="font-size:0.82rem; color:#64748b;">(Top Bidang Siswa: ${top1Field})</span>
-      </div>
-      <div style="font-size:0.88rem; color:#334155; line-height:1.6; margin-bottom: 6px;">
-        ${activeKuadran.deskripsi || ""}
-      </div>
-      <div style="font-size:0.85rem; font-weight:700; color:#059669;">
-        💡 Rekomendasi Alokasi Anggaran: ${activeKuadran.saran_alokasi || ""}
-      </div>
-    `);
+      if (isPass && isFit) quadrantFieldsMap.I.push(rec);
+      else if (isPass && !isFit) quadrantFieldsMap.II.push(rec);
+      else if (!isPass && isFit) quadrantFieldsMap.III.push(rec);
+      else quadrantFieldsMap.IV.push(rec);
+    });
+
+    // 2. Render Cell Koordinat Kartesius (Visual Plotter)
+    ["I", "II", "III", "IV"].forEach(qKey => {
+      const qDef = roiRubrikDef[qKey] || {};
+      const fieldsInQ = quadrantFieldsMap[qKey] || [];
+      const isTop1Here = fieldsInQ.some(r => r.bidang === top1Field);
+
+      let top1PlotBadge = "";
+      if (isTop1Here) {
+        top1PlotBadge = `
+          <div style="background: linear-gradient(135deg, #2563eb, #0284c7); color: #ffffff; padding: 6px 12px; border-radius: 20px; font-weight: 800; font-size: 0.78rem; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); margin-bottom: 8px;">
+            🎯 PLOT UTAMA TOP 1: ${top1Field}
+          </div>
+        `;
+      }
+
+      const fieldPillsHTML = fieldsInQ.map(r => {
+        const isTop1 = r.bidang === top1Field;
+        const style = isTop1 
+          ? "background: #1e3a8a; color: #ffffff; font-weight: 800; border: 1px solid #1e3a8a;"
+          : "background: #ffffff; color: #334155; font-weight: 600; border: 1px solid #cbd5e1;";
+        return `<span class="tag-pill" style="${style}">${r.bidang} (${r.skor_total})</span>`;
+      }).join(" ");
+
+      setElemHTML(`quadrant-cell-${qKey}`, `
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+          <strong style="font-size: 0.85rem; color: #0f172a;">${qDef.label || 'KUADRAN ' + qKey}</strong>
+        </div>
+        ${top1PlotBadge}
+        <div style="font-size: 0.8rem; color: #475569; margin-bottom: 8px; line-height: 1.4;">
+          ${qDef.profil || ''}
+        </div>
+        <div style="margin-top: 6px;">
+          <div style="font-size: 0.72rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Bidang Siswa di Kuadran ini:</div>
+          ${fieldPillsHTML || '<em style="font-size: 0.78rem; color: #94a3b8;">Tidak ada bidang</em>'}
+        </div>
+      `);
+    });
+
+    // 3. Render Tabel Matriks Tindakan Manajemen (Sesuai Pedoman Part 2)
+    setElemHTML("table-matriks-roi-body", ["I", "II", "III", "IV"].map(qKey => {
+      const qDef = roiRubrikDef[qKey] || {};
+      const fieldsInQ = quadrantFieldsMap[qKey] || [];
+      const fieldListNames = fieldsInQ.map(r => r.bidang).join(", ") || "-";
+
+      return `
+        <tr>
+          <td><strong>${qKey}</strong></td>
+          <td style="font-size: 0.82rem; font-weight: 600;">
+            <div>${qDef.sumbu_kognitif || ''}</div>
+            <div style="color: #64748b; margin-top: 2px;">${qDef.sumbu_resiliensi || ''}</div>
+          </td>
+          <td>
+            <span class="tag-pill" style="font-weight: 700;">${qDef.label || ''}</span>
+          </td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">
+            <div>${qDef.profil || ''}</div>
+            <div style="margin-top: 4px; font-weight: 700; color: #1e3a8a;">
+              Bidang: <span style="font-weight: 500; color: #334155;">${fieldListNames}</span>
+            </div>
+          </td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">
+            ${qDef.implikasi || ''}
+          </td>
+        </tr>
+      `;
+    }).join(""));
 
     // =========================================================================
     // BAGIAN IX: PROYEKSI PROGRAM STUDI & KARIER MASA DEPAN
