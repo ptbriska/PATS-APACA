@@ -446,22 +446,39 @@
         const p3Data = JSON.parse(sessionStorage.getItem("pats_pilar3_results") || "{}");
         const allRanking = evaluation.all_fields_ranking || [];
 
-        // 4. Render Hero IQ APACA OTM (Perbaikan Bug 0 - Sinkronisasi scoring1.js)
+        // 4. Render Hero IQ APACA OTM (Perbaikan Bug 0 - Multi-tier Fallback)
         let estimasiIQ = 0;
         let iqCategoryLabel = "-";
         
-        // Coba ambil dari hasil evaluasi total dulu jika sudah dikonversi
+        // Coba 1: Ambil dari iq_summary evaluasi total
         if (evaluation.iq_summary && evaluation.iq_summary.iq_score) {
             estimasiIQ = evaluation.iq_summary.iq_score;
             iqCategoryLabel = evaluation.iq_summary.category;
         } 
-        // Fallback: Ambil langsung dari object murni pilar 1 (iq_result)
-        else if (p1Data && p1Data.iq_result) {
+        // Coba 2: Ambil dari iq_result murni pilar 1
+        else if (p1Data && p1Data.iq_result && p1Data.iq_result.iq_score) {
             estimasiIQ = p1Data.iq_result.iq_score;
             iqCategoryLabel = p1Data.iq_result.category;
         }
+        // Coba 3: Hitung langsung dari module_scores Pilar 1 jika belum sempat ter-compile
+        else if (p1Data && p1Data.module_scores) {
+            const modScores = p1Data.module_scores;
+            const keys = Object.keys(modScores);
+            if (keys.length > 0) {
+                let sum = 0;
+                keys.forEach(k => sum += (modScores[k].final_score || 0));
+                const avg = sum / keys.length;
+                estimasiIQ = Math.min(160, Math.max(0, Math.round(avg * 1.6)));
+                if (estimasiIQ >= 130) iqCategoryLabel = "Sangat Superior / Genius";
+                else if (estimasiIQ >= 120) iqCategoryLabel = "Superior";
+                else if (estimasiIQ >= 110) iqCategoryLabel = "Rata-Rata Tinggi";
+                else if (estimasiIQ >= 90) iqCategoryLabel = "Rata-Rata";
+                else if (estimasiIQ >= 80) iqCategoryLabel = "Rata-Rata Rendah";
+                else iqCategoryLabel = "Batas Bawah";
+            }
+        }
 
-        document.getElementById("r-iq-score").innerText = estimasiIQ > 0 ? estimasiIQ : "PROSES";
+        document.getElementById("r-iq-score").innerText = estimasiIQ > 0 ? estimasiIQ : "0";
         document.getElementById("r-iq-category").innerText = iqCategoryLabel;
         
         const iqCategoryObj = (rubrikData.pilar1_kognitif?.norma_iq_apaca_otm?.kategori || []).find(k => k.label === iqCategoryLabel);
