@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (FINAL STABLE - ONCLONE COMPRESSION)
+   PATS PORTAL - PDF EXPORTER (FINAL STABLE - EXTREME TABLE COMPRESSION)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -60,7 +60,7 @@ const PATS_PDF = {
         return { canvas, img };
       });
 
-      // 2. Setting html2pdf dengan logika kompresi onclone
+      // 2. Setting html2pdf dengan kompresi ekstrem pada tabel
       const opt = {
         margin:       [10, 10, 10, 10], 
         filename:     fileName,
@@ -73,14 +73,13 @@ const PATS_PDF = {
           onclone: (clonedDoc) => {
             const target = clonedDoc.getElementById(elementId);
             if (target) {
-              // Kunci kontainer utama ke lebar kertas A4
+              // Kunci kontainer utama
               target.style.setProperty('width', '794px', 'important');
               target.style.setProperty('max-width', '794px', 'important');
               target.style.setProperty('margin', '0', 'important');
               target.style.setProperty('padding', '20px', 'important');
               target.style.setProperty('box-sizing', 'border-box', 'important');
 
-              // Taklukkan semua tabel agar tidak bisa meluber
               const tables = target.querySelectorAll('table');
               tables.forEach(t => {
                 t.style.setProperty('width', '100%', 'important');
@@ -88,7 +87,6 @@ const PATS_PDF = {
                 t.style.setProperty('table-layout', 'fixed', 'important');
                 t.style.setProperty('box-sizing', 'border-box', 'important');
                 
-                // Jika tabel dibungkus div (misal .table-responsive), bebaskan ukurannya
                 let parent = t.parentElement;
                 if (parent) {
                   parent.style.setProperty('width', '100%', 'important');
@@ -98,15 +96,17 @@ const PATS_PDF = {
                 }
               });
 
-              // Paksa isi tabel melipat ke bawah dan cabut lebar absolutnya
+              // JURUS PAMUNGKAS: Paksa kecilkan teks dan padding agar pasti muat
               const cells = target.querySelectorAll('th, td');
               cells.forEach(c => {
                 c.style.removeProperty('width'); 
                 c.style.removeProperty('min-width');
                 c.removeAttribute('width');
                 
+                c.style.setProperty('padding', '4px 2px', 'important'); // Padatkan ruang kosong
+                c.style.setProperty('font-size', '9px', 'important'); // Teks dikecilkan
                 c.style.setProperty('word-wrap', 'break-word', 'important');
-                c.style.setProperty('overflow-wrap', 'break-word', 'important');
+                c.style.setProperty('overflow-wrap', 'anywhere', 'important'); // Paksa potong teks yang tidak bisa dibreak
                 c.style.setProperty('word-break', 'break-word', 'important');
                 c.style.setProperty('white-space', 'normal', 'important');
                 c.style.setProperty('box-sizing', 'border-box', 'important');
