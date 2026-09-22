@@ -1,11 +1,23 @@
 {
   "metadata": {
     "nama_produk": "OSN Talent Mapping (OTM) Test",
-    "versi": "2.2 - Streamlined Narrative Rubric",
-    "deskripsi": "Kamus narasi & teks deskriptif untuk auto-generated laporan OTM."
+    "versi": "4.0 - UI Component Mapped",
+    "deskripsi": "Struktur data rubrik yang dipecah tepat menjadi 11 komponen sesuai urutan render di Laporan HTML."
   },
-  "pilar1_kognitif": {
-    "norma_iq_apaca_otm": [
+
+  "bagian_01_ringkasan_rekomendasi": {
+    "judul": "I. RINGKASAN REKOMENDASI 10 BIDANG OSN",
+    "deskripsi": "Tabel peringkat akumulasi akhir dari integrasi ketiga pilar."
+  },
+
+  "bagian_02_visualisasi_profil": {
+    "judul": "II. VISUALISASI PROFIL COMBINED 3 PILAR (10 BIDANG)",
+    "deskripsi": "Grafik komparasi kontribusi Bakat (50%), Minat (30%), dan Resiliensi (20%)."
+  },
+
+  "bagian_03_pilar1_bakat_kognitif": {
+    "judul": "III. ANALISA PILAR I: DIAGNOSTIK BAKAT KOGNITIF MURNI",
+    "norma_iq": [
       { "label": "Sangat Superior / Genius", "deskripsi": "Kapasitas kognitif murni sangat tinggi; sangat siap menaklukkan penalaran rumit OSN." },
       { "label": "Superior", "deskripsi": "Kapasitas kognitif di atas rata-rata tinggi; daya tangkap logika sangat cepat." },
       { "label": "Rata-Rata Tinggi", "deskripsi": "Kapasitas penalaran logis baik; mampu mengikuti alur pembinaan sains." },
@@ -14,148 +26,192 @@
       { "label": "Batas Bawah", "deskripsi": "Kapasitas kognitif belum siap untuk beban kompetisi sains." }
     ],
     "daftar_modul": {
-      "NUM": { "nama": "Numerik & Manipulasi Aljabar", "fokus": "Kecepatan & ketepatan operasional angka dan manipulasi persamaan aljabar." },
-      "LOG": { "nama": "Logika Deductif & Formal", "fokus": "Penalaran alur silogisme dan validitas kesimpulan dari premis." },
-      "PAT": { "nama": "Pattern Recognition & Abstraksi", "fokus": "Ekstraksi aturan implisit dari data visual/simbolik dan deret non-verbal." },
-      "SPA": { "nama": "Visual-Spasial & Proyeksi 3D", "fokus": "Rotasi mental objek 3D dan kesadaran orientasi ruang." },
-      "DAT": { "nama": "Data Interpretation & Graph Analysis", "fokus": "Ekstraksi data kuantitatif dari grafik, tabel, dan tren statistik." },
-      "ALG": { "nama": "Problem Decomposition & Algoritmik", "fokus": "Pemecahan masalah bertahap (step-by-step) dan pelacakan alur logika." },
-      "SAI": { "nama": "Literasi Konseptual Sains & Proses", "fokus": "Penalaran sebab-akibat fenomena alam dan analisis variabel eksperimen." },
-      "EKO": { "nama": "Spasial-Ekologis & Relasi Wilayah", "fokus": "Analisis interaksi antarwilayah dan interpretasi peta tematik." }
+      "NUM": { "nama": "Numerik & Manipulasi Aljabar", "fokus": "Kecepatan operasional angka dan persamaan aljabar." },
+      "LOG": { "nama": "Logika Deduktif & Formal", "fokus": "Penalaran silogisme, validitas kesimpulan premis." },
+      "PAT": { "nama": "Pattern Recognition & Abstraksi", "fokus": "Ekstraksi aturan implisit visual dan deret abstrak." },
+      "SPA": { "nama": "Visual-Spasial & Proyeksi 3D", "fokus": "Rotasi mental objek 3D dan orientasi proyeksi ruang." },
+      "DAT": { "nama": "Data Interpretation & Graph Analysis", "fokus": "Ekstraksi data dari grafik kompleks dan tren statistik." },
+      "ALG": { "nama": "Problem Decomposition & Algoritmik", "fokus": "Pemecahan masalah bertahap dan pelacakan alur prosedural." },
+      "SAI": { "nama": "Literasi Konseptual Sains & Proses", "fokus": "Penalaran hukum alam dan analisis variabel eksperimen." },
+      "EKO": { "nama": "Spasial-Ekologis & Relasi Wilayah", "fokus": "Analisis interaksi antarwilayah dan peta tematik." }
     },
-    "catatan_analisis_submodul": {
-      "ALG": {
-        "Sangat Tinggi": "Sangat cepat dan presisi melacak alur logika bertahap.",
-        "Tinggi": "Terampil melacak alur prosedur dan mengurai masalah bertahap.",
-        "Sedang": "Mampu melacak logika sederhana, namun butuh efisiensi waktu.",
-        "Cukup": "Kurang efisien dalam menelusuri instruksi bertahap yang panjang.",
-        "Kurang": "Kewalahan dalam melacak prosedur dan urutan langkah."
+    "matriks_catatan_modul": {
+      "ALG": { "Sangat Tinggi": "Sangat cepat dan presisi melacak alur logika bertahap.", "Tinggi": "Terampil melacak alur prosedur dan mengurai masalah bertahap.", "Sedang": "Mampu melacak logika sederhana, namun butuh efisiensi waktu.", "Cukup": "Kurang efisien menelusuri instruksi bertahap yang panjang.", "Kurang": "Kewalahan dalam melacak prosedur dan urutan langkah." },
+      "LOG": { "Sangat Tinggi": "Sangat kuat dalam silogisme dan evaluasi kebenaran premis.", "Tinggi": "Mampu menganalisis alur logika deduktif dan argumen formal.", "Sedang": "Cukup memahami silogisme dasar, butuh ketelitian pada negasi.", "Cukup": "Rentan terkecoh argumen bersyarat yang kompleks.", "Kurang": "Sering terkecoh oleh penalaran premis yang bias." },
+      "PAT": { "Sangat Tinggi": "Unggul dalam mengekstraksi aturan dari pola visual abstrak.", "Tinggi": "Cepat mengenali deret pola geometris terstruktur.", "Sedang": "Mampu membaca pola visual umum, butuh latihan abstraksi rumit.", "Cukup": "Lambat menangkap aturan implisit dari perubahan gambar.", "Kurang": "Lambat dalam menemukan pola tersembunyi dari deret gambar." },
+      "DAT": { "Sangat Tinggi": "Sangat tajam membaca tren grafik dan data kuantitatif matriks.", "Tinggi": "Akurat dalam menerjemahkan data tabel dan grafik dua sumbu.", "Sedang": "Mampu membaca data kuantitatif, namun butuh efisiensi waktu.", "Cukup": "Kesulitan mengekstraksi informasi dari data tabel silang.", "Kurang": "Lambat dan tidak teliti membaca tren grafik kuantitatif." },
+      "NUM": { "Sangat Tinggi": "Sangat tangkas dalam manipulasi angka dan persamaan aljabar.", "Tinggi": "Cepat dan akurat mengoperasikan variabel dan aljabar dasar.", "Sedang": "Mampu memanipulasi variabel dasar, butuh latihan soal rumit.", "Cukup": "Kurang teliti pada operasi persamaan aljabar yang panjang.", "Kurang": "Lambat dan sering keliru dalam operasi numerik/aljabar." },
+      "SAI": { "Sangat Tinggi": "Paham kuat hukum alam dan variabel uji laboratorium.", "Tinggi": "Mampu mengidentifikasi hubungan sebab-akibat proses sains.", "Sedang": "Cukup memahami konsep sains dasar, butuh penguatan analisis hipotesis.", "Cukup": "Lemah mengidentifikasi variabel eksperimen fenomena alam.", "Kurang": "Kesulitan memahami logika pembuktian hukum alam dasar." },
+      "EKO": { "Sangat Tinggi": "Sangat peka terhadap dinamika keruangan dan relasi batas wilayah.", "Tinggi": "Terampil membaca peta tematik dan keterkaitan tata ruang.", "Sedang": "Cukup peka membaca distribusi wilayah, butuh penguatan peta kontur.", "Cukup": "Kurang peka terhadap pembacaan peta tematik dan batas zona.", "Kurang": "Kesulitan menganalisis pola keruangan dan peta wilayah." },
+      "SPA": { "Sangat Tinggi": "Sangat presisi melakukan rotasi mental objek 3D.", "Tinggi": "Mampu memvisualisasikan rotasi bentuk 3D dan proyeksi ruang.", "Sedang": "Cukup mampu membayangkan proyeksi ruang sederhana.", "Cukup": "Lambat melakukan bayangan rotasi mental objek 3D.", "Kurang": "Kesulitan melakukan rotasi mental objek 3D secara presisi." }
+    },
+    "implikasi_akademis_gatekeeper": {
+      "Matematika": "Kesiapan optimal memecahkan soal kombinatorika, aljabar, dan geometri abstrak.",
+      "Fisika": "Kapasitas kuat memformulasikan fenomena gerak & mekanika ke persamaan matematis.",
+      "Kimia": "Pemahaman tajam ikatan zat, stoikiometri, dan kinetika dalam skala mikro.",
+      "Biologi": "Daya hafal konseptual kuat, dipadu pemahaman anatomi, taksonomi, & genetika.",
+      "Informatika": "Kecepatan adaptasi tinggi dalam logika pemrograman & pemecahan algoritma.",
+      "Astronomi": "Ketajaman perhitungan mekanika langit dan pemahaman ruang-waktu kosmik.",
+      "Kebumian": "Mampu mengurai lapisan geologi, dinamika atmosfer, samudra, dan bencana alam.",
+      "Ekonomi": "Luwes menganalisis kurva makro/mikroekonomi, kebijakan fiskal, dan akuntansi.",
+      "Geografi": "Peka terhadap analisis spasial, sebaran populasi, tata kota, serta interpretasi peta.",
+      "AI & Data Science": "Logika tajam mengolah dataset besar, pengenalan pola, & probabilitas algoritma."
+    }
+  },
+
+  "bagian_04_pilar2_minat_keilmuan": {
+    "judul": "IV. ANALISA PILAR II: MINAT KEILMUAN & ASYMMETRIC CROSS-FIELD",
+    "implikasi_motivasi": {
+      "Matematika": "Kenyamanan tinggi berlama-lama melakukan pembuktian rumus secara logis.",
+      "Fisika": "Rasa ingin tahu besar terhadap hukum alam semesta melalui bahasa kalkulus.",
+      "Kimia": "Eksplorasi eksperimental dan rasa penasaran terhadap struktur penyusun benda.",
+      "Biologi": "Antusiasme mendalam pada evolusi, ekosistem, dan siklus metabolisme makhluk hidup.",
+      "Informatika": "Sangat menyukai tantangan puzzle prosedural dan penulisan baris kode efisien.",
+      "Astronomi": "Ketertarikan besar pada pengamatan benda angkasa yang dipadukan fisika teoretis.",
+      "Kebumian": "Rasa ingin tahu sejarah pembentukan planet dan fenomena meteorologi/klimatologi.",
+      "Ekonomi": "Suka mengamati perilaku rasionalitas pasar, dinamika harga, dan data keuangan global.",
+      "Geografi": "Tertarik relasi manusia-lingkungan serta letak geografis memengaruhi pembangunan.",
+      "AI & Data Science": "Ambisi melatih model komputasi dan kecerdasan buatan dari data kompleks."
+    }
+  },
+
+  "bagian_05_pilar3_resiliensi": {
+    "judul": "V. ANALISA PILAR III: RESILIENSI MENTAL & SCIENCE COMFORT MAPPING",
+    "deskripsi": "Pemetaan daya tahan mental siswa dan level kecemasan terhadap kesulitan materi riil OSN."
+  },
+
+  "bagian_06_analisa_bakat_vs_minat": {
+    "judul": "VI. ANALISA BAKAT VS MINAT",
+    "klaster_diagnostik": {
+      "Genuine Interest": {
+        "diagnostik": "Antusiasme pada bidang utama sejalan dengan tingginya kenyamanan alat berpikir pada ilmu irisannya. (Minat Murni & Terbobot Sama-sama Tinggi)",
+        "konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
       },
-      "LOG": {
-        "Sangat Tinggi": "Sangat kuat dalam silogisme dan evaluasi kebenaran premis.",
-        "Tinggi": "Mampu menganalisis alur logika deduktif dan argumen formal.",
-        "Sedang": "Cukup memahami silogisme dasar, butuh ketelitian pada negasi.",
-        "Cukup": "Rentan terkecoh oleh argumen bersyarat yang kompleks.",
-        "Kurang": "Sering terkecoh oleh penalaran premis yang bias."
+      "Surface Fan": {
+        "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi pendukungnya (Nilai Murni Tinggi, tapi Anjlok saat Dibobotkan dengan Irisan).",
+        "konseling": "Guru pembina harus memberikan gambaran soal hitungan asli (komputasi/fisika/dsb) sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
       },
-      "PAT": {
-        "Sangat Tinggi": "Unggul dalam mengekstraksi aturan dari pola simbolik/visual.",
-        "Tinggi": "Cepat mengenali deret pola geometris terstruktur.",
-        "Sedang": "Mampu membaca pola visual umum, butuh latihan abstraksi rumit.",
-        "Cukup": "Lambat menangkap aturan implisit dari perubahan gambar.",
-        "Kurang": "Lambat dalam menemukan pola tersembunyi dari deret gambar."
-      },
-      "DAT": {
-        "Sangat Tinggi": "Sangat tajam membaca tren grafik dan data kuantitatif.",
-        "Tinggi": "Akurat dalam menterjemahkan data tabel dan grafik dua sumbu.",
-        "Sedang": "Mampu membaca data kuantitatif, namun butuh efisiensi waktu.",
-        "Cukup": "Kesulitan mengekstraksi informasi dari data tabel silang.",
-        "Kurang": "Lambat dan tidak teliti membaca tren grafik kuantitatif."
-      },
-      "NUM": {
-        "Sangat Tinggi": "Sangat tangkas dalam manipulasi angka dan persamaan aljabar.",
-        "Tinggi": "Cepat dan akurat mengoperasikan variabel dan aljabar dasar.",
-        "Sedang": "Mampu memanipulasi variabel dasar, butuh latihan soal rumit.",
-        "Cukup": "Kurang teliti pada operasi persamaan aljabar yang panjang.",
-        "Kurang": "Lambat dan sering keliru dalam operasi numerik/aljabar."
-      },
-      "SAI": {
-        "Sangat Tinggi": "Paham kuat akan sebab-akibat fenomena alam dan variabel eksperimen.",
-        "Tinggi": "Mampu mengidentifikasi hubungan sebab-akibat proses sains.",
-        "Sedang": "Cukup memahami konsep sains dasar, butuh penguatan analisis hipotesis.",
-        "Cukup": "Lemah dalam mengidentifikasi variabel eksperimen fenomena alam.",
-        "Kurang": "Kesulitan memahami logika pembuktian dan variabel sains."
-      },
-      "EKO": {
-        "Sangat Tinggi": "Sangat peka terhadap dinamika keruangan dan relasi antarwilayah.",
-        "Tinggi": "Terampil membaca peta tematik dan keterkaitan tata ruang.",
-        "Sedang": "Cukup peka membaca distribusi wilayah, butuh penguatan peta kontur.",
-        "Cukup": "Kurang peka terhadap pembacaan peta tematik dan batas zona.",
-        "Kurang": "Kesulitan menganalisis pola keruangan dan peta wilayah."
-      },
-      "SPA": {
-        "Sangat Tinggi": "Sangat presisi melakukan rotasi mental objek 3D dalam bayangan.",
-        "Tinggi": "Mampu memvisualisasikan rotasi bentuk 3D dan proyeksi ruang.",
-        "Sedang": "Cukup mampu membayangkan proyeksi ruang sederhana.",
-        "Cukup": "Lambat melakukan bayangan rotasi mental objek 3D.",
-        "Kurang": "Kesulitan melakukan rotasi mental objek 3D secara presisi."
+      "Cross-Disciplinary Synergy": {
+        "diagnostik": "Minat murni bidang utama di level sedang, namun terangkat signifikan oleh tingginya antusiasme siswa pada cabang ilmu irisannya.",
+        "konseling": "Siswa dapat diarahkan untuk mendalami bidang ini dengan titik ungkit (leverage) pada cabang ilmu pendukung yang sangat ia kuasai."
       }
     }
   },
-  "bidang_osn": {
-    "Matematika": {
-      "implikasi_akademis": "Kesiapan optimal dalam memecahkan soal kombinatorika, aljabar, teori bilangan, dan geometri.",
-      "implikasi_motivasi": "Kenyamanan tinggi untuk berlama-lama melakukan pembuktian rumus secara abstrak dan teoretis.",
-      "kuliah": ["Matematika Murni / Applied Mathematics", "Ilmu Aktuaria", "Statistika & Analisis Data", "Matematika Komputasi & Keuangan"],
-      "karir": ["Aktuaris / Risk Management Analyst", "Quantitative Researcher / Financial Modeler", "Data Scientist", "Cryptography Specialist"]
-    },
-    "Fisika": {
-      "implikasi_akademis": "Kapasitas kuat dalam memformulasikan fenomena gerak, mekanika, dan termodinamika ke dalam persamaan matematis.",
-      "implikasi_motivasi": "Rasa ingin tahu besar terhadap bagaimana alam semesta bekerja melalui bahasa kalkulus dan hukum pasti.",
-      "kuliah": ["Fisika Murni / Theoretical Physics", "Teknik Dirgantara", "Fisika Teknik & Instrumentasi", "Teknik Elektro & Mekatronika"],
-      "karir": ["Research Scientist / R&D Specialist", "Aerospace Engineer", "Robotics & Automation Engineer", "Geophysicist"]
-    },
-    "Kimia": {
-      "implikasi_akademis": "Kemampuan baik dalam memahami ikatan zat, stoikiometri analitik, dan kinetika reaksi dalam skala mikro.",
-      "implikasi_motivasi": "Ketertarikan eksplorasi eksperimental dan rasa penasaran terhadap struktur penyusun benda dari sudut pandang partikel.",
-      "kuliah": ["Kimia Murni / Applied Chemistry", "Teknik Kimia", "Farmasi & Teknologi Obat", "Ilmu Material & Nanoteknologi"],
-      "karir": ["Chemical Engineer / Process Engineer", "R&D Scientist (Pharmaceutical)", "Quality Control Manager", "Petrochemical Specialist"]
-    },
-    "Biologi": {
-      "implikasi_akademis": "Daya hafal konseptual tinggi, dipadukan dengan pemahaman sistem kompleks dari anatomi, taksonomi, hingga genetika.",
-      "implikasi_motivasi": "Antusiasme mendalam mengenai evolusi, ekosistem, kehidupan mikroskopis, serta siklus metabolisme makhluk hidup.",
-      "kuliah": ["Bioteknologi & Rekayasa Hayati", "Pendidikan Dokter / Kedokteran", "Biomedis & Bioinformatika", "Ilmu Kelautan & Ekologi"],
-      "karir": ["Bioinformatics Specialist", "Medical Doctor / Clinical Researcher", "Geneticist / Genetic Engineer", "Environmental Scientist"]
-    },
-    "Informatika": {
-      "implikasi_akademis": "Kecepatan adaptasi sangat tinggi dalam logika pemrograman, penyusunan algoritma komputasi, dan penyelesaian bug.",
-      "implikasi_motivasi": "Sangat menyukai tantangan puzzle prosedural, penulisan baris kode, dan efisiensi cara kerja komputer.",
-      "kuliah": ["Teknik Informatika / Computer Science", "Sistem Informasi & Keamanan Siber", "Software Engineering", "Rekayasa Perangkat Lunak"],
-      "karir": ["Software Engineer / Systems Architect", "Cybersecurity Analyst", "Full Stack Developer", "DevOps & Cloud Engineer"]
-    },
-    "Astronomi": {
-      "implikasi_akademis": "Ketajaman perhitungan mekanika benda langit (hukum Kepler/Newton) dan pemahaman konsep ruang-waktu.",
-      "implikasi_motivasi": "Ketertarikan besar pada pengamatan benda langit, skala kosmik, dan fenomena fisika di luar atmosfer bumi.",
-      "kuliah": ["Astrofisika & Ilmu Angkasa", "Fisika Teoretis & Kosmologi", "Teknik Satelit & Dirgantara", "Sains Data Astronomi"],
-      "karir": ["Astronomer / Astrophysicist", "Satellite Systems Engineer", "Space Mission Analyst", "Data Processing Specialist"]
-    },
-    "Kebumian": {
-      "implikasi_akademis": "Mampu mengurai lapisan geologi bumi, dinamika atmosfer, samudra, serta siklus batuan dan bencana alam.",
-      "implikasi_motivasi": "Rasa ingin tahu terhadap sejarah pembentukan planet, formasi mineral, dan fenomena meteorologi/klimatologi.",
-      "kuliah": ["Teknik Geologi", "Teknik Geofisika", "Meteorologi & Klimatologi", "Oseanografi"],
-      "karir": ["Geologist / Exploration Specialist", "Seismologist & Disaster Analyst", "Meteorologist / Climate Consultant", "Oceanographic Data Specialist"]
-    },
-    "Ekonomi": {
-      "implikasi_akademis": "Luwes menganalisis kurva makro/mikroekonomi, kebijakan fiskal moneter, serta hitungan dasar akuntansi.",
-      "implikasi_motivasi": "Suka mengamati perilaku pasar, analisis keuntungan/kerugian, dan dinamika keuangan masyarakat global.",
-      "kuliah": ["Ilmu Ekonomi & Pembangunan", "Akuntansi & Auditing", "Manajemen Keuangan", "Ekonometri & Sains Data Bisnis"],
-      "karir": ["Financial Analyst / Portfolio Manager", "Investment Banker", "Corporate Economist", "Management Consultant"]
-    },
-    "Geografi": {
-      "implikasi_akademis": "Peka terhadap analisis spasial (keruangan), sebaran populasi, tata kota, serta interpretasi peta topografi dan cuaca.",
-      "implikasi_motivasi": "Tertarik pada relasi antara manusia dengan lingkungannya, serta bagaimana letak geografis memengaruhi kebudayaan dan pembangunan.",
-      "kuliah": ["Perencanaan Wilayah & Kota (PWK)", "Geografi & Sains Informasi Geografis (SIG)", "Penginderaan Jauh", "Ilmu Lingkungan"],
-      "karir": ["Urban & Regional Planner", "GIS Analyst / Spatial Data Scientist", "Remote Sensing Specialist", "Environmental Consultant"]
-    },
-    "AI & Data Science": {
-      "implikasi_akademis": "Logika tajam dalam mengolah dataset, mengenali pola statistik, serta pemahaman probabilitas algoritma machine learning.",
-      "implikasi_motivasi": "Ambisi untuk melatih model kecerdasan buatan, visualisasi data kompleks, dan teknologi prediksi masa depan.",
-      "kuliah": ["Artificial Intelligence & Data Science", "Sains Data & Statistik Komputasi", "Teknologi Informasi & ML", "Matematika Komputasi & AI"],
-      "karir": ["AI / Machine Learning Specialist", "Data Scientist", "NLP / Computer Vision Engineer", "Big Data Architect"]
+
+  "bagian_07_karakter_keilmuan": {
+    "judul": "VII. ANALISA KARAKTER KEILMUAN SISWA",
+    "sinergi_kognitif": {
+      "Matematika": "Perpaduan dominan pada [Logika Deduktif] & [Numerik/Aljabar] melahirkan *Pure Algorithmic Architect* yang tahan uji pembuktian teori.",
+      "Fisika": "Dukungan [Visual Spasial] ke [Numerik & Sains] membentuk *Physical Systems Modeler* yang presisi dalam penurunan rumus gerak.",
+      "Kimia": "Sinergi ketelitian [Numerik] dan pembacaan [Data Grafik] menghasilkan *Molecular Analyst* yang andal menalar reaksi stoikiometri.",
+      "Biologi": "Perpaduan [Pengenalan Pola (Taksonomi)] dengan penalaran [Sebab-Akibat Sains] menciptakan *Biological Systems Thinker*.",
+      "Informatika": "Ledakan performa di [Dekomposisi Algoritmik] dan [Logika Deductif] mencetak *Computational Problem Solver* kelas berat.",
+      "Astronomi": "Kombinasi menantang dari [Proyeksi 3D] dengan porsi berat [Numerik-Fisika] menghasilkan *Astrophysics Modeler*.",
+      "Kebumian": "Kepandaian merangkai kepingan data [Spasial-Ekologis] dan [Sains Dasar] membentuk *Geosciences Analyst* yang utuh.",
+      "Ekonomi": "Kekuatan utama pada pemrosesan [Grafik Data] yang didukung [Numerik & Logika] melahirkan *Quantitative Economist*.",
+      "Geografi": "Sinergi solid antara analisis [Spasial-Ekologis] dengan pembacaan [Data Kewilayahan] mencetak *Spatial Planner* andal.",
+      "AI & Data Science": "Kolaborasi sempurna antara kemampuan ekstraksi [Data Kompleks] dan [Algoritmik Prosedural] melahirkan pionir kecerdasan buatan."
     }
   },
-  "klaster_diagnostik": {
-    "Genuine Interest": {
-      "diagnostik": "Antusiasme pada bidang utama sejalan dengan kenyamanan alat berpikir pada ilmu irisannya. (Minat Murni & Terbobot Sama-sama Tinggi)",
-      "konseling": "Siswa siap langsung diterjunkan ke pembinaan intensif karena minat antusiasme dan kenyamanan alat berpikirnya sudah searah."
+
+  "bagian_08_matriks_kelayakan_roi": {
+    "judul": "VIII. MATRIKS KELAYAKAN PEMBINAAN SEKOLAH (ROI INDEX)",
+    "kuadran": {
+      "Kuadran_I": {
+        "label": "KUADRAN I: HIGH PRIORITY (Prioritas ROI Utama)",
+        "syarat": "Skor Bakat PASS (≥60) & Indeks Intimidasi FIT (≥3.0)",
+        "deskripsi": "Siswa memiliki kecerdasan logis murni serta resiliensi baja terhadap tekanan soal. Potensi ROI peraihan medali sangat tinggi.",
+        "saran_alokasi": "FULL GRANT. Sekolah wajib memprioritaskan alokasi anggaran pelatihan eksternal penuh dan karantina kompetisi untuk kandidat ini."
+      },
+      "Kuadran_II": {
+        "label": "KUADRAN II: MENTAL MENTORING NEEDED",
+        "syarat": "Skor Bakat PASS (≥60) & Indeks Intimidasi RENTAN (<3.0)",
+        "deskripsi": "Siswa memenuhi batas kapasitas kognitif, namun memiliki kecemasan tinggi saat ditekan soal OSN tingkat lanjut.",
+        "saran_alokasi": "PARTIAL GRANT. Alokasi dana disarankan hanya diberikan jika diiringi kewajiban jadwal pendampingan konseling penguatan mental."
+      },
+      "Kuadran_III": {
+        "label": "KUADRAN III: KUDA HITAM / MATRIKULASI",
+        "syarat": "Skor Bakat LOCKED (<60) & Indeks Intimidasi FIT (≥3.0)",
+        "deskripsi": "Siswa memiliki daya juang pantang menyerah, namun kecepatan & ketepatan nalar kognitif murninya jauh dari ambang batas minimum.",
+        "saran_alokasi": "MATRIKULASI INTERNAL. Dilarang memakai dana pelatih luar. Sekolah cukup memfasilitasi matrikulasi materi dasar oleh guru internal."
+      },
+      "Kuadran_IV": {
+        "label": "KUADRAN IV: UNRECOMMENDED (Waste of Budget)",
+        "syarat": "Skor Bakat LOCKED (<60) & Indeks Intimidasi RENTAN (<3.0)",
+        "deskripsi": "Siswa tidak memiliki pondasi nalar OSN dan dipastikan akan langsung frustrasi/burnout jika dilibatkan dalam kompetisi intensif.",
+        "saran_alokasi": "NON-ELIGIBLE. Jangan alokasikan anggaran pembinaan sepeser pun. Arahkan siswa pada prestasi pengembangan diri non-akademik."
+      }
+    }
+  },
+
+  "bagian_09_proyeksi_studi_karier": {
+    "judul": "IX. PROYEKSI PROGRAM STUDI & KARIER MASA DEPAN (AUTO-GENERATED)",
+    "data_proyeksi": {
+      "Matematika": {
+        "kuliah": ["Matematika Murni / Applied Mathematics", "Ilmu Aktuaria", "Statistika & Analisis Data", "Matematika Komputasi"],
+        "karir": ["Aktuaris / Risk Management Analyst", "Quantitative Researcher", "Data Scientist", "Cryptography Specialist"]
+      },
+      "Fisika": {
+        "kuliah": ["Fisika Murni / Theoretical Physics", "Teknik Dirgantara", "Fisika Teknik", "Teknik Elektro & Mekatronika"],
+        "karir": ["Research Scientist", "Aerospace Engineer", "Robotics & Automation Engineer", "Geophysicist"]
+      },
+      "Kimia": {
+        "kuliah": ["Kimia Murni / Applied Chemistry", "Teknik Kimia", "Farmasi & Teknologi Obat", "Ilmu Material & Nanoteknologi"],
+        "karir": ["Chemical Engineer", "R&D Scientist (Pharmaceutical)", "Quality Control Manager", "Petrochemical Specialist"]
+      },
+      "Biologi": {
+        "kuliah": ["Bioteknologi & Rekayasa Hayati", "Kedokteran", "Biomedis & Bioinformatika", "Ilmu Kelautan & Ekologi"],
+        "karir": ["Bioinformatics Specialist", "Medical Doctor", "Geneticist", "Environmental Scientist"]
+      },
+      "Informatika": {
+        "kuliah": ["Teknik Informatika", "Sistem Informasi & Keamanan Siber", "Software Engineering", "Ilmu Komputer"],
+        "karir": ["Software Engineer / Systems Architect", "Cybersecurity Analyst", "Full Stack Developer", "Cloud Engineer"]
+      },
+      "Astronomi": {
+        "kuliah": ["Astrofisika & Ilmu Angkasa", "Fisika Teoretis & Kosmologi", "Teknik Satelit & Dirgantara", "Sains Data Astronomi"],
+        "karir": ["Astronomer / Astrophysicist", "Satellite Systems Engineer", "Space Mission Analyst", "Data Processing Specialist"]
+      },
+      "Kebumian": {
+        "kuliah": ["Teknik Geologi", "Teknik Geofisika", "Meteorologi & Klimatologi", "Oseanografi"],
+        "karir": ["Geologist", "Seismologist & Disaster Analyst", "Meteorologist", "Oceanographic Data Specialist"]
+      },
+      "Ekonomi": {
+        "kuliah": ["Ilmu Ekonomi & Studi Pembangunan", "Akuntansi & Auditing", "Manajemen Keuangan", "Ekonometri & Sains Data"],
+        "karir": ["Financial Analyst", "Investment Banker", "Corporate Economist", "Management Consultant"]
+      },
+      "Geografi": {
+        "kuliah": ["Perencanaan Wilayah & Kota (PWK)", "Sains Informasi Geografis (SIG)", "Penginderaan Jauh", "Ilmu Lingkungan"],
+        "karir": ["Urban & Regional Planner", "GIS Analyst / Spatial Data Scientist", "Remote Sensing Specialist", "Environmental Consultant"]
+      },
+      "AI & Data Science": {
+        "kuliah": ["Artificial Intelligence & Data Science", "Statistik Komputasi", "Teknologi Informasi & ML", "Matematika Komputasi"],
+        "karir": ["Machine Learning Specialist", "Data Scientist", "NLP / Computer Vision Engineer", "Big Data Architect"]
+      }
+    }
+  },
+
+  "bagian_10_panduan_aksi": {
+    "judul": "X. PANDUAN REKOMENDASI AKSI STRATEGIS",
+    "rekomendasi": {
+      "guru": "Fokuskan pembinaan siswa pada bidang prioritas utama. Alokasikan pelatih eksternal dan modul intensif. Hindari memaksakan siswa pada bidang yang berstatus LOCKED atau memicu Warning Tag Burnout.",
+      "siswa": "Pertahankan disiplin belajar pada bidang rekomendasi puncakmu. Jangan ragu untuk memperdalam alur penalaran dan terus berlatih soal tingkat lanjut.",
+      "ortu": "Fasilitasi minat dan daya juang putra/putri Anda. Berikan dukungan moral, kelonggaran waktu belajar, dan sarana yang kondusif."
+    }
+  },
+
+  "bagian_11_strategi_pembinaan": {
+    "judul": "XI. STRATEGI PEMBINAAN KONKRET",
+    "fase_1_matrikulasi": {
+      "tahap": "Fase 1: Matrikulasi Konsep Dasar (0-3 Bulan)",
+      "teks": "Fokuskan 30% awal waktu belajar pada pembenahan materi pondasi sekolah (Advanced High School Level) sebelum menyentuh soal seleksi provinsi/nasional."
     },
-    "Surface Fan": {
-      "diagnostik": "Siswa menyukai aspek populer/visual bidang ini, namun resisten terhadap kalkulasi pendukungnya (Nilai Murni Tinggi, tapi Anjlok saat Dibobotkan dengan Irisan).",
-      "konseling": "Guru pembina harus memberikan gambaran soal hitungan asli (komputasi/fisika/dsb) sejak awal untuk meluruskan ekspektasi siswa sebelum penetapan bidang final."
+    "fase_2_drill": {
+      "tahap": "Fase 2: Intensitas Drill Terukur (Progressive Exposure)",
+      "teks": "Gunakan teknik paparan bertahap. Mulai dengan bank soal OSN tingkat Kabupaten/Kota. Hindari melempar soal tingkat Nasional di bulan pertama untuk menjaga mental pantang menyerah (Grit) siswa."
     },
-    "Cross-Disciplinary Synergy": {
-      "diagnostik": "Minat murni bidang utama di level sedang, namun terangkat signifikan oleh tingginya antusiasme siswa pada cabang ilmu irisannya.",
-      "konseling": "Siswa dapat diarahkan untuk mendalami bidang ini dengan titik ungkit (leverage) pada cabang ilmu pendukung yang sangat ia kuasai."
+    "fase_3_evaluasi": {
+      "tahap": "Fase 3: Evaluasi Berbasis Proses (Tracing Logic)",
+      "teks": "Nilai perkembangan siswa dari caranya mengurai masalah (problem decomposition), bukan sekadar dari persentase jawaban akhirnya yang benar. Ajarkan siswa membedah kesalahan logika mereka sendiri."
     }
   }
 }
