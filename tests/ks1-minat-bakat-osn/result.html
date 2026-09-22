@@ -446,45 +446,24 @@
         const p3Data = JSON.parse(sessionStorage.getItem("pats_pilar3_results") || "{}");
         const allRanking = evaluation.all_fields_ranking || [];
 
-        // 4. Render Hero IQ APACA OTM (Perhitungan Langsung / Hard-Recalculate)
-        let totalModulScore = 0;
-        let countModul = 0;
-        
-        // Membaca langsung dari skor yang dicetak untuk tabel Pilar 1
-        const modScores = p1Data.module_scores || {};
-        const daftarKodeModul = ["NUM", "LOG", "PAT", "SPA", "DAT", "ALG", "SAI", "EKO"];
-        
-        daftarKodeModul.forEach(code => {
-           if(modScores[code]) {
-               totalModulScore += modScores[code].final_score;
-               countModul++;
-           }
-        });
-
+        // 4. Render Hero IQ APACA OTM (Perbaikan Bug 0 - Sinkronisasi scoring1.js)
         let estimasiIQ = 0;
         let iqCategoryLabel = "-";
-
-        if (countModul > 0) {
-            // Hitung rata-rata skor modul
-            const avgScore = totalModulScore / countModul;
-            
-            // Formula IQ = (Rata-rata Skor Modul * 1.6)
-            estimasiIQ = Math.min(160, Math.max(0, Math.round(avgScore * 1.6)));
-            
-            // Pengkategorian Kualitatif berdasarkan norma IQ APACA OTM
-            if (estimasiIQ >= 130) iqCategoryLabel = "Sangat Superior / Genius";
-            else if (estimasiIQ >= 120) iqCategoryLabel = "Superior";
-            else if (estimasiIQ >= 110) iqCategoryLabel = "Rata-Rata Tinggi";
-            else if (estimasiIQ >= 90) iqCategoryLabel = "Rata-Rata";
-            else if (estimasiIQ >= 80) iqCategoryLabel = "Rata-Rata Rendah";
-            else iqCategoryLabel = "Batas Bawah";
+        
+        // Coba ambil dari hasil evaluasi total dulu jika sudah dikonversi
+        if (evaluation.iq_summary && evaluation.iq_summary.iq_score) {
+            estimasiIQ = evaluation.iq_summary.iq_score;
+            iqCategoryLabel = evaluation.iq_summary.category;
+        } 
+        // Fallback: Ambil langsung dari object murni pilar 1 (iq_result)
+        else if (p1Data && p1Data.iq_result) {
+            estimasiIQ = p1Data.iq_result.iq_score;
+            iqCategoryLabel = p1Data.iq_result.category;
         }
 
-        // Tampilkan ke layar
-        document.getElementById("r-iq-score").innerText = estimasiIQ > 0 ? estimasiIQ : "0";
+        document.getElementById("r-iq-score").innerText = estimasiIQ > 0 ? estimasiIQ : "PROSES";
         document.getElementById("r-iq-category").innerText = iqCategoryLabel;
         
-        // Ambil Deskripsi IQ dari rubrik
         const iqCategoryObj = (rubrikData.pilar1_kognitif?.norma_iq_apaca_otm?.kategori || []).find(k => k.label === iqCategoryLabel);
         document.getElementById("r-iq-desc").innerText = iqCategoryObj ? iqCategoryObj.deskripsi : "Kapasitas kognitif murni dalam menyelesaikan tugas penalaran sains.";
 
