@@ -62,43 +62,41 @@ const PATS_PDF = {
         canvas.parentNode.replaceChild(img, canvas);
       });
 
-      // 2. PAKSA UKURAN DESKTOP SESAAT AGAR TABEL TIDAK MENYEMPIT (Mirip Ctrl+P)
-      const originalWidth = element.style.width;
+      // (Bagian pembekuan canvas tetap sama seperti kode Anda sebelumnya)
+
+      // 2. Kunci ukuran agar pas dengan A4 (800px adalah rasio ideal A4 potrait)
       const originalMaxWidth = element.style.maxWidth;
       const originalMargin = element.style.margin;
       
-      element.style.width = '1024px';
-      element.style.maxWidth = '1024px';
-      element.style.margin = '0'; // Hindari offset ke kanan
+      element.style.maxWidth = '800px';
+      element.style.margin = '0 auto';
 
-      // 3. KONFIGURASI HTML2PDF
+      // 3. KONFIGURASI HTML2PDF (Fokus pada Anti-Terbelah)
       const opt = {
-        margin:       [10, 10, 10, 10], // Margin atas, kiri, bawah, kanan (mm)
+        margin:       [10, 10, 10, 10], // Margin aman (mm)
         filename:     fileName,
-        image:        { type: 'jpeg', quality: 0.95 },
+        image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { 
-          scale: 2, 
+          scale: 2, // Resolusi tinggi
           useCORS: true,
           logging: false,
-          windowWidth: 1024, // Paksa html2canvas membaca halaman sebagai desktop
-          scrollY: 0,
-          scrollX: 0
+          scrollY: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
-          mode: ['css', 'legacy'], 
-          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title'] 
+          mode: ['css', 'legacy'], // Menggunakan aturan CSS break-inside: avoid yang kita buat
+          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title', 'h2', 'h3'] 
         }
       };
 
-      // 4. EKSEKUSI RENDER & AMBIL BASE64
+      // 4. EKSEKUSI RENDER
       const pdfBase64Uri = await html2pdf().set(opt).from(element).outputPdf('datauristring');
-      const cleanBase64 = pdfBase64Uri.split(',')[1];
-
-      // 5. KEMBALIKAN DOM SEPERTI SEMULA (Sangat Cepat, Layar Tidak Berkedip)
-      element.style.width = originalWidth;
+      
+      // 5. Kembalikan DOM
       element.style.maxWidth = originalMaxWidth;
       element.style.margin = originalMargin;
+
+      // (Lanjutkan ke proses Fetch Google Drive seperti biasa)
       
       originalCanvases.forEach(item => {
         item.parent.replaceChild(item.canvas, item.img);
