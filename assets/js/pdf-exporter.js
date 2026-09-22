@@ -1,6 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER (THE "ONCLONE" METHOD)
-   100% Aman untuk UI, Chart Tampil, Tidak Terpotong, Tidak Blank
+   PATS PORTAL - PDF EXPORTER (THE "ONCLONE" METHOD - ZERO OFFSET FIX)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -46,8 +45,7 @@ const PATS_PDF = {
 
       if (!element) throw new Error("Elemen report tidak ditemukan.");
 
-      // 1. SIMPAN GAMBAR CHART DULU
-      // (Kita ambil foto chart dari layar sebelum html2pdf bekerja)
+      // 1. SIMPAN GAMBAR CHART
       const canvasElements = Array.from(element.querySelectorAll("canvas"));
       const canvasData = canvasElements.map(c => {
         return {
@@ -58,28 +56,39 @@ const PATS_PDF = {
         };
       });
 
-      // 2. KONFIGURASI HTML2PDF DENGAN "ONCLONE"
+      // 2. KONFIGURASI HTML2PDF
       const opt = {
-        margin:       [10, 10, 10, 10], // Margin aman 1 cm
+        margin:       [10, 10, 10, 10], 
         filename:     fileName,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { 
           scale: 2, 
           useCORS: true,
           logging: false,
-          windowWidth: 1024, // Anggap layar komputer desktop agar tabel merentang luas
-          // FITUR AJAIB ONCLONE: Mengedit DOM HANYA di ruang memori kloning
-          // Web asli tidak akan disentuh, tidak akan berkedip, tidak akan melar
+          windowWidth: 1024,
+          x: 0, // Kunci kamera di titik paling kiri
+          y: 0, // Kunci kamera di titik paling atas
+          scrollX: 0,
+          scrollY: 0,
           onclone: (clonedDoc) => {
             const clonedTarget = clonedDoc.getElementById(elementId);
             if (!clonedTarget) return;
 
-            // Paksa ukuran dokumen di memori agar pas dengan proporsi A4
-            clonedTarget.style.width = '800px';
-            clonedTarget.style.maxWidth = '800px';
-            clonedTarget.style.margin = '0 auto';
+            // PERBAIKAN FATAL: Buang semua margin tengah agar elemen nempel di titik 0,0
+            clonedDoc.body.style.margin = '0';
+            clonedDoc.body.style.padding = '0';
+            clonedDoc.documentElement.style.margin = '0';
+            clonedDoc.documentElement.style.padding = '0';
 
-            // Ganti canvas kosong di memori kloning dengan foto Chart yang kita simpan tadi
+            clonedTarget.style.margin = '0'; // Rata Kiri Mutlak (Menghindari Cut-Off)
+            clonedTarget.style.padding = '20px';
+            clonedTarget.style.width = '1000px'; // Paksa jadi lebar desktop agar tabel muat lega
+            clonedTarget.style.maxWidth = '1000px';
+            clonedTarget.style.position = 'relative';
+            clonedTarget.style.left = '0';
+            clonedTarget.style.top = '0';
+
+            // Ganti canvas dengan gambar
             const clonedCanvases = Array.from(clonedTarget.querySelectorAll("canvas"));
             clonedCanvases.forEach((c, index) => {
               if (canvasData[index]) {
@@ -97,7 +106,7 @@ const PATS_PDF = {
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { 
           mode: ['css', 'legacy'], 
-          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title', 'h2', 'h3', 'h4', 'h5'] 
+          avoid: ['tr', '.report-section', '.chart-box', '.sign-box', '.report-section-title', 'h1', 'h2', 'h3', 'h4', 'h5'] 
         }
       };
 
