@@ -1,7 +1,21 @@
 /* ==========================================================================
-   PATS PORTAL - REPORT GENERATOR ENGINE (OPTIMIZED RESULT.JS v4.0)
+   PATS PORTAL - REPORT GENERATOR ENGINE (OPTIMIZED RESULT.JS v4.0 - FIXED)
    Mengintegrasikan Total_Scoring dengan 11 Komponen Komprehensif rubrik.json
    ========================================================================== */
+
+// Kamus Pemetaan Kode Bidang Global (Mencegah SyntaxError Redeclaration)
+const FIELD_TO_MIN_CODE_MAP = {
+  "Matematika": "MIN_MTK",
+  "Fisika": "MIN_FIS",
+  "Kimia": "MIN_KIM",
+  "Biologi": "MIN_BIO",
+  "Informatika": "MIN_INF",
+  "Astronomi": "MIN_AST",
+  "Kebumian": "MIN_KBM",
+  "Ekonomi": "MIN_EKO",
+  "Geografi": "MIN_GEO",
+  "AI & Data Science": "MIN_AI"
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Helper aman untuk set innerText/innerHTML
@@ -151,7 +165,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       let statusBadge = "";
       let konselingText = "";
 
-      // Logika Gatekeeper & Status Rekomendasi Akhir
       if (!isPass) {
         statusBadge = `<span class="badge-status badge-locked">TIDAK DIREKOMENDASIKAN</span>`;
         konselingText = tindakanKonselingRubrik.locked || "Dilarang Dipilih: Kapasitas kognitif di bawah batas kelayakan minimum.";
@@ -180,7 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }).join(""));
 
     // =========================================================================
-    // BAGIAN II: VISUALISASI PROFIL COMBINED 3 PILAR (HORIZONTAL ELEGAN)
+    // BAGIAN II: VISUALISASI PROFIL COMBINED 3 PILAR
     // =========================================================================
     const chartCanvas = document.getElementById('chartOTM');
     if (chartCanvas) {
@@ -216,7 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           ]
         },
         options: {
-          indexAxis: 'y', // Mengubah Orientasi Grafik Menjadi Horizontal
+          indexAxis: 'y',
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
@@ -257,45 +270,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     const p2Pure = p2Data.pure_scores || {};
     const p2BidangRubrik = rubrikData.bagian_04_pilar2_minat_keilmuan?.bidang || {};
 
-    const fieldToMinCodeMap = {
-      "Matematika": "MIN_MTK",
-      "Fisika": "MIN_FIS",
-      "Kimia": "MIN_KIM",
-      "Biologi": "MIN_BIO",
-      "Informatika": "MIN_INF",
-      "Astronomi": "MIN_AST",
-      "Kebumian": "MIN_KBM",
-      "Ekonomi": "MIN_EKO",
-      "Geografi": "MIN_GEO",
-      "AI & Data Science": "MIN_AI"
-    };
-
     setElemHTML("pilar2-table-body", allRanking.map(rec => {
       const skorMinat = rec.skor_pilar2_minat || 0;
       
-      // Lookup nilai Minat Murni yang presisi dari p2Pure
-      const minCode = fieldToMinCodeMap[rec.bidang] || rec.field_code || rec.bidang;
+      const minCode = FIELD_TO_MIN_CODE_MAP[rec.bidang] || rec.field_code || rec.bidang;
       const pureScore = p2Pure[minCode] !== undefined ? p2Pure[minCode] : (p2Pure[rec.bidang] || 0);
 
       let fitKey = "Rendah";
       let badgeClass = "badge-fit-rendah";
       
-      // Evaluasi Kategori Fit Minat & Kelas Warna Badge
       if (skorMinat >= 80.0) {
         fitKey = "Sangat Tinggi";
-        badgeClass = "badge-fit-sangat-tinggi"; // Biru
+        badgeClass = "badge-fit-sangat-tinggi";
       } else if (skorMinat >= 65.0) {
         fitKey = "Tinggi";
-        badgeClass = "badge-fit-tinggi";        // Hijau
+        badgeClass = "badge-fit-tinggi";
       } else if (skorMinat >= 50.0) {
         fitKey = "Sedang";
-        badgeClass = "badge-fit-sedang";        // Kuning
+        badgeClass = "badge-fit-sedang";
       } else {
         fitKey = "Rendah";
-        badgeClass = "badge-fit-rendah";        // Merah
+        badgeClass = "badge-fit-rendah";
       }
 
-      // Ambil narasi kustom khusus untuk bidang ini dan level fit ini dari rubrik
       const bidangDict = p2BidangRubrik[rec.bidang] || {};
       const infoFit = bidangDict[fitKey] || {};
 
@@ -327,7 +324,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       let catKey = "Sangat Rentan";
       let statusBadge = `<span class="badge-status badge-warning">[WARNING: BURNOUT]</span>`;
 
-      // Evaluasi Threshold Ganda berdasarkan Manual Book KS1-C (Pilar III)
       if (intimidationIdx >= 4.00 && scoreP3 >= 80.0) {
         catKey = "Sangat Siap";
         statusBadge = `<span class="badge-status badge-pass">FIT (HIGH)</span>`;
@@ -361,19 +357,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const p2PureScores = p2Data.pure_scores || {};
     const profilRubrik = rubrikData.bagian_06_analisa_false_interest?.profil_diagnostik || {};
 
-    const fieldToMinCodeMap = {
-      "Matematika": "MIN_MTK",
-      "Fisika": "MIN_FIS",
-      "Kimia": "MIN_KIM",
-      "Biologi": "MIN_BIO",
-      "Informatika": "MIN_INF",
-      "Astronomi": "MIN_AST",
-      "Kebumian": "MIN_KBM",
-      "Ekonomi": "MIN_EKO",
-      "Geografi": "MIN_GEO",
-      "AI & Data Science": "MIN_AI"
-    };
-
     const profilGroup = {
       "Genuine Interest": [],
       "Surface Fan": [],
@@ -381,12 +364,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     allRanking.forEach(rec => {
-      // Lookup nilai Minat Murni (MIN_j) yang presisi dari p2PureScores
-      const minCode = fieldToMinCodeMap[rec.bidang] || rec.field_code || rec.bidang;
+      const minCode = FIELD_TO_MIN_CODE_MAP[rec.bidang] || rec.field_code || rec.bidang;
       const pureScore = p2PureScores[minCode] !== undefined ? p2PureScores[minCode] : (p2PureScores[rec.bidang] || 0);
       const weightedScore = rec.skor_pilar2_minat || 0;
 
-      // Logika Diagnostik False Interest (Sesuai Pedoman Manual Book KS1-B)
       if (pureScore >= 65.0 && weightedScore >= 65.0) {
         profilGroup["Genuine Interest"].push(rec.bidang);
       } else if (pureScore >= 65.0 && weightedScore < 65.0) {
@@ -420,7 +401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }).join(""));
 
     // =========================================================================
-    // BAGIAN VII: ANALISA KARAKTER KEILMUAN SISWA (SINERGI KOGNITIF)
+    // BAGIAN VII: ANALISA KARAKTER KEILMUAN SISWA
     // =========================================================================
     const sinergiMap = rubrikData.bagian_07_karakter_keilmuan?.sinergi_kognitif || {};
     setElemHTML("table-karakter-keilmuan", allRanking.slice(0, 5).map(rec => `
@@ -436,7 +417,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const roiRubrikDef = rubrikData.bagian_08_matriks_kelayakan_roi?.kuadran_definition || {};
     const top1Field = evaluation.top_recommendation?.bidang || "";
 
-    // 1. Kelompokkan 10 Bidang ke Dalam 4 Kuadran
     const quadrantFieldsMap = { I: [], II: [], III: [], IV: [] };
 
     allRanking.forEach(rec => {
@@ -449,7 +429,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       else quadrantFieldsMap.IV.push(rec);
     });
 
-    // 2. Render Cell Koordinat Kartesius (Visual Plotter)
     ["I", "II", "III", "IV"].forEach(qKey => {
       const qDef = roiRubrikDef[qKey] || {};
       const fieldsInQ = quadrantFieldsMap[qKey] || [];
@@ -487,7 +466,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       `);
     });
 
-    // 3. Render Tabel Matriks Tindakan Manajemen (Sesuai Pedoman Part 2)
     setElemHTML("table-matriks-roi-body", ["I", "II", "III", "IV"].map(qKey => {
       const qDef = roiRubrikDef[qKey] || {};
       const fieldsInQ = quadrantFieldsMap[qKey] || [];
