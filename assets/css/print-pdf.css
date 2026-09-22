@@ -229,13 +229,18 @@ body.pagedjs-printing #pagedjs-render-target {
   }
 }
 
-/* INSTRUKSI KETAT ANTI-TERBELAH UNTUK HTML2PDF */
+/* PERLINDUNGAN ANTI-TERBELAH UNTUK CETAK/PDF */
 tr, 
 .report-section, 
 .chart-box, 
 .sign-box, 
-.report-section-title,
-h1, h2, h3, h4, h5 {
+.report-section-title {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+}
+
+/* Pastikan sel tabel ikut patuh */
+td, th {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
 }
