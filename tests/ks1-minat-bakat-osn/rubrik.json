@@ -363,7 +363,7 @@
       "I": {
         "kuadran": "I",
         "label": "HIGH PRIORITY",
-        "sumbu_kognitif": "Skor Bakat ≥ 60,0 (PASS)",
+        "sumbu_kognitif": "Skor OTM ≥ 60,0 (PASS)",
         "sumbu_resiliensi": "Indeks Intimidasi ≥ 3,0 (FIT)",
         "profil": "Siswa memiliki kecerdasan logis natural yang tinggi serta resiliensi mental juara terhadap karakter soal OSN. Potensi ROI peraihan medali sangat tinggi.",
         "implikasi": "Prioritas utama pembiayaan (dari sekolah/orang tua) dialokasikan penuh untuk pelatihan eksternal bersama tutor, fasilitasi buku/modul intensif, dan pelatihan privat karantina OSN (Full Grant)."
@@ -371,7 +371,7 @@
       "II": {
         "kuadran": "II",
         "label": "MENTAL MENTORING NEEDED",
-        "sumbu_kognitif": "Skor Bakat ≥ 60,0 (PASS)",
+        "sumbu_kognitif": "Skor OTM ≥ 60,0 (PASS)",
         "sumbu_resiliensi": "Indeks Intimidasi < 3,0 (RENTAN)",
         "profil": "Pintar tapi Rentan Burnout: Kapasitas kognitif memenuhi syarat, tetapi mudah panik/minder saat dihadapkan soal rumit.",
         "implikasi": "Pembinaan Terkondisi + Mentoring/pendampingan motivasi (direkomendasikan senantiasa untuk tes kondisi burn out APACA). Boleh dialokasikan anggaran untuk pelatihan/pembelian buku dengan syarat wajib mendapat pendampingan regulasi emosi/psikologis (Full Grant)."
@@ -379,7 +379,7 @@
       "III": {
         "kuadran": "III",
         "label": "KUDA HITAM / MATRIKULASI",
-        "sumbu_kognitif": "Skor Bakat < 60,0 (LOCKED)",
+        "sumbu_kognitif": "Skor OTM < 60,0 (LOCKED)",
         "sumbu_resiliensi": "Indeks Intimidasi ≥ 3,0 (FIT)",
         "profil": "Mental Pejuang tapi Fondasi Kognitif Lemah: Memiliki grit and growth tinggi, minat belajar daya juang besar, namun kapasitas kognitif dasarnya belum mencapai batas minimum OSN.",
         "implikasi": "PARTIAL GRANT : Diberikan penguatan konsep dasar oleh guru internal dalam sekolah sebelum diajukan ke pelatihan intensif, sehingga anak bisa memiliki dasar keilmuan yang cukup sebelum ikut pelatihan OSN dengan materi karakter berat."
@@ -387,7 +387,7 @@
       "IV": {
         "kuadran": "IV",
         "label": "UNRECOMMENDED",
-        "sumbu_kognitif": "Skor Bakat < 60,0 (LOCKED)",
+        "sumbu_kognitif": "Skor OTM < 60,0 (LOCKED)",
         "sumbu_resiliensi": "Indeks Intimidasi < 3,0 (RENTAN)",
         "profil": "Kognitif Rendah + Kondisi mental grit and growth rendah: Siswa tidak memiliki pondasi kognitif sains dasar Keilmuan OSN dan dipastikan akan langsung frustrasi/burnout/mudah menyerah jika dilibatkan dalam kompetisi intensif.",
         "implikasi": "NON-ELIGIBLE. Rekomendasi untuk tidak mengalokasikan dana pelatihan OSN atau pembelian buku OSN, sekolah/orangtua bisa arahkan siswa ke kegiatan ekstrakurikuler atau kompetisi non-sains seperti FLS2N dan/atau O2SN."
