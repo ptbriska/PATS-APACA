@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }).join(""));
 
     // =========================================================================
-    // BAGIAN II: VISUALISASI PROFIL COMBINED 3 PILAR
+    // BAGIAN II: VISUALISASI PROFIL COMBINED 3 PILAR (HORIZONTAL ELEGAN)
     // =========================================================================
     const chartCanvas = document.getElementById('chartOTM');
     if (chartCanvas) {
@@ -189,15 +189,64 @@ document.addEventListener("DOMContentLoaded", async () => {
         data: {
           labels: allRanking.map(r => r.bidang),
           datasets: [
-            { label: 'Pilar I: Bakat (50%)', data: allRanking.map(r => r.skor_pilar1_bakat), backgroundColor: '#2563eb' },
-            { label: 'Pilar II: Minat (30%)', data: allRanking.map(r => r.skor_pilar2_minat), backgroundColor: '#059669' },
-            { label: 'Pilar III: Comfort (20%)', data: allRanking.map(r => r.skor_pilar3_persona), backgroundColor: '#d97706' }
+            {
+              label: 'Pilar I: Bakat (50%)',
+              data: allRanking.map(r => r.skor_pilar1_bakat),
+              backgroundColor: '#2563eb',
+              borderRadius: 4,
+              barPercentage: 0.8,
+              categoryPercentage: 0.7
+            },
+            {
+              label: 'Pilar II: Minat (30%)',
+              data: allRanking.map(r => r.skor_pilar2_minat),
+              backgroundColor: '#059669',
+              borderRadius: 4,
+              barPercentage: 0.8,
+              categoryPercentage: 0.7
+            },
+            {
+              label: 'Pilar III: Comfort (20%)',
+              data: allRanking.map(r => r.skor_pilar3_persona),
+              backgroundColor: '#d97706',
+              borderRadius: 4,
+              barPercentage: 0.8,
+              categoryPercentage: 0.7
+            }
           ]
         },
         options: {
+          indexAxis: 'y', // Mengubah Orientasi Grafik Menjadi Horizontal
           responsive: true,
           maintainAspectRatio: false,
-          scales: { y: { suggestedMin: 0, suggestedMax: 100 } }
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                font: { family: 'Plus Jakarta Sans', size: 12, weight: '600' },
+                usePointStyle: true,
+                padding: 20
+              }
+            },
+            tooltip: {
+              padding: 12,
+              cornerRadius: 8,
+              titleFont: { family: 'Plus Jakarta Sans', size: 13, weight: '700' },
+              bodyFont: { family: 'Plus Jakarta Sans', size: 12 }
+            }
+          },
+          scales: {
+            x: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              grid: { color: '#f1f5f9' },
+              ticks: { font: { family: 'Plus Jakarta Sans', size: 11 } }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { font: { family: 'Plus Jakarta Sans', size: 12, weight: '700' }, color: '#0f172a' }
+            }
+          }
         }
       });
     }
