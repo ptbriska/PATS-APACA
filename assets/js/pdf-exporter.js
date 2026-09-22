@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY (FIXED A4 RENDER)
+   PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -37,7 +37,6 @@ const PATS_PDF = {
     const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
     const fileName = this.generateStandardFileName(user);
 
-    // Konfigurasi Presisi A4 Tanpa 'avoid-all' untuk Mencegah Halaman Kosong
     const options = {
       margin:       [8, 8, 8, 8],
       filename:     fileName,
@@ -46,12 +45,26 @@ const PATS_PDF = {
         scale: 2, 
         useCORS: true, 
         logging: false,
-        windowWidth: 800, // Mengunci lebar render canvas persis skala A4
         scrollX: 0,
-        scrollY: 0
+        scrollY: 0,
+        x: 0,
+        y: 0,
+        onclone: (clonedDoc) => {
+          // PAKSA POSISI ELEMEN KE KOORDINAT POSITIF 0,0 TANPA MARGIN AUTO
+          const clonedEl = clonedDoc.getElementById(elementId);
+          if (clonedEl) {
+            clonedEl.style.margin = "0";
+            clonedEl.style.padding = "16px";
+            clonedEl.style.width = "720px";
+            clonedEl.style.position = "static";
+            clonedEl.style.transform = "none";
+          }
+          clonedDoc.body.style.margin = "0";
+          clonedDoc.body.style.padding = "0";
+        }
       },
       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['css', 'legacy'] } // LEPAS 'avoid-all'
+      pagebreak:    { mode: ['css', 'legacy'] }
     };
 
     if (typeof html2pdf !== 'undefined') {
@@ -82,7 +95,7 @@ const PATS_PDF = {
     if (!element || typeof html2pdf === 'undefined') return;
 
     try {
-      console.log("[DRIVE ARCHIVE]: Memulai konversi PDF presisi...");
+      console.log("[DRIVE ARCHIVE]: Memproses konversi PDF...");
 
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
@@ -94,9 +107,22 @@ const PATS_PDF = {
           scale: 1.5, 
           useCORS: true, 
           logging: false,
-          windowWidth: 800, // Mengunci lebar render canvas persis skala A4
           scrollX: 0,
-          scrollY: 0
+          scrollY: 0,
+          x: 0,
+          y: 0,
+          onclone: (clonedDoc) => {
+            const clonedEl = clonedDoc.getElementById(elementId);
+            if (clonedEl) {
+              clonedEl.style.margin = "0";
+              clonedEl.style.padding = "16px";
+              clonedEl.style.width = "720px";
+              clonedEl.style.position = "static";
+              clonedEl.style.transform = "none";
+            }
+            clonedDoc.body.style.margin = "0";
+            clonedDoc.body.style.padding = "0";
+          }
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { mode: ['css', 'legacy'] }
@@ -118,7 +144,7 @@ const PATS_PDF = {
       });
 
       sessionStorage.setItem("pats_pdf_drive_archived", "true");
-      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} tersimpan rapi di Google Drive.`);
+      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} tersimpan utuh di Drive.`);
 
     } catch (err) {
       console.error("[DRIVE ARCHIVE ERROR]:", err);
