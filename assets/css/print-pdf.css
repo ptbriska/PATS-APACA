@@ -11,6 +11,7 @@
   color: #111827;
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -147,13 +148,14 @@
 }
 
 /* ==========================================================================
-   STYLING MEDIA PRINT (Pengaturan saat di-Ctrl+P / Simpan PDF)
+   STYLING MEDIA PRINT & HTML2PDF (OPTIMISASI PENGUNCIAN HALAMAN)
    ========================================================================== */
 @media print {
   /* Sembunyikan elemen Web UI yang tidak perlu di cetakan */
   .portal-header,
   .portal-footer,
   .btn-primary,
+  .top-nav,
   .no-print {
     display: none !important;
   }
@@ -161,22 +163,47 @@
   body {
     background-color: #ffffff !important;
     color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .report-paper {
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
-    box-shadow: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
-  /* Pengaturan Batas Halaman A4 */
+  /* Pengaturan Batas Halaman A4 Presisi */
   @page {
-    size: A4;
+    size: A4 portrait;
     margin: 1.2cm;
   }
 
-  .page-break {
-    page-break-before: always;
+  /* CEGAH ELEMEN TERPOTONG DI TENGAH HALAMAN (Mencegah Blank Page) */
+  .report-section,
+  .report-table,
+  .report-header,
+  .report-biodata,
+  .hero-card-otm,
+  .info-box,
+  .report-footer-sign,
+  tr, blockquote {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
+
+  /* Mencegah Judul Seksi Terpisah dengan Isinya */
+  .report-section-title {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+}
+
+/* Class Pembatas Halaman Manual jika Diperlukan */
+.page-break,
+.html2pdf__page-break {
+  page-break-before: always !important;
+  break-before: page !important;
 }
