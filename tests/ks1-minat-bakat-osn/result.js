@@ -140,16 +140,44 @@ document.addEventListener("DOMContentLoaded", async () => {
     // =========================================================================
     // BAGIAN I: RINGKASAN REKOMENDASI 10 BIDANG OSN
     // =========================================================================
-    setElemHTML("top-3-table-body", allRanking.map((rec, idx) => `
-      <tr>
-        <td><strong>${idx + 1}</strong></td>
-        <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
-        <td><strong>${rec.skor_total}</strong></td>
-        <td><span class="badge-status ${rec.gatekeeper_status === 'PASS' ? 'badge-pass' : 'badge-locked'}">${rec.gatekeeper_status}</span></td>
-        <td>${rec.indeks_intimidasi.toFixed(2)}</td>
-        <td>${idx < 3 ? `<span style="font-weight: 700; color: #059669;">DIREKOMENDASIKAN (TOP ${idx + 1})</span>` : `<span style="font-weight: 500; color: #64748b;">TIDAK PRIORITAS</span>`}</td>
-      </tr>
-    `).join(""));
+    const tindakanKonselingRubrik = rubrikData.bagian_01_ringkasan_rekomendasi?.tindakan_konseling || {};
+
+    setElemHTML("top-3-table-body", allRanking.map((rec, idx) => {
+      const isPass = rec.gatekeeper_status === "PASS";
+      const gateBadge = isPass 
+        ? `<span class="badge-status badge-pass">PASS</span>` 
+        : `<span class="badge-status badge-locked">LOCKED</span>`;
+
+      let statusBadge = "";
+      let konselingText = "";
+
+      // Logika Gatekeeper & Status Rekomendasi Akhir
+      if (!isPass) {
+        statusBadge = `<span class="badge-status badge-locked">TIDAK DIREKOMENDASIKAN</span>`;
+        konselingText = tindakanKonselingRubrik.locked || "Dilarang Dipilih: Kapasitas kognitif di bawah batas kelayakan minimum.";
+      } else if (rec.warning_tag) {
+        statusBadge = `<span class="badge-status badge-warning">PERLU PENDAMPINGAN</span>`;
+        konselingText = tindakanKonselingRubrik.pendampingan || "Perlu Mentoring: Kognitif lolos tetapi terintimidasi.";
+      } else if (idx < 3) {
+        statusBadge = `<span style="font-weight: 700; color: #059669;">REKOMENDASI UTAMA (TOP ${idx + 1})</span>`;
+        konselingText = tindakanKonselingRubrik.utama || "Pilihan Utama: Kapasitas kognitif, minat, dan resiliensi saling menguatkan.";
+      } else {
+        statusBadge = `<span style="font-weight: 600; color: #2563eb;">REKOMENDASI ALTERNATIF</span>`;
+        konselingText = tindakanKonselingRubrik.alternatif || "Opsi Cadangan: Dapat dipilih jika kuota Top 1–3 di sekolah sudah penuh.";
+      }
+
+      return `
+        <tr>
+          <td><strong>${idx + 1}</strong></td>
+          <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
+          <td><strong>${rec.skor_total}</strong></td>
+          <td>${gateBadge}</td>
+          <td>${rec.indeks_intimidasi.toFixed(2)}</td>
+          <td>${statusBadge}</td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${konselingText}</td>
+        </tr>
+      `;
+    }).join(""));
 
     // =========================================================================
     // BAGIAN II: VISUALISASI PROFIL COMBINED 3 PILAR
