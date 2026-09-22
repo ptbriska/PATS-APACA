@@ -1,6 +1,6 @@
 /* ==========================================================================
    PATS PORTAL - PDF EXPORTER (ULTIMATE ISOLATION)
-   100% Aman untuk Tampilan Web Utama. Tidak ada Library External yang bocor.
+   Perbaikan Resolusi & Tata Letak Identik dengan Native Print (Ctrl+P)
    ========================================================================== */
 
 const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
@@ -18,7 +18,7 @@ const PATS_PDF = {
     return `${cleanStr(rawKode)}_${cleanStr(rawNama)}_${cleanStr(rawInstansi)}_${timestamp}.pdf`;
   },
 
-  // Tombol Export milik user cukup memanggil print native (Paling rapi & aman)
+  // Tombol Export milik user (Cetak Native Ctrl+P)
   exportToPDF() {
     window.print();
   },
@@ -32,7 +32,6 @@ const PATS_PDF = {
       const source = document.getElementById(elementId);
       if (!source) throw new Error("Elemen report tidak ditemukan.");
 
-      // 1. Kloning HTML dan bekukan Chart.js menjadi gambar
       const clone = source.cloneNode(true);
       const liveCanvases = source.querySelectorAll("canvas");
       const clonedCanvases = clone.querySelectorAll("canvas");
@@ -47,17 +46,16 @@ const PATS_PDF = {
         }
       });
 
-      // 2. Ambil semua CSS dari web utama untuk dipakai di dalam iframe
       const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(l => l.href).filter(Boolean);
       const styles = Array.from(document.querySelectorAll('style')).map(s => s.innerHTML);
 
-      // 3. Buat Iframe Tersembunyi (Gunakan visibility: hidden agar getBoundingClientRect tidak error)
+      // BUKA VIEWPORT LEBAR (1200px) agar layout terbaca sebagai Desktop, bukan HP
       const iframe = document.createElement("iframe");
       iframe.style.position = "fixed";
       iframe.style.right = "0";
       iframe.style.bottom = "0";
-      iframe.style.width = "210mm";
-      iframe.style.height = "297mm";
+      iframe.style.width = "1200px"; 
+      iframe.style.height = "100vh";
       iframe.style.visibility = "hidden"; 
       iframe.style.zIndex = "-9999";
       iframe.style.border = "none";
@@ -65,7 +63,6 @@ const PATS_PDF = {
 
       const iframeDoc = iframe.contentWindow.document;
 
-      // 4. Siapkan penangkap sinyal dari dalam Iframe
       const getPdfBase64 = new Promise((resolve, reject) => {
         const listener = (event) => {
           if (event.data && event.data.type === 'pdf_success') {
@@ -79,7 +76,7 @@ const PATS_PDF = {
         window.addEventListener('message', listener);
       });
 
-      // 5. Tulis sistem mandiri murni di dalam Iframe
+      // HTML Iframe dengan pengaturan persis seperti Native Print
       const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -88,53 +85,82 @@ const PATS_PDF = {
           ${links.map(l => `<link rel="stylesheet" href="${l}">`).join('\n')}
           ${styles.map(s => `<style>${s}</style>`).join('\n')}
           
-          <!-- HANYA LOAD LIBRARY DI DALAM IFRAME -->
           <script>window.PagedConfig = { auto: false };<\/script>
           <script src="https://cdn.jsdelivr.net/npm/pagedjs@0.4.3/dist/paged.polyfill.js"><\/script>
           <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"><\/script>
           <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"><\/script>
           
           <style>
-            body { margin: 0; padding: 0; background: #fff; }
-            .report-paper { margin: 0 auto !important; width: 100% !important; max-width: 100% !important; }
-            table { table-layout: fixed !important; width: 100% !important; }
-            th, td { word-wrap: break-word !important; }
+            /* 1. Atur Ukuran Kertas dan Margin Mirip Ctrl+P Browser */
+            @page {
+              size: A4;
+              margin: 12mm 15mm;
+            }
+
+            body { 
+              margin: 0; 
+              padding: 0; 
+              background: #fff; 
+              font-family: system-ui, -apple-system, sans-serif;
+            }
+
+            /* 2. Bebaskan Lebar Kontainer */
+            .report-paper { 
+              margin: 0 auto !important; 
+              width: 100% !important; 
+              max-width: none !important; 
+              padding: 0 !important; 
+              box-shadow: none !important;
+            }
+
+            /* 3. Kembalikan Sifat Tabel Natural (Hapus Aturan Paksa Sebelumnya) */
+            table { 
+              width: 100% !important; 
+              table-layout: auto !important; 
+              border-collapse: collapse; 
+            }
+            th, td { 
+              word-wrap: normal !important; 
+              word-break: normal !important; 
+              overflow-wrap: normal !important;
+            }
+
+            /* 4. Sembunyikan Elemen Web UI */
+            .portal-header, .portal-footer, .btn-primary, .no-print { display: none !important; }
           </style>
         </head>
         <body>
-          <!-- Konten Mentah -->
           <div id="source-content" style="display:none;">${clone.outerHTML}</div>
-          
-          <!-- Target Render Paged.js -->
           <div id="render-target"></div>
           
           <script>
             window.onload = async function() {
               try {
-                // Jeda 1 detik menunggu font & CSS termuat sempurna agar layout akurat
-                await new Promise(r => setTimeout(r, 1000));
+                await new Promise(r => setTimeout(r, 1500));
                 
                 const sourceHtml = document.getElementById("source-content").innerHTML;
                 const target = document.getElementById("render-target");
                 
-                // 1. Eksekusi Paginasi Paged.js
                 const previewer = new window.Paged.Previewer();
                 await previewer.preview(sourceHtml, [], target);
                 
                 const pages = target.querySelectorAll(".pagedjs_page");
                 if (!pages || pages.length === 0) throw new Error("Paged.js gagal membagi halaman.");
                 
-                // 2. Ekspor ke PDF dengan html2canvas + jsPDF
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
                 
+                // Gunakan Scale 2 agar teks tajam dan tidak pecah
                 for (let i = 0; i < pages.length; i++) {
-                  const canvas = await window.html2canvas(pages[i], { scale: 1.5, useCORS: true, logging: false });
+                  const canvas = await window.html2canvas(pages[i], { 
+                    scale: 2, 
+                    useCORS: true, 
+                    logging: false 
+                  });
                   if (i > 0) pdf.addPage();
-                  pdf.addImage(canvas.toDataURL("image/jpeg", 0.85), "JPEG", 0, 0, 210, 297);
+                  pdf.addImage(canvas.toDataURL("image/jpeg", 0.95), "JPEG", 0, 0, 210, 297);
                 }
                 
-                // 3. Kirim hasil Base64 ke halaman utama web
                 window.parent.postMessage({ type: 'pdf_success', base64: pdf.output("datauristring").split(",")[1] }, '*');
               } catch (err) {
                 window.parent.postMessage({ type: 'pdf_error', error: err.toString() }, '*');
@@ -149,13 +175,9 @@ const PATS_PDF = {
       iframeDoc.write(htmlContent);
       iframeDoc.close();
 
-      // 6. Tunggu Iframe selesai bekerja
       const cleanBase64 = await getPdfBase64;
-      
-      // 7. Hancurkan Iframe (Membersihkan Memori)
       document.body.removeChild(iframe);
 
-      // 8. Upload PDF Base64 ke Google Drive
       await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -173,8 +195,7 @@ const PATS_PDF = {
 
     } catch (error) {
       console.error("[DRIVE ARCHIVE ERROR]:", error);
-      // Hapus iframe jika terjadi error di tengah jalan
-      const leftoverIframe = document.querySelector("iframe[style*='210mm']");
+      const leftoverIframe = document.querySelector("iframe[style*='1200px']");
       if (leftoverIframe) leftoverIframe.remove();
     }
   }
