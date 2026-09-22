@@ -355,25 +355,51 @@ document.addEventListener("DOMContentLoaded", async () => {
     }).join(""));
 
     // =========================================================================
-    // BAGIAN VI: ANALISA BAKAT VS MINAT (KLASTER DIAGNOSTIK)
+    // BAGIAN VI: ANALISA FALSE INTEREST (PROFIL MINAT MURNI VS TERBOBOT)
     // =========================================================================
-    const dataKlasterRubrik = rubrikData.bagian_06_analisa_bakat_vs_minat?.klaster_diagnostik || {};
-    const urutanKlaster = ["Genuine Interest", "Surface Fan", "Cross-Disciplinary Synergy"];
+    const p2PureScores = p2Data.pure_scores || {};
+    const profilRubrik = rubrikData.bagian_06_analisa_false_interest?.profil_diagnostik || {};
 
-    setElemHTML("table-pilar2-klaster", urutanKlaster.map(namaKlaster => {
-      const bidangTerkait = klasterGroup[namaKlaster];
-      if (!bidangTerkait || bidangTerkait.length === 0) return "";
+    const profilGroup = {
+      "Genuine Interest": [],
+      "Surface Fan": [],
+      "Cross-Disciplinary Synergy": []
+    };
 
-      const infoKlaster = dataKlasterRubrik[namaKlaster] || {};
+    allRanking.forEach(rec => {
+      // Ambil Skor Minat Murni (MIN_j) dan Skor Minat Terbobot (S_Minat)
+      const pureScore = p2PureScores["MIN_" + rec.field_code] || p2PureScores[rec.bidang] || 0;
+      const weightedScore = rec.skor_pilar2_minat || 0;
+
+      // Logika Diagnostik False Interest (Sesuai Pedoman Manual Book KS1-B)
+      if (pureScore >= 65.0 && weightedScore >= 65.0) {
+        profilGroup["Genuine Interest"].push(rec.bidang);
+      } else if (pureScore >= 65.0 && weightedScore < 65.0) {
+        profilGroup["Surface Fan"].push(rec.bidang);
+      } else if (pureScore < 65.0 && weightedScore >= 65.0) {
+        profilGroup["Cross-Disciplinary Synergy"].push(rec.bidang);
+      }
+    });
+
+    const urutanProfil = ["Genuine Interest", "Surface Fan", "Cross-Disciplinary Synergy"];
+
+    setElemHTML("table-pilar2-klaster", urutanProfil.map(namaProfil => {
+      const bidangTerkait = profilGroup[namaProfil] || [];
+      const infoProfil = profilRubrik[namaProfil] || {};
+
+      const fieldBadges = bidangTerkait.length > 0 
+        ? bidangTerkait.map(b => `<span class="tag-pill" style="margin-bottom:4px;">${b}</span>`).join(" ")
+        : '<em style="font-size:0.78rem; color:#94a3b8;">Tidak ada bidang</em>';
 
       return `
         <tr>
-          <td style="font-weight: 800; color: #0f172a; text-align: left;">${namaKlaster}</td>
-          <td style="text-align: left;">
-            ${bidangTerkait.map(b => `<span class="tag-pill" style="margin-bottom:4px;">${b}</span>`).join(" ")}
+          <td style="font-weight: 800; color: #0f172a; text-align: left;">
+            <div>${infoProfil.label || namaProfil}</div>
+            <div style="font-size: 0.74rem; font-weight: 600; color: #64748b; margin-top: 2px;">${infoProfil.sub_label || ''}</div>
           </td>
-          <td style="text-align: left; font-size: 0.82rem;">${infoKlaster.diagnostik || "-"}</td>
-          <td style="text-align: left; font-size: 0.82rem;">${infoKlaster.konseling || "-"}</td>
+          <td style="text-align: left;">${fieldBadges}</td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${infoProfil.diagnostik || "-"}</td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${infoProfil.konseling || "-"}</td>
         </tr>
       `;
     }).join(""));
