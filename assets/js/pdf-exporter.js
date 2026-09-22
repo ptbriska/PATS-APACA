@@ -1,17 +1,10 @@
 /* ==========================================================================
    PATS PORTAL - PDF EXPORTER & AUTO DRIVE ARCHIVER UTILITY
-   (assets/js/pdf-exporter.js)
    ========================================================================== */
 
-// Gunakan nama variabel internal agar tidak bentrok deklarasi const di file lain
-const PDF_GAS_URL = (typeof REKAP_GAS_ENDPOINT !== "undefined") 
-  ? REKAP_GAS_ENDPOINT 
-  : "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
+const GAS_PDF_DRIVE_URL = "https://script.google.com/macros/s/AKfycbxMq4NjUbe0YCiYRrMXG4TvztEi8B7xpc04Te3JNNV7BBnQSCMFD1CgB0lRBUFDINWY/exec";
 
 const PATS_PDF = {
-  /**
-   * Helper penamaan berkas: (Kode Tes)_(Nama)_(Instansi)_(Timestamp)
-   */
   generateStandardFileName(user = {}) {
     const rawKode = user.kode_modul || user.kode_akses || user.kode_kegiatan || "TES";
     const rawNama = user.nama_lengkap || user.nama || "Siswa";
@@ -90,8 +83,6 @@ const PATS_PDF = {
     if (!element || typeof html2pdf === 'undefined') return;
 
     try {
-      console.log("[DRIVE ARCHIVE]: Memulai pembuatan arsip PDF otomatis...");
-
       const user = typeof PATS_AUTH !== "undefined" ? PATS_AUTH.getSession() : {};
       const fileName = this.generateStandardFileName(user);
 
@@ -106,7 +97,7 @@ const PATS_PDF = {
       const pdfBase64 = await html2pdf().set(options).from(element).outputPdf('datauristring');
       const cleanBase64 = pdfBase64.split(',')[1];
 
-      await fetch(PDF_GAS_URL, {
+      await fetch(GAS_PDF_DRIVE_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
@@ -120,7 +111,7 @@ const PATS_PDF = {
       });
 
       sessionStorage.setItem("pats_pdf_drive_archived", "true");
-      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} berhasil tersimpan di Google Drive.`);
+      console.log(`[DRIVE ARCHIVE SUCCESS]: File ${fileName} tersimpan di Google Drive.`);
 
     } catch (err) {
       console.warn("[DRIVE ARCHIVE ERROR]:", err);
