@@ -314,22 +314,42 @@ document.addEventListener("DOMContentLoaded", async () => {
     // BAGIAN V: ANALISA PILAR III - RESILIENSI MENTAL & SCIENCE COMFORT
     // =========================================================================
     const p3Eval = p3Data.field_results || {};
+    const p3Rubrik = rubrikData.bagian_05_pilar3_resiliensi?.kategori_resiliensi || {};
+
     setElemHTML("pilar3-table-body", allRanking.map(rec => {
       const resKey = Object.keys(p3Eval).find(k => p3Eval[k].field_name === rec.bidang || k === rec.bidang || k === rec.field_code);
-      const res = resKey ? p3Eval[resKey] : { score_pilar3: rec.skor_pilar3_persona, intimidation_index: rec.indeks_intimidasi, evaluasi: "-" };
+      const res = resKey ? p3Eval[resKey] : { score_pilar3: rec.skor_pilar3_persona, intimidation_index: rec.indeks_intimidasi };
       
-      const isBurnout = res.warning_tag || res.intimidation_index < 3.0;
-      const warnBadge = isBurnout ? 
-        `<span class="badge-status badge-warning">[WARNING: BURNOUT]</span>` : 
-        `<span class="badge-status badge-pass">FIT</span>`;
+      const scoreP3 = res.score_pilar3 !== undefined ? res.score_pilar3 : (rec.skor_pilar3_persona || 0);
+      const intimidationIdx = res.intimidation_index !== undefined ? res.intimidation_index : (rec.indeks_intimidasi || 0);
+
+      let catKey = "Sangat Rentan";
+      let statusBadge = `<span class="badge-status badge-warning">[WARNING: BURNOUT]</span>`;
+
+      // Evaluasi Threshold Ganda berdasarkan Manual Book KS1-C (Pilar III)
+      if (intimidationIdx >= 4.00 && scoreP3 >= 80.0) {
+        catKey = "Sangat Siap";
+        statusBadge = `<span class="badge-status badge-pass">FIT (HIGH)</span>`;
+      } else if (intimidationIdx >= 3.00 && scoreP3 >= 65.0) {
+        catKey = "Siap";
+        statusBadge = `<span class="badge-status badge-pass">FIT (MODERATE)</span>`;
+      } else if (intimidationIdx >= 2.50 && scoreP3 >= 50.0) {
+        catKey = "Rentan";
+        statusBadge = `<span class="badge-status badge-fit-sedang">FIT (BORDERLINE)</span>`;
+      } else {
+        catKey = "Sangat Rentan";
+        statusBadge = `<span class="badge-status badge-warning">[WARNING: BURNOUT]</span>`;
+      }
+
+      const infoResiliensi = p3Rubrik[catKey] || {};
 
       return `
         <tr>
-          <td style="text-align: left; font-weight: 600;">${rec.bidang}</td>
-          <td><strong>${res.score_pilar3}</strong></td>
-          <td>${res.intimidation_index.toFixed(2)}</td>
-          <td>${warnBadge}</td>
-          <td style="text-align: left; font-size: 0.82rem;">${res.evaluasi}</td>
+          <td style="text-align: left; font-weight: 700; color: #1e3a8a;">${rec.bidang}</td>
+          <td><strong>${scoreP3}</strong></td>
+          <td>${intimidationIdx.toFixed(2)}</td>
+          <td>${statusBadge}</td>
+          <td style="text-align: left; font-size: 0.82rem; line-height: 1.4;">${infoResiliensi.implikasi || "-"}</td>
         </tr>
       `;
     }).join(""));
