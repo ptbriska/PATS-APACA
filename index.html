@@ -302,7 +302,7 @@
 
     .grid-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 24px;
     }
 
@@ -316,7 +316,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 250px;
+      min-height: 310px;
       position: relative;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -363,23 +363,58 @@
       font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 10px;
-      padding-right: 50px;
+      margin-bottom: 6px;
+      padding-right: 55px;
     }
 
     .card-description {
-      font-size: 0.875rem;
+      font-size: 0.85rem;
+      color: #ffb3be;
+      margin-bottom: 12px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Tambahan CSS untuk Tujuan Tes */
+    .card-purpose {
+      font-size: 0.82rem;
       color: var(--text-muted);
-      margin-bottom: 20px;
-      flex-grow: 1;
+      background: rgba(255, 30, 67, 0.06);
+      border-left: 2px solid var(--red-bright);
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 18px;
       line-height: 1.5;
     }
 
+    /* Pembaruan CSS Card Meta (Durasi & Harga) */
     .card-meta {
-      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
       color: #ffb3be;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 30, 67, 0.15);
       font-weight: 600;
+      gap: 8px;
+    }
+
+    .price-tag {
+      background: rgba(255, 30, 67, 0.15);
+      border: 1px solid rgba(255, 30, 67, 0.4);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    .price-tag.free {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: rgba(16, 185, 129, 0.5);
+      color: #6ee7b7;
     }
 
     .btn-primary {
@@ -441,10 +476,22 @@
       backdrop-filter: blur(10px);
     }
 
+    /* Penyesuaian Media Query untuk Mobile */
     @media (max-width: 768px) {
       .brand h1 { font-size: 1.7rem; }
       .hero-section h2 { font-size: 1.6rem; }
       .grid-cards { grid-template-columns: 1fr; }
+      
+      .hero-actions { 
+        gap: 12px; 
+        flex-direction: column; 
+        align-items: center;
+      }
+      .btn-outline {
+        width: 100%;
+        max-width: 300px;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -471,7 +518,7 @@
         Gunakan fitur pencarian atau filter kategori di bawah ini untuk memilih modul tes yang akan Anda ikuti.
       </p>
       
-      <!-- Tambahan Action Buttons Link -->
+      <!-- Action Buttons Link -->
       <div class="hero-actions">
         <a href="https://www.apacaconsulting.com" target="_blank" rel="noopener noreferrer" class="btn-outline">
           🌐 Website Utama Produk
@@ -489,7 +536,7 @@
     <!-- Input Search Bar -->
     <div class="search-box">
       <span class="search-icon">🔍</span>
-      <input type="text" id="search-input" class="search-input" placeholder="Cari nama tes, kode tes (misal: KA1, KS6, KU4)...">
+      <input type="text" id="search-input" class="search-input" placeholder="Cari nama tes, tujuan, harga (misal: Gratis, KA1, MBTI)...">
     </div>
 
     <!-- Category Filter Tabs -->
@@ -542,14 +589,16 @@
         const tests = PATS_CONFIG.tests;
         const categories = {};
 
-        // Filter Data berdasarkan Search Query dan Active Category Tab
+        // Filter Data berdasarkan Search Query (termasuk tujuan & harga) dan Active Category Tab
         Object.keys(tests).forEach(key => {
           const test = tests[key];
           
           const matchesCategory = currentCategory === "ALL" || test.kategori === currentCategory;
           const matchesSearch = test.namaResmi.toLowerCase().includes(searchQuery) ||
                                 test.namaSingkat.toLowerCase().includes(searchQuery) ||
-                                test.kode.toLowerCase().includes(searchQuery);
+                                test.kode.toLowerCase().includes(searchQuery) ||
+                                (test.tujuan && test.tujuan.toLowerCase().includes(searchQuery)) ||
+                                (test.harga && test.harga.toLowerCase().includes(searchQuery));
 
           if (matchesCategory && matchesSearch) {
             if (!categories[test.kategori]) {
@@ -578,16 +627,22 @@
           `;
 
           testList.forEach(test => {
+            const hargaText = test.harga || "Hubungi Admin";
+            const isFree = hargaText.toLowerCase() === "gratis";
+            const tujuanHtml = test.tujuan ? `<p class="card-purpose">${test.tujuan}</p>` : "";
+
             htmlContent += `
               <div class="test-card">
                 <div>
                   <div class="card-badge">${test.kode}</div>
                   <h4 class="card-title">${test.namaSingkat}</h4>
                   <p class="card-description">${test.namaResmi}</p>
+                  ${tujuanHtml}
                 </div>
                 <div>
                   <div class="card-meta">
-                    <span>⏱️ Durasi: ${test.durasiMenit} Menit</span>
+                    <span>⏱️ ${test.durasiMenit} Menit</span>
+                    <span class="price-tag ${isFree ? 'free' : ''}">💳 ${hargaText}</span>
                   </div>
                   <a href="tests/${test.folder}/index.html" class="btn-primary">Pilih Tes</a>
                 </div>
