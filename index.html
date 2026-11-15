@@ -150,7 +150,40 @@
       font-weight: 600;
     }
 
-    /* --- Filter & Search Bar Section (FIXED: CENTER ALIGNMENT) --- */
+    /* --- Hero External Link Buttons --- */
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 30, 67, 0.1);
+      border: 1px solid var(--red-bright);
+      color: #ffffff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 15px rgba(255, 30, 67, 0.1);
+    }
+
+    .btn-outline:hover {
+      background: var(--red-bright);
+      box-shadow: 0 0 20px var(--red-glow);
+      transform: translateY(-2px);
+      color: #ffffff;
+    }
+
+    /* --- Filter & Search Bar Section --- */
     .filter-search-section {
       margin: 30px auto;
       display: flex;
@@ -236,7 +269,7 @@
       box-shadow: 0 0 15px var(--red-glow);
     }
 
-    /* --- Catalog & Grid Cards (FIXED: PADDING & OVERFLOW) --- */
+    /* --- Catalog & Grid Cards --- */
     .portal-main {
       padding: 10px 0 100px;
       flex-grow: 1;
@@ -437,6 +470,17 @@
       <p class="welcoming-subdesc">
         Gunakan fitur pencarian atau filter kategori di bawah ini untuk memilih modul tes yang akan Anda ikuti.
       </p>
+      
+      <!-- Tambahan Action Buttons Link -->
+      <div class="hero-actions">
+        <a href="https://www.apacaconsulting.com" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          🌐 Website Utama Produk
+        </a>
+        <a href="https://daftar.apacaconsulting.com" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          📝 Website Pendaftaran
+        </a>
+      </div>
+      
     </div>
   </section>
 
