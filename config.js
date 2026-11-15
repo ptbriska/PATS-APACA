@@ -34,7 +34,9 @@ const PATS_CONFIG = {
       kategori: "Anak (Pra Sekolah-Sekolah Dasar)",
       namaResmi: "Asesmen Psikologi Kesiapan Masuk SD",
       namaSingkat: "Kesiapan Masuk SD",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp200.000",
+      tujuan: "Memetakan kesiapan fisik, emosi, dan kognitif anak secara psikologis sebelum memasuki jenjang SD."
     },
     "KA2": {
       kode: "KA2",
@@ -42,7 +44,9 @@ const PATS_CONFIG = {
       kategori: "Anak (Pra Sekolah-Sekolah Dasar)",
       namaResmi: "Tes Psikologi IQ & Kecerdasan Anak",
       namaSingkat: "IQ & Kecerdasan Anak",
-      durasiMenit: 60
+      durasiMenit: 60,
+      harga: "Rp250.000",
+      tujuan: "Mendiagnosis tingkat kecerdasan kognitif bawaan, struktur IQ, serta kelebihan & kelemahan otak anak."
     },
     "KA3": {
       kode: "KA3",
@@ -50,7 +54,9 @@ const PATS_CONFIG = {
       kategori: "Anak (Pra Sekolah-Sekolah Dasar)",
       namaResmi: "Skrining Klinis & Hambatan Belajar",
       namaSingkat: "Skrining Hambatan Belajar",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp200.000",
+      tujuan: "Mendeteksi secara dini indikasi klinis hambatan belajar seperti disleksia, disgrafia, & diskalkulia."
     },
     "KA4": {
       kode: "KA4",
@@ -58,7 +64,9 @@ const PATS_CONFIG = {
       kategori: "Anak (Pra Sekolah-Sekolah Dasar)",
       namaResmi: "Skrining Perkembangan Sensori & Motorik",
       namaSingkat: "Skrining Sensori & Motorik",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp150.000",
+      tujuan: "Mengukur keseimbangan motorik halus-kasar serta pengolahan sensori anak untuk mendukung proses belajar."
     },
 
     // ==========================================
@@ -70,7 +78,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan Minat & Bakat Potensial Analitis Bidang OSN",
       namaSingkat: "Minat Bakat OSN",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp120.000",
+      tujuan: "Menemukan kecocokan antara minat kepribadian dengan orientasi bidang Pilihan OSN SMA."
     },
     "KS2": {
       kode: "KS2",
@@ -78,7 +88,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Asesmen Potensi Komprehensif & Inteligensi",
       namaSingkat: "Potensi & Inteligensi Siswa",
-      durasiMenit: 60
+      durasiMenit: 60,
+      harga: "Rp250.000",
+      tujuan: "Mengukur inteligensi komprehensif (IQ, EQ, CQ, AQ) untuk memetakan kapasitas akademik maksimal siswa."
     },
     "KS3": {
       kode: "KS3",
@@ -86,7 +98,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Asesmen Keselarasan Jurusan Kuliah",
       namaSingkat: "Keselarasan Jurusan Kuliah",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp150.000",
+      tujuan: "Memberikan rekomendasi jurusan kuliah yang paling selaras dengan kapasitas kognitif & minat bakat."
     },
     "KS4": {
       kode: "KS4",
@@ -94,7 +108,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Indeks Kesiapan Studi Mandiri & Rantau",
       namaSingkat: "Kesiapan Studi Mandiri/Rantau",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp90.000",
+      tujuan: "Mengukur kemandirian emosional, adaptabilitas budaya, & ketahanan mental siswa."
     },
     "KS5": {
       kode: "KS5",
@@ -102,7 +118,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Asesmen Modalitas Gaya Belajar (LSP)",
       namaSingkat: "Gaya Belajar (LSP)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengidentifikasi preferensi sensori dasar & gaya kognitif awal dalam menyerap materi."
     },
     "KS6": {
       kode: "KS6",
@@ -110,7 +128,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan 8 Pola Kecerdasan Majemuk",
       namaSingkat: "Kecerdasan Majemuk",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp75.000",
+      tujuan: "Memetakan 8 domain kecerdasan Multiple Intelligences."
     },
     "KS7": {
       kode: "KS7",
@@ -118,7 +138,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan Bakat Analitis OSN",
       namaSingkat: "Bakat Analitis OSN",
-      durasiMenit: 60
+      durasiMenit: 60,
+      harga: "Gratis",
+      tujuan: "Menguji kapasitas penalaran matriks & logika abstrak tingkat tinggi untuk seleksi siswa berprestasi."
     },
     "KS8": {
       kode: "KS8",
@@ -126,7 +148,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Tes Penalaran Kritis & Logika Analitis",
       namaSingkat: "Penalaran Kritis & Logika",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp100.000",
+      tujuan: "Menguji ketajaman logika berpikir, evaluasi argumen, dan penarikan kesimpulan secara objektif."
     },
     "KS9": {
       kode: "KS9",
@@ -134,7 +158,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Asesmen Kesesuaian Metodologi & Struktur Pengajaran (LAM)",
       namaSingkat: "Struktur Pengajaran (LAM)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengukur kesesuaian metodologi makro & tingkat struktur pengajaran ideal bagi siswa."
     },
     "KS10": {
       kode: "KS10",
@@ -142,7 +168,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Asesmen Efektivitas Teknik Belajar Taktis (LTE)",
       namaSingkat: "Teknik Belajar Taktis (LTE)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Memetakan repertoar & efektivitas tindakan belajar taktis."
     },
     "KS11": {
       kode: "KS11",
@@ -150,7 +178,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Asesmen Kapasitas Self-Regulated Learning (LSI)",
       namaSingkat: "Belajar Mandiri (LSI)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengukur kapasitas regulasi belajar mandiri."
     },
     "KS12": {
       kode: "KS12",
@@ -158,7 +188,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan Operasi Kognitif Saat Belajar (LCPI)",
       namaSingkat: "Operasi Kognitif (LCPI)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Memetakan dinamika & operasi mental saat memproses materi."
     },
     "KS13": {
       kode: "KS13",
@@ -166,7 +198,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan 6 Tipe Motivasi, Efikasi Diri & Emosi Belajar (LAMP)",
       namaSingkat: "Motivasi & Emosi Belajar (LAMP)",
-      durasiMenit: 35
+      durasiMenit: 35,
+      harga: "Rp75.000",
+      tujuan: "Mengidentifikasi 6 pendorong motivasi spesifik, efikasi diri, dan tingkat grit siswa."
     },
     "KS14": {
       kode: "KS14",
@@ -174,7 +208,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan Kondisi Lingkungan Belajar Optimal (LEI)",
       namaSingkat: "Lingkungan Belajar (LEI)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Memetakan kondisi ekosistem eksternal yang memicu fokus & produktivitas puncak."
     },
     "KS15": {
       kode: "KS15",
@@ -182,7 +218,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Pemetaan Hirarki Preferensi Format Materi & Media (LRP)",
       namaSingkat: "Preferensi Media Belajar (LRP)",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Menyusun hirarki preferensi terhadap media, instrumen, dan format materi belajar."
     },
     "KS16": {
       kode: "KS16",
@@ -190,7 +228,9 @@ const PATS_CONFIG = {
       kategori: "Siswa (SD-Mahasiswa)",
       namaResmi: "Survei Tingkat Kejenuhan & Stres Akademik",
       namaSingkat: "Stres Akademik",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengukur tingkat stres emosional, kecemasan akademik, dan tingkat kejenuhan."
     },
 
     // ==========================================
@@ -202,7 +242,9 @@ const PATS_CONFIG = {
       kategori: "Dewasa (Mahasiswa-Pekerja)",
       namaResmi: "Pemetaan Proyeksi Karir Masa Depan",
       namaSingkat: "Proyeksi Karir",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp125.000",
+      tujuan: "Memetakan jalur karir yang paling relevan dengan potensi kepribadian, minat, & kualifikasi profesional."
     },
     "KD2": {
       kode: "KD2",
@@ -210,7 +252,9 @@ const PATS_CONFIG = {
       kategori: "Dewasa (Mahasiswa-Pekerja)",
       namaResmi: "Inventori Nilai & Prinsip Kerja",
       namaSingkat: "Nilai & Prinsip Kerja",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengidentifikasi motivasi internal & nilai prioritas dalam bekerja."
     },
     "KD3": {
       kode: "KD3",
@@ -218,7 +262,9 @@ const PATS_CONFIG = {
       kategori: "Dewasa (Mahasiswa-Pekerja)",
       namaResmi: "Asesmen Potensi Komprehensif & Inteligensi",
       namaSingkat: "Potensi & Inteligensi Dewasa",
-      durasiMenit: 60
+      durasiMenit: 60,
+      harga: "Rp250.000",
+      tujuan: "Mengukur potensi daya pikir komprehensif, penalaran logis, serta kematangan emosi untuk seleksi kerja."
     },
     "KD4": {
       kode: "KD4",
@@ -226,7 +272,9 @@ const PATS_CONFIG = {
       kategori: "Dewasa (Mahasiswa-Pekerja)",
       namaResmi: "Asesmen Gaya Kepemimpinan di Korporat",
       namaSingkat: "Gaya Kepemimpinan Korporat",
-      durasiMenit: 40
+      durasiMenit: 40,
+      harga: "Rp150.000",
+      tujuan: "Memetakan gaya manajerial, delegasi tugas, serta kemampuan memimpin tim dalam lingkungan korporasi."
     },
     "KD5": {
       kode: "KD5",
@@ -234,7 +282,9 @@ const PATS_CONFIG = {
       kategori: "Dewasa (Mahasiswa-Pekerja)",
       namaResmi: "Tes Ketahanan & Ketelitian Kerja (Kraepelin/Pauli)",
       namaSingkat: "Ketahanan & Ketelitian Kerja",
-      durasiMenit: 20
+      durasiMenit: 20,
+      harga: "Rp75.000",
+      tujuan: "Menguji ketelitian, kecepatan, daya tahan kerja (endurance), dan stabilitas emosi di bawah tekanan."
     },
     "KD6": {
       kode: "KD6",
@@ -242,7 +292,9 @@ const PATS_CONFIG = {
       kategori: "Dewasa (Mahasiswa-Pekerja)",
       namaResmi: "Survei Tingkat Kejenuhan & Stres",
       namaSingkat: "Stres Kerja",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengukur tingkat stres emosional, kecemasan stres kerja, dan tingkat kejenuhan."
     },
 
     // ==========================================
@@ -254,7 +306,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Asesmen Daya Juang & Pola Pikir",
       namaSingkat: "Daya Juang & Pola Pikir",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengukur tingkat daya tahan pantang menyerah (Grit) dan keterbukaan pola pikir (Growth Mindset)."
     },
     "KU2": {
       kode: "KU2",
@@ -262,7 +316,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Tes Integritas & Etika",
       namaSingkat: "Integritas & Etika",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp50.000",
+      tujuan: "Memprediksi tingkat kejujuran, kepatuhan aturan, serta risiko perilaku kontra-produktif."
     },
     "KU3": {
       kode: "KU3",
@@ -270,7 +326,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Asesmen Etika & Perilaku Digital",
       namaSingkat: "Etika & Perilaku Digital",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp50.000",
+      tujuan: "Mengukur etika berkomunikasi digital, kesadaran privasi data, serta jejak perilaku di dunia maya."
     },
     "KU4": {
       kode: "KU4",
@@ -278,7 +336,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Pemetaan Preferensi Tipe Kepribadian MBTI",
       namaSingkat: "Kepribadian MBTI",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Gratis",
+      tujuan: "Memetakan 16 tipe kepribadian MBTI untuk pemahaman cara berpikir dan berinteraksi."
     },
     "KU5": {
       kode: "KU5",
@@ -286,7 +346,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Pemetaan Profil Perilaku & Gaya Komunikasi DISC",
       namaSingkat: "Perilaku & Komunikasi DISC",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp25.000",
+      tujuan: "Mengidentifikasi kecenderungan gaya perilaku (DISC) dan gaya komunikasi."
     },
     "KU6": {
       kode: "KU6",
@@ -294,7 +356,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Pemetaan 9 Tipe Kepribadian & Motivasi Dasar Enneagram",
       namaSingkat: "Tipe Enneagram",
-      durasiMenit: 45
+      durasiMenit: 45,
+      harga: "Rp25.000",
+      tujuan: "Mengungkap motivasi mendalam, ketakutan utama melalui 9 tipe Enneagram."
     },
     "KU7": {
       kode: "KU7",
@@ -302,7 +366,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Asesmen Lima Faktor Utama Trait Kepribadian (Big Five / OCEAN)",
       namaSingkat: "Kepribadian Big Five",
-      durasiMenit: 40
+      durasiMenit: 40,
+      harga: "Rp25.000",
+      tujuan: "Mengukur 5 dimensi utama kepribadian secara ilmiah."
     },
     "KU8": {
       kode: "KU8",
@@ -310,7 +376,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Asesmen Kepemimpinan & Soft Skills",
       namaSingkat: "Kepemimpinan & Soft Skills",
-      durasiMenit: 40
+      durasiMenit: 40,
+      harga: "Rp100.000",
+      tujuan: "Memetakan dinamika hubungan interpersonal, soft skills, dan efektivitas komunikasi dalam tim."
     },
     "KU9": {
       kode: "KU9",
@@ -318,7 +386,9 @@ const PATS_CONFIG = {
       kategori: "Umum (Karakter & Kesehatan Mental)",
       namaResmi: "Tes Pengambilan Keputusan",
       namaSingkat: "Pengambilan Keputusan",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp125.000",
+      tujuan: "Menguji kualitas pengambilan keputusan, penentuan skala prioritas, & solusi krisis."
     },
 
     // ==========================================
@@ -330,7 +400,9 @@ const PATS_CONFIG = {
       kategori: "Khusus (Parenting & Sekolah)",
       namaResmi: "Inventori Gaya Mengajar Pendidik",
       namaSingkat: "Gaya Mengajar Pendidik",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp50.000",
+      tujuan: "Memetakan pendekatan & gaya mengajar guru untuk meningkatkan efektivitas penyampaian materi."
     },
     "KK2": {
       kode: "KK2",
@@ -338,7 +410,9 @@ const PATS_CONFIG = {
       kategori: "Khusus (Parenting & Sekolah)",
       namaResmi: "Pemetaan Pola Asuh Orang Tua",
       namaSingkat: "Pola Asuh Orang Tua",
-      durasiMenit: 30
+      durasiMenit: 30,
+      harga: "Rp75.000",
+      tujuan: "Mengidentifikasi kecenderungan pola asuh orang tua & dampaknya ke anak."
     }
   }
 };
